@@ -134,7 +134,7 @@ var levelProfBonuses = {
 };
 
 // Bonuses Listing
-  // #region Bonuses Listing Region
+// #region Bonuses Listing Region
 var charBonusesDictionary = {
   Doris: {
     MeleeAttackBonus: '',
@@ -265,5 +265,7 @@ function updatePartyLevel() {
   document.getElementById("party-level").innerText = PartyLevel;
 }
 
-window.onload = updateSheet;
-window.onload = updatePartyLevel;
+window.onload = function() {
+  updateSheet();
+  updatePartyLevel();
+};
