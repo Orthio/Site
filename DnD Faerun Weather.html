@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faerun Weather</title>
+</head>
+<body>
+    <h1>Faerun Weather</h1>
+    
+    <button onclick="displayResults()">Winter Weather</button>
+    
+    <div id="results"></div>
+
+    <script>
+        var WinterTempTable = [
+            "Very Cold", "Very Cold", "Very Cold",
+            "Cold", "Cold", "Cold", "Cold",
+            "Cool", "Cool", "Cool",
+            "Mild", "Mild", "Mild", "Mild", "Mild", "Mild",
+            "Warm", "Warm", "Warm",
+            "Hot"
+        ];
+
+        var WinterWindTable = [
+            "None", "None", "None", "None", "None", "None",
+            "None", "None", "None", "None", 
+            "Light", "Light", "Light", "Light", "Light", "Light",
+            "Strong", "Strong"
+        ];
+        
+        var WinterRainTable = [
+            "None", "None", "None", "None", "None", "None",
+            "None", "None", "None", "None", "None", "None",
+            "Light", "Light", "Light", "Light",
+            "Heavy", "Heavy", "Heavy",
+        ];
+
+        function displayResults() {
+            var WinterTemp = [];
+            var WinterWind = [];
+            var WinterRain = [];
+
+            for (var i = 0; i < 7; i++) {
+                WinterTemp.push(WinterTempTable[Math.floor(Math.random() * WinterTempTable.length)]); //push adds to end of the array
+                WinterWind.push(WinterWindTable[Math.floor(Math.random() * WinterWindTable.length)]); //taking a random number and using it
+                
+                if (i > 0 && Math.random() < 0.25) { // 25% chance to use "As Yesterday"
+                    WinterRain.push(WinterRain[i-1]);
+                } else {
+                    WinterRain.push(WinterRainTable[Math.floor(Math.random() * WinterRainTable.length)]);
+                }
+            }
+
+            // Update the HTML to display the history
+            var charhistory = '';
+            for (var i = 0; i < 7; i++) {
+                charhistory += "<div>" +
+                "Day " + (i + 1) + "<br>" +
+                "Temp: " + WinterTemp[i] + "<br>" +
+                "Wind: " + WinterWind[i] + "<br>" +
+                "Rain: " + WinterRain[i] + "</div>" +
+                "<div>" + "----------------------" + "</div>";
+            }
+            document.getElementById("results").innerHTML = "<br>" + charhistory;
+        }
+    </script>
+</body>
+</html>
