@@ -28,49 +28,70 @@ var PartyStatsDictionary = {
   },
   Faelar: {
     Strength: 14,
+    StrMod: 2,
     Dexterity: 10,
+    DexMod: 0,
     Constitution: 14,
+    ConMod: 2,
     Intelligence: 12,
+    IntMod: 1,
     Wisdom: 16,
+    WisMod: 3,
     Charisma: 10,
+    ChaMod: 0,
     HPStart: 8,
     HPGainperLevel: 5,
     HP: '',
     AC: 19,
     SpellAttack: '',
-    SpellSave: ''
+    SpellSave: '',
+    SpellCastMod: ''
   },
   Kandryn: {
     Strength: 10,
+    StrMod: 0,
     Dexterity: 16,
+    DexMod: 3,
     Constitution: 14,
+    ConMod: 2,
     Intelligence: 17,
+    IntMod: 3,
     Wisdom: 13,
+    WisMod: 1,
     Charisma: 13,
+    ChaMod: 1,
     HPStart: 6,
     HPGainperLevel: 4,
     HP: '',
     AC: 13,
     SpellAttack: '',
-    SpellSave: ''
+    SpellSave: '',
+    SpellCastMod: ''
   },
   Eiran: {
     Strength: 12,
+    StrMod: 1,
     Dexterity: 16,
+    DexMod: 3,
     Constitution: 15,
+    ConMod: 2,
     Intelligence: 8,
+    IntMod: -1,
     Wisdom: 13,
+    WisMod: 1,
     Charisma: 13,
+    ChaMod: 1,
     HPStart: 10,
     HPGainperLevel: 6,
     HP: '',
     AC: 16,
     SpellAttack: '',
-    SpellSave: ''
+    SpellSave: '',
+    SpellCastMod: ''
   },
 };
 
-// Dictionary for proficiencies for each character
+// Character Proficiency Listing
 var charProfBonusesDictionary = {
   Doris: { Acrobatics: 1, "Animal Handling": 0.5, Arcana: 0.5, Athletics: 0.5, Deception: 2, History: 0.5,
     Insight: 1, Intimidation: 0.5, Investigation: 0.5, Medicine: 1, Nature: 0.5, Perception: 0.5, 
@@ -90,7 +111,7 @@ var charProfBonusesDictionary = {
   }
 };
 
-// Proficiency Bonuses: Level, Prof Bonus
+// Proficiency Bonus Listing
 var levelProfBonuses = {
   1: 2,
   2: 2,
@@ -114,36 +135,90 @@ var levelProfBonuses = {
   20: 6
 };
 
-// Calculate DorisSkills
-var DorisSkills = {
-  Acrobatics: PartyStatsDictionary.Doris.DexMod + Math.floor(charProfBonusesDictionary.Doris.Acrobatics) * levelProfBonuses[PartyLevel],
-  "Animal Handling": PartyStatsDictionary.Doris.WisMod + Math.floor(charProfBonusesDictionary.Doris["Animal Handling"]) * levelProfBonuses[PartyLevel],
-  Arcana: PartyStatsDictionary.Doris.IntMod + Math.floor(charProfBonusesDictionary.Doris.Arcana) * levelProfBonuses[PartyLevel],
-  Athletics: PartyStatsDictionary.Doris.StrMod + Math.floor(charProfBonusesDictionary.Doris.Athletics) * levelProfBonuses[PartyLevel],
-  Deception: PartyStatsDictionary.Doris.ChaMod + Math.floor(charProfBonusesDictionary.Doris.Deception) * levelProfBonuses[PartyLevel],
-  History: PartyStatsDictionary.Doris.IntMod + Math.floor(charProfBonusesDictionary.Doris.History) * levelProfBonuses[PartyLevel],
-  Insight: PartyStatsDictionary.Doris.WisMod + Math.floor(charProfBonusesDictionary.Doris.Insight) * levelProfBonuses[PartyLevel],
-  Intimidation: PartyStatsDictionary.Doris.StrMod + Math.floor(charProfBonusesDictionary.Doris.Intimidation) * levelProfBonuses[PartyLevel],
-  Investigation: PartyStatsDictionary.Doris.IntMod + Math.floor(charProfBonusesDictionary.Doris.Investigation) * levelProfBonuses[PartyLevel],
-  Medicine: PartyStatsDictionary.Doris.WisMod + Math.floor(charProfBonusesDictionary.Doris.Medicine) * levelProfBonuses[PartyLevel],
-  Nature: PartyStatsDictionary.Doris.IntMod + Math.floor(charProfBonusesDictionary.Doris.Nature) * levelProfBonuses[PartyLevel],
-  Perception: PartyStatsDictionary.Doris.WisMod + Math.floor(charProfBonusesDictionary.Doris.Perception) * levelProfBonuses[PartyLevel],
-  Performance: PartyStatsDictionary.Doris.ChaMod + Math.floor(charProfBonusesDictionary.Doris.Performance) * levelProfBonuses[PartyLevel],
-  Persuasion: PartyStatsDictionary.Doris.ChaMod + Math.floor(charProfBonusesDictionary.Doris.Persuasion) * levelProfBonuses[PartyLevel],
-  Religion: PartyStatsDictionary.Doris.IntMod + Math.floor(charProfBonusesDictionary.Doris.Religion) * levelProfBonuses[PartyLevel],
-  "Sleight of Hand": PartyStatsDictionary.Doris.DexMod + Math.floor(charProfBonusesDictionary.Doris["Sleight of Hand"]) * levelProfBonuses[PartyLevel],
-  Stealth: PartyStatsDictionary.Doris.DexMod + Math.floor(charProfBonusesDictionary.Doris.Stealth) * levelProfBonuses[PartyLevel],
-  Survival: PartyStatsDictionary.Doris.WisMod + Math.floor(charProfBonusesDictionary.Doris.Survival) * levelProfBonuses[PartyLevel]
+// Bonuses Listing
+  // #region Bonuses Listing Region
+var charBonusesDictionary = {
+  Doris: {
+    MeleeAttackBonus: '',
+    RangedAttackBonus: '',
+    SpellAttackBonus: '',
+    SpellSaveBonus: 2
+  },
+  Faelar: {
+    MeleeAttackBonus: 1,
+    RangedAttackBonus: '',
+    SpellAttackBonus: '',
+    SpellSaveBonus: 2
+  },
+  Kandryn: {
+    MeleeAttackBonus: '',
+    RangedAttackBonus: '',
+    SpellAttackBonus: 2,
+    SpellSaveBonus: ''
+  },
+  Eiran: {
+    MeleeAttackBonus: 1,
+    RangedAttackBonus: 2,
+    SpellAttackBonus: '',
+    SpellSaveBonus: ''
+  }
 };
+// #endregion
 
+function calculateSkills(character) {
+  // Calculate Skills
+  return {
+    Acrobatics: PartyStatsDictionary[character].DexMod + Math.floor(charProfBonusesDictionary[character].Acrobatics) * 
+    levelProfBonuses[PartyLevel],
+    "Animal Handling": PartyStatsDictionary[character].WisMod + Math.floor(charProfBonusesDictionary[character]["Animal Handling"]) * 
+    levelProfBonuses[PartyLevel],
+    Arcana: PartyStatsDictionary[character].IntMod + Math.floor(charProfBonusesDictionary[character].Arcana) * 
+    levelProfBonuses[PartyLevel],
+    Athletics: PartyStatsDictionary[character].StrMod + Math.floor(charProfBonusesDictionary[character].Athletics) * 
+    levelProfBonuses[PartyLevel],
+    Deception: PartyStatsDictionary[character].ChaMod + Math.floor(charProfBonusesDictionary[character].Deception) * 
+    levelProfBonuses[PartyLevel],
+    History: PartyStatsDictionary[character].IntMod + Math.floor(charProfBonusesDictionary[character].History) * 
+    levelProfBonuses[PartyLevel],
+    Insight: PartyStatsDictionary[character].WisMod + Math.floor(charProfBonusesDictionary[character].Insight) * 
+    levelProfBonuses[PartyLevel],
+    Intimidation: PartyStatsDictionary[character].StrMod + Math.floor(charProfBonusesDictionary[character].Intimidation) * 
+    levelProfBonuses[PartyLevel],
+    Investigation: PartyStatsDictionary[character].IntMod + Math.floor(charProfBonusesDictionary[character].Investigation) * 
+    levelProfBonuses[PartyLevel],
+    Medicine: PartyStatsDictionary[character].WisMod + Math.floor(charProfBonusesDictionary[character].Medicine) * 
+    levelProfBonuses[PartyLevel],
+    Nature: PartyStatsDictionary[character].IntMod + Math.floor(charProfBonusesDictionary[character].Nature) * 
+    levelProfBonuses[PartyLevel],
+    Perception: PartyStatsDictionary[character].WisMod + Math.floor(charProfBonusesDictionary[character].Perception) * 
+    levelProfBonuses[PartyLevel],
+    Performance: PartyStatsDictionary[character].ChaMod + Math.floor(charProfBonusesDictionary[character].Performance) * 
+    levelProfBonuses[PartyLevel],
+    Persuasion: PartyStatsDictionary[character].ChaMod + Math.floor(charProfBonusesDictionary[character].Persuasion) * 
+    levelProfBonuses[PartyLevel],
+    Religion: PartyStatsDictionary[character].IntMod + Math.floor(charProfBonusesDictionary[character].Religion) * 
+    levelProfBonuses[PartyLevel],
+    "Sleight of Hand": PartyStatsDictionary[character].DexMod + Math.floor(charProfBonusesDictionary[character]["Sleight of Hand"]) * 
+    levelProfBonuses[PartyLevel],
+    Stealth: PartyStatsDictionary[character].DexMod + Math.floor(charProfBonusesDictionary[character].Stealth) * 
+    levelProfBonuses[PartyLevel],
+    Survival: PartyStatsDictionary[character].WisMod + Math.floor(charProfBonusesDictionary[character].Survival) * 
+    levelProfBonuses[PartyLevel]
+  };
+}
 
-var DorisBonuses = {
-  MeleeAttackBonus: '',
-  RangedAttackBonus: '',
-  SpellAttackBonus: '',
-  SpellSaveBonus: 2
-};
+function calculateHP(character) {
+  // Calculate HP
+  return PartyStatsDictionary[character].HPStart + PartyStatsDictionary[character].ConMod + 
+    (PartyLevel-1)*(PartyStatsDictionary[character].HPGainperLevel + 
+      PartyStatsDictionary[character].ConMod);
+}
 
+function calculateSpellSave(character) {
+  // Calculate SpellSave
+  return  8 + PartyStatsDictionary[character].SpellCastMod + 
+    levelProfBonuses[PartyLevel] + charBonusesDictionary[character].SpellSaveBonus;
+}
 
 var combatEncounterDifficulty = {
   1: { easy: 25, medium: 50, hard: 75, deadly: 100 },
@@ -188,39 +263,46 @@ var encounterMultipliers = [
 ];
 
 function updateSheet() {
-  // Loop through DorisSkills and update the HTML elements
-  
-  for (var skill in DorisSkills) {
+  var characters = ["Doris", "Faelar", "Kandryn", "Eiran"];
 
-    if (DorisSkills.hasOwnProperty(skill)) {
-      var elementId = 'doris-' + skill.toLowerCase().replace(/ /g, '-'); // Create the ID
-      var element = document.getElementById(elementId);
-      if (element) {
-        element.innerText = DorisSkills[skill];
+  PartyStatsDictionary.Doris.SpellCastMod = PartyStatsDictionary.Doris.ChaMod;
+  PartyStatsDictionary.Faelar.SpellCastMod = PartyStatsDictionary.Faelar.WisMod;
+  PartyStatsDictionary.Kandryn.SpellCastMod = PartyStatsDictionary.Kandryn.IntMod;
+  PartyStatsDictionary.Eiran.SpellCastMod = PartyStatsDictionary.Eiran.WisMod;
+
+  // Loop through each character and update
+  characters.forEach(function(character) {
+    var skills = calculateSkills(character);
+    PartyStatsDictionary[character].HP = calculateHP(character);
+    PartyStatsDictionary[character].SpellSave = calculateSpellSave(character);
+
+    // Loop through each skill and update the HTML elements
+    for (var skill in skills) {
+      if (skills.hasOwnProperty(skill)) {
+        var elementId = character.toLowerCase() + '-' + skill.toLowerCase().replace(/ /g, '-'); // Create the ID
+        var element = document.getElementById(elementId);
+        if (element) {
+          element.innerText = skills[skill];
+        }
       }
     }
-  }
 
-  updateChars();
+    document.getElementById(character.toLowerCase() + "-ac").innerText = PartyStatsDictionary[character].AC;
+    document.getElementById(character.toLowerCase() + "-spellsave").innerText = PartyStatsDictionary[character].SpellSave;
+    document.getElementById(character.toLowerCase() + "-hp").innerText = PartyStatsDictionary[character].HP;
+
+    document.getElementById(character.toLowerCase() + "-passiveperc").innerText = 10 + skills.Perception;
+    document.getElementById(character.toLowerCase() + "-passiveins").innerText = 10 + skills.Insight;
+
+  });
 
   document.getElementById("party-level").innerText = PartyLevel;
-
-  document.getElementById("doris-passiveperc").innerText = 10 + DorisSkills.Perception;
-  document.getElementById("doris-passiveins").innerText = 10 + DorisSkills.Insight;
-  document.getElementById("doris-AC").innerText = PartyStatsDictionary.Doris.AC;
-  document.getElementById("doris-spellsave").innerText = PartyStatsDictionary.Doris.SpellSave;
   document.getElementById("prof-bonus").innerText = levelProfBonuses[PartyLevel];
+
   document.getElementById("doris-note").innerText = "Reveller's Concertina +2 SpellSave";
-  document.getElementById("doris-HP").innerText = PartyStatsDictionary.Doris.HP;
+  document.getElementById("faelar-note").innerText = "Book of Martial Techniques +1, Stone of Good Luck on saving throws and abilities";
+  document.getElementById("kandryn-note").innerText = "Wizardry Hat + SpellAttacks";
+  document.getElementById("eiran-note").innerText = "Great Scythe + 1";
 }
-
-function updateChars() {
-  PartyStatsDictionary.Doris.SpellCastMod = PartyStatsDictionary.Doris.ChaMod;
-  PartyStatsDictionary.Doris.SpellSave = 8 + PartyStatsDictionary.Doris.SpellCastMod + 
-  levelProfBonuses[PartyLevel] + DorisBonuses.SpellSaveBonus;
-  PartyStatsDictionary.Doris.HP = PartyStatsDictionary.Doris.HPStart + PartyStatsDictionary.Doris.ConMod + 
-  (PartyLevel-1)*(PartyStatsDictionary.Doris.HPGainperLevel + PartyStatsDictionary.Doris.ConMod);
-};
-
 
 window.onload = updateSheet;
