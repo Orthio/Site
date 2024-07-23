@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DnD Party Stats</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .button {
+          border: none;
+          color: white;
+          display: inline-block;
+          font-size: 12px;
+          text-align: center;
+          text-decoration: none;
+          padding: 5px 8px;
+          margin: 5px 5px;
+        }
+        .span {
+          display: inline-block;
+          margin-bottom: 0px;
+        }
+
+        .table {
+            text-align: left;
+        }
+        .column1 {
+          width:130px
+        }
+        .column2 {
+          width:50px
+        }
+        .column3 {
+          width:120px
+        }
+        .column4 {
+          width:140px
+        }
+    </style>
+    <script src="DnD Party Sheet.js"></script>
+</head>
+<body>
+<h1>DnD Party Sheet</h1>
+
+<h3>Party Stats</h3>
+<p>Party Level: <span id="party-level"></span> &nbsp;&nbsp;&nbsp; 
+  Proficiency Bonus: <span id="prof-bonus"></span></p>
+
+<p><b>Doris Embertooth</b></p>
+<table class="table">
+    <thead>
+        <tr>
+            <td scope="col" class="column1">Passive Perception</td>
+            <td scope="col" class="column2"><span id="doris-passiveperc"></span></td>
+            <td scope="col" class="column3">Passive Insight</td>
+            <td scope="col" class="column4"><span id="doris-passiveins"></span></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">AC</td>
+            <td><span id="doris-ac"></span></td>
+            <td scope="row">Spell Save</td>
+            <td><span id="doris-spellsave"></span></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td scope="row">HP</td>
+            <td><span id="doris-hp"></span></td>
+        </tr>
+    </tbody>
+</table>
+<p><i>Note: <span id="doris-note"></span></i></p>
+<p>_____________________________</p>
+
+<p><b>Faelar Ivaebhin</b></p>
+<table class="table">
+    <thead>
+        <tr>
+            <td scope="col" class="column1">Passive Perception</td>
+            <td scope="col" class="column2"><span id="faelar-passiveperc"></span></td>
+            <td scope="col" class="column3">Passive Insight</td>
+            <td scope="col" class="column4"><span id="faelar-passiveins"></span></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">AC</td>
+            <td><span id="faelar-ac"></span></td>
+            <td scope="row">Spell Save</td>
+            <td><span id="faelar-spellsave"></span></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td scope="row">HP</td>
+            <td><span id="faelar-hp"></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><i>Note: <span id="faelar-note"></span></i></p>
+<p>_____________________________</p>
+
+<p><b>Kandryn Feysage</b></p>
+<table class="table">
+    <thead>
+        <tr>
+            <td scope="col" class="column1">Passive Perception</td>
+            <td scope="col" class="column2"><span id="kandryn-passiveperc"></span></td>
+            <td scope="col" class="column3">Passive Insight</td>
+            <td scope="col" class="column4"><span id="kandryn-passiveins"></span></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">AC</td>
+            <td><span id="kandryn-ac"></span></td>
+            <td scope="row">Spell Save</td>
+            <td><span id="kandryn-spellsave"></span></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td scope="row">HP</td>
+            <td><span id="kandryn-hp"></span></td>
+        </tr>
+    </tbody>
+</table>
+<p><i>Note: <span id="kandryn-note"></span></i></p>
+<p>_____________________________</p>
+
+<p><b>Eiran Tebias</b></p>
+<table class="table">
+    <thead>
+        <tr>
+            <td scope="col" class="column1">Passive Perception</td>
+            <td scope="col" class="column2"><span id="eiran-passiveperc"></span></td>
+            <td scope="col" class="column3">Passive Insight</td>
+            <td scope="col" class="column4"><span id="eiran-passiveins"></span></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">AC</td>
+            <td><span id="eiran-ac"></span></td>
+            <td scope="row">Spell Save</td>
+            <td><span id="eiran-spellsave"></span></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td scope="row">HP</td>
+            <td><span id="eiran-hp"></span></td>
+        </tr>
+    </tbody>
+</table>
+<p><i>Note: <span id="eiran-note"></span></i></p>
+<p>_____________________________</p>
+
+</body>
+</html>
