@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DnD Party Stats</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .p {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+
+        };
+    </style>
+    <script src="DnD Encounter Sheet.js"></script>"
+</head>
+<body>
+<h1>Encounter Sheet</h1>
+
+<div>
+  <form action="/action_page.php">
+    <label for="partylevel">Party Level:</label><br>
+    <input type="number" id="partylevel" name="partylevel" value=""><br>
+    <label for="partynumbers">Party Nos:</label><br>
+    <input type="number" id="partynumbers" name="partynumbers" value=""><br><br>
+    <input type="Update" value="UpdatePartyValue">
+  </form> 
+
+<p>Party Level: <span id="party-level"></span> &nbsp;&nbsp; x &nbsp; <span id="party-numbers"></span></p>
+<p>XP gained for the current day: <span id="xpsofar"></span></p>
+<p>Current daily budget for the party: <span id="dailybudget"></span></p>
+<p>Current budget per short rest: <span id="partyshortbudget"></span></p>
+</div>
+<p>_______________________</p>
+<p>Fight A1: &nbsp;  <span>CR1</span> x <span>2</span> &nbsp;&nbsp;&nbsp; <span>xp</span></p>
+<p>Fight A2: &nbsp;  <span>CR2</span> x <span>2</span> &nbsp;&nbsp;&nbsp; <span>xp</span></p>
+<p>Fight ATotal: &nbsp;   &nbsp;&nbsp;&nbsp; <span>xp</span></p>
+
+  <script>
+
+    var PartyLevel = party-level;
+
+    function updateParty() {
+      var PartyLevel = party;
+
+ 
+   
+  </script>
+</body>
+</html>
