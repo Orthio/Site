@@ -286,11 +286,10 @@ function displayResults() {
     // Update the HTML to display the history
     var weatherHistory = '';
     for (var i = 0; i < 4; i++) {
-        weatherHistory += "<div>" +
-        "<b>" + "Day " + (i + 1) + "</b>"
-        + "<br>" +
-        weatherArray[i] + windArray[i] + windDirArray[i] + rainArray[i] + "<br>" + "</div>" + "<br>";
-
+        weatherHistory += '<div>' +
+        "<b>" + "Day " + (i + 1) + "</b>" + "</div>" + "<div>" +
+        "<div>" + weatherArray[i] + windArray[i] + windDirArray[i] + rainArray[i] + "</div>" +
+        "<br>";
     }
 
     document.getElementById("results").innerHTML = weatherHistory +
