@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DnD Dice Roller</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .p {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .diceNumberClass {
+            width: 80px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dice Roller</h1>
+    
+    <div>
+        <form action="/action_page.php" class="DiceNumberForm">
+          <label for="diceNumberInput">Number of Dice:</label><br>
+          <input type="number" id="diceNumberInput" 
+          class="diceNumberClass" name="diceNumberInput" 
+          value="1" min="1" step="1">
+          <br>
+        </form>
+    </div>
+    <br>    
+
+    <button onclick="diceRoll(4)" class="button buttond4">Roll d4</button>
+    <button onclick="diceRoll(6)" class="button buttond6">Roll d6</button>
+    <button onclick="diceRoll(8)" class="button buttond8">Roll d8</button>
+    <button onclick="diceRoll(10)" class="button buttond10">Roll d10</button>
+    <button onclick="diceRoll(12)" class="button buttond12">Roll d12</button>
+    <button onclick="diceRoll(20)" class="button buttond20">Roll d20</button>
+    <button onclick="diceRoll(100)" class="button buttond100">Roll d100</button>    
+    <br>
+    <br>
+    <div id="results"></div>
+
+    <script>
+
+        function diceRoll(roll) {
+            // Roll to get (0-1)*20=0 or 20
+            // Math floor rounds down
+            var diceNumber = document.getElementById("diceNumberInput").value;
+            var rollResult = diceNumber*(Math.floor(Math.random() * roll) + 1);
+            var rollOutput = diceNumber + " x d" + roll + " = " + rollResult;
+            getResult(rollOutput);
+        }
+
+        function getResult(roll) {
+            var rollHistory ='';
+            var rollOutputFull = '';
+            rollOutputFull.push(roll);
+            for (var i = 0; i < 7; i++){
+            rollHistory += "<div>" +
+                roll[i] + "</div>";
+            }
+            document.getElementById("results").innerHTML = rollHistory;
+            
+        }
+    </script>
+</body>
+</html>
