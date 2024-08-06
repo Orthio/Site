@@ -14,6 +14,9 @@
             width: 80px;
             font-size: 40px;
         }
+        .ResultsClass {
+            padding: 1px;
+        }
     </style>
 </head>
 
@@ -22,7 +25,7 @@
     
     <div>
         <form action="/action_page.php" class="DiceNumberForm">
-          <label for="diceNumberInput">Number of Dice:</label><br>
+          <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
           <input type="number" id="diceNumberInput" 
           class="diceNumberClass" name="diceNumberInput" 
           value="1" min="1" step="1">
@@ -44,26 +47,29 @@
 
     <script>
 
+        var rollHistory = [];
+
         function diceRoll(roll) {
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
             var diceNumber = document.getElementById("diceNumberInput").value;
             var rollResult = diceNumber*(Math.floor(Math.random() * roll) + 1);
-            var rollOutput = diceNumber + " x d" + roll + " = " + rollResult;
-            getResult(rollOutput);
+            var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll + 
+                " = " + rollResult + '</div>' + "<br>";
+            
+            rollHistory.unshift(rollOutput);
+            // Unshift adds rollOutput to the array
+             if (rollHistory.length > 6) {
+            rollHistory.pop();
+            }
+
+            document.getElementById("results").innerHTML = 
+                rollHistory.join('') ;
+            //Removes the comma by joining the array into a string
+
         }
 
-        function getResult(roll) {
-            var rollHistory ='';
-            var rollOutputFull = '';
-            rollOutputFull.push(roll);
-            for (var i = 0; i < 7; i++){
-            rollHistory += "<div>" +
-                roll[i] + "</div>";
-            }
-            document.getElementById("results").innerHTML = rollHistory;
-            
-        }
+
     </script>
 </body>
 </html>
