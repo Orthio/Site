@@ -24,16 +24,34 @@
             text-align: left;
         }
         .column1 {
-          width:130px
+          width:150px
         }
         .column2 {
           width:50px
         }
         .column3 {
-          width:120px
+          width:150px
         }
         .column4 {
           width:140px
+        }
+        .column5 {
+            width:70px;
+        }
+        .column6 {
+            width:50px;
+        }
+        .column7 {
+            width:70px;
+        }
+        .column8 {
+            width:50px;
+        }
+        .column9 {
+            width:70px;
+        }
+        .column10 {
+            width:50px;
         }
     </style>
     <script src="DnD Party Sheet.js"></script>
@@ -49,18 +67,30 @@
 <table class="table">
     <thead>
         <tr>
-            <td scope="col" class="column1">Passive Perception</td>
-            <td scope="col" class="column2"><span id="doris-passiveperc"></span></td>
-            <td scope="col" class="column3">Passive Insight</td>
-            <td scope="col" class="column4"><span id="doris-passiveins"></span></td>
+            <td class="column1">Passive Perception</td>
+            <td class="column2"><span id="doris-passiveperc"></span></td>
+            <td class="column3">Passive Insight</td>
+            <td class="column4"><span id="doris-passiveins"></span></td>
+            <td class="column5">Strength</td>
+            <td class="column6"><span id="doris-strength"></span></td>
+            <td class="column7">Dexterity</td>
+            <td class="column8"><span id="doris-dexterity"></span></td>
+            <td class="column9">Constitution</td>
+            <td class="column10"><span id="doris-constitution"></span></td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td scope="row">AC</td>
+            <td>AC</td>
             <td><span id="doris-ac"></span></td>
-            <td scope="row">Spell Save</td>
+            <td>Spell Save</td>
             <td><span id="doris-spellsave"></span></td>
+            <td>Intelligence</td>
+            <td><span id="doris-intelligence"></span></td>
+            <td>Wisdom</td>
+            <td><span id="doris-wisdom"></span></td>
+            <td>Charisma</td>
+            <td><span id="doris-charisma"></span></td>
         </tr>
         <tr>
             <td scope="row">HP</td>
@@ -75,10 +105,16 @@
 <table class="table">
     <thead>
         <tr>
-            <td scope="col" class="column1">Passive Perception</td>
-            <td scope="col" class="column2"><span id="faelar-passiveperc"></span></td>
-            <td scope="col" class="column3">Passive Insight</td>
-            <td scope="col" class="column4"><span id="faelar-passiveins"></span></td>
+            <td class="column1">Passive Perception</td>
+            <td class="column2"><span id="faelar-passiveperc"></span></td>
+            <td class="column3">Passive Insight</td>
+            <td class="column4"><span id="faelar-passiveins"></span></td>
+            <td class="column5">Strength</td>
+            <td class="column6"><span id="faelar-strength"></span></td>
+            <td class="column7">Dexterity</td>
+            <td class="column8"><span id="faelar-dexterity"></span></td>
+            <td class="column9">Constitution</td>
+            <td class="column10"><span id="faelar-constitution"></span></td>
         </tr>
     </thead>
     <tbody>
@@ -87,6 +123,12 @@
             <td><span id="faelar-ac"></span></td>
             <td scope="row">Spell Save</td>
             <td><span id="faelar-spellsave"></span></td>
+            <td>Intelligence</td>
+            <td><span id="faelar-intelligence"></span></td>
+            <td>Wisdom</td>
+            <td><span id="faelar-wisdom"></span></td>
+            <td>Charisma</td>
+            <td><span id="faelar-charisma"></span></td>
         </tr>
     </tbody>
     <tbody>
@@ -104,10 +146,16 @@
 <table class="table">
     <thead>
         <tr>
-            <td scope="col" class="column1">Passive Perception</td>
-            <td scope="col" class="column2"><span id="kandryn-passiveperc"></span></td>
-            <td scope="col" class="column3">Passive Insight</td>
-            <td scope="col" class="column4"><span id="kandryn-passiveins"></span></td>
+            <td class="column1">Passive Perception</td>
+            <td class="column2"><span id="kandryn-passiveperc"></span></td>
+            <td class="column3">Passive Insight</td>
+            <td class="column4"><span id="kandryn-passiveins"></span></td>
+            <td class="column5">Strength</td>
+            <td class="column6"><span id="kandryn-strength"></span></td>
+            <td class="column7">Dexterity</td>
+            <td class="column8"><span id="kandryn-dexterity"></span></td>
+            <td class="column9">Constitution</td>
+            <td class="column10"><span id="kandryn-constitution"></span></td>
         </tr>
     </thead>
     <tbody>
@@ -116,6 +164,12 @@
             <td><span id="kandryn-ac"></span></td>
             <td scope="row">Spell Save</td>
             <td><span id="kandryn-spellsave"></span></td>
+            <td>Intelligence</td>
+            <td><span id="kandryn-intelligence"></span></td>
+            <td>Wisdom</td>
+            <td><span id="kandryn-wisdom"></span></td>
+            <td>Charisma</td>
+            <td><span id="kandryn-charisma"></span></td>
         </tr>
     </tbody>
     <tbody>
@@ -132,10 +186,16 @@
 <table class="table">
     <thead>
         <tr>
-            <td scope="col" class="column1">Passive Perception</td>
-            <td scope="col" class="column2"><span id="eiran-passiveperc"></span></td>
-            <td scope="col" class="column3">Passive Insight</td>
-            <td scope="col" class="column4"><span id="eiran-passiveins"></span></td>
+            <td class="column1">Passive Perception</td>
+            <td class="column2"><span id="eiran-passiveperc"></span></td>
+            <td class="column3">Passive Insight</td>
+            <td class="column4"><span id="eiran-passiveins"></span></td>
+            <td class="column5">Strength</td>
+            <td class="column6"><span id="eiran-strength"></span></td>
+            <td class="column7">Dexterity</td>
+            <td class="column8"><span id="eiran-dexterity"></span></td>
+            <td class="column9">Constitution</td>
+            <td class="column10"><span id="eiran-constitution"></span></td>
         </tr>
     </thead>
     <tbody>
@@ -144,6 +204,12 @@
             <td><span id="eiran-ac"></span></td>
             <td scope="row">Spell Save</td>
             <td><span id="eiran-spellsave"></span></td>
+            <td>Intelligence</td>
+            <td><span id="eiran-intelligence"></span></td>
+            <td>Wisdom</td>
+            <td><span id="eiran-wisdom"></span></td>
+            <td>Charisma</td>
+            <td><span id="eiran-charisma"></span></td>
         </tr>
     </tbody>
     <tbody>
