@@ -5,46 +5,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .p {
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-
-        };
+        p {
+            margin: 2px;
+            padding: 1px;
+            
+        }
+        .UpdateButton {
+          width: 100px;
+        }
+        .shortresttext {
+          font-size: 12px;
+        }
+        .PartyForm {
+          width: 70px;
+          
+        }
+        .EncounterForm {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .CRInputClass {
+          width: 70px;
+        }
+        .QtyClass {
+          width: 70px;
+        }
     </style>
-    <script src="DnD Encounter Sheet.js"></script>"
+    <script src="DnD Encounter Sheet.js"></script>
 </head>
 <body>
 <h1>Encounter Sheet</h1>
 
 <div>
-  <form action="/action_page.php">
-    <label for="partylevel">Party Level:</label><br>
-    <input type="number" id="partylevel" name="partylevel" value=""><br>
+  <form id="PartyForm">
+    <label for="party-level">Party Level:</label><br>
+    <input type="number" class="PartyForm" id="party-levelinput" name="party-levelinput" value="6" min = "1" max = "20"><br>
     <label for="partynumbers">Party Nos:</label><br>
-    <input type="number" id="partynumbers" name="partynumbers" value=""><br><br>
-    <input type="Update" value="UpdatePartyValue">
+    <input type="number" class="PartyForm" id="party-numberinput" name="party-numbersinput" value="4" min = "1" max = "6"><br>
+    <label for="xpgainedforcurrent">XP gained for current day:</label><br>
+    <input type="number" class="PartyForm" id="xpgainedforcurrent" value="0" step="1" size="50" name="xpgainedforcurrent"><br><br>
   </form> 
-
-<p>Party Level: <span id="party-level"></span> &nbsp;&nbsp; x &nbsp; <span id="party-numbers"></span></p>
-<p>XP gained for the current day: <span id="xpsofar"></span></p>
-<p>Current daily budget for the party: <span id="dailybudget"></span></p>
-<p>Current budget per short rest: <span id="partyshortbudget"></span></p>
 </div>
+<input type="button" class="UpdateButton" onclick = "updateSheet()" value="Update"> 
+
+<br><br>
+
+
+<p>Party Level: <span id="party-level"></span> &nbsp; x &nbsp; <span id="party-number"></span></p>
+<p>Current daily budget for the party: <span id="dailybudget"></span></p>
+<p class="shortresttext">Current budget per short rest: <span id="partyshortbudget"></span></p>
+<p class="shortresttext">Budget remaining: <span id="partybudgetremain"></span></p>
+
 <p>_______________________</p>
-<p>Fight A1: &nbsp;  <span>CR1</span> x <span>2</span> &nbsp;&nbsp;&nbsp; <span>xp</span></p>
-<p>Fight A2: &nbsp;  <span>CR2</span> x <span>2</span> &nbsp;&nbsp;&nbsp; <span>xp</span></p>
-<p>Fight ATotal: &nbsp;   &nbsp;&nbsp;&nbsp; <span>xp</span></p>
+
+<div>
+  <form id="EncounterForm">
+    <label for="monsterCRinput">Monster CR:</label><br>
+    <input type="number" id="monsterCRinput" name="monsterCRinput" class="CRInputClass" \
+    min="1/8" max="30" value="1"><br>
+
+    <!-- <select name="monsterCR" id="monsterCR">
+      <option value="0">0</option>
+      <option value="1/8">1/8</option>
+      <option value="1/4">1/4</option>
+      <option value="1/2">1/2</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+    </select> -->
+
+    <label for="monsternumbers">Monster Qty:</label><br>
+    <input type="number" id="monsterqtyinput" name="monsterqtyinput" class="QtyClass" min="1" max="20" value="1"><br>
+    <label for="monsterName">Monster Name:</label><br>
+    <input type="text" id="monsterNameinput" name="monsterNameinput"><br><br>
+  </form> 
+</div>
+
+
+<div>
+  <form id="EncounterAddForm">
+    <input type="button" onclick = "addEncounterCurrent()" value="Add to Current Encounter">
+    <input type="button" onclick = "addEncounterNew()" value="Add to New Encounter">
+
+    
+    <!-- <input type="RemoveEncounter" onclick = "removeEncounter()" value="Remove last Encounter">
+    <input type="reset" value="Reset Encounters"> -->
+
+  </form> 
+</div>
+<br>
+<div>
+  <table id="EncounterTable">
+    <tr id="A1">
+      <td>Fight A1: </td>
+      <td>Row1 cell2</td>
+      <td> x </td>
+      <td>Row1 cell4 </td>
+      <td>Row1 cell5</td>
+      <td>xp</td>
+
+    </tr>
+
+  </table>
+  <br>
+  </div>
+  <p>Fight A1: CR1 x 4   abc xp</p>
+  <p>Fight A2: CR2 x 1   abc xp</p>
+  <p>Fight ATotal: abcabcxp</p>
+  <p>Fight A2: CR2 x 1   abc xp</p>
+  <p>Fight A2Total:    abc xp</p>
+
 
   <script>
 
-    var PartyLevel = party-level;
+  window.onload = function() {
+    updateSheet();
 
-    function updateParty() {
-      var PartyLevel = party;
-
- 
-   
+  }
+  
   </script>
 </body>
 </html>

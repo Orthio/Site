@@ -34,9 +34,15 @@
         font-weight:bold;
         cursor:alias;
         }
-        .RelationsTable {
-            font-weight: standard;
+        .RelationsTable th{
+            font-weight: bold;
+            font-size: 14px;
         }
+        .RelationsTable td{
+            font-weight: normal;
+            font-size: 12px;
+        }
+
     </style>
     
 </head>
@@ -46,10 +52,10 @@
 <h3>Fortune Roll</h3>
 <p>Trait Rating:</p>
 <ul>
-<li>Tier</li>
-<li>Quality: Same as tier for a gang <br>
-Expert: Tier + 1</li>
-<li>Magnitude: For supernatural</li>
+<li>Tier: The rating for a faction</li>
+<li>Quality: For a gang this is the same Tier rating number <br>
+For Experts in a gang this is Tier rating + 1</li>
+<li>Magnitude: For supernatural events</li>
 </ul>
 
 <pre>
@@ -87,7 +93,8 @@ Choose a downtime maneuver or two:
 </pre>
 
 <h3>Faction Relations</h3>
-<table class="RelationsTable">
+<div class="RelationsTable">
+<table>
     <tr>
         <th>+3 Allies</th>
         <th>+2 Friendly</th>
@@ -98,19 +105,18 @@ Choose a downtime maneuver or two:
         <th>-3 War</th>
     </tr>
     <tr>
-        <th>The faction will help even if it's not in their best interest</th>
-        <th>The faction will help if it doesn't create serious problems</th>
-        <th>The faction will help if it causes no problems or significant cost to them</th>
-        <th>The faction will help if it helps them</th>
-        <th>The faction will look for ways to cause trouble for you if it causes \
+        <td>The faction will help even if it's not in their best interest</th>
+        <td>The faction will help if it doesn't create serious problems</th>
+        <td>The faction will help if it causes no problems or significant cost to them</th>
+        <td>The faction will help if it helps them</th>
+        <td>The faction will look for ways to cause trouble for you if it causes \
         no problems or significant cost to them</th>
-        <th>The faction will look for opportunities to hurt you if it doesn't create \
+        <td>The faction will look for opportunities to hurt you if it doesn't create \
         serious problems for them</th>
-        <th>The faction will look to hurt you even if it's not in their best interest</th>
-    
+        <td>The faction will look to hurt you even if it's not in their best interest</th>
     </tr>
 </table>
-
+</div>
 
 </body>
 </html>

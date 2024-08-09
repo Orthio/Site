@@ -1,12 +1,18 @@
+
 // Global variables
 
-var PartyLevel = 6;
-var PartyNumbers = 4; 
-var XPSoFar = 0;
-var XPRecord = '';
+var partyLevel = 6;
+var partyNumber = 4; 
+var xpSoFar = 0;
+var xpRecord = '';
+var partyDailyBudget = '';
+var partyExtraDailyBudget = '';
+var partyShortRestBudget = '';
+var partyBudgetRemain = '';
+var currentEncounter = '';
+var currentEncounterGroup = '';
 
-// Daily Budget for 1 adventurer
-var DailyBudget = {
+var dailyBudget = {
     1: 300,
     2: 600,
     3: 1200,
@@ -29,11 +35,7 @@ var DailyBudget = {
     20: 40000
 };
 
-var PartyDailyBudget = DailyBudget[PartyLevel] * PartyNumbers;
-var PartyExtraDailyBudget = PartyDailyBudget * 1.5;
-var PartyShortRestBudget = PartyDailyBudget/3;
-
-var MonsterCR = {
+var monsterCrXp = {
     "0": 0,
     "1/8": 25,
     "1/4": 50,
@@ -112,19 +114,177 @@ var encounterMultipliers = [
 { monsters: 15, multiplier: 4 }
 ];
 
-function updateSheet() {
-    var partyLevelElement = document.getElementById("party-level");
-    if (partyLevelElement) {
-        partyLevelElement.innerText = PartyLevel;
-    } else {
-        console.error("Element with ID 'party-level' not found.");
+function calculatePartyBudget(){
+    partyDailyBudget = dailyBudget[partyLevel] * partyNumber;
+    partyExtraDailyBudget = partyDailyBudget * 1.5;
+    partyShortRestBudget = partyDailyBudget/3;
+    partyBudgetRemain = partyDailyBudget-xpSoFar;
+}
+
+class Monster {
+
+    constructor(cr, quantity) {
+        this.monsterCr = cr; // Challenge Rating
+        this.monsterQuantity = quantity; // Number of monsters
+      }
+}
+
+class Encounter {
+
+    // Constructor
+    constructor(name) {
+        this.Name = name;
+        this.Monsters = [];
     }
 
-    document.getElementById("party-numbers").innerText = PartyNumbers;
-    document.getElementById("xpsofar").innerText = XPSoFar;
-    document.getElementById("dailybudget").innerText = PartyDailyBudget;
-    document.getElementById("partyshortbudget").innerText = Math.floor(PartyShortRestBudget);
+    addMonster(monster){
+        this.Monsters.push(monster);
+    }
 
+    calculateTotalXP() {
+        let totalXP = 0;
+        this.Monsters.forEach(monster => {
+          let xpPerMonster = monsterCrXp[monster.monsterCr];
+          totalXP += xpPerMonster * monster.monsterQuantity;
+        });
+        return totalXP;
+      }
+}
+
+let A1 = new Encounter("A1");
+A1.Name = "A1";
+let A2 = new Encounter("A2");
+let A3 = new Encounter("A3");
+let A4 = new Encounter("A4");
+let A5 = new Encounter("A5");
+
+currentEncounter = A1;
+
+class EncounterGroup {
+    constructor(){
+        this.groupName = "GroupA";
+        this.encounters = [];
+    }
+
+    addEncounter(encounter){
+        this.encounters.push(encounter);
+    }
+
+    calculateGroupXP(){
+        return this.encounters.reduce((total, encounter) => total + encounter.calculateTotalXP(), 0);
+    }
+}
+
+let GroupA = new EncounterGroup("A");
+let GroupB = new EncounterGroup("B");
+let GroupC = new EncounterGroup("C");
+let GroupD = new EncounterGroup("D");
+let GroupE = new EncounterGroup("E");
+let GroupF = new EncounterGroup("F");
+let GroupG = new EncounterGroup("G");
+let GroupH = new EncounterGroup("H");
+let GroupI = new EncounterGroup("I");
+let GroupJ = new EncounterGroup("J");
+
+currentEncounterGroup = GroupA;
+GroupA.groupName = "A";
+GroupA.addEncounter(A1);
+
+// Fight A1, Monster CR A1, Monster Number A1, XP
+// Fight A2, Monster CR A2, Monster Number A2, XP
+// Times A together for first encounter for TotalXP, multi by encounterMultiplier for AdjXP
+// Add all A B C together for DayTotalXP
+
+function addEncounterCurrent() {  
+    let encMonCr = document.getElementById('monsterCRinput').value;
+    let encMonQuantity = document.getElementById('monsterqtyinput').value;
+    let monster = new Monster(encMonCr, encMonQuantity);
+    
+    currentEncounter.addMonster(monster);
+    updateEncounterTable("Current", currentEncounter.Name, encMonCr, encMonQuantity);
+};
+
+function addEncounterNew() {
+    let encMonCr = document.getElementById('monsterCRinput').value;
+    let encMonQuantity = document.getElementById('monsterqtyinput').value;
+    let monster = new Monster(encMonCr, encMonQuantity);
+
+    currentEncounter = new Encounter("B1");
+    currentEncounterGroup = GroupB;
+    currentEncounterGroup.addEncounter(currentEncounter);
+
+    // Create a new Encounter instance, e.g., "A2", "A3"
+    let newEncounterName = generateEncounterName();
+    let newEncounter = new Encounter(newEncounterName);
+    currentEncounterGroup.addEncounter(newEncounter);
+    newEncounter.addMonster(monster);
+    
+    updateEncounterTable("New", newEncounterName, encMonCr, encMonQuantity);
+}
+  
+function generateEncounterName() {
+// Logic to generate new encounter name, e.g., "A1", "A2"
+let count = currentEncounterGroup.encounters.length + 1;
+  return currentEncounterGroup.groupName + count;
+
+}
+
+function updateEncounterTable(NewOrCurrent,encounterName, cr, qty) {
+    var table = document.getElementById("EncounterTable");
+    if (NewOrCurrent === "New") {
+        var row = table.insertRow(-1);
+        row.id = encounterName; // Assign an ID to the row for easier updates
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+
+        cell1.innerHTML = `Fight ${encounterName}:`;
+        cell2.innerHTML = `CR ${cr}`;
+        cell3.innerHTML = " x ";
+        cell4.innerHTML = qty;
+        cell5.innerHTML = calculateXPForEncounter(encounterName);
+
+    } else if (NewOrCurrent === "Current") {
+        var row = document.getElementById(encounterName);
+        if (row) {
+            var cells = row.cells;
+            cells[1].innerHTML = `CR ${cr}`;
+            cells[3].innerHTML = qty;
+            cells[4].innerHTML = calculateXPForEncounter(encounterName);
+        } else {
+            console.error(`Row with ID ${encounterName} not found.`);
+        }
+    }
+}
+
+function calculateXPForEncounter(encounterName) {
+    let encounter = currentEncounterGroup.encounters.find(enc => enc.Name === encounterName);
+    if (encounter) {
+        return encounter.calculateTotalXP();
+    }
+    return 0;
+}
+
+function removeEncounter() {
+    var table = document.getElementById("EncounterTable");
+    table.deleteRow(-1);
+
+};
+
+function updateSheet() {
+    partyLevel = document.getElementById('party-levelinput').value;
+    partyNumber = document.getElementById('party-numberinput').value;
+    xpSoFar = document.getElementById('xpgainedforcurrent').value;
+
+    document.getElementById("party-level").innerText = partyLevel;
+    document.getElementById("party-number").innerText = partyNumber;
+
+    calculatePartyBudget();    
+    document.getElementById("dailybudget").innerText = partyDailyBudget;
+    document.getElementById("partyshortbudget").innerText = Math.floor(partyShortRestBudget);
+    document.getElementById("partybudgetremain").innerText = Math.floor(partyBudgetRemain);
 
 }
 
@@ -144,8 +304,4 @@ compare that to each party members max HP, think about the location the
 fight will take place in and how that will affect the party, 
 consider the monsters movement type and compare that to the parties mobility options, 
 consider any situational abilities the monster has and how that might impact the fight, 
-consider how far into the adventuring day the encounter will take place, 
-and finally consider the toasty heat that can be given off by taking your 
-copy of XGTE and setting it on fucking fire then consider and how that will
- balance against the guilt you feel contributing to climate change.
-*/
+consider how far into the adventuring day the encounter will take place*/
