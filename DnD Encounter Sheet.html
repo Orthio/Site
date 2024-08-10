@@ -20,10 +20,14 @@
           width: 70px;
           
         }
+
         .EncounterForm {
           display: flex;
-          align-items: center;
+          align-items: inline;
           gap: 10px;
+        }
+        .monsterCRLabel {
+          padding-right: 110px;
         }
         .CRInputClass {
           width: 70px;
@@ -61,38 +65,10 @@
 
 <div>
   <form id="EncounterForm">
-    <label for="monsterCRinput">Monster CR:</label><br>
-    <input type="number" id="monsterCRinput" name="monsterCRinput" class="CRInputClass" \
-    min="1/8" max="30" value="1"><br>
-
-    <!-- <select name="monsterCR" id="monsterCR">
-      <option value="0">0</option>
-      <option value="1/8">1/8</option>
-      <option value="1/4">1/4</option>
-      <option value="1/2">1/2</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="15">15</option>
-      <option value="16">16</option>
-      <option value="17">17</option>
-      <option value="18">18</option>
-      <option value="19">19</option>
-      <option value="20">20</option>
-    </select> -->
-
+    <label for="monsterCRinput" id="monsterCRLabel">Monster CR:&nbsp;&nbsp;</label>
     <label for="monsternumbers">Monster Qty:</label><br>
+    <input type="number" id="monsterCRinput" name="monsterCRinput" class="CRInputClass" \
+    min="0" max="30" value="1" step="1">&nbsp;&nbsp;&nbsp;
     <input type="number" id="monsterqtyinput" name="monsterqtyinput" class="QtyClass" min="1" max="20" value="1"><br>
     <label for="monsterName">Monster Name:</label><br>
     <input type="text" id="monsterNameinput" name="monsterNameinput"><br><br>
@@ -116,12 +92,12 @@
   <table id="EncounterTable">
     <tr id="A1">
       <td>Fight A1: </td>
-      <td>Row1 cell2</td>
-      <td> x </td>
-      <td>Row1 cell4 </td>
-      <td>Row1 cell5</td>
-      <td>xp</td>
-
+      <td></td> <!-- Roll1 Cell2 -->
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td> <!-- Roll1 Cell7, MonsterName -->
     </tr>
 
   </table>
@@ -133,12 +109,15 @@
   <p>Fight A2: CR2 x 1   abc xp</p>
   <p>Fight A2Total:    abc xp</p>
 
+  <p>_______________________</p>
+
+  <p> Daily Total XP: <span id="dailytotalxp"></span></p>
+
 
   <script>
 
   window.onload = function() {
     updateSheet();
-
   }
   
   </script>
