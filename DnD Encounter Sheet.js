@@ -246,6 +246,9 @@ function updateEncounterTable(NewOrCurrent,encounterName, cr, qty) {
         cell3.innerHTML = " x ";
         cell4.innerHTML = qty;
         cell5.innerHTML = calculateXPForEncounter(encounterName);
+        cell6.innerHTML = "xp";
+        cell7.innerHTML = " Monster Name";
+
 
     } else if (NewOrCurrent === "Current") {
         var row = document.getElementById(encounterName);
@@ -254,6 +257,8 @@ function updateEncounterTable(NewOrCurrent,encounterName, cr, qty) {
             cells[1].innerHTML = `CR ${cr}`;
             cells[3].innerHTML = qty;
             cells[4].innerHTML = calculateXPForEncounter(encounterName);
+            cells[5].innerHTML = "xp";
+            cells[6].innerHTML = " - Monster Name";
         } else {
             console.error(`Row with ID ${encounterName} not found.`);
         }
