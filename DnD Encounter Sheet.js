@@ -37,9 +37,9 @@ var dailyBudget = {
 
 var monsterCrXp = {
     "0": 0,
-    "1/8": 25,
-    "1/4": 50,
-    "1/2": 100,
+    "0.125": 25,
+    "0.25": 50,
+    "0.5": 100,
     "1": 200,
     "2": 450,
     "3": 700,
@@ -126,6 +126,7 @@ class Monster {
     constructor(cr, quantity) {
         this.monsterCr = cr; // Challenge Rating
         this.monsterQuantity = quantity; // Number of monsters
+        this.monsterName = '';
       }
 }
 
@@ -287,6 +288,54 @@ function updateSheet() {
     document.getElementById("partybudgetremain").innerText = Math.floor(partyBudgetRemain);
 
 }
+
+const CRInputAllowedValues = [0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
+document.getElementById('custom-number').addEventListener('keydown', function (event) {
+    const input = event.target;
+    let currentValue = parseFloat(input.value);
+
+    // Prevent default behavior for the up and down arrows
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        event.preventDefault();
+
+        // Find the current value's index in the allowedValues array
+        let currentIndex = CRInputAllowedValues.indexOf(currentValue);
+
+        if (event.key === "ArrowUp") {
+            // Move to the next value if it exists, otherwise stay at the highest value
+            if (currentIndex < CRInputAllowedValues.length - 1) {
+                input.value = CRInputAllowedValues[currentIndex + 1];
+            } else {
+                input.value = CRInputAllowedValues[currentIndex]; // stay on the max value
+            }
+        } else if (event.key === "ArrowDown") {
+            // Move to the previous value if it exists, otherwise stay at the lowest value
+            if (currentIndex > 0) {
+                input.value = CRInputAllowedValues[currentIndex - 1];
+            } else {
+                input.value = CRInputAllowedValues[currentIndex]; // stay on the min value
+            }
+        }
+    }
+});
+
+// Initialize the input with the closest value if not already valid
+document.getElementById('custom-number').addEventListener('input', function (event) {
+    const input = event.target;
+    let value = parseFloat(input.value);
+    
+    if (!CRInputAllowedValues.includes(value)) {
+        // Find the closest value
+        let closestValue = CRInputAllowedValues.reduce((prev, curr) => {
+            return (Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev);
+        });
+        input.value = closestValue;
+    }
+});
+
 
 window.onload = updateSheet;
 
