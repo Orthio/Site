@@ -53,6 +53,8 @@ let Doris = new PartyMember("Doris");
 let Faelar = new PartyMember("Faelar");
 let Kandryn = new PartyMember("Kandryn");
 let Eiran = new PartyMember("Eiran");
+let OldBreiar = new PartyMember("OldBreiar");
+let NewBreiar = new PartyMember("NewBreiar");
 
 // Initialize character stats
 Doris.Strength = 8;
@@ -126,6 +128,42 @@ Eiran.HPGainPerLevel = 6;
 Eiran.AC = 16;
 Eiran.GearNote = "Great Scythe + 1";
 Eiran.SpellCastMod = Eiran.WisMod;
+
+OldBreiar.Strength = 14;
+OldBreiar.StrMod = 2;
+OldBreiar.Dexterity = 14;
+OldBreiar.DexMod = 2;
+OldBreiar.Constitution = 15;
+OldBreiar.ConMod = 2;
+OldBreiar.Intelligence = 8;
+OldBreiar.IntMod = -1;
+OldBreiar.Wisdom = 14;
+OldBreiar.WisMod = 2;
+OldBreiar.Charisma = 11;
+OldBreiar.ChaMod = 0;
+OldBreiar.HPStart = 10;
+OldBreiar.HPGainPerLevel = 5;
+OldBreiar.AC = "";
+OldBreiar.GearNote = "";
+OldBreiar.SpellCastMod = "";
+
+NewBreiar.Strength = 14;
+NewBreiar.StrMod = 2;
+NewBreiar.Dexterity = 14;
+NewBreiar.DexMod = 2;
+NewBreiar.Constitution = 15;
+NewBreiar.ConMod = 2;
+NewBreiar.Intelligence = 8;
+NewBreiar.IntMod = -1;
+NewBreiar.Wisdom = 14;
+NewBreiar.WisMod = 2;
+NewBreiar.Charisma = 11;
+NewBreiar.ChaMod = 0;
+NewBreiar.HPStart = 10;
+NewBreiar.HPGainPerLevel = 5;
+NewBreiar.AC = 13+ Eiran.WisMod;
+NewBreiar.GearNote = "";
+NewBreiar.SpellCastMod = "";
 
 // Character Proficiency Listing
 var charProfBonusesDictionary = {
@@ -267,6 +305,8 @@ function updateSheet() {
     document.getElementById(character.name.toLowerCase() + "-passiveins").innerText = character.PassiveInsight;
     document.getElementById(character.name.toLowerCase() + "-note").innerText = character.GearNote;
   });
+  
+  OldBreiar.AC = 13+ levelProfBonuses[PartyLevel];
 }
 
 window.onload = function() {
