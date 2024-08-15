@@ -163,6 +163,27 @@ function updateSheet(){
 circleSwap();
 };
 
+function saveCircleData() {
+    const circleData = {
+        label: document.getElementById('progress-label-1').value,
+        size: parseInt(document.getElementById('circle-size-1').value),
+        tick: parseInt(document.getElementById('circle-tick-1').value),
+        imageUrl: document.getElementById('Circle1').src
+    };
+
+    fetch('/save-circle', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(circleData)
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+}
+
+
 window.onload = function() {
     updateSheet();
 };

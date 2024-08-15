@@ -8,9 +8,19 @@ var xpRecord = '';
 var partyDailyBudget = '';
 var partyExtraDailyBudget = '';
 var partyShortRestBudget = '';
-var partyBudgetRemain = '';
-var currentEncounter = '';
-var currentEncounterGroup = '';
+var partyInitialBudgetRemain = '';
+var currentMonster = 'A1';
+var currentEncounterGroup = 'GroupA';
+var currentEncGroupId = "A";
+var currentEncId = 1;
+var currentMonsterId = "A1";
+let monsterObjects = {};
+let encounterObjects = {};
+let encounterGroupsObjects = {};
+var dailyTotalXP = 0;
+var dailyRemainingXP = 0;
+var groupXPArray = [];
+var groupRatioArray = [];
 
 var dailyBudget = {
     1: 300,
@@ -72,6 +82,10 @@ var monsterCrXp = {
     "30": 155000
 };
 
+const CRInputAllowedValues = [0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
 var combatEncounterDifficulty = {
     1: { easy: 25, medium: 50, hard: 75, deadly: 100 },
     2: { easy: 50, medium: 100, hard: 150, deadly: 200 },
@@ -118,165 +132,242 @@ function calculatePartyBudget(){
     partyDailyBudget = dailyBudget[partyLevel] * partyNumber;
     partyExtraDailyBudget = partyDailyBudget * 1.5;
     partyShortRestBudget = partyDailyBudget/3;
-    partyBudgetRemain = partyDailyBudget-xpSoFar;
+    partyInitialBudgetRemain = partyDailyBudget-xpSoFar;
 }
 
 class Monster {
+    constructor(cr, quantity, name) {
+        this.monsterId = currentEncGroupId + currentEncId; // eg A1
+        this.monsterCr = parseFloat(cr); // Challenge Rating
+        this.monsterQuantity = parseInt(quantity,10); // Number of monsters
+        this.monsterName = name || `${currentEncGroupId}${currentEncId}`; // Default name if not provided
+        this.calculateMonsterXP(); // Calculate XP during initialization
+    }
 
-    constructor(cr, quantity) {
-        this.monsterCr = cr; // Challenge Rating
-        this.monsterQuantity = quantity; // Number of monsters
-        this.monsterName = '';
-      }
+    calculateMonsterXP() {
+        if (monsterCrXp.hasOwnProperty(this.monsterCr)) {
+            this.monsterXP = monsterCrXp[this.monsterCr] * this.monsterQuantity;
+        } else {
+            this.monsterXP = 0;
+            var table = document.getElementById("EncounterTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = "Invalid CR. Valid CR are 0.125, 0.25, 0.5, and whole numbers 1-30"; 
+        }
+    }
 }
+
+function createNewMonster(encMonCr, encMonQuantity,encMonName){
+    if (encMonName === undefined) {
+        encMonName = `Mon${currentEncGroupId}${currentEncId}`;
+    } 
+    monsterObjects[currentEncGroupId+currentEncId] = 
+        new Monster(encMonCr, encMonQuantity,encMonName);
+    currentMonster = monsterObjects[currentEncGroupId + currentEncId].monsterId;
+    console.log(`Created Monster ${encMonName} at ${currentEncGroupId}${currentEncId}`);
+    console.log(`Current Monster is  ${currentMonster}`);
+};
 
 class Encounter {
 
     // Constructor
-    constructor(name) {
-        this.Name = name;
-        this.Monsters = [];
+    constructor() {
+        this.encounterId = currentEncGroupId + currentEncId;
+        this.Monsters = []; 
+        this.EncMonQty = 0;
+        this.calculateEncounterXP();
+        this.encounterBasicXp = 0;
+        this.encounterAdjXp = 0;
+    }
+
+    calculateEncounterXP() {
+        let totalXP = 0;
+        this.Monsters.forEach(monster => {
+                totalXP += monster.monsterXp * monster.monsterQuantity;
+            
+        });
+
+        /* this.Monsters.forEach(monster => {
+            if (monster && typeof monster.monsterXp != 'undefined') {
+                totalXP += monster.monsterXp * monster.monsterQuantity;
+            } else {
+                console.error("Invalid monster object:", monster);
+            }
+        }); */
+
+        this.encounterBasicXp = totalXP;
+        let XPMod = encounterMultipliers.find(multiplier => multiplier.monsters === this.EncMonQty)?.multiplier || 1;
+        totalXP *= XPMod;
+        return totalXP;
     }
 
     addMonster(monster){
-        this.Monsters.push(monster);
+        
+            this.Monsters.push(monster);
+            this.EncMonQty += monster.monsterQuantity;
+            this.encounterAdjXp = this.calculateEncounterXP();
+      
     }
 
-    calculateTotalXP() {
-        let totalXP = 0;
-        this.Monsters.forEach(monster => {
-          let xpPerMonster = monsterCrXp[monster.monsterCr];
-          totalXP += xpPerMonster * monster.monsterQuantity;
-        });
-        return totalXP;
-      }
+  /*   addMonster(monster){
+        if (monster && typeof monster.monsterXp !== 'undefined') {
+            this.Monsters.push(monster);
+            this.EncMonQty += monster.monsterQuantity;
+            this.encounterAdjXp = this.calculateEncounterXP();
+        } else {
+            console.error("Cannot add invalid monster object:", monster);
+        }
+    } */
+
 }
 
-let A1 = new Encounter("A1");
-A1.Name = "A1";
-let A2 = new Encounter("A2");
-let A3 = new Encounter("A3");
-let A4 = new Encounter("A4");
-let A5 = new Encounter("A5");
-
-currentEncounter = A1;
+function createNewEncounter(){
+    let encounterName = `${currentEncGroupId}${currentEncId}`;
+    encounterObjects[encounterName] = new Encounter();
+    console.log(`Created Encounter ${encounterName}`);
+}
 
 class EncounterGroup {
     constructor(){
-        this.groupName = "GroupA";
+        this.groupId = `Group${currentEncGroupId}`;
         this.encounters = [];
+        this.groupXP = 0;
     }
 
-    addEncounter(encounter){
-        this.encounters.push(encounter);
+    addEncounter(encounter) {
+        if (encounter && encounter.encounterAdjXp !== undefined) {
+            this.encounters.push(encounter);
+            this.groupXP = this.calculateGroupXP();
+        } else {
+            console.error("Invalid encounter object:", encounter);
+        }
     }
 
     calculateGroupXP(){
-        return this.encounters.reduce((total, encounter) => total + encounter.calculateTotalXP(), 0);
+        let totalXP = 0;
+        this.encounters.forEach(encounter => {
+            totalXP += encounter.encounterAdjXp;
+        });
+        return totalXP;
+    }
+
+}
+
+function createNewEncounterGroup(){
+    let groupName = currentEncGroupId;
+    encounterGroupsObjects[groupName] = new EncounterGroup();
+    console.log(`Created Encounter Group ${groupName}`);
+}
+
+createNewEncounterGroup();
+
+
+class EncounterManager {
+    constructor() {
+        this.encounterGroups = []; // Array to hold all encounter groups
+    }
+
+    addEncounterGroup(encounterGroup) {
+        if (encounterGroup && encounterGroup.groupXP !== undefined) {
+            this.encounterGroups.push(encounterGroup);
+        } else {
+            console.error("Invalid encounter group:", encounterGroup);
+        }
+    }
+
+    calculateTotalXP() {
+        let grandTotalXP = 0;
+
+        this.encounterGroups.forEach(group => {
+            grandTotalXP += group.groupXP;
+        });
+
+        return grandTotalXP;
+    }
+
+    logGroupTotals() {
+        this.encounterGroups.forEach((group, index) => {
+            console.log(`Group ${index + 1} Total XP: ${group.groupXP}`);
+        });
+        console.log(`Grand Total XP: ${this.calculateTotalXP()}`);
     }
 }
 
-let GroupA = new EncounterGroup("A");
-let GroupB = new EncounterGroup("B");
-let GroupC = new EncounterGroup("C");
-let GroupD = new EncounterGroup("D");
-let GroupE = new EncounterGroup("E");
-let GroupF = new EncounterGroup("F");
-let GroupG = new EncounterGroup("G");
-let GroupH = new EncounterGroup("H");
-let GroupI = new EncounterGroup("I");
-let GroupJ = new EncounterGroup("J");
-
-currentEncounterGroup = GroupA;
-GroupA.groupName = "A";
-GroupA.addEncounter(A1);
-
-// Fight A1, Monster CR A1, Monster Number A1, XP
-// Fight A2, Monster CR A2, Monster Number A2, XP
-// Times A together for first encounter for TotalXP, multi by encounterMultiplier for AdjXP
-// Add all A B C together for DayTotalXP
-
-function addEncounterCurrent() {  
+function addEncounterCurrent() {
+    currentMonsterId = currentEncGroupId + currentEncId; // Store current ID before incrementing
+    
     let encMonCr = document.getElementById('monsterCRinput').value;
     let encMonQuantity = document.getElementById('monsterqtyinput').value;
-    let monster = new Monster(encMonCr, encMonQuantity);
-    
-    currentEncounter.addMonster(monster);
-    updateEncounterTable("Current", currentEncounter.Name, encMonCr, encMonQuantity);
-};
+    let encMonName = document.getElementById('monsternameinput').value;
+
+    createNewMonster(encMonCr, encMonQuantity, encMonName);
+    createNewEncounter();
+
+    encounterObjects[currentMonsterId].addMonster(monsterObjects[currentMonsterId]);
+    encounterGroupsObjects[currentEncGroupId].addEncounter(encounterObjects[currentMonsterId]);
+
+    currentEncounterGroup = encounterGroupsObjects[currentEncGroupId];
+    console.log(`Current Encounter Group is ${currentEncounterGroup.groupId}`);
+
+    updateEncounterTable(encMonCr, encMonQuantity);
+    //Update rows with current xp
+    updateSheet();
+    currentEncId++;
+}
 
 function addEncounterNew() {
+    currentEncGroupId = String.fromCharCode(currentEncGroupId.charCodeAt(0) + 1);
+    currentEncId = 1;
+    currentMonsterId = currentEncGroupId + currentEncId; // New group and encounter ID
+
     let encMonCr = document.getElementById('monsterCRinput').value;
     let encMonQuantity = document.getElementById('monsterqtyinput').value;
-    let monster = new Monster(encMonCr, encMonQuantity);
+    let encMonName = document.getElementById('monsternameinput').value;
 
-    currentEncounter = new Encounter("B1");
-    currentEncounterGroup = GroupB;
-    currentEncounterGroup.addEncounter(currentEncounter);
+    createNewMonster(encMonCr, encMonQuantity, encMonName);
+    createNewEncounter();
 
-    // Create a new Encounter instance, e.g., "A2", "A3"
-    let newEncounterName = generateEncounterName();
-    let newEncounter = new Encounter(newEncounterName);
-    currentEncounterGroup.addEncounter(newEncounter);
-    newEncounter.addMonster(monster);
-    
-    updateEncounterTable("New", newEncounterName, encMonCr, encMonQuantity);
-}
-  
-function generateEncounterName() {
-// Logic to generate new encounter name, e.g., "A1", "A2"
-let count = currentEncounterGroup.encounters.length + 1;
-  return currentEncounterGroup.groupName + count;
+    encounterObjects[currentMonsterId].addMonster(monsterObjects[currentMonsterId]);
+    createNewEncounterGroup();
+    encounterGroupsObjects[currentEncGroupId].addEncounter(encounterObjects[currentMonsterId]);
+
+    currentEncounterGroup = encounterGroupsObjects[currentEncGroupId];
+    console.log(`Current Encounter Group is ${currentEncounterGroup.groupId}`);
+
+    updateEncounterTable(encMonCr, encMonQuantity);
+    updateSheet();
+    currentEncId++;
 
 }
 
-function updateEncounterTable(NewOrCurrent,encounterName, cr, qty) {
+function updateEncounterTable(cr, qty) {
     var table = document.getElementById("EncounterTable");
-    if (NewOrCurrent === "New") {
         var row = table.insertRow(-1);
-        row.id = encounterName; // Assign an ID to the row for easier updates
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+        var cell9 = row.insertCell(8);
 
-        cell1.innerHTML = `Fight ${encounterName}:`;
-        cell2.innerHTML = `CR ${cr}`;
-        cell3.innerHTML = " x ";
-        cell4.innerHTML = qty;
-        cell5.innerHTML = calculateXPForEncounter(encounterName);
-        cell6.innerHTML = "xp";
-        cell7.innerHTML = " Monster Name";
-
-
-    } else if (NewOrCurrent === "Current") {
-        var row = document.getElementById(encounterName);
-        if (row) {
-            var cells = row.cells;
-            cells[1].innerHTML = `CR ${cr}`;
-            cells[3].innerHTML = qty;
-            cells[4].innerHTML = calculateXPForEncounter(encounterName);
-            cells[5].innerHTML = "xp";
-            cells[6].innerHTML = " - Monster Name";
-        } else {
-            console.error(`Row with ID ${encounterName} not found.`);
-        }
-    }
-}
-
-function calculateXPForEncounter(encounterName) {
-    let encounter = currentEncounterGroup.encounters.find(enc => enc.Name === encounterName);
-    if (encounter) {
-        return encounter.calculateTotalXP();
-    }
-    return 0;
-}
+        let currentMonsterId = currentEncGroupId + currentEncId; // Ensure correct monster is accessed
+        cell1.innerHTML = `${currentEncGroupId}${currentEncId}: `;
+        cell2.innerHTML = monsterObjects[currentMonsterId].monsterName;
+        cell3.innerHTML = ` CR${cr} (`;
+        cell4.innerHTML = monsterObjects[currentMonsterId].monsterXp;
+        cell5.innerHTML = 'xp) x ';
+        cell6.innerHTML = qty;
+        cell7.innerHTML = ' = ';
+        cell8.innerHTML = encounterObjects[currentMonsterId].encounterBasicXp;
+        cell9.innerHTML = 'xp';
+} 
 
 function removeEncounter() {
     var table = document.getElementById("EncounterTable");
     table.deleteRow(-1);
-
 };
 
 function updateSheet() {
@@ -290,72 +381,6 @@ function updateSheet() {
     calculatePartyBudget();    
     document.getElementById("dailybudget").innerText = partyDailyBudget;
     document.getElementById("partyshortbudget").innerText = Math.floor(partyShortRestBudget);
-    document.getElementById("partybudgetremain").innerText = Math.floor(partyBudgetRemain);
+    document.getElementById("partyinitialbudgetremain").innerText = Math.floor(partyInitialBudgetRemain);
 
 }
-
-const CRInputAllowedValues = [0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-
-document.getElementById('custom-number').addEventListener('keydown', function (event) {
-    const input = event.target;
-    let currentValue = parseFloat(input.value);
-
-    // Prevent default behavior for the up and down arrows
-    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-        event.preventDefault();
-
-        // Find the current value's index in the allowedValues array
-        let currentIndex = CRInputAllowedValues.indexOf(currentValue);
-
-        if (event.key === "ArrowUp") {
-            // Move to the next value if it exists, otherwise stay at the highest value
-            if (currentIndex < CRInputAllowedValues.length - 1) {
-                input.value = CRInputAllowedValues[currentIndex + 1];
-            } else {
-                input.value = CRInputAllowedValues[currentIndex]; // stay on the max value
-            }
-        } else if (event.key === "ArrowDown") {
-            // Move to the previous value if it exists, otherwise stay at the lowest value
-            if (currentIndex > 0) {
-                input.value = CRInputAllowedValues[currentIndex - 1];
-            } else {
-                input.value = CRInputAllowedValues[currentIndex]; // stay on the min value
-            }
-        }
-    }
-});
-
-// Initialize the input with the closest value if not already valid
-document.getElementById('custom-number').addEventListener('input', function (event) {
-    const input = event.target;
-    let value = parseFloat(input.value);
-    
-    if (!CRInputAllowedValues.includes(value)) {
-        // Find the closest value
-        let closestValue = CRInputAllowedValues.reduce((prev, curr) => {
-            return (Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev);
-        });
-        input.value = closestValue;
-    }
-});
-
-
-window.onload = updateSheet;
-
-/*
-CR's great, you just need to also consider the number of party members, 
-consider the max HP of the party members, 
-consider the party members saving throws 
-and how they line up with the monsters abilities, 
-consider what magical items they have, 
-calculate the maximum damage each party member can do in a round and 
-compare it to each monsters max HP, calculate the cumulative damage 
-the party members can do together and compare that to the monsters max HP, 
-calculate the maximum damage the monster can do in a single round and 
-compare that to each party members max HP, think about the location the 
-fight will take place in and how that will affect the party, 
-consider the monsters movement type and compare that to the parties mobility options, 
-consider any situational abilities the monster has and how that might impact the fight, 
-consider how far into the adventuring day the encounter will take place*/
