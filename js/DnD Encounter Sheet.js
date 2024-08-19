@@ -1,11 +1,6 @@
 
 // Global variables
 
-let monsterObjects = {};
-let encounterObjects = {};
-let encounterGroupsObjects = {};
-let dayObjects = {};
-
   // #region Variable Listing Region
 
 var dailyBudget = {
@@ -137,15 +132,18 @@ class Party {
     }
 }
 
+// Individual Monster Class
 class Monster {
 
-    static currentMonster = 'A1';
     static currentMonsterId = "A1";
+    static monsterObjects = {};
+
 
     constructor(cr, name) {
-        this.monsterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId; // eg A1
+        this.monsterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId; // eg A1
         this.monsterCr = parseFloat(cr); // Challenge Rating
-        this.monsterName = name || `Mon${EncounterGroup.currentEncGroupId}${Encounter.currentEncId}`; // Default name if not provided
+        this.monsterName = name || `Mon${EncounterGroup.groupCurrentId}${Encounter.encounterCurrentId}`; // Default name if not provided
+        this.monsterXP = undefined;
         this.checkMonsterXP(); // Calculate XP during initialization
     }
 
@@ -164,23 +162,24 @@ class Monster {
 
 function createNewMonster(encMonCr,encMonName){
     if (encMonName === undefined) {
-        encMonName = `Mon${EncounterGroup.currentEncGroupId}${Encounter.currentEncId}`;
+        encMonName = `Mon${EncounterGroup.groupCurrentId}${Encounter.encounterCurrentId}`;
     } 
-    monsterObjects[EncounterGroup.currentEncGroupId+Encounter.currentEncId] = 
+    Monster.monsterObjects[EncounterGroup.groupCurrentId+Encounter.encounterCurrentId] = 
         new Monster(encMonCr,encMonName);
-    Monster.currentMonster = monsterObjects[EncounterGroup.currentEncGroupId + Encounter.currentEncId];
-    console.log(`Created Monster ${encMonName} at ${EncounterGroup.currentEncGroupId}${Encounter.currentEncId}`);
 };
 
+// Individual Encounter Class (eg 2xGiant Apes as part of a larger group)
 class Encounter {
 
-    static currentEncId = 1;
+    static encounterCurrentId = 1;
+    static encounterObjects = {};
     static encounterRecentQty;
     static encounterRecentBasicXP;
 
+
     // Constructor
     constructor(qty) {
-        this.encounterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId;
+        this.encounterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId;
         this.encounterMonsters = []; 
         this.encounterMonQty = qty;
         Encounter.encounterRecentQty = qty;
@@ -195,24 +194,29 @@ class Encounter {
 }
 
 function createNewEncounter(qty){
-    let encounterName = `${EncounterGroup.currentEncGroupId}${Encounter.currentEncId}`;
-    encounterObjects[encounterName] = new Encounter(qty);
-    encounterObjects[encounterName].addMonster(Monster.currentMonster,qty);
+    let encounterName = `${EncounterGroup.groupCurrentId}${Encounter.encounterCurrentId}`;
+    Encounter.encounterObjects[encounterName] = new Encounter(qty);
+    Encounter.encounterObjects[encounterName].addMonster(Monster.monsterObjects[EncounterGroup.groupCurrentId+Encounter.encounterCurrentId],qty);
     console.log(`Created Encounter ${encounterName}`);
 
-    encounterGroupsObjects[EncounterGroup.currentEncGroupId].addEncounter(encounterObjects[Monster.currentMonsterId]);
+    EncounterGroup.groupObjects[EncounterGroup.groupCurrentId] = new EncounterGroup();
+    EncounterGroup.groupObjects[EncounterGroup.groupCurrentId].addEncounter(Encounter.encounterObjects[Monster.currentMonsterId]);
 }
 
+// Group of Encounters Class
 class EncounterGroup {
-
+    static groupCurrentId = "A";
+    static groupObjects = {};
     static groupRecentBasicXP;
     static groupRecentAdjXP;
-    static currentEncGroupId = "A";
-    static currentEncounterGroup = 'GroupA';
 
     constructor(){
-        this.groupId = `Group${EncounterGroup.currentEncGroupId}`;
+        this.groupId = `Group${EncounterGroup.groupCurrentId}`;
         this.groupEncounters = [];
+        this.groupBasicXP;
+        this.groupAdjXP;
+        this.groupRatioXP;
+        this.groupDeadliness;
     }
 
     addEncounter(encounter) {
@@ -224,15 +228,6 @@ class EncounterGroup {
             console.error("Invalid encounter object:", encounter);
         }
     }
-
-   /*  calculateGroupXP(){
-        let XPMod = encounterMultipliers.find(multiplier => multiplier.monsters === this.groupQty)?.multiplier || 1;
-        // this.groupEncounters.forEach(encounter => {
-            this.groupBasicXP += Encounter.encounterBasicXP;
-            groupRecentBasicXP = this.groupBasicXP;
-            this.groupAdjXP *= this.groupBasicXP * XPMod;
-            groupRecentAdjXP = this.groupAdjXP;
-    } */
 
     calculateGroupXP(){
         let XPMod = encounterMultipliers.find(multiplier => multiplier.monsters === this.groupQty)?.multiplier || 1;
@@ -249,29 +244,49 @@ class EncounterGroup {
         EncounterGroup.groupRecentBasicXP = this.groupBasicXP;
         this.groupAdjXP = this.groupBasicXP * XPMod;
         EncounterGroup.groupRecentAdjXP = this.groupAdjXP;
+
+        this.groupDeadliness = this.determineGroupDeadliness(Party.partyLevel, EncounterGroup.groupRecentAdjXP);
+        this.groupDeadlyXP = combatEncounterDifficulty[Party.partyLevel].deadly * Party.partyNumber;
+        this.groupRatioXP = Number((this.groupAdjXP / this.groupDeadlyXP).toFixed(2));
     }
 
-
+    determineGroupDeadliness(partyLevel, groupAdjXP) {
+        var difficultyThresholds = combatEncounterDifficulty[partyLevel] ;
+        if (groupAdjXP < (difficultyThresholds.easy * Party.partyNumber)) {
+            return "Trivial"; 
+        } else if (groupAdjXP < difficultyThresholds.medium * Party.partyNumber) {
+            return "Easy";
+        } else if (groupAdjXP < difficultyThresholds.hard * Party.partyNumber) {
+            return "Medium";
+        } else if (groupAdjXP < difficultyThresholds.deadly * Party.partyNumber) {
+            return "Hard";
+        } else {
+            return "Deadly";
+        }
+    }
 }
 
 function createNewEncounterGroup(){
-    let groupName = EncounterGroup.currentEncGroupId;
-    encounterGroupsObjects[groupName] = new EncounterGroup();
+    let groupName = EncounterGroup.groupCurrentId;
+    EncounterGroup.groupObjects[groupName] = new EncounterGroup();
 
-    let currentEncounterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId;
-    let currentEncounter = encounterObjects[currentEncounterId];
+    let currentEncounterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId;
+    let currentEncounter = Encounter.encounterObjects[currentEncounterId];
 
 
-    encounterGroupsObjects[groupName].addEncounter(currentEncounter);
+    EncounterGroup.groupObjects[groupName].addEncounter(currentEncounter);
     console.log(`Created Encounter Group ${groupName}`);
     console.log(`Added current encounter to group`);
 
-    Day1.addEncounterGroup(encounterGroupsObjects[groupName]);
+    Day1.addEncounterGroup(EncounterGroup.groupObjects[groupName]);
 }
 
+// Individual Day Class
 class Day {
 
     static dayId = 0;
+    static dayName = "Day" + Day.dayId;
+    static dayObjects = {};
     static dayTotalAdjXP = 0;
     static dailyRemainingXP = 0;
 
@@ -287,27 +302,17 @@ class Day {
         } else {
             console.error("Invalid encounter group:", encounterGroup);
         }
-        calculateDayAdjXP();
+        Day1.calculateDayAdjXP();
     }
 
     calculateDayAdjXP() {
-        Day.dayTotalAdjXP += EncounterGroup.groupRecentAdjXP;
-        Day.dailyRemainingXP = Party.partyDailyBudget - Day.dayTotalAdjXP;
+        this.dayTotalAdjXP += EncounterGroup.groupRecentAdjXP;
+        this.dailyRemainingXP = Party.partyDailyBudget - this.dayTotalAdjXP;
     }
 }
 
-let Day1 = new Day();
-Day1.dayId = 1;
-Day1.dayGroups = [];
-Day1.dayTotalAdjXP = 0;
-
-encounterGroupsObjects[EncounterGroup.currentEncGroupId] = new EncounterGroup();
-encounterGroupsObjects.A.groupId = "GroupA";
-encounterGroupsObjects.A.groupEncounters = [];
-encounterGroupsObjects.A.groupBasicXP = 0;
-
 function addEncounterCurrent() {
-    Monster.currentMonsterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId; // Store current ID before incrementing
+    Monster.currentMonsterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId; // Store current ID before incrementing
     
     let encMonCr = document.getElementById('monsterCRinput').value;
     let encMonQuantity = document.getElementById('monsterqtyinput').value;
@@ -316,20 +321,20 @@ function addEncounterCurrent() {
     createNewMonster(encMonCr, encMonName);
     createNewEncounter(encMonQuantity);
 
-    EncounterGroup.currentEncounterGroup = encounterGroupsObjects[EncounterGroup.currentEncGroupId];
+    EncounterGroup.currentEncounterGroup = EncounterGroup.groupObjects[EncounterGroup.groupCurrentId];
     console.log(`Current Encounter Group is ${EncounterGroup.currentEncounterGroup.groupId}`);
 
     Day1.calculateDayAdjXP();
     updateEncounterTable(encMonCr, encMonQuantity);
     //Update rows with current xp
     updateSheet();
-    Encounter.currentEncId++;
+    Encounter.encounterCurrentId++;
 }
 
 function addEncounterNew() {
-    EncounterGroup.currentEncGroupId = String.fromCharCode(EncounterGroup.currentEncGroupId.charCodeAt(0) + 1);
-    Encounter.currentEncId = 1;
-    Monster.currentMonsterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId; // New group and encounter ID
+    EncounterGroup.groupCurrentId = String.fromCharCode(EncounterGroup.groupCurrentId.charCodeAt(0) + 1);
+    Encounter.encounterCurrentId = 1;
+    Monster.currentMonsterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId; // New group and encounter ID
 
     let encMonCr = document.getElementById('monsterCRinput').value;
     let encMonQuantity = document.getElementById('monsterqtyinput').value;
@@ -337,20 +342,14 @@ function addEncounterNew() {
 
     createNewMonster(encMonCr, encMonName);
     createNewEncounter(encMonQuantity);
-    encounterGroupsObjects[EncounterGroup.currentEncGroupId] = new EncounterGroup();
+    EncounterGroup.groupObjects[EncounterGroup.groupCurrentId] = new EncounterGroup();
 
     createNewEncounterGroup();
-
-
-
-
-    EncounterGroup.currentEncounterGroup = encounterGroupsObjects[EncounterGroup.currentEncGroupId];
-    console.log(`Current Encounter Group is ${EncounterGroup.currentEncounterGroup.groupId}`);
 
     Day1.calculateDayAdjXP();
     updateEncounterTable(encMonCr, encMonQuantity);
     updateSheet();
-    Encounter.currentEncId++;
+    Encounter.encounterCurrentId++;
 
 }
 
@@ -367,27 +366,31 @@ function updateEncounterTable(cr, qty) {
         var cell8 = row.insertCell(7);
         var cell9 = row.insertCell(8);
 
-        Monster.currentMonsterId = EncounterGroup.currentEncGroupId + Encounter.currentEncId; // Ensure correct monster is accessed
-        cell1.innerHTML = `<b>${EncounterGroup.currentEncGroupId}${Encounter.currentEncId}:</b> `;
-        cell2.innerHTML = monsterObjects[Monster.currentMonsterId].monsterName;
+        Monster.currentMonsterId = EncounterGroup.groupCurrentId + Encounter.encounterCurrentId; // Ensure correct monster is accessed
+        cell1.innerHTML = `<b>${EncounterGroup.groupCurrentId}${Encounter.encounterCurrentId}:</b> `;
+        cell2.innerHTML = Monster.monsterObjects[Monster.currentMonsterId].monsterName;
         cell3.innerHTML = ` CR${cr} (`;
-        cell4.innerHTML = monsterObjects[Monster.currentMonsterId].monsterXP;
+        cell4.innerHTML = Monster.monsterObjects[Monster.currentMonsterId].monsterXP;
         cell5.innerHTML = 'xp) x ';
         cell6.innerHTML = qty;
         cell7.innerHTML = ' = ';
-        cell8.innerHTML = encounterObjects[Monster.currentMonsterId].encounterBasicXP;
+        cell8.innerHTML = Encounter.encounterObjects[Monster.currentMonsterId].encounterBasicXP;
         cell9.innerHTML = 'xp';
 
-        document.getElementById("daily-total-xp").innerText = Math.floor(Day.dayTotalAdjXP);
-        document.getElementById("groupA-xp").innerText = Math.floor(encounterGroupsObjects.A.groupAdjXP);
-        document.getElementById("daily-remaining-xp").innerText = Math.floor(Day.dailyRemainingXP);
+        document.getElementById("daily-total-xp").innerText = Day1.dayTotalAdjXP;
+        document.getElementById("groupA-xp").innerText = EncounterGroup.groupObjects.A.groupAdjXP;
+        document.getElementById("groupA-ratio").innerText = EncounterGroup.groupObjects.A.groupRatioXP;
+        document.getElementById("groupA-deadliness").innerText = EncounterGroup.groupObjects.A.groupDeadliness;
+        document.getElementById("daily-remaining-xp").innerText = Day1.dailyRemainingXP;
 
-
+        
 } 
 
 function removeEncounter() {
     var table = document.getElementById("EncounterTable");
     table.deleteRow(-1);
+    Encounter.encounterCurrentId--;
+
 };
 
 function updateSheet() {
@@ -405,3 +408,14 @@ function updateSheet() {
     
 
 }
+
+// Initialise Day 1 and Group A
+let Day1 = new Day();
+Day1.dayId = 1;
+Day1.dayGroups = [];
+Day1.dayTotalAdjXP = 0;
+
+EncounterGroup.groupObjects[EncounterGroup.groupCurrentId] = new EncounterGroup();
+EncounterGroup.groupObjects.A.groupId = "GroupA";
+EncounterGroup.groupObjects.A.groupEncounters = [];
+EncounterGroup.groupObjects.A.groupBasicXP = 0;
