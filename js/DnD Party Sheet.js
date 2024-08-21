@@ -1,20 +1,105 @@
-// Global variables
+// Global variables 
+
+// #region Variable Region
 var PartyLevel = 6;
+
+var fireboltDamage = {
+  // By level
+  1: {dice:"1d10", damage: 5.5},
+  2: {dice:"1d10", damage: 5.5},
+  3: {dice:"1d10", damage: 5.5},
+  4: {dice:"1d10", damage: 5.5},
+  5: {dice:"2d10", damage: 11},
+  6: {dice:"2d10", damage: 11},
+  7: {dice:"2d10", damage: 11},
+  8: {dice:"2d10", damage: 11},
+  9: {dice:"2d10", damage: 11},
+  10: {dice:"2d10", damage: 11},
+  11: {dice:"3d10", damage: 16.5},
+  12: {dice:"3d10", damage: 16.5},
+  13: {dice:"3d10", damage: 16.5},
+  14: {dice:"3d10", damage: 16.5},
+  15: {dice:"3d10", damage: 16.5},
+  16: {dice:"3d10", damage: 16.5},
+  17: {dice:"4d10", damage: 22},
+  18: {dice:"4d10", damage: 22},
+  19: {dice:"4d10", damage: 22},
+  20: {dice:"4d10", damage: 22},
+};
+
+var SacredFlameDamage = {
+  // By level
+  1: {dice:"1d8", damage: 4.5},
+  2: {dice:"1d8", damage: 4.5},
+  3: {dice:"1d8", damage: 4.5},
+  4: {dice:"1d8", damage: 4.5},
+  5: {dice:"2d8", damage: 9},
+  6: {dice:"2d8", damage: 9},
+  7: {dice:"2d8", damage: 9},
+  8: {dice:"2d8", damage: 9},
+  9: {dice:"2d8", damage: 9},
+  10: {dice:"2d8", damage: 9},
+  11: {dice:"3d8", damage: 13.5},
+  12: {dice:"3d8", damage: 13.5},
+  13: {dice:"3d8", damage: 13.5},
+  14: {dice:"3d8", damage: 13.5},
+  15: {dice:"3d8", damage: 13.5},
+  16: {dice:"3d8", damage: 13.5},
+  17: {dice:"4d8", damage: 18},
+  18: {dice:"4d8", damage: 18},
+  19: {dice:"4d8", damage: 18},
+  20: {dice:"4d8", damage: 18},
+};
+
+var dieDamageAverage = {
+d4:	2.5, // 1 2 3 4 -> 10 / 4 = 2.5
+d6:	3.5,
+d8:	4.5,
+d10:	5.5,
+d12:	6.5
+};
+
+// Proficiency Bonus Listing
+var levelProfBonuses = {
+  1: 2,
+  2: 2,
+  3: 2,
+  4: 2,
+  5: 3,
+  6: 3,
+  7: 3,
+  8: 3,
+  9: 4,
+  10: 4,
+  11: 4,
+  12: 4,
+  13: 5,
+  14: 5,
+  15: 5,
+  16: 5,
+  17: 6,
+  18: 6,
+  19: 6,
+  20: 6
+};
+
+// #endregion Region
 
 // PartyStats
 class PartyMember {
-  constructor(name) {
-    this.name = name;
-    this.Strength = 0;
-    this.StrMod = 0;
-    this.Dexterity = 0;
-    this.DexMod = 0;
-    this.Constitution = 0;
-    this.ConMod = 0;
-    this.Intelligence = 0;
-    this.IntMod = 0;
-    this.Wisdom = 0;
-    this.WisMod = 0;
+
+  constructor(name){
+    this.Name = name;
+    this.Strength;
+    this.StrMod;
+    this.Dexterity;
+    this.DexMod;
+    this.Constitution;
+    this.ConMod;
+    this.Intelligence;
+    this.IntMod;
+    this.Wisdom;
+    this.WisMod;
     this.Charisma = 0;
     this.ChaMod = 0;
     this.HPStart = 0;
@@ -45,16 +130,51 @@ class PartyMember {
     this.PassivePerception = 0;
     this.PassiveInsight = 0;
     this.GearNote = "";
+    this.MeleeAttackBonus = 0;
+    this.RangedAttackBonus = 0;
+    this.SpellAttackBonus = 0;
+    this.SpellSaveBonus = 0;
+    this.StandardToHit = 0;
+    this.StandardDamage = 0; 
+    this.StandardAttack = "";
+  }
+
+  calculateHP(character) {
+    return character.HPStart + character.ConMod + (PartyLevel - 1) * (character.HPGainPerLevel + character.ConMod);
+  }
+  
+  calculateSpellSave(character) {
+    return 8 + character.SpellCastMod + levelProfBonuses[PartyLevel] + (character.SpellSaveBonus || 0);
+  }
+  
+  calculatePassivePerc(character) {
+    return 10 + character.Perception;
+  }
+  
+  calculatePassiveIns(character) {
+    return 10 + character.Insight;
   }
 }
 
+/* function createPartyMember(person){
+let person = new PartyMember(person);
+person.Name = person;
+}
+
 // Create instances of PartyMember
+createPartyMember(Doris);
+createPartyMember(Faelar);
+createPartyMember(Kandryn);
+createPartyMember(Eiran);
+createPartyMember(OldBreiar);
+createPartyMember(NewBreiar); */
+
 let Doris = new PartyMember("Doris");
 let Faelar = new PartyMember("Faelar");
 let Kandryn = new PartyMember("Kandryn");
 let Eiran = new PartyMember("Eiran");
 let OldBreiar = new PartyMember("OldBreiar");
-let NewBreiar = new PartyMember("NewBreiar");
+let NewBreiar = new PartyMember("NewBreiar"); 
 
 // Initialize character stats
 Doris.Strength = 8;
@@ -74,6 +194,13 @@ Doris.HPGainPerLevel = 5;
 Doris.AC = 14;
 Doris.GearNote = "Reveller's Concertina +2 SpellSave";
 Doris.SpellCastMod = Doris.ChaMod;
+Doris.StandardAttack = "Firebolt";
+Doris.MeleeAttackBonus = '';
+Doris.RangedAttackBonus = '';
+Doris.SpellAttackBonus = '';
+Doris.SpellSaveBonus = 2;
+Doris.StandardToHit = 3;
+Doris.StandardDamage; 
 
 Faelar.Strength = 14;
 Faelar.StrMod = 2;
@@ -92,6 +219,12 @@ Faelar.HPGainPerLevel = 5;
 Faelar.AC = 19;
 Faelar.GearNote = "Book of Martial Techniques +1, Stone of Good Luck on saving throws and abilities";
 Faelar.SpellCastMod = Faelar.WisMod;
+Faelar.StandardAttack1 = "Sacred Flame";
+Faelar.StandardAttack2 = "Spiritual Weapon";
+Faelar.MeleeAttackBonus = 1;
+Faelar.RangedAttackBonus = '';
+Faelar.SpellAttackBonus = '';
+Faelar.SpellSaveBonus = 2;
 
 Kandryn.Strength = 10;
 Kandryn.StrMod = 0;
@@ -110,6 +243,11 @@ Kandryn.HPGainPerLevel = 4;
 Kandryn.AC = 13;
 Kandryn.GearNote = "Wizardry Hat + SpellAttacks";
 Kandryn.SpellCastMod = Kandryn.IntMod;
+Kandryn.StandardAttack = "Firebolt";
+Kandryn.MeleeAttackBonus = '';
+Kandryn.RangedAttackBonus = '';
+Kandryn.SpellAttackBonus = 2;
+Kandryn.SpellSaveBonus = '';
 
 Eiran.Strength = 12;
 Eiran.StrMod = 1;
@@ -128,6 +266,11 @@ Eiran.HPGainPerLevel = 6;
 Eiran.AC = 16;
 Eiran.GearNote = "Great Scythe + 1";
 Eiran.SpellCastMod = Eiran.WisMod;
+Eiran.StandardAttack = "Longbow Multiattack";
+Eiran.MeleeAttackBonus = 1;
+Eiran.RangedAttackBonus = 2;
+Eiran.SpellAttackBonus = '';
+Eiran.SpellSaveBonus = '';
 
 OldBreiar.Strength = 14;
 OldBreiar.StrMod = 2;
@@ -146,6 +289,7 @@ OldBreiar.HPGainPerLevel = 5;
 OldBreiar.AC = "";
 OldBreiar.GearNote = "";
 OldBreiar.SpellCastMod = "";
+OldBreiar.StandardAttack = "Maul";
 
 NewBreiar.Strength = 14;
 NewBreiar.StrMod = 2;
@@ -164,6 +308,7 @@ NewBreiar.HPGainPerLevel = 5;
 NewBreiar.AC = 13+ Eiran.WisMod;
 NewBreiar.GearNote = "";
 NewBreiar.SpellCastMod = "";
+NewBreiar.StandardAttack = "Maul";
 
 // Character Proficiency Listing
 var charProfBonusesDictionary = {
@@ -181,55 +326,24 @@ var charProfBonusesDictionary = {
     Performance: 0, Persuasion: 0, Religion: 1, SleightOfHand: 0, Stealth: 1, Survival: 1 }
 };
 
-var charBonusesDictionary = {
-  Doris: {
-    MeleeAttackBonus: '',
-    RangedAttackBonus: '',
-    SpellAttackBonus: '',
-    SpellSaveBonus: 2
-  },
-  Faelar: {
-    MeleeAttackBonus: 1,
-    RangedAttackBonus: '',
-    SpellAttackBonus: '',
-    SpellSaveBonus: 2
-  },
-  Kandryn: {
-    MeleeAttackBonus: '',
-    RangedAttackBonus: '',
-    SpellAttackBonus: 2,
-    SpellSaveBonus: ''
-  },
-  Eiran: {
-    MeleeAttackBonus: 1,
-    RangedAttackBonus: 2,
-    SpellAttackBonus: '',
-    SpellSaveBonus: ''
+class Monster{
+  constructor(){
+  this.MonsterId;
+  this.CR;
+  this.AC;
+  this.HP;
+  this.SpellSaveDC;
   }
-};
+}
 
-// Proficiency Bonus Listing
-var levelProfBonuses = {
-  1: 2,
-  2: 2,
-  3: 2,
-  4: 2,
-  5: 3,
-  6: 3,
-  7: 3,
-  8: 3,
-  9: 4,
-  10: 4,
-  11: 4,
-  12: 4,
-  13: 5,
-  14: 5,
-  15: 5,
-  16: 5,
-  17: 6,
-  18: 6,
-  19: 6,
-  20: 6
+Typical8 = new Monster();
+Typical8.MonsterId = 1;
+Typical8.CR = 8;
+Typical8.AC = 16;
+Typical8.SpellSaveDC = 16;
+
+var levelToCR = {
+  4: 8
 };
 
 function calculateSkills(character) {
@@ -255,29 +369,15 @@ function calculateSkills(character) {
   };
 
   for (const [skill, mod] of Object.entries(skills)) {
-    if (charProfBonusesDictionary[character.name] && charProfBonusesDictionary[character.name][skill] !== undefined) {
-      character[skill] = character[mod] + Math.floor(charProfBonusesDictionary[character.name][skill] * levelProfBonuses[PartyLevel]);
+    if (charProfBonusesDictionary[character.Name] && charProfBonusesDictionary[character.Name][skill] !== undefined) {
+      character[skill] = character[mod] + Math.floor(charProfBonusesDictionary[character.Name][skill] * levelProfBonuses[PartyLevel]);
     } else {
-      console.error(`No proficiency bonus found for ${skill} on character ${character.name}`);
+      console.error(`No proficiency bonus found for ${skill} on character ${character.Name}`);
     }
   }
 }
 
-function calculateHP(character) {
-  return character.HPStart + character.ConMod + (PartyLevel - 1) * (character.HPGainPerLevel + character.ConMod);
-}
 
-function calculateSpellSave(character) {
-  return 8 + character.SpellCastMod + levelProfBonuses[PartyLevel] + (charBonusesDictionary[character.name].SpellSaveBonus || 0);
-}
-
-function calculatePassivePerc(character) {
-  return 10 + character.Perception;
-}
-
-function calculatePassiveIns(character) {
-  return 10 + character.Insight;
-}
 
 function updateSheet() {
   document.getElementById("party-level").innerText = PartyLevel;
@@ -287,23 +387,23 @@ function updateSheet() {
 
   characters.forEach(character => {
     calculateSkills(character);
-    character.HP = calculateHP(character);
-    character.SpellSave = calculateSpellSave(character);
-    character.PassivePerception = calculatePassivePerc(character);
-    character.PassiveInsight = calculatePassiveIns(character);
+    character.HP = character.calculateHP(character);
+    character.SpellSave = character.calculateSpellSave(character);
+    character.PassivePerception = character.calculatePassivePerc(character);
+    character.PassiveInsight = character.calculatePassiveIns(character);
 
-    document.getElementById(character.name.toLowerCase() + "-ac").innerText = character.AC;
-    document.getElementById(character.name.toLowerCase() + "-spellsave").innerText = character.SpellSave;
-    document.getElementById(character.name.toLowerCase() + "-hp").innerText = character.HP;
-    document.getElementById(character.name.toLowerCase() + "-strength").innerText = character.Strength;
-    document.getElementById(character.name.toLowerCase() + "-dexterity").innerText = character.Dexterity;
-    document.getElementById(character.name.toLowerCase() + "-constitution").innerText = character.Constitution;
-    document.getElementById(character.name.toLowerCase() + "-intelligence").innerText = character.Intelligence;
-    document.getElementById(character.name.toLowerCase() + "-wisdom").innerText = character.Wisdom;
-    document.getElementById(character.name.toLowerCase() + "-charisma").innerText = character.Charisma;
-    document.getElementById(character.name.toLowerCase() + "-passiveperc").innerText = character.PassivePerception;
-    document.getElementById(character.name.toLowerCase() + "-passiveins").innerText = character.PassiveInsight;
-    document.getElementById(character.name.toLowerCase() + "-note").innerText = character.GearNote;
+    document.getElementById(character.Name.toLowerCase() + "-ac").innerText = character.AC;
+    document.getElementById(character.Name.toLowerCase() + "-spellsave").innerText = character.SpellSave;
+    document.getElementById(character.Name.toLowerCase() + "-hp").innerText = character.HP;
+    document.getElementById(character.Name.toLowerCase() + "-strength").innerText = character.Strength;
+    document.getElementById(character.Name.toLowerCase() + "-dexterity").innerText = character.Dexterity;
+    document.getElementById(character.Name.toLowerCase() + "-constitution").innerText = character.Constitution;
+    document.getElementById(character.Name.toLowerCase() + "-intelligence").innerText = character.Intelligence;
+    document.getElementById(character.Name.toLowerCase() + "-wisdom").innerText = character.Wisdom;
+    document.getElementById(character.Name.toLowerCase() + "-charisma").innerText = character.Charisma;
+    document.getElementById(character.Name.toLowerCase() + "-passiveperc").innerText = character.PassivePerception;
+    document.getElementById(character.Name.toLowerCase() + "-passiveins").innerText = character.PassiveInsight;
+    document.getElementById(character.Name.toLowerCase() + "-note").innerText = character.GearNote;
   });
   
   OldBreiar.AC = 13+ levelProfBonuses[PartyLevel];
