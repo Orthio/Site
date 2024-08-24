@@ -9,17 +9,28 @@
         p {
             line-height: 0.5;
         }
-        .RenovationCostLabel {
-            width: 100px;
+       /* Flexbox container */
+       .form-container {
+            display: flex;
+            flex-direction: column; /* Arrange elements vertically */
+            align-items: flex-start; /* Align elements to the start of the container */
+            gap: 5px; /* Space between each form group */
         }
-        .RenovationCostInput {
-            width: 100px;
+
+        /* Flexbox for form group */
+        .form-group {
+            display: flex;
+            flex-direction: row; /* Arrange label and input horizontally */
+            align-items: center; /* Align items vertically */
+            gap: -5px; /* Space between label and input */
         }
-        .APRLabel {
-            width: 100px;
+        label {
+            width: 120px; /* Fixed width for label */
         }
-        .APRInput {
-            width: 100px;
+        input {
+            width: 70px; /* Fixed width for input */
+
+            flex: 1; /* Input will take the remaining space */
         }
         .column1 {
             width: 150px;
@@ -103,12 +114,16 @@
     <br>
    
     <h3>Loan Payment Breakdown: £25,000 Loan at 6% APR</h3>
-    <p>For 60 weeks, 5 years</p>
-    <div> 
-        <label for="renovationCost" class="RenovationCostLabel">Renovation Cost: &nbsp;</label>
-        <input type="number" id="renovationCost" value="25000" class="RenovationCostInput"><br>
-        <label for="APR" class="APRLabel">APR Percent: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input type="number" id="APR" class="APRInput" value="6"><br>
+    <p><small>For 60 weeks, 5 years</small></p>
+    <div class="form-container">
+        <div class="form-group"> 
+        <label for="renovationCost" class="RenovationCostLabel">Renovation Cost: </label>
+        <input type="number" id="renovationCost" value="25000" class="RenovationCostInput">
+        </div>
+        <div class="form-group">
+        <label for="APR" class="APRLabel">APR Percent:</label>
+        <input type="number" id="APR" class="APRInput" value="6">
+        </div>
         <button onclick="updateSheet()">Calculate Loan</button>
     </div>
     <canvas id="loanChart" width="400" height="400"></canvas>
