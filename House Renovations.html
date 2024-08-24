@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Payment Breakdown</title>
+    <script src="https://unpkg.com/chart.js@4.0.1/dist/chart.umd.js"></script>
+    <style>
+        p {
+            line-height: 0.5;
+        }
+        .RenovationCostLabel {
+            width: 100px;
+        }
+        .RenovationCostInput {
+            width: 100px;
+        }
+        .APRLabel {
+            width: 100px;
+        }
+        .APRInput {
+            width: 100px;
+        }
+        .column1 {
+            width: 150px;
+        }
+        .column2 {
+            width: 100px;
+        }
+        .RenovationLowCostInput, .RenovationHighCostInput {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hannah House Renovations</h2>
+    <h3>House Renovation Costs</h3>
+
+    <div>
+        <table class="RenovationTable">
+            <thead>
+                <tr>
+                    <td class="column1"></td>
+                    <td class="column2">Low Cost (£)</td>
+                    <td>High Cost (£)</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total rewiring</td>
+                    <td><input type="number" value="4000" class="RenovationLowCostInput" id="RLowCostId1"></td>
+                    <td><input type="number" value="6500" class="RenovationHighCostInput" id="RHighCostId1"></td>
+                </tr>
+                <tr>
+                    <td>Re-plumbing</td>
+                    <td><input type="number" value="5000" class="RenovationLowCostInput" id="RLowCostId2"></td>
+                    <td><input type="number" value="7000" class="RenovationHighCostInput" id="RHighCostId2"></td>
+                </tr>
+                <tr>
+                    <td>New carpets</td>
+                    <td><input type="number" value="1500" class="RenovationLowCostInput" id="RLowCostId3"></td>
+                    <td><input type="number" value="3000" class="RenovationHighCostInput" id="RHighCostId3"></td>
+                </tr>
+                <tr>
+                    <td>Kitchen</td>
+                    <td><input type="number" value="5000" class="RenovationLowCostInput" id="RLowCostId4"></td>
+                    <td><input type="number" value="7500" class="RenovationHighCostInput" id="RHighCostId4"></td>
+                </tr>
+                <tr>
+                    <td>Cosmetic touchups</td>
+                    <td><input type="number" value="1500" class="RenovationLowCostInput" id="RLowCostId5"></td>
+                    <td><input type="number" value="4000" class="RenovationHighCostInput" id="RHighCostId5"></td>
+                </tr>
+                <tr>
+                    <td>New boiler</td>
+                    <td><input type="number" value="1500" class="RenovationLowCostInput" id="RLowCostId6"></td>
+                    <td><input type="number" value="3000" class="RenovationHighCostInput" id="RHighCostId6"></td>
+                </tr>
+                <tr>
+                    <td>Radiators</td>
+                    <td><input type="number" value="1200" class="RenovationLowCostInput" id="RLowCostId7"></td>
+                    <td><input type="number" value="2400" class="RenovationHighCostInput" id="RHighCostId7"></td>
+                </tr>
+                <tr>
+                    <td>Plastering</td>
+                    <td><input type="number" value="3000" class="RenovationLowCostInput" id="RLowCostId8"></td>
+                    <td><input type="number" value="7000" class="RenovationHighCostInput" id="RHighCostId8"></td>
+                </tr>
+                <tr>
+                    <td>Project Manager</td>
+                    <td><span id="RLowCostProject"></span></td>
+                    <td><span id="RHighCostProject"></span></td>
+                </tr>
+                <tr>
+                    <td>Total Cost</td>
+                    <td><span id="RLowCostTotal"></span></td>
+                    <td><span id="RHighCostTotal"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+   
+    <h3>Loan Payment Breakdown: £25,000 Loan at 6% APR</h3>
+    <p>For 60 weeks, 5 years</p>
+    <div> 
+        <label for="renovationCost" class="RenovationCostLabel">Renovation Cost: &nbsp;</label>
+        <input type="number" id="renovationCost" value="25000" class="RenovationCostInput"><br>
+        <label for="APR" class="APRLabel">APR Percent: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input type="number" id="APR" class="APRInput" value="6"><br>
+        <button onclick="updateSheet()">Calculate Loan</button>
+    </div>
+    <canvas id="loanChart" width="600" height="400"></canvas>
+    <div>
+        <p><span id="Month1CostA"></span></p>
+        <p><span id="Month1CostB"></span></p>
+    </div>
+    <br>
+    <div>
+        <p><span id="Month3CostA"></span></p>
+        <p><span id="Month3CostB"></span></p>
+    </div>  
+    
+    <script>
+        let loanChart = null;
+
+        // Function to calculate loan chart
+        function createLoanChart() {
+            const P = Number(document.getElementById('renovationCost').value);  // Principal amount
+            const annualRate = Number(document.getElementById('APR').value) / 100; // Convert APR to decimal
+            const monthlyRate = annualRate / 12;  // Monthly interest rate
+            const nMonths = 60;  // Loan term in months
+
+            // Calculate monthly payment using the formula
+            const M = P * monthlyRate * Math.pow(1 + monthlyRate, nMonths) / (Math.pow(1 + monthlyRate, nMonths) - 1);
+
+            // Arrays to hold the breakdown
+            let months = [];
+            let principalPaid = [];
+            let interestPaid = [];
+            let remainingBalance = [];
+
+            // Initial balance
+            let balance = P;
+
+            // Calculate the breakdown month by month
+            for (let month = 1; month <= nMonths; month++) {
+                const interest = balance * monthlyRate;
+                const principal = M - interest;
+                balance -= principal;
+
+                // Store values for plotting
+                months.push(month);
+                interestPaid.push(interest);
+                principalPaid.push(principal);
+                remainingBalance.push(balance);
+            }
+
+            // Monthly Cost Variables
+            let InterestPaid1 = Math.round(interestPaid[0]);
+            let PrincipalPaid1 = Math.round(principalPaid[0]);
+            let TotalPaid1 = InterestPaid1 + PrincipalPaid1;
+            let InterestPaid2 = Math.round(interestPaid[1]);
+            let PrincipalPaid2 = Math.round(principalPaid[1]);
+            let InterestPaid3 = Math.round(interestPaid[2]);
+            let PrincipalPaid3 = Math.round(principalPaid[2]);
+            let TotalPaid3 = InterestPaid1 + PrincipalPaid1 + InterestPaid2 + PrincipalPaid2 + InterestPaid3 + PrincipalPaid3;
+
+            let Month1CostA = "Loan costs at Month 1 ";
+            document.getElementById('Month1CostA').innerText = Month1CostA;
+
+            let Month1CostB = "Interest to pay: " + InterestPaid1 + 
+            ", Principal to pay: " + PrincipalPaid1 + 
+            ", Total to pay so far (month 1): " + TotalPaid1;
+            document.getElementById('Month1CostB').innerText = Month1CostB;
+
+            let Month3CostA = "Loan costs at Month 3 ";
+            document.getElementById('Month3CostA').innerText = Month3CostA;
+
+            let Month3CostB = "Interest to pay: " + InterestPaid3 + 
+            ", Principal to pay: " + PrincipalPaid3 + 
+            ", Total to pay so far (months 1 to 3): " + TotalPaid3;
+            document.getElementById('Month3CostB').innerText = Month3CostB;
+
+            // Destroy the existing chart if it exists
+            if (loanChart !== null) {
+                loanChart.destroy();
+            }
+
+            // Create the chart using Chart.js
+            const ctx = document.getElementById('loanChart').getContext('2d');
+            loanChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Interest Paid',
+                            data: interestPaid,
+                            borderColor: 'red',
+                            fill: false
+                        },
+                        {
+                            label: 'Principal Paid',
+                            data: principalPaid,
+                            borderColor: 'blue',
+                            fill: false
+                        },
+                        {
+                            label: 'Remaining Balance',
+                            data: remainingBalance,
+                            borderColor: 'green',
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Months'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Pounds GBP'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to update renovation costs and totals
+        function updateCosts() {
+            const RLowCostId1 = Number(document.getElementById('RLowCostId1').value);
+            const RHighCostId1 = Number(document.getElementById('RHighCostId1').value);
+            const RLowCostId2 = Number(document.getElementById('RLowCostId2').value);
+            const RHighCostId2 = Number(document.getElementById('RHighCostId2').value);
+            const RLowCostId3 = Number(document.getElementById('RLowCostId3').value);
+            const RHighCostId3 = Number(document.getElementById('RHighCostId3').value);
+            const RLowCostId4 = Number(document.getElementById('RLowCostId4').value);
+            const RHighCostId4 = Number(document.getElementById('RHighCostId4').value);
+            const RLowCostId5 = Number(document.getElementById('RLowCostId5').value);
+            const RHighCostId5 = Number(document.getElementById('RHighCostId5').value);
+            const RLowCostId6 = Number(document.getElementById('RLowCostId6').value);
+            const RHighCostId6 = Number(document.getElementById('RHighCostId6').value);
+            const RLowCostId7 = Number(document.getElementById('RLowCostId7').value);
+            const RHighCostId7 = Number(document.getElementById('RHighCostId7').value);
+            const RLowCostId8 = Number(document.getElementById('RLowCostId8').value);
+            const RHighCostId8 = Number(document.getElementById('RHighCostId8').value);
+
+            const RLowCostProject = (RLowCostId1 + RLowCostId2 + RLowCostId3 + RLowCostId4 + 
+            RLowCostId5 + RLowCostId6 + RLowCostId7 + RLowCostId8) * 0.1;
+            const RHighCostProject = (RHighCostId1 + RHighCostId2 + RHighCostId3 + RHighCostId4 +
+            RHighCostId5 + RHighCostId6 + RHighCostId7 + RHighCostId8) * 0.15;
+
+            document.getElementById('RLowCostProject').innerText = RLowCostProject;
+            document.getElementById('RHighCostProject').innerText = RHighCostProject;
+
+            const RLowCostTotal = RLowCostId1 + RLowCostId2 + RLowCostId3 + RLowCostId4 + 
+            RLowCostId5 + RLowCostId6 + RLowCostId7 + RLowCostId8 + RLowCostProject;
+            const RHighCostTotal = RHighCostId1 + RHighCostId2 + RHighCostId3 + RHighCostId4 + 
+            RHighCostId5 + RHighCostId6 + RHighCostId7 + RHighCostId8 + RHighCostProject;
+
+            document.getElementById('RLowCostTotal').innerText = RLowCostTotal;
+            document.getElementById('RHighCostTotal').innerText = RHighCostTotal;
+        }
+
+        // Update the sheet and loan chart
+        function updateSheet() {
+            updateCosts();
+            createLoanChart();
+        }
+
+        // Run on page load
+        window.onload = function() {
+            updateSheet();
+        };
+    </script>
+</body>
+</html>
