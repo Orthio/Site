@@ -179,7 +179,12 @@
         <p><span id="Month3CostA"></span></p>
         <p><span id="Month3CostB"></span></p>
     </div>  
-    
+    <br>
+    <div>
+        <p><span id="Month12CostA"></span></p>
+        <p><span id="Month12CostB"></span></p>
+    </div>  
+
     <script>
         let loanChart = null;
 
@@ -223,7 +228,19 @@
             let PrincipalPaid2 = Math.round(principalPaid[1]);
             let InterestPaid3 = Math.round(interestPaid[2]);
             let PrincipalPaid3 = Math.round(principalPaid[2]);
-            let TotalPaid3 = InterestPaid1 + PrincipalPaid1 + InterestPaid2 + PrincipalPaid2 + InterestPaid3 + PrincipalPaid3;
+            let TotalPaid3 = InterestPaid1 + PrincipalPaid1 + InterestPaid2 + 
+            PrincipalPaid2 + InterestPaid3 + PrincipalPaid3;
+            let InterestPaid12 = Math.round(interestPaid[13]);
+            let PrincipalPaid12 = Math.round(principalPaid[13]);
+            let TotalPaid12 = Math.floor(
+                interestPaid[0] + principalPaid[0] + interestPaid[1] + principalPaid[1] +
+                interestPaid[2] + principalPaid[2] + interestPaid[3] + principalPaid[3] +
+                interestPaid[4] + principalPaid[4] + interestPaid[5] + principalPaid[5] +
+                interestPaid[6] + principalPaid[6] + interestPaid[7] + principalPaid[7] +
+                interestPaid[8] + principalPaid[8] + interestPaid[9] + principalPaid[9] +
+                interestPaid[10] + principalPaid[10] + interestPaid[11] + principalPaid[11] +
+                interestPaid[12] + principalPaid[12] + interestPaid[13] + principalPaid[13]
+             );
 
             let Month1CostA = "Loan costs at Month 1 ";
             document.getElementById('Month1CostA').innerText = Month1CostA;
@@ -240,6 +257,14 @@
             ", Principal to pay: " + PrincipalPaid3 + 
             ", Total to pay so far (months 1 to 3): " + TotalPaid3;
             document.getElementById('Month3CostB').innerText = Month3CostB;
+
+            let Month12CostA = "Loan costs at Month 12 ";
+            document.getElementById('Month12CostA').innerText = Month12CostA;
+
+            let Month12CostB = "Interest to pay: " + InterestPaid12 + 
+            ", Principal to pay: " + PrincipalPaid12 + 
+            ", Total to pay so far (months 1 to 12): " + TotalPaid12;
+            document.getElementById('Month12CostB').innerText = Month12CostB;
 
             // Destroy the existing chart if it exists
             if (loanChart !== null) {
@@ -286,8 +311,9 @@
                         y: {
                             title: {
                                 display: true,
-                                text: 'Pounds GBP'
-                            }
+                                text: 'Pounds GBP',
+                            },
+                            min: -1000
                         }
                     }
                 }
@@ -347,12 +373,18 @@
             updateBudget();
             updateCosts();
             createLoanChart();
+            console.log("Function executed at " + new Date().toLocaleTimeString());
+
+        }
+      
+        /*  // Define a function that removes the event listener after the first click
+        function handleClick() {
+            updateSheet(); // Call the function
+            document.removeEventListener('click', handleClick); // Remove the event listener
         }
 
-        // Run on page load
-        window.onload = function() {
-            updateSheet();
-        };
+        // Add event listener to the entire document
+        document.addEventListener('click', handleClick); */
     </script>
 </body>
 </html>
