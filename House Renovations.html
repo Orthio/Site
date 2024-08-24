@@ -110,7 +110,7 @@
             </tbody>
         </table>
     </div>
-
+    <button onclick="updateSheet()">Update Sheet</button>
     <br>
    
     <h3>Loan Payment Breakdown: £25,000 Loan at 6% APR</h3>
@@ -124,7 +124,7 @@
         <label for="APR" class="APRLabel">APR Percent:</label>
         <input type="number" id="APR" class="APRInput" value="6">
         </div>
-        <button onclick="updateSheet()">Calculate Loan</button>
+        <button onclick="updateSheet()">Update Sheet</button>
     </div>
     <canvas id="loanChart" width="600" height="400"></canvas>
     <div>
@@ -270,10 +270,10 @@
             const RLowCostId8 = Number(document.getElementById('RLowCostId8').value);
             const RHighCostId8 = Number(document.getElementById('RHighCostId8').value);
 
-            const RLowCostProject = (RLowCostId1 + RLowCostId2 + RLowCostId3 + RLowCostId4 + 
-            RLowCostId5 + RLowCostId6 + RLowCostId7 + RLowCostId8) * 0.1;
-            const RHighCostProject = (RHighCostId1 + RHighCostId2 + RHighCostId3 + RHighCostId4 +
-            RHighCostId5 + RHighCostId6 + RHighCostId7 + RHighCostId8) * 0.15;
+            const RLowCostProject = Math.floor((RLowCostId1 + RLowCostId2 + RLowCostId3 + RLowCostId4 + 
+            RLowCostId5 + RLowCostId6 + RLowCostId7 + RLowCostId8) * 0.1);
+            const RHighCostProject = Math.floor((RHighCostId1 + RHighCostId2 + RHighCostId3 + RHighCostId4 +
+            RHighCostId5 + RHighCostId6 + RHighCostId7 + RHighCostId8) * 0.15);
 
             document.getElementById('RLowCostProject').innerText = RLowCostProject;
             document.getElementById('RHighCostProject').innerText = RHighCostProject;
