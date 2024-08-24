@@ -7,7 +7,30 @@
     <script src="https://unpkg.com/chart.js@4.0.1/dist/chart.umd.js"></script>
     <style>
         p {
-            line-height: 0.5;
+            line-height: 0;
+        }
+        /* Flexbox container2 */
+       .form-container2 {
+            display: flex;
+            flex-direction: column; /* Arrange elements vertically */
+            align-items: flex-start; /* Align elements to the start of the container */
+            gap: 5px; /* Space between each form group */
+        }
+
+        /* Flexbox for form group */
+        .form-group2 {
+            display: flex;
+            flex-direction: row; /* Arrange label and input horizontally */
+            align-items: center; /* Align items vertically */
+            gap: -5px; /* Space between label and input */
+        }
+        .form-group2Label {
+            width: 300px; /* Fixed width for label */
+        }
+        input {
+            width: 70px; /* Fixed width for input */
+
+            flex: 1; /* Input will take the remaining space */
         }
        /* Flexbox container */
        .form-container {
@@ -45,6 +68,26 @@
 </head>
 <body>
     <h2>Hannah House Renovations</h2>
+    <h3>Current Budget</h3>
+    <div class="form-container2">
+        <div class="form-group2"> 
+        <label for="currentRent" class="form-group2Label">Current rent (£): </label>
+        <input type="number" id="currentRent" value="100" class="CurrentRentInput">
+        </div>
+        <div class="form-group2">
+        <label for="expectedMortgage" class="form-group2Label">Expected monthly mortgage payments (£):</label>
+        <input type="number" id="expectedMortgage" class="expectedMortgageInput" value="120">
+        </div>
+        <div class="form-group2">
+        <label for="netIncome" class="form-group2Label">Current savings each month, net income (£):</label>
+        <input type="number" id="netIncome" class="expectedMortgageInput" value="200">
+        </div>
+        <div>
+        <p><small><span id="mortgageDifference"></span></small></p>
+        <p><small><span id="savingsDifference"></span></small></p>
+        <button onclick="updateSheet()">Update Sheet</button>
+        </div>
+    </div>
     <h3>House Renovation Costs</h3>
 
     <div>
@@ -287,8 +330,21 @@
             document.getElementById('RHighCostTotal').innerText = RHighCostTotal;
         }
 
+        function updateBudget() {
+            const currentRent = Number(document.getElementById('currentRent').value);
+            const expectedMortgage = Number(document.getElementById('expectedMortgage').value);
+            const netIncome = Number(document.getElementById('netIncome').value);
+
+            const mortgageDifference = Math.floor(expectedMortgage - currentRent);
+            const savingsDifference = Math.floor(netIncome - mortgageDifference);
+
+            document.getElementById('mortgageDifference').innerText = "Difference between expected mortgage and current rent: £" + mortgageDifference;
+            document.getElementById('savingsDifference').innerText = "Savings per month after new mortgage: £" + savingsDifference;
+        }
+
         // Update the sheet and loan chart
         function updateSheet() {
+            updateBudget();
             updateCosts();
             createLoanChart();
         }
