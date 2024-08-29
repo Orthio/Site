@@ -1395,6 +1395,7 @@
   function addFlaw(){
     var flawIndex =Math.floor(Math.random() * flaws.length); 
     currentCharacter.flaw = "<i>Flaw: </i>" + flaws[flawIndex];
+    currentCharacter.shortflaw = flaws[flawIndex];
   
     updateCharacterDisplay();
       if (resultsHistory.length > 6) {
@@ -1518,7 +1519,8 @@
     };
       
     var simpleText = 
-    "(" + currentCharacter.race + " " + currentCharacter.sex 
+    "<b>" + currentCharacter.fullname + "</b>" + " - ("
+    + currentCharacter.race + " " + currentCharacter.sex 
     + ", " + currentCharacter.occupation
     + " - " + currentCharacter.appearance 
     + ". " + currentCharacter.quirk 
