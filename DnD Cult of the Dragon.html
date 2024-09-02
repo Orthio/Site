@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        p {
+            font-size:12px;
+        }
         .CircleContainer {
             display: inline-block;
             margin-right: 10px;
@@ -19,6 +22,7 @@
         } 
         .GoalForm {
             display: inline-block;
+            vertical-align: top;
             margin-right: 10px;
             width:180px;
         }
@@ -33,23 +37,63 @@
 
 <body>
     <div class = "GoalForm">
-       <p class="GoalText"> <span id="progress-label-1" ></span> <b>Sharruth Ritual</b></p>
-        <img id="Circle1" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
+       <p class="GoalText"> <span id="progress-label-1" ></span> 
+        <b>Granting souls to Sharruth</b></p>
+        <img id="Circle1" src="https://i.imgur.com/gNBLY5u.png" alt="12-0" width="100px">
+        <p class="GoalText"> Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p>
     </div>
 
     <div class = "GoalForm">
-        <p class="GoalText"><span id="progress-label-2" class="GoalSpans"></span> <b>Planning Baldur's Attack</b></p>
-        <img id="Circle2" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
+        <p class="GoalText"><span id="progress-label-2" class="GoalSpans"></span> 
+            <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
+        <img id="Circle2" src="https://i.imgur.com/gNBLY5u.png" alt="6-0" width="100px">
+        <p></p>
     </div>
 
     <div class = "GoalForm">
-        <p class="GoalText"><span id="progress-label-3" class="GoalSpans"></span><b>Get Gold</b></p>
-        <img id="Circle3" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
+        <p class="GoalText"><span id="progress-label-3" class="GoalSpans"></span>
+            <b>Memory - Planning attack on Baldur’s</b></p>
+        <img id="Circle3" src="https://i.imgur.com/gNBLY5u.png" alt="8-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-4" class="GoalSpans"></span>
+            <b>Shadow - Know that Shadarkai spotted, and that it’s on the way south. Prioritising Friendly defence</b></p>
+        <img id="Circle4" src="https://i.imgur.com/gNBLY5u.png" alt="12-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-5" class="GoalSpans"></span>
+            <b>Disrupting meetings and disabling communication with Emerald Enclave</b></p>
+        <img id="Circle5" src="https://i.imgur.com/gNBLY5u.png" alt="8-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-6" class="GoalSpans"></span>
+            <b>Gathering Intel in Cairn, stopping comms there </b></p>
+        <img id="Circle6" src="https://i.imgur.com/gNBLY5u.png" alt="4-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-7" class="GoalSpans"></span>
+            <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b></p>
+        <img id="Circle7" src="https://i.imgur.com/gNBLY5u.png" alt="6-0" width="100px">
+        <p></p>
     </div>
 
     <br><br>
     <p><b>Extra Goals</b></p>
-    <p>Collect treasure</p>
+    <p></p> 
 
 </body>
+<script>
+
+window.onload = function() {
+    updateSheet();
+  };
+</script>
 </html>

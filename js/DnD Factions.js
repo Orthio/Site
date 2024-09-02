@@ -108,6 +108,19 @@ var circleDatabase = {
     }              
 };
 
+class Circle {
+    static circleDatabase = {};
+    constructor(size, ticks, color) {
+        this.size = size;
+        this.ticks = ticks;
+        this.color = color;
+        Circle.circleDatabase[this.generateName()] = this;
+    }
+    generateName() {
+        const circleCount = Object.keys(Circle.circles).length + 1;
+        return `Circle${circleCount}`;
+    }
+}
 
 function circleCheck(size, ticks, color) {
     if (circleDatabase.hasOwnProperty(color)) {
@@ -159,8 +172,22 @@ function circleSwap() {
         } 
 };
 
+function createNewCircle(number) {
+    var name = "Circle" + number;
+    var circleInit = document.getElementById(name).alt;
+    let circleParts = circleInit.split('-');
+    let circleSize = parseInt(circleParts[0], 10);
+    let circleTicks = parseInt(circleParts[1], 10);
+    new Circle(circleSize, circleTicks, "Green");
+// Change color to be dynamic later
+};
+
 function updateSheet(){
-circleSwap();
+    var circleNos = 7;
+    for (var i = 1; i <= circleNos; i++) {
+        createNewCircle(i);
+    }
+    circleSwap();
 };
 
 function saveCircleData() {
@@ -182,7 +209,6 @@ function saveCircleData() {
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
 }
-
 
 window.onload = function() {
     updateSheet();
