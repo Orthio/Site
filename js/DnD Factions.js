@@ -2,6 +2,9 @@
 
 var circleDatabase = {
     Green: {
+        0: {
+            0: "https://i.imgur.com/XsKFVmC.jpeg"
+        },
         3: {
             0: "https://i.imgur.com/EuNDi3m.png", 
             1: "https://i.imgur.com/dp6fbCp.png", 
@@ -34,9 +37,16 @@ var circleDatabase = {
             6: "https://i.imgur.com/f7Ur7yl.png",
             7: "https://i.imgur.com/90B0OXY.png",
             8: "https://i.imgur.com/NelzCbt.png"
+        },
+        12: {
+            0: "https://i.imgur.com/qIrst5B.jpeg",
+            1: "https://i.imgur.com/ViWj57z.jpeg"
         }
     },
     Blue: {
+        0: {
+            0: "https://i.imgur.com/XsKFVmC.jpeg"
+        },
         3: {
             0: "https://i.imgur.com/EuNDi3m.png", 
             1: "https://i.imgur.com/HxWfwSp.png", 
@@ -72,6 +82,9 @@ var circleDatabase = {
         }
     },
     Grey: {
+        0: {
+            0: "https://i.imgur.com/XsKFVmC.jpeg"
+        },
         3: {
             0: "https://i.imgur.com/EuNDi3m.png",
             1: "https://i.imgur.com/N6cWkJZ.png",
@@ -104,20 +117,26 @@ var circleDatabase = {
             6: "https://i.imgur.com/vdGUUar.png",
             7: "https://i.imgur.com/yiO8bZO.png",
             8: "https://i.imgur.com/MVGpCdo.png"
+        },
+        12: {
+            0: "https://i.imgur.com/qIrst5B.jpeg",
+            1: "https://i.imgur.com/ViWj57z.jpeg"
         }
     }              
 };
 
 class Circle {
     static circleDatabase = {};
+    img = undefined;
+
     constructor(size, ticks, color) {
-        this.size = size;
-        this.ticks = ticks;
-        this.color = color;
+        this.circleSize = size;
+        this.circleTicks = ticks;
+        this.circleColor = color;
         Circle.circleDatabase[this.generateName()] = this;
     }
     generateName() {
-        const circleCount = Object.keys(Circle.circles).length + 1;
+        const circleCount = Object.keys(Circle.circleDatabase).length + 1;
         return `Circle${circleCount}`;
     }
 }
@@ -143,54 +162,30 @@ function circleCheck(size, ticks, color) {
 
 
 
-function circleSwap() {
-        var img1 = document.getElementById('Circle1');
-        var size1 = parseInt(document.getElementById('circle-size-1').value, 10);
-        var ticks1 = parseInt(document.getElementById('circle-tick-1').value, 10);
-
-        var circleImage = circleCheck(size1,ticks1,"Green");
-        if (circleImage) {
-            img1.src = circleImage;
-        }
-
-        var img2 = document.getElementById('Circle2');
-        var size2 = parseInt(document.getElementById('circle-size-2').value, 10);
-        var ticks2 = parseInt(document.getElementById('circle-tick-2').value, 10);
-
-        var circleImage = circleCheck(size2,ticks2,"Blue");
-        if (circleImage) {
-            img2.src = circleImage;
-        } 
-
-        var img3 = document.getElementById('Circle3');
-        var size3 = parseInt(document.getElementById('circle-size-3').value, 10);
-        var ticks3 = parseInt(document.getElementById('circle-tick-3').value, 10);
-
-        var circleImage = circleCheck(size3,ticks3,"Grey");
-        if (circleImage) {
-            img3.src = circleImage;
-        } 
-};
-
-function createNewCircle(number) {
-    var name = "Circle" + number;
-    var circleInit = document.getElementById(name).alt;
-    let circleParts = circleInit.split('-');
-    let circleSize = parseInt(circleParts[0], 10);
-    let circleTicks = parseInt(circleParts[1], 10);
-    new Circle(circleSize, circleTicks, "Green");
+function circleSwap(i) {
+    // Makes a new circle and swaps the image
+    var name = "Circle" + i;
+    var newInit = document.getElementById(name).alt;
+    let newParts = newInit.split('-');
+    let newSize = parseInt(newParts[0], 10);
+    let newTicks = parseInt(newParts[1], 10);
+    new Circle(newSize, newTicks, "Green");
+    var img = document.getElementById(name);
+    var circleImage = circleCheck(newSize,newTicks,"Green");
+    if (circleImage) {
+        img.src = circleImage;
+    }
 // Change color to be dynamic later
 };
 
-function updateSheet(){
+/* function updateSheet(){
     var circleNos = 7;
     for (var i = 1; i <= circleNos; i++) {
-        createNewCircle(i);
+        circleSwap(i);
     }
-    circleSwap();
-};
+}; */
 
-function saveCircleData() {
+/* function saveCircleData() {
     const circleData = {
         label: document.getElementById('progress-label-1').value,
         size: parseInt(document.getElementById('circle-size-1').value),
@@ -208,7 +203,7 @@ function saveCircleData() {
     .then(response => response.text())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
-}
+} */
 
 window.onload = function() {
     updateSheet();

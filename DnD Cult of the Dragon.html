@@ -8,18 +8,6 @@
         p {
             font-size:12px;
         }
-        .CircleContainer {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        .CircleSizeClass {
-            width: 50px;
-            font-size: 30px;
-        }
-        .CircleTickClass {
-            width: 50px;
-            font-size: 30px;
-        } 
         .GoalForm {
             display: inline-block;
             vertical-align: top;
@@ -28,6 +16,11 @@
         }
         .GoalText {
             width: 180px;
+            height: 25px;
+        }
+        .GoalExtra {
+            height: 50px;
+            margin-bottom: 5px;
         }
 
     </style>
@@ -39,14 +32,14 @@
     <div class = "GoalForm">
        <p class="GoalText"> <span id="progress-label-1" ></span> 
         <b>Granting souls to Sharruth</b></p>
-        <img id="Circle1" src="https://i.imgur.com/gNBLY5u.png" alt="12-0" width="100px">
-        <p class="GoalText"> Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p>
+        <img id="Circle1" src="https://i.imgur.com/gNBLY5u.png" alt="0-0" width="100px">
+        <p class="GoalExtra"> Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p>
     </div>
 
     <div class = "GoalForm">
         <p class="GoalText"><span id="progress-label-2" class="GoalSpans"></span> 
             <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
-        <img id="Circle2" src="https://i.imgur.com/gNBLY5u.png" alt="6-0" width="100px">
+        <img id="Circle2" src="https://i.imgur.com/gNBLY5u.png" alt="6-1" width="100px">
         <p></p>
     </div>
 
@@ -59,14 +52,14 @@
 
     <div class = "GoalForm">
         <p class="GoalText"><span id="progress-label-4" class="GoalSpans"></span>
-            <b>Shadow - Know that Shadarkai spotted, and that it’s on the way south. Prioritising Friendly defence</b></p>
-        <img id="Circle4" src="https://i.imgur.com/gNBLY5u.png" alt="12-0" width="100px">
-        <p></p>
+            <b>Shadow - Know that Shadarkai spotted, and that it’s moving South </b></p>
+        <img id="Circle4" src="https://i.imgur.com/gNBLY5u.png" alt="0-0" width="100px">
+        <p>Prioritising Friendly defence</p>
     </div>
 
     <div class = "GoalForm">
         <p class="GoalText"><span id="progress-label-5" class="GoalSpans"></span>
-            <b>Disrupting meetings and disabling communication with Emerald Enclave</b></p>
+            <b>Disrupting meetings and disabling comms with Emerald Enclave</b></p>
         <img id="Circle5" src="https://i.imgur.com/gNBLY5u.png" alt="8-0" width="100px">
         <p></p>
     </div>
@@ -95,5 +88,12 @@
 window.onload = function() {
     updateSheet();
   };
+
+function updateSheet(){
+var circleNos = 7;
+for (var i = 1; i <= circleNos; i++) {
+    circleSwap(i);
+}
+};
 </script>
 </html>
