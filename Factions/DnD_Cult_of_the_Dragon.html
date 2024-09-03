@@ -92,8 +92,9 @@ window.onload = function() {
 
 function updateSheet(){
 var circleNos = 7;
+var colorOrder = ["Green","Blue","Grey","Green","Blue","Grey","Green","Blue","Grey"];
 for (var i = 1; i <= circleNos; i++) {
-    circleSwap(i);
+    circleSwap(i,colorOrder[i-1]);
 }
 };
 </script>

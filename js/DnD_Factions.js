@@ -160,18 +160,16 @@ function circleCheck(size, ticks, color) {
     }
 }
 
-
-
-function circleSwap(i) {
+function circleSwap(i,color) {
     // Makes a new circle and swaps the image
     var name = "Circle" + i;
     var newInit = document.getElementById(name).alt;
     let newParts = newInit.split('-');
     let newSize = parseInt(newParts[0], 10);
     let newTicks = parseInt(newParts[1], 10);
-    new Circle(newSize, newTicks, "Green");
+    new Circle(newSize, newTicks, color);
     var img = document.getElementById(name);
-    var circleImage = circleCheck(newSize,newTicks,"Green");
+    var circleImage = circleCheck(newSize,newTicks,color);
     if (circleImage) {
         img.src = circleImage;
     }
