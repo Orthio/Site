@@ -66,8 +66,6 @@ const windDirectionTable = {
 };
 
 
-
-
 // Weather Effect descriptions
 var effectsTable = {
     "A Blizzard ": "<b>" + "A Blizzard " + "</b>" + "<br>" +
@@ -171,11 +169,6 @@ function decideConditions(roll, table) {
     return "Unknown";
 }
 
-// Function to get a random roll (including 0)
-function diceRoll(roll) {
-    return Math.floor(Math.random() * roll) + 1;
-}
-
 function isInRange(numbercheck,numberlow,numberhigh) {
     if (numbercheck >= numberlow && numbercheck <= numberhigh) {
     return true;  // The number is within the range
@@ -209,7 +202,7 @@ function fetchEffects(current,roll,windroll){
     }
 
     let validRolls2 = [16,17,18,19,20]
-    if (validRolls.includes(windroll)) {
+    if (validRolls2.includes(windroll)) {
         effectsCurrent = effectsTable["A High Wind "];
         effectsArray.push(effectsCurrent);
     }
@@ -224,12 +217,12 @@ function winterFunction(){
         // 25% chance for weather to use "As Yesterday"
         if (i > 0 && Math.random() < 0.25) { 
             weatherArray.push(weatherArray[i-1]);
-            windCRoll = diceRoll(20);
+            windCRoll = generalDiceRoll(20);
         } else {
-            weatherCRoll = diceRoll(100);
+            weatherCRoll = generalDiceRoll(100);
             //weatherCRoll = 1;
-            windCRoll = diceRoll(20);
-            
+            windCRoll = generalDiceRoll(20);
+            1
 
             weatherCurrent = decideConditions(weatherCRoll, winterWeatherTable);
             weatherArray.push(weatherCurrent);
@@ -244,7 +237,7 @@ function winterFunction(){
             
             // Add wind direction if the wind is strong
             if (isInRange(windCRoll,16,20)===true){
-                windDirectionCurrent = decideConditions(diceRoll(4), windDirectionTable);
+                windDirectionCurrent = decideConditions(generalDiceRoll(4), windDirectionTable);
                 } else {
                 windDirectionCurrent = "";
             }
@@ -254,7 +247,7 @@ function winterFunction(){
 
         // Add rain conditions if cloudy
         if (isInRange(weatherCRoll,20,59)===true){
-            rainCurrent = decideConditions(diceRoll(20), winterRainTable );
+            rainCurrent = decideConditions(generalDiceRoll(20), winterRainTable );
         } else {
             rainCurrent = "";
         }
@@ -276,10 +269,7 @@ function winterFunction(){
     rainArray = [];
     windDirArray = [];
     effectsArray = [];
-
 }
-
-
 
 function displayResults() {
 
@@ -317,6 +307,5 @@ function effectsFunction() {
 function monthFunction() {
 
     document.getElementById("checkmonth").innerHTML = "<br>" + months;
-
 
 }
