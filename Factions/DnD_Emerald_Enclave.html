@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         p {
-            font-size:14px;
+            font-size:12px;
+        }
+        .form-goal-overall {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
         .form-goal {
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 10px;
-            width:180px;
+            flex: 0 0 25%; /* Each block takes up 1/4 of the row */
+            box-sizing: border-box;
+            padding: 10px;
         }
         .text-goal {
             width: 180px;
             height: 25px;
         }
-
+        .goal-link {
+            text-decoration: none;
+            color: black;
+        }
     </style>
         <script src="../js/General.js"></script>
         <script src="../js/DnD_Factions.js"></script>
@@ -26,25 +34,26 @@
 </head>
 
 <body>
+    <div class="form-goal-overall">
     <div class="form-goal">
         <p class="text-goal"><span id="progress-label-1"></span>
             <b>Flute - Unaware of this, Carpal is conversing with travellers</b></p>
         <img id="js-circle1" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="12-0" width="100px">
-        <p></p>
+        <p><i>Carpal</i></p>
     </div>
 
     <div class="form-goal">
         <p class="text-goal"><span id="progress-label-2"></span>
-            <b>Memory - Watching Shadarkai at Don. Talking to Margo about Torlin</b></p>
+            <b>Memory - Watching Shadarkai at Don. </b></p>
         <img id="js-circle2" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="12-1" width="100px">
-        <p></p>
+        <p>And Talking to Margo about Torlin</p>
     </div>
 
     <div class="form-goal">
         <p class="text-goal"><span id="progress-label-3"></span>
-            <b>Shadow - Gathering materials in Cloakwood to deal with once Shadow is in possession </b></p>
+            <b>Shadow - Gathering Assetts in Cloakwood </b></p>
         <img id="js-circle3" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-2" width="100px">
-        <p></p>
+        <p>Getting resources ready for Shadarkai arrival</p>
     </div>
 
     <div class="form-goal">
@@ -53,10 +62,12 @@
         <img id="js-circle4" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-2" width="100px">
         <p></p>
     </div>
+    </div>
 
 
     <br><br>
-    <p><b>General Goals</b></p>
+    <p><a class="goal-link" href="https://www.notion.so/dragons-rest/Emerald-Enclave-aeff48d2519145e483fc91018c225c2e">
+        <b>General Goals</b></a></p>
     <p>Work for Neutrality <br>
     House Fey refugees in Cloakwood adequately <br>
     Look for the adventuring group

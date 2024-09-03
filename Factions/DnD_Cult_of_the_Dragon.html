@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         p {
-            font-size:14px;
+            font-size:12px;
+        }
+        .form-goal-overall {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
         .form-goal {
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 10px;
-            width:180px;
+            flex: 0 0 25%; /* Each block takes up 1/4 of the row */
+            box-sizing: border-box;
+            padding: 10px;
         }
         .text-goal {
             width: 180px;
             height: 25px;
         }
-        .text-goal-extra {
-            height: 50px;
-            margin-bottom: 5px;
+        .goal-link {
+            text-decoration: none;
+            color: black;
         }
 
     </style>
@@ -30,45 +35,48 @@
 </head>
 
 <body>
+    <div class="form-goal-overall">
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-1"></span> 
+                <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
+            <img id="js-circle1" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-1" width="100px">
+            <p><i>Wes</i> <br>
+                Gathering intel</p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-1"></span> 
-            <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
-        <img id="js-circle1" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-1" width="100px">
-        <p><i>Wes</i> gathering intel</p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-2"></span>
+                <b>Memory - Planning an attack on Baldur’s</b></p>
+            <img id="js-circle2" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-1" width="100px">
+            <p>Gathering allies and land, influencing political figures</p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-2"></span>
-            <b>Memory - Planning an attack on Baldur’s</b></p>
-        <img id="js-circle2" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-1" width="100px">
-        <p>Gathering allies and land, influencing political figures</p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-3"></span>
+                <b>Shadow - Taking intel in Cairn </b></p>
+            <img id="js-circle3" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-1" width="100px">
+            <p><i>Miara</i> <br>
+                Prioritising Friendly defence</p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-3"></span>
-            <b>Shadow - Taking intel in Cairn </b></p>
-        <img id="js-circle3" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-1" width="100px">
-        <p><i>Miara</i> <br>
-            Prioritising Friendly defence</p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-4"></span>
+                <b>Disrupting meetings and disabling comms with Emerald Enclave</b></p>
+            <img id="js-circle4" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-0" width="100px">
+            <p></p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-4"></span>
-            <b>Disrupting meetings and disabling comms with Emerald Enclave</b></p>
-        <img id="js-circle4" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="8-0" width="100px">
-        <p></p>
-    </div>
-
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-5"></span>
-            <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b></p>
-        <img id="js-circle5" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-0" width="100px">
-        <p></p>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-5"></span>
+                <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b></p>
+            <img id="js-circle5" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-0" width="100px">
+            <p></p>
+        </div>
     </div>
 
     <br><br>
-    <p><b>General Goals</b></p>
+    <p><a class="goal-link" href="https://www.notion.so/dragons-rest/Cult-of-the-Dragon-080b62b5666a4939bea38a5d40f615b7">
+        <b>General Goals</b></a></p>
     <p>Grant souls to Sharruth - <br>
         Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p> 
 

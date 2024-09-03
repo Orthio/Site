@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         p {
-            font-size:14px;
+            font-size:12px;
+        }
+        .form-goal-overall {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
         .form-goal {
-            display: inline-block;
-            vertical-align: top;
-            margin-right: 10px;
-            width:180px;
+            flex: 0 0 25%; /* Each block takes up 1/4 of the row */
+            box-sizing: border-box;
+            padding: 10px;
         }
         .text-goal {
             width: 180px;
             height: 25px;
         }
-
+        .goal-link {
+            text-decoration: none;
+            color: black;
+        }
     </style>
         <script src="../js/General.js"></script>
         <script src="../js/DnD_Factions.js"></script>
@@ -26,6 +34,7 @@
 </head>
 
 <body>
+    <div class="form-goal-overall">
     <div class="form-goal">
         <p class="text-goal"><span id="progress-label-1"></span>
             <b>Flute - Collecting intel in Dawn</b></p>
@@ -61,9 +70,11 @@
         <img id="js-circle5" src="https://i.imgur.com/gNBLY5u.png" alt="Circle Pic" data-circle="6-0" width="100px">
         <p>Unaware that Carceri know of this</p>
     </div>
+    </div>
 
     <br><br>
-    <p><b>General Goals</b></p>
+    <p><a class="goal-link" href="https://www.notion.so/dragons-rest/Flaming-Fist-7c5cfe60eb4c4df9941564d81ba61ee3">        
+    <b>General Goals</b></a></p>
     <p>Defending trade routes <br>
     Making new trade routes and outposts <br>
     </p>
