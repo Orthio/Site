@@ -350,6 +350,12 @@ Eiran.StandardAttack = "Longbow Multiattack";
 Eiran.StandardToHit = Eiran.DexMod + Eiran.RangedAttackBonus + 2; // +3 +2 +2 = +7
 // Against AC16, 0.45
 Eiran.StandardDamage = Math.round((2*(4.5)+6) * (1-0.45) *10)/10; // 11*0.55
+Eiran.ScytheToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] + Eiran.MeleeAttackBonus; // +3 +3 +1 = +7
+Eiran.ScytheDamage = 8.5 //1d8 + (3+1)
+Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] ; // +3 +3 = +6 (Twice)
+// +6 Adv to hit against AC16
+// 0.5 * 0.5 = 0.25 Chance of not happening, so chance of happening is 0.75
+Eiran.DaggersDamage = (2*(2.5+3))*0.75; // 2*(1d4+ 3dex)   = 10.5  
 
 Breiar.Strength = 14;
 Breiar.StrMod = 2;
