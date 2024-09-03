@@ -178,25 +178,6 @@ function circleSwap(i) {
 // Change color to be dynamic later
 };
 
-function diceRoll(roll,disadv) {
-    // Roll a number of d6
-    var rollResult = [];
-    for (var i = 0; i < roll; i++) {
-        rollResult.push(Math.floor(Math.random() * 6) + 1);
-    }
-    if (disadv === "Yes") {
-        return Math.min.apply(null,rollResult);
-    } else if (disadv === "No") { // if it's a regular roll
-        var countSixes = rollResult.filter(num => num === 6).length;
-        if (countSixes >= 2) {
-            return 7;
-        } 
-        else {
-        return Math.max.apply(null,rollResult);
-        }
-    }
-};
-
 function checkOutcome(roll) {
     // Check the outcome of the roll
     if (roll === 7) {
@@ -214,13 +195,13 @@ function rollFortune() {
     var traitRating = parseInt(document.getElementById('trait-rating').value);
     var majorAdv = parseInt(document.getElementById('major-advantage').value);
     var majorDisAdv = parseInt(document.getElementById('major-disadvantage').value);
-    var roll0d = "No";
-    var diceNo = traitRating + majorAdv - majorDisAdv;
-    if (diceNo < 1) {
-        diceNo = 2;
-        roll0d = "Yes"; // Rolling both dice at disadvantage
+    var roll0d = "Fortune";
+    var diceQty = traitRating + majorAdv - majorDisAdv;
+    if (diceQty < 1) {
+        diceQty = 2;
+        roll0d = "0d"; // Rolling both dice at disadvantage
     }
-    var diceOutcome = diceRoll(diceNo,roll0d);
+    var diceOutcome = generalDiceRoll(6,diceQty,roll0d);
     var fortuneOutcome = checkOutcome(diceOutcome);
     var fortuneResult = diceOutcome + ": " + fortuneOutcome;
     document.getElementById('fortune-result').innerHTML = fortuneResult;

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DnD Cult of the Dragon Progress</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        p {
+            font-size:12px;
+        }
+        .GoalForm {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+            width:180px;
+        }
+        .GoalText {
+            width: 180px;
+            height: 25px;
+        }
+        .GoalExtra {
+            height: 50px;
+            margin-bottom: 5px;
+        }
+
+    </style>
+        <script src="js/General.js"></script>
+        <script src="js/DnD Factions.js"></script>
+
+</head>
+
+<body>
+    <div class = "GoalForm">
+       <p class="GoalText"> <span id="progress-label-1" ></span> 
+        <b>Granting souls to Sharruth</b></p>
+        <img id="Circle1" src="https://i.imgur.com/gNBLY5u.png" alt="0-0" width="100px">
+        <p class="GoalExtra"> Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-2" class="GoalSpans"></span> 
+            <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
+        <img id="Circle2" src="https://i.imgur.com/gNBLY5u.png" alt="6-1" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-3" class="GoalSpans"></span>
+            <b>Memory - Planning attack on Baldur’s</b></p>
+        <img id="Circle3" src="https://i.imgur.com/gNBLY5u.png" alt="8-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-4" class="GoalSpans"></span>
+            <b>Shadow - Know that Shadarkai spotted, and that it’s moving South </b></p>
+        <img id="Circle4" src="https://i.imgur.com/gNBLY5u.png" alt="0-0" width="100px">
+        <p>Prioritising Friendly defence</p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-5" class="GoalSpans"></span>
+            <b>Disrupting meetings and disabling comms with Emerald Enclave</b></p>
+        <img id="Circle5" src="https://i.imgur.com/gNBLY5u.png" alt="8-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-6" class="GoalSpans"></span>
+            <b>Gathering Intel in Cairn, stopping comms there </b></p>
+        <img id="Circle6" src="https://i.imgur.com/gNBLY5u.png" alt="4-0" width="100px">
+        <p></p>
+    </div>
+
+    <div class = "GoalForm">
+        <p class="GoalText"><span id="progress-label-7" class="GoalSpans"></span>
+            <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b></p>
+        <img id="Circle7" src="https://i.imgur.com/gNBLY5u.png" alt="6-0" width="100px">
+        <p></p>
+    </div>
+
+    <br><br>
+    <p><b>Extra Goals</b></p>
+    <p></p> 
+
+</body>
+<script>
+
+window.onload = function() {
+    updateSheet();
+  };
+
+function updateSheet(){
+var circleNos = 7;
+for (var i = 1; i <= circleNos; i++) {
+    circleSwap(i);
+}
+};
+</script>
+</html>
