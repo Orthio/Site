@@ -139,8 +139,8 @@ var effectsTable = {
     "Turbulent gusts sweep across the land. <br>\
     Flying creatures gain +10 movement speed when moving with the wind, \
     and –10 movement speed when moving against it. <br>\
-    All ranged weapon attacks have a –2 to attack rolls, <br>\
-    and their range is reduced by half when shooting into the wind."
+    All ranged weapon attacks have their ranged <br>\
+    reduced by half when shooting into the wind."
 
 };
 

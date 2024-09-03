@@ -40,8 +40,19 @@ var circleDatabase = {
         },
         12: {
             0: "https://i.imgur.com/qIrst5B.jpeg",
-            1: "https://i.imgur.com/ViWj57z.jpeg"
-        }
+            1: "https://i.imgur.com/bGh5Pmi.jpeg",
+            2: "https://i.imgur.com/a0a9S9j.jpeg",
+            3: "https://i.imgur.com/WRNw5op.jpeg",
+            4: "https://i.imgur.com/YABr7ql.jpeg",
+            5: "https://i.imgur.com/neJsgvP.jpeg",
+            6: "https://i.imgur.com/yFg9zbq.jpeg",
+            7: "https://i.imgur.com/dGMhJVe.jpeg",
+            8: "https://i.imgur.com/adSehAg.jpeg",
+            9: "https://i.imgur.com/kdJRNJ7.jpeg",
+            10: "https://i.imgur.com/SI0CwNK.jpeg",
+            11: "https://i.imgur.com/S2gseHz.jpeg",
+            12: "https://i.imgur.com/Vsw5mIT.jpeg",
+        },
     },
     Blue: {
         0: {
@@ -79,7 +90,22 @@ var circleDatabase = {
             6: "https://i.imgur.com/SMq4k6x.png",
             7: "https://i.imgur.com/gs9coJt.png",
             8: "https://i.imgur.com/mqH90W9.png"
-        }
+        },
+        12: {
+            0: "https://i.imgur.com/qIrst5B.jpeg",
+            1: "https://i.imgur.com/zDcSqb1.jpeg",
+            2: "https://i.imgur.com/Tv1iuGD.jpeg",
+            3: "https://i.imgur.com/HvPwoir.jpeg",
+            4: "https://i.imgur.com/SewqlI6.jpeg",
+            5: "https://i.imgur.com/uAz8Kr6.jpeg",
+            6: "https://i.imgur.com/VHGnvA2.jpeg",
+            7: "https://i.imgur.com/20UwdgC.jpeg",
+            8: "https://i.imgur.com/9EzrXG7.jpeg",
+            9: "https://i.imgur.com/KLK8cn1.jpeg",
+            10: "https://i.imgur.com/fRH9rD9.jpeg",
+            11: "https://i.imgur.com/IXmNwuT.jpeg",
+            12: "https://i.imgur.com/nKPcvmV.jpeg",
+            },
     },
     Grey: {
         0: {
@@ -120,10 +146,21 @@ var circleDatabase = {
         },
         12: {
             0: "https://i.imgur.com/qIrst5B.jpeg",
-            1: "https://i.imgur.com/ViWj57z.jpeg"
+            1: "https://i.imgur.com/PLqf9Aq.jpeg",
+            2: "https://i.imgur.com/TpveN48.jpeg",
+            3: "https://i.imgur.com/ULWMMDC.jpeg",
+            4: "https://i.imgur.com/dKbOGFt.jpeg",
+            5: "https://i.imgur.com/oICwLFl.jpeg",
+            6: "https://i.imgur.com/0suG0iZ.jpeg",
+            7: "https://i.imgur.com/BON6Da3.jpeg",
+            8: "https://i.imgur.com/YHB92cr.jpeg",
+            9: "https://i.imgur.com/7ZA6Jxe.jpeg",
+            10: "https://i.imgur.com/Vt0AwWc.jpeg",
+            11: "https://i.imgur.com/SchHfQ1.jpeg",
+            12: "https://i.imgur.com/RsEewAm.jpeg"
         }
     }              
-};
+}
 
 class Circle {
     static circleDatabase = {};
@@ -162,8 +199,9 @@ function circleCheck(size, ticks, color) {
 
 function circleSwap(i,color) {
     // Makes a new circle and swaps the image
-    var name = "Circle" + i;
-    var newInit = document.getElementById(name).alt;
+    var name = "js-circle" + i;
+    var currentCircle = document.getElementById(name);
+    var newInit = currentCircle.getAttribute('data-circle');
     let newParts = newInit.split('-');
     let newSize = parseInt(newParts[0], 10);
     let newTicks = parseInt(newParts[1], 10);
@@ -173,7 +211,6 @@ function circleSwap(i,color) {
     if (circleImage) {
         img.src = circleImage;
     }
-// Change color to be dynamic later
 };
 
 function checkOutcome(roll) {
@@ -206,33 +243,15 @@ function rollFortune() {
 };
 
 
-/* function updateSheet(){
-    var circleNos = 7;
-    for (var i = 1; i <= circleNos; i++) {
-        circleSwap(i);
+function updateSheet(id){
+    var circleNos = 0;
+    if (id === undefined){
+        circleNos = 1;
+    } else {
+        circleNos = id;
     }
-}; */
-
-/* function saveCircleData() {
-    const circleData = {
-        label: document.getElementById('progress-label-1').value,
-        size: parseInt(document.getElementById('circle-size-1').value),
-        tick: parseInt(document.getElementById('circle-tick-1').value),
-        imageUrl: document.getElementById('Circle1').src
-    };
-
-    fetch('/save-circle', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(circleData)
-    })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-} */
-
-/* window.onload = function() {
-    updateSheet();
-}; */
+    var colorOrder = ["Green","Blue","Grey","Green","Blue","Grey","Green","Blue","Grey"];
+    for (var i = 1; i <= circleNos; i++) {
+        circleSwap(i,colorOrder[i-1]);
+    }
+};
