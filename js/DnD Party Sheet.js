@@ -277,15 +277,15 @@ Faelar.SpellCastMod = Faelar.WisMod;
 Faelar.MeleeAttackBonus = 1;
 Faelar.RangedAttackBonus = '';
 Faelar.SpellAttackBonus = '';
-Faelar.SpellSaveBonus = 2;
+Faelar.SpellSaveBonus = 0;
 Faelar.SpellAttack = Faelar.SpellCastMod + + proficiencyBonus[PartyLevel] + Faelar.SpellAttackBonus; //3+3+0=6
-Faelar.SpellSave = 8 + Faelar.SpellCastMod + proficiencyBonus[PartyLevel] + Faelar.SpellSaveBonus; //8+3+3+2=16
+Faelar.SpellSave = 8 + Faelar.SpellCastMod + proficiencyBonus[PartyLevel] + Faelar.SpellSaveBonus; //8+3+3+0=14
 Faelar.StandardAttack = "Sacred Flame and Spiritual Weapon";
-Faelar.StandardToHit = "DC16";
-// DC16 to hit against Spell Save DC16
-// to hit DC16, Faelar needs to roll a 10 or higher, 0.5
+Faelar.StandardToHit = "DC14";
+// DC14 to hit against Spell Save DC16
+// to hit DC16, Faelar needs to roll a 12 or higher, 0.6
 Faelar.StandardToHit2 = Faelar.StrMod + 1; // With Spiritual Weapon. +3, 0.65 to hit
-Faelar.StandardDamage1 = SacredFlameDamage[PartyLevel].damage * (1-0.5);
+Faelar.StandardDamage1 = SacredFlameDamage[PartyLevel].damage * (1-0.6);
 Faelar.StandardDamage2 = 8.5 * (1-0.65);
 // 1d8 + Faelar.SpellCastMod + 1;  Spiritual Weapon
 // 4.5 + 3 + 1 = 8.5 
