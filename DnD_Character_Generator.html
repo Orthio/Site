@@ -1508,8 +1508,8 @@
   var simpleFlawCheck = '';
   var simpleVoiceCheck = '';
 
-    if (currentCharacter.flaw === ""){
-      simpleFlawCheck = "";} else {
+    if (currentCharacter.flaw === "" || simpleFlawCheck === " " || simpleFlawCheck === ''){
+      simpleFlawCheck = "" ;} else {
       simpleFlawCheck = ". " + currentCharacter.flaw
     };
 

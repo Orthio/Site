@@ -5,53 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        * {
+          font-size: 12px;
+          font-family: Arial;
+          line-height: 12px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
         p {
             margin: 2px;
             padding: 1px;
-            
         }
-        .UpdateButton {
+
+        .btn-update {
           width: 100px;
         }
+
         .shortresttext {
-          font-size: 12px;
+          font-size: 10px;
         }
-        .PartyForm {
-          width: 70px;
-        }
-        .EncounterForm {
+
+        .form-party {
           display: flex;
-          align-items: inline;
-          gap: 10px;
+          flex-direction: row;
+          align-items: flex-start;
+          margin-right: 15px;
         }
-        .monsterCRLabel {
-          padding-right: 110px;
+        .form-party input {
+          font-size: 16px;
+          width: 50px;
         }
-        .CRInputClass {
-          width: 70px;
-          font-size: 20px;
+        .form-party .xpgainedforcurrent {
+          width: 100px;
         }
-        .QtyClass {
-          width: 70px;
-          font-size: 20px;
+        .form-party .form-party-row {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: row;
         }
+        .form-party .form-party-group {
+          display: flex;
+          align-items: left;
+          flex-direction: column;
+          margin-bottom: 10px;
+          padding-right: 20px;
+        }
+
+        .form-encounter {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          margin-right: 15px;
+          margin-top: 5px;
+        }
+        .form-encounter input {
+          font-size: 16px;
+          width: 30px;
+        }
+        .form-encounter .monster-name-input {
+          width: 150px;
+        }
+        .form-encounter .form-row {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: row;
+        }
+        .form-encounter .form-group {
+          display: flex;
+          align-items: left;
+          flex-direction: column;
+          margin-bottom: 10px;
+          padding-right: 20px;
+        }
+        .form-encounter .monster-HP-input {
+          width: 50px;
+        }
+        
     </style>
+    <script src="js/DnD_General.js"></script>
     <script src="js/DnD_Encounter_Sheet.js"></script>
 </head>
 <body>
 <h1>Encounter Sheet</h1>
 
 <div>
-  <form id="PartyForm">
-    <label for="party-levelinput">Party Level:</label><br>
-    <input type="number" class="PartyForm" id="party-levelinput" name="party-levelinput" value="6" min = "1" max = "20"><br>
-    <label for="party-numberinput">Party Nos:</label><br>
-    <input type="number" class="PartyForm" id="party-numberinput" name="party-numbersinput" value="4" min = "1" max = "6"><br>
-    <label for="xpgainedforcurrent">XP gained for current day:</label><br>
-    <input type="number" class="PartyForm" id="xpgainedforcurrent" value="0" step="1" size="50" name="xpgainedforcurrent"><br><br>
+  <form id="form-party" class="form-party">
+    <div class="form-party-row">
+        <div class="form-party-group">
+          <label for="js-party-levelinput">Party Level:</label>
+          <input type="number" class="input-party" id="js-party-levelinput" name="js-party-levelinput" value="6" min = "1" max = "20">
+        </div>
+        <div class="form-party-group">
+          <label for="js-party-numberinput">Party Nos:</label>
+          <input type="number" class="input-party" id="js-party-numberinput" name="js-party-numberinput" value="4" min = "1" max = "6">
+        </div>
+        <div class="form-party-group">
+          <label for="js-xpgainedforcurrent">XP gained for current day:</label>
+          <input type="number" class="xpgainedforcurrent" id="js-xpgainedforcurrent" value="0" step="1" size="50" name="js-xpgainedforcurrent">
+        </div>
+    </div>
   </form> 
 </div>
-<input type="button" class="UpdateButton" onclick = "updateSheet()" value="Update"> 
+<input type="button" class="btn-update" onclick = "updateSheet()" value="Update Party"> 
 
 <br><br>
 
@@ -64,14 +122,26 @@
 <p>_______________________</p>
 
 <div>
-  <form id="EncounterForm">
-    <label for="monsterCRinput" id="monsterCRLabel">Monster CR:&nbsp;&nbsp;</label>
-    <label for="monsterqtyinput">Monster Qty:</label><br>
-    <input type="number" id="monsterCRinput" name="monsterCRinput" class="CRInputClass" \
-    min="0" max="30" step="1" value="7">&nbsp;&nbsp;&nbsp;
-    <input type="number" id="monsterqtyinput" name="monsterqtyinput" class="QtyClass" min="1" max="20" value="2"><br>
-    <label for="monsternameinput">Monster Name:</label><br>
-    <input type="text" id="monsternameinput" name="monsternameinput" value="Giant Ape"><br><br>
+  <form id="form-encounter" class="form-encounter">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="js-monster-cr-input">Monster CR:</label>
+        <input type="number" id="js-monster-cr-input" name="js-monster-cr-input" class="CRInputClass" 
+        min="0" max="30" step="1" value="7">
+      </div>
+      <div class="form-group">
+        <label for="js-monster-qty-input">Monster Qty:</label>
+        <input type="number" id="js-monster-qty-input" name="js-monster-qty-input" min="1" max="20" value="2">
+      </div>
+      <div class="form-group">
+        <label for="js-monster-name-input">Monster Name:</label>
+        <input type="text" id="js-monster-name-input" name="js-monster-name-input" class="monster-name-input" value="Giant Ape">
+      </div>
+      <div class="form-group">
+        <label for="js-monster-hp-input">Monster HP:</label>
+        <input type="number" id="js-monster-hp-input" name="js-monster-hp-input" class="monster-HP-input" min="1" max="1000" value="1">
+      </div>
+    </div>
   </form> 
 </div>
 
@@ -80,7 +150,8 @@
   <form id="EncounterAddForm">
     <input type="button" onclick = "addEncounterCurrent()" value="Add to Current Encounter">
     <input type="button" onclick = "addEncounterNew()" value="Add to New Encounter">
-    <input type="button" onclick = "removeEncounter()" value="Remove last Encounter">
+    <input type="button" onclick = "removeEncounter()" value="Remove last Encounter"> 
+    <!-- //To work on -->
   </form> 
 </div>
 <br>
@@ -93,7 +164,11 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td class="table-encounter-col7"></td> <!-- Row1 Cell 7-->
+      <td class="table-encounter-col8"></td>
+      <td class="table-encounter-col9"></td>
+      <td class="table-encounter-col10"></td>
+
     </tr>
 
   </table>
@@ -104,16 +179,27 @@
 
   <p> Daily Total Adjusted XP: <span id="daily-total-xp"></span></p>
   <p> Remaining XP: <span id="daily-remaining-xp"></span></p>
-  <p><b>Group A:</b>  Adjusted XP <span id="groupA-xp"></span>, <span \
-    id="groupA-deadliness"></span>, Ratio:<span id="groupA-ratio"></span></p>
-  <p>Group B Adjusted XP: <span id="groupB-xp"></span></p>
+  <p> Daily Ratio: <span id="daily-ratio"></span></p>
 
+<table id="GroupTable">
+  <tr id="group-A1">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td> <!-- Row1 Cell 9-->
+  </tr>
+</table>
 
   <script>
 
-  window.onload = function() {
+   window.onload = function() {
     updateSheet();
-  }
+  } 
   
   </script>
 </body>

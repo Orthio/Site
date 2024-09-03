@@ -1,4 +1,7 @@
 
+/* export function generalDiceRoll(){};
+export {generalPartyDPS1r };
+ */
 //Global Variables
 var generalPartyDPS1r = 30.8;
 
