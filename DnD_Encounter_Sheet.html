@@ -20,10 +20,6 @@
             padding: 1px;
         }
 
-        .btn-update {
-          width: 100px;
-        }
-
         .shortresttext {
           font-size: 10px;
         }
@@ -85,8 +81,6 @@
         }
         
     </style>
-    <script src="js/DnD_General.js"></script>
-    <script src="js/DnD_Encounter_Sheet.js"></script>
 </head>
 <body>
 <h1>Encounter Sheet</h1>
@@ -109,13 +103,9 @@
     </div>
   </form> 
 </div>
-<input type="button" class="btn-update" onclick = "updateSheet()" value="Update Party"> 
 
-<br><br>
-
-
-<p>Party Level: <span id="party-level"></span> &nbsp; x &nbsp; <span id="party-number"></span></p>
-<p>Current daily budget for the party: <span id="dailybudget"></span></p>
+<p class="shortresttext">Party Level: <span id="party-level"></span> &nbsp; x &nbsp; <span id="party-number"></span></p>
+<p class="shortresttext">Current daily budget for the party: <span id="dailybudget"></span></p>
 <p class="shortresttext">Current budget per short rest: <span id="partyshortbudget"></span></p>
 <p class="shortresttext">Initial budget remaining: <span id="partyinitialbudgetremain"></span></p>
 
@@ -150,7 +140,7 @@
   <form id="EncounterAddForm">
     <input type="button" onclick = "addEncounterCurrent()" value="Add to Current Encounter">
     <input type="button" onclick = "addEncounterNew()" value="Add to New Encounter">
-    <input type="button" onclick = "removeEncounter()" value="Remove last Encounter"> 
+    <input type="button" onclick = "removeRow()" value="Remove last Encounter"> 
     <!-- //To work on -->
   </form> 
 </div>
@@ -202,5 +192,7 @@
   } 
   
   </script>
+  <script src="js/DnD_General.js"></script>
+  <script src="js/DnD_Encounter_Sheet.js"></script>
 </body>
 </html>
