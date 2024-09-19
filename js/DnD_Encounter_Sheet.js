@@ -57,7 +57,7 @@ const globalVariables = (function() {
     { monsters: 3, multiplier: 2 },
     { monsters: 4, multiplier: 2 },
     { monsters: 5, multiplier: 2 },
-    { monsters: 6, multiplier: 2 },
+    { monsters: 6, multiplier: 2 }, 
     { monsters: 7, multiplier: 2.5 },
     { monsters: 8, multiplier: 2.5 },
     { monsters: 9, multiplier: 2.5 },

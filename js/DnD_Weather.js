@@ -12,8 +12,8 @@ var rainCurrent = '';
 var windDirectionCurrent = '';
 var effectsCurrent = [];
 
-let weatherCRoll;
-let windCRoll;
+var weatherCRoll;
+var windCRoll;
 var weatherSave = [];
 var effectsSave = [];
 
@@ -149,7 +149,7 @@ const months =
     "<b>" + "Alturiak " + "</b>" + " ('The Claws of the Cold') the second month" + "<br>" +
     "<b>" + "Ches " + "</b>" + " ('The Claw of Sunsets') the third month" + "<br>" +
     "<b>" + "Tarsakh " + "</b>" + " ('The Claw of Storms') the fourth month" + "<br>" +
-    "<b>" + "Mirtu l" + "</b>" + " ('The Melting') the fifth month" + "<br>" +
+    "<b>" + "Mirtul" + "</b>" + " ('The Melting') the fifth month" + "<br>" +
     "<b>" + "Kythorn " + "</b>" + " ('The Time of Flowers') the sixth month" + "<br>" +
     "<b>" + "Flamerule " + "</b>" + " ('Summertide') the seventh month" + "<br>" +
     "<b>" + "Eleasis " + "</b>" + " ('Highsun') the eighth month" + "<br>" +

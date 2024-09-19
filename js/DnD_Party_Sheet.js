@@ -109,9 +109,6 @@ class PartyMember {
       Performance: 0, Persuasion: 0, Religion: 1, SleightOfHand: 0, Stealth: 1, Survival: 1 },
     Breiar: { Acrobatics: 0, AnimalHandling: 0, Arcana: 0, Athletics: 0, Deception: 0, History: 0,
       Insight: 0, Intimidation: 0, Investigation: 0, Medicine: 0, Nature: 0, Perception: 0, 
-      Performance: 0, Persuasion: 0, Religion: 0, SleightOfHand: 0, Stealth: 0, Survival: 0 },
-    NewBreiar: { Acrobatics: 0, AnimalHandling: 0, Arcana: 0, Athletics: 0, Deception: 0, History: 0,
-      Insight: 0, Intimidation: 0, Investigation: 0, Medicine: 0, Nature: 0, Perception: 0, 
       Performance: 0, Persuasion: 0, Religion: 0, SleightOfHand: 0, Stealth: 0, Survival: 0 }
     };
 
@@ -162,7 +159,9 @@ class PartyMember {
     this.SpellAttackBonus = 0;
     this.SpellSaveBonus = 0;
     this.StandardToHit = 0;
+    this.StandardToHitBonus = 0;
     this.StandardDamage = 0; 
+    this.StandardDamageBonus = 0;
     this.StandardAttack = "";
   }
 
@@ -219,8 +218,6 @@ let Faelar = new PartyMember("Faelar", "Wisdom");
 let Kandryn = new PartyMember("Kandryn", "Intelligence");
 let Eiran = new PartyMember("Eiran", "Wisdom");
 let Breiar = new PartyMember("Breiar");
-let NewBreiar = new PartyMember("NewBreiar"); 
-
 
 // Initialize character stats
 Doris.Strength = 8;
@@ -275,8 +272,8 @@ Faelar.AC = 19;
 Faelar.GearNote = "Book of Martial Techniques +1, Stone of Good Luck on saving throws and abilities";
 Faelar.SpellCastMod = Faelar.WisMod;
 Faelar.MeleeAttackBonus = 1;
-Faelar.RangedAttackBonus = '';
-Faelar.SpellAttackBonus = '';
+Faelar.RangedAttackBonus = 0;
+Faelar.SpellAttackBonus = 0;
 Faelar.SpellSaveBonus = 0;
 Faelar.SpellAttack = Faelar.SpellCastMod + + proficiencyBonus[PartyLevel] + Faelar.SpellAttackBonus; //3+3+0=6
 Faelar.SpellSave = 8 + Faelar.SpellCastMod + proficiencyBonus[PartyLevel] + Faelar.SpellSaveBonus; //8+3+3+0=14
@@ -284,12 +281,12 @@ Faelar.StandardAttack = "Sacred Flame and Spiritual Weapon";
 Faelar.StandardToHit = "DC14";
 // DC14 to hit against Spell Save DC16
 // to hit DC16, Faelar needs to roll a 12 or higher, 0.6
-Faelar.StandardToHit2 = Faelar.StrMod + 1; // With Spiritual Weapon. +3, 0.65 to hit
-Faelar.StandardDamage1 = SacredFlameDamage[PartyLevel].damage * (1-0.6);
-Faelar.StandardDamage2 = 8.5 * (1-0.65);
+Faelar.StandardToHitBonus = Faelar.StrMod + 1; // With Spiritual Weapon. +3, 0.65 to hit
+Faelar.StandardDamage = SacredFlameDamage[PartyLevel].damage * (1-0.6);
+Faelar.StandardDamageBonus = 8.5 * (1-0.65);
 // 1d8 + Faelar.SpellCastMod + 1;  Spiritual Weapon
 // 4.5 + 3 + 1 = 8.5 
-Faelar.StandardDamage = Math.round((Faelar.StandardDamage1 + Faelar.StandardDamage2)*10)/10;
+Faelar.StandardDamage = Math.round((Faelar.StandardDamage + Faelar.StandardDamageBonus)*10)/10;
 
 Kandryn.Strength = 10;
 Kandryn.StrMod = 0;
@@ -310,10 +307,10 @@ Kandryn.HP = Kandryn.calculateHP(Kandryn);
 Kandryn.AC = 13;
 Kandryn.GearNote = "Wizardry Hat + SpellAttacks";
 Kandryn.SpellCastMod = Kandryn.IntMod;
-Kandryn.MeleeAttackBonus = '';
-Kandryn.RangedAttackBonus = '';
+Kandryn.MeleeAttackBonus = 0;
+Kandryn.RangedAttackBonus = 0;
 Kandryn.SpellAttackBonus = 2;
-Kandryn.SpellSaveBonus = '';
+Kandryn.SpellSaveBonus = 0;
 Kandryn.SpellAttack = Kandryn.SpellCastMod + + proficiencyBonus[PartyLevel] + Kandryn.SpellAttackBonus; //3+3+2=8
 Kandryn.SpellSave = 8 + Kandryn.SpellCastMod + proficiencyBonus[PartyLevel] + Kandryn.SpellSaveBonus; //8+3+3+0=14
 Kandryn.StandardAttack = "Firebolt";
@@ -342,9 +339,9 @@ Eiran.GearNote = "Great Scythe + 1";
 Eiran.SpellCastMod = Eiran.WisMod;
 Eiran.MeleeAttackBonus = 1;
 Eiran.RangedAttackBonus = 2;
-Eiran.SpellAttackBonus = '';
-Eiran.SpellSaveBonus = '';
-Eiran.SpellAttack = Eiran.SpellCastMod + + proficiencyBonus[PartyLevel] + Eiran.SpellAttackBonus; //1+3+0=4
+Eiran.SpellAttackBonus = 0;
+Eiran.SpellSaveBonus = 0;
+Eiran.SpellAttack = Eiran.SpellCastMod + proficiencyBonus[PartyLevel] + Eiran.SpellAttackBonus; //1+3+0=4
 Eiran.SpellSave = 8 + Eiran.SpellCastMod + proficiencyBonus[PartyLevel] + Eiran.SpellSaveBonus; //8+1+3+0=12
 Eiran.StandardAttack = "Longbow Multiattack";
 Eiran.StandardToHit = Eiran.DexMod + Eiran.RangedAttackBonus + 2; // +3 +2 +2 = +7
@@ -373,35 +370,14 @@ Breiar.calculateSkills(Breiar);
 Breiar.HPStart = 10;
 Breiar.HPGainPerLevel = 5;
 Breiar.HP = Breiar.calculateHP(Breiar);
-Breiar.AC = 13+ proficiencyBonus[PartyLevel];
+Breiar.AC = 13+ Eiran.WisMod;
 Breiar.GearNote = "";
-Breiar.SpellCastMod = "";
+Breiar.SpellCastMod = 0;
 Breiar.StandardAttack = "Maul";
 Breiar.StandardToHit = Eiran.SpellAttack; //+4
 // 0.6 to hit against AC16
-Breiar.StandardDamage = Math.round((4.5 + 2 + proficiencyBonus[PartyLevel]) * (1-0.6) *10)/10;
-// 1d8 + 2 + PB = 4.5 + 2 + 3 = 9.5
-
-NewBreiar.Strength = 14;
-NewBreiar.StrMod = 2;
-NewBreiar.Dexterity = 14;
-NewBreiar.DexMod = 2;
-NewBreiar.Constitution = 15;
-NewBreiar.ConMod = 2;
-NewBreiar.Intelligence = 8;
-NewBreiar.IntMod = -1;
-NewBreiar.Wisdom = 14;
-NewBreiar.WisMod = 2;
-NewBreiar.Charisma = 11;
-NewBreiar.ChaMod = 0;
-NewBreiar.calculateSkills(NewBreiar);
-NewBreiar.HPStart = 10;
-NewBreiar.HPGainPerLevel = 5;
-NewBreiar.HP = NewBreiar.calculateHP(NewBreiar);
-NewBreiar.AC = 13+ Eiran.WisMod;
-NewBreiar.GearNote = "";
-NewBreiar.SpellCastMod = "";
-NewBreiar.StandardAttack = "Maul";
+Breiar.StandardDamage = Math.round((4.5 + 2 + Eiran.WisMod) * (1-0.6) *10)/10;
+// 1d8 + 2 + Wis(1) = 4.5 + 2 + 1 = 7.5
 
 
 class Party {
