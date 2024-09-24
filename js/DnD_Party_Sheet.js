@@ -88,6 +88,48 @@ var levelToCR = {
   4: 8
 };
 
+var abilityToBonus = {
+  1: -5,
+  2: -4,
+  3: -4,
+  4: -3,
+  5: -3,
+  6: -2,
+  7: -2,
+  8: -1,
+  9: -1,
+  10: 0,
+  11: 0,
+  12: 1,
+  13: 1,
+  14: 2,
+  15: 2,
+  16: 3,
+  17: 3,
+  18: 4,
+  19: 4,
+  20: 5,
+  21: 5,
+  22: 6,
+  23: 6,
+  24: 7,
+  25: 7,
+  26: 8,
+  27: 8,
+  28: 9,
+  29: 9,
+  30: 10 
+};
+
+function abilityToText(abilityScore) {
+  if (abilityScore <0){
+    return "" + abilityScore;
+  } else {
+    return "+" + abilityScore;
+  }
+}
+
+
 // #endregion Variable Region
 
 // PartyStats
@@ -115,17 +157,16 @@ class PartyMember {
   constructor(name){
     this.Name = name;
     this.Strength;
-    this.StrMod;
+    this.StrMod = 0;
     this.Dexterity;
-    this.DexMod;
+    this.DexMod = 0;
     this.Constitution;
-    this.ConMod;
+    this.ConMod = 0;
     this.Intelligence;
-    this.IntMod;
+    this.IntMod = 0;
     this.Wisdom;
-    this.WisMod;
+    this.WisMod = 0;
     this.Charisma = 0;
-    this.ChaMod = 0;
     this.HPStart = 0;
     this.HPGainPerLevel = 0;
     this.HP = 0;
@@ -153,6 +194,9 @@ class PartyMember {
     this.Survival = 0;
     this.PassivePerception = 0;
     this.PassiveInsight = 0;
+    this.Encumbered = 0;
+    this.HeavilyEncumbered = 0;
+    this.CarryingCapacity = 0;
     this.GearNote = "";
     this.MeleeAttackBonus = 0;
     this.RangedAttackBonus = 0;
@@ -163,6 +207,15 @@ class PartyMember {
     this.StandardDamage = 0; 
     this.StandardDamageBonus = 0;
     this.StandardAttack = "";
+  }
+
+  calculateAbilityBonus() {
+    this.StrMod = abilityToBonus[this.Strength];
+    this.DexMod = abilityToBonus[this.Dexterity];
+    this.ConMod = abilityToBonus[this.Constitution];
+    this.IntMod = abilityToBonus[this.Intelligence];
+    this.WisMod = abilityToBonus[this.Wisdom];
+    this.ChaMod = abilityToBonus[this.Charisma];
   }
 
   calculateHP(character) {
@@ -183,7 +236,6 @@ class PartyMember {
       AnimalHandling: 'WisMod',
       Arcana: 'IntMod',
       Athletics: 'StrMod',
-      Deception: 'ChaMod',
       History: 'IntMod',
       Insight: 'WisMod',
       Intimidation: 'StrMod',
@@ -191,8 +243,6 @@ class PartyMember {
       Medicine: 'WisMod',
       Nature: 'IntMod',
       Perception: 'WisMod',
-      Performance: 'ChaMod',
-      Persuasion: 'ChaMod',
       Religion: 'IntMod',
       SleightOfHand: 'DexMod',
       Stealth: 'DexMod',
@@ -211,7 +261,13 @@ class PartyMember {
   character.PassiveInsight = character.calculatePassiveIns(character);
   }
 
+  calculateEncumberance() {
+    this.CarryingCapacity = [this.Strength]*15;
+  }
+
 }
+
+
 
 let Doris = new PartyMember("Doris", "Charisma");
 let Faelar = new PartyMember("Faelar", "Wisdom");
@@ -221,24 +277,19 @@ let Breiar = new PartyMember("Breiar");
 
 // Initialize character stats
 Doris.Strength = 8;
-Doris.StrMod = -1;
 Doris.Dexterity = 14;
-Doris.DexMod = 2;
 Doris.Constitution = 12;
-Doris.ConMod = 1;
 Doris.Intelligence = 14;
-Doris.IntMod = 2;
 Doris.Wisdom = 10;
-Doris.WisMod = 0;
 Doris.Charisma = 17;
-Doris.ChaMod = 3;
+Doris.calculateAbilityBonus();
 Doris.calculateSkills(Doris);
+Doris.calculateEncumberance();
 Doris.HPStart = 8;
 Doris.HPGainPerLevel = 5;
 Doris.HP = Doris.calculateHP(Doris)
 Doris.AC = 14;
 Doris.GearNote = "Reveller's Concertina +2 SpellSave";
-Doris.SpellCastMod = Doris.ChaMod;
 Doris.MeleeAttackBonus = 0;
 Doris.RangedAttackBonus = 0;
 Doris.SpellAttackBonus = 0;
@@ -250,21 +301,17 @@ Doris.StandardToHit = Doris.SpellAttack; //+6
 // +6 to hit against AC16
 // 65% average against typical CR
 // to hit AC16, Doris needs to roll a 10 or higher, 0.5
-Doris.StandardDamage = Math.round(fireboltDamage[PartyLevel].damage * (1-0.5) *10 )/10; 
+Doris.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.5) *10 )/10); 
 
 Faelar.Strength = 14;
-Faelar.StrMod = 2;
 Faelar.Dexterity = 10;
-Faelar.DexMod = 0;
 Faelar.Constitution = 14;
-Faelar.ConMod = 2;
 Faelar.Intelligence = 12;
-Faelar.IntMod = 1;
 Faelar.Wisdom = 16;
-Faelar.WisMod = 3;
 Faelar.Charisma = 10;
-Faelar.ChaMod = 0;
+Faelar.calculateAbilityBonus();
 Faelar.calculateSkills(Faelar);
+Faelar.calculateEncumberance();
 Faelar.HPStart = 8;
 Faelar.HPGainPerLevel = 5;
 Faelar.HP = Faelar.calculateHP(Faelar);
@@ -286,21 +333,17 @@ Faelar.StandardDamage = SacredFlameDamage[PartyLevel].damage * (1-0.6);
 Faelar.StandardDamageBonus = 8.5 * (1-0.65);
 // 1d8 + Faelar.SpellCastMod + 1;  Spiritual Weapon
 // 4.5 + 3 + 1 = 8.5 
-Faelar.StandardDamage = Math.round((Faelar.StandardDamage + Faelar.StandardDamageBonus)*10)/10;
+Faelar.StandardDamage = Math.round(((Faelar.StandardDamage + Faelar.StandardDamageBonus)*10)/10);
 
 Kandryn.Strength = 10;
-Kandryn.StrMod = 0;
 Kandryn.Dexterity = 16;
-Kandryn.DexMod = 3;
 Kandryn.Constitution = 14;
-Kandryn.ConMod = 2;
 Kandryn.Intelligence = 17;
-Kandryn.IntMod = 3;
 Kandryn.Wisdom = 13;
-Kandryn.WisMod = 1;
 Kandryn.Charisma = 13;
-Kandryn.ChaMod = 1;
+Kandryn.calculateAbilityBonus();
 Kandryn.calculateSkills(Kandryn);
+Kandryn.calculateEncumberance();
 Kandryn.HPStart = 6;
 Kandryn.HPGainPerLevel = 4;
 Kandryn.HP = Kandryn.calculateHP(Kandryn);
@@ -316,21 +359,17 @@ Kandryn.SpellSave = 8 + Kandryn.SpellCastMod + proficiencyBonus[PartyLevel] + Ka
 Kandryn.StandardAttack = "Firebolt";
 Kandryn.StandardToHit = Kandryn.SpellAttack; //+8
 // +8 to hit against AC16, 0.4
-Kandryn.StandardDamage = Math.round(fireboltDamage[PartyLevel].damage * (1-0.4) *10)/10;
+Kandryn.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.4) *10)/10);
 
 Eiran.Strength = 12;
-Eiran.StrMod = 1;
 Eiran.Dexterity = 16;
-Eiran.DexMod = 3;
 Eiran.Constitution = 15;
-Eiran.ConMod = 2;
 Eiran.Intelligence = 8;
-Eiran.IntMod = -1;
 Eiran.Wisdom = 13;
-Eiran.WisMod = 1;
 Eiran.Charisma = 13;
-Eiran.ChaMod = 1;
+Eiran.calculateAbilityBonus();
 Eiran.calculateSkills(Eiran);
+Eiran.calculateEncumberance();
 Eiran.HPStart = 10;
 Eiran.HPGainPerLevel = 6;
 Eiran.HP = Eiran.calculateHP(Eiran);
@@ -346,7 +385,7 @@ Eiran.SpellSave = 8 + Eiran.SpellCastMod + proficiencyBonus[PartyLevel] + Eiran.
 Eiran.StandardAttack = "Longbow Multiattack";
 Eiran.StandardToHit = Eiran.DexMod + Eiran.RangedAttackBonus + 2; // +3 +2 +2 = +7
 // Against AC16, 0.45
-Eiran.StandardDamage = Math.round((2*(4.5)+6) * (1-0.45) *10)/10; // 11*0.55
+Eiran.StandardDamage = Math.round(((2*(4.5)+6) * (1-0.45) *10)/10); // 11*0.55
 Eiran.ScytheToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] + Eiran.MeleeAttackBonus; // +3 +3 +1 = +7
 Eiran.ScytheDamage = 8.5 //1d8 + (3+1)
 Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] ; // +3 +3 = +6 (Twice)
@@ -355,18 +394,14 @@ Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] ; // +3 +3 = +6
 Eiran.DaggersDamage = (2*(2.5+3))*0.75; // 2*(1d4+ 3dex)   = 10.5  
 
 Breiar.Strength = 14;
-Breiar.StrMod = 2;
 Breiar.Dexterity = 14;
-Breiar.DexMod = 2;
 Breiar.Constitution = 15;
-Breiar.ConMod = 2;
 Breiar.Intelligence = 8;
-Breiar.IntMod = -1;
 Breiar.Wisdom = 14;
-Breiar.WisMod = 2;
 Breiar.Charisma = 11;
-Breiar.ChaMod = 0;
+Breiar.calculateAbilityBonus();
 Breiar.calculateSkills(Breiar);
+Breiar.calculateEncumberance();
 Breiar.HPStart = 10;
 Breiar.HPGainPerLevel = 5;
 Breiar.HP = Breiar.calculateHP(Breiar);
@@ -376,16 +411,17 @@ Breiar.SpellCastMod = 0;
 Breiar.StandardAttack = "Maul";
 Breiar.StandardToHit = Eiran.SpellAttack; //+4
 // 0.6 to hit against AC16
-Breiar.StandardDamage = Math.round((4.5 + 2 + Eiran.WisMod) * (1-0.6) *10)/10;
+Breiar.StandardDamage = Math.round(((4.5 + 2 + Eiran.WisMod) * (1-0.6) *10)/10);
 // 1d8 + 2 + Wis(1) = 4.5 + 2 + 1 = 7.5
 
 
 class Party {
-static totalHP = Doris.HP + Faelar.HP + Kandryn.HP + Eiran.HP;
-static minHP = Math.min(Doris.HP, Faelar.HP, Kandryn.HP, Eiran.HP);
-static partyDPR = Math.round((Doris.StandardDamage + Faelar.StandardDamage + Kandryn.StandardDamage + 
-Eiran.StandardDamage + Breiar.StandardDamage )*10)/10 ;
-static partyDPR3 = Party.partyDPR * 3;
+  static totalHP = Doris.HP + Faelar.HP + Kandryn.HP + Eiran.HP;
+  static minHP = Math.min(Doris.HP, Faelar.HP, Kandryn.HP, Eiran.HP);
+  static partyDPR = Math.round((Doris.StandardDamage + Faelar.StandardDamage + Kandryn.StandardDamage + 
+  Eiran.StandardDamage + Breiar.StandardDamage )*10)/10 ;
+  static partyDPR3 = Party.partyDPR * 3;
+  static partyCarryingCapacity = Doris.CarryingCapacity + Faelar.CarryingCapacity + Kandryn.CarryingCapacity + Eiran.CarryingCapacity;
 }
 
 class Monster{
@@ -417,11 +453,17 @@ function updateSheet() {
     document.getElementById(character.Name.toLowerCase() + "-spellsave").innerText = character.SpellSave;
     document.getElementById(character.Name.toLowerCase() + "-hp").innerText = character.HP;
     document.getElementById(character.Name.toLowerCase() + "-strength").innerText = character.Strength;
+    document.getElementById(character.Name.toLowerCase() + "-strmod").innerText = abilityToText(character.StrMod);
     document.getElementById(character.Name.toLowerCase() + "-dexterity").innerText = character.Dexterity;
+    document.getElementById(character.Name.toLowerCase() + "-dexmod").innerText = abilityToText(character.DexMod);
     document.getElementById(character.Name.toLowerCase() + "-constitution").innerText = character.Constitution;
+    document.getElementById(character.Name.toLowerCase() + "-conmod").innerText = abilityToText(character.ConMod);
     document.getElementById(character.Name.toLowerCase() + "-intelligence").innerText = character.Intelligence;
+    document.getElementById(character.Name.toLowerCase() + "-intmod").innerText = abilityToText(character.IntMod);
     document.getElementById(character.Name.toLowerCase() + "-wisdom").innerText = character.Wisdom;
+    document.getElementById(character.Name.toLowerCase() + "-wismod").innerText = abilityToText(character.WisMod);
     document.getElementById(character.Name.toLowerCase() + "-charisma").innerText = character.Charisma;
+    document.getElementById(character.Name.toLowerCase() + "-chamod").innerText = abilityToText(character.ChaMod);
     document.getElementById(character.Name.toLowerCase() + "-passiveperc").innerText = character.PassivePerception;
     document.getElementById(character.Name.toLowerCase() + "-passiveins").innerText = character.PassiveInsight;
     document.getElementById(character.Name.toLowerCase() + "-note").innerText = character.GearNote;
@@ -432,6 +474,8 @@ function updateSheet() {
   document.getElementById("party-minhp").innerText = Party.minHP;
   document.getElementById("party-DPR").innerText = Party.partyDPR;
   document.getElementById("party-DPR3").innerText = Party.partyDPR3;
+  document.getElementById("party-carrying-capacity").innerText = Party.partyCarryingCapacity;
+  document.getElementById("party-carrying-after").innerText = Party.partyCarryingCapacity - 60 - 50;
 }
 
 window.onload = function() {

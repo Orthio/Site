@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        html {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
         .button {
           border: none;
           color: white;
@@ -53,6 +57,19 @@
         .column10 {
             width:50px;
         }
+        .NoteableSpellsTable caption{
+            text-align: left;
+        }
+        .NoteableSpellsTable td:nth-child(1){
+            width: 40px;
+        }
+        .NoteableSpellsTable td:nth-child(2){
+            width: 100px;
+        }
+        .NoteableSpellsTable td:nth-child(3){
+            width: 300px;
+        }
+
     </style>
     <script src="js/DnD_Party_Sheet.js"></script>
 </head>
@@ -72,11 +89,11 @@
             <td class="column3">Passive Insight</td>
             <td class="column4"><span id="doris-passiveins"></span></td>
             <td class="column5">Strength</td>
-            <td class="column6"><span id="doris-strength"></span></td>
+            <td class="column6"><span id="doris-strength"></span> (<span id="doris-strmod"></span>)</td>
             <td class="column7">Dexterity</td>
-            <td class="column8"><span id="doris-dexterity"></span></td>
+            <td class="column8"><span id="doris-dexterity"></span> (<span id="doris-dexmod"></span>)</td>
             <td class="column9">Constitution</td>
-            <td class="column10"><span id="doris-constitution"></span></td>
+            <td class="column10"><span id="doris-constitution"></span> (<span id="doris-conmod"></span>)</td>
         </tr>
     </thead>
     <tbody>
@@ -86,11 +103,11 @@
             <td>Spell Save</td>
             <td><span id="doris-spellsave"></span></td>
             <td>Intelligence</td>
-            <td><span id="doris-intelligence"></span></td>
+            <td><span id="doris-intelligence"></span> (<span id="doris-intmod"></span>)</td>
             <td>Wisdom</td>
-            <td><span id="doris-wisdom"></span></td>
+            <td><span id="doris-wisdom"></span> (<span id="doris-wismod"></span>)</td>
             <td>Charisma</td>
-            <td><span id="doris-charisma"></span></td>
+            <td><span id="doris-charisma"></span> (<span id="doris-chamod"></span>)</td>
         </tr>
         <tr>
             <td scope="row">HP</td>
@@ -112,11 +129,11 @@
             <td class="column3">Passive Insight</td>
             <td class="column4"><span id="faelar-passiveins"></span></td>
             <td class="column5">Strength</td>
-            <td class="column6"><span id="faelar-strength"></span></td>
+            <td class="column6"><span id="faelar-strength"></span> (<span id="faelar-strmod"></span>)</td>
             <td class="column7">Dexterity</td>
-            <td class="column8"><span id="faelar-dexterity"></span></td>
+            <td class="column8"><span id="faelar-dexterity"></span> (<span id="faelar-dexmod"></span>)</td>
             <td class="column9">Constitution</td>
-            <td class="column10"><span id="faelar-constitution"></span></td>
+            <td class="column10"><span id="faelar-constitution"></span> (<span id="faelar-conmod"></span>)</td>
         </tr>
     </thead>
     <tbody>
@@ -126,11 +143,11 @@
             <td scope="row">Spell Save</td>
             <td><span id="faelar-spellsave"></span></td>
             <td>Intelligence</td>
-            <td><span id="faelar-intelligence"></span></td>
+            <td><span id="faelar-intelligence"></span> (<span id="faelar-intmod"></span>)</td>
             <td>Wisdom</td>
-            <td><span id="faelar-wisdom"></span></td>
+            <td><span id="faelar-wisdom"></span> (<span id="faelar-wismod"></span>)</td>
             <td>Charisma</td>
-            <td><span id="faelar-charisma"></span></td>
+            <td><span id="faelar-charisma"></span> (<span id="faelar-chamod"></span>)</td>
         </tr>
     </tbody>
     <tbody>
@@ -155,11 +172,11 @@
             <td class="column3">Passive Insight</td>
             <td class="column4"><span id="kandryn-passiveins"></span></td>
             <td class="column5">Strength</td>
-            <td class="column6"><span id="kandryn-strength"></span></td>
+            <td class="column6"><span id="kandryn-strength"></span> (<span id="kandryn-strmod"></span>)</td>
             <td class="column7">Dexterity</td>
-            <td class="column8"><span id="kandryn-dexterity"></span></td>
+            <td class="column8"><span id="kandryn-dexterity"></span> (<span id="kandryn-dexmod"></span>)</td>
             <td class="column9">Constitution</td>
-            <td class="column10"><span id="kandryn-constitution"></span></td>
+            <td class="column10"><span id="kandryn-constitution"></span> (<span id="kandryn-conmod"></span>)</td>
         </tr>
     </thead>
     <tbody>
@@ -169,11 +186,11 @@
             <td scope="row">Spell Save</td>
             <td><span id="kandryn-spellsave"></span></td>
             <td>Intelligence</td>
-            <td><span id="kandryn-intelligence"></span></td>
+            <td><span id="kandryn-intelligence"></span> (<span id="kandryn-intmod"></span>)</td>
             <td>Wisdom</td>
-            <td><span id="kandryn-wisdom"></span></td>
+            <td><span id="kandryn-wisdom"></span> (<span id="kandryn-wismod"></span>)</td>
             <td>Charisma</td>
-            <td><span id="kandryn-charisma"></span></td>
+            <td><span id="kandryn-charisma"></span> (<span id="kandryn-chamod"></span>)</td>
         </tr>
     </tbody>
     <tbody>
@@ -197,11 +214,11 @@
             <td class="column3">Passive Insight</td>
             <td class="column4"><span id="eiran-passiveins"></span></td>
             <td class="column5">Strength</td>
-            <td class="column6"><span id="eiran-strength"></span></td>
+            <td class="column6"><span id="eiran-strength"></span> (<span id="eiran-strmod"></span>)</td>
             <td class="column7">Dexterity</td>
-            <td class="column8"><span id="eiran-dexterity"></span></td>
+            <td class="column8"><span id="eiran-dexterity"></span> (<span id="eiran-dexmod"></span>)</td>
             <td class="column9">Constitution</td>
-            <td class="column10"><span id="eiran-constitution"></span></td>
+            <td class="column10"><span id="eiran-constitution"></span> (<span id="eiran-conmod"></span>)</td>
         </tr>
     </thead>
     <tbody>
@@ -211,11 +228,11 @@
             <td scope="row">Spell Save</td>
             <td><span id="eiran-spellsave"></span></td>
             <td>Intelligence</td>
-            <td><span id="eiran-intelligence"></span></td>
+            <td><span id="eiran-intelligence"></span> (<span id="eiran-intmod"></span>)</td>
             <td>Wisdom</td>
-            <td><span id="eiran-wisdom"></span></td>
+            <td><span id="eiran-wisdom"></span> (<span id="eiran-wismod"></span>)</td>
             <td>Charisma</td>
-            <td><span id="eiran-charisma"></span></td>
+            <td><span id="eiran-charisma"></span> (<span id="eiran-chamod"></span>)</td>
         </tr>
     </tbody>
     <tbody>
@@ -239,11 +256,11 @@
             <td class="column3">Passive Insight</td>
             <td class="column4"><span id="breiar-passiveins"></span></td>
             <td class="column5">Strength</td>
-            <td class="column6"><span id="breiar-strength"></span></td>
+            <td class="column6"><span id="breiar-strength"></span> (<span id="breiar-strmod"></span>)</td>
             <td class="column7">Dexterity</td>
-            <td class="column8"><span id="breiar-dexterity"></span></td>
+            <td class="column8"><span id="breiar-dexterity"></span> (<span id="breiar-dexmod"></span>)</td>
             <td class="column9">Constitution</td>
-            <td class="column10"><span id="breiar-constitution"></span></td>
+            <td class="column10"><span id="breiar-constitution"></span> (<span id="breiar-conmod"></span>)</td>
         </tr>
     </thead>
     <tbody>
@@ -253,11 +270,11 @@
             <td scope="row">Spell Save</td>
             <td><span id="breiar-spellsave"></span></td>
             <td>Intelligence</td>
-            <td><span id="breiar-intelligence"></span></td>
+            <td><span id="breiar-intelligence"></span> (<span id="breiar-intmod"></span>)</td>
             <td>Wisdom</td>
-            <td><span id="breiar-wisdom"></span></td>
+            <td><span id="breiar-wisdom"></span> (<span id="breiar-wismod"></span>)</td>
             <td>Charisma</td>
-            <td><span id="breiar-charisma"></span></td>
+            <td><span id="breiar-charisma"></span> (<span id="breiar-chamod"></span>)</td>
         </tr>
     </tbody>
     <tbody>
@@ -274,24 +291,115 @@
 
 <p><b>Party</b></p>
 <table class="tableParty">
-    <thead>
+    <tbody>
         <tr>
             <td class="column1">Total HP</td>
             <td class="column2"><span id="party-hp"></span></td>
             <td class="column1">Min HP</td>
             <td class="column2"><span id="party-minhp"></span></td>
         </tr>
-    </thead>
+    </tbody>
     <tbody>
         <tr>
             <td scope="row">Party DPR over 1 round</td>
             <td><span id="party-DPR"></span></td>
             <td scope="row">Party DPR over 3 rounds</td>
             <td><span id="party-DPR3"></span></td>
-
         </tr>
+    </tbody>
+    <tbody>
+        <td>Party Carrying Capacity</td>
+        <td><span id="party-carrying-capacity"></span></td>
+        <td>lb</td>
+    </tbody>
+    <tbody>
+        <td>  Carrying Capacity after load</td>
+        <td><span id="party-carrying-after"></span></td>
+        <td>lb</td>
     </tbody>
 </table>
 <p>_____________________________</p>
+<table class="NoteableSpellsTable">
+    <caption><i>Noteable Spells:</i></caption>
+    <thead>
+        <tr>
+            <td>Level</td>
+            <td>Spell Level</td>
+            <td>Spell Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5</td>
+            <td>3rd</td>
+            <td>Fly</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Gaseous Form</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>4th</td>
+            <td>Dimension Door</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>5th</td>
+            <td>Geas</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Modify Memory</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Scrying</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Teleportation Circle</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>6th</td>
+            <td>Magic Jar</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>7th</td>
+            <td>Etherealness</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Forcecage</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Magnificent Mansion</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Plane Shift</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Simulacrum</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Teleport</td>
+        </tr>  
+    </tbody>
+</table>
 </body>
 </html>
