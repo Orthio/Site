@@ -57,19 +57,29 @@
         .column10 {
             width:50px;
         }
-        .NoteableSpellsTable caption{
+        #noteableSpellsTable caption{
             text-align: left;
         }
-        .NoteableSpellsTable td:nth-child(1){
+        #noteableSpellsTable td:nth-child(1){
             width: 40px;
         }
-        .NoteableSpellsTable td:nth-child(2){
+        #noteableSpellsTable td:nth-child(2){
             width: 100px;
         }
-        .NoteableSpellsTable td:nth-child(3){
+        #noteableSpellsTable td:nth-child(3){
             width: 300px;
         }
-
+        #hpTable td {
+            padding-right: 10px;
+            text-align: center;
+        }
+        #hpTable caption {
+            text-align: left;
+        }
+        #hpTable td:nth-child(1){
+            text-align: left;
+            width: 70px;
+        }
     </style>
     <script src="js/DnD_Party_Sheet.js"></script>
 </head>
@@ -319,7 +329,7 @@
     </tbody>
 </table>
 <p>_____________________________</p>
-<table class="NoteableSpellsTable">
+<table id="noteableSpellsTable">
     <caption><i>Noteable Spells:</i></caption>
     <thead>
         <tr>
@@ -343,6 +353,11 @@
             <td>7</td>
             <td>4th</td>
             <td>Dimension Door</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Mordekainen's Private Sanctum</td>
         </tr>
         <tr>
             <td>9</td>
@@ -401,5 +416,23 @@
         </tr>  
     </tbody>
 </table>
+<p>_____________________________</p>
+
+<table id="hpTable">
+    <caption><i>HP Table:</i></caption>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Level <span id="levelPlus0"></span></td>
+        <td>Level <span id="levelPlus1"></span></td>
+        <td>Level <span id="levelPlus2"></span></td>
+        <td>Level <span id="levelPlus3"></span></td>
+        <td>Level <span id="levelPlus4"></span></td>
+      </tr>
+    </thead>
+    <tbody id="hpTableBody">
+      <!-- Table rows will be inserted here by JavaScript -->
+    </tbody>
+  </table>
 </body>
 </html>

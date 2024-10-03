@@ -22,7 +22,8 @@ const winterWeatherTable = {
     1: "A Blizzard ",
     2: "A Snowfall ",
     10: "A Freezing Cold ",
-    20: "Heavy Clouds ",
+    20: "Fog",
+    25: "Heavy Clouds ",
     40: "Light Clouds ",
     60: "Clear Skies ",
     85: "Clear Skies and Warm ",
@@ -67,82 +68,80 @@ const windDirectionTable = {
 
 
 // Weather Effect descriptions
-var effectsTable = {
-    "A Blizzard ": "<b>" + "A Blizzard " + "</b>" + "<br>" +
-    "At the end of every hour spend in a Blizzard, make a DC 12 Constitution saving. <br>\
-    On failure, you take 3d4 cold damage and gain one level of exhaustion. <br>\
-    You make this check with advantage if you have proper gear. <br>\
-    All creatures are heavily obscured if they are more than 20 feet from you. <br>\
-    All terrain is difficult terrain. <br>\
-    Also has the effect of Snow, High Winds, and Freezing Cold.",
-
-    "A Snowfall ": "<b>" + "A Snowfall " + "</b>" + "<br>" +
-    "All travel speed is halved. Terrain becomes difficult terrain. <br>\
-    Also has the effects of Heavy Clouds and Freezing Cold",
-
-    "A Freezing Cold ": "<b>" + "A Freezing Cold " + "</b>" + "<br>" +
-    "A creature exposed to the cold must succeed \
-    on a DC 10 Constitution saving throw at the end of each\
-    hour or gain one level of exhaustion. <br>\
-    Creatures with resistance or immunity to cold damage automatically\
-    succeed on the saving throw, <br>\
-    as do creatures wearing cold weather gear",
-
-    "Heavy Clouds ": "<b>" + "Heavy Clouds " + "</b>" + "<br>" +
-    "The sky is blocked. Aerial creatures have total cover",
-    "Light Clouds ": "<b>" + "Light Clouds " + "</b>" + "<br>" +
-    "Easy breezy clouds pass by",
-    "Clear Skies ": "<b>" + "Clear Skies " + "</b>" + "<br>" +
-    "Clear bright light and wispy clouds during the daytime \
-    View of the stars and moon at night",
-    "Clear Skies and Warm ": "<b>" + "Clear Skies and Warm " + "</b>" + "<br>" +
-    "Clear skies and a warm temperature pervade",
-    "A Wizard Fog ": "<b>" + "A Wizard Fog " + "</b>" + "<br>" +
-    "An adventurer can't see more than 5ft and can't light non-magical flames",
-
-    "The Flaywinds rise ": "<b>" + "The Flaywinds rise " + "</b>" + "<br>" +
-    "An intense sandstorm gathering large rocks and debris \
-    in addition to sand or grit. <br>\
-    The area is heavily obscured, and a creature within it takes 1d4 slashing damage \
-    at the start of each of their turns.<br>\
-    Only substantial cover offers protection.<br>\
-    A succesful DC15 Int(Arcana) or Wis(Nature) check allows a character to\
-    recognise a Flaywind 1 minute before it strikes, allowing time to find shelter<br>\
-    A flaywind lasts 1d4*10 hours. Tasha's pg163",
-
-    "A Meteor Shower crashes ": "<b>" + "A Meteor Shower crashes " + "</b>" + "<br>" +
-    "Stars begin to fall from the sky as lumps of stone and metal.<br>\
-    All creatures gain 1 luck point as per the Lucky feat, which lasts until used \
-    or the weather changes.<br>\
-    If you travel 4 or more hours outdoors through this weather, a meteor strikes nearby, \
-    leaving 40d6 of devastation in it's wake, \
-    but perhaps you'll find something cool. <br>\
-    Potential consequences: 2d12 damage from the shock wave, difficult terrain, or heavily obscuring dust clouds.",
-
-    "Ghost Lights abound ": "<b>" + "Ghost Lights abound " + "</b>" + "<br>" +
-    "Strange swirling lights fill the sky, swirls of green, \
-    blue, and purple. <br>\
-    Night becomes dim (strangely hued) light until the effect ends.",
-
-    "A Solar Eclipse yawns ": "<b>" + "A Solar Eclipse yawns " + "</b>" + "<br>" +
-    "For 1 hour during the day, it becomes night. <br>\
-    Either select a dramatic time or roll a d12 for the hour. <br>\
-    May or may not have prophetic ramifications.",
-
-    "An Ashfall descends ": "<b>" + "An Ashfall descends " + "</b>" + "<br>" +
-    "Heavy white clouds of swirling smoke fill the sky, and it \
-    rains ash that coats everything in little flecks. <br>\
-    A smell of burning wood or sulphur permeates the air. <br>\
-    Also has the the effect of Heavy Clouds.",
-
-    "A High Wind ": "<b>" + "A High Wind " + "</b>" + "<br>" +
-    "Turbulent gusts sweep across the land. <br>\
-    Flying creatures gain +10 movement speed when moving with the wind, \
-    and –10 movement speed when moving against it. <br>\
-    All ranged weapon attacks have their ranged <br>\
-    reduced by half when shooting into the wind."
-
-};
+const effectsTable = {
+        "A Blizzard": "<b>" + "A Blizzard " + "</b>" + "<br>" +
+            "At the end of every hour spent in a Blizzard, make a DC 12 Constitution saving throw. <br>" +
+            "&nbsp&nbsp On failure, you take 3d4 cold damage and gain one level of exhaustion. <br>" +
+            "&nbsp&nbsp Make this check with advantage with appropriate gear. <br>" +
+            "All creatures are heavily obscured if they are more than 20 feet from you. <br>" +
+            "All terrain is difficult terrain. All travel speed is halved. <br><br>" +
+            "All travel speed is halved. Terrain becomes difficult terrain.<br>" +
+            "The sky is blocked. Aerial creatures have total cover.<br>" +
+            "Flying creatures gain +10 movement speed when moving with the wind, and –10 movement speed when moving against it. <br>" +
+            "All ranged weapon attacks have their range reduced by half when shooting into the wind.",
+    
+        "Fog": "<b>" + "Fog " + "</b>" + "<br>" +
+            "Unable to see more than 40ft.",
+    
+        "A Snowfall": "<b>" + "A Snowfall " + "</b>" + "<br>" +
+            "All terrain is difficult terrain. All travel speed is halved. <br><br>" +
+            "<i>Also has the effects of Heavy Clouds and Freezing Cold:</i><br>" +
+            "The sky is blocked. Aerial creatures have total cover. <br>" +
+            "A creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion. <br>" +
+            "&nbsp&nbsp Succeed this check automatically with appropriate gear.",
+    
+        "A Freezing Cold": "<b>" + "A Freezing Cold " + "</b>" + "<br>" +
+            "A creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion. <br>" +
+            "&nbsp&nbsp Succeed this check automatically with appropriate gear.",
+    
+        "Heavy Clouds": "<b>" + "Heavy Clouds " + "</b>" + "<br>" +
+            "The sky is blocked. Aerial creatures have total cover.",
+    
+        "Light Clouds": "<b>" + "Light Clouds " + "</b>" + "<br>" +
+            "Easy breezy clouds pass by.",
+    
+        "Clear Skies": "<b>" + "Clear Skies " + "</b>" + "<br>" +
+            "Clear bright light and wispy clouds during the daytime. <br>" +
+            "View of the stars and moon at night.",
+    
+        "Clear Skies and Warm": "<b>" + "Clear Skies and Warm " + "</b>" + "<br>" +
+            "Clear skies and a warm temperature pervade.",
+    
+        "A Wizard Fog": "<b>" + "A Wizard Fog " + "</b>" + "<br>" +
+            "An adventurer can't see more than 5ft and can't light non-magical flames.",
+    
+        "The Flaywinds rise": "<b>" + "The Flaywinds rise " + "</b>" + "<br>" +
+            "An intense sandstorm gathering large rocks and debris in addition to sand or grit. <br>" +
+            "The area is heavily obscured, and a creature within it takes 1d4 slashing damage at the start of each of their turns. <br>" +
+            "Only substantial cover offers protection. <br>" +
+            "A successful DC 15 Intelligence (Arcana) or Wisdom (Nature) check allows a character to recognize a Flaywind 1 minute before it strikes, allowing time to find shelter. <br>" +
+            "A Flaywind lasts 1d4 × 10 hours. Tasha's pg. 163.",
+    
+        "A Meteor Shower crashes": "<b>" + "A Meteor Shower crashes " + "</b>" + "<br>" +
+            "Stars begin to fall from the sky as lumps of stone and metal. <br>" +
+            "All creatures gain 1 luck point as per the Lucky feat, which lasts until used or the weather changes. <br>" +
+            "If you travel 4 or more hours outdoors through this weather, a meteor strikes nearby, leaving 40d6 of devastation in its wake, but perhaps you'll find something cool. <br>" +
+            "Potential consequences: 2d12 damage from the shock wave, difficult terrain, or heavily obscuring dust clouds.",
+    
+        "Ghost Lights abound": "<b>" + "Ghost Lights abound " + "</b>" + "<br>" +
+            "Strange swirling lights fill the sky, swirls of green, blue, and purple. <br>" +
+            "Night becomes dim (strangely hued) light until the effect ends.",
+    
+        "A Solar Eclipse yawns": "<b>" + "A Solar Eclipse yawns " + "</b>" + "<br>" +
+            "For 1 hour during the day, it becomes night. <br>" +
+            "Either select a dramatic time or roll a d12 for the hour. <br>" +
+            "May or may not have prophetic ramifications.",
+    
+        "An Ashfall descends": "<b>" + "An Ashfall descends " + "</b>" + "<br>" +
+            "Heavy white clouds of swirling smoke fill the sky, and it rains ash that coats everything in little flecks. <br>" +
+            "A smell of burning wood or sulfur permeates the air. <br>" +
+            "The sky is blocked. Aerial creatures have total cover.",
+    
+        "A High Wind": "<b>" + "A High Wind " + "</b>" + "<br>" +
+            "Turbulent gusts sweep across the land. <br>" +
+            "Flying creatures gain +10 movement speed when moving with the wind, and –10 movement speed when moving against it. <br>" +
+            "All ranged weapon attacks have their range reduced by half when shooting into the wind."
+    };
 
 const months = 
     "<b>" + "Hammer " + "</b>" + "('Deepwinter') the first month" + "<br>" +

@@ -1,17 +1,12 @@
 
-// console.log('DnD_General.js loaded');
-
-/* export function generalDiceRoll(){};
-export {generalPartyDPS1r };
- */
 //Global Variables
-var generalPartyDPS1r = 30.8;
+export var generalPartyDPS1r = 30.8;
 
-var currentDay = 5;
-var currentMonth = 10;
-var currentYear = 1489;
+export var currentDay = 5;
+export var currentMonth = 10;
+export var currentYear = 1489;
 
-var monthsArray = [
+export var monthsArray = [
     {number: 1, month: "Hammer", desc:  "('Deepwinter') the first month"},
     {number: 2, month: "Alturiak", desc: " ('The Claws of the Cold') the second month"},
     {number: 3, month: "Ches", desc: " ('The Claw of Sunsets') the third month"},
@@ -26,7 +21,7 @@ var monthsArray = [
     {number: 12, month: "Nightal", desc: " ('The Drawing Down') the twelfth month"}
 ];
 
-function getCurrentDate(){
+export function getCurrentDate(){
     let suffix = "";
     switch(currentDay){
         case 1: 
@@ -50,7 +45,7 @@ function getCurrentDate(){
     //into three ten-day periods. These are known variously as "eves", "tendays", "domen", "hyrar", or "rides" throughout the Forgotten Realms.
 };
 
-function generalDiceRoll(dice,qty,adv) {
+export function generalDiceRoll(dice,qty,adv) {
     // Roll a dice (d6 d20) a no of times, with advantage or disadvantage
     var rollResult = [];
     if (qty === undefined) {

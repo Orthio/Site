@@ -218,8 +218,8 @@ class PartyMember {
     this.ChaMod = abilityToBonus[this.Charisma];
   }
 
-  calculateHP(character) {
-    return character.HPStart + character.ConMod + (PartyLevel - 1) * (character.HPGainPerLevel + character.ConMod);
+  calculateHP(character,level) {
+    return character.HPStart + character.ConMod + (level - 1) * (character.HPGainPerLevel + character.ConMod);
   }
   
   calculatePassivePerc(character) {
@@ -287,7 +287,7 @@ Doris.calculateSkills(Doris);
 Doris.calculateEncumberance();
 Doris.HPStart = 8;
 Doris.HPGainPerLevel = 5;
-Doris.HP = Doris.calculateHP(Doris)
+Doris.HP = Doris.calculateHP(Doris,PartyLevel)
 Doris.AC = 14;
 Doris.GearNote = "Reveller's Concertina +2 SpellSave";
 Doris.MeleeAttackBonus = 0;
@@ -314,7 +314,7 @@ Faelar.calculateSkills(Faelar);
 Faelar.calculateEncumberance();
 Faelar.HPStart = 8;
 Faelar.HPGainPerLevel = 5;
-Faelar.HP = Faelar.calculateHP(Faelar);
+Faelar.HP = Faelar.calculateHP(Faelar,PartyLevel);
 Faelar.AC = 19;
 Faelar.GearNote = "Book of Martial Techniques +1, Stone of Good Luck on saving throws and abilities";
 Faelar.SpellCastMod = Faelar.WisMod;
@@ -346,7 +346,7 @@ Kandryn.calculateSkills(Kandryn);
 Kandryn.calculateEncumberance();
 Kandryn.HPStart = 6;
 Kandryn.HPGainPerLevel = 4;
-Kandryn.HP = Kandryn.calculateHP(Kandryn);
+Kandryn.HP = Kandryn.calculateHP(Kandryn,PartyLevel);
 Kandryn.AC = 13;
 Kandryn.GearNote = "Wizardry Hat + SpellAttacks";
 Kandryn.SpellCastMod = Kandryn.IntMod;
@@ -372,7 +372,7 @@ Eiran.calculateSkills(Eiran);
 Eiran.calculateEncumberance();
 Eiran.HPStart = 10;
 Eiran.HPGainPerLevel = 6;
-Eiran.HP = Eiran.calculateHP(Eiran);
+Eiran.HP = Eiran.calculateHP(Eiran,PartyLevel);
 Eiran.AC = 16;
 Eiran.GearNote = "Great Scythe + 1";
 Eiran.SpellCastMod = Eiran.WisMod;
@@ -404,11 +404,11 @@ Breiar.calculateSkills(Breiar);
 Breiar.calculateEncumberance();
 Breiar.HPStart = 10;
 Breiar.HPGainPerLevel = 5;
-Breiar.HP = Breiar.calculateHP(Breiar);
+Breiar.HP = Breiar.calculateHP(Breiar,PartyLevel);
 Breiar.AC = 13+ Eiran.WisMod;
 Breiar.GearNote = "";
 Breiar.SpellCastMod = 0;
-Breiar.StandardAttack = "Maul";
+Breiar.StandardAttack = "Beast's Strike";
 Breiar.StandardToHit = Eiran.SpellAttack; //+4
 // 0.6 to hit against AC16
 Breiar.StandardDamage = Math.round(((4.5 + 2 + Eiran.WisMod) * (1-0.6) *10)/10);
@@ -422,6 +422,7 @@ class Party {
   Eiran.StandardDamage + Breiar.StandardDamage )*10)/10 ;
   static partyDPR3 = Party.partyDPR * 3;
   static partyCarryingCapacity = Doris.CarryingCapacity + Faelar.CarryingCapacity + Kandryn.CarryingCapacity + Eiran.CarryingCapacity;
+  static partyMembers = [Doris,Faelar,Kandryn,Eiran];
 }
 
 class Monster{
@@ -440,6 +441,29 @@ Typical8.CR = 8;
 Typical8.AC = 16;
 Typical8.SpellSaveDC = 16;
 
+function generateHPTable() {
+  const tableBody = document.getElementById('hpTableBody');
+  
+  Party.partyMembers.forEach(character => {
+    let row = document.createElement('tr');
+    
+    // Character name cell
+    let nameCell = document.createElement('td');
+    nameCell.textContent = character.Name;
+    row.appendChild(nameCell);
+
+    // Generate HP for next 4 levels
+    for (let i = 0; i <= 4; i++) {
+      let hpCell = document.createElement('td');
+      hpCell.textContent = character.calculateHP(character, PartyLevel + i);
+      row.appendChild(hpCell);
+      document.getElementById("levelPlus" + i).textContent = PartyLevel + i;
+
+    }
+    tableBody.appendChild(row);
+
+  });
+}
 
 function updateSheet() {
   document.getElementById("party-level").innerText = PartyLevel;
@@ -476,6 +500,8 @@ function updateSheet() {
   document.getElementById("party-DPR3").innerText = Party.partyDPR3;
   document.getElementById("party-carrying-capacity").innerText = Party.partyCarryingCapacity;
   document.getElementById("party-carrying-after").innerText = Party.partyCarryingCapacity - 60 - 50;
+
+  generateHPTable();
 }
 
 window.onload = function() {

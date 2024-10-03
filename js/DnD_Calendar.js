@@ -167,9 +167,9 @@ function loadCalendar() {
             dayBox.appendChild(eventDiv);
         } */
 
-        dayBox.addEventListener("click", () => {
-            showModal(dayText);
-        });
+        // dayBox.addEventListener("click", () => {
+        //     showModal(dayText);
+        // });
         
         calendar.append(dayBox);
     }
