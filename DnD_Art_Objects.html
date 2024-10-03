@@ -21,9 +21,15 @@
 
     <br>
     <br>
-    <p><span id="roll-results"></span></p>
-    <div id="art-results"></div>
+    <!-- <p><span id="roll-results"></span></p> -->
+    <div id="art-output"></div>
 
+    <script type="module">
+        // This will clear the console on page reload
+        window.addEventListener('load', () => {
+            console.clear();  // Clears the console
+        });
+    </script>
     <script type="module" src="js/DnD_Art_Objects.js"></script>
 
 </body>

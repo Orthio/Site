@@ -214,7 +214,7 @@
     "49": "Dice",
     "50": "Poker Chips"
   },
-  "artMiscellaneousItems": {
+  "artPersonalItems": {
     "1": "Seal",
     "2": "Book binding",
     "3": "Book stand",
@@ -427,8 +427,8 @@
     "2": "Gold filigree",
     "3": "Silver filigree",
     "4": "Gilt copper filigree",
-    "5": "Gold repoussé and chasework",
-    "6": "Silver repoussé and chasework",
+    "5": "Gold repoussé with chasework (hammered detail)",
+    "6": "Silver repoussé with chasework (hammered detail)",
     "7": "Colored enamel",
     "8": "Gold and garnet cloisonné",
     "9": "Cloisonné enamel",

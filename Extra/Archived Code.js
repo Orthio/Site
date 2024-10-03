@@ -1,3 +1,7 @@
+
+// Windows/Linux: Shift + Alt + F Shortcut for formatting
+
+
 var encumberanceTable = {
     // Based on Alexandrian slot based inventory. Carrying changed
       1: {"Encumb": 0, "Heavy": 0.5, "Carrying": 1},

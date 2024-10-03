@@ -1,76 +1,100 @@
-import { generalDiceRoll} from './DnD_General.js';
+import { generalDiceRoll } from './DnD_General.js';
 
-fetch('../json/DnD_Art_Objects.json')  // Replace 'data.json' with the correct file path
+let jsonData;
+
+fetch('./json/DnD_Art_Objects.json')
+
   .then(response => response.json())  // Parse the JSON
   .then(data => {
-    // Accessing artDecorativeTechniques
-    // console.log(data.artDecorativeTechniques["1"]); // Outputs "Platinum filigree"
-    
-    // Accessing artDesignThemes
-    //console.log(data.artNature["2"]); // Outputs "Jewellery or Ornaments"
+    jsonData = data;
+    //  console.log(data.artDecorativeTechniques["1"]); // Outputs "Platinum filigree"
+
+    // console.log(data.artNature["2"]); // Outputs "Worn or Carried Ornaments"
   })
   .catch(error => console.error('Error fetching JSON:', error));
 
 
-  // Now you can use the generalDiceRoll function
+/*   // Now you can use the generalDiceRoll function
 const result = generalDiceRoll(20, 2, "Adv");
 // console.log("Dice Roll Result with Advantage:", result);
-document.getElementById("roll-results").innerText = result;
+document.getElementById("roll-results").innerText = result; */
+
+var artOutput = [];
 
 function generateArt() {
-  var natureIndex = generalDiceRoll(5,1);
-  var nature = data.artNature[natureIndex];
-  console.log(nature);
+  console.log("Art Gen started");
+  var natureIndex = generalDiceRoll(5, 1);
+  console.log("Nature Index ",natureIndex);
+  var nature = jsonData.artNature[natureIndex];
 
-  var jewelleryIndex = generalDiceRoll(50,1);
-  var jewellery = data.artJewelleryItems[jewelleryIndex];
-  console.log(jewellery);
+  var jewelleryIndex = generalDiceRoll(50, 1);
+  var jewellery = jsonData.artJewelleryItems[jewelleryIndex];
 
-  var equipmentIndex = generalDiceRoll(50,1);
-  var equipment = data.artEquipment[equipmentIndex];
-  console.log(equipment);
+  var equipmentIndex = generalDiceRoll(50, 1);
+  var equipment = jsonData.artEquipment[equipmentIndex];
 
-  var artDiningIndex = generalDiceRoll(50,1); 
-  var artDining = data.artDiningItems[artDiningIndex];
-  console.log(artDining);
+  var artDiningIndex = generalDiceRoll(50, 1);
+  var artDining = jsonData.artDiningItems[artDiningIndex];
 
-  var artDecorativeIndex = generalDiceRoll(50,1);
-  var artDecorative = data.artDecorativeItems[artDecorativeIndex];
-  console.log(artDecorative);
+  var artDecorativeIndex = generalDiceRoll(50, 1);
+  var artDecorative = jsonData.artDecorativeItems[artDecorativeIndex];
 
-  var artMiscellaneousIndex = generalDiceRoll(50,1);
-  var artMiscellaneous = data.artMiscellaneousItems[artMiscellaneousIndex];
-  console.log(artMiscellaneous);
+  var artPersonalIndex = generalDiceRoll(50, 1);
+  var artPersonal = jsonData.artPersonalItems[artPersonalIndex];
 
-  var artMetalIndex = generalDiceRoll(50,1);
-  var artMetal = data.artMetalTypes[artMetalIndex];
-  console.log(artMetal);
+  let objectArray = [jewellery, equipment, artDining, artDecorative, artPersonal];
+  let objectChoice = "";
+  switch (natureIndex) {
+    case 1:
+      objectChoice = objectArray[0];
+      break;
+    case 2:
+      objectChoice = objectArray[1];
+      break;
+    case 3:
+      objectChoice = objectArray[2];
+      break;
+    case 4:
+      objectChoice = objectArray[3];
+      break;
+    case 5:
+      objectChoice = objectArray[4];
+      break;
+  }
 
-  var artMaterialIndex = generalDiceRoll(50,1);
-  var artMetal = data.artMaterialTypes[artMaterialIndex];
-  console.log(ArtMetal);
+  var artMetalIndex = generalDiceRoll(50, 1);
+  var artMetal = jsonData.artMetalTypes[artMetalIndex];
 
-  var artGemstoneIndex = generalDiceRoll(50,1);
-  var artGemstone = data.artGemstoneTypes[artGemstoneIndex];
-  console.log(artGemstone);
+  var artMaterialIndex = generalDiceRoll(50, 1);
+  var artMaterial = jsonData.artMaterialTypes[artMaterialIndex];
 
-  var artDecorativeIndex = generalDiceRoll(20,1);
-  var artDecorative = data.artDecorativeTechniques[artDecorativeIndex];
-  console.log(artDecorative);
+  var artGemstoneIndex = generalDiceRoll(50, 1);
+  var artGemstone = jsonData.artGemstoneTypes[artGemstoneIndex];
 
-  var artDesignIndex = generalDiceRoll(20,1);
-  var artDesign = data.artDesignThemes[artDesignIndex];
-  console.log(artDesign);
+  var artDecorativeIndex = generalDiceRoll(20, 1);
+  var artDecorative = jsonData.artDecorativeTechniques[artDecorativeIndex];
 
-  document.getElementById("art-results").innerText = Art+"blah";
+  var artDesignIndex = generalDiceRoll(20, 1);
+  var artDesign = jsonData.artDesignThemes[artDesignIndex];
+
+
+  var artResult = "<div>" + objectChoice + " made of " + artMetal + " and " + artMaterial + ", " + "<br>" +
+    "ornamented with " + artGemstone + " and " + artDecorative + ", " + "<br>" +
+    "in the theme of " + artDesign + "</div>" + "<br>"
+    ;
+
+    console.log("Generated Art Result:", artResult);
+
+  artOutput.unshift(artResult);
+/*   if (artOutput.length > 6) {
+    artOutput.pop();
+  } */
+  console.log("Current Art Output Array:", artOutput);
+
+  document.getElementById("art-output").innerHTML = artOutput.join('');
+
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Checks in DOM content is loaded then checks the button
-  const button = document.getElementById('generate-art-btn');
-  if (button) {
-      button.addEventListener('click', function() {
-          generateArt();
-      });
-  }
+document.getElementById('generate-art-button').addEventListener('click', () => {
+  generateArt();
 });
