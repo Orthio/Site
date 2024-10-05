@@ -1,6 +1,26 @@
 
 // Windows/Linux: Shift + Alt + F Shortcut for formatting
 
+// Get-ChildItem *.jpg | Rename-Item -NewName {$_.Name -replace ".jpg", ".png"}
+
+let factionsData = {};
+
+// Async function to fetch data and wait for it to load
+async function loadData() {
+    try {
+        const response = await fetch('json/DnD_Factions.json');
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        factionsData = await response.json();  // Wait for JSON to be parsed
+        console.log("Data loaded:", factionsData);
+
+        // Now call the function that depends on the loaded data
+        circleCheck(3, 1, 'Green');
+    } catch (error) {
+        console.error('Error loading factions data:', error);
+    }
+}
 
 var encumberanceTable = {
     // Based on Alexandrian slot based inventory. Carrying changed

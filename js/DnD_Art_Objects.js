@@ -83,13 +83,11 @@ function generateArt() {
     "in the theme of " + artDesign + "</div>" + "<br>"
     ;
 
-    console.log("Generated Art Result:", artResult);
 
   artOutput.unshift(artResult);
-/*   if (artOutput.length > 6) {
+   if (artOutput.length > 8) {
     artOutput.pop();
-  } */
-  console.log("Current Art Output Array:", artOutput);
+  } 
 
   document.getElementById("art-output").innerHTML = artOutput.join('');
 
