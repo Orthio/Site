@@ -1,10 +1,12 @@
 
 //Global Variables
-export var generalPartyDPS1r = 30.8;
 
+export var currentTime = "6pm";
 export var currentDay = 5;
 export var currentMonth = 10;
 export var currentYear = 1489;
+
+export var generalPartyDPS1r = 30.8;
 
 export var monthsArray = [
     {number: 1, month: "Hammer", desc:  "('Deepwinter') the first month"},
@@ -21,9 +23,13 @@ export var monthsArray = [
     {number: 12, month: "Nightal", desc: " ('The Drawing Down') the twelfth month"}
 ];
 
-export function getCurrentDate(){
+export function getMonthName(month) {
+    return monthsArray[(month-1)].month;
+    }
+
+export function getDateName(day,month){
     let suffix = "";
-    switch(currentDay){
+    switch(day){
         case 1: 
             suffix = "st ";
             break;
@@ -37,8 +43,8 @@ export function getCurrentDate(){
             suffix = "th ";
             break;
     }
-    let currentDateName = currentDay + suffix + monthsArray[(currentMonth-1)].month;
-    document.getElementById("current-date-name").innerHTML = currentDateName;
+    let currentDateName = day + suffix + monthsArray[(month-1)].month;
+    return currentDateName;
 
     //The year consists of 365 days: 12 months of exactly 30 days each (due to the single moon and its followers), \
     //plus 5 days that fall between months. These days are special occasions. Later on it says: Months are subdivided 

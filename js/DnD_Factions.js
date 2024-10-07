@@ -1,26 +1,7 @@
+
+import { generalDiceRoll } from './DnD_General.js';
+
 //Global Variables
-
-let factionsData = {};
-
-// Async function to fetch data and wait for it to load
-async function loadData() {
-    try {
-        const response = await fetch('json/DnD_Factions.json');
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        factionsData = await response.json();  // Wait for JSON to be parsed
-        console.log("Data loaded:", factionsData);
-
-        // Now call the function that depends on the loaded data
-        circleCheck('Green',3, 1);
-    } catch (error) {
-        console.error('Error loading factions data:', error);
-    }
-}
-
-// Call the loadData function
-loadData();
 
 class Circle {
     static circleDatabase = {};
@@ -38,30 +19,6 @@ class Circle {
     }
 }
 
-function circleCheck(color, size, ticks) {
-    let circleSource = "../images/Progress_Clocks/Circle-" + color + "-" + size + "-" + ticks + ".png";
-    return circleSource;
-}
-
-/* function circleCheck(size, ticks, color) {
-    if (factionsData.hasOwnProperty(color)) {
-        if (factionsData[color].hasOwnProperty(size)) {
-            if (factionsData[color][size].hasOwnProperty(ticks)) {
-                return factionsData[color][size][ticks];
-            } else {
-                console.log("Ticks value not found in the database.");
-                return null;
-            }
-        } else {
-            console.log("Size value not found in the database.");
-            return null;
-        }
-    } else {
-        console.log("Color value not found in the database.");
-        return null;
-    }
-} */
-
 function circleSwap(i,color) {
     // Makes a new circle and swaps the image
     var name = "js-circle" + i;  //Name of image to be swapped
@@ -72,9 +29,9 @@ function circleSwap(i,color) {
     let newTicks = parseInt(newParts[1], 10);
     new Circle(color, newSize, newTicks);
     var img = document.getElementById(name);
-    var circleImage = circleCheck(color,newSize,newTicks);
+    var circleImage = "../images/Progress_Clocks/Clock-" + color + "-" + newSize + "-" + newTicks + ".png";
     if (circleImage) {
-        img.srcset = circleImage;
+        img.src = circleImage;
     }
 };
 
@@ -90,24 +47,7 @@ function checkOutcome(roll) {
         return "Poor Result, Limited Effect";
     }
 };
-
-function rollFortune() {
-    var traitRating = parseInt(document.getElementById('trait-rating').value);
-    var majorAdv = parseInt(document.getElementById('major-advantage').value);
-    var majorDisAdv = parseInt(document.getElementById('major-disadvantage').value);
-    var roll0d = "Fortune";
-    var diceQty = traitRating + majorAdv - majorDisAdv;
-    if (diceQty < 1) {
-        diceQty = 2;
-        roll0d = "0d"; // Rolling both dice at disadvantage
-    }
-    var diceOutcome = generalDiceRoll(6,diceQty,roll0d);
-    var fortuneOutcome = checkOutcome(diceOutcome);
-    var fortuneResult = diceOutcome + ": " + fortuneOutcome;
-    document.getElementById('fortune-result').innerHTML = fortuneResult;
-};
-
-
+  
 function updateSheet(id){
     var circleNos = 0;
     if (id === undefined){
@@ -119,4 +59,10 @@ function updateSheet(id){
     for (var i = 1; i <= circleNos; i++) {
         circleSwap(i,colorOrder[i-1]);
     }
+};
+
+window.onload = function () {
+    let idElements = document.querySelectorAll('[id^="js-circle"]');
+    let idCount = idElements.length;
+    updateSheet(idCount);
 };

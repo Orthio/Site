@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Dice Roller</title>
     <meta charset="UTF-8">
@@ -10,10 +11,33 @@
             padding: 0;
             line-height: 1;
         }
+
         .diceNumberClass {
-            width: 80px;
+            width: 70px;
             font-size: 40px;
+
         }
+        #diceNumberInput {
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+            appearance: button;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            /* Align the input and button container horizontally */
+            /* margin: 5px; */
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            /* Stack buttons vertically */
+            margin-left: 5px;
+            /* Add space between input and buttons */
+        }
+
         .ResultsClass {
             padding: 1px;
         }
@@ -22,17 +46,23 @@
 
 <body>
     <h1>Dice Roller</h1>
-    
+
     <div>
         <form action="/action_page.php" class="DiceNumberForm">
-          <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
-          <input type="number" id="diceNumberInput" 
-          class="diceNumberClass" name="diceNumberInput" 
-          value="1" min="1" step="1">
-          <br>
+            <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
+            <div class="input-container">
+                <input type="number" id="diceNumberInput" class="diceNumberClass" name="diceNumberInput" value="1"
+                    min="1" step="1">
+
+                <div class="button-container"> 
+                    <button onclick="numberUp()" type="button" id="up">⬆</button>
+                    <button onclick="numberDown()" type="button" id="down">⬇</button>
+                </div>
+            </div>
+            <br>
         </form>
     </div>
-    <br>    
+    <br>
 
     <button onclick="diceRoll(4)" class="button buttond4">Roll d4</button>
     <button onclick="diceRoll(6)" class="button buttond6">Roll d6</button>
@@ -40,8 +70,8 @@
     <button onclick="diceRoll(10)" class="button buttond10">Roll d10</button>
     <button onclick="diceRoll(12)" class="button buttond12">Roll d12</button>
     <button onclick="diceRoll(20)" class="button buttond20">Roll d20</button>
-    <button onclick="diceRoll(100)" class="button buttond100">Roll d100</button>    
-    <button onclick="diceRoll(1000)" class="button buttond1000">Roll d1000</button>    
+    <button onclick="diceRoll(100)" class="button buttond100">Roll d100</button>
+    <button onclick="diceRoll(1000)" class="button buttond1000">Roll d1000</button>
 
     <br>
     <br>
@@ -51,22 +81,36 @@
 
         var rollHistory = [];
 
+        function numberUp() {
+            let inputField = document.getElementById("diceNumberInput");
+            inputField.value = parseInt(inputField.value) + 1;  // Increment and update value
+        }
+
+        function numberDown() {
+            let inputField = document.getElementById("diceNumberInput");
+            let inputValue = parseInt(inputField.value);  // Get the current value as a number
+            if (inputValue > 1) {
+                inputField.value = inputValue - 1;  // Decrement value if greater than 1
+            }
+        }
+
+
         function diceRoll(roll) {
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
             var diceNumber = document.getElementById("diceNumberInput").value;
-            var rollResult = diceNumber*(Math.floor(Math.random() * roll) + 1);
-            var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll + 
+            var rollResult = diceNumber * (Math.floor(Math.random() * roll) + 1);
+            var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll +
                 " = " + rollResult + '</div>' + "<br>";
-            
+
             rollHistory.unshift(rollOutput);
             // Unshift adds rollOutput to the array
-             if (rollHistory.length > 6) {
-            rollHistory.pop();
+            if (rollHistory.length > 6) {
+                rollHistory.pop();
             }
 
-            document.getElementById("results").innerHTML = 
-                rollHistory.join('') ;
+            document.getElementById("results").innerHTML =
+                rollHistory.join('');
             //Removes the comma by joining the array into a string
 
         }
@@ -74,4 +118,5 @@
 
     </script>
 </body>
+
 </html>

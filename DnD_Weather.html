@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faerun Weather</title>
     <style>
-        .HeaderFaerunWeather a{
-            text-decoration: none;   
-            color: black;     
+        .h1 {
+            margin-bottom: 5px;
         }
+
+        .HeaderFaerunWeather a {
+            text-decoration: none;
+            color: black;
+        }
+
         .HeaderFaerunWeather {
             text-decoration: none;
             color: black;
         }
     </style>
-    <script type="module" src="js/DnD_General.js"></script>
-    <script src="js/DnD_Weather.js"></script>
+
 </head>
+
 <body>
-    <h1 class="HeaderFaerunWeather"><a href="https://www.gmbinder.com/share/-M6xAC_2zw4BzpByxO-c">Faerun Weather</a></h1>
-    
-    <button onclick="winterFunction()">Winter Weather</button>
-    <button onclick="effectsFunction()">Check Effects</button>
-    <button onclick="monthFunction()">Check Month</button>
+    <h1 class="HeaderFaerunWeather"><a href="https://www.gmbinder.com/share/-M6xAC_2zw4BzpByxO-c">Faerun Weather</a>
+    </h1>
+    <p><small><span id="date-name"></span></small></p>
+    <button id="weather-function">Create Weather</button>
+    <button id="effects-function">Check Effects</button>
 
     <p></p>
     <div id="results"></div>
     <div id="effectsresults"></div>
     <div id="checkmonth"></div>
 
+    <script type="module">
+        import { currentDay, currentMonth, currentYear, getDateName } from './js/DnD_General.js';
+        const date = getDateName(currentDay, currentMonth);
+        const dateName = "Today's date is " + date + " " + currentYear;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("date-name").innerHTML = dateName;
+        });
+
+    </script>
+    <script type="module" src="./js/DnD_General.js"></script>
+    <script type="module" src="./js/DnD_Weather.js"></script>
 </body>
+
 </html>

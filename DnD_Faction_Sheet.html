@@ -59,8 +59,7 @@
             cursor: alias;
         }
     </style>
-    <script type="module" src="js/DnD_General.js"></script>
-    <script src="js/DnD_Factions.js"></script>
+   
 </head>
 <body>
     <h1>Faction Sheet</h1>
@@ -80,7 +79,7 @@
             </div>
         </div>
     </form>
-    <button onclick="rollFortune()" class="button buttonCreate">Roll</button>
+    <button id="fortune-button" class="button buttonCreate">Roll</button>
     <p><span id="fortune-result"></span></p>
     <br>
 
@@ -189,6 +188,8 @@
             </tr>
         </table>
     </div>
-
+    <script type="module" src="./js/DnD_General.js"></script>
+    <script type="module" src="./js/DnD_Factions.js"></script>
+    <script type="module" src="./js/DnD_Factions_Sheet.js"></script>
 </body>
 </html>

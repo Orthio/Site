@@ -138,9 +138,9 @@
 
 <div>
   <form id="EncounterAddForm">
-    <input type="button" onclick = "addEncounterCurrent()" value="Add to Current Encounter">
-    <input type="button" onclick = "addEncounterNew()" value="Add to New Encounter">
-    <input type="button" onclick = "removeRow()" value="Remove last Encounter"> 
+    <input type="button" id="add-encounter-current-button" value="Add to Current Encounter">
+    <input type="button" id="add-encounter-new-button" value="Add to New Encounter">
+    <input type="button" id="remove-last-encounter" value="Remove last Encounter"> 
     <!-- //To work on -->
   </form> 
 </div>
@@ -187,14 +187,7 @@
   </tr>
 </table>
 
-  <script>
-
-   window.onload = function() {
-    updateSheet();
-  } 
-  
-  </script>
-  <script type="module" src="js/DnD_General.js"></script>
-  <script src="js/DnD_Encounter_Sheet.js"></script>
+  <script type="module" src="./js/DnD_General.js"></script>
+  <script type="module" src="./js/DnD_Encounter_Sheet.js"></script>
 </body>
 </html>

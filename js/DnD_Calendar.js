@@ -1,30 +1,19 @@
 
-// console.log('DnD_Calendar.js loaded');
 
-// import {dayCurrentDay, dayCurrentMonth, dayCurrentYear, monthsArray}  from './DnD_General.js';
+import { currentDay, currentMonth, currentYear, monthsArray } from './DnD_General.js';
+// console.log("currentday: ",currentDay," currentmonth: ", currentMonth, " currentyear: ",currentYear);
 
-fetch('json/holidays.json')
+let holidays = [];
+fetch('../json/DnD_Calendar.json')
     .then(response => response.json())
-    .then(holidays => {
+    .then(data => {
+        holidays = data;
         console.log(holidays);  // Now holidays contains the array from the JSON file
         // You can now use the holidays array in your code
+        buttons();
+        loadCalendar();
     })
     .catch(error => console.error('Error loading JSON:', error));
-
-var monthsArray = [
-    { number: 1, month: "Hammer", days: 30, desc: "('Deepwinter') the first month" },
-    { number: 2, month: "Alturiak", days: 30, desc: " ('The Claws of the Cold') the second month" },
-    { number: 3, month: "Ches", days: 30, desc: " ('The Claw of Sunsets') the third month" },
-    { number: 4, month: "Tarsakh", days: 30, desc: " ('The Claw of Storms') the fourth month" },
-    { number: 5, month: "Mirtul", days: 30, desc: " ('The Melting') the fifth month" },
-    { number: 6, month: "Kythorn", days: 30, desc: " ('The Time of Flowers') the sixth month" },
-    { number: 7, month: "Flamerule", days: 30, desc: " ('Summertide') the seventh month" },
-    { number: 8, month: "Elasis", days: 30, desc: " ('Highsun') the eighth month" },
-    { number: 9, month: "Eleint", days: 30, desc: " ('The Fading') the ninth month" },
-    { number: 10, month: "Marpenoth", days: 30, desc: " ('Leaffall') the tenth month" },
-    { number: 11, month: "Uktar", days: 30, desc: " ('The Rotting') the eleventh month" },
-    { number: 12, month: "Nightal", days: 30, desc: " ('The Drawing Down') the twelfth month" }
-];
 
 const festivalDays = [
     { name: "Midwinter", day: 30, month: "Hammer" },
@@ -33,23 +22,13 @@ const festivalDays = [
     { name: "Highharvestide", day: 30, month: "Eleint" },
     { name: "The Feast of the Moon", day: 30, month: "Uktar" }
 ];
-/* const holidays = [
-    {
-        hday: "01-01-2023",
-        holiday: "New Year Day",
-    },
-    {
-        hday: "15-01-2023",
-        holiday: "Pongal",
-    }
 
-];
- */
-class Day{
-    static dayCurrentDay = 5; // Current day of the game
-    static dayCurrentMonth = 10;
+
+class Day {
+    static dayCurrentDay = currentDay; // Current day of the game
+    static dayCurrentMonth = currentMonth;
     static dayCurrentMonthName = monthsArray[Day.dayCurrentMonth - 1].month;
-    static dayCurrentYear = 1489;
+    static dayCurrentYear = currentYear;
     static dayCurrentDateText = `${Day.dayCurrentDay}-${Day.dayCurrentMonth}-${Day.dayCurrentYear}`;
 
     static dayCalendarDay = 0; // Day to cycle through while creating day boxes
@@ -59,64 +38,64 @@ class Day{
     static dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
     static dayObjects = {};
 
-    constructor(){
+    constructor() {
         this.day = Day.dayCalendarDay;
-            // for the day number in the month (1st 2nd)
-        this.dayText = this.day <10 ? "0" + this.day : this.day;
-            // if current day is less than 10, add 0, otherwise leave it
+        // for the day number in the month (1st 2nd)
+        this.dayText = this.day < 10 ? "0" + this.day : this.day;
+        // if current day is less than 10, add 0, otherwise leave it
         this.month = Day.dayCalendarMonth;
-        this.monthText = this.month < 10 ? "0" + this.month : this.month ;
+        this.monthText = this.month < 10 ? "0" + this.month : this.month;
         this.monthName = monthsArray[this.month - 1].month;
         this.year = Day.dayCalendarYear;
         this.yearText = this.year;
         this.dayText = this.dayText + this.monthText + this.yearText;
         this.monthIndex++;
-            // for the number of day in the month
+        // for the number of day in the month
         this.yearIndex++;
-            // for the number of day in the year
+        // for the number of day in the year
     }
 }
 
-function nextDay(i){
+function nextDay(i) {
     Day.dayCalendarDay = i;
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
-  
-        Day.dayObjects[Day.dayText] = new Day();
-    
+
+    Day.dayObjects[Day.dayText] = new Day();
+
     // console.log("Day ",Day.dayCalendarDay,"Month ",Day.dayCalendarMonth,"Year ",Day.dayCalendarYear);
 }
 
-function nextMonth(){
+function nextMonth() {
     Day.dayCalendarMonth++;
-    if (Day.dayCalendarMonth === 13){
+    if (Day.dayCalendarMonth === 13) {
         Day.dayCalendarMonth = 1;
         nextYear();
     }
-    Day.dayCalendarMonthName = monthsArray[Day.dayCalendarMonth-1].month;
+    Day.dayCalendarMonthName = monthsArray[Day.dayCalendarMonth - 1].month;
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
     Day.dayObjects[Day.dayText] = new Date();
     // console.log("Day ",Day.dayCalendarDay,"Month ",Day.dayCalendarMonth,"Year ",Day.dayCalendarYear);
 }
 
-function previousMonth(){
+function previousMonth() {
     Day.dayCalendarMonth--;
-    if (Day.dayCalendarMonth === 0){
+    if (Day.dayCalendarMonth === 0) {
         Day.dayCalendarMonth = 12;
         previousYear();
     }
-    Day.dayCalendarMonthName = monthsArray[Day.dayCalendarMonth-1].month;
+    Day.dayCalendarMonthName = monthsArray[Day.dayCalendarMonth - 1].month;
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
     Day.dayObjects[Day.dayText] = new Day();
     // console.log("Day ",Day.dayCalendarDay,"Month ",Day.dayCalendarMonth,"Year ",Day.dayCalendarYear);
 }
 
-function nextYear(){
+function nextYear() {
     Day.dayCalendarYear++;
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
     Day.dayObjects[Day.dayText] = new Day();
 }
 
-function previousYear(){
+function previousYear() {
     Day.dayCalendarYear--;
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
     Day.dayObjects[Day.dayText] = new Day();
@@ -133,9 +112,7 @@ function loadCalendar() {
 
     monthBanner.innerText = `${Day.dayCalendarMonthName} ${Day.dayCalendarYear}DR`;
     calendar.innerHTML = "";
- 
-    // console.log("Day: ", Day.dayCurrentDay, "Month ", Day.dayCurrentMonth, " ", Day.dayCurrentMonthName, "Year ", Day.dayCurrentYear);
-    // console.log("dayCurrentDateText ",Day.dayCurrentDateText);
+
 
     for (let i = 1; i <= 30; i++) {
         const dayBox = document.createElement("div");
@@ -144,16 +121,16 @@ function loadCalendar() {
         nextDay(i);
 
         dayBox.innerText = i;
-/*         //Event Day
-        const eventOfTheDay = events.find((e) => e.day == dayText);
+        //Event Day
+        const eventOfTheDay = events.find((e) => e.day == Day.dayText);
         //Holiday
-        const holidayOfTheDay = holidays.find((e) => e.hday == dayText); */
+        const holidayOfTheDay = holidays.find((e) => e.hday == Day.dayText);
 
         if (i === Day.dayCurrentDay && navigation == 0) {
             dayBox.id = "currentDay";
         }
 
-/*         if (eventOfTheDay) {
+        if (eventOfTheDay) {
             const eventDiv = document.createElement("div");
             eventDiv.classList.add("event");
             eventDiv.innerText = eventOfTheDay.title;
@@ -165,12 +142,12 @@ function loadCalendar() {
             eventDiv.classList.add("holiday");
             eventDiv.innerText = holidayOfTheDay.holiday;
             dayBox.appendChild(eventDiv);
-        } */
+        }
 
-        // dayBox.addEventListener("click", () => {
-        //     showModal(dayText);
-        // });
-        
+         dayBox.addEventListener("click", () => {
+             showModal(Day.dayText);
+         });
+
         calendar.append(dayBox);
     }
 }
@@ -222,9 +199,9 @@ const modal = document.querySelector("#modal");
 const viewEventForm = document.querySelector("#viewEvent");
 const addEventForm = document.querySelector("#addEvent");
 
-function showModal(dayText) {
-    clicked = dayText;
-    const eventOfTheDay = events.find((e) => e.day == dayText);
+function showModal(writing) {
+    clicked = writing;
+    const eventOfTheDay = events.find((e) => e.day == clicked);
     if (eventOfTheDay) {
         //Event already Preset
         document.querySelector("#eventText").innerText = eventOfTheDay.title;
@@ -245,8 +222,7 @@ function closeModal() {
     loadCalendar();
 }
 
-buttons();
-loadCalendar();
+
 
 /*
 1. Add Event     

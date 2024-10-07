@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Art Objects</title>
+    <title>Item Rolls</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -15,22 +15,18 @@
 </head>
 
 <body>
-    <h1>Art Objects</h1>
+    <h1>Item Rolls</h1>
 
     <button id="generate-art-button" class="button">Generate Art Objects</button>
+    <button id="generate-enemy-weapon-button" class="button">Generate Enemy Weapon</button>
+    <button id="generate-party-weapon-button" class="button">Generate Party Weapon</button>
 
     <br>
     <br>
     <!-- <p><span id="roll-results"></span></p> -->
-    <div id="art-output"></div>
+    <div id="result-output"></div>
 
-    <script type="module">
-        // This will clear the console on page reload
-        window.addEventListener('load', () => {
-            console.clear();  // Clears the console
-        });
-    </script>
-    <script type="module" src="js/DnD_Art_Objects.js"></script>
+    <script type="module" src="js/DnD_Item_Rolls.js"></script>
 
 </body>
 </html>

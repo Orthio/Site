@@ -1,4 +1,6 @@
 
+import { generalDiceRoll } from './DnD_General.js';
+
 const globalVariables = (function() {
     var partyDPS = 30.8;
 
@@ -495,7 +497,7 @@ function addEncounterNew() {
 
 }
 
-function removeRow() {
+function removeEncounter() {
     // Removes an encounter and row
     
     let encounterTable = document.getElementById("EncounterTable");
@@ -671,7 +673,27 @@ function updateSheet() {
     
 }
 
+const addEncounterCurrentButton = document.querySelector("#add-encounter-current-button");
 
+addEncounterCurrentButton.addEventListener("click", () => {
+    addEncounterCurrent();
+});
+
+const addEncounterNewButton = document.querySelector("#add-encounter-new-button");
+
+addEncounterNewButton.addEventListener("click", () => {
+    addEncounterNew();
+});
+    
+const removeLastEncounterButton = document.querySelector("#remove-last-encounter");
+
+removeLastEncounterButton.addEventListener("click", () => {
+    removeEncounter();
+});
+
+window.onload = function() {
+    updateSheet();
+} 
 
 eventListeners.addInputListener('js-party-levelinput', updateSheet);
 eventListeners.addInputListener('js-party-numberinput', updateSheet);
