@@ -117,14 +117,14 @@
 <body>
     <h1>Character Creator</h1>
     
-    <button onclick="createCharacter()" class = "button buttonCreate" > Create </button>
+    <button type="button" onclick="createCharacter()" class = "button buttonCreate" > Create </button>
         
 
     <div class="dropdown">
-      <button onclick="dropFunction()" class="dropbtn" id="raceButton">Race Dropdown</button>
+      <button type="button" onclick="dropFunction()" class="dropbtn" id="raceButton">Race Dropdown</button>
       <div id="myDropdown" class="dropdown-content">
-        <a  onclick="randomFunction();">Random</a>
-        <a  onclick="selectRaceSex('Human','Male');">Human Male</a>
+        <a onclick="randomFunction();">Random</a>
+        <a onclick="selectRaceSex('Human','Male');">Human Male</a>
         <a onclick="selectRaceSex('Human','Female');">Human Female</a>
         <a onclick="selectRaceSex('Dwarf','Male');">Dwarf Male</a>
         <a onclick="selectRaceSex('Dwarf','Female');">Dwarf Female</a>
@@ -180,17 +180,17 @@
       </div>
     </div>
 
-    <button onclick="simpleCopy()" class = "button buttonSimple" > Simple Copy </button>
+    <button  type="button" onclick="simpleCopy()" class = "button buttonSimple" > Simple Copy </button>
 
     <br>
     
-    <button onclick="renameCharacter()" class = "button buttonRename" > Rename </button>
+    <button type="button" onclick="renameCharacter()" class = "button buttonRename" > Rename </button>
 
-    <button onclick="addFlaw()" class = "button buttonFlaw" > Add Flaw </button>
+    <button type="button" onclick="addFlaw()" class = "button buttonFlaw" > Add Flaw </button>
 
-    <button onclick="addBackground()" class = "button buttonBackground" > Add Background </button>
+    <button type="button" onclick="addBackground()" class = "button buttonBackground" > Add Background </button>
 
-    <button onclick="addVillainy()" class = "button buttonVillainy" > Add Villainy </button>
+    <button type="button" onclick="addVillainy()" class = "button buttonVillainy" > Add Villainy </button>
 
     <div id="characterDisplay"></div>
     <div id="results"></div>

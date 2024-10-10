@@ -22,7 +22,7 @@
             margin-right: 10px;
         }
     </style>
-    <script src="js/DnD_Factions.js"></script>
+    <script type="module" src="js/DnD_Factions.js"></script>
 </head>
 <body>
 <h1>Factions Edit</h1>
@@ -38,10 +38,10 @@
 
     <div class="CircleContainer">
         <label for="circle-size-1"></label>
-        <button onclick="circle-a1-4()" class="button">4</button>
-        <button onclick="circle-a1-6()" class="button">6</button>
-        <button onclick="circle-a1-8()" class="button">8</button>
-        <button onclick="circle-a1-12()" class="button">12</button>
+        <button type="button" onclick="circle-a1-4()" class="button">4</button>
+        <button type="button" onclick="circle-a1-6()" class="button">6</button>
+        <button type="button" onclick="circle-a1-8()" class="button">8</button>
+        <button type="button" onclick="circle-a1-12()" class="button">12</button>
 <br>
         <input type="number" class="CircleSizeClass" id="circle-size-1" name="circle-size-1" 
         value="3" step="1" min="3" max="12"><br>
@@ -53,7 +53,7 @@
         value="0" step="1" min="0" max="12"><br>
     </div>
     <br><br>
-    <button onclick="updateSheet()" class="button">Update Sheet</button>
+    <button type="button" onclick="updateSheet()" class="button">Update Sheet</button>
     <br><br>
     <img id="Circle1" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
     </div>
@@ -74,7 +74,7 @@
             value="0" step="1" min="0" max="12"><br>
         </div>
         <br><br>
-        <button onclick="updateSheet()" class="button">Update Sheet</button>
+        <button type="button" onclick="updateSheet()" class="button">Update Sheet</button>
         <br><br>
         <img id="Circle2" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
         </div>
@@ -95,7 +95,7 @@
                 value="0" step="1" min="0" max="12"><br>
             </div>
             <br><br>
-            <button onclick="updateSheet()" class="button">Update Sheet</button>
+            <button type="button" onclick="updateSheet()" class="button">Update Sheet</button>
             <br><br>
             <img id="Circle3" src="https://i.imgur.com/EuNDi3m.png" alt="Image" width="100px">
             </div>

@@ -207,6 +207,9 @@ class PartyMember {
     this.StandardDamage = 0; 
     this.StandardDamageBonus = 0;
     this.StandardAttack = "";
+    this.SkillProfText = "";
+    this.ToolProfText = "";
+    this.LanguageProfText = "";
   }
 
   calculateAbilityBonus() {
@@ -302,6 +305,9 @@ Doris.StandardToHit = Doris.SpellAttack; //+6
 // 65% average against typical CR
 // to hit AC16, Doris needs to roll a 10 or higher, 0.5
 Doris.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.5) *10 )/10); 
+Doris.SkillProfText = "Acrobatics, Deception, Intimidation, Performance, Persuasion, Sleight of Hand, Stealth";
+Doris.ToolProfText = "Glaur(Trumpet), Lyre (Hand harp), Lute, Playing Cards, Thieves Tools";
+Doris.LanguageProfText = "Common, Infernal";
 
 Faelar.Strength = 14;
 Faelar.Dexterity = 10;
@@ -334,6 +340,9 @@ Faelar.StandardDamageBonus = 8.5 * (1-0.65);
 // 1d8 + Faelar.SpellCastMod + 1;  Spiritual Weapon
 // 4.5 + 3 + 1 = 8.5 
 Faelar.StandardDamage = Math.round(((Faelar.StandardDamage + Faelar.StandardDamageBonus)*10)/10);
+Faelar.SkillProfText = "Arcana, History, Insight, Investigation, Medicine, Perception";
+Faelar.ToolProfText = "All";
+Faelar.LanguageProfText = "Common, Draconic, Dwarvish, Elvish, Gnomish, Halfling, Sylvan";
 
 Kandryn.Strength = 10;
 Kandryn.Dexterity = 16;
@@ -360,6 +369,9 @@ Kandryn.StandardAttack = "Firebolt";
 Kandryn.StandardToHit = Kandryn.SpellAttack; //+8
 // +8 to hit against AC16, 0.4
 Kandryn.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.4) *10)/10);
+Kandryn.SkillProfText = "Arcana, History, Investigation, Perception";
+Kandryn.ToolProfText = "None";
+Kandryn.LanguageProfText = "Common, Celestial, Elvish, Sylvan";
 
 Eiran.Strength = 12;
 Eiran.Dexterity = 16;
@@ -392,6 +404,9 @@ Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] ; // +3 +3 = +6
 // +6 Adv to hit against AC16
 // 0.5 * 0.5 = 0.25 Chance of not happening, so chance of happening is 0.75
 Eiran.DaggersDamage = (2*(2.5+3))*0.75; // 2*(1d4+ 3dex)   = 10.5  
+Eiran.SkillProfText = "Animal, Handling, Athletics, Stealth, Survival";
+Eiran.ToolProfText = "None";
+Eiran.LanguageProfText = "Common, Dwarvish, Elvish, Orc, Sylvan";
 
 Breiar.Strength = 14;
 Breiar.Dexterity = 14;
@@ -435,7 +450,7 @@ class Monster{
   }
 }
 
-Typical8 = new Monster();
+let Typical8 = new Monster();
 Typical8.MonsterId = 1;
 Typical8.CR = 8;
 Typical8.AC = 16;
@@ -500,6 +515,14 @@ function updateSheet() {
   document.getElementById("party-DPR3").innerText = Party.partyDPR3;
   document.getElementById("party-carrying-capacity").innerText = Party.partyCarryingCapacity;
   document.getElementById("party-carrying-after").innerText = Party.partyCarryingCapacity - 60 - 50;
+
+ var characters2 = [Doris, Faelar, Kandryn, Eiran];
+
+  characters2.forEach(character => {
+    document.getElementById(character.Name.toLowerCase() + "-skill-prof").innerText = character.SkillProfText;
+    document.getElementById(character.Name.toLowerCase() + "-tool-prof").innerText = character.ToolProfText;
+    document.getElementById(character.Name.toLowerCase() + "-language-prof").innerText = character.LanguageProfText;
+  });
 
   generateHPTable();
 }

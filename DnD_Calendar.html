@@ -11,8 +11,8 @@
       <div class="header">
         <div id="month"></div>
         <div>
-          <button id="btnBack"><i class="fa fa-angle-left"></i>&#129032;</button>
-          <button id="btnNext"><i class="fa fa-angle-right"></i>&#129034;</button>
+          <button type="button" id="btnBack"><i class="fa fa-angle-left"></i>&#129032;</button>
+          <button type="button" id="btnNext"><i class="fa fa-angle-right"></i>&#129034;</button>
         </div>
       </div>
       <div class="weekdays">
@@ -34,18 +34,19 @@
     <div id="addEvent">
       <h2>Add Event</h2>
       <input type="text" id="txtTitle" placeholder="Event Title" />
-      <button id="btnSave">Save</button>
-      <button class="btnClose">Close</button>
+      <button type="button" id="btnSave">Save</button>
+      <button type="button" class="btnClose">Close</button>
     </div>
 
     <div id="viewEvent">
       <h2>Event</h2>
       <p id="eventText">This is Sample Event</p>
-      <button id="btnDelete">Delete</button>
-      <button class="btnClose">Close</button>
+      <button type="button" id="btnDelete">Delete</button>
+      <button type="button" class="btnClose">Close</button>
     </div>
+
     <script type="module" src="js/DnD_General.js"></script>
     <script type="module" src="js/DnD_Calendar.js"></script>
-    <!-- type="module"  -->
+
   </body>
 </html>
