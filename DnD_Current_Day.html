@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Current Day</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <p><i><span id="current-day-text"></span></i></p>
+
+    <script type="module" src="./js/DnD_General.js"></script>
+    <script type="module">
+        import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getMonthName, getDateName } from './js/DnD_General.js';
+
+        let monthName = getMonthName(currentMonth);
+        console.log(monthName);
+        let dateName = getDateName(currentDay, currentMonth);
+        console.log(dateName);
+        let dateText = "Currently " + dateName + " " + currentYear + "DR";
+        console.log(dateText);
+
+        document.getElementById("current-day-text").innerText = dateText;
+    
+    </script>
+</body>
+
+</html>
