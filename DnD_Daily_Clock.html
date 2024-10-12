@@ -8,13 +8,23 @@
         .ClockForm {
             display: inline-block;
             margin-right: 10px;
+            margin-top: 0px;
+            padding-top: 0px;
         }
-
+        #p-day-text {
+            position: relative;
+            left: 20px;
+            margin-bottom: 0px;
+            padding-bottom: 0px; 
+        }
     </style>
 
 </head>
 
 <body>
+    <p id="p-day-text"><i><span id="current-day-text"></span><br>
+    &nbsp;<span id="current-time-text"></span></i></p>
+
     <div class = "ClockForm">
     <img id="Circle1" src="./images/Current_Time/Time-Default.jpg" alt="Image" width="500px">
     </div>
@@ -23,7 +33,7 @@
     </script>
     <script type="module">
 
-        import {currentTime}  from './js/DnD_General.js';
+import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getMonthName, getDateName } from './js/DnD_General.js';
 
         let time = currentTime;
 
@@ -32,6 +42,16 @@
             imgClock.src = "./images/Current_Time/Time-" + currentTime + ".jpg";
             console.log(imgClock.src);
         };
+
+        let dateName = getDateName(currentDay, currentMonth);
+        console.log(dateName);
+        let dateText = "Currently " + dateName + " " + currentYear + "DR";
+        console.log(dateText);
+
+        document.getElementById("current-day-text").innerText = dateText;
+
+        let timeText = "About " + time;
+        document.getElementById("current-time-text").innerText = timeText;
 
         window.onload = function() {
             clockSwap();
