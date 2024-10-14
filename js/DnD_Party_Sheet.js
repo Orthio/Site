@@ -1,7 +1,7 @@
-// Global variables 
 
-// #region Variable Region
-var PartyLevel = 6;
+import { partyLevel } from './DnD_General.js';
+
+// Global variables 
 
 var fireboltDamage = {
   // By level
@@ -28,7 +28,8 @@ var fireboltDamage = {
 };
 
 var SacredFlameDamage = {
-  // By level
+  // By level.
+  // Same damage for Starry Wisp
   1: {dice:"1d8", damage: 4.5},
   2: {dice:"1d8", damage: 4.5},
   3: {dice:"1d8", damage: 4.5},
@@ -254,7 +255,7 @@ class PartyMember {
     
   for (const [skill, mod] of Object.entries(skills)) {
     if (PartyMember.charProfBonusesDictionary[character.Name] && PartyMember.charProfBonusesDictionary[character.Name][skill] !== undefined) {
-      character[skill] = character[mod] + Math.floor(PartyMember.charProfBonusesDictionary[character.Name][skill] * proficiencyBonus[PartyLevel]);
+      character[skill] = character[mod] + Math.floor(PartyMember.charProfBonusesDictionary[character.Name][skill] * proficiencyBonus[partyLevel]);
     } else {
       console.error(`No proficiency bonus found for ${skill} on character ${character.Name}`);
     }
@@ -290,21 +291,21 @@ Doris.calculateSkills(Doris);
 Doris.calculateEncumberance();
 Doris.HPStart = 8;
 Doris.HPGainPerLevel = 5;
-Doris.HP = Doris.calculateHP(Doris,PartyLevel)
+Doris.HP = Doris.calculateHP(Doris,partyLevel)
 Doris.AC = 14;
 Doris.GearNote = "Reveller's Concertina +2 SpellSave";
 Doris.MeleeAttackBonus = 0;
 Doris.RangedAttackBonus = 0;
 Doris.SpellAttackBonus = 0;
 Doris.SpellSaveBonus = 2;
-Doris.SpellAttack = Doris.SpellCastMod + proficiencyBonus[PartyLevel] + Doris.SpellAttackBonus; //3+3+0=6
-Doris.SpellSave = 8 + Doris.SpellCastMod + proficiencyBonus[PartyLevel] + Doris.SpellSaveBonus; //8+3+3+2=16
-Doris.StandardAttack = "Firebolt";
+Doris.SpellAttack = Doris.SpellCastMod + proficiencyBonus[partyLevel] + Doris.SpellAttackBonus; //3+3+0=6
+Doris.SpellSave = 8 + Doris.SpellCastMod + proficiencyBonus[partyLevel] + Doris.SpellSaveBonus; //8+3+3+2=16
+Doris.StandardAttack = "Starry Wisp";
 Doris.StandardToHit = Doris.SpellAttack; //+6
 // +6 to hit against AC16
 // 65% average against typical CR
 // to hit AC16, Doris needs to roll a 10 or higher, 0.5
-Doris.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.5) *10 )/10); 
+Doris.StandardDamage = Math.round((SacredFlameDamage[partyLevel].damage * (1-0.5) *10 )/10); 
 Doris.SkillProfText = "Acrobatics, Deception, Intimidation, Performance, Persuasion, Sleight of Hand, Stealth";
 Doris.ToolProfText = "Glaur(Trumpet), Lyre (Hand harp), Lute, Playing Cards, Thieves Tools";
 Doris.LanguageProfText = "Common, Infernal";
@@ -320,7 +321,7 @@ Faelar.calculateSkills(Faelar);
 Faelar.calculateEncumberance();
 Faelar.HPStart = 8;
 Faelar.HPGainPerLevel = 5;
-Faelar.HP = Faelar.calculateHP(Faelar,PartyLevel);
+Faelar.HP = Faelar.calculateHP(Faelar,partyLevel);
 Faelar.AC = 19;
 Faelar.GearNote = "Book of Martial Techniques +1, Stone of Good Luck on saving throws and abilities";
 Faelar.SpellCastMod = Faelar.WisMod;
@@ -328,14 +329,14 @@ Faelar.MeleeAttackBonus = 1;
 Faelar.RangedAttackBonus = 0;
 Faelar.SpellAttackBonus = 0;
 Faelar.SpellSaveBonus = 0;
-Faelar.SpellAttack = Faelar.SpellCastMod + + proficiencyBonus[PartyLevel] + Faelar.SpellAttackBonus; //3+3+0=6
-Faelar.SpellSave = 8 + Faelar.SpellCastMod + proficiencyBonus[PartyLevel] + Faelar.SpellSaveBonus; //8+3+3+0=14
+Faelar.SpellAttack = Faelar.SpellCastMod + + proficiencyBonus[partyLevel] + Faelar.SpellAttackBonus; //3+3+0=6
+Faelar.SpellSave = 8 + Faelar.SpellCastMod + proficiencyBonus[partyLevel] + Faelar.SpellSaveBonus; //8+3+3+0=14
 Faelar.StandardAttack = "Sacred Flame and Spiritual Weapon";
 Faelar.StandardToHit = "DC14";
 // DC14 to hit against Spell Save DC16
 // to hit DC16, Faelar needs to roll a 12 or higher, 0.6
 Faelar.StandardToHitBonus = Faelar.StrMod + 1; // With Spiritual Weapon. +3, 0.65 to hit
-Faelar.StandardDamage = SacredFlameDamage[PartyLevel].damage * (1-0.6);
+Faelar.StandardDamage = SacredFlameDamage[partyLevel].damage * (1-0.6);
 Faelar.StandardDamageBonus = 8.5 * (1-0.65);
 // 1d8 + Faelar.SpellCastMod + 1;  Spiritual Weapon
 // 4.5 + 3 + 1 = 8.5 
@@ -355,7 +356,7 @@ Kandryn.calculateSkills(Kandryn);
 Kandryn.calculateEncumberance();
 Kandryn.HPStart = 6;
 Kandryn.HPGainPerLevel = 4;
-Kandryn.HP = Kandryn.calculateHP(Kandryn,PartyLevel);
+Kandryn.HP = Kandryn.calculateHP(Kandryn,partyLevel);
 Kandryn.AC = 13;
 Kandryn.GearNote = "Wizardry Hat + SpellAttacks";
 Kandryn.SpellCastMod = Kandryn.IntMod;
@@ -363,12 +364,12 @@ Kandryn.MeleeAttackBonus = 0;
 Kandryn.RangedAttackBonus = 0;
 Kandryn.SpellAttackBonus = 2;
 Kandryn.SpellSaveBonus = 0;
-Kandryn.SpellAttack = Kandryn.SpellCastMod + + proficiencyBonus[PartyLevel] + Kandryn.SpellAttackBonus; //3+3+2=8
-Kandryn.SpellSave = 8 + Kandryn.SpellCastMod + proficiencyBonus[PartyLevel] + Kandryn.SpellSaveBonus; //8+3+3+0=14
+Kandryn.SpellAttack = Kandryn.SpellCastMod + + proficiencyBonus[partyLevel] + Kandryn.SpellAttackBonus; //3+3+2=8
+Kandryn.SpellSave = 8 + Kandryn.SpellCastMod + proficiencyBonus[partyLevel] + Kandryn.SpellSaveBonus; //8+3+3+0=14
 Kandryn.StandardAttack = "Firebolt";
 Kandryn.StandardToHit = Kandryn.SpellAttack; //+8
 // +8 to hit against AC16, 0.4
-Kandryn.StandardDamage = Math.round((fireboltDamage[PartyLevel].damage * (1-0.4) *10)/10);
+Kandryn.StandardDamage = Math.round((fireboltDamage[partyLevel].damage * (1-0.4) *10)/10);
 Kandryn.SkillProfText = "Arcana, History, Investigation, Perception";
 Kandryn.ToolProfText = "None";
 Kandryn.LanguageProfText = "Common, Celestial, Elvish, Sylvan";
@@ -384,7 +385,7 @@ Eiran.calculateSkills(Eiran);
 Eiran.calculateEncumberance();
 Eiran.HPStart = 10;
 Eiran.HPGainPerLevel = 6;
-Eiran.HP = Eiran.calculateHP(Eiran,PartyLevel);
+Eiran.HP = Eiran.calculateHP(Eiran,partyLevel);
 Eiran.AC = 16;
 Eiran.GearNote = "Great Scythe + 1";
 Eiran.SpellCastMod = Eiran.WisMod;
@@ -392,15 +393,15 @@ Eiran.MeleeAttackBonus = 1;
 Eiran.RangedAttackBonus = 2;
 Eiran.SpellAttackBonus = 0;
 Eiran.SpellSaveBonus = 0;
-Eiran.SpellAttack = Eiran.SpellCastMod + proficiencyBonus[PartyLevel] + Eiran.SpellAttackBonus; //1+3+0=4
-Eiran.SpellSave = 8 + Eiran.SpellCastMod + proficiencyBonus[PartyLevel] + Eiran.SpellSaveBonus; //8+1+3+0=12
+Eiran.SpellAttack = Eiran.SpellCastMod + proficiencyBonus[partyLevel] + Eiran.SpellAttackBonus; //1+3+0=4
+Eiran.SpellSave = 8 + Eiran.SpellCastMod + proficiencyBonus[partyLevel] + Eiran.SpellSaveBonus; //8+1+3+0=12
 Eiran.StandardAttack = "Longbow Multiattack";
 Eiran.StandardToHit = Eiran.DexMod + Eiran.RangedAttackBonus + 2; // +3 +2 +2 = +7
 // Against AC16, 0.45
 Eiran.StandardDamage = Math.round(((2*(4.5)+6) * (1-0.45) *10)/10); // 11*0.55
-Eiran.ScytheToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] + Eiran.MeleeAttackBonus; // +3 +3 +1 = +7
+Eiran.ScytheToHit = Eiran.DexMod + proficiencyBonus[partyLevel] + Eiran.MeleeAttackBonus; // +3 +3 +1 = +7
 Eiran.ScytheDamage = 8.5 //1d8 + (3+1)
-Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[PartyLevel] ; // +3 +3 = +6 (Twice)
+Eiran.DaggersToHit = Eiran.DexMod + proficiencyBonus[partyLevel] ; // +3 +3 = +6 (Twice)
 // +6 Adv to hit against AC16
 // 0.5 * 0.5 = 0.25 Chance of not happening, so chance of happening is 0.75
 Eiran.DaggersDamage = (2*(2.5+3))*0.75; // 2*(1d4+ 3dex)   = 10.5  
@@ -419,7 +420,7 @@ Breiar.calculateSkills(Breiar);
 Breiar.calculateEncumberance();
 Breiar.HPStart = 10;
 Breiar.HPGainPerLevel = 5;
-Breiar.HP = Breiar.calculateHP(Breiar,PartyLevel);
+Breiar.HP = Breiar.calculateHP(Breiar,partyLevel);
 Breiar.AC = 13+ Eiran.WisMod;
 Breiar.GearNote = "";
 Breiar.SpellCastMod = 0;
@@ -470,9 +471,9 @@ function generateHPTable() {
     // Generate HP for next 4 levels
     for (let i = 0; i <= 4; i++) {
       let hpCell = document.createElement('td');
-      hpCell.textContent = character.calculateHP(character, PartyLevel + i);
+      hpCell.textContent = character.calculateHP(character, partyLevel + i);
       row.appendChild(hpCell);
-      document.getElementById("levelPlus" + i).textContent = PartyLevel + i;
+      document.getElementById("levelPlus" + i).textContent = partyLevel + i;
 
     }
     tableBody.appendChild(row);
@@ -481,8 +482,8 @@ function generateHPTable() {
 }
 
 function updateSheet() {
-  document.getElementById("party-level").innerText = PartyLevel;
-  document.getElementById("prof-bonus").innerText = proficiencyBonus[PartyLevel];
+  document.getElementById("party-level").innerText = partyLevel;
+  document.getElementById("prof-bonus").innerText = proficiencyBonus[partyLevel];
 
   var characters = [Doris, Faelar, Kandryn, Eiran, Breiar];
 

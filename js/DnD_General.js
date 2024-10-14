@@ -1,8 +1,10 @@
 
 //Global Variables
 
-export var currentTime = "6pm";
-export var currentDay = 5;
+export var partyLevel = 7;
+
+export var currentTime = "7am";
+export var currentDay = 6;
 export var currentMonth = 10;
 export var currentYear = 1489;
 

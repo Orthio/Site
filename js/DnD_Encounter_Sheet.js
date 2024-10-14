@@ -148,7 +148,7 @@ class EventListeners {
 const eventListeners = new EventListeners();
 
 class Party {
-    static partyLevel = 6;
+    static partyLevel = 7;
     static partyNumber = 4; 
     static partyStartingXP = 0;
     static partyXPRecord = 0;
