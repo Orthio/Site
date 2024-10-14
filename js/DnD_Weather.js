@@ -130,7 +130,6 @@ function displayResults() {
     let month = currentMonth;
 
     for (var i = 0; i < 4; i++) {
-        day += i;
         if (day > 30) {
             day = 1;
             month++;
@@ -142,6 +141,8 @@ function displayResults() {
         let dateName = getDateName(day, month);
         weatherHistory += `<div><b>Day ${i + 1}, ${dateName}</b></div>
             <div>${weatherArray[i]} ${windArray[i]} ${windDirArray[i]} ${rainArray[i]}</div><br>`;
+            day ++;
+
     }
 
     document.getElementById("results").innerHTML = weatherHistory + "___________________________________ ";
