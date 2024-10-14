@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Daily Clock</title>
     <meta charset="UTF-8">
@@ -10,12 +11,15 @@
             margin-right: 10px;
             margin-top: 0px;
             padding-top: 0px;
+            width: 500px;
         }
+
         #p-day-text {
             position: relative;
             left: 20px;
             margin-bottom: 0px;
-            padding-bottom: 0px; 
+            padding-bottom: 0px;
+            width: 500px;
         }
     </style>
 
@@ -23,17 +27,16 @@
 
 <body>
     <p id="p-day-text"><i><span id="current-day-text"></span><br>
-    &nbsp;<span id="current-time-text"></span></i></p>
+        &nbsp;<span id="current-time-text"></span></i></p>
 
-    <div class = "ClockForm">
-    <img id="Circle1" src="./images/Current_Time/Time-Default.jpg" alt="Image" width="500px">
+    <div class="ClockForm">
+        <img id="Circle1" src="./images/Current_Time/Time-Default.jpg" alt="Image" width="500px">
     </div>
-    <script type="module" src="./js/DnD_General.js">
-         
-    </script>
+
+    <script type="module" src="./js/DnD_General.js"></script>
     <script type="module">
 
-import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getMonthName, getDateName } from './js/DnD_General.js';
+        import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getMonthName, getDateName } from './js/DnD_General.js';
 
         let time = currentTime;
 
@@ -53,10 +56,11 @@ import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getMon
         let timeText = "About " + time;
         document.getElementById("current-time-text").innerText = timeText;
 
-        window.onload = function() {
+        window.onload = function () {
             clockSwap();
         };
 
     </script>
 </body>
+
 </html>
