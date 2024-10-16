@@ -22,31 +22,46 @@ body {
 }
 
 .header {
-  padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.header #month {
+.header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#month {
   color: #0d7985;
   font-size: 30px;
   font-weight: 600;
 }
 
-button {
-  width: 75px;
-  height: 60px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  padding: 5px;
-  border-radius: 3px;
-  color: white;
+#current-date {
+  font-style: italic;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.header>div:last-child {
+  display: flex;
+  gap: 10px;
 }
 
 .header button {
   background-color: #0d7985;
+  width: 75px;
+  height: 60px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 3px;
 }
+
 .weekdays {
   width: 100%;
   display: flex;
@@ -84,6 +99,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .day:hover {
   background-color: rgba(112, 111, 211, 0.1);
   color: #706fd3;
@@ -171,7 +187,3 @@ button {
 .error {
   border-color: #0d7985 !important;
 }
-
-
-
-

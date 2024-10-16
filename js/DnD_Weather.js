@@ -1,4 +1,4 @@
-import { generalDiceRoll, currentDay, currentMonth, currentYear, getDateName, getMonthName } from './DnD_General.js';
+import { generalDiceRoll, currentDay, currentMonth, getDateName, getMonthDays } from './DnD_General.js';
 
 // Global Variables
 var weatherArray = [];
@@ -130,11 +130,12 @@ function displayResults() {
     let month = currentMonth;
 
     for (var i = 0; i < 4; i++) {
-        if (day > 30) {
+        let thisMonthsDays = getMonthDays(month);
+        if (day > thisMonthsDays) {
             day = 1;
             month++;
         }
-        if (month > 12) {
+        if (month > 18) {
             month = 1;
         }
 
