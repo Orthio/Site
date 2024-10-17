@@ -13,8 +13,8 @@ let holidaysArray = [];
 let eventsArray = [];
 
 Promise.all([
-    fetch('../json/DnD_Calendar_Holidays.json').then(response => response.json()),
-    fetch('../json/DnD_Calendar_Events.json').then(response => response.json())
+    fetch('json/DnD_Calendar_Holidays.json').then(response => response.json()),
+    fetch('json/DnD_Calendar_Events.json').then(response => response.json())
 ])
     .then(([holidaysData, eventsData]) => {
         holidaysArray = holidaysData;

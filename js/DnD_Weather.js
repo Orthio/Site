@@ -18,7 +18,7 @@ let weatherData = {};
 let isWeatherDataLoaded = false; // Flag to check if data is loaded
 
 // Load the JSON data using fetch
-fetch('./json/DnD_Weather.json')
+fetch('json/DnD_Weather.json')
     .then(response => response.json())
     .then(data => {
         weatherData = data;

@@ -2,7 +2,7 @@ import { generalDiceRoll } from './DnD_General.js';
 
 let jsonData;
 
-fetch('./json/DnD_Item_Rolls.json')
+fetch('json/DnD_Item_Rolls.json')
 
     .then(response => response.json())  // Parse the JSON
     .then(data => {
