@@ -1,11 +1,35 @@
 [
     {
-        "date": "10-10-1489",
-        "holiday": "A Holiday"
+        "date": "1-2-",
+        "holiday": "Midwinter"
     },
     {
-        "date": "01-04-2023",
-        "holiday": "Pongal"
+        "date": "19-4-",
+        "holiday": "Spring Equinox"
+    },
+    {
+        "date": "1-6-",
+        "holiday": "Greengrass"
+    },
+    {
+        "date": "20-8-",
+        "holiday": "Summer Solistice"
+    },
+    {
+        "date": "1-10-",
+        "holiday": "Midsummer"
+    },
+    {
+        "date": "1-13-",
+        "holiday": "Highharvesttide"
+    },
+    {
+        "date": "1-16-",
+        "holiday": "The Feast of the Moon"
+    },
+    {
+        "date": "20-17-",
+        "holiday": "Winter Solstice"
     }
 ]
 

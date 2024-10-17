@@ -25,10 +25,9 @@ export var monthsArray = [
     { number: 12, month: "Eleint", days: 30, desc: " ('The Fading') the ninth month", holiday: "Highharvestide" },
     { number: 13, month: "Highharvesttide", days: 1, desc: "" },
     { number: 14, month: "Marpenoth", days: 30, desc: " ('Leaffall') the tenth month", holiday: "Marp-Fest" },
-    { number: 15, month: "Marp-Fest", days: 1, desc: "" },
-    { number: 16, month: "Uktar", days: 30, desc: " ('The Rotting') the eleventh month", holiday: "The Feast of the Moon" },
-    { number: 17, month: "The Feast of the Moon", days: 1, desc: "" },
-    { number: 18, month: "Nightal", days: 30, desc: " ('The Drawing Down') the twelfth month" }
+    { number: 15, month: "Uktar", days: 30, desc: " ('The Rotting') the eleventh month", holiday: "The Feast of the Moon" },
+    { number: 16, month: "The Feast of the Moon", days: 1, desc: "" },
+    { number: 17, month: "Nightal", days: 30, desc: " ('The Drawing Down') the twelfth month" }
 ];
 
 export function getMonthName(month) {
