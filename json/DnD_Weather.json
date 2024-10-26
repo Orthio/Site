@@ -44,7 +44,7 @@
     },
     "effectsTable": {
         "A Blizzard": "<b>A Blizzard</b><br>At the end of every hour spent in a Blizzard, make a DC 12 Constitution saving throw.<br>&nbsp&nbsp On failure, you take 3d4 cold damage and gain one level of exhaustion.<br>&nbsp&nbsp Make this check with advantage with appropriate gear.<br>All creatures are heavily obscured if they are more than 20 feet from you.<br>All terrain is difficult terrain. All travel speed is halved.<br><br>The sky is blocked. Aerial creatures have total cover.<br>Flying creatures gain +10 movement speed when moving with the wind, and –10 movement speed when moving against it.<br>All ranged weapon attacks have their range reduced by half when shooting into the wind.",
-        "Fog": "<b>Fog</b><br>Unable to see more than 40ft.",
+        "Fog": "<b>Fog</b><br>Unable to see more than 100ft.",
         "A Snowfall": "<b>A Snowfall</b><br>All terrain is difficult terrain. All travel speed is halved.<br>The sky is blocked. Aerial creatures have total cover.<br>A creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion.<br>&nbsp&nbsp Succeed this check automatically with appropriate gear.",
         "A Freezing Cold": "<b>A Freezing Cold</b><br>A creature exposed to the cold must succeed on a DC 10 Constitution saving throw at the end of each hour or gain one level of exhaustion.<br>&nbsp&nbsp Succeed this check automatically with appropriate gear.",
         "Heavy Clouds": "<b>Heavy Clouds</b><br>The sky is blocked. Aerial creatures have total cover.",
