@@ -1,93 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>DnD Cult of the Dragon Progress</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD Cult of the Dragon Progress</title>
     <style>
         p {
-            font-size:12px;
+            font-size: 12px;
         }
+
         .form-goal-overall {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: flex-start;
         }
+
         .form-goal {
-            flex: 0 0 25%; /* Each block takes up 1/4 of the row */
+            flex: 0 0 25%;
+            /* Each block takes up 1/4 of the row */
             box-sizing: border-box;
             padding: 10px;
         }
+
         .text-goal {
             width: 180px;
             height: 25px;
         }
+
         .goal-link {
             text-decoration: none;
             color: black;
         }
-
     </style>
-        <script type="module" src="../js/DnD_General.js"></script>
-        <script type="module" src="../js/DnD_Factions.js"></script>
+    <script type="module" src="../js/DnD_General.js"></script>
+    <script type="module" src="../js/DnD_Factions.js"></script>
 
 </head>
 
 <body>
     <div class="form-goal-overall">
         <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-1"></span> 
-                <b>Flute -  tracking down Cloak at Dawn and Dusk</b></p>
-            <img id="js-circle1" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="6-1" width="100px">
+            <p class="text-goal"><span id="progress-label-1"></span>
+                <b>Flute - tracking down Cloak at Dawn and Dusk</b>
+            </p>
+            <img id="js-circle1" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic"
+                data-circle="6-1" width="100px">
             <p><i>Wes</i> <br>
                 Gathering intel</p>
         </div>
 
         <div class="form-goal">
             <p class="text-goal"><span id="progress-label-2"></span>
-                <b>Memory - Planning an attack on Baldur’s</b></p>
-            <img id="js-circle2" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-1" width="100px">
+                <b>Memory - Planning an attack on Baldur’s</b>
+            </p>
+            <img id="js-circle2" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic"
+                data-circle="8-1" width="100px">
             <p>Gathering allies and land, influencing political figures</p>
         </div>
 
         <div class="form-goal">
             <p class="text-goal"><span id="progress-label-3"></span>
-                <b>Shadow - Taking intel in Cairn </b></p>
-            <img id="js-circle3" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="6-1" width="100px">
+                <b>Shadow - Taking intel in Cairn </b>
+            </p>
+            <img id="js-circle3" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic"
+                data-circle="6-1" width="100px">
             <p><i>Miara</i> <br>
                 Prioritising Friendly defence</p>
         </div>
 
         <div class="form-goal">
             <p class="text-goal"><span id="progress-label-4"></span>
-                <b>Disrupting meetings and disabling comms with Emerald Enclave</b></p>
-            <img id="js-circle4" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-0" width="100px">
+                <b>Disrupting meetings and disabling comms with Emerald Enclave</b>
+            </p>
+            <img id="js-circle4" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic"
+                data-circle="8-0" width="100px">
             <p></p>
         </div>
 
         <div class="form-goal">
             <p class="text-goal"><span id="progress-label-5"></span>
-                <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b></p>
-            <img id="js-circle5" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="6-0" width="100px">
+                <b>Planning attack on Friendly Arm after learning of Emrys betrayal </b>
+            </p>
+            <img id="js-circle5" srcset="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic"
+                data-circle="6-0" width="100px">
             <p></p>
         </div>
     </div>
 
     <br><br>
-    <p><a class="goal-link" href="https://www.notion.so/dragons-rest/Cult-of-the-Dragon-080b62b5666a4939bea38a5d40f615b7">
-        <b>General Goals</b></a></p>
+    <p><a class="goal-link"
+            href="https://www.notion.so/dragons-rest/Cult-of-the-Dragon-080b62b5666a4939bea38a5d40f615b7">
+            <b>General Goals</b></a></p>
     <p>Grant souls to Sharruth - <br>
-        Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p> 
+        Ritual sacrifices and prayers from its members send forth a burst of energy, causing the Lines</p>
 
 </body>
 <script>
 
-window.onload = function() {
-    let idElements = document.querySelectorAll('[id^="js-circle"]');
-    let idCount = idElements.length;
-    updateSheet(idCount);
-};
+    window.onload = function () {
+        let idElements = document.querySelectorAll('[id^="js-circle"]');
+        let idCount = idElements.length;
+        updateSheet(idCount);
+    };
 
 </script>
+
 </html>

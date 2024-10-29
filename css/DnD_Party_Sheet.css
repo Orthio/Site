@@ -1,0 +1,120 @@
+html {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.button {
+    border: none;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 8px;
+    margin: 5px 5px;
+}
+
+.span {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.stats-table {
+    text-align: left;
+}
+
+.stats-column1 {
+    width: 150px
+}
+
+.stats-column2 {
+    width: 50px
+}
+
+.stats-column3 {
+    width: 150px
+}
+
+.stats-column4 {
+    width: 140px
+}
+
+.stats-column5 {
+    width: 80px;
+}
+
+.stats-column6 {
+    width: 50px;
+}
+
+.stats-column7 {
+    width: 70px;
+}
+
+.stats-column8 {
+    width: 50px;
+}
+
+.stats-column9 {
+    width: 75px;
+}
+
+.stats-column10 {
+    width: 50px;
+}
+
+.prof-table {
+    margin-bottom: 5px;
+}
+
+.prof-table caption {
+    caption-side: top;
+    text-align: left;
+    font-style: italic;
+}
+
+.prof-name {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.prof-desc {
+    width: 90px;
+}
+
+.prof-list {
+    width: 2000px;
+}
+
+#noteableSpellsTable caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+#noteableSpellsTable td:nth-child(1) {
+    width: 40px;
+}
+
+#noteableSpellsTable td:nth-child(2) {
+    width: 100px;
+}
+
+#noteableSpellsTable td:nth-child(3) {
+    width: 300px;
+}
+
+#hpTable td {
+    padding-right: 10px;
+    text-align: center;
+}
+
+#hpTable caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+#hpTable td:nth-child(1) {
+    text-align: left;
+    width: 70px;
+}

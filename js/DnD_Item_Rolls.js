@@ -78,7 +78,8 @@ function generateArt() {
     var artDesign = jsonData.artDesignThemes[artDesignIndex];
 
 
-    var artResult = "<div>" + objectChoice + " made of " + artMetal + " and " + artMaterial + ", " + "<br>" +
+    var artResult = "<div><span class='no-select'><small>Art Object: </small></span><br>" +
+        objectChoice + " made of " + artMetal + " and " + artMaterial + ", " + "<br>" +
         "ornamented with " + artGemstone + " and " + artDecorative + ", " + "<br>" +
         "in the theme of " + artDesign + "</div>" + "<br>"
         ;
@@ -94,7 +95,7 @@ function generateEnemyWeapon() {
     console.log("EnemyWepIndex: ", enemyWepIndex);
     console.log(enemyWep);
 
-    let enemyWepResult = "<div>" + enemyWep + "</div>" + "<br>";
+    let enemyWepResult = "<div><span class='no-select'><small>Enemy Weapon: </small></span><br>" + enemyWep + "</div><br>";
 
     resultOutput.unshift(enemyWepResult);
     updateOutput();
@@ -106,7 +107,7 @@ function generatePartyWeapon() {
     console.log("partyWepIndex: ", partyWepIndex);
     console.log(partyWep);
 
-    let partyWepResult = "<div>" + partyWep + "</div>" + "<br>";
+    let partyWepResult = "<div><span class='no-select'><small>Party Weapon: </small></span><br>" + partyWep + "</div>" + "<br>";
 
     resultOutput.unshift(partyWepResult);
     updateOutput();

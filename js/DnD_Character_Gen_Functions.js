@@ -284,13 +284,13 @@ var simpleVillainyCheck = '';
     
   var simpleText = 
   "<b>" + currentCharacter.fullname + "</b>" + " - ("
-  + currentCharacter.race + " " + currentCharacter.sex 
+  + "<i>" + currentCharacter.race + " " + currentCharacter.sex 
   + ", " + currentCharacter.occupation
   + " - " + currentCharacter.appearance 
   + ". " + currentCharacter.quirk 
   + ". " + currentCharacter.trait 
   + simpleFlawCheck 
-  + simpleVoiceCheck 
+  + simpleVoiceCheck + "</i>"
   + ")";
 
   currentCharacter.simplified = simpleText;

@@ -1,86 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>DnD Emerald Enclave Progress</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        p {
-            font-size:12px;
-        }
-        .form-goal-overall {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: flex-start;
-        }
-        .form-goal {
-            flex: 0 0 25%; /* Each block takes up 1/4 of the row */
-            box-sizing: border-box;
-            padding: 10px;
-        }
-        .text-goal {
-            width: 180px;
-            height: 25px;
-        }
-        .goal-link {
-            text-decoration: none;
-            color: black;
-        }
-    </style>
-        <script type="module" src="../js/DnD_General.js"></script>
-        <script type="module" src="../js/DnD_Factions.js"></script>
+    <title>DnD Emerald Enclave Progress</title>
+    <link rel="stylesheet" href="css/DnD_Faction_Progress.css" />
+
+    <script type="module" src="../js/DnD_General.js"></script>
+    <script type="module" src="../js/DnD_Factions.js"></script>
 
 </head>
 
 <body>
     <div class="form-goal-overall">
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-1"></span>
-            <b>Flute - Unaware of this, Carpal is conversing with travellers</b></p>
-        <img id="js-circle1" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="12-0" width="100px">
-        <p><i>Carpal</i></p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-1"></span>
+                <b>Flute - Unaware of this, Carpal is conversing with travellers</b>
+            </p>
+            <img id="js-circle1" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="12-0"
+                width="100px">
+            <p><i>Carpal</i></p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-2"></span>
-            <b>Memory - Watching Shadarkai at Don. </b></p>
-        <img id="js-circle2" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="12-1" width="100px">
-        <p>And Talking to Margo about Torlin</p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-2"></span>
+                <b>Memory - Watching Shadarkai at Don. </b>
+            </p>
+            <img id="js-circle2" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="12-1"
+                width="100px">
+            <p>And Talking to Margo about Torlin</p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-3"></span>
-            <b>Shadow - Gathering Assetts in Cloakwood </b></p>
-        <img id="js-circle3" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-2" width="100px">
-        <p>Getting resources ready for Shadarkai arrival</p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-3"></span>
+                <b>Shadow - Gathering Assetts in Cloakwood </b>
+            </p>
+            <img id="js-circle3" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-2"
+                width="100px">
+            <p>Getting resources ready for Shadarkai arrival</p>
+        </div>
 
-    <div class="form-goal">
-        <p class="text-goal"><span id="progress-label-4"></span>
-            <b>Fighting Cairn over mining rights </b></p>
-        <img id="js-circle4" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-2" width="100px">
-        <p></p>
-    </div>
+        <div class="form-goal">
+            <p class="text-goal"><span id="progress-label-4"></span>
+                <b>Fighting Cairn over mining rights </b>
+            </p>
+            <img id="js-circle4" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="8-2"
+                width="100px">
+            <p></p>
+        </div>
     </div>
 
 
     <br><br>
     <p><a class="goal-link" href="https://www.notion.so/dragons-rest/Emerald-Enclave-aeff48d2519145e483fc91018c225c2e">
-        <b>General Goals</b></a></p>
+            <b>General Goals</b></a></p>
     <p>Work for Neutrality <br>
-    House Fey refugees in Cloakwood adequately <br>
-    Look for the adventuring group
+        House Fey refugees in Cloakwood adequately <br>
+        Look for the adventuring group
     </p>
-   
+
 </body>
 <script>
 
-window.onload = function() {
-    let idElements = document.querySelectorAll('[id^="js-circle"]');
-    let idCount = idElements.length;
-    updateSheet(idCount);
-};
+    window.onload = function () {
+        let idElements = document.querySelectorAll('[id^="js-circle"]');
+        let idCount = idElements.length;
+        updateSheet(idCount);
+    };
 
 </script>
+
 </html>

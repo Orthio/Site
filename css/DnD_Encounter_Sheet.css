@@ -1,0 +1,81 @@
+* {
+    font-size: 14px;
+    font-family: Arial;
+    line-height: 14px;
+  }
+
+  h1 {
+      font-size: 24px;
+  }
+
+  p {
+      margin: 2px;
+      padding: 1px;
+  }
+
+  .shortresttext {
+    font-size: 10px;
+  }
+
+  .form-party {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-right: 15px;
+  }
+  .form-party input {
+    font-size: 18px;
+    width: 50px;
+  }
+  .form-party .xpgainedforcurrent {
+    width: 100px;
+  }
+  .form-party .form-party-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .form-party .form-party-group {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding-right: 20px;
+  }
+
+  #encounter-table td:nth-child(2){
+    width: 100px;
+  }
+  #encounter-table td:nth-child(3){
+    width: 35px;
+  }
+
+  .form-encounter {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-right: 15px;
+    margin-top: 5px;
+  }
+  .form-encounter input {
+    font-size: 18px;
+    width: 50px;
+  }
+  .form-encounter .monster-name-input {
+    width: 150px;
+  }
+  .form-encounter .form-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .form-encounter .form-group {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding-right: 20px;
+  }
+  .form-encounter .monster-HP-input {
+    width: 50px;
+  }
