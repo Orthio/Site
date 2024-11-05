@@ -1,7 +1,7 @@
 
 import { generalDiceRoll, partyLevel } from './DnD_General.js';
 
-const globalVariables = (function() {
+const globalVariables = (function () {
     var partyDPS = 30.8;
 
     var tableRowCheck = 0; //Check if a row has been added to the Daily Table
@@ -13,10 +13,10 @@ const globalVariables = (function() {
         12: 11500, 13: 13500, 14: 15000, 15: 18000, 16: 20000,
         17: 25000, 18: 27000, 19: 30000, 20: 40000
     };
-    
+
     var monsterCrXP = {
-        "0": 0, "0.125": 25, "1/8": 25, "0.25": 50, "1/4": 50, 
-        "0.5": 100, "1/2": 100, "1": 200, "2": 450, "3": 700,
+        "0": 0, "0.125": 25, "1-8": 25, "0.25": 50, "1-4": 50,
+        "0.5": 100, "1-2": 100, "1": 200, "2": 450, "3": 700,
         "4": 1100, "5": 1800, "6": 2300, "7": 2900, "8": 3900,
         "9": 5000, "10": 5900, "11": 7200, "12": 8400, "13": 10000,
         "14": 11500, "15": 13000, "16": 15000, "17": 18000, "18": 20000,
@@ -24,11 +24,11 @@ const globalVariables = (function() {
         "24": 62000, "25": 75000, "26": 90000, "27": 105000, "28": 120000,
         "29": 135000, "30": 155000
     };
-    
-    const CRInputAllowedValues = [0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+
+    const CRInputAllowedValues = [0.125, 1 / 8, 1 - 8, 0.25, 1 / 4, 1 - 4, 0.5, 1 / 2, 1 - 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-    
+
     var combatEncounterDifficulty = {
         1: { Low: 50, Moderate: 75, High: 100 },
         2: { Low: 100, Moderate: 150, High: 200 },
@@ -51,27 +51,27 @@ const globalVariables = (function() {
         19: { Low: 5500, Moderate: 10700, High: 17200 },
         20: { Low: 6400, Moderate: 13200, High: 22000 }
     };
-    
+
     // Multipliers: Number of monsters, x1 multiplier
     // No longer used
     var encounterMultipliers = [
-    { monsters: 1, multiplier: 1 },
-    { monsters: 2, multiplier: 1.5 },
-    { monsters: 3, multiplier: 2 },
-    { monsters: 4, multiplier: 2 },
-    { monsters: 5, multiplier: 2 },
-    { monsters: 6, multiplier: 2 }, 
-    { monsters: 7, multiplier: 2.5 },
-    { monsters: 8, multiplier: 2.5 },
-    { monsters: 9, multiplier: 2.5 },
-    { monsters: 10, multiplier: 2.5 },
-    { monsters: 11, multiplier: 3 },
-    { monsters: 12, multiplier: 3 },
-    { monsters: 13, multiplier: 3 },
-    { monsters: 14, multiplier: 3 },
-    { monsters: 15, multiplier: 4 }
+        { monsters: 1, multiplier: 1 },
+        { monsters: 2, multiplier: 1.5 },
+        { monsters: 3, multiplier: 2 },
+        { monsters: 4, multiplier: 2 },
+        { monsters: 5, multiplier: 2 },
+        { monsters: 6, multiplier: 2 },
+        { monsters: 7, multiplier: 2.5 },
+        { monsters: 8, multiplier: 2.5 },
+        { monsters: 9, multiplier: 2.5 },
+        { monsters: 10, multiplier: 2.5 },
+        { monsters: 11, multiplier: 3 },
+        { monsters: 12, multiplier: 3 },
+        { monsters: 13, multiplier: 3 },
+        { monsters: 14, multiplier: 3 },
+        { monsters: 15, multiplier: 4 }
     ];
-    
+
     var groupIdLetter = {
         0: "A",
         1: "B",
@@ -88,42 +88,37 @@ const globalVariables = (function() {
         12: "M",
         13: "N"
     }
-    
+
     return {
-        getPartyDPS: function() {
+        getPartyDPS: function () {
             return partyDPS;
         },
-        getDailyBudget: function(level) {
-            return dailyBudget[level]   ;
-        }, 
-        getMonsterCrXP: function(number) {
+        getDailyBudget: function (level) {
+            return dailyBudget[level];
+        },
+        getMonsterCrXP: function (number) {
             return monsterCrXP[number];
         },
-        checkMonsterCrXP: function(check) {
+        checkMonsterCrXP: function (check) {
             return monsterCrXP.hasOwnProperty(check) ? "True" : "False";
             // Returns True if the array has the check cr
         },
-        getCRInputAllowedValues: function() {
+        getCRInputAllowedValues: function () {
             return CRInputAllowedValues;
         },
-        getCombatEncounterDifficulty: function(level, deadlyness) {
+        getCombatEncounterDifficulty: function (level, deadlyness) {
             return combatEncounterDifficulty[level][deadlyness];
         },
-        getEncounterMultipliers: function(groupQty){
-            let XPmod = encounterMultipliers.find(
-                multiplier => multiplier.monsters === groupQty)?.multiplier || 1;
-                return XPmod;
-        },
-        getGroupIdLetter: function(id){
+        getGroupIdLetter: function (id) {
             return groupIdLetter[id];
         },
-        getTableRowCheck: function(){
+        getTableRowCheck: function () {
             return tableRowCheck;
         },
-        setTableRowCheck: function(number){
+        setTableRowCheck: function (number) {
             tableRowCheck = number;
         }
-};
+    };
 })();
 
 class EventListeners {
@@ -150,7 +145,7 @@ const eventListeners = new EventListeners();
 
 class Party {
     static partyListedLevel = partyLevel;
-    static partyNumber = 4; 
+    static partyNumber = 4;
     static partyStartingXP = 0;
     static partyXPRecord = 0;
     static partyDailyBudget = 0;
@@ -158,11 +153,17 @@ class Party {
     static partyShortRestBudget = 0;
     static partyInitialBudgetRemain = 0;
 
-    static calculatePartyBudget(){
+    static calculatePartyBudget() {
         Party.partyDailyBudget = globalVariables.getDailyBudget(Party.partyListedLevel) * Party.partyNumber;
         Party.partyExtraDailyBudget = Party.partyDailyBudget * 1.5;
-        Party.partyShortRestBudget = Party.partyDailyBudget/3;
-        Party.partyInitialBudgetRemain = Party.partyDailyBudget-Party.partyStartingXP;
+        Party.partyShortRestBudget = Party.partyDailyBudget / 3;
+        Party.partyInitialBudgetRemain = Party.partyDailyBudget - Party.partyStartingXP;
+    }
+    static calculatePartyDifficulties() {
+        // Fetch thresholds for each difficulty level using the party level (cr)
+        Party.lowThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "Low") * Party.partyNumber;
+        Party.moderateThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "Moderate") * Party.partyNumber;
+        Party.highThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
     }
 }
 
@@ -189,20 +190,20 @@ class Monster {
             var table = document.getElementById("EncounterTable");
             var invalidRow = table.insertRow(-1);
             var invalidCell1 = invalidRow.insertCell(0);
-            invalidCell1.innerHTML = "Invalid CR. Valid CR are 0.125, 1/8, 0.25, 1/4, 0.5, 1/2, and whole numbers 1-30"; 
+            invalidCell1.innerHTML = "Invalid CR. Valid CR are 0.125, 1/8, 0.25, 1/4, 0.5, 1/2, and whole numbers 1-30";
         }
     }
 }
 
-function createNewMonster(encMonCr,encMonName,encMonHP){
+function createNewMonster(encMonCr, encMonName, encMonHP) {
     Monster.monsterCurrentId++;
     if (encMonName === undefined) {
         encMonName = `Mon${Monster.monsterCurrentId}`;
-    } 
+    }
     if (encMonHP === undefined) {
         encMonHP = 0;
     }
-    Monster.monsterObjects[Monster.monsterCurrentId] = new Monster(encMonCr,encMonName,encMonHP);
+    Monster.monsterObjects[Monster.monsterCurrentId] = new Monster(encMonCr, encMonName, encMonHP);
 };
 
 class Encounter {
@@ -217,34 +218,34 @@ class Encounter {
     // Constructor
     constructor(qty) {
         this.encounterGroupId = Encounter.encounterCurrentGroupId;
-        this.encounterMonsters = []; 
+        this.encounterMonsters = [];
         this.encounterMonQty = qty;
-        this.encounterRolls = [generalDiceRoll(20,1),generalDiceRoll(20,1),generalDiceRoll(20,1)];
+        this.encounterRolls = [generalDiceRoll(20, 1), generalDiceRoll(20, 1), generalDiceRoll(20, 1)];
     }
 
-    addMonster(monster, qty){
-            this.encounterMonsters.push(monster);
-            this.encounterMonQty = qty;
-            this.encounterBasicXP = monster.monsterXP * qty;
-            this.encounterHP = monster.monsterHP * qty;
+    addMonster(monster, qty) {
+        this.encounterMonsters.push(monster);
+        this.encounterMonQty = qty;
+        this.encounterBasicXP = monster.monsterXP * qty;
+        this.encounterHP = monster.monsterHP * qty;
     }
 
-    removeMonster(){
+    removeMonster() {
         this.encounterMonsters.pop();
     }
 
 }
 
-function createNewEncounter(qty){
+function createNewEncounter(qty) {
     Encounter.encounterCurrentId++;
     Encounter.encounterCurrentGroupId++;
     Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupId;
-    Encounter.encounterObjects[Encounter.encounterCurrentId] =  new Encounter(qty);
+    Encounter.encounterObjects[Encounter.encounterCurrentId] = new Encounter(qty);
     // console.log(`Encounter Tag ${Encounter.encounterCurrentTag} has been added at Id ${Encounter.encounterCurrentId}`);
 
 }
 
-function removeLastEncounter(){
+function removeLastEncounter() {
     // Check if the encounter exists
     // Use the existing group and ID directly
     if (Encounter.encounterObjects.hasOwnProperty(Encounter.encounterCurrentId)) {
@@ -273,7 +274,7 @@ function removeLastEncounter(){
 
         // Check if the previous encounter exists
         if (Encounter.encounterObjects.hasOwnProperty(Encounter.encounterCurrentId)) {
-            console.log(`   Current encounter is now tag ${Encounter.encounterCurrentTag}, Id ${Encounter.encounterCurrentId}`); 
+            console.log(`   Current encounter is now tag ${Encounter.encounterCurrentTag}, Id ${Encounter.encounterCurrentId}`);
         } else {
             console.log("No previous encounter found.");
             return null;
@@ -291,7 +292,7 @@ class Group {
     static groupCurrentLetter = "Z";
     static groupObjects = {};
 
-    constructor(){
+    constructor() {
         this.groupLetter = `Group${Group.groupCurrentLetter}`;
         this.groupEncounters = [];
         this.groupXP = 0;
@@ -324,49 +325,38 @@ class Group {
         this.calculateNegGroupXP()
     }
 
-    calculateGroupXP(){
-        let XPMod = globalVariables.getEncounterMultipliers(this.groupQty);
-            // This is the multiplier from the 2014 rules
-        
-        this.groupXP += parseFloat(Encounter.encounterObjects[Encounter.encounterCurrentId].encounterBasicXP);
-        // this.groupAdjXP = this.groupXP * XPMod;
-            // groupXP used the old XPMod in the past for number of enemies
+    calculateGroupXP() {
 
-        this.groupDeadliness = this.determineGroupDeadliness(Party.partyListedLevel, this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel,this.groupDeadliness) * Party.partyNumber;
+        this.groupXP += parseFloat(Encounter.encounterObjects[Encounter.encounterCurrentId].encounterBasicXP);
+
+        this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
+        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, this.groupDeadliness) * Party.partyNumber;
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
-    calculateNegGroupXP(){
+    calculateNegGroupXP() {
         // Removing the xp from a group after removing an encounter
         let XPMod = globalVariables.getEncounterMultipliers(this.groupQty);
-    
-        this.groupDeadliness = this.determineGroupDeadliness(Party.partyListedLevel, this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel,this.groupDeadliness) * Party.partyNumber;
+
+        this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
+        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, this.groupDeadliness) * Party.partyNumber;
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
-
-    determineGroupDeadliness(level, groupXP) {
-        var partyNumber = Party.partyNumber;
-
-        // Fetch thresholds for each difficulty level using the party level (cr)
-        var lowThreshold = globalVariables.getCombatEncounterDifficulty(level, "Low") * partyNumber;
-        var moderateThreshold = globalVariables.getCombatEncounterDifficulty(level, "Moderate") * partyNumber;
-    
+    determineGroupDeadliness(groupXP) {
         // Compare the adjusted XP against the thresholds
-        if (groupXP < lowThreshold) {
+        if (groupXP < Party.lowThreshold) {
             return "Low";
-        } else if (groupXP < moderateThreshold) {
+        } else if (groupXP < Party.moderateThreshold) {
             return "Moderate";
         } else {
             return "High";
         }
     }
 
-}    
+}
 
-function createNewGroup(){
+function createNewGroup() {
     // Creates a new encounter group for encounters to go in
     Group.groupCurrentId++;
     Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
@@ -398,7 +388,7 @@ class Day {
     removeGroupFromDay() {
         this.dayGroups.pop();
         this.dayTotalXP -= Group.groupObjects[Group.groupCurrentId].groupXP;
-        this.dailyRemainingXP = Party.partyDailyBudget + this.dayTotalXP; 
+        this.dailyRemainingXP = Party.partyDailyBudget + this.dayTotalXP;
         this.dailyBasicXP -= parseFloat(Group.groupObjects[Group.groupCurrentId].groupXP);
     }
 
@@ -425,7 +415,7 @@ class Day {
     }
 }
 
-function createNewDay(){
+function createNewDay() {
     Day.dayCurrentId++;
     Day.dayObjects[Day.dayCurrentId] = new Day();
 }
@@ -440,14 +430,14 @@ function addEncounterCurrent() {
     let encMonName = document.getElementById('js-monster-name-input').value;
     let encMonHP = document.getElementById('js-monster-hp-input').value;
 
-    if (Day.dayCurrentId === -1 || Day.dayCurrentId === undefined){
-    createNewDay();
+    if (Day.dayCurrentId === -1 || Day.dayCurrentId === undefined) {
+        createNewDay();
     }
 
-    if (Group.groupCurrentId === -1 || Group.groupCurrentId === undefined){
+    if (Group.groupCurrentId === -1 || Group.groupCurrentId === undefined) {
         createNewGroup();
     }
-   
+
     createNewEncounter(encMonQuantity);
 
     createNewMonster(encMonCr, encMonName, encMonHP);
@@ -472,11 +462,11 @@ function addEncounterNew() {
     let encMonHP = document.getElementById('js-monster-hp-input').value;
     globalVariables.setTableRowCheck(0); // Set that new rows are needed for group heading
 
-    if (Day.dayCurrentId === -1 || Day.dayCurrentId === undefined){
+    if (Day.dayCurrentId === -1 || Day.dayCurrentId === undefined) {
         createNewDay();
     }
 
-    createNewGroup(); 
+    createNewGroup();
 
     createNewEncounter(encMonQuantity);
 
@@ -496,11 +486,11 @@ function addEncounterNew() {
 
 function removeEncounter() {
     // Removes an encounter and row
-    
+
     let encounterTable = document.getElementById("EncounterTable");
     let groupTable = document.getElementById("GroupTable");
 
-    if (Encounter.encounterCurrentGroupId === 1){
+    if (Encounter.encounterCurrentGroupId === 1) {
         // If it's the first encounter in a group
 
         // Remove the group and undo the encounter stats
@@ -511,8 +501,8 @@ function removeEncounter() {
 
         encounterTable.deleteRow(-1);
         groupTable.deleteRow(-1);
-        groupTable.deleteRow(-1); 
- 
+        groupTable.deleteRow(-1);
+
         updateGroupTable("current");
 
     } else {
@@ -537,6 +527,16 @@ function updateEncounterTable() {
     let cr = Monster.monsterObjects[Monster.monsterCurrentId].monsterCr;
     let qty = Encounter.encounterObjects[Encounter.encounterCurrentId].encounterMonQty;
 
+    if (cr === 0.125) {
+        cr = "1/8"
+    }
+    if (cr === 0.25) {
+        cr = "1/4"
+    }
+    if (cr === 0.5) {
+        cr = "1/2"
+    }
+
     let EncounterRow = encounterTable.insertRow(-1);
     let EncounterCell1 = EncounterRow.insertCell(0);
     let EncounterCell2 = EncounterRow.insertCell(1);
@@ -553,8 +553,8 @@ function updateEncounterTable() {
     EncounterCell1.innerHTML = `<b>${Encounter.encounterCurrentTag}:</b> `;
     EncounterCell2.innerHTML = Monster.monsterObjects[Monster.monsterCurrentId].monsterName;
     EncounterCell3.innerHTML = ` CR${cr}  `;
-    EncounterCell4.innerHTML = ` ${Monster.monsterObjects[Monster.monsterCurrentId].monsterXP}`;
-    EncounterCell5.innerHTML = "xp x ";
+    EncounterCell4.innerHTML = ` ${Monster.monsterObjects[Monster.monsterCurrentId].monsterXP}xp x `;
+    EncounterCell5.innerHTML = "";
     EncounterCell6.innerHTML = qty;
     EncounterCell7.innerHTML = " = ";
     EncounterCell8.innerHTML = Encounter.encounterObjects[Monster.monsterCurrentId].encounterBasicXP;
@@ -564,7 +564,7 @@ function updateEncounterTable() {
         ${Encounter.encounterObjects[Monster.monsterCurrentId].encounterRolls[1]}, 
         ${Encounter.encounterObjects[Monster.monsterCurrentId].encounterRolls[2]}`;
 
-} 
+}
 
 function newRowGroupTable(newness) {
     let groupTable = document.getElementById("group-table");
@@ -573,10 +573,10 @@ function newRowGroupTable(newness) {
     if (newness === "new" || check === 0) {
         // Insert a new row for the Group header
         let headingRow = groupTable.insertRow(-1);
-        
+
         let headingCell1 = headingRow.insertCell(0);
         headingCell1.innerHTML = `<b>Group ${Group.groupCurrentLetter}</b>`;
-        
+
         // Insert empty cells for the rest of the row, so it spans across all columns
         for (var i = 1; i < 11; i++) {
             let emptyCell = headingRow.insertCell(i);
@@ -596,19 +596,19 @@ function updateGroupTable(newness) {
     let check = globalVariables.getTableRowCheck();
 
     let groupRow;
-    if (newness === "current" && check === 0){
+    if (newness === "current" && check === 0) {
         groupRow = groupTable.insertRow(-1);
-        for (var i = 0; i < 12; i++) { 
+        for (var i = 0; i < 12; i++) {
             groupRow.insertCell(i);  // Create empty cells
         }
         globalVariables.setTableRowCheck(1); // Mark that the row has been added
         // console.log("newness=current and check=0 " + newness + " " + check);
     } else if (newness === "current") {
-            // Update the last data row if "current" is passed
-            let rowLength = groupTable.rows.length-1;
-            groupRow = groupTable.rows[rowLength];
-            globalVariables.setTableRowCheck(1); // Mark that the row has been added
-            // console.log("newness=current and check=1 " + newness + " " + check);
+        // Update the last data row if "current" is passed
+        let rowLength = groupTable.rows.length - 1;
+        groupRow = groupTable.rows[rowLength];
+        globalVariables.setTableRowCheck(1); // Mark that the row has been added
+        // console.log("newness=current and check=1 " + newness + " " + check);
 
     } else if (newness === "new" || check === 0) {
         // Add a new row for the data if it's "new" or no data row exists
@@ -619,7 +619,7 @@ function updateGroupTable(newness) {
         globalVariables.setTableRowCheck(1); // Mark that the row has been added
         // console.log("newness=new or check=0 " + newness + " " + check);
 
-    } 
+    }
 
     // Now update the individual cells
     let groupCell1 = groupRow.cells[0];
@@ -659,11 +659,16 @@ function updateSheet() {
     document.getElementById("party-level").innerText = Party.partyListedLevel;
     document.getElementById("party-number").innerText = Party.partyNumber;
 
-    Party.calculatePartyBudget();    
+    Party.calculatePartyBudget();
+    Party.calculatePartyDifficulties();
     document.getElementById("dailybudget").innerText = Party.partyDailyBudget;
     document.getElementById("partyshortbudget").innerText = Math.floor(Party.partyShortRestBudget);
     document.getElementById("partyinitialbudgetremain").innerText = Math.floor(Party.partyInitialBudgetRemain);
-    
+
+    document.getElementById("difficulty-low").innerText = Party.lowThreshold;
+    document.getElementById("difficulty-moderate").innerText = Party.moderateThreshold;
+    document.getElementById("difficulty-high").innerText = Party.highThreshold;
+
 }
 
 const addEncounterCurrentButton = document.querySelector("#add-encounter-current-button");
@@ -677,17 +682,17 @@ const addEncounterNewButton = document.querySelector("#add-encounter-new-button"
 addEncounterNewButton.addEventListener("click", () => {
     addEncounterNew();
 });
-    
+
 const removeLastEncounterButton = document.querySelector("#remove-last-encounter");
 
 removeLastEncounterButton.addEventListener("click", () => {
     removeEncounter();
 });
 
-window.onload = function() {
+window.onload = function () {
     updateSheet();
-} 
+}
 
 eventListeners.addInputListener('js-party-levelinput', updateSheet);
 eventListeners.addInputListener('js-party-numberinput', updateSheet);
-eventListeners.addInputListener('js-xpgainedforcurrent',updateSheet)
+eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet)

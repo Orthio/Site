@@ -16,6 +16,10 @@
   .shortresttext {
     font-size: 10px;
   }
+  .difficulty-ratings,
+  .difficulty-ratings span {
+    font-size: 10px;
+  }
 
   .form-party {
     display: flex;
@@ -47,7 +51,10 @@
     width: 100px;
   }
   #encounter-table td:nth-child(3){
-    width: 35px;
+    width: 40px;
+  }
+  #encounter-table td:nth-child(4){
+    width: 70px;
   }
 
   .form-encounter {
