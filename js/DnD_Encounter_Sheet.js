@@ -330,24 +330,22 @@ class Group {
         this.groupXP += parseFloat(Encounter.encounterObjects[Encounter.encounterCurrentId].encounterBasicXP);
 
         this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, this.groupDeadliness) * Party.partyNumber;
+        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
     calculateNegGroupXP() {
-        // Removing the xp from a group after removing an encounter
-        let XPMod = globalVariables.getEncounterMultipliers(this.groupQty);
 
         this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, this.groupDeadliness) * Party.partyNumber;
+        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
     determineGroupDeadliness(groupXP) {
         // Compare the adjusted XP against the thresholds
-        if (groupXP < Party.lowThreshold) {
+        if (groupXP < Party.moderateThreshold) {
             return "Low";
-        } else if (groupXP < Party.moderateThreshold) {
+        } else if (groupXP < Party.highThreshold) {
             return "Moderate";
         } else {
             return "High";
@@ -487,8 +485,8 @@ function addEncounterNew() {
 function removeEncounter() {
     // Removes an encounter and row
 
-    let encounterTable = document.getElementById("EncounterTable");
-    let groupTable = document.getElementById("GroupTable");
+    let encounterTable = document.getElementById("encounter-table");
+    let groupTable = document.getElementById("group-table");
 
     if (Encounter.encounterCurrentGroupId === 1) {
         // If it's the first encounter in a group
