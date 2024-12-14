@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Rolls</title>
+    <link rel="stylesheet" href="css/DnD_Treasure_Rolls.css" />
+</head>
+
+<body>
+    <h1>Treasure Rolls</h1>
+
+    <button type="button" id="button-individual-treasure" class="button">Generate Individual Treasure</button>
+    <button type="button" id="button-treasure-hoard" class="button">Generate Treasure Hoard</button>
+
+    <br><br>
+
+    <div id="form-party-row">
+        <p id="caption-individual-treasure">Individual Treasure</p>
+        <table id="table-individual-treasure">
+            <thead>
+                <tr>
+                    <th>CR</th>
+                    <th>Treasure</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0-4</td>
+                    <td>3d6 gp</td>
+                </tr>
+                <tr>
+                    <td>5-10</td>
+                    <td>2d8 * 10 gp</td>
+                </tr>
+                <tr>
+                    <td>11-16</td>
+                    <td>2d10 * 10 pp</td>
+                </tr>
+                <tr>
+                    <td>17+</td>
+                    <td>2d8 * 100 pp</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p id="caption-treasure-hoard">Treasure Hoard</p>
+        <table id="table-treasure-hoard">
+            <thead>
+                <tr>
+                    <th>CR</th>
+                    <th>Treasure</th>
+                    <th>Magic Items</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0-4</td>
+                    <td>2d4 * 100 gp</td>
+                    <td>1d4-1</td>
+                </tr>
+                <tr>
+                    <td>5-10</td>
+                    <td>8d10 * 100 gp</td>
+                    <td>1d3</td>
+                </tr>
+                <tr>
+                    <td>11-16</td>
+                    <td>8d8 * 10,000 gp</td>
+                    <td>1d4</td>
+                </tr>
+                <tr>
+                    <td>17+</td>
+                    <td>6d10 * 10,000 gp</td>
+                    <td>1d6</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p><small>pg120 Treasure Hoard, pg218 Magic Item rolls, pg326 Magic Item Tables</small></p>
+    <p><small>Last table roll: None </small></p>
+
+    <br>
+    <br>
+
+    <div id="result-output"></div>
+
+    <script type="module" src="js/DnD_Treasure_Rolls.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+.p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.no-select {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+.form-party-row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+
+#table-individual-treasure {
+    padding-left: 10px;
+}
+
+#caption-individual-treasure {
+    /* padding-left: -25px; */
+    font-style: italic;
+}
+
+#table-individual-treasure td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+#table-individual-treasure td:nth-child(2) {
+    width: 120px;
+    text-align: left;
+}
+
+#table-treasure-hoard {
+    padding-left: 10px;
+}
+
+#caption-treasure-hoard {
+    /* padding-left: -55px; */
+    font-style: italic;
+
+}
+
+#table-treasure-hoard td:nth-child(1) {
+    width: 50px;
+    text-align: center;
+}
+
+#table-treasure-hoard td:nth-child(2) {
+    width: 120px;
+    text-align: left;
+}
