@@ -1,6 +1,6 @@
 
 
-import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getDateName, getMonthDays } from './DnD_General.js';
+import { currentTime, currentDay, currentMonth, currentYear, monthsArray, getDateSuffix, getDateName, getMonthDays } from './DnD_General.js';
 // console.log("currentday: ",currentDay," currentmonth: ", currentMonth, " currentyear: ",currentYear);
 
 let dateName = getDateName(currentDay, currentMonth);
@@ -37,6 +37,10 @@ class Day {
     static dayCurrentDateText = `${Day.dayCurrentDay}-${Day.dayCurrentMonth}-${Day.dayCurrentYear}`;
 
     static dayCalendarDay = 0; // Day to cycle through while creating day boxes
+    static dayFaerunDay = 0;
+    static dayFaerunWeek = 1;
+    static dayFaerunDayText1 = Day.dayFaerunDay + getDateSuffix(Day.dayFaerunDay) + " day of the " 
+    static dayFaerunDayText2 = Day.dayFaerunWeek + getDateSuffix(Day.dayFaerunWeek) + " tenday";
     static dayCalendarMonth = Day.dayCurrentMonth;
     static dayCalendarMonthText = Day.dayCalendarMonth < 10 ? "0" + Day.dayCalendarMonth : Day.dayCalendarMonth;
     static dayCalendarMonthName = Day.dayCurrentMonthName;
@@ -51,6 +55,11 @@ class Day {
         this.dayText = this.day;
         //this.day < 10 ? "0" + this.day : 
         // old code was: if current day is less than 10, add 0, otherwise leave it
+        this.faerunDay = Day.dayFaerunDay; // For the 1st day of second tenday
+        this.faerunWeek = Day.dayFaerunWeek;
+        this.faerunDayText1 = Day.dayFaerunDay + getDateSuffix(Day.dayFaerunDay) + " day of the " 
+        this.faerunDayText2 = Day.dayFaerunWeek + getDateSuffix(Day.dayFaerunWeek) + " tenday";
+       
         this.month = Day.dayCalendarMonth;
         this.monthText = this.month < 10 ? "0" + this.month : this.month;
         this.year = Day.dayCalendarYear;
@@ -70,6 +79,11 @@ function nextDay() {
     }
 
     Day.dayCalendarDay++;
+    Day.dayFaerunDay++;
+    if (Day.dayFaerunDay > 10) {
+        Day.dayFaerunDay = 1;
+        Day.dayFaerunWeek++;
+    }
     updateDayText();
 }
 
@@ -81,6 +95,8 @@ function nextMonth() {
         nextYear();
     }
     Day.dayCalendarDay = 0;
+    Day.dayFaerunDay = 0;
+    Day.dayFaerunWeek = 1;
     Day.dayCalendarMonthName = monthsArray[Day.dayCalendarMonth - 1].month;
     updateDayText();
 }
@@ -97,6 +113,7 @@ function previousMonth() {
 
     Day.dayCalendarMonth--;
     Day.dayCalendarDay = 0;
+    Day.dayFaerunWeek = 0;
     
     if (Day.dayCalendarMonth === 0) {
         Day.dayCalendarMonth = 17;
@@ -126,6 +143,9 @@ function previousYear() {
 
 function updateDayText() {
     Day.dayText = Day.dayCalendarDay + "-" + Day.dayCalendarMonth + "-" + Day.dayCalendarYear;
+    Day.dayFaerunDayText1 = Day.dayFaerunDay + getDateSuffix(Day.dayFaerunDay) + " day of the " 
+    Day.dayFaerunDayText2 = Day.dayFaerunWeek + getDateSuffix(Day.dayFaerunWeek) + " tenday";
+   
     Day.dayObjects[Day.dayText] = new Day();
 }
 
@@ -154,7 +174,9 @@ function updateCalendar() {
 
         nextDay();
 
-        dayBox.innerText = i;
+        dayBox.innerText = i + "\n" + 
+            Day.dayFaerunDayText1 + "\n" +
+            Day.dayFaerunDayText2;
         //Event Day
         const eventOfTheDay = eventsArray.find((e) => e.date == Day.dayText);
         //Holiday

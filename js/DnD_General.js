@@ -5,6 +5,7 @@ export var partyLevel = 7;
 
 export var currentTime = "7pm";
 export var currentDay = 6;
+export var currentTenday = 1;
 export var currentMonth = 14;
 export var currentYear = 1489;
 
@@ -38,22 +39,25 @@ export function getMonthDays(month) {
     return monthsArray[(month - 1)].days;
 }
 
-export function getDateName(day, month) {
-    let suffix = "";
+export function getDateSuffix(day) {
     switch (day) {
         case 1:
-            suffix = "st ";
+            return "st ";
             break;
         case 2:
-            suffix = "nd ";
+            return "nd ";
             break;
         case 3:
-            suffix = "rd ";
+            return "rd ";
             break;
         default:
-            suffix = "th ";
+            return "th ";
             break;
     }
+}
+
+export function getDateName(day, month) {
+    let suffix = getDateSuffix(day);
     let currentDateName = day + suffix + monthsArray[(month - 1)].month;
     return currentDateName;
 

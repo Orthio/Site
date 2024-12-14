@@ -1,0 +1,31 @@
+#rollNumberInput {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: button;
+    width: 70px;
+    font-size: 40px;
+}
+
+#successNumberInput {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: button;
+    width: 70px;
+    font-size: 40px;
+}
+
+.dc-input {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: button;
+    width: 70px;
+    font-size: 40px;
+}
+
+.plus-input {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: button;
+    width: 70px;
+    font-size: 40px;
+}

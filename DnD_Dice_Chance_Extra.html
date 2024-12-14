@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Chances Extra</title>
+    <link rel="stylesheet" href="css/DnD_Dice_Chances_Extra.css" />
+
+</head>
+
+<body>
+    <label for="rollNumberInput"><i>Number of Rolls expected: </i></label><br>
+
+    <input type="number" id="rollNumberInput" name="rollNumberInput" value="1" min="1" step="1">
+    <br>
+    <label for="successNumberInput"><i>Number of Successes needed: </i></label><br>
+
+    <input type="number" id="successNumberInput" name="successNumberInput" value="1" min="1" step="1">
+    <br><br>
+    <label for="DCInput1"><i>DC of roll stages: </i></label><br>
+    <input type="number" id="DCInput1" name="DCInput1" class="dc-input" value="10" min="1" step="1">
+    <input type="number" id="DCInput2" name="DCInput2" class="dc-input" value="10" min="1" step="1">
+    <input type="number" id="DCInput3" name="DCInput3" class="dc-input" value="10" min="1" step="1">
+    <input type="number" id="DCInput4" name="DCInput4" class="dc-input" value="10" min="1" step="1">
+    <input type="number" id="DCInput5" name="DCInput5" class="dc-input" value="10" min="1" step="1">
+    <br>
+
+    <label for="PlusInput1"><i>Modifier for roll against:</i></label><br>
+    <input type="number" id="PlusInput1" name="PlusInput1" class="plus-input" value="0" min="1" step="1">
+    <input type="number" id="PlusInput2" name="PlusInput2" class="plus-input" value="0" min="1" step="1">
+    <input type="number" id="PlusInput3" name="PlusInput3" class="plus-input" value="0" min="1" step="1">
+    <input type="number" id="PlusInput4" name="PlusInput4" class="plus-input" value="0" min="1" step="1">
+    <input type="number" id="PlusInput5" name="PlusInput5" class="plus-input" value="0" min="1" step="1">
+
+    <br><br>
+    <button type="button" onclick="calculate()" class="button">Calculate for one person</button>
+    <br>
+
+    <p>__________________________</p>
+
+    <br>
+    <div id="results-dc1"></div>
+    <div id="results-dc2"></div>
+    <div id="results-dc3"></div>
+    <div id="results-dc4"></div>
+    <div id="results-dc5"></div>
+
+    <div id="results"></div>
+
+
+    <script>
+
+        function calculate() {
+
+            var rollNumber = Number(document.getElementById("rollNumberInput").value);
+            var successNumber = Number(document.getElementById("successNumberInput").value);
+            var DCNumber1 = Number(document.getElementById("DCInput1").value);
+            var DCNumber2 = Number(document.getElementById("DCInput2").value);
+            var DCNumber3 = Number(document.getElementById("DCInput3").value);
+            var DCNumber4 = Number(document.getElementById("DCInput4").value);
+            var DCNumber5 = Number(document.getElementById("DCInput5").value);
+            var PlusNumber1 = Number(document.getElementById("PlusInput1").value);
+            var PlusNumber2 = Number(document.getElementById("PlusInput2").value);
+            var PlusNumber3 = Number(document.getElementById("PlusInput3").value);
+            var PlusNumber4 = Number(document.getElementById("PlusInput4").value);
+            var PlusNumber5 = Number(document.getElementById("PlusInput5").value);
+
+            function checkSuccess(DC, modifier) {
+                let reqRoll = DC - modifier // 10-4=6
+                let successRoll = 20 - reqRoll + 1 // 20- 6 + 1 = 15
+                let probRoll = successRoll / 20; // 15/20 = 0.75
+                return probRoll;
+            }
+
+            var probNumber1 = checkSuccess(DCNumber1, PlusNumber1);
+            var probNumber2 = checkSuccess(DCNumber2, PlusNumber2);
+            var probNumber3 = checkSuccess(DCNumber3, PlusNumber3);
+            var probNumber4 = checkSuccess(DCNumber4, PlusNumber4);
+            var probNumber5 = checkSuccess(DCNumber5, PlusNumber5);
+            var probNumber1Inverse = 1 - probNumber1;
+            var probNumber2Inverse = 1 - probNumber2;
+            var probNumber3Inverse = 1 - probNumber3;
+            var probNumber4Inverse = 1 - probNumber4;
+            var probNumber5Inverse = 1 - probNumber5;
+
+            var probText = "Probability of succeeding " + successNumber + " tasks is: ";
+
+            switch (rollNumber) {
+                case 1:
+                    var probTotal = probNumber1;
+                    document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
+
+                    break;
+                case 2:
+                    switch (successNumber) {
+
+                        case 1:
+                            document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
+                            document.getElementById("results-dc2").innerHTML = "Second DC: " + probNumber2;
+                            var probTotal = (probNumber1 * probNumber2Inverse) + (probNumber1Inverse * probNumber2);
+                            probTotal = probTotal.toFixed(2);
+
+                            break;
+                        case 2:
+                            document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
+                            document.getElementById("results-dc2").innerHTML = "Second DC: " + probNumber2;
+                            var probTotal = (probNumber1 * probNumber2);
+                            probTotal = probTotal.toFixed(2);
+
+                            break;
+                    }
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+
+            var resultsText = probText + probTotal;
+
+            document.getElementById("results").innerHTML = resultsText;
+        }
+
+    </script>
+</body>
+
+</html>
