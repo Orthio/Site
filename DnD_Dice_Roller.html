@@ -2,46 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Dice Roller</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .p {
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-        }
-
-        .diceNumberClass {
-            width: 70px;
-            font-size: 40px;
-
-        }
-        #diceNumberInput {
-            -webkit-appearance: none;
-            -moz-appearance: textfield;
-            appearance: button;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: center;
-            /* Align the input and button container horizontally */
-            /* margin: 5px; */
-        }
-
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            /* Stack buttons vertically */
-            margin-left: 5px;
-            /* Add space between input and buttons */
-        }
-
-        .ResultsClass {
-            padding: 1px;
-        }
-    </style>
+    <title>Dice Roller</title>
+    <link rel="stylesheet" href="css/DnD_Dice_Roller.css" />
 </head>
 
 <body>
@@ -51,13 +15,14 @@
         <form action="/action_page.php" class="DiceNumberForm">
             <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
             <div class="input-container">
-                <input type="number" id="diceNumberInput" class="diceNumberClass" name="diceNumberInput" value="1"
-                    min="1" step="1">
+                <input type="number" id="diceNumberInput" name="diceNumberInput" value="1" min="1" step="1">
 
-                <div class="button-container"> 
+                <div class="button-container">
                     <button type="button" onclick="numberUp()" id="up">⬆</button>
                     <button type="button" onclick="numberDown()" id="down">⬇</button>
                 </div>
+                <span id="plus-numeral"> + </span>
+                <input type="number" id="diceAddInput" name="diceAddInput" value="" step="1">
             </div>
             <br>
         </form>
@@ -72,6 +37,7 @@
     <button type="button" onclick="diceRoll(20)" class="button buttond20">Roll d20</button>
     <button type="button" onclick="diceRoll(100)" class="button buttond100">Roll d100</button>
     <button type="button" onclick="diceRoll(1000)" class="button buttond1000">Roll d1000</button>
+    <button type="button" onclick="diceReset()" class="button">Reset Dice</button>
 
     <br>
     <br>
@@ -99,9 +65,23 @@
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
             var diceNumber = document.getElementById("diceNumberInput").value;
-            var rollResult = diceNumber * (Math.floor(Math.random() * roll) + 1);
-            var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll +
-                " = " + rollResult + '</div>' + "<br>";
+            let diceAddCheck = Number(document.getElementById("diceAddInput").value);
+            console.log(typeof diceAddCheck, diceAddCheck);
+
+            if (diceAddCheck === '' || diceAddCheck == '0' ) {
+                var diceAddNumber = 0;
+            } else {
+                var diceAddNumber = diceAddCheck;
+            }
+
+            var rollResult = (diceNumber * (Math.floor(Math.random() * roll) + 1)) + diceAddNumber;
+            if (diceAddCheck === '' || diceAddCheck == '0') {
+                var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll
+                    + " = " + rollResult + '</div>' + "<br>";
+            } else {
+                var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll
+                    + " + " + diceAddNumber + " = " + rollResult + '</div>' + "<br>";
+            }
 
             rollHistory.unshift(rollOutput);
             // Unshift adds rollOutput to the array
@@ -113,6 +93,11 @@
                 rollHistory.join('');
             //Removes the comma by joining the array into a string
 
+        }
+
+        function diceReset() {
+            document.getElementById("diceNumberInput").value = 1;
+            var diceAddNumber = document.getElementById("diceAddInput").value = "";
         }
 
 
