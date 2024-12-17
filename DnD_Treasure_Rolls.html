@@ -6,10 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Rolls</title>
     <link rel="stylesheet" href="css/DnD_Treasure_Rolls.css" />
+    <script type="module" src="js/DnD_Treasure_Rolls.js"></script>
+
 </head>
 
 <body>
     <h1>Treasure Rolls</h1>
+
+    <div>
+        <form action="/action_page.php" class="CRForm">
+            <label for="CRInput"><i>CR: </i></label><br>
+            <div class="input-container">
+                <input type="number" id="CRInput" name="CRInput" value="7" min="1" step="1">
+
+                <div class="button-container">
+                    <button type="button" id="button-up">⬆</button>
+                    <button type="button" id="button-down">⬇</button>
+                </div>
+
+            </div>
+            <br>
+        </form>
+    </div>
 
     <button type="button" id="button-individual-treasure" class="button">Generate Individual Treasure</button>
     <button type="button" id="button-treasure-hoard" class="button">Generate Treasure Hoard</button>
@@ -87,7 +105,6 @@
 
     <div id="result-output"></div>
 
-    <script type="module" src="js/DnD_Treasure_Rolls.js"></script>
 
 </body>
 

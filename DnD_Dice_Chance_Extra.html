@@ -20,10 +20,10 @@
     <br><br>
     <label for="DCInput1"><i>DC of roll stages: </i></label><br>
     <input type="number" id="DCInput1" name="DCInput1" class="dc-input" value="10" min="1" step="1">
-    <input type="number" id="DCInput2" name="DCInput2" class="dc-input" value="10" min="1" step="1">
-    <input type="number" id="DCInput3" name="DCInput3" class="dc-input" value="10" min="1" step="1">
-    <input type="number" id="DCInput4" name="DCInput4" class="dc-input" value="10" min="1" step="1">
-    <input type="number" id="DCInput5" name="DCInput5" class="dc-input" value="10" min="1" step="1">
+    <input type="number" id="DCInput2" name="DCInput2" class="dc-input" value="12" min="1" step="1">
+    <input type="number" id="DCInput3" name="DCInput3" class="dc-input" value="14" min="1" step="1">
+    <input type="number" id="DCInput4" name="DCInput4" class="dc-input" value="16" min="1" step="1">
+    <input type="number" id="DCInput5" name="DCInput5" class="dc-input" value="18" min="1" step="1">
     <br>
 
     <label for="PlusInput1"><i>Modifier for roll against:</i></label><br>
@@ -39,7 +39,6 @@
 
     <p>__________________________</p>
 
-    <br>
     <div id="results-dc1"></div>
     <div id="results-dc2"></div>
     <div id="results-dc3"></div>
@@ -73,55 +72,82 @@
                 return probRoll;
             }
 
-            var probNumber1 = checkSuccess(DCNumber1, PlusNumber1);
-            var probNumber2 = checkSuccess(DCNumber2, PlusNumber2);
-            var probNumber3 = checkSuccess(DCNumber3, PlusNumber3);
-            var probNumber4 = checkSuccess(DCNumber4, PlusNumber4);
-            var probNumber5 = checkSuccess(DCNumber5, PlusNumber5);
-            var probNumber1Inverse = 1 - probNumber1;
-            var probNumber2Inverse = 1 - probNumber2;
-            var probNumber3Inverse = 1 - probNumber3;
-            var probNumber4Inverse = 1 - probNumber4;
-            var probNumber5Inverse = 1 - probNumber5;
+            var p1 = checkSuccess(DCNumber1, PlusNumber1);
+            var p2 = checkSuccess(DCNumber2, PlusNumber2);
+            var p3 = checkSuccess(DCNumber3, PlusNumber3);
+            var p4 = checkSuccess(DCNumber4, PlusNumber4);
+            var p5 = checkSuccess(DCNumber5, PlusNumber5);
 
-            var probText = "Probability of succeeding " + successNumber + " tasks is: ";
+            let probArray = [p1, p2, p3, p4, p5];
 
-            switch (rollNumber) {
-                case 1:
-                    var probTotal = probNumber1;
-                    document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
+            function probabilityCalc(n, k, probabilities) {
+                // where n is the number of trials, k is the number of successes needed, and probabilities is the array of chances
 
-                    break;
-                case 2:
-                    switch (successNumber) {
+                if (n > 5) {
+                    console.error("Maximum number of trials (n) is 5.");
+                    return null;
+                }
 
-                        case 1:
-                            document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
-                            document.getElementById("results-dc2").innerHTML = "Second DC: " + probNumber2;
-                            var probTotal = (probNumber1 * probNumber2Inverse) + (probNumber1Inverse * probNumber2);
-                            probTotal = probTotal.toFixed(2);
+                if (k > n || k < 0) {
+                    console.error("Number of successes (k) must be between 0 and n.");
+                    return 0;
+                }
 
-                            break;
-                        case 2:
-                            document.getElementById("results-dc1").innerHTML = "First DC: " + probNumber1;
-                            document.getElementById("results-dc2").innerHTML = "Second DC: " + probNumber2;
-                            var probTotal = (probNumber1 * probNumber2);
-                            probTotal = probTotal.toFixed(2);
+                let totalProbability = 0;
 
-                            break;
+                // Helper: Generate all combinations of k indices out of n trials
+                function combinations(arr, k) {
+                    if (k === 0) return [[]];
+                    if (arr.length === 0) return [];
+                    const [first, ...rest] = arr;
+                    return combinations(rest, k - 1).map(c => [first, ...c]).concat(combinations(rest, k));
+                }
+
+                // Generate all possible indices of n trials, 
+                // eg n = 3 generates an array [0,1,2], based on an empty array of length of n, and mapping using i, the index of current element
+                const indices = Array.from({ length: n }, (_, i) => i);
+
+                // Get all combinations where k trials succeed
+                const successCombinations = combinations(indices, k);
+
+                // Sum up probabilities for all combinations
+                for (const combination of successCombinations) {
+                    let successProbability = 1;
+
+                    for (let i = 0; i < n; i++) {
+                        if (combination.includes(i)) {
+                            successProbability *= probabilities[i]; // Success on this trial
+                        } else {
+                            successProbability *= (1 - probabilities[i]); // Failure on this trial
+                        }
                     }
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
+
+                    totalProbability += successProbability;
+                }
+
+                return totalProbability;
             }
 
+            //Show individual choices
+            for (let i = 1; i <= rollNumber; i++) {
+                let resultsText = "results-dc" + i;
+                let prefixText = ["First", "Second", "Third", "Fourth", "Fifth"];
+                document.getElementById(resultsText).innerHTML = prefixText[i-1] + " DC: " + probArray[i-1];
+            }
+
+            for (let i = rollNumber+1 ; i < 6; i++) {
+                let resultsText = "results-dc" + i;
+                document.getElementById(resultsText).innerHTML = "";
+            }
+
+            var probTotal = probabilityCalc(rollNumber, successNumber, probArray);
+                probTotal = probTotal.toFixed(2);
+
+            let probText = "Probability of succeeding " + successNumber + " tasks is: ";
             var resultsText = probText + probTotal;
 
             document.getElementById("results").innerHTML = resultsText;
+
         }
 
     </script>

@@ -1,0 +1,32 @@
+
+body {
+    margin-left: 75px;
+    font-size: 12px;
+}
+
+h1 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#tier-rank {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.goal-link {
+    text-decoration: none;
+    color: black;
+}
+
+.iframe {
+    border: none;
+}
+
+label {
+    margin-bottom: 0; /* Remove bottom margin of the label */
+}
+
+ul {
+    margin-top: 0; /* Remove top margin of the ul list */
+}

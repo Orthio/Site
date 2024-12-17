@@ -11,6 +11,28 @@
     user-select: none;
 }
 
+#CRInput {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: button;
+    width: 70px;
+    font-size: 40px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    /* Align the input and button container horizontally */
+    /* margin: 5px; */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack buttons vertically */
+    margin-left: 5px;
+    /* Add space between input and buttons */
+}
 
 .form-party-row {
     display: flex;
