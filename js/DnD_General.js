@@ -99,6 +99,7 @@ export function generalDiceRoll(dice, qty, adv) {
             return Math.min.apply(null, rollResult);
             break;
         default:
-            return rollResult[0];
+            let totalResult = rollResult.reduce((sum, current) => sum + current, 0);
+            return totalResult;
     }
 };

@@ -11,6 +11,7 @@
     user-select: none;
 }
 
+/* Inputs */
 #CRInput {
     -webkit-appearance: none;
     -moz-appearance: textfield;
@@ -22,59 +23,149 @@
 .input-container {
     display: flex;
     align-items: center;
-    /* Align the input and button container horizontally */
-    /* margin: 5px; */
 }
 
 .button-container {
     display: flex;
     flex-direction: column;
-    /* Stack buttons vertically */
     margin-left: 5px;
-    /* Add space between input and buttons */
 }
 
-.form-party-row {
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    color: #000000;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    color: #FFFFFF;
+    background-color: #00A4BD;
+}
+
+/* Container for the tables */
+#tables-container {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    flex-direction: row;
-  }
-
-#table-individual-treasure {
-    padding-left: 10px;
+    /* Align tables at the top */
+    gap: 5px;
+    width: 100%;
+    overflow-x: auto;
 }
 
-#caption-individual-treasure {
-    /* padding-left: -25px; */
-    font-style: italic;
+/* Tables */
+#table-treasures {
+    border-collapse: collapse;
+    width: 40%;
+    flex-shrink: 0;
 }
 
-#table-individual-treasure td:nth-child(1) {
-    width: 50px;
-    text-align: center;
+#table-items-gained {
+    border-collapse: collapse;
+    width: 55%;
+    flex-shrink: 0;
 }
 
-#table-individual-treasure td:nth-child(2) {
-    width: 120px;
+#table-treasures th,
+#table-treasures td,
+#table-items-gained th,
+#table-items-gained td {
+    padding: 4px, 8px;
     text-align: left;
 }
 
-#table-treasure-hoard {
-    padding-left: 10px;
+#label-treasure-rolls {
+    font-weight: bold;
 }
 
+/* Debugging: Visualize table boundaries (remove in production) */
+#table-treasures {
+    background-color: #f9f9f9;
+}
+
+#table-items-gained {
+    background-color: #f9f9f9;
+}
+
+/* Treasure Tables */
+#caption-individual-treasure,
 #caption-treasure-hoard {
-    /* padding-left: -55px; */
     font-style: italic;
-
 }
 
-#table-treasure-hoard td:nth-child(1) {
-    width: 50px;
+#table-individual-treasure td:nth-child(1),
+#table-individual-treasure th:nth-child(1) {
+    width: 35%;
+}
+
+#table-individual-treasure td:nth-child(2),
+#table-individual-treasure th:nth-child(2) {
+    width: 65%;
+}
+
+#table-treasure-hoard td:nth-child(1),
+#table-treasure-hoard th:nth-child(1) {
+    width: 20%;
+}
+
+/* Items Table */
+#table-items-gained th:nth-child(1),
+#table-items-gained td:nth-child(1) {
+    width: 12%;
+}
+
+#table-items-gained th:nth-child(2),
+#table-items-gained td:nth-child(2) {
+    width: 12%;
     text-align: center;
 }
 
-#table-treasure-hoard td:nth-child(2) {
-    width: 120px;
-    text-align: left;
+#table-items-gained th:nth-child(3),
+#table-items-gained td:nth-child(3) {
+    width: 12%;
+    text-align: center;
+}
+
+#table-items-gained th:nth-child(4),
+#table-items-gained td:nth-child(4) {
+    width: 12%;
+    text-align: center;
+}
+
+#table-items-gained th:nth-child(5),
+#table-items-gained td:nth-child(5) {
+    width: 12%;
+    text-align: center;
+}
+
+#label-items-gained {
+    font-style: italic;
+}
+
+#id-minor {
+    position: relative;
+    left: 40px;
+}
+
+#id-major {
+    position: relative;
+    left: 50px;
 }
