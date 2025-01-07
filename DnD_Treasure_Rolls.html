@@ -29,22 +29,24 @@
             <br>
         </form>
     </div>
+    <span id="party-level-span"></span>
 
     <button type="button" id="button-individual-treasure" class="button">Generate Individual Treasure</button>
     <button type="button" id="button-treasure-hoard" class="button">Generate Treasure Hoard</button>
     <button type="button" id="button-magic-item-type" class="button">Roll for Magic Item type</button>
     <div class="dropdown">
-        <button id="button-theme">Treasure Theme</button>
+        <button type="button" id="button-theme">Treasure Theme</button>
         <div class="dropdown-content">
-            <a>Arcana</a>
-            <a>Armament</a>
-            <a>Implements</a>
-            <a>Relics</a>
+            <a href="#" data-value="arcana">Arcana</a>
+            <a href="#" data-value="armaments">Armaments</a>
+            <a href="#" data-value="implements">Implements</a>
+            <a href="#" data-value="relics">Relics</a>
         </div>
     </div>
 
-    <!-- https://blog.hubspot.com/website/html-dropdown -->
-     
+
+
+
     <br><br>
 
     <div id="tables-container">
@@ -121,6 +123,7 @@
 
             <p id="label-treasure-rolls">Treasure Rolls</p>
             <span id="results-output"></span>
+            <span id="treasure-theme-output"></span>
 
         </div>
 

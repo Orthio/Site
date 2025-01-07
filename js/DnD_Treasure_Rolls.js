@@ -1,62 +1,18 @@
 
 import { generalDiceRoll } from './DnD_General.js';
 
-const indiTreasureTable = [
-    { minCR: 0, maxCR: 4, roll1: 3, roll2: 6, roll3: 1 },
-    { minCR: 5, maxCR: 10, roll1: 2, roll2: 8, roll3: 10 },
-    { minCR: 11, maxCR: 16, roll1: 2, roll2: 10, roll3: 100 },
-    { minCR: 17, maxCR: 40, roll1: 2, roll2: 8, roll3: 1000 }
-];
+let jsonData;
 
-const hoardTreasureTable = [
-    {
-        minCR: 0,
-        maxCR: 4,
-        roll1: 2,
-        roll2: 4,
-        roll3: 100,
-        mroll1: 1,
-        mroll2: 4,
-        mroll3: -1
-    },
-    {
-        minCR: 5,
-        maxCR: 10,
-        roll1: 8,
-        roll2: 10,
-        roll3: 100,
-        mroll1: 1,
-        mroll2: 3,
-        mroll3: 0
-    },
-    {
-        minCR: 11,
-        maxCR: 16,
-        roll1: 8,
-        roll2: 8,
-        roll3: 10000,
-        mroll1: 1,
-        mroll2: 4,
-        mroll3: 0
-    },
-    {
-        minCR: 17,
-        maxCR: 30,
-        roll1: 6,
-        roll2: 10,
-        roll3: 10000,
-        mroll1: 1,
-        mroll2: 6,
-        mroll3: 0
-    }
-];
+fetch('json/DnD_Treasure_Rolls.json')
 
-var magicItemTypeTable = {
-    1: "Arcana",
-    2: "Armaments",
-    3: "Implements",
-    4: "Relics"
-};
+    .then(response => response.json())  // Parse the JSON
+    .then(data => {
+        jsonData = data;
+        //  console.log(data.artDecorativeTechniques["1"]); // Outputs "Platinum filigree"
+
+        // console.log(data.artNature["2"]); // Outputs "Worn or Carried Ornaments"
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
 
 class TreasureRoll {
     //Individual treasure roll
@@ -72,9 +28,9 @@ function createNewTreasure() {
     TreasureRoll.treasureObjects[TreasureRoll.currentId] = new TreasureRoll;
 }
 
-function findNextMinCR(table, cr) {
+function findNextTableNumber(table, number) {
     for (let i = 0; i < table.length; i++) {
-        if (table[i].maxCR >= cr) {
+        if (table[i].maxCR >= number) {
             return table[i]; // Return the matching row
         }
     }
@@ -83,8 +39,8 @@ function findNextMinCR(table, cr) {
 
 function calcIndiTreasure() {
     let cr = parseInt(document.getElementById("CRInput").value);
-
-    const matchingRow = findNextMinCR(indiTreasureTable, cr);
+    var indiTreasureTable = jsonData.indiTreasureTable;
+    const matchingRow = findNextTableNumber(indiTreasureTable, cr);
 
     TreasureRoll.currentCR = matchingRow.minCR;
     createNewTreasure();
@@ -99,21 +55,23 @@ function calcIndiTreasure() {
 
     let indiText = TreasureRoll.currentId + ". Individual Treasure: " + TreasureRoll.treasureObjects[TreasureRoll.currentId].treasure + "gp";
     document.getElementById("results-output").innerHTML = indiText;
+    document.getElementById("treasure-theme-output").innerHTML = null;
+
 
 }
 
 function calcNewMag() {
     let magicItemRoll = generalDiceRoll(4, 1);
-    let magicItemType = magicItemTypeTable[magicItemRoll];
-    let magicText = "Magic Item type is: " + magicItemType;
+    let magicItemType = jsonData.magicItemTypeTable[magicItemRoll];
+    let magicText = "  Magic Item type is: " + magicItemType;
     // console.log(magicText);
-    document.getElementById("results-output").innerHTML = magicText;
+    document.getElementById("treasure-theme-output").innerHTML = magicText;
 }
 
 function calcHoardTreasure() {
     let cr = parseInt(document.getElementById("CRInput").value);
-
-    const matchingRow = findNextMinCR(hoardTreasureTable, cr);
+    var hoardTreasureTable = jsonData.hoardTreasureTable;
+    const matchingRow = findNextTableNumber(hoardTreasureTable, cr);
 
     TreasureRoll.currentCR = matchingRow.minCR;
     createNewTreasure();
@@ -137,9 +95,35 @@ function calcHoardTreasure() {
         + TreasureRoll.treasureObjects[TreasureRoll.currentId].magicItems + magicItemsText;
     document.getElementById("results-output").innerHTML = hoardText;
 
+    document.getElementById("treasure-theme-output").innerHTML = null;
+
+
 }
 
+function itemTheme(theme) {
+    let itemTheme;
 
+    switch (theme) {
+        case "arcana":
+            itemTheme = "Arcana";
+            document.getElementById("treasure-theme-output").innerHTML = " Picked Item type is: " + itemTheme;
+            break;
+        case "armaments":
+            itemTheme = "Armaments";
+            document.getElementById("treasure-theme-output").innerHTML = "Picked Item type is: " + itemTheme;
+            break;
+        case "implements":
+            itemTheme = "Implements";
+            document.getElementById("treasure-theme-output").innerHTML = "Picked Item type is: " + itemTheme;
+            break;
+        case "relics":
+            itemTheme = "Relics";
+            document.getElementById("treasure-theme-output").innerHTML = "Picked Item type is: " + itemTheme;
+            break;
+        default:
+            console.log("Unknown theme");
+    }
+}
 
 
 const newButtonUp = document.querySelector("#button-up");
@@ -175,4 +159,16 @@ const newButtonMag = document.querySelector("#button-magic-item-type");
 
 newButtonMag.addEventListener("click", () => {
     calcNewMag();
+});
+
+const newButtonTheme = document.getElementById("button-theme");
+const dropdownThemeLinks = document.querySelectorAll(".dropdown-content a");
+
+dropdownThemeLinks.forEach(link => {
+    link.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        const selectedTheme = this.getAttribute("data-value"); // Get the value of the selected item
+        newButtonTheme.textContent = this.textContent + " Theme"; // Update button text
+        itemTheme(selectedTheme); // Apply the theme logic
+    });
 });

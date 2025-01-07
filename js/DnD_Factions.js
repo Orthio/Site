@@ -23,8 +23,8 @@ function circleSwap(i,color) {
     var currentCircle = document.getElementById(name);
     var newInit = currentCircle.getAttribute('data-circle');
     let newParts = newInit.split('-');
-    let newSize = parseInt(newParts[0], 10);
-    let newTicks = parseInt(newParts[1], 10);
+    let newTicks = parseInt(newParts[0], 10);
+    let newSize = parseInt(newParts[1], 10);
     new Circle(color, newSize, newTicks);
     var img = document.getElementById(name);
     var circleImage = "../images/Progress_Clocks/Clock-" + color + "-" + newSize + "-" + newTicks + ".png";
