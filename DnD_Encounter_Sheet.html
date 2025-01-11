@@ -11,26 +11,22 @@
 <body>
   <h1>Encounter Sheet</h1>
 
-  <div>
-    <form id="form-party" class="form-party">
-      <div class="form-party-row">
-        <div class="form-party-group">
-          <label for="js-party-levelinput">Party Level:</label>
-          <input type="number" class="input-party" id="js-party-levelinput" name="js-party-levelinput" value="7" min="1"
-            max="20">
-        </div>
-        <div class="form-party-group">
-          <label for="js-party-numberinput">Party Nos:</label>
-          <input type="number" class="input-party" id="js-party-numberinput" name="js-party-numberinput" value="4"
-            min="1" max="6">
-        </div>
-        <div class="form-party-group">
-          <label for="js-xpgainedforcurrent">XP gained for current day:</label>
-          <input type="number" class="xpgainedforcurrent" id="js-xpgainedforcurrent" value="0" step="1" size="50"
-            name="js-xpgainedforcurrent">
-        </div>
-      </div>
-    </form>
+  <div class="form-party-row">
+    <div class="form-party-group">
+      <label for="js-party-levelinput">Party Level:</label>
+      <input type="number" class="input-party" id="js-party-levelinput" name="js-party-levelinput" value="7" min="1"
+        max="20">
+    </div>
+    <div class="form-party-group">
+      <label for="js-party-numberinput">Party Nos:</label>
+      <input type="number" class="input-party" id="js-party-numberinput" name="js-party-numberinput" value="4" min="1"
+        max="6">
+    </div>
+    <div class="form-party-group">
+      <label for="js-xpgainedforcurrent">XP gained for current day:</label>
+      <input type="number" class="xpgainedforcurrent" id="js-xpgainedforcurrent" value="0" step="1" size="50"
+        name="js-xpgainedforcurrent">
+    </div>
   </div>
 
   <p class="shortresttext">Party Level: <span id="party-level"></span> &nbsp; x &nbsp; <span id="party-number"></span>
@@ -38,8 +34,9 @@
   <p class="shortresttext">Current daily budget for the party: <span id="dailybudget"></span></p>
   <p class="shortresttext">Current budget per short rest: <span id="partyshortbudget"></span></p>
   <p class="shortresttext">Initial budget remaining: <span id="partyinitialbudgetremain"></span></p>
-  <p class="difficulty-ratings">Low: <span id="difficulty-low"></span>xp  Moderate: 
-    <span id="difficulty-moderate"></span>xp  High: <span id="difficulty-high"></span>xp</p>
+  <p class="difficulty-ratings">Low: <span id="difficulty-low"></span>xp Moderate:
+    <span id="difficulty-moderate"></span>xp High: <span id="difficulty-high"></span>xp
+  </p>
 
   <p>_______________________</p>
 
@@ -48,7 +45,8 @@
       <div class="form-row">
         <div class="form-group">
           <label for="js-monster-cr-input">Monster CR:</label>
-          <input type="number" id="js-monster-cr-input" name="js-monster-cr-input" class="CRInputClass" min="0" max="30" value="7" step="1">
+          <input type="number" id="js-monster-cr-input" name="js-monster-cr-input" class="CRInputClass" min="0" max="30"
+            value="7" step="1">
         </div>
         <div class="form-group">
           <label for="js-monster-qty-input">Monster Qty:</label>

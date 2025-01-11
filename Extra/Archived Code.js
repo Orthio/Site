@@ -44,6 +44,36 @@ function factorial(n) {
     return result;
 }
 
+/* Button code */
+<div class="button-arrow-container">
+                        <button type="button" id="button-up">⬆</button>
+                        <button type="button" id="button-down">⬇</button>
+                    </div>
+.button-arrow-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+const newButtonUp = document.querySelector("#button-up");
+
+newButtonUp.addEventListener("click", () => {
+    let inputField = document.getElementById("CRInput");
+    inputField.value = parseInt(inputField.value) + 1;  // Increment and update value
+});
+
+const newButtonDown = document.querySelector("#button-down");
+
+newButtonDown.addEventListener("click", () => {
+    let inputField = document.getElementById("CRInput");
+    let inputValue = parseInt(inputField.value);  // Get the current value as a number
+    if (inputValue > 1) {
+        inputField.value = inputValue - 1;  // Decrement value if greater than 1
+    }
+});
+
+/* Weather Table */
+
 const winterWeatherTable = {
   1: "A Blizzard ",
   2: "A Snowfall ",

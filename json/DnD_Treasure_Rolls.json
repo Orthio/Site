@@ -1,14 +1,14 @@
 {
     "indiTreasureTable": [
-        { "minCR": 0, "maxCR": 4, "roll1": 3, "roll2": 6, "roll3": 1 },
-        { "minCR": 5, "maxCR": 10, "roll1": 2, "roll2": 8, "roll3": 10 },
-        { "minCR": 11, "maxCR": 16, "roll1": 2, "roll2": 10, "roll3": 100 },
-        { "minCR": 17, "maxCR": 40, "roll1": 2, "roll2": 8, "roll3": 1000 }
+        { "minCR": 0, "max": 4, "roll1": 3, "roll2": 6, "roll3": 1 },
+        { "minCR": 5, "max": 10, "roll1": 2, "roll2": 8, "roll3": 10 },
+        { "minCR": 11, "max": 16, "roll1": 2, "roll2": 10, "roll3": 100 },
+        { "minCR": 17, "max": 40, "roll1": 2, "roll2": 8, "roll3": 1000 }
     ],
     "hoardTreasureTable": [
         {
             "minCR": 0,
-            "maxCR": 4,
+            "max": 4,
             "roll1": 2,
             "roll2": 4,
             "roll3": 100,
@@ -18,7 +18,7 @@
         },
         {
             "minCR": 5,
-            "maxCR": 10,
+            "max": 10,
             "roll1": 8,
             "roll2": 10,
             "roll3": 100,
@@ -28,7 +28,7 @@
         },
         {
             "minCR": 11,
-            "maxCR": 16,
+            "max": 16,
             "roll1": 8,
             "roll2": 8,
             "roll3": 10000,
@@ -38,7 +38,7 @@
         },
         {
             "minCR": 17,
-            "maxCR": 30,
+            "max": 30,
             "roll1": 6,
             "roll2": 10,
             "roll3": 10000,
@@ -48,33 +48,33 @@
         }
     ],
     "itemLevelTable": [
-        { "table": "A", "minLvl": 1, "maxLvl": 4 },
-        { "table": "B", "minLvl": 5, "maxLvl": 10 },
-        { "table": "C", "minLvl": 11, "maxLvl": 16 },
-        { "table": "D", "minLvl": 17, "maxLvl": 20 }
+        { "table": 0, "min": 1, "max": 4 },
+        { "table": 1, "min": 5, "max": 10 },
+        { "table": 2, "min": 11, "max": 16 },
+        { "table": 3, "min": 17, "max": 20 }
     ],
     "itemTableA": [
-        { "type": "Common", "minRoll": 1, "maxRoll": 54 },
-        { "type": "Uncommon", "minRoll": 55, "maxRoll": 91 },
-        { "type": "Rare", "minRoll": 92, "maxRoll": 100 }
+        { "type": "Common", "min": 1, "max": 54 },
+        { "type": "Uncommon", "min": 55, "max": 91 },
+        { "type": "Rare", "min": 92, "max": 100 }
     ],
     "itemTableB": [
-        { "type": "Common", "minRoll": 1, "maxRoll": 30 },
-        { "type": "Uncommon", "minRoll": 31, "maxRoll": 81 },
-        { "type": "Rare", "minRoll": 82, "maxRoll": 98 },
-        { "type": "Very Rare", "minRoll": 99, "maxRoll": 100 }
+        { "type": "Common", "min": 1, "max": 30 },
+        { "type": "Uncommon", "min": 31, "max": 81 },
+        { "type": "Rare", "min": 82, "max": 98 },
+        { "type": "Very Rare", "min": 99, "max": 100 }
     ],
     "itemTableC": [
-        { "type": "Common", "minRoll": 1, "maxRoll": 11 },
-        { "type": "Uncommon", "minRoll": 12, "maxRoll": 34 },
-        { "type": "Rare", "minRoll": 35, "maxRoll": 70 },
-        { "type": "Very Rare", "minRoll": 71, "maxRoll": 93 },
-        { "type": "Legendary", "minRoll": 94, "maxRoll": 100 }
+        { "type": "Common", "min": 1, "max": 11 },
+        { "type": "Uncommon", "min": 12, "max": 34 },
+        { "type": "Rare", "min": 35, "max": 70 },
+        { "type": "Very Rare", "min": 71, "max": 93 },
+        { "type": "Legendary", "min": 94, "max": 100 }
     ],
     "itemTableD": [
-        { "type": "Rare", "minRoll": 1, "maxRoll": 20 },
-        { "type": "Very Rare", "minRoll": 21, "maxRoll": 64 },
-        { "type": "Legendary", "minRoll": 65, "maxRoll": 100 }
+        { "type": "Rare", "min": 1, "max": 20 },
+        { "type": "Very Rare", "min": 21, "max": 64 },
+        { "type": "Legendary", "min": 65, "max": 100 }
     ],
     
     "magicItemTypeTable": {
