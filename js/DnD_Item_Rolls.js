@@ -22,9 +22,9 @@ document.getElementById("roll-results").innerText = result; */
 var resultOutput = [];
 
 function generateArt() {
-    console.log("Art Gen started");
+    // console.log("Art Gen started");
     var natureIndex = generalDiceRoll(5, 1);
-    console.log("Nature Index ", natureIndex);
+    // console.log("Nature Index ", natureIndex);
     var nature = jsonData.artNature[natureIndex];
 
     var jewelleryIndex = generalDiceRoll(50, 1);
@@ -92,8 +92,8 @@ function generateArt() {
 function generateEnemyWeapon() {
     let enemyWepIndex = generalDiceRoll(jsonData.enemyWeapons.length, 1);
     let enemyWep = jsonData.enemyWeapons[enemyWepIndex];
-    console.log("EnemyWepIndex: ", enemyWepIndex);
-    console.log(enemyWep);
+    // console.log("EnemyWepIndex: ", enemyWepIndex);
+    // console.log(enemyWep);
 
     let enemyWepResult = "<div><span class='no-select'><small>Enemy Weapon: </small></span><br>" + enemyWep + "</div><br>";
 
@@ -104,8 +104,8 @@ function generateEnemyWeapon() {
 function generatePartyWeapon() {
     let partyWepIndex = generalDiceRoll(jsonData.partyWeapons.length, 1);
     let partyWep = jsonData.partyWeapons[partyWepIndex];
-    console.log("partyWepIndex: ", partyWepIndex);
-    console.log(partyWep);
+    // console.log("partyWepIndex: ", partyWepIndex);
+    // console.log(partyWep);
 
     let partyWepResult = "<div><span class='no-select'><small>Party Weapon: </small></span><br>" + partyWep + "</div>" + "<br>";
 

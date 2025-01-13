@@ -72,6 +72,20 @@ newButtonDown.addEventListener("click", () => {
     }
 });
 
+
+function numberUp() {
+    let inputField = document.getElementById("diceNumberInput");
+    inputField.value = parseInt(inputField.value) + 1;  // Increment and update value
+}
+
+function numberDown() {
+    let inputField = document.getElementById("diceNumberInput");
+    let inputValue = parseInt(inputField.value);  // Get the current value as a number
+    if (inputValue > 1) {
+        inputField.value = inputValue - 1;  // Decrement value if greater than 1
+    }
+}
+
 /* Weather Table */
 
 const winterWeatherTable = {

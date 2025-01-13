@@ -16,10 +16,10 @@
         <div class="input-container">
             <input type="number" id="diceNumberInput" name="diceNumberInput" value="1" min="1" step="1">
 
-            <div class="button-container">
+          <!--   <div class="button-container">
                 <button type="button" onclick="numberUp()" id="up">⬆</button>
                 <button type="button" onclick="numberDown()" id="down">⬇</button>
-            </div>
+            </div> -->
             <span id="plus-numeral"> + </span>
             <input type="number" id="diceAddInput" name="diceAddInput" value="" step="1">
         </div>
@@ -44,20 +44,6 @@
     <script>
 
         var rollHistory = [];
-
-        function numberUp() {
-            let inputField = document.getElementById("diceNumberInput");
-            inputField.value = parseInt(inputField.value) + 1;  // Increment and update value
-        }
-
-        function numberDown() {
-            let inputField = document.getElementById("diceNumberInput");
-            let inputValue = parseInt(inputField.value);  // Get the current value as a number
-            if (inputValue > 1) {
-                inputField.value = inputValue - 1;  // Decrement value if greater than 1
-            }
-        }
-
 
         function diceRoll(roll) {
             // Roll to get (0-1)*20=0 or 20
