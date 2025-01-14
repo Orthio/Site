@@ -1,0 +1,581 @@
+{
+    "type": "section",
+    "name": "Gemstones",
+    "page": 214,
+    "id": "40f",
+    "entries": [
+        "Gemstones are small, lightweight, and easily secured compared to their same value in coins.",
+        "If a treasure hoard includes gemstones, you can use the following tables to randomly determine the kind of gemstones found, based on their value. You can roll once and assume all the gems are the same or roll multiple times to create mixed collections.",
+        {
+            "type": "table",
+            "caption": "10 GP Gemstones",
+            "colLabels": [
+                "1d12",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Azurite|XDMG} (mottled deep blue)"
+                ],
+                [
+                    "2",
+                    "{@item Banded agate|XDMG} (striped brown, blue, white, or red)"
+                ],
+                [
+                    "3",
+                    "{@item Blue quartz|XDMG} (pale blue)"
+                ],
+                [
+                    "4",
+                    "{@item Eye agate|XDMG} (circles of gray, white, brown, blue, or green)"
+                ],
+                [
+                    "5",
+                    "{@item Hematite|XDMG} (gray black)"
+                ],
+                [
+                    "6",
+                    "{@item Lapis lazuli|XDMG} (light and dark blue with yellow flecks)"
+                ],
+                [
+                    "7",
+                    "{@item Malachite|XDMG} (striated light and dark green)"
+                ],
+                [
+                    "8",
+                    "{@item Moss agate|XDMG} (pink or yellow white with mossy gray or green markings)"
+                ],
+                [
+                    "9",
+                    "{@item Obsidian|XDMG} (black)"
+                ],
+                [
+                    "10",
+                    "{@item Rhodochrosite|XDMG} (light pink)"
+                ],
+                [
+                    "11",
+                    "{@item Tiger eye|XDMG} (brown with golden center)"
+                ],
+                [
+                    "12",
+                    "{@item Turquoise|XDMG} (light blue green)"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "50 GP Gemstones",
+            "colLabels": [
+                "1d12",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Bloodstone|XDMG} (dark gray with red flecks)"
+                ],
+                [
+                    "2",
+                    "{@item Carnelian|XDMG} (orange to red brown)"
+                ],
+                [
+                    "3",
+                    "{@item Chalcedony|XDMG} (white)"
+                ],
+                [
+                    "4",
+                    "{@item Chrysoprase|XDMG} (green)"
+                ],
+                [
+                    "5",
+                    "{@item Citrine|XDMG} (pale yellow brown)"
+                ],
+                [
+                    "6",
+                    "{@item Jasper|XDMG} (blue, black, or brown)"
+                ],
+                [
+                    "7",
+                    "{@item Moonstone|XDMG} (white with pale-blue glow)"
+                ],
+                [
+                    "8",
+                    "{@item Onyx|XDMG} (bands of black and white, or pure black or white)"
+                ],
+                [
+                    "9",
+                    "{@item Quartz|XDMG} (white, smoky gray, or yellow)"
+                ],
+                [
+                    "10",
+                    "{@item Sardonyx|XDMG} (bands of red and white)"
+                ],
+                [
+                    "11",
+                    "{@item Star rose quartz|XDMG} (rosy stone with white star-shaped center)"
+                ],
+                [
+                    "12",
+                    "{@item Zircon|XDMG} (pale blue green)"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "100 GP Gemstones",
+            "colLabels": [
+                "1d10",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Amber|XDMG} (watery gold to rich gold)"
+                ],
+                [
+                    "2",
+                    "{@item Amethyst|XDMG} (deep purple)"
+                ],
+                [
+                    "3",
+                    "{@item Chrysoberyl|XDMG} (yellow green to pale green)"
+                ],
+                [
+                    "4",
+                    "{@item Coral|XDMG} (crimson)"
+                ],
+                [
+                    "5",
+                    "{@item Garnet|XDMG} (red, brown green, or violet)"
+                ],
+                [
+                    "6",
+                    "{@item Jade|XDMG} (light green, deep green, or white)"
+                ],
+                [
+                    "7",
+                    "{@item Jet|XDMG} (deep black)"
+                ],
+                [
+                    "8",
+                    "{@item Pearl|XDMG} (lustrous white, yellow, or pink)"
+                ],
+                [
+                    "9",
+                    "{@item Spinel|XDMG} (red, red brown, or deep green)"
+                ],
+                [
+                    "10",
+                    "{@item Tourmaline|XDMG} (pale green, blue, brown, or red)"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "500 GP Gemstones",
+            "colLabels": [
+                "1d6",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Alexandrite|XDMG} (dark green)"
+                ],
+                [
+                    "2",
+                    "{@item Aquamarine|XDMG} (pale blue green)"
+                ],
+                [
+                    "3",
+                    "{@item Black pearl|XDMG} (pure black)"
+                ],
+                [
+                    "4",
+                    "{@item Blue spinel|XDMG} (deep blue)"
+                ],
+                [
+                    "5",
+                    "{@item Peridot|XDMG} (rich olive green)"
+                ],
+                [
+                    "6",
+                    "{@item Topaz|XDMG} (golden yellow)"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "1,000 GP Gemstones",
+            "colLabels": [
+                "1d8",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Black opal|XDMG} (dark green with black mottling and golden flecks)"
+                ],
+                [
+                    "2",
+                    "{@item Blue sapphire|XDMG} (medium blue)"
+                ],
+                [
+                    "3",
+                    "{@item Emerald|XDMG} (deep bright green)"
+                ],
+                [
+                    "4",
+                    "{@item Fire opal|XDMG} (fiery red)"
+                ],
+                [
+                    "5",
+                    "{@item Opal|XDMG} (pale blue with green and golden mottling)"
+                ],
+                [
+                    "6",
+                    "{@item Star ruby|XDMG} (ruby with white star-shaped center)"
+                ],
+                [
+                    "7",
+                    "{@item Star sapphire|XDMG} (blue sapphire with white star-shaped center)"
+                ],
+                [
+                    "8",
+                    "{@item Yellow sapphire|XDMG} (fiery yellow or yellow green)"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "5,000 GP Gemstones",
+            "colLabels": [
+                "1d4",
+                "Stone"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Black sapphire|XDMG} (lustrous black with glowing highlights)"
+                ],
+                [
+                    "2",
+                    "{@item Diamond|XDMG} (blue white, canary, pink, brown, or blue)"
+                ],
+                [
+                    "3",
+                    "{@item Jacinth|XDMG} (fiery orange)"
+                ],
+                [
+                    "4",
+                    "{@item Ruby|XDMG} (clear red to deep crimson)"
+                ]
+            ]
+        }
+    ]
+},
+{
+    "type": "section",
+    "name": "Art Objects",
+    "page": 215,
+    "id": "410",
+    "entries": [
+        "Idols cast of solid gold, necklaces studded with precious stones, paintings of ancient kings, bejeweled dishes\u2014art objects include all these and more.",
+        "If a treasure hoard includes art objects, you can use the following tables to randomly determine what art objects are found, based on their value. Roll on a table as many times as there are art objects in the treasure hoard. There can be more than one of a given art object.",
+        {
+            "type": "table",
+            "caption": "25 GP Art Objects",
+            "colLabels": [
+                "1d10",
+                "Object"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Silver ewer|XDMG}"
+                ],
+                [
+                    "2",
+                    "{@item Carved bone statuette|XDMG}"
+                ],
+                [
+                    "3",
+                    "{@item Gold bracelet|XDMG}"
+                ],
+                [
+                    "4",
+                    "{@item Cloth-of-gold vestments|XDMG}"
+                ],
+                [
+                    "5",
+                    "{@item Black velvet mask stitched with silver thread|XDMG}"
+                ],
+                [
+                    "6",
+                    "{@item Copper chalice with silver filigree|XDMG}"
+                ],
+                [
+                    "7",
+                    "{@item Pair of engraved bone dice|XDMG}"
+                ],
+                [
+                    "8",
+                    "{@item Handheld mirror set in a painted wooden frame|XDMG}"
+                ],
+                [
+                    "9",
+                    "{@item Embroidered silk handkerchief|XDMG}"
+                ],
+                [
+                    "10",
+                    "{@item Gold locket with a painted portrait inside|XDMG}"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "250 GP Art Objects",
+            "colLabels": [
+                "1d10",
+                "Object"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Gold ring set with bloodstones|XDMG}"
+                ],
+                [
+                    "2",
+                    "{@item Carved ivory statuette|XDMG}"
+                ],
+                [
+                    "3",
+                    "{@item Bejeweled gold bracelet|XDMG}"
+                ],
+                [
+                    "4",
+                    "{@item Silver necklace with a gemstone pendant|XDMG}"
+                ],
+                [
+                    "5",
+                    "{@item Bronze crown|XDMG}"
+                ],
+                [
+                    "6",
+                    "{@item Silk vestments with gold embroidery|XDMG}"
+                ],
+                [
+                    "7",
+                    "{@item Well-made tapestry that is 10 feet by 10 feet|XDMG}"
+                ],
+                [
+                    "8",
+                    "{@item Brass mug with jade inlay|XDMG}"
+                ],
+                [
+                    "9",
+                    "{@item Box of turquoise animal figurines|XDMG}"
+                ],
+                [
+                    "10",
+                    "{@item Gold birdcage with electrum filigree|XDMG}"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "750 GP Art Objects",
+            "colLabels": [
+                "1d10",
+                "Object"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Silver chalice set with moonstones|XDMG}"
+                ],
+                [
+                    "2",
+                    "{@item Bundle of sheet music representing the lost dirges of a famous composer|XDMG}"
+                ],
+                [
+                    "3",
+                    "{@item Carved wooden harp with ivory inlay and zircon gems|XDMG}"
+                ],
+                [
+                    "4",
+                    "{@item Gold idol|XDMG}"
+                ],
+                [
+                    "5",
+                    "{@item Gold comb shaped like a dragon with red garnets as eyes|XDMG}"
+                ],
+                [
+                    "6",
+                    "{@item Bottle stopper cork embossed with gold leaf and set with amethysts|XDMG}"
+                ],
+                [
+                    "7",
+                    "{@item Detailed, life-sized dragonborn skull cast in electrum|XDMG}"
+                ],
+                [
+                    "8",
+                    "{@item Silver and gold brooch|XDMG}"
+                ],
+                [
+                    "9",
+                    "{@item Obsidian statuette with gold fittings and inlay|XDMG}"
+                ],
+                [
+                    "10",
+                    "{@item Painted gold war mask|XDMG}"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "2,500 GP Art Objects",
+            "colLabels": [
+                "1d10",
+                "Object"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Fine gold chain set with a fire opal|XDMG}"
+                ],
+                [
+                    "2",
+                    "{@item Old masterpiece painting|XDMG}"
+                ],
+                [
+                    "3",
+                    "{@item Embroidered silk and velvet mantle set with numerous moonstones|XDMG}"
+                ],
+                [
+                    "4",
+                    "{@item Platinum bracelet set with an emerald|XDMG}"
+                ],
+                [
+                    "5",
+                    "{@item Embroidered glove set with jewel chips|XDMG}"
+                ],
+                [
+                    "6",
+                    "{@item Jeweled anklet|XDMG}"
+                ],
+                [
+                    "7",
+                    "{@item Gold music box|XDMG}"
+                ],
+                [
+                    "8",
+                    "{@item Gold circlet set with four aquamarines|XDMG}"
+                ],
+                [
+                    "9",
+                    "{@item Eye patch decorated with tiny blue sapphires and moonstones|XDMG}"
+                ],
+                [
+                    "10",
+                    "A {@item necklace string of small pink pearls|XDMG}"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "caption": "7,500 GP Art Objects",
+            "colLabels": [
+                "1d10",
+                "Object"
+            ],
+            "colStyles": [
+                "col-2 text-center",
+                "col-10"
+            ],
+            "rows": [
+                [
+                    "1",
+                    "{@item Jeweled gold crown|XDMG}"
+                ],
+                [
+                    "2",
+                    "{@item Jeweled platinum ring|XDMG}"
+                ],
+                [
+                    "3",
+                    "{@item Gold statuette set with rubies|XDMG}"
+                ],
+                [
+                    "4",
+                    "{@item Gold cup set with emeralds|XDMG}"
+                ],
+                [
+                    "5",
+                    "{@item Gold jewelry box with platinum filigree|XDMG}"
+                ],
+                [
+                    "6",
+                    "{@item Set of gold nesting dolls|XDMG}"
+                ],
+                [
+                    "7",
+                    "{@item Jade game board with gold playing pieces|XDMG}"
+                ],
+                [
+                    "8",
+                    "{@item Bejeweled ivory drinking horn with gold filigree|XDMG}"
+                ],
+                [
+                    "9",
+                    "{@item Gilded royal coach or funeral barge|XDMG}"
+                ],
+                [
+                    "10",
+                    "{@item Ceremonial gold armor with black pearls|XDMG}"
+                ]
+            ]
+        }
+    ]

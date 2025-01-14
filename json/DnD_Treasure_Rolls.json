@@ -82,5 +82,37 @@
         "2": "Armaments",
         "3": "Implements",
         "4": "Relics"
-    }
+    },
+
+    "treasureTypeTable": [
+        { "number": 0, "type": "Arcana", "treasure": "Gemstones" },
+        { "number": 1, "type": "Armaments", "treasure": "Coins, trade bars" }, 
+        { "number": 2, "type": "Implements", "treasure": "Coins, trade bars, trade goods" },
+        { "number": 3, "type": "Relics", "treasure": "Art objects" }
+    ],
+
+    "randomTreasureTypeTable": {
+        "0": "Trade Bars",
+        "1": "Trade Goods",
+        "2": "Art Objects",
+        "3": "Gemstones",
+        "4": "Personal items",
+        "5": "Equipment",
+        "6": "Coinage",
+        "7": "Coinage"
+    },
+
+
+
+
+
+
+    "tradeBarsTable": [
+        {"number": 0, "type": "2-pound silver bar", "gp": 10},
+        {"number": 1, "type": "5-pound silver bar", "gp": 25},
+        {"number": 2, "type": "5-pound gold bar", "gp": 250}
+    ]
+
+
+
 }

@@ -32,14 +32,15 @@
 
     <button type="button" id="button-individual-treasure" class="button">Generate Individual Treasure</button>
     <button type="button" id="button-treasure-hoard" class="button">Generate Treasure Hoard</button>
-    <button type="button" id="button-magic-item-type" class="button">Roll for Magic Item type</button>
+    <button type="button" id="button-treasure-theme" class="button">Roll for Treasure Theme</button>
     <div class="dropdown">
-        <button type="button" id="button-theme">Treasure Theme</button>
+        <button type="button" id="button-theme">Choose Treasure Theme</button>
         <div class="dropdown-content">
             <a href="#" data-value="arcana">Arcana</a>
             <a href="#" data-value="armaments">Armaments</a>
             <a href="#" data-value="implements">Implements</a>
             <a href="#" data-value="relics">Relics</a>
+            <a href="#" data-value="random">Random</a>
         </div>
     </div>
 
@@ -82,8 +83,8 @@
                 <thead>
                     <tr>
                         <th>CR</th>
-                        <th>Treasure</th>
-                        <th>Magic Items</th>
+                        <th class="label-treasure-rolls"><a href="https://5e.tools/lootgen.html">Treasure</a></th>
+                        <th class="label-treasure-rolls"><a href="https://5e.tools/items.html">Magic Items</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,7 +111,7 @@
                 </tbody>
             </table>
 
-            <p><small> DMG 2024: pg120 Treasure Hoard, <br>
+            <p><small> DMG 2024: pg213 Treasure Chapter, <br>
                     &nbsp&nbsp&nbsp pg218 Magic Item rolls, <br>
                     &nbsp&nbsp&nbsp pg326 Magic Item Tables <br>
                     XTG: pg135 Minor to Major Distribution <br>
@@ -118,7 +119,7 @@
                     Treasure based on CR and Magic Items based on Level
                 </small></p>
 
-            <p id="label-treasure-rolls"><a href="https://5e.tools/items.html">Treasure Rolls</a></p>
+            <p ><b>Treasure Rolls</b></p>
             <span id="results-output"></span>
 
         </div>

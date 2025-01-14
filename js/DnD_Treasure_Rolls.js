@@ -15,13 +15,20 @@ class TreasureRoll {
     //Individual treasure roll
     static currentId = 0;
     static treasureObjects = {};
-    static treasure = "";
-    static magicItem = "";
-    static magicItemType = "";
+    static treasureText = "";
+    static magicItemText = "";
+    static magicItemTypeText = "";
+    static treasureSplit1 = "";
+    static treasureSplit2 = "";
+    static treasureSplit3 = "";
+
+    static treasureSplitText = "";
+    static magicItemTypeName = "Random";
     static itemRarityText = "";
     static currentTreasureText = "";
     static lastTreasureText = "";
     static CR = -1;
+
 }
 
 function createNewTreasure() {
@@ -32,10 +39,11 @@ function createNewTreasure() {
 function AddToTreasureRollText() {
     TreasureRoll.lastTreasureText = TreasureRoll.currentTreasureText + TreasureRoll.lastTreasureText;
     TreasureRoll.currentTreasureText = '<div class="treasure-text-results">' +
-        '<div>' + TreasureRoll.treasure + '</div>' +
-        '<div>' + TreasureRoll.magicItem + '</div>' +
+        '<div>' + TreasureRoll.treasureText + '</div>' +
+        '<div>' + TreasureRoll.magicItemText + '</div>' +
+        '<div class="treasure-split-text">' + TreasureRoll.treasureSplitText + '</div>' +
         '<div class="item-rarity-text">' + TreasureRoll.itemRarityText + '</div>' +
-        '<div class="item-type">' + TreasureRoll.magicItemType + '</div>' +
+        '<div class="item-type">' + TreasureRoll.magicItemTypeText + '</div>' +
         '</div>';
 
     document.getElementById("results-output").innerHTML = TreasureRoll.currentTreasureText +
@@ -45,10 +53,11 @@ function AddToTreasureRollText() {
 
 function updateTreasureRollText() {
     TreasureRoll.currentTreasureText = '<div class="treasure-text-results">' +
-        '<div>' + TreasureRoll.treasure + '</div>' +
-        '<div>' + TreasureRoll.magicItem + '</div>' +
+        '<div>' + TreasureRoll.treasureText + '</div>' +
+        '<div>' + TreasureRoll.magicItemText + '</div>' +
+        '<div class="treasure-split-text">' + TreasureRoll.treasureSplitText + '</div>' +
         '<div class="item-rarity-text">' + TreasureRoll.itemRarityText + '</div>' +
-        '<div class="item-type">' + TreasureRoll.magicItemType + '</div>' +
+        '<div class="item-type">' + TreasureRoll.magicItemTypeText + '</div>' +
         '</div>';
 
     document.getElementById("results-output").innerHTML = TreasureRoll.currentTreasureText +
@@ -81,9 +90,11 @@ function calcIndiTreasure() {
         console.error("row with " + TreasureRoll.CR + "not found");
     }
 
-    TreasureRoll.treasure = TreasureRoll.currentId + ". Individual Treasure: " + currentTreasureRoll.treasure + "gp";
-    TreasureRoll.magicItem = "";
-    TreasureRoll.magicItemType = "";
+    calculateTreasureSplit();
+
+    TreasureRoll.treasureText = TreasureRoll.currentId + ". Individual Treasure: " + currentTreasureRoll.treasure + "gp";
+    TreasureRoll.magicItemText = "";
+    TreasureRoll.magicItemTypeText = "";
     TreasureRoll.itemRarityText = "";
 
     AddToTreasureRollText();
@@ -118,24 +129,81 @@ function calcHoardTreasure() {
         magicItemsPluralText = " Magic Item";
     }
 
-    TreasureRoll.treasure = TreasureRoll.currentId + ". TreasureHoard: " +
+    calculateTreasureSplit();
+
+    TreasureRoll.treasureText = TreasureRoll.currentId + ". TreasureHoard: " +
         currentTreasureRoll.treasure + "gp, and "
         + currentTreasureRoll.magicItemsNo + magicItemsPluralText;
-    TreasureRoll.magicItem = "";
-    TreasureRoll.magicItemType = "";
+    TreasureRoll.magicItemText = "";
+    TreasureRoll.magicItemTypeText = "";
     TreasureRoll.itemRarityText = "";
 
     getItemLevel();
 
-    AddToTreasureRollText(TreasureRoll.magicItemType);
+    AddToTreasureRollText(TreasureRoll.magicItemTypeText);
 }
 
 function calcNewMag() {
     let magicItemRoll = generalDiceRoll(4, 1);
-    let magicItemType1 = jsonData.magicItemTypeTable[magicItemRoll];
-    TreasureRoll.magicItemType = " Rolled Item type is: " + magicItemType1;
-
+    let magicItemTypeName = jsonData.magicItemTypeTable[magicItemRoll];
+    TreasureRoll.magicItemTypeName = magicItemTypeName;
+    TreasureRoll.magicItemTypeText = " Rolled Item type is: " + magicItemTypeName;
+    if (TreasureRoll.currentId > 0) {
+        calculateTreasureSplit();
+    };
     updateTreasureRollText();
+}
+
+function calculateTreasureSplit() {
+    let currentTreasureTheme = TreasureRoll.magicItemTypeName; //eg Arcana
+    let currentGP = TreasureRoll.treasureObjects[TreasureRoll.currentId].treasure;
+
+    let coinNumber;
+    let tradeBarNumber;
+    let tradeGoodsNumber;
+
+    switch (currentTreasureTheme) {
+        case "Arcana":
+            //Gemstones
+            TreasureRoll.treasureSplitText = currentGP + "gp worth of gemstones";
+            break;
+        case "Armaments":
+            // Coin tradebars 50-50
+
+            tradeBarNumber = Math.floor(currentGP / 2);
+            coinNumber = currentGP - tradeBarNumber;
+            TreasureRoll.treasureSplitText = coinNumber + "gp worth of coinage" +
+                ", and " + tradeBarNumber + "gp worth of trade bars";
+
+            break;
+        case "Implements":
+            // Coins, tradebars, trade goods - 30-10-40
+
+            tradeGoodsNumber = Math.floor(currentGP * 0.4);
+            tradeBarNumber = Math.floor(currentGP * 0.1);
+            coinNumber = currentGP - tradeBarNumber - tradeGoodsNumber;
+
+            TreasureRoll.treasureSplitText = coinNumber + "gp worth of coinage," +
+                " " + tradeBarNumber + "gp worth of trade bars," +
+                "<br>" + " and " + tradeGoodsNumber + "gp worth of trade goods";
+
+            break;
+        case "Relics":
+            // Art objects
+            TreasureRoll.treasureSplitText = currentGP + "gp worth of art objects";
+            break;
+        case "Random":
+            // Random treasure
+            let randomTreasureTypeTable = jsonData.randomTreasureTypeTable;
+            let roll = generalDiceRoll(8);
+            let treasureRoll = randomTreasureTypeTable[roll - 1];
+            TreasureRoll.treasureSplitText = currentGP + "gp worth of " + treasureRoll;
+            break;
+        default:
+            console.log("Unknown theme");
+    }
+
+
 }
 
 function itemTheme(theme) {
@@ -144,24 +212,37 @@ function itemTheme(theme) {
     switch (theme) {
         case "arcana":
             itemTheme = "Arcana";
-            TreasureRoll.magicItemType = " Picked Item type is: " + itemTheme;
+            TreasureRoll.magicItemTypeText = " Picked Item type is: " + itemTheme;
+            calculateTreasureSplit();
             updateTreasureRollText();
             break;
         case "armaments":
             itemTheme = "Armaments";
-            TreasureRoll.magicItemType = "Picked Item type is: " + itemTheme;
+            TreasureRoll.magicItemTypeText = "Picked Item type is: " + itemTheme;
+            calculateTreasureSplit();
             updateTreasureRollText();
             break;
         case "implements":
             itemTheme = "Implements";
-            TreasureRoll.magicItemType = "Picked Item type is: " + itemTheme;
+            TreasureRoll.magicItemTypeText = "Picked Item type is: " + itemTheme;
+            calculateTreasureSplit();
             updateTreasureRollText();
             break;
         case "relics":
             itemTheme = "Relics";
-            TreasureRoll.magicItemType = "Picked Item type is: " + itemTheme;
+            TreasureRoll.magicItemTypeText = "Picked Item type is: " + itemTheme;
+            calculateTreasureSplit();
             updateTreasureRollText();
             break;
+        case "random":
+            let magicItemRoll = generalDiceRoll(4, 1);
+            let magicItemTypeName = jsonData.magicItemTypeTable[magicItemRoll];
+
+            TreasureRoll.magicItemTypeText = "Picked Item type is: " + magicItemTypeName;
+            calculateTreasureSplit();
+            updateTreasureRollText();
+            break;
+
         default:
             console.log("Unknown theme");
     }
@@ -222,7 +303,7 @@ function getItemLevel() {
     itemRarityTextFull = itemRarityText2.join(', ');
 
 
-    let itemRarityText1 = "Rarity: ";
+    let itemRarityText1 = "Magic Item Rarity: ";
     TreasureRoll.itemRarityText = itemRarityText1 + itemRarityTextFull;
 
 
@@ -244,10 +325,12 @@ newButtonHoard.addEventListener("click", () => {
     calcHoardTreasure();
 });
 
-const newButtonMag = document.querySelector("#button-magic-item-type");
+const newButtonMag = document.querySelector("#button-treasure-theme");
 
 newButtonMag.addEventListener("click", () => {
     calcNewMag();
+    newButtonTheme.textContent = TreasureRoll.magicItemTypeName + " Theme"; // Update button text
+
 });
 
 const newButtonTheme = document.getElementById("button-theme");
