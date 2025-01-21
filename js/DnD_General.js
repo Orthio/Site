@@ -3,8 +3,8 @@
 
 export var partyLevel = 7;
 
-export var currentTime = "7pm";
-export var currentDay = 6;
+export var currentTime = "9am";
+export var currentDay = 7;
 export var currentTenday = 1;
 export var currentMonth = 14;
 export var currentYear = 1489;
