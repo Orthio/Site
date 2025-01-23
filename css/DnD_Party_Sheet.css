@@ -87,6 +87,24 @@ html {
     width: 2000px;
 }
 
+/* Spells Tables */
+#spells-tables-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#noteable-spells-div, #wizard-spell-slots-div {
+    padding: 10px; 
+    width: 300px;
+}
+
+@media (max-width: 700px) {
+    #tables-container {
+        flex-direction: column; /* Stack divs vertically on small screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+    }
+}
+
 #noteableSpellsTable caption {
     text-align: left;
     font-weight: bold;
@@ -103,6 +121,21 @@ html {
 #noteableSpellsTable td:nth-child(3) {
     width: 300px;
 }
+
+#wizardSpellSlotsTable caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+#wizardSpellSlotsTable thead th {
+    font-weight: normal;
+}
+
+#wizardSpellSlotsTable td:nth-child(1) {
+    text-align: center;
+}
+
+/* HP Table */
 
 #hpTable td {
     padding-right: 10px;

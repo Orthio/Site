@@ -71,26 +71,17 @@
 /* Container for the tables */
 #tables-container {
     display: flex;
-    /* justify-content: space-between; */
-    /* align-items: flex-start; */
-    /* Align tables at the top */
     gap: 15px;
-    /* width: 100%; */
-    /* overflow-x: auto; */
+
 }
 
 /* Tables */
 #table-treasures {
-    /* border-collapse: collapse; */
-    /* width: 45%; */
     width: 380px;
-    /* flex-shrink: 0; */
 }
 
 #table-items-gained {
-    /* border-collapse: collapse; */
     width: 350px;
-    /* flex-shrink: 0; */
 }
 
 #table-treasures th,
@@ -100,8 +91,6 @@
     padding: 4px, 8px;
     text-align: left;
 }
-
-
 
 
 #table-treasure-hoard th {
