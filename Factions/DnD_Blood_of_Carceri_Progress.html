@@ -10,59 +10,7 @@
 
 <body>
     <div class="form-goal-overall">
-        <div class="form-goal">
-            <p class="text-goal"> <span id="progress-label-1"></span>
-                <b>Shadow Tablet, Cairn - Assault the town</b>
-            </p>
-            <img id="js-circle1" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="0-6"
-                width="100px">
-        </div>
 
-        <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-2"></span>
-                <b>Shadow Tablet, Cairn - Abandon Friendly Arm Inn</b>
-            </p>
-            <img id="js-circle2" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="1-4"
-                width="100px">
-            <p></p>
-        </div>
-
-        <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-3"></span>
-                <b>Flute, Dawn - Appoint champion Cloak</b>
-            </p>
-            <img id="js-circle3" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="1-4"
-                width="100px">
-            <p></p>
-        </div>
-
-        <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-4"></span>
-                <b>Memory of Sehanine, Tower and Baldur's - Kidnap Torlin</b>
-            </p>
-            <img id="js-circle4" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="1-8"
-                width="100px">
-            <p>Valars collecting adventurers for this</p>
-        </div>
-
-        <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-5"></span>
-                <b>Memory of Sehanine, Tower and Baldur's - Poison area</b>
-            </p>
-            <img id="js-circle5" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="1-8"
-                width="100px">
-        </div>
-
-        <div class="form-goal">
-            <p class="text-goal"><span id="progress-label-6"></span>
-                <b>Memory of Sehanine, Tower and Baldur's - Show dominance </b>
-            </p>
-            <img id="js-circle6" src="../images/Progress_Clocks/Clock-Blue-0-0.png" alt="Circle Pic" data-circle="1-8"
-                width="100px">
-            <p>Valars on the way here</p>
-        </div>
-
-  
 
 
     </div>
@@ -70,6 +18,52 @@
 
 
     <script type="module" src="../js/DnD_Factions.js"></script>
+    <script>
+        // Number of goals to generate
+        const goalNumber = 6;
+
+        // Get the container where the goals will be appended
+        const goalContainer = document.getElementById("form-goal-overall");
+
+        // Loop to generate the goals dynamically
+        for (let i = 1; i <= goalNumber; i++) {
+            // Create the main div element
+            const goalDiv = document.createElement("div");
+            goalDiv.className = "form-goal";
+
+            // Create the paragraph element
+            const textGoal = document.createElement("p");
+            textGoal.className = "text-goal";
+
+            // Create the span element
+            const span = document.createElement("span");
+            span.id = `progress-label-${i}`;
+
+            // Add content to the paragraph
+            const boldText = document.createElement("b");
+            boldText.textContent = `Goal ${i} - Example Description`;
+
+            // Append the span and bold text to the paragraph
+            textGoal.appendChild(span);
+            textGoal.appendChild(boldText);
+
+            // Create the image element
+            const img = document.createElement("img");
+            img.id = `js-circle${i}`;
+            img.src = "../images/Progress_Clocks/Clock-Blue-0-0.png";
+            img.alt = "Circle Pic";
+            img.dataset.circle = "0-6";
+            img.width = 100;
+
+            // Append the paragraph and image to the main div
+            goalDiv.appendChild(textGoal);
+            goalDiv.appendChild(img);
+
+            // Append the main div to the container
+            goalContainer.appendChild(goalDiv);
+        }
+    </script>
+
 
 </body>
 

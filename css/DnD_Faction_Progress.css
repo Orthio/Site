@@ -25,3 +25,11 @@ p {
     text-decoration: none;
     color: black;
 }
+
+#button-gm-goals span {
+    cursor: copy;
+}
+
+#gm-goals-text {
+    display: none;
+}
