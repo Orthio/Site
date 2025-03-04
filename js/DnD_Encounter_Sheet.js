@@ -206,18 +206,29 @@ function createNewMonster(encMonCr, encMonName, encMonHP) {
     Monster.monsterObjects[Monster.monsterCurrentId] = new Monster(encMonCr, encMonName, encMonHP);
 };
 
+function removeLastMonster() {
+    if (Monster.monsterCurrentId < 0) {
+        console.log("No monsters left to remove.");
+        return;
+    }
+
+    delete Monster.monsterObjects[Monster.monsterCurrentId];
+    Monster.monsterCurrentId--;
+}
+
+
 class Encounter {
     // Individual Encounter Class (eg 2xGiant Apes as part of a larger group)
 
     static encounterCurrentId = -1;  // Overall id number for encounters
-    static encounterCurrentGroupId = 0;   // Group id for the number of the encounter in group eg A1
+    static encounterCurrentGroupNo = 0;   // Group id for the number of the encounter in group eg A1
     static encounterCurrentTag = "Z0";
     static encounterObjects = {};
 
 
     // Constructor
     constructor(qty) {
-        this.encounterGroupId = Encounter.encounterCurrentGroupId;
+        this.encounterGroupId = Encounter.encounterCurrentGroupNo;
         this.encounterMonsters = [];
         this.encounterMonQty = qty;
         this.encounterRolls = [generalDiceRoll(20, 1), generalDiceRoll(20, 1), generalDiceRoll(20, 1)];
@@ -238,51 +249,39 @@ class Encounter {
 
 function createNewEncounter(qty) {
     Encounter.encounterCurrentId++;
-    Encounter.encounterCurrentGroupId++;
-    Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupId;
+    Encounter.encounterCurrentGroupNo++;
+    Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupNo;
     Encounter.encounterObjects[Encounter.encounterCurrentId] = new Encounter(qty);
     // console.log(`Encounter Tag ${Encounter.encounterCurrentTag} has been added at Id ${Encounter.encounterCurrentId}`);
 
 }
 
 function removeLastEncounter() {
-    // Check if the encounter exists
-    // Use the existing group and ID directly
-    if (Encounter.encounterObjects.hasOwnProperty(Encounter.encounterCurrentId)) {
-
-        Group.groupObjects[Group.groupCurrentId].removeEncounterFromGroup(Encounter.encounterObjects[Encounter.encounterCurrentId]);
-        Encounter.encounterObjects[Encounter.encounterCurrentId].removeMonster();
-        delete Encounter.encounterObjects[Encounter.encounterCurrentId];
-        console.log(`Encounter Tag ${Encounter.encounterCurrentTag} has been removed at Id ${Encounter.encounterCurrentId}`);
-
-        // Decrement the ID to find the previous encounter
-        if (Encounter.encounterCurrentGroupId > 1) {
-            // If we're not at the first encounter in the group, decrement the ID
-            Encounter.encounterCurrentId--;
-            Encounter.encounterCurrentGroupId--;
-            Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupId;
-            Monster.monsterCurrentId--;
-        } else {
-            // If we are at 'X1', move to the previous group letter
-            Group.groupCurrentId--;
-            Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
-            Encounter.encounterCurrentId--;
-            Encounter.encounterCurrentGroupId = Encounter.encounterObjects[Encounter.encounterCurrentId].encounterGroupId;
-            Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupId;
-            Monster.monsterCurrentId--;
-        }
-
-        // Check if the previous encounter exists
-        if (Encounter.encounterObjects.hasOwnProperty(Encounter.encounterCurrentId)) {
-            console.log(`   Current encounter is now tag ${Encounter.encounterCurrentTag}, Id ${Encounter.encounterCurrentId}`);
-        } else {
-            console.log("No previous encounter found.");
-            return null;
-        }
-    } else {
-        console.log(`Can't remove last encounter tag ${Encounter.encounterCurrentTag}, Id ${Encounter.encounterCurrentId}. It does not exist.`);
+    if (Encounter.encounterCurrentId < 0) {
+        console.log("No encounters left to remove.");
+        return;
     }
+
+    let lastEncounter = Encounter.encounterObjects[Encounter.encounterCurrentId];
+
+    if (Group.groupObjects[Group.groupCurrentId]) {
+        Group.groupObjects[Group.groupCurrentId].removeEncounterFromGroup(lastEncounter);
+    }
+
+    delete Encounter.encounterObjects[Encounter.encounterCurrentId];
+
+    // Handle monster removal — this assumes each encounter only has 1 type of monster for now
+    for (let i = 0; i < lastEncounter.encounterMonsters.length; i++) {
+        removeLastMonster();
+    }
+
+    Encounter.encounterCurrentId--;
+    Encounter.encounterCurrentGroupNo--;
+
+    // If no encounters remain in this group, you could also call removeLastGroup() here if wanted.
 }
+
+
 
 
 class Group {
@@ -303,46 +302,40 @@ class Group {
     }
 
     addEncounterToGroup(encounter) {
-
         if (encounter !== undefined) {
             this.groupEncounters.push(encounter);
-            this.groupQty += parseFloat(encounter.encounterMonQty);
-            this.groupHP += encounter.encounterHP;
-            this.roundsToBeat = Math.ceil(this.groupHP / globalVariables.getPartyDPS());
             this.calculateGroupXP();
         } else {
             console.error("Invalid encounter object:", encounter);
         }
-
     }
 
     removeEncounterFromGroup(encounter) {
-        this.groupEncounters.pop();
-        this.groupQty -= encounter.encounterMonQty;
-        this.groupHP -= encounter.encounterHP;
-        this.roundsToBeat = Math.ceil(this.groupHP / globalVariables.getPartyDPS());
-        this.groupXP -= encounter.encounterBasicXP;
-        this.calculateNegGroupXP()
+        this.groupEncounters = this.groupEncounters.filter(e => e !== encounter);
+        this.calculateGroupXP();
     }
 
     calculateGroupXP() {
+        this.groupXP = 0;
+        this.groupHP = 0;
+        this.groupQty = 0;
 
-        this.groupXP += parseFloat(Encounter.encounterObjects[Encounter.encounterCurrentId].encounterBasicXP);
+        this.groupEncounters.forEach(encounter => {
+            this.groupXP += encounter.encounterBasicXP;
+            this.groupHP += encounter.encounterHP;
+            this.groupQty += parseFloat(encounter.encounterMonQty);
+        });
+
+        this.roundsToBeat = Math.ceil(this.groupHP / globalVariables.getPartyDPS());
+
+        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
 
         this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
-        this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
-    }
 
-    calculateNegGroupXP() {
-
-        this.groupDeadliness = this.determineGroupDeadliness(this.groupXP);
-        this.groupHighXP = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
     determineGroupDeadliness(groupXP) {
-        // Compare the adjusted XP against the thresholds
         if (groupXP < Party.moderateThreshold) {
             return "Low";
         } else if (groupXP < Party.highThreshold) {
@@ -351,16 +344,23 @@ class Group {
             return "High";
         }
     }
-
 }
+
 
 function createNewGroup() {
     // Creates a new encounter group for encounters to go in
     Group.groupCurrentId++;
     Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
     Group.groupObjects[Group.groupCurrentId] = new Group();
-    Encounter.encounterCurrentGroupId = 0;
+    Encounter.encounterCurrentGroupNo = 0;
     Day.dayObjects[Day.dayCurrentId].addGroupToDay(Group.groupObjects[Group.groupCurrentId]);
+}
+
+function removeLastGroup() {
+    delete Group.groupObjects[Group.groupCurrentId];
+    Group.groupCurrentId--;
+    Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
+    Encounter.encounterCurrentGroupNo = 0;
 }
 
 class Day {
@@ -416,9 +416,12 @@ class Day {
 function createNewDay() {
     Day.dayCurrentId++;
     Day.dayObjects[Day.dayCurrentId] = new Day();
-}
+};
 
-
+function removeLastDay() {
+    delete Day.dayObjects[Day.dayCurrentId];
+    Day.dayCurrentId--;
+};
 
 function addEncounterCurrent() {
     // Adds a new encounter to the current group
@@ -483,41 +486,60 @@ function addEncounterNew() {
 }
 
 function removeEncounter() {
-    // Removes an encounter and row
-
-    let encounterTable = document.getElementById("encounter-table");
-    let groupTable = document.getElementById("group-table");
-
-    if (Encounter.encounterCurrentGroupId === 1) {
-        // If it's the first encounter in a group
-
-        // Remove the group and undo the encounter stats
-        removeLastEncounter();
-
-        Day.dayObjects[Day.dayCurrentId].removeGroupFromDay(Group.groupCurrentId);
-        Day.dayObjects[Day.dayCurrentId].calculateNegDayAdjXP();
-
-        encounterTable.deleteRow(-1);
-        groupTable.deleteRow(-1);
-        groupTable.deleteRow(-1);
-
-        updateGroupTable("current");
-
-    } else {
-        // If it's the second encounter in a group
-
-        // Remove the encounter and undo that encounter stats
-        removeLastEncounter();
-
-        // No day remove group
-        Day.dayObjects[Day.dayCurrentId].calculateNegDayAdjXP();
-
-        encounterTable.deleteRow(-1);
-
-        updateGroupTable("current");
-
+    if (Encounter.encounterCurrentId < 0) {
+        console.log("No encounters left to remove.");
+        return;
     }
-};
+
+    let currentEncounter = Encounter.encounterObjects[Encounter.encounterCurrentId];
+    if (!currentEncounter) {
+        console.warn("Tried to remove an encounter that doesn't exist.");
+        return;
+    }
+
+    // Remove all monsters associated with this encounter
+    for (let i = 0; i < currentEncounter.encounterMonsters.length; i++) {
+        removeLastMonster();
+    }
+
+    // Remove the actual encounter from objects
+    removeLastEncounter();
+
+    // Remove the last row of the encounter table (visual table update)
+    let encounterTable = document.getElementById("encounter-table");
+    if (encounterTable.rows.length > 1) {
+        encounterTable.deleteRow(-1);
+    }
+
+    let currentGroup = Group.groupObjects[Group.groupCurrentId];
+    let currentDay = Day.dayObjects[Day.dayCurrentId];
+
+    if (currentGroup && currentGroup.groupEncounters.length === 0) {
+        console.log(`Group ${currentGroup.groupLetter} is now empty, removing it.`);
+        currentDay.removeGroupFromDay();
+        removeLastGroup();
+
+        let groupTable = document.getElementById("group-table");
+        if (groupTable.rows.length > 1) {
+            groupTable.deleteRow(-1); // Also clear group table row
+        }
+
+        if (currentDay.dayGroups.length === 0) {
+            console.log("All groups are gone, removing the day and resetting the page.");
+            removeLastDay();
+
+            resetTables();
+            updateSheet();
+            return;
+        }
+    }
+
+    // Recalculate day XP and refresh everything
+    currentDay.calculateNegDayAdjXP();
+    updateSheet();
+}
+
+
 
 function updateEncounterTable() {
     // Updates the encounter table
@@ -588,65 +610,72 @@ function newRowGroupTable(newness) {
     }
 }
 
-function updateGroupTable(newness) {
+function updateGroupTable() {
     let groupTable = document.getElementById("group-table");
-    let idForTable = Group.groupCurrentId;
-    let check = globalVariables.getTableRowCheck();
 
-    let groupRow;
-    if (newness === "current" && check === 0) {
-        groupRow = groupTable.insertRow(-1);
-        for (var i = 0; i < 12; i++) {
-            groupRow.insertCell(i);  // Create empty cells
-        }
-        globalVariables.setTableRowCheck(1); // Mark that the row has been added
-        // console.log("newness=current and check=0 " + newness + " " + check);
-    } else if (newness === "current") {
-        // Update the last data row if "current" is passed
-        let rowLength = groupTable.rows.length - 1;
-        groupRow = groupTable.rows[rowLength];
-        globalVariables.setTableRowCheck(1); // Mark that the row has been added
-        // console.log("newness=current and check=1 " + newness + " " + check);
-
-    } else if (newness === "new" || check === 0) {
-        // Add a new row for the data if it's "new" or no data row exists
-        groupRow = groupTable.insertRow(-1);
-        for (var i = 0; i < 12; i++) {
-            groupRow.insertCell(i);  // Create empty cells
-        }
-        globalVariables.setTableRowCheck(1); // Mark that the row has been added
-        // console.log("newness=new or check=0 " + newness + " " + check);
-
+    // Clear the existing table rows (except the header row)
+    while (groupTable.rows.length > 1) {
+        groupTable.deleteRow(1);
     }
 
-    // Now update the individual cells
-    let groupCell1 = groupRow.cells[0];
-    let groupCell2 = groupRow.cells[1];
-    let groupCell3 = groupRow.cells[2];
-    let groupCell4 = groupRow.cells[3];
-    let groupCell5 = groupRow.cells[4];
-    let groupCell6 = groupRow.cells[5];
-    let groupCell7 = groupRow.cells[6];
-    let groupCell8 = groupRow.cells[7];
-    let groupCell9 = groupRow.cells[8];
+    // Recalculate party thresholds based on new level and number
+    Party.calculatePartyBudget();
+    Party.calculatePartyDifficulties();
 
+    // Iterate through all groups and update their data
+    for (let groupId in Group.groupObjects) {
+        let group = Group.groupObjects[groupId];
 
-    groupCell1.innerHTML = Group.groupObjects[idForTable].groupDeadliness;
-    groupCell2.innerHTML = "&nbsp; &nbsp Group XP: ";
-    groupCell3.innerHTML = Group.groupObjects[idForTable].groupXP;
-    groupCell4.innerHTML = ", Ratio: ";
-    groupCell5.innerHTML = Group.groupObjects[idForTable].groupRatioXP;
-    groupCell6.innerHTML = ", TotalHP: ";
-    groupCell7.innerHTML = Group.groupObjects[idForTable].groupHP;
-    groupCell8.innerHTML = " , Rounds: ";
-    groupCell9.innerHTML = Group.groupObjects[idForTable].roundsToBeat;
+        // Recalculate group XP and difficulty based on new party data
+        group.calculateGroupXP();
 
-    // Update other elements
-    document.getElementById("daily-total-xp").innerText = Day.dayObjects[Day.dayCurrentId].dayTotalXP;
-    document.getElementById("daily-remaining-xp").innerText = Day.dayObjects[Day.dayCurrentId].dailyRemainingXP;
-    document.getElementById("daily-ratio").innerText = (Day.dayObjects[Day.dayCurrentId].dayTotalXP / Party.partyDailyBudget).toFixed(2);
+        // Insert a new row for the group
+        let groupRow = groupTable.insertRow(-1);
+
+        // Create and populate cells
+        let groupCell1 = groupRow.insertCell(0);
+        let groupCell2 = groupRow.insertCell(1);
+        let groupCell3 = groupRow.insertCell(2);
+        let groupCell4 = groupRow.insertCell(3);
+        let groupCell5 = groupRow.insertCell(4);
+        let groupCell6 = groupRow.insertCell(5);
+        let groupCell7 = groupRow.insertCell(6);
+        let groupCell8 = groupRow.insertCell(7);
+        let groupCell9 = groupRow.insertCell(8);
+
+        groupCell1.innerHTML = `<b>${group.groupLetter}</b>`;
+        groupCell2.innerHTML = group.groupDeadliness;
+        groupCell3.innerHTML = "&nbsp; &nbsp Group XP: ";
+        groupCell4.innerHTML = group.groupXP;
+        groupCell5.innerHTML = ", Ratio: ";
+        groupCell6.innerHTML = group.groupRatioXP;
+        groupCell7.innerHTML = ", TotalHP: ";
+        groupCell8.innerHTML = group.groupHP;
+        groupCell9.innerHTML = " , Rounds: " + group.roundsToBeat;
+    }
+
+    if (Day.dayObjects[Day.dayCurrentId]) {
+        document.getElementById("daily-total-xp").innerText = Day.dayObjects[Day.dayCurrentId].dayTotalXP;
+        document.getElementById("daily-remaining-xp").innerText = Day.dayObjects[Day.dayCurrentId].dailyRemainingXP;
+        document.getElementById("daily-ratio").innerText = (Day.dayObjects[Day.dayCurrentId].dayTotalXP / Party.partyDailyBudget).toFixed(2);
+    } else {
+        console.warn("Day object is undefined, skipping XP updates.");
+    }
+
 }
 
+function resetTables() {
+    let encounterTable = document.getElementById("encounter-table");
+    let groupTable = document.getElementById("group-table");
+
+    while (encounterTable.rows.length > 1) {
+        encounterTable.deleteRow(1);
+    }
+
+    while (groupTable.rows.length > 1) {
+        groupTable.deleteRow(1);
+    }
+}
 
 
 function updateSheet() {
@@ -659,6 +688,7 @@ function updateSheet() {
 
     Party.calculatePartyBudget();
     Party.calculatePartyDifficulties();
+
     document.getElementById("dailybudget").innerText = Party.partyDailyBudget;
     document.getElementById("partyshortbudget").innerText = Math.floor(Party.partyShortRestBudget);
     document.getElementById("partyinitialbudgetremain").innerText = Math.floor(Party.partyInitialBudgetRemain);
@@ -666,6 +696,29 @@ function updateSheet() {
     document.getElementById("difficulty-low").innerText = Party.lowThreshold;
     document.getElementById("difficulty-moderate").innerText = Party.moderateThreshold;
     document.getElementById("difficulty-high").innerText = Party.highThreshold;
+
+    updateGroupTable();
+
+}
+
+function updateDeadliness() {
+
+    if (Group.groupCurrentId === -1) {
+        return;
+    }
+
+    // If there is one group, groupCurrentId = 0, calculate once
+    for (var i = 0; i < Group.groupCurrentId; i++) {
+        Group.groupObjects[i].calculateGroupXP()
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Your startup function here
+    initializePage();
+});
+
+function initializePage() {
 
 }
 
@@ -691,6 +744,13 @@ window.onload = function () {
     updateSheet();
 }
 
+updateDeadliness
 eventListeners.addInputListener('js-party-levelinput', updateSheet);
+eventListeners.addInputListener('js-party-levelinput', updateDeadliness);
+eventListeners.addInputListener('js-party-levelinput', updateGroupTable("current"));
+
 eventListeners.addInputListener('js-party-numberinput', updateSheet);
-eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet)
+eventListeners.addInputListener('js-party-numberinput', updateDeadliness);
+eventListeners.addInputListener('js-party-numberinput', updateGroupTable("current"));
+
+eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet);

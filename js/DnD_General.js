@@ -3,8 +3,8 @@
 
 export var partyLevel = 7;
 
-export var currentTime = "9am";
-export var currentDay = 7;
+export var currentTime = "4pm";
+export var currentDay = 8;
 export var currentTenday = 1;
 export var currentMonth = 14;
 export var currentYear = 1489;
@@ -103,3 +103,20 @@ export function generalDiceRoll(dice, qty, adv) {
             return totalResult;
     }
 };
+
+export function findNextTableNumber(table, number) {
+    // Finds the next part of the searched table based on number, checking the first value of the table
+    for (let i = 0; i < table.length; i++) {
+        if (table[i].max >= number) {
+            return table[i]; // Return the matching row
+        }
+    }
+    return null; // Return null if no matching row is found
+}
+
+export function rollOnTable(table) {
+    // Rolls on a specific table
+    let index = Math.floor(Math.random() * table.length);
+
+    return table[index];
+}

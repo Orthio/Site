@@ -14,7 +14,7 @@
     cursor: copy;
     font-size: 16px;
     padding: 8px 15px;
-    margin: 15px 20px;
+    margin: 15px 10px;
     margin-left: 0;
 
   }
@@ -26,43 +26,35 @@
     cursor: alias;
     font-size: 16px;
     padding: 8px 8px;
-    margin: 15px 20px;
+    margin: 5px 10px;
 
   }
 
-  .buttonSimple {
-    background-color: #597f99;  
-    cursor: alias;
-    padding: 5px 8px;
-    left:0px;
-    top: -6px;
-    position:relative;
-  } 
+  .dropbtn:hover, .dropbtn:focus {
+    background-color:#9e73ac ;
+  }
 
+ 
   .buttonRename {
     background-color: #008CBA;  
     cursor: alias;
     margin-left:0;
   } 
 
-  .buttonFlaw {
+  .buttonDetail {
     background-color: #008CBA;  
     cursor: alias;
   } 
 
-  .buttonVillainy {
-    background-color: #008CBA;  
+  .buttonSimple {
+    background-color: #597f99;  
     cursor: alias;
-  }
-
-  .buttonBackground {
-    background-color: #008CBA;  
-    cursor: alias;
+   /*  padding: 5px 8px;
+    left:0px;
+    top: -6px;
+    position:relative; */
   } 
-
-  .dropbtn:hover, .dropbtn:focus {
-    background-color:#9e73ac ;
-  }
+ 
 
   .dropdown {
     position: relative;

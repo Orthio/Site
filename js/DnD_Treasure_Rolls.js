@@ -1,5 +1,5 @@
 
-import { generalDiceRoll, partyLevel } from './DnD_General.js';
+import { generalDiceRoll, partyLevel, findNextTableNumber} from './DnD_General.js';
 
 let jsonData;
 
@@ -65,7 +65,7 @@ function updateTreasureRollText() {
 }
 
 
-function findNextTableNumber(table, number) {
+function findNextTableNumber2(table, number) {
     for (let i = 0; i < table.length; i++) {
         if (table[i].max >= number) {
             return table[i]; // Return the matching row
