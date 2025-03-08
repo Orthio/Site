@@ -1,4 +1,4 @@
-//Global var used in both functions
+//Global variables used in both functions
 let currentCharacter = {};
 let resultsHistory = [];
 let nameArray = [];
@@ -1700,5 +1700,6 @@ export const Variables = {
   villainTraits,
   villainCrooks,
   menuRaces,
-  charAge
+  charAge,
+  occupations2
 }

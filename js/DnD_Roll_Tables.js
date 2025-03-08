@@ -1,4 +1,4 @@
-import { generalDiceRoll } from './DnD_General.js';
+import { generalDiceRoll, rollOnTable } from './DnD_General.js';
 
 let jsonData;
 
@@ -14,33 +14,28 @@ fetch('json/DnD_Roll_Tables.json')
     .catch(error => console.error('Error fetching JSON:', error));
 
 
-/*   // Now you can use the generalDiceRoll function
-const result = generalDiceRoll(20, 2, "Adv");
-// console.log("Dice Roll Result with Advantage:", result);
-document.getElementById("roll-results").innerText = result; */
-
-var resultOutput = [];
+let resultOutput = [];
 
 function generateArt() {
     // console.log("Art Gen started");
-    var natureIndex = generalDiceRoll(5, 1);
+    let natureIndex = generalDiceRoll(5, 1);
     // console.log("Nature Index ", natureIndex);
-    var nature = jsonData.artNature[natureIndex];
+    let nature = jsonData.artNature[natureIndex];
 
-    var jewelleryIndex = generalDiceRoll(50, 1);
-    var jewellery = jsonData.artJewelleryItems[jewelleryIndex];
+    let jewelleryIndex = generalDiceRoll(50, 1);
+    let jewellery = jsonData.artJewelleryItems[jewelleryIndex];
 
-    var equipmentIndex = generalDiceRoll(50, 1);
-    var equipment = jsonData.artEquipment[equipmentIndex];
+    let equipmentIndex = generalDiceRoll(50, 1);
+    let equipment = jsonData.artEquipment[equipmentIndex];
 
-    var artDiningIndex = generalDiceRoll(50, 1);
-    var artDining = jsonData.artDiningItems[artDiningIndex];
+    let artDiningIndex = generalDiceRoll(50, 1);
+    let artDining = jsonData.artDiningItems[artDiningIndex];
 
-    var artDecorativeIndex = generalDiceRoll(50, 1);
-    var artDecorative = jsonData.artDecorativeItems[artDecorativeIndex];
+    let artDecorativeIndex = generalDiceRoll(50, 1);
+    let artDecorative = jsonData.artDecorativeItems[artDecorativeIndex];
 
-    var artPersonalIndex = generalDiceRoll(50, 1);
-    var artPersonal = jsonData.artPersonalItems[artPersonalIndex];
+    let artPersonalIndex = generalDiceRoll(50, 1);
+    let artPersonal = jsonData.artPersonalItems[artPersonalIndex];
 
     let objectArray = [jewellery, equipment, artDining, artDecorative, artPersonal];
     let objectChoice = "";
@@ -62,26 +57,27 @@ function generateArt() {
             break;
     }
 
-    var artMetalIndex = generalDiceRoll(50, 1);
-    var artMetal = jsonData.artMetalTypes[artMetalIndex];
+    let artMetalIndex = generalDiceRoll(50, 1);
+    let artMetal = jsonData.artMetalTypes[artMetalIndex];
 
-    var artMaterialIndex = generalDiceRoll(50, 1);
-    var artMaterial = jsonData.artMaterialTypes[artMaterialIndex];
+    let artMaterialIndex = generalDiceRoll(50, 1);
+    let artMaterial = jsonData.artMaterialTypes[artMaterialIndex];
 
-    var artGemstoneIndex = generalDiceRoll(50, 1);
-    var artGemstone = jsonData.artGemstoneTypes[artGemstoneIndex];
+    let artGemstoneIndex = generalDiceRoll(50, 1);
+    let artGemstone = jsonData.artGemstoneTypes[artGemstoneIndex];
 
-    var artDecorativeIndex = generalDiceRoll(20, 1);
-    var artDecorative = jsonData.artDecorativeTechniques[artDecorativeIndex];
+    let artDecorativeIndex2 = generalDiceRoll(20, 1);
+    let artDecorative2 = jsonData.artDecorativeTechniques[artDecorativeIndex];
 
-    var artDesignIndex = generalDiceRoll(20, 1);
-    var artDesign = jsonData.artDesignThemes[artDesignIndex];
+    let artDesignIndex = generalDiceRoll(20, 1);
+    let artDesign = jsonData.artDesignThemes[artDesignIndex];
 
 
-    var artResult = "<div><span class='no-select'><small>Art Object: </small></span><br>" +
-        objectChoice + " made of " + artMetal + " and " + artMaterial + ", " + "<br>" +
-        "ornamented with " + artGemstone + " and " + artDecorative + ", " + "<br>" +
-        "in the theme of " + artDesign + "</div>" + "<br>"
+    let artResult = "<div><span class='no-select'><small>Art Object: </small></span><br>" +
+        objectChoice + "<br>" + 
+        artMetal + " and " + artMaterial + ", " + "<br>" +
+        "With " + artGemstone + " and " + artDecorative + "<br>" +
+        "</div>" + "<br>"
         ;
 
     resultOutput.unshift(artResult);
@@ -113,6 +109,126 @@ function generatePartyWeapon() {
     updateOutput();
 }
 
+function generateTreasures() {
+    let treasures1 = rollOnTable(jsonData.treasures);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let materials = rollOnTable(jsonData.materials);
+
+    let treasuresResult = "<div><span class='no-select'><small>Treasures: </small></span><br>" +
+        treasures1 + "<br>" +
+        materialTraits + ", " + itemTraits + ", " + materials +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(treasuresResult);
+    updateOutput();
+}
+
+function generateEquipment() {
+    let equipment1 = rollOnTable(jsonData.equipment1);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let materials = rollOnTable(jsonData.materials);
+
+    let equipmentResult = "<div><span class='no-select'><small>Equipment: </small></span><br>" +
+        equipment1 + "<br>" +
+        materialTraits + ", " + itemTraits + ", " + materials +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(equipmentResult);
+    updateOutput();
+}
+
+function generateMiscItems() {
+    let miscItems1 = rollOnTable(jsonData.miscItems);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let materials = rollOnTable(jsonData.materials);
+
+    switch (miscItems1) {
+        case "Weapons":
+            miscItems1 = rollOnTable(jsonData.partyWeapons);
+        case "Treasure":
+            miscItems1 = rollOnTable(jsonData.treasures);
+        default:
+            break;
+    }
+
+    let miscResult = "<div><span class='no-select'><small>Misc Items: </small></span><br>" +
+        miscItems1 + "<br>" +
+        materialTraits + ", " + itemTraits + ", " + materials +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(miscResult);
+    updateOutput();
+}
+
+function generatePlace() {
+    let place = rollOnTable(jsonData.places);
+    let placeDescriptions = rollOnTable(jsonData.placeDescriptions);
+    let placeBuildings = rollOnTable(jsonData.placeBuildings);
+    let placeTheme = rollOnTable(jsonData.placeTheme);
+    let placeEvents = rollOnTable(jsonData.placeEvents);
+
+    let placeResult = "<div><span class='no-select'><small>Place: </small></span><br>" +
+        place + "<br>" +
+        placeDescriptions + " " + placeBuildings + ", and " + placeTheme + "<br>" +
+        "Busy with " + placeEvents +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(placeResult);
+    updateOutput();
+}
+
+function generateDungeon() {
+    let dungeonLocations = rollOnTable(jsonData.dungeonLocations);
+    let dungeonRoomThemes = rollOnTable(jsonData.dungeonRoomThemes);
+    let dungeonShifts = rollOnTable(jsonData.dungeonShifts);
+    let dungeonRoomFeatures = rollOnTable(jsonData.dungeonRoomFeatures);
+    let monument = rollOnTable(jsonData.monument);
+    let monumentDescription = rollOnTable(jsonData.monumentDescription);
+
+    let dungeonResult = "<div><span class='no-select'><small>Dungeon: </small></span><br>" +
+        dungeonLocations + "<br>" +
+        dungeonRoomThemes + ", " + dungeonShifts + " and " + dungeonRoomFeatures + "<br>" +
+        "With a " + monumentDescription + " " + monument +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(dungeonResult);
+    updateOutput();
+}
+
+function generateTrap() {
+    let environmentalSigns = rollOnTable(jsonData.environmentalSigns);
+    let trapComponents = rollOnTable(jsonData.trapComponents);
+    let trapHazards = rollOnTable(jsonData.trapHazards);
+    let trapEffects = rollOnTable(jsonData.trapEffects);
+
+    let trapResult = "<div><span class='no-select'><small>Trap: </small></span><br>" +
+        environmentalSigns + " gives away " + "<br>" +
+        trapEffects + " " + trapHazards + " with a " + trapComponents + "<br>" +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(trapResult);
+    updateOutput();
+}
+
+function generateScenario() {
+    let activity = rollOnTable(jsonData.activities);
+    let occupations2 = rollOnTable(jsonData.occupations2);
+    let hooks1 = rollOnTable(jsonData.hooks1);
+    let hooks2 = rollOnTable(jsonData.hooks2);
+
+    let scenarioResults = "<div><span class='no-select'><small>Scenario: </small></span><br>" +
+        "Enemies " + activity + "<br>" +
+        "A " + occupations2 + " works to " + hooks1 + "<br>" +
+        hooks2 +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(scenarioResults);
+    updateOutput();
+}
+
 function updateOutput() {
     if (resultOutput.length > 8) {
         resultOutput.pop();
@@ -121,8 +237,8 @@ function updateOutput() {
     document.getElementById("result-output").innerHTML = resultOutput.join('');
 }
 
-document.getElementById('generate-art-button').addEventListener('click', () => {
-    generateArt();
+document.getElementById('generate-treasures').addEventListener('click', () => {
+    generateTreasures();
 });
 
 document.getElementById('generate-enemy-weapon-button').addEventListener('click', () => {
@@ -131,4 +247,32 @@ document.getElementById('generate-enemy-weapon-button').addEventListener('click'
 
 document.getElementById('generate-party-weapon-button').addEventListener('click', () => {
     generatePartyWeapon();
+});
+
+document.getElementById('generate-art-button').addEventListener('click', () => {
+    generateArt();
+});
+
+document.getElementById('generate-equipment').addEventListener('click', () => {
+    generateEquipment();
+});
+
+document.getElementById('generate-misc-items').addEventListener('click', () => {
+    generateMiscItems();
+});
+
+document.getElementById('generate-place').addEventListener('click', () => {
+    generatePlace();
+});
+
+document.getElementById('generate-dungeon').addEventListener('click', () => {
+    generateDungeon();
+});
+
+document.getElementById('generate-trap').addEventListener('click', () => {
+    generateTrap();
+});
+
+document.getElementById('generate-scenario').addEventListener('click', () => {
+    generateScenario();
 });

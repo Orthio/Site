@@ -3,7 +3,7 @@ import { generalDiceRoll, findNextTableNumber, rollOnTable } from './DnD_General
 import { Variables } from './DnD_Character_Gen_Variables.js';
 
 let {
-  currentCharacter, resultsHistory, nameArray, clanArray,
+  currentCharacter, resultsHistory,
   raceType, sexType, flawText, voiceText, races
 } = Variables;
 
@@ -14,38 +14,47 @@ const { sexes, nameListings, nameDictionary, appearances, quirks,
   menuRaces, charAge
 } = Variables;
 
+let jsonData;
+
+fetch('json/DnD_Roll_Tables.json')
+
+  .then(response => response.json())  // Parse the JSON
+  .then(data => {
+    jsonData = data;
+    //  console.log(data.artDecorativeTechniques["1"]); // Outputs "Platinum filigree"
+
+    // console.log(data.artNature["2"]); // Outputs "Worn or Carried Ornaments"
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
+
+
 let race;
 let sex;
 
 // Function Create Character
 function createCharacter() {
 
-  var raceIndex = Math.floor(Math.random() * races.length);
-  var sexIndex = Math.floor(Math.random() * sexes.length);
-  var occupationIndex = Math.floor(Math.random() * occupations.length);
-  var appearanceIndex = Math.floor(Math.random() * appearances.length);
-  var quirkIndex = Math.floor(Math.random() * quirks.length);
-  var traitIndex = Math.floor(Math.random() * traits.length);
-  var voiceIndex = Math.floor(Math.random() * voices.length);
-  var age = rollOnTable(charAge);
+  let age = rollOnTable(charAge);
 
   if (raceType === "Random") {
-    race = races[raceIndex];
+    race = rollOnTable(races);
   }
 
   if (sexType === "Random") {
-    sex = sexes[sexIndex];
+    sex = rollOnTable(sexes);
   }
 
-  var occupation = occupations[occupationIndex];
-  var appearance = appearances[appearanceIndex];
-  var quirk = quirks[quirkIndex];
-  var voice = voices[voiceIndex];
+  let occupation = rollOnTable(occupations);
+  let appearance = rollOnTable(appearances);
+  let quirk = rollOnTable(quirks);
+  let voice = rollOnTable(voices);
 
-  var trait;
+  let trait;
+  let traitIndex = Math.floor(Math.random() * traits.length);
+
   if (traits[traitIndex] === "Two Traits") {
-    var traitIndex1 = Math.floor(Math.random() * traits.length);
-    var traitIndex2 = Math.floor(Math.random() * traits.length);
+    let traitIndex1 = Math.floor(Math.random() * traits.length);
+    let traitIndex2 = Math.floor(Math.random() * traits.length);
     while (traitIndex2 === traitIndex1) {
       traitIndex2 = Math.floor(Math.random() * traits.length);
     }
@@ -54,16 +63,16 @@ function createCharacter() {
     trait = traits[traitIndex];
   }
 
-  var nameArray = retrieveNames(race, sex);
-  var clanArray = retrieveNames(race, "Clan");
+  let nameArray = retrieveNames(race, sex);
+  let clanArray = retrieveNames(race, "Clan");
 
-  var nameIndex = Math.floor(Math.random() * nameArray.length);
-  var clannameIndex = Math.floor(Math.random() * clanArray.length);
+  let name = rollOnTable(nameArray);
+  let clanName = rollOnTable(clanArray);
 
   currentCharacter = {
-    name: nameArray[nameIndex],
-    clanName: clanArray[clannameIndex],
-    fullname: nameArray[nameIndex] + " " + clanArray[clannameIndex],
+    name: name,
+    clanName: clanName,
+    fullname: name + " " + clanName,
     race: race,
     sex: sex,
     age: age,
@@ -71,6 +80,7 @@ function createCharacter() {
     appearance: appearance,
     quirk: quirk,
     trait: trait,
+    specialAdvantage: ' ',
     flaw: ' ',
     voice: voice,
     ideal: '',
@@ -78,14 +88,7 @@ function createCharacter() {
     background: '',
     villainy: '',
     hook: '',
-    loyalties: '',
-    goals: '',
-    fears: '',
-    interests: '',
-    secrets: '',
-    mood: '',
-    relationshipPositive: '',
-    relationshipNegative: '',
+    goal: '',
     simplified: ''
   };
 
@@ -110,7 +113,7 @@ function retrieveNames(retrieverace, category) {
 
 // Function Update Character Display
 function updateCharacterDisplay() {
-  var charhistory = '';
+  let charhistory = '';
   resultsHistory.forEach(function (item) {
     charhistory +=
       '<div class="character-result">' +
@@ -120,15 +123,16 @@ function updateCharacterDisplay() {
       '<div>' + "<i>Mannerisms: </i>" + item.quirk + ", " + item.trait + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +
       '<div>' + '<br>' + '</div>' +
+      '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.flaw + '</div>' +
       '<div>' + item.background + '</div>' +
+      '<div>' + item.goal + '</div>' +
       '<div>' + item.villainy + '</div>' +
-      '<div>' + '<br>' + '</div>' +
+      '<div>' + item.hook + '</div>' +
       '<div>' + item.simplified + '</div>' +
       '</div>';
 
   })
-
   document.getElementById("results").innerHTML = charhistory;
 }
 
@@ -140,20 +144,20 @@ function renameCharacter() {
     return;
   }
 
-  var nameArray = retrieveNames(currentCharacter.race, currentCharacter.sex);
-  var clanArray = retrieveNames(currentCharacter.race, "Clan");
+  let nameArray = retrieveNames(currentCharacter.race, currentCharacter.sex);
+  let clanArray = retrieveNames(currentCharacter.race, "Clan");
 
   if (!nameArray.length || !clanArray.length) {
     console.error("No names or clans available to rename.");
     return;
   }
 
-  var nameIndex = Math.floor(Math.random() * nameArray.length);
-  var clannameIndex = Math.floor(Math.random() * clanArray.length);
+  let name = rollOnTable(nameArray);
+  let clanName = rollOnTable(clanArray);
 
-  currentCharacter.name = nameArray[nameIndex];
-  currentCharacter.clanName = clanArray[clannameIndex];
-  currentCharacter.fullname = nameArray[nameIndex] + " " + clanArray[clannameIndex];
+  currentCharacter.name = name;
+  currentCharacter.clanName = clanName;
+  currentCharacter.fullname = name + " " + clanName;
 
   updateCharacterDisplay();
   if (resultsHistory.length > 6) {
@@ -161,6 +165,7 @@ function renameCharacter() {
   }
 }
 
+// Function for choosing race and sex from dropdown
 function selectRaceSex(selectRace, selectSex) {
   race = selectRace;
   raceType = selectRace;
@@ -173,8 +178,6 @@ function selectRaceSex(selectRace, selectSex) {
   };
 
   document.getElementById('button-race').textContent = race + " " + sex;
-
-  event.preventDefault();
 }
 
 // Function Add Detail
@@ -183,6 +186,7 @@ function addDetail() {
   addFlaw();
   addBackground();
   addVillainy();
+  addHook();
 
   updateCharacterDisplay();
   if (resultsHistory.length > 6) {
@@ -192,7 +196,7 @@ function addDetail() {
 
 // Function Add Flaw
 function addFlaw() {
-  var flawIndex = Math.floor(Math.random() * flaws.length);
+  let flawIndex = Math.floor(Math.random() * flaws.length);
   currentCharacter.flaw = "<i>Flaw: </i>" + flaws[flawIndex];
   currentCharacter.shortflaw = flaws[flawIndex];
 
@@ -201,11 +205,11 @@ function addFlaw() {
 // Function Add Background
 function addBackground() {
 
-  var IdealIndex = Math.floor(Math.random() * ideals.length);
-  var BondIndex = Math.floor(Math.random() * bonds.length);
+  let ideal = rollOnTable(ideals);
+  let bond = rollOnTable(bonds);
 
   // Roll 3 unique indices for motivation verbs
-  var lastMotivationVerbsIndices = [];
+  let lastMotivationVerbsIndices = [];
   for (let i = 0; i < 3; i++) {
     let uniqueIndex = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
     lastMotivationVerbsIndices.push(uniqueIndex);
@@ -215,7 +219,7 @@ function addBackground() {
   }
 
   // Roll 3 unique indices for motivation nouns columns
-  var lastMotivationNounsColumnsIndices = [];
+  let lastMotivationNounsColumnsIndices = [];
   for (let i = 0; i < 3; i++) {
     let uniqueNounsIndex = getUniqueIndex(5, lastMotivationNounsColumnsIndices);
     lastMotivationNounsColumnsIndices.push(uniqueNounsIndex);
@@ -224,45 +228,45 @@ function addBackground() {
     }
   }
 
-  var motivationverbsIndex1 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
-  var motivationverbsIndex2 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
-  var motivationverbsIndex3 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
-  var motivationnouns1Index = Math.floor(Math.random() * motivationnouns1.length);
-  var motivationnouns2Index = Math.floor(Math.random() * motivationnouns2.length);
-  var motivationnouns3Index = Math.floor(Math.random() * motivationnouns3.length);
-  var motivationnouns4Index = Math.floor(Math.random() * motivationnouns4.length);
-  var motivationnouns5Index = Math.floor(Math.random() * motivationnouns5.length);
-  var waylayadjectivesIndex1 = Math.floor(Math.random() * waylayadjectives.length);
-  var waylayadjectivesIndex2 = Math.floor(Math.random() * waylayadjectives.length);
-  var waylaynounsIndex1 = Math.floor(Math.random() * waylaynouns.length);
-  var waylaynounsIndex2 = Math.floor(Math.random() * waylaynouns.length);
-  var waylaysolutionsIndex1 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
-  var waylaysolutionsIndex2 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
+  let motivationverbsIndex1 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
+  let motivationverbsIndex2 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
+  let motivationverbsIndex3 = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
+  let motivationnouns1Index = Math.floor(Math.random() * motivationnouns1.length);
+  let motivationnouns2Index = Math.floor(Math.random() * motivationnouns2.length);
+  let motivationnouns3Index = Math.floor(Math.random() * motivationnouns3.length);
+  let motivationnouns4Index = Math.floor(Math.random() * motivationnouns4.length);
+  let motivationnouns5Index = Math.floor(Math.random() * motivationnouns5.length);
+  let waylayadjectivesIndex1 = Math.floor(Math.random() * waylayadjectives.length);
+  let waylayadjectivesIndex2 = Math.floor(Math.random() * waylayadjectives.length);
+  let waylaynounsIndex1 = Math.floor(Math.random() * waylaynouns.length);
+  let waylaynounsIndex2 = Math.floor(Math.random() * waylaynouns.length);
+  let waylaysolutionsIndex1 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
+  let waylaysolutionsIndex2 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
 
 
-  var motivationVerb1 = motivationverbs[motivationverbsIndex1];
-  var motivationVerb2 = motivationverbs[motivationverbsIndex2];
-  var motivationVerb3 = motivationverbs[motivationverbsIndex3];
-  var motivationNoun1 = motivationnouns1[motivationnouns1Index];
-  var motivationNoun2 = motivationnouns2[motivationnouns2Index];
-  var motivationNoun3 = motivationnouns3[motivationnouns3Index];
-  var motivationNoun4 = motivationnouns4[motivationnouns4Index];
-  var motivationNoun5 = motivationnouns5[motivationnouns5Index];
-  var motivationNounsArray = [motivationNoun1, motivationNoun2, motivationNoun3, motivationNoun4, motivationNoun5];
-  var motivationNouns = [motivationNounsArray[lastMotivationNounsColumnsIndices[0]],
+  let motivationVerb1 = motivationverbs[motivationverbsIndex1];
+  let motivationVerb2 = motivationverbs[motivationverbsIndex2];
+  let motivationVerb3 = motivationverbs[motivationverbsIndex3];
+  let motivationNoun1 = motivationnouns1[motivationnouns1Index];
+  let motivationNoun2 = motivationnouns2[motivationnouns2Index];
+  let motivationNoun3 = motivationnouns3[motivationnouns3Index];
+  let motivationNoun4 = motivationnouns4[motivationnouns4Index];
+  let motivationNoun5 = motivationnouns5[motivationnouns5Index];
+  let motivationNounsArray = [motivationNoun1, motivationNoun2, motivationNoun3, motivationNoun4, motivationNoun5];
+  let motivationNouns = [motivationNounsArray[lastMotivationNounsColumnsIndices[0]],
   motivationNounsArray[lastMotivationNounsColumnsIndices[1]], motivationNounsArray[lastMotivationNounsColumnsIndices[2]]];
-  var waylayAdjective1 = waylayadjectives[waylayadjectivesIndex1];
-  var waylayNoun1 = waylaynouns[waylaynounsIndex1];
-  var waylaySolution1 = waylaysolutions[waylaysolutionsIndex1];
-  var waylayAdjective2 = waylayadjectives[waylayadjectivesIndex2];
-  var waylayNoun2 = waylaynouns[waylaynounsIndex2];
-  var waylaySolution2 = waylaysolutions[waylaysolutionsIndex2];
+  let waylayAdjective1 = waylayadjectives[waylayadjectivesIndex1];
+  let waylayNoun1 = waylaynouns[waylaynounsIndex1];
+  let waylaySolution1 = waylaysolutions[waylaysolutionsIndex1];
+  let waylayAdjective2 = waylayadjectives[waylayadjectivesIndex2];
+  let waylayNoun2 = waylaynouns[waylaynounsIndex2];
+  let waylaySolution2 = waylaysolutions[waylaysolutionsIndex2];
 
 
   currentCharacter.background =
     '<div>' + "<i>Motivation: </i>" + '</div>' +
-    '<div>' + "<i>Ideals: </i>" + ideals[IdealIndex] + '</div>' +
-    '<div>' + "<i>Bonds: </i>" + bonds[BondIndex] + '</div>' +
+    '<div>' + "<i>Ideals: </i>" + ideal + '</div>' +
+    '<div>' + "<i>Bonds: </i>" + bond + '</div>' +
     '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb1 + " " + motivationNouns[0] + '</div>' +
     '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb2 + " " + motivationNouns[1] + '</div>' +
     '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb3 + " " + motivationNouns[2] + '</div>' +
@@ -275,27 +279,40 @@ function addBackground() {
 
 // Function add villainy
 function addVillainy() {
-  var villainTraitIndex1 = Math.floor((Math.random() * 50) + 1);
-  var villainTraitIndex2 = Math.floor((Math.random() * 50) + 1);
-  var villainTrait1 = villainTraits[villainTraitIndex1];
-  var villainTrait2 = villainTraits[villainTraitIndex2];
-  var villainCrookIndex = Math.floor((Math.random() * 50) + 1);
-  var villainCrook = villainCrooks[villainCrookIndex];
+  let villainTraitIndex1 = Math.floor((Math.random() * 50) + 1);
+  let villainTraitIndex2 = Math.floor((Math.random() * 50) + 1);
+  let villainTrait1 = villainTraits[villainTraitIndex1];
+  let villainTrait2 = villainTraits[villainTraitIndex2];
+  let villainCrookIndex = Math.floor((Math.random() * 50) + 1);
+  let villainCrook = villainCrooks[villainCrookIndex];
+  let villainGoal = rollOnTable(jsonData.villainGoals);
 
   currentCharacter.villainy =
     '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>' +
-    '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>';
-
+    '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>' +
+    '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
 }
 
+// Function add hook
+function addHook() {
+  let hook1 = rollOnTable(jsonData.hooks1);
+  let hook2 = rollOnTable(jsonData.hooks2);
+  let goal = rollOnTable(jsonData.goals);
+  let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
+
+  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
+  currentCharacter.hook =
+    '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' + hook2 + '</div>';
+  currentCharacter.goal = '<div>' + "<i>Goal: </i>" + goal + '</div>';
+}
 
 
 // Function Simplify Description
 function simpleCopy() {
 
-  var simpleFlawCheck = '';
-  var simpleVoiceCheck = '';
-  var simpleVillainyCheck = '';
+  let simpleFlawCheck = '';
+  let simpleVoiceCheck = '';
+  let simpleVillainyCheck = '';
 
   if (currentCharacter.flaw === "" || simpleFlawCheck === " " || simpleFlawCheck === '') {
     simpleFlawCheck = "";
@@ -315,7 +332,8 @@ function simpleCopy() {
     simpleVillainyCheck = ". " + currentCharacter.villainy
   };
 
-  var simpleText =
+  let simpleText =
+    "<br>" +
     "<b>" + currentCharacter.fullname + "</b>" + " - ("
     + "<i>" + currentCharacter.race + " " + currentCharacter.sex
     + ", " + currentCharacter.age + " " + currentCharacter.occupation
@@ -331,7 +349,6 @@ function simpleCopy() {
   currentCharacter.simplified = simpleText;
   updateCharacterDisplay();
 
-
   navigator.clipboard.writeText(simpleText);
 }
 
@@ -345,6 +362,7 @@ function getUniqueIndex(length, lastIndices) {
   return index;
 }
 
+// Initialize listener
 document.addEventListener('DOMContentLoaded', () => {
   initializePage();
 });
@@ -357,10 +375,10 @@ function initializePage() {
 // Function Dropbox Window Click
 window.onclick = function (event) {
   if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
+    let dropdowns = document.getElementsByClassName("dropdown-content");
+    let i;
     for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
+      let openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
         openDropdown.classList.remove('show');
       }
@@ -400,7 +418,6 @@ const addDetailButton = document.querySelector("#button-detail");
 addDetailButton.addEventListener("click", () => {
   addDetail();
 });
-
 
 const dropdown = document.getElementById('myDropdown');
 

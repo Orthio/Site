@@ -160,12 +160,13 @@ function updateCalendar() {
 
     monthBanner.innerText = `${Day.dayCalendarMonthName} ${Day.dayCalendarYear}DR`;
     calendar.innerHTML = "";
+    let holidayCheck;
 
     let holidayMonths = [1, 5, 9, 12, 15];
     if (holidayMonths.includes(Day.dayCalendarMonth)) {
-        var holidayCheck = 1;
+        holidayCheck = 1;
     } else {
-        var holidayCheck = 0;
+        holidayCheck = 0;
     }
 
     for (let i = 1; i <= 30; i++) {

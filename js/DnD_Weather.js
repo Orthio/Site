@@ -1,18 +1,18 @@
 import { generalDiceRoll, currentDay, currentMonth, getDateName, getMonthDays } from './DnD_General.js';
 
 // Global Variables
-var weatherArray = [];
-var windArray = [];
-var rainArray = [];
-var windDirArray = [];
-var effectsArray = [];
-var weatherCurrent = '';
-var windCurrent = '';
-var rainCurrent = '';
-var windDirectionCurrent = '';
-var weatherCRoll;
-var windCRoll;
-var effectsSave = [];
+let weatherArray = [];
+let windArray = [];
+let rainArray = [];
+let windDirArray = [];
+let effectsArray = [];
+let weatherCurrent = '';
+let windCurrent = '';
+let rainCurrent = '';
+let windDirectionCurrent = '';
+let weatherCRoll;
+let windCRoll;
+let effectsSave = [];
 
 let weatherData = {};
 let isWeatherDataLoaded = false; // Flag to check if data is loaded
@@ -129,7 +129,7 @@ function displayResults() {
     let day = currentDay;
     let month = currentMonth;
 
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         let thisMonthsDays = getMonthDays(month);
         if (day > thisMonthsDays) {
             day = 1;

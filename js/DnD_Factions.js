@@ -19,15 +19,15 @@ class Circle {
 
 function circleSwap(i,color) {
     // Makes a new circle and swaps the image
-    var name = "js-circle" + i;  //Name of image to be swapped
-    var currentCircle = document.getElementById(name);
-    var newInit = currentCircle.getAttribute('data-circle');
+    let name = "js-circle" + i;  //Name of image to be swapped
+    let currentCircle = document.getElementById(name);
+    let newInit = currentCircle.getAttribute('data-circle');
     let newParts = newInit.split('-');
     let newTicks = parseInt(newParts[0], 10);
     let newSize = parseInt(newParts[1], 10);
     new Circle(color, newSize, newTicks);
-    var img = document.getElementById(name);
-    var circleImage = "../images/Progress_Clocks/Clock-" + color + "-" + newSize + "-" + newTicks + ".png";
+    let img = document.getElementById(name);
+    let circleImage = "../images/Progress_Clocks/Clock-" + color + "-" + newSize + "-" + newTicks + ".png";
     if (circleImage) {
         img.src = circleImage;
     }
@@ -47,14 +47,14 @@ function checkOutcome(roll) {
 };
   
 function updateSheet(id){
-    var circleNos = 0;
+    let circleNos = 0;
     if (id === undefined){
         circleNos = 1;
     } else {
         circleNos = id;
     }
-    var colorOrder = ["Green","Blue","Grey","Green","Blue","Grey","Green","Blue","Grey"];
-    for (var i = 1; i <= circleNos; i++) {
+    let colorOrder = ["Green","Blue","Grey","Green","Blue","Grey","Green","Blue","Grey"];
+    for (let i = 1; i <= circleNos; i++) {
         circleSwap(i,colorOrder[i-1]);
     }
 };

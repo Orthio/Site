@@ -11,6 +11,32 @@ fetch('json/DnD_Treasure_Rolls.json')
     })
     .catch(error => console.error('Error fetching JSON:', error));
 
+  /*   enemyWeapons
+    partyWeapons 
+    artNature
+    artJewelleryItems
+    artEquipment
+    artDiningItems
+    artDecorativeItems
+    artPersonalItems
+    artMetalTypes
+    artMaterialTypes
+    artGemstoneTypes
+    artDecorativeTechniques
+    artDesignThemes
+    hooks1
+    hooks2
+    origin
+    tactics
+    equipment1
+    miscItems
+    materialTraits
+    treasures
+    itemTraits
+    materials */
+
+
+
 class TreasureRoll {
     //Individual treasure roll
     static currentId = 0;
@@ -77,7 +103,7 @@ function findNextTableNumber2(table, number) {
 function calcIndiTreasure() {
     createNewTreasure();
     let cr = parseInt(document.getElementById("CRInput").value);
-    var indiTreasureTable = jsonData.indiTreasureTable;
+    let indiTreasureTable = jsonData.indiTreasureTable;
     const matchingRow = findNextTableNumber(indiTreasureTable, cr);
     let currentTreasureRoll = TreasureRoll.treasureObjects[TreasureRoll.currentId];
 
@@ -331,7 +357,7 @@ newButtonMag.addEventListener("click", () => {
     calcNewMag();
     newButtonTheme.textContent = TreasureRoll.magicItemTypeName + " Theme"; // Update button text
 
-});
+}); 
 
 const newButtonTheme = document.getElementById("button-theme");
 const dropdownThemeLinks = document.querySelectorAll(".dropdown-content a");

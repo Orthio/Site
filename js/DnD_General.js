@@ -1,17 +1,17 @@
 
 //Global Variables
 
-export var partyLevel = 7;
+export let partyLevel = 7;
 
-export var currentTime = "4pm";
-export var currentDay = 8;
-export var currentTenday = 1;
-export var currentMonth = 14;
-export var currentYear = 1489;
+export let currentTime = "4pm";
+export let currentDay = 8;
+export let currentTenday = 1;
+export let currentMonth = 14;
+export let currentYear = 1489;
 
-export var generalPartyDPS1r = 30.8;
+export let generalPartyDPS1r = 30.8;
 
-export var monthsArray = [
+export let monthsArray = [
     { number: 1, month: "Hammer", days: 30, desc: "('Deepwinter') the first month", holiday: "Midwinter" },
     { number: 2, month: "Midwinter", days: 1, desc: "" },
     { number: 3, month: "Alturiak", days: 30, desc: " ('The Claws of the Cold') the second month" },
@@ -68,7 +68,7 @@ export function getDateName(day, month) {
 
 export function generalDiceRoll(dice, qty, adv) {
     // Roll a dice (d6 d20) a no of times, with advantage or disadvantage
-    var rollResult = [];
+    let rollResult = [];
     if (qty === undefined) {
         qty = 1;
     }
@@ -76,7 +76,7 @@ export function generalDiceRoll(dice, qty, adv) {
         qty = 2;
     }
 
-    for (var i = 0; i < qty; i++) {
+    for (let i = 0; i < qty; i++) {
         rollResult.push(Math.floor(Math.random() * dice) + 1);
     }
     switch (adv) {
@@ -87,7 +87,7 @@ export function generalDiceRoll(dice, qty, adv) {
             return Math.max.apply(null, rollResult);
             break;
         case "Fortune":
-            var countSixes = rollResult.filter(num => num === 6).length;
+            let countSixes = rollResult.filter(num => num === 6).length;
             if (countSixes >= 2) {
                 return 7;
             }

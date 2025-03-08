@@ -69,29 +69,21 @@
 
   <div>
     <form id="EncounterAddForm">
-      <input type="button" id="add-encounter-current-button" value="Add to Current Encounter">
-      <input type="button" id="add-encounter-new-button" value="Add to New Encounter">
-      <input type="button" id="remove-last-encounter" value="Remove last Encounter">
-      <!-- //To work on -->
+      <div id="encounter-add-form-1">
+        <input type="button" id="add-encounter-current-button" value="Add to Current Encounter">
+        <input type="button" id="add-encounter-new-button" value="Add to New Encounter">
+        <input type="button" id="reset-button" value="Reset Encounters">
+      </div>
+      <div id="encounter-add-form-2">
+        <input type="button" id="cr-up-button" value="CR Up">
+        <input type="button" id="cr-down-button" value="CR Down">
+        <input type="button" id="remove-last-encounter" value="Remove last Encounter">
+      </div>
     </form>
   </div>
   <br>
   <div>
     <table id="encounter-table">
-      <tr id="A1">
-        <td></td>
-        <td></td>
-        <td></td> <!-- Row1 Cell3 -->
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="table-encounter-col7"></td> <!-- Row1 Cell 7-->
-        <td class="table-encounter-col8"></td>
-        <td class="table-encounter-col9"></td>
-        <td class="table-encounter-col10"></td>
-
-      </tr>
-
     </table>
     <br>
   </div>
@@ -103,19 +95,6 @@
   <p> Daily Ratio: <span id="daily-ratio"></span></p>
 
   <table id="group-table">
-    <tr id="group-A1">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td> <!-- Row1 Cell 9-->
-      <td></td>
-      <td></td>
-    </tr>
   </table>
 
   <script type="module" src="js/DnD_General.js"></script>
