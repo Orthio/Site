@@ -641,45 +641,43 @@ function updatePartyTable() {
 
 
 function updateEncounterTable() {
-    let encounterTable = document.getElementById("encounter-table");
-    if (!encounterTable) {
-        console.error("Encounter table not found!");
-        return;
-    }
+    let rowNumber = Encounter.encounterCurrentId + 1; // check the +1
+    let columnNumber = 10;
 
-    // Clear existing table rows (except the header)
-    while (encounterTable.rows.length > 1) {
-        encounterTable.deleteRow(1);
-    }
-
-    // Populate the table with current encounters
-    for (let i = 0; i <= Encounter.encounterCurrentId; i++) {
-        let encounter = Encounter.encounterObjects[i];
-        let monster = Monster.monsterObjects[i];
-
-        if (!encounter || !monster) continue; // Ensure encounter exists
-
-        let newRow = encounterTable.insertRow(-1);
-        
-        for (let y = 0; y <= 10; y++) {
-            newRow.insertCell(y);
+    function addEncounterRow() {
+        let encounterTable = document.getElementById("encounter-table");
+        if (!encounterTable) {
+            console.error("Encounter table not found!");
+            return;
         }
 
-        newRow.cells[0].innerHTML = `<b>${encounter.encounterTag}:</b>`;
-        newRow.cells[1].innerHTML = monster.monsterName;
-        newRow.cells[2].innerHTML = ` CR${monster.monsterCrText}`;
-        newRow.cells[3].innerHTML = ` ${monster.monsterXP}xp`;
-        newRow.cells[4].innerHTML = " x ";
-        newRow.cells[5].innerHTML = encounter.encounterMonQty;
-        newRow.cells[6].innerHTML = " = ";
-        newRow.cells[7].innerHTML = encounter.encounterBasicXP;
-        newRow.cells[8].innerHTML = "xp ";
-        newRow.cells[9].innerHTML = `${encounter.encounterHP}hp `;
-        newRow.cells[10].innerHTML = ` Rolls: ${encounter.encounterRolls[0]}, 
-        ${encounter.encounterRolls[1]}, 
-        ${encounter.encounterRolls[2]}`;
+        let newRow = encounterTable.insertRow(-1);
+
+        for (let y = 0; y <= columnNumber; y++) {
+            newRow.insertCell(y);
+        }
+    }
+
+    for (let i = 0; i < rowNumber; i++) {
+        // where i is the row number
+        if (!encounterTable.rows[i]) {addEncounterRow() }
+        encounterTable.rows[i].cells[0].innerHTML = `<b>${Encounter.encounterObjects[i].encounterTag}:</b> `;
+        encounterTable.rows[i].cells[1].innerHTML = Monster.monsterObjects[i].monsterName;
+        encounterTable.rows[i].cells[2].innerHTML = ` CR${Monster.monsterObjects[i].monsterCrText}  `;
+        encounterTable.rows[i].cells[3].innerHTML = ` ${Monster.monsterObjects[i].monsterXP}xp`;
+        encounterTable.rows[i].cells[4].innerHTML = " x ";
+        encounterTable.rows[i].cells[5].innerHTML = Encounter.encounterObjects[i].encounterMonQty;
+        encounterTable.rows[i].cells[6].innerHTML = " = ";
+        encounterTable.rows[i].cells[7].innerHTML = Encounter.encounterObjects[i].encounterBasicXP;
+        encounterTable.rows[i].cells[8].innerHTML = "xp ";
+        encounterTable.rows[i].cells[9].innerHTML = `${Encounter.encounterObjects[i].encounterHP}hp `;
+        encounterTable.rows[i].cells[10].innerHTML = ` Rolls: ${Encounter.encounterObjects[i].encounterRolls[0]}, 
+        ${Encounter.encounterObjects[i].encounterRolls[1]}, 
+        ${Encounter.encounterObjects[i].encounterRolls[2]}`;
     }
 }
+
+
 
 
 function updateGroupTable() {
