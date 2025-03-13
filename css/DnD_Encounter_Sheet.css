@@ -74,6 +74,9 @@ p {
   width: 50px;
 }
 
+#group-table td:nth-child(1) {
+  width: 60px;
+}
 .form-encounter {
   display: flex;
   flex-direction: row;

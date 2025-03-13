@@ -155,6 +155,9 @@ class Party {
     static partyExtraDailyBudget = 0;
     static partyShortRestBudget = 0;
     static partyInitialBudgetRemain = 0;
+    static lowThreshold = 0;
+    static moderateThreshold = 0;
+    static highThreshold = 0;
 
     static calculatePartyBudget() {
         Party.partyDailyBudget = globalVariables.getDailyBudget(Party.partyListedLevel) * Party.partyNumber;
@@ -193,7 +196,7 @@ class Monster {
         this.monsterName = name || `Mon${Monster.monsterCurrentId}`; // Default name if not provided
         this.monsterHP = parseFloat(hp);
         this.monsterXP = undefined;
-        this.checkMonsterXP(); // Calculate XP during initialization
+        this.checkMonsterXP();
     }
 
     checkMonsterXP() {
@@ -201,10 +204,21 @@ class Monster {
             this.monsterXP = globalVariables.getMonsterCrXP(this.monsterCr); //Single xp for this monster
         } else {
             this.monsterXP = 0;
-            let table = document.getElementById("EncounterTable");
-            let invalidRow = table.insertRow(-1);
-            let invalidCell1 = invalidRow.insertCell(0);
-            invalidCell1.innerHTML = "Invalid CR. Valid CR are 0.125, 1/8, 0.25, 1/4, 0.5, 1/2, and whole numbers 1-30";
+            console.log("Invalid CR. Valid CR are 0.125, 1/8, 0.25, 1/4, 0.5, 1/2, and whole numbers 1-30");
+        }
+    }
+
+    monsterUpdate() {
+        this.checkMonsterXP();
+        this.monsterCrText = this.monsterCr;
+        if (this.monsterCrText === 0.125) {
+            this.monsterCrText = "1/8"
+        }
+        if (this.monsterCrText === 0.25) {
+            this.monsterCrText = "1/4"
+        }
+        if (this.monsterCrText === 0.5) {
+            this.monsterCrText = "1/2"
         }
     }
 
@@ -245,14 +259,14 @@ class Encounter {
     static encounterCurrentTag = "Z0";
     static encounterObjects = {};
 
-
-    // Constructor
     constructor(qty) {
         this.encounterTag = Encounter.encounterCurrentTag;
         this.encounterGroupId = Encounter.encounterCurrentGroupNo;
         this.encounterMonsters = [];
         this.encounterMonQty = qty;
         this.encounterRolls = [generalDiceRoll(20, 1), generalDiceRoll(20, 1), generalDiceRoll(20, 1)];
+        this.encounterBasicXP = 0;
+        this.encounterHP = 0;
     }
 
     addMonster(monster, qty) {
@@ -264,6 +278,12 @@ class Encounter {
 
     removeMonster() {
         this.encounterMonsters.pop();
+    }
+
+    encounterUpdateXP() {
+        this.encounterBasicXP =
+            this.encounterMonsters[0].monsterXP * this.encounterMonQty;
+        this.encounterHP = this.encounterMonsters[0].monsterHP * this.encounterMonQty;
     }
 
     encountersReset() {
@@ -311,8 +331,6 @@ function removeLastEncounter() {
 }
 
 
-
-
 class Group {
     // Group of Encounters Class
 
@@ -328,6 +346,9 @@ class Group {
         this.groupDeadliness = "";
         this.groupHP = 0;
         this.groupQty = 0;
+        this.roundsToBeat = 0;
+        this.groupHighXP = 0;
+
     }
 
     addEncounterToGroup(encounter) {
@@ -383,7 +404,6 @@ class Group {
 
 
 function createNewGroup() {
-    // Creates a new encounter group for encounters to go in
     Group.groupCurrentId++;
     Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
     Group.groupObjects[Group.groupCurrentId] = new Group();
@@ -408,6 +428,8 @@ class Day {
         this.dayTag = "Day" + (Day.dayCurrentId + 1);
         this.dayGroups = []; // Array to hold all encounter groups
         this.dayTotalXP = 0;
+        this.dailyRemainingXP = 0;
+        this.dailyBasicXP = 0;
     }
 
     addGroupToDay(encounterGroup) {
@@ -484,9 +506,57 @@ function addEncounter(current) {
 
     Day.dayObjects[Day.dayCurrentId].calculateDayAdjXP();
 
-    updateEncounterTable();
     updateSheet();
 }
+
+function resetTables() {
+    encounterTable.innerHTML = "";
+    groupTable.innerHTML = "";
+    encountersReset();
+    Monster.monstersReset();
+    Group.groupsReset();
+
+}
+
+function CRUp() {
+    let currentMonsterCr = Monster.monsterObjects[Monster.monsterCurrentId].monsterCr;
+    if (currentMonsterCr == 0.125) {
+        Monster.monsterObjects[Monster.monsterCurrentId].monsterCr = 0.25
+    }
+    else if (currentMonsterCr == 0.25) {
+        Monster.monsterObjects[Monster.monsterCurrentId].monsterCr = 0.5
+    }
+    else if (currentMonsterCr == 0.5) {
+        Monster.monsterObjects[Monster.monsterCurrentId].monsterCr = 1
+    }
+    else { Monster.monsterObjects[Monster.monsterCurrentId].monsterCr++ }
+
+    Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
+    Encounter.encounterObjects[Encounter.encounterCurrentId].encounterUpdateXP();
+    Group.groupObjects[Group.groupCurrentId].calculateGroupXP();
+    updateSheet();
+}
+
+
+function CRDown() {
+    let currentMonsterCr = Monster.monsterObjects[Monster.monsterCurrentId].monsterCr;
+    if (currentMonsterCr == 0.125) {
+        console.log("Can't lower CR below 1/8")
+    }
+    else if (currentMonsterCr == 0.25) {
+        Monster.monsterObjects[Monster.monsterCurrentId].monsterCr = 0.125
+    }
+    else if (currentMonsterCr == 0.5) {
+        Monster.monsterObjects[Monster.monsterCurrentId].monsterCr = 0.25
+    }
+    else { Monster.monsterObjects[Monster.monsterCurrentId].monsterCr-- }
+
+    Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
+    Encounter.encounterObjects[Encounter.encounterCurrentId].encounterUpdateXP();
+    Group.groupObjects[Group.groupCurrentId].calculateGroupXP();
+   updateSheet();
+}
+
 
 function removeEncounter() {
     if (Encounter.encounterCurrentId < 0) {
@@ -541,100 +611,88 @@ function removeEncounter() {
     updateSheet();
 }
 
-function updateDeadliness() {
-
-    if (Group.groupCurrentId === -1) {
-        return;
-    }
-
-    // If there is one group, groupCurrentId = 0, calculate once
-    for (let i = 0; i < Group.groupCurrentId; i++) {
-        Group.groupObjects[i].calculateGroupXP()
-    }
+// Update functions
+function updateSheet() {
+    updatePartyTable();
+    updateEncounterTable();
+    updateGroupTable();
+    updateDayTable();
 }
 
+function updatePartyTable() {
+    Party.partyListedLevel = document.getElementById('js-party-levelinput').value;
+    Party.partyNumber = document.getElementById('js-party-numberinput').value;
+    Party.partyStartingXP = document.getElementById('js-xpgainedforcurrent').value;
 
+    document.getElementById("party-level").innerText = Party.partyListedLevel;
+    document.getElementById("party-number").innerText = Party.partyNumber;
+
+    Party.calculatePartyBudget();
+    Party.calculatePartyDifficulties();
+
+    document.getElementById("dailybudget").innerText = Party.partyDailyBudget;
+    document.getElementById("partyshortbudget").innerText = Math.floor(Party.partyShortRestBudget);
+    document.getElementById("partyinitialbudgetremain").innerText = Math.floor(Party.partyInitialBudgetRemain);
+
+    document.getElementById("difficulty-low").innerText = Party.lowThreshold;
+    document.getElementById("difficulty-moderate").innerText = Party.moderateThreshold;
+    document.getElementById("difficulty-high").innerText = Party.highThreshold;
+}
 
 
 function updateEncounterTable() {
-    // Updates the encounter table
-    let rowNumber = Encounter.encounterCurrentId; // check the +1
-    let columnNumber = 10;
+    let encounterTable = document.getElementById("encounter-table");
+    if (!encounterTable) {
+        console.error("Encounter table not found!");
+        return;
+    }
 
-    function addEncounterRow() {
-        let encounterTable = document.getElementById("encounter-table");
-        if (!encounterTable) {
-            console.error("Encounter table not found!");
-            return;
-        }
+    // Clear existing table rows (except the header)
+    while (encounterTable.rows.length > 1) {
+        encounterTable.deleteRow(1);
+    }
+
+    // Populate the table with current encounters
+    for (let i = 0; i <= Encounter.encounterCurrentId; i++) {
+        let encounter = Encounter.encounterObjects[i];
+        let monster = Monster.monsterObjects[i];
+
+        if (!encounter || !monster) continue; // Ensure encounter exists
 
         let newRow = encounterTable.insertRow(-1);
-
-        for (let i = 0; i <= columnNumber; i++) {
-            newRow.insertCell(i);
+        
+        for (let y = 0; y <= 10; y++) {
+            newRow.insertCell(y);
         }
-    }
 
-    for (let i = 0; i <= rowNumber; i++) {
-        // where i is the row number
-        addEncounterRow();
-        encounterTable.rows[i].cells[0].innerHTML = `<b>${Encounter.encounterObjects[i].encounterTag}:</b> `;
-        encounterTable.rows[i].cells[1].innerHTML = Monster.monsterObjects[i].monsterName;
-        encounterTable.rows[i].cells[2].innerHTML = ` CR${Monster.monsterObjects[i].monsterCrText}  `;
-        encounterTable.rows[i].cells[3].innerHTML = ` ${Monster.monsterObjects[i].monsterXP}xp`;
-        encounterTable.rows[i].cells[4].innerHTML = " x ";
-        encounterTable.rows[i].cells[5].innerHTML = Encounter.encounterObjects[i].encounterMonQty;
-        encounterTable.rows[i].cells[6].innerHTML = " = ";
-        encounterTable.rows[i].cells[7].innerHTML = Encounter.encounterObjects[i].encounterBasicXP;
-        encounterTable.rows[i].cells[8].innerHTML = "xp ";
-        encounterTable.rows[i].cells[9].innerHTML = `${Encounter.encounterObjects[i].encounterHP}hp `;
-        encounterTable.rows[i].cells[10].innerHTML = ` Rolls: ${Encounter.encounterObjects[i].encounterRolls[0]}, 
-        ${Encounter.encounterObjects[i].encounterRolls[1]}, 
-        ${Encounter.encounterObjects[i].encounterRolls[2]}`;
+        newRow.cells[0].innerHTML = `<b>${encounter.encounterTag}:</b>`;
+        newRow.cells[1].innerHTML = monster.monsterName;
+        newRow.cells[2].innerHTML = ` CR${monster.monsterCrText}`;
+        newRow.cells[3].innerHTML = ` ${monster.monsterXP}xp`;
+        newRow.cells[4].innerHTML = " x ";
+        newRow.cells[5].innerHTML = encounter.encounterMonQty;
+        newRow.cells[6].innerHTML = " = ";
+        newRow.cells[7].innerHTML = encounter.encounterBasicXP;
+        newRow.cells[8].innerHTML = "xp ";
+        newRow.cells[9].innerHTML = `${encounter.encounterHP}hp `;
+        newRow.cells[10].innerHTML = ` Rolls: ${encounter.encounterRolls[0]}, 
+        ${encounter.encounterRolls[1]}, 
+        ${encounter.encounterRolls[2]}`;
     }
 }
 
-function newRowGroupTable(newness) {
-    let groupTable = document.getElementById("group-table");
-    let check = globalVariables.getTableRowCheck();
-
-    if (newness === "new" || check === 0) {
-        // Insert a new row for the Group header
-        let headingRow = groupTable.insertRow(-1);
-
-        let headingCell1 = headingRow.insertCell(0);
-        headingCell1.innerHTML = `<b>Group ${Group.groupCurrentLetter}</b>`;
-
-        // Insert empty cells for the rest of the row, so it spans across all columns
-        for (let i = 1; i < 11; i++) {
-            let emptyCell = headingRow.insertCell(i);
-            emptyCell.innerHTML = "";  // Empty content to ensure it doesn't overwrite
-        }
-        // globalVariables.setTableRowCheck(1);
-        updateSheet();
-    }
-    else {
-        updateSheet();
-    }
-}
 
 function updateGroupTable() {
 
-  /*   // Clear the existing table rows (except the header row)
-    while (groupTable.rows.length > 1) {
-        groupTable.deleteRow(1);
-    } */
-
-    // Recalculate party thresholds based on new level and number
     Party.calculatePartyBudget();
     Party.calculatePartyDifficulties();
 
     let columnNumber = 9;
 
-    function addGroupRow() {
-        let groupTable = document.getElementById("encounter-table");
+    function addGroupRows() {
+        let groupTable = document.getElementById("group-table");
         if (!groupTable) {
-            console.error("Encounter table not found!");
+            console.error("Group table not found!");
             return;
         }
 
@@ -645,48 +703,25 @@ function updateGroupTable() {
         }
     }
 
- /*    function addGroupRow() {
-        // Creates a row of group table
-        let rowNumber = 1;
-        let columnNumber = 9;
-        for (let i = 0; i < rowNumber; i++) {
-            groupTable.insertRow(-1);
-            for (let y = 0; y < columnNumber; y++) {
-                groupTable.rows[i].insertCell(y);
-            }
-        }
-    } */
-
     // Iterate through all groups and update their data
+    // for (let i = 0; i <= rowNumber; i++) {
+
     for (let groupId in Group.groupObjects) {
         let group = Group.groupObjects[groupId];
 
-        // Recalculate group XP and difficulty based on new party data
-        group.calculateGroupXP();
+        Group.groupObjects[groupId].calculateGroupXP();
 
-        // Insert a new row for the group
-        let groupRow = groupTable.insertRow(-1);
+        addGroupRows();
 
-        // Create and populate cells
-        let groupCell1 = groupRow.insertCell(0);
-        let groupCell2 = groupRow.insertCell(1);
-        let groupCell3 = groupRow.insertCell(2);
-        let groupCell4 = groupRow.insertCell(3);
-        let groupCell5 = groupRow.insertCell(4);
-        let groupCell6 = groupRow.insertCell(5);
-        let groupCell7 = groupRow.insertCell(6);
-        let groupCell8 = groupRow.insertCell(7);
-        let groupCell9 = groupRow.insertCell(8);
-
-        groupCell1.innerHTML = `<b>${group.groupLetter}</b>`;
-        groupCell2.innerHTML = group.groupDeadliness;
-        groupCell3.innerHTML = "&nbsp; &nbsp Group XP: ";
-        groupCell4.innerHTML = group.groupXP;
-        groupCell5.innerHTML = ", Ratio: ";
-        groupCell6.innerHTML = group.groupRatioXP;
-        groupCell7.innerHTML = ", TotalHP: ";
-        groupCell8.innerHTML = group.groupHP;
-        groupCell9.innerHTML = " , Rounds: " + group.roundsToBeat;
+        groupTable.rows[groupId].cells[0].innerHTML = `<b>${group.groupLetter}</b>`;
+        groupTable.rows[groupId].cells[1].innerHTML = group.groupDeadliness;
+        groupTable.rows[groupId].cells[2].innerHTML = "&nbsp; &nbsp Group XP: ";
+        groupTable.rows[groupId].cells[3].innerHTML = group.groupXP;
+        groupTable.rows[groupId].cells[4].innerHTML = ", Ratio: ";
+        groupTable.rows[groupId].cells[5].innerHTML = group.groupRatioXP;
+        groupTable.rows[groupId].cells[6].innerHTML = ", TotalHP: ";
+        groupTable.rows[groupId].cells[7].innerHTML = group.groupHP;
+        groupTable.rows[groupId].cells[8].innerHTML = " , Rounds: " + group.roundsToBeat;
     }
 }
 
@@ -706,43 +741,8 @@ function updateDayTable() {
 
 }
 
-function resetTables() {
-    encounterTable.innerHTML = "";
-    groupTable.innerHTML = "";
-    Encounter.encountersReset();
-    Monster.monstersReset();
-    Group.groupsReset();
 
-}
-
-
-function updateSheet() {
-    Party.partyListedLevel = document.getElementById('js-party-levelinput').value;
-    Party.partyNumber = document.getElementById('js-party-numberinput').value;
-    Party.partyStartingXP = document.getElementById('js-xpgainedforcurrent').value;
-
-    document.getElementById("party-level").innerText = Party.partyListedLevel;
-    document.getElementById("party-number").innerText = Party.partyNumber;
-
-    Party.calculatePartyBudget();
-    Party.calculatePartyDifficulties();
-
-    document.getElementById("dailybudget").innerText = Party.partyDailyBudget;
-    document.getElementById("partyshortbudget").innerText = Math.floor(Party.partyShortRestBudget);
-    document.getElementById("partyinitialbudgetremain").innerText = Math.floor(Party.partyInitialBudgetRemain);
-
-    document.getElementById("difficulty-low").innerText = Party.lowThreshold;
-    document.getElementById("difficulty-moderate").innerText = Party.moderateThreshold;
-    document.getElementById("difficulty-high").innerText = Party.highThreshold;
-
-    updateEncounterTable();
-    updateGroupTable();
-    updateDayTable();
-
-}
-
-
-
+// Listen functions
 document.addEventListener('DOMContentLoaded', () => {
     // Your startup function here
     initializePage();
@@ -798,11 +798,11 @@ window.onload = function () {
 }
 
 eventListeners.addInputListener('js-party-levelinput', updateSheet);
-eventListeners.addInputListener('js-party-levelinput', updateDeadliness);
-eventListeners.addInputListener('js-party-levelinput', updateGroupTable("current"));
+// eventListeners.addInputListener('js-party-levelinput', updateDeadliness);
+// eventListeners.addInputListener('js-party-levelinput', updateGroupTable("current"));
 
 eventListeners.addInputListener('js-party-numberinput', updateSheet);
-eventListeners.addInputListener('js-party-numberinput', updateDeadliness);
-eventListeners.addInputListener('js-party-numberinput', updateGroupTable("current"));
+// eventListeners.addInputListener('js-party-numberinput', updateDeadliness);
+// eventListeners.addInputListener('js-party-numberinput', updateGroupTable("current"));
 
 eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet);
