@@ -11,7 +11,7 @@ const { sexes, nameListings, nameDictionary, appearances, quirks,
   traits, occupations, flaws, voices, ideals, bonds,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
-  menuRaces, charAge
+  menuRaces, charAge, relationships
 } = Variables;
 
 let jsonData;
@@ -80,6 +80,7 @@ function createCharacter() {
     appearance: appearance,
     quirk: quirk,
     trait: trait,
+    relationship: ' ',
     specialAdvantage: ' ',
     flaw: ' ',
     voice: voice,
@@ -126,6 +127,7 @@ function updateCharacterDisplay() {
       '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.flaw + '</div>' +
       '<div>' + item.background + '</div>' +
+      '<div>' + item.relationship + '</div>' +
       '<div>' + item.goal + '</div>' +
       '<div>' + item.villainy + '</div>' +
       '<div>' + item.hook + '</div>' +
@@ -295,11 +297,13 @@ function addVillainy() {
 
 // Function add hook
 function addHook() {
+  let relationship = rollOnTable(relationships);
   let hook1 = rollOnTable(jsonData.hooks1);
   let hook2 = rollOnTable(jsonData.hooks2);
   let goal = rollOnTable(jsonData.goals);
   let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
 
+  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
   currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
   currentCharacter.hook =
     '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' + hook2 + '</div>';

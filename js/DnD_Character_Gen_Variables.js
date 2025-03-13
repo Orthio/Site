@@ -1701,5 +1701,6 @@ export const Variables = {
   villainCrooks,
   menuRaces,
   charAge,
-  occupations2
+  occupations2,
+  relationships
 }
