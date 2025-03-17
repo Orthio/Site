@@ -222,7 +222,7 @@ class Monster {
         }
     }
 
-    monstersReset() {
+    static monstersReset() {
         Monster.monsterCurrentId = -1;
         Monster.monsterObjects = {};
     }
@@ -256,12 +256,12 @@ class Encounter {
 
     static encounterCurrentId = -1;  // Overall id number for encounters
     static encounterCurrentGroupNo = 0;   // Group id for the number of the encounter in group eg A1
-    static encounterCurrentTag = "Z0";
+    static encounterCurrentGroupText = "Z0";
     static encounterObjects = {};
 
     constructor(qty) {
-        this.encounterTag = Encounter.encounterCurrentTag;
-        this.encounterGroupId = Encounter.encounterCurrentGroupNo;
+        this.encounterGroupText = Encounter.encounterCurrentGroupText;
+        this.encounterGroupTextNo = Encounter.encounterCurrentGroupNo;
         this.encounterMonsters = [];
         this.encounterMonQty = qty;
         this.encounterRolls = [generalDiceRoll(20, 1), generalDiceRoll(20, 1), generalDiceRoll(20, 1)];
@@ -280,17 +280,24 @@ class Encounter {
         this.encounterMonsters.pop();
     }
 
-    encounterUpdateXP() {
+    calculateThisEncounterXP() {
         this.encounterBasicXP =
             this.encounterMonsters[0].monsterXP * this.encounterMonQty;
         this.encounterHP = this.encounterMonsters[0].monsterHP * this.encounterMonQty;
     }
 
-    encountersReset() {
+    static calculateFullEncounterXP() {
+        for (let encId in Encounter.encounterObjects) {
+            let encounter = Encounter.encounterObjects[encId];
+            encounter.calculateThisEncounterXP();
+        }
+    }
+
+    static encountersReset() {
         Encounter.CurrentId = -1;
         Encounter.encounterCurrentId = -1;
         Encounter.encounterCurrentGroupNo = 0;
-        Encounter.encounterCurrentTag = "Z0";
+        Encounter.encounterCurrentGroupText = "Z0";
         Encounter.encounterObjects = {};
 
     }
@@ -299,9 +306,9 @@ class Encounter {
 function createNewEncounter(qty) {
     Encounter.encounterCurrentId++;
     Encounter.encounterCurrentGroupNo++;
-    Encounter.encounterCurrentTag = Group.groupCurrentLetter + Encounter.encounterCurrentGroupNo;
+    Encounter.encounterCurrentGroupText = Group.groupCurrentLetter + Encounter.encounterCurrentGroupNo;
     Encounter.encounterObjects[Encounter.encounterCurrentId] = new Encounter(qty);
-    // console.log(`Encounter Tag ${Encounter.encounterCurrentTag} has been added at Id ${Encounter.encounterCurrentId}`);
+    // console.log(`Encounter Tag ${Encounter.encounterCurrentGroupText} has been added at Id ${Encounter.encounterCurrentId}`);
 
 }
 
@@ -319,15 +326,13 @@ function removeLastEncounter() {
 
     delete Encounter.encounterObjects[Encounter.encounterCurrentId];
 
-    // Handle monster removal — this assumes each encounter only has 1 type of monster for now
-    for (let i = 0; i < lastEncounter.encounterMonsters.length; i++) {
-        removeLastMonster();
-    }
-
     Encounter.encounterCurrentId--;
-    Encounter.encounterCurrentGroupNo--;
-
-    // If no encounters remain in this group, you could also call removeLastGroup() here if wanted.
+    if (Encounter.encounterCurrentGroupNo == 1) {
+        Encounter.encounterCurrentGroupNo =
+            Encounter.encounterObjects[Encounter.encounterCurrentId].encounterGroupTextNo;
+    } else {
+        Encounter.encounterCurrentGroupNo--;
+    }
 }
 
 
@@ -354,7 +359,7 @@ class Group {
     addEncounterToGroup(encounter) {
         if (encounter !== undefined) {
             this.groupEncounters.push(encounter);
-            this.calculateGroupXP();
+            this.calculateThisGroupXP();
         } else {
             console.error("Invalid encounter object:", encounter);
         }
@@ -362,10 +367,10 @@ class Group {
 
     removeEncounterFromGroup(encounter) {
         this.groupEncounters = this.groupEncounters.filter(e => e !== encounter);
-        this.calculateGroupXP();
+        // this.calculateThisGroupXP();
     }
 
-    calculateGroupXP() {
+    calculateThisGroupXP() {
         this.groupXP = 0;
         this.groupHP = 0;
         this.groupQty = 0;
@@ -385,6 +390,13 @@ class Group {
         this.groupRatioXP = Number((this.groupXP / this.groupHighXP).toFixed(2));
     }
 
+    static calculateFullGroupXP() {
+        for (let groupId in Group.groupObjects) {
+            let group = Group.groupObjects[groupId];
+            group.calculateThisGroupXP();
+        }
+    }
+
     determineGroupDeadliness(groupXP) {
         if (groupXP < Party.moderateThreshold) {
             return "Low";
@@ -395,7 +407,7 @@ class Group {
         }
     }
 
-    groupsReset() {
+    static groupsReset() {
         Group.groupCurrentId = -1;
         Group.groupCurrentLetter = "Z";
         Group.groupObjects = {};
@@ -415,7 +427,6 @@ function removeLastGroup() {
     delete Group.groupObjects[Group.groupCurrentId];
     Group.groupCurrentId--;
     Group.groupCurrentLetter = globalVariables.getGroupIdLetter(Group.groupCurrentId);
-    Encounter.encounterCurrentGroupNo = 0;
 }
 
 class Day {
@@ -447,7 +458,7 @@ class Day {
         this.dailyBasicXP -= parseFloat(Group.groupObjects[Group.groupCurrentId].groupXP);
     }
 
-    calculateDayAdjXP() {
+    calculateThisDayXP() {
         let totalXP = 0;
         this.dayGroups.forEach(group => {
             totalXP += group.groupXP;
@@ -455,18 +466,22 @@ class Day {
         this.dayTotalXP = totalXP;
         this.dailyRemainingXP = Party.partyDailyBudget - this.dayTotalXP;
         this.dailyBasicXP = this.dayGroups.reduce((acc, group) => acc + parseFloat(group.groupXP), 0);
-
     }
 
-    calculateNegDayAdjXP() {
-        let totalXP = 0;
-        this.dayGroups.forEach(group => {
-            totalXP += group.groupXP;
-        });
-        this.dayTotalXP = totalXP;
-        this.dailyRemainingXP = Party.partyDailyBudget + this.dayTotalXP;
-        this.dailyBasicXP = this.dayGroups.reduce((acc, group) => acc + parseFloat(group.groupXP), 0);
+    static calculateFullDayXP() {
+        for (let dayId in Day.dayGroups) {
+            let day = Day.dayGroups[dayId];
+            day.calculateThisDayXP();
+        }
+    }
 
+    static daysReset() {
+        Day.dayCurrentId = -1;
+        Day.dayObjects = {};
+        document.getElementById("daily-total-xp").innerText = "";
+        document.getElementById("daily-remaining-xp").innerText = "";
+        document.getElementById("daily-ratio").innerText = "";
+        createNewDay();
     }
 }
 
@@ -504,7 +519,7 @@ function addEncounter(current) {
     Group.groupObjects[Group.groupCurrentId].addEncounterToGroup
         (Encounter.encounterObjects[Encounter.encounterCurrentId]);
 
-    Day.dayObjects[Day.dayCurrentId].calculateDayAdjXP();
+    Day.dayObjects[Day.dayCurrentId].calculateThisDayXP();
 
     updateSheet();
 }
@@ -512,9 +527,10 @@ function addEncounter(current) {
 function resetTables() {
     encounterTable.innerHTML = "";
     groupTable.innerHTML = "";
-    encountersReset();
+    Encounter.encountersReset();
     Monster.monstersReset();
     Group.groupsReset();
+    Day.daysReset();
 
 }
 
@@ -532,8 +548,8 @@ function CRUp() {
     else { Monster.monsterObjects[Monster.monsterCurrentId].monsterCr++ }
 
     Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
-    Encounter.encounterObjects[Encounter.encounterCurrentId].encounterUpdateXP();
-    Group.groupObjects[Group.groupCurrentId].calculateGroupXP();
+    Encounter.encounterObjects[Encounter.encounterCurrentId].calculateThisEncounterXP();
+    Group.groupObjects[Group.groupCurrentId].calculateThisGroupXP();
     updateSheet();
 }
 
@@ -552,15 +568,16 @@ function CRDown() {
     else { Monster.monsterObjects[Monster.monsterCurrentId].monsterCr-- }
 
     Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
-    Encounter.encounterObjects[Encounter.encounterCurrentId].encounterUpdateXP();
-    Group.groupObjects[Group.groupCurrentId].calculateGroupXP();
-   updateSheet();
+    Encounter.encounterObjects[Encounter.encounterCurrentId].calculateThisEncounterXP();
+    Group.groupObjects[Group.groupCurrentId].calculateThisGroupXP();
+    updateSheet();
 }
 
 
 function removeEncounter() {
     if (Encounter.encounterCurrentId < 0) {
         console.log("No encounters left to remove.");
+        resetTables();
         return;
     }
 
@@ -570,15 +587,12 @@ function removeEncounter() {
         return;
     }
 
-    // Remove all monsters associated with this encounter
     for (let i = 0; i < currentEncounter.encounterMonsters.length; i++) {
         removeLastMonster();
     }
 
-    // Remove the actual encounter from objects
     removeLastEncounter();
 
-    // Remove the last row of the encounter table (visual table update)
     if (encounterTable.rows.length > 1) {
         encounterTable.deleteRow(-1);
     }
@@ -593,7 +607,7 @@ function removeEncounter() {
 
         let groupTable = document.getElementById("group-table");
         if (groupTable.rows.length > 1) {
-            groupTable.deleteRow(-1); // Also clear group table row
+            groupTable.deleteRow(-1);
         }
 
         if (currentDay.dayGroups.length === 0) {
@@ -606,8 +620,9 @@ function removeEncounter() {
         }
     }
 
-    // Recalculate day XP and refresh everything
-    currentDay.calculateNegDayAdjXP();
+    Encounter.calculateFullEncounterXP();
+    Group.calculateFullGroupXP();
+    Day.calculateFullDayXP();
     updateSheet();
 }
 
@@ -660,8 +675,8 @@ function updateEncounterTable() {
 
     for (let i = 0; i < rowNumber; i++) {
         // where i is the row number
-        if (!encounterTable.rows[i]) {addEncounterRow() }
-        encounterTable.rows[i].cells[0].innerHTML = `<b>${Encounter.encounterObjects[i].encounterTag}:</b> `;
+        if (!encounterTable.rows[i]) { addEncounterRow() }
+        encounterTable.rows[i].cells[0].innerHTML = `<b>${Encounter.encounterObjects[i].encounterGroupText}:</b> `;
         encounterTable.rows[i].cells[1].innerHTML = Monster.monsterObjects[i].monsterName;
         encounterTable.rows[i].cells[2].innerHTML = ` CR${Monster.monsterObjects[i].monsterCrText}  `;
         encounterTable.rows[i].cells[3].innerHTML = ` ${Monster.monsterObjects[i].monsterXP}xp`;
@@ -707,9 +722,9 @@ function updateGroupTable() {
     for (let groupId in Group.groupObjects) {
         let group = Group.groupObjects[groupId];
 
-        Group.groupObjects[groupId].calculateGroupXP();
+        Group.groupObjects[groupId].calculateThisGroupXP();
 
-        addGroupRows();
+        if (!groupTable.rows[groupId]) { addGroupRows() }
 
         groupTable.rows[groupId].cells[0].innerHTML = `<b>${group.groupLetter}</b>`;
         groupTable.rows[groupId].cells[1].innerHTML = group.groupDeadliness;
