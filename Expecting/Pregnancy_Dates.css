@@ -1,0 +1,12 @@
+#p-fruit-size-desc {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Removes extra line spacing */
+}
+
+#fruit-pic {
+    display: block;
+    margin: 0;
+    padding: 0;
+}

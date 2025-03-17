@@ -55,51 +55,56 @@ function getImage(weeksSince) {
         document.getElementById("fruit-pic").alt = "Error: weeks out of range";
     }
     switch (weeksSince) {
-        case 8: return '8 - Raspberry';
-        case 9: return '9 - Olive';
-        case 10: return '10 - Prune';
-        case 11: return '11 - Lime';
-        case 12: return '12 - Pear';
-        case 13: return '13 - Peach';
-        case 14: return '14 - Lemon';
-        case 15: return '15 - Navel Orange';
-        case 16: return '16 - Avocado';
-        case 17: return '17 - Onion';
-        case 18: return '18 - Sweet Potato';
-        case 19: return '19 - Mango';
-        case 20: return '20 - Banana';
-        case 21: return '21 - Pomegranate';
-        case 22: return '22 - Papaya';
-        case 23: return '23 - Grapefruit';
-        case 24: return '24 - Sweetcorn';
-        case 25: return '25 - Cauliflower';
-        case 26: return '26 - Lettuce';
-        case 27: return '27 - Swede';
-        case 28: return '28 - Aubergine';
-        case 29: return '29 - Butternut Squash';
-        case 30: return '30 - Cabbage';
-        case 31: return '31 - Coconut';
-        case 32: return '32 - Jicama';
-        case 33: return '33 - Pineapple';
-        case 34: return '34 - Cantaloupe';
-        case 35: return '35 - Kale';
-        case 36: return '36 - Romaine Lettuce';
-        case 37: return '37 - Swiss Chard';
-        case 38: return '38 - Canary Melon';
-        case 39: return '39 - Watermelon';
-        case 40: return '40 - Pumpkin';
-        default: return 'Unknown Week';
+        case 8: return ['8 - Raspberry', "a"];
+        case 9: return ['9 - Olive', "an"];
+        case 10: return ['10 - Prune', "a"];
+        case 11: return ['11 - Lime', "a"];
+        case 12: return ['12 - Pear', "a"];
+        case 13: return ['13 - Peach', "a"];
+        case 14: return ['14 - Lemon', "a"];
+        case 15: return ['15 - Navel Orange', "a"];
+        case 16: return ['16 - Avocado', "an"];
+        case 17: return ['17 - Onion', "an"];
+        case 18: return ['18 - Sweet Potato', "a"];
+        case 19: return ['19 - Mango', "a"];
+        case 20: return ['20 - Banana', "a"];
+        case 21: return ['21 - Pomegranate', "a"];
+        case 22: return ['22 - Papaya', "a"];
+        case 23: return ['23 - Grapefruit', "a"];
+        case 24: return ['24 - Sweetcorn', "a"];
+        case 25: return ['25 - Cauliflower', "a"];
+        case 26: return ['26 - Lettuce', "a"];
+        case 27: return ['27 - Swede', "a"];
+        case 28: return ['28 - Aubergine', "an"];
+        case 29: return ['29 - Butternut Squash', "a"];
+        case 30: return ['30 - Cabbage', "a"];
+        case 31: return ['31 - Coconut', "a"];
+        case 32: return ['32 - Jicama', "a"];
+        case 33: return ['33 - Pineapple', "a"];
+        case 34: return ['34 - Cantaloupe', "a"];
+        case 35: return ['35 - Kale', "a"];
+        case 36: return ['36 - Romaine Lettuce', "a"];
+        case 37: return ['37 - Swiss Chard', "a"];
+        case 38: return ['38 - Canary Melon', "a"];
+        case 39: return ['39 - Watermelon', "a"];
+        case 40: return ['40 - Pumpkin', "a"];
+        default: return ['Unknown Week', ""];
     }
+    
 }
 
-function extractFruit(weeksSince) {
-    const fruitEntry = getFruitName(weeksSince);
-    return fruitEntry.split(' - ')[1] || 'Unknown Fruit';
+function findFruitName(fruit) {
+    return fruit[0].split(' - ')[1] || 'Unknown Fruit';
 }
 
 let img = document.getElementById("fruit-pic");
-let fruitImage = "../images/Baby_Fruits/" + getImage(weeksSinceConception) + ".jpg";
+let fruitImage = getImage(weeksSinceConception);
+let fruitFile = "../images/Baby_Fruits/" + fruitImage[0] + ".jpg";
 // console.log(fruitImage);
-if (fruitImage) {
-    img.src = fruitImage;
+if (fruitFile) {
+    let fruitName = findFruitName(fruitImage);
+    let fruitNameText = "Our baby is the size of: " + "<br>" + fruitImage[1] + " " + fruitName ;
+    document.getElementById("fruit-size-desc").innerHTML = fruitNameText;
+
+    img.src = fruitFile;
 }
