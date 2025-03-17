@@ -103,7 +103,7 @@ let fruitFile = "../images/Baby_Fruits/" + fruitImage[0] + ".jpg";
 // console.log(fruitImage);
 if (fruitFile) {
     let fruitName = findFruitName(fruitImage);
-    let fruitNameText = "Our baby is the size of: " + "<br>" + fruitImage[1] + " " + fruitName ;
+    let fruitNameText = "Our baby is the size of: " + "<br>" + fruitImage[1] + " " + fruitName + "!";
     document.getElementById("fruit-size-desc").innerHTML = fruitNameText;
 
     img.src = fruitFile;
