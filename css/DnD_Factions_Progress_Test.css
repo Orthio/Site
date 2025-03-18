@@ -1,0 +1,37 @@
+p {
+    font-size: 12px;
+}
+
+.form-goal-overall {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+ 
+.form-goal {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 10px;
+} 
+
+
+
+
+.text-goal {
+    width: 180px;
+    height: 25px;
+}
+
+.goal-link {
+    text-decoration: none;
+    color: black;
+}
+
+#button-gm-goals span {
+    cursor: copy;
+}
+
+#gm-goals-text {
+    display: none;
+}

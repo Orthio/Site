@@ -184,6 +184,12 @@
     width: 350px;
 }
 
+.treasure-values-original-text {
+    padding-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+}
+
 .treasure-values-text {
     padding-left: 10px;
     font-size: 14px;
@@ -196,7 +202,7 @@
 
 .item-type {
     padding-left: 10px;
-    font-size: 14px;
+    font-size: 12px;
 
     font-style: italic;
     -moz-user-select: none;

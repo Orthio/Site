@@ -20,31 +20,6 @@ fetch('json/DnD_Roll_Tables.json')
     })
     .catch(error => console.error('Error fetching JSON:', error));
 
-/*   enemyWeapons
-  partyWeapons 
-  artNature
-  artJewelleryItems
-  artEquipment
-  artDiningItems
-  artDecorativeItems
-  artPersonalItems
-  artMetalTypes
-  artMaterialTypes
-  artGemstoneTypes
-  artDecorativeTechniques
-  artDesignThemes
-  hooks1
-  hooks2
-  origin
-  tactics
-  equipment1
-  miscItems
-  materialTraits
-  treasures
-  itemTraits
-  materials */
-
-
 
 class TreasureRoll {
     //Individual treasure roll
@@ -57,6 +32,7 @@ class TreasureRoll {
     static treasureSplit2 = "";
     static treasureSplit3 = "";
 
+    static treasureValuesOriginalText = "";
     static treasureValuesText = "";
     static themeItemTypeInputName = "Random";
     static themeItemTypeSelectedName = "";
@@ -79,6 +55,7 @@ function AddToTreasureRollText() {
         '<div>' + TreasureRoll.magicItemText + '</div>' +
         '<div class="treasure-values-text">' + TreasureRoll.treasureValuesText + '</div>' +
         '<div class="item-type">' + TreasureRoll.themeItemTypeText + '</div>' +
+        '<div class="treasure-values-original-text">' + TreasureRoll.treasureValuesOriginalText + '</div>' +
         '<div class="item-rarity-text">' + TreasureRoll.itemRarityText + '</div>' +
         '</div>';
 
@@ -109,6 +86,8 @@ function calcIndiTreasure() {
 
     TreasureRoll.treasureText = TreasureRoll.currentId + ". Individual Treasure: " + currentTreasureRoll.treasure + "gp";
     TreasureRoll.themeItemTypeText = "";
+    TreasureRoll.treasureValuesOriginalText = "";
+    TreasureRoll.treasureValuesText = "";
     TreasureRoll.magicItemText = "";
     TreasureRoll.itemRarityText = "";
 
@@ -122,7 +101,6 @@ function calcHoardTreasure() {
     let inputtedLevel = LevelInput.value;
     let hoardTreasureTable = jsonData.hoardTreasureTable;
     const matchingRow = findNextTableNumber(hoardTreasureTable, cr);
-
 
     let currentTreasureRoll = TreasureRoll.treasureObjects[TreasureRoll.currentId];
     currentTreasureRoll.CR = matchingRow.minCR;
@@ -172,7 +150,11 @@ function rollForTreasureTheme() {
 
 function updateRolledThemeText(themeName) {
     TreasureRoll.themeItemTypeSelectedName = themeName;
-    TreasureRoll.themeItemTypeText = " Rolled Item type is: " + TreasureRoll.themeItemTypeSelectedName;
+    if (TreasureRoll.themeItemTypeInputName == "Random") {
+        TreasureRoll.themeItemTypeText = " Rolled Treasure type is: " + TreasureRoll.themeItemTypeSelectedName;
+    } else {
+        TreasureRoll.themeItemTypeText = " Picked Treasure type is: " + TreasureRoll.themeItemTypeSelectedName;
+    }
     if (TreasureRoll.currentId > 0) {
         calculateTreasureValue();
     };
@@ -186,7 +168,7 @@ function selectTreasureTheme(theme) {
             itemTheme = "Arcana";
             TreasureRoll.themeItemTypeInputName = itemTheme;
             TreasureRoll.themeItemTypeSelectedName = itemTheme;
-            TreasureRoll.themeItemTypeText = " Picked Item type is: " + itemTheme;
+            TreasureRoll.themeItemTypeText = " Picked Treasure type is: " + itemTheme;
             calculateTreasureValue();
             updateTreasureRollText();
             break;
@@ -194,7 +176,7 @@ function selectTreasureTheme(theme) {
             itemTheme = "Armaments";
             TreasureRoll.themeItemTypeInputName = itemTheme;
             TreasureRoll.themeItemTypeSelectedName = itemTheme;
-            TreasureRoll.themeItemTypeText = "Picked Item type is: " + itemTheme;
+            TreasureRoll.themeItemTypeText = "Picked Treasure type is: " + itemTheme;
             calculateTreasureValue();
             updateTreasureRollText();
             break;
@@ -202,7 +184,7 @@ function selectTreasureTheme(theme) {
             itemTheme = "Implements";
             TreasureRoll.themeItemTypeInputName = itemTheme;
             TreasureRoll.themeItemTypeSelectedName = itemTheme;
-            TreasureRoll.themeItemTypeText = "Picked Item type is: " + itemTheme;
+            TreasureRoll.themeItemTypeText = "Picked Treasure type is: " + itemTheme;
             calculateTreasureValue();
             updateTreasureRollText();
             break;
@@ -210,7 +192,7 @@ function selectTreasureTheme(theme) {
             itemTheme = "Relics";
             TreasureRoll.themeItemTypeInputName = itemTheme;
             TreasureRoll.themeItemTypeSelectedName = itemTheme;
-            TreasureRoll.themeItemTypeText = "Picked Item type is: " + itemTheme;
+            TreasureRoll.themeItemTypeText = "Picked Treasure type is: " + itemTheme;
             calculateTreasureValue();
             updateTreasureRollText();
             break;
@@ -219,7 +201,7 @@ function selectTreasureTheme(theme) {
             itemTheme = jsonData.magicItemTypeTable[themeItemRoll];
             TreasureRoll.themeItemTypeInputName = "Random";
             TreasureRoll.themeItemTypeSelectedName = itemTheme;
-            TreasureRoll.themeItemTypeText = "Rolled Item type is: " + itemTheme;
+            TreasureRoll.themeItemTypeText = "Rolled Treasure type is: " + itemTheme;
             calculateTreasureValue();
             updateTreasureRollText();
             break;
@@ -233,6 +215,7 @@ function calculateTreasureValue() {
     if (TreasureRoll.currentId <= 0) {
         return;
     }
+
     let currentTreasureTheme = TreasureRoll.themeItemTypeSelectedName; //eg Arcana
     let currentGP = TreasureRoll.treasureObjects[TreasureRoll.currentId].treasure;
 
@@ -242,14 +225,27 @@ function calculateTreasureValue() {
     let tradeBarCheck;
     let tradeBarType;
     let tradeBarValue;
+    let remainingGoldValue;
+    let remainingGoldValue2;
+    let remainingGoldValue3;
+    let remainingGoldValue4;
+
+    let gold = document.getElementById("GoldInput").value;
+    if (gold != "") {
+        currentGP = gold;
+    }
 
     switch (currentTreasureTheme) {
         case "Arcana":
             //Gemstones
-            TreasureRoll.treasureValuesText = currentGP + "gp worth of gemstones";
             let gemCheck = findPreviousToNextHigher(jsonData.gemstoneValues, currentGP);
-            let category = jsonData.gems.find(gem => gem.name === gemCheck); //Fix this
-            let gemType = rollOnTable(category);
+            let gemCategory = jsonData.gems.find(gem => gem.name === gemCheck.type);
+            let gemType = rollOnTable(gemCategory.table);
+            let gemValue = gemCheck.value;
+            remainingGoldValue = currentGP - gemValue;
+
+            TreasureRoll.treasureValuesOriginalText = currentGP + "gp worth of gemstones";
+            TreasureRoll.treasureValuesText = gemType + " worth " + gemValue + "gp, and other gems worth " + remainingGoldValue + "gp";
             break;
         case "Armaments":
             // Coin tradebars 50-50
@@ -259,15 +255,17 @@ function calculateTreasureValue() {
             tradeBarCheck = findPreviousToNextHigher(jsonData.tradeBarsTable, tradeBarNumber);
             tradeBarType = tradeBarCheck.type;
             tradeBarValue = tradeBarCheck.value;
-            TreasureRoll.treasureValuesText = coinNumber + "gp worth of coinage" +
-                ", and " + tradeBarNumber + "gp worth of trade bars" +
-                "<br>" + "including " + tradeBarType + " worth " + tradeBarValue + "gp total";
+            remainingGoldValue = currentGP - tradeBarValue;
+
+            TreasureRoll.treasureValuesOriginalText = coinNumber + "gp worth of coin"
+            ", and " + tradeBarNumber + "gp worth of trade bars";
+            TreasureRoll.treasureValuesText = tradeBarType + " worth " + tradeBarValue + "gp, and coinage worth " + remainingGoldValue + "gp";
 
             break;
         case "Implements":
-            // Coins, tradebars, trade goods - 30-10-40
+            // Coins, tradebars, trade goods - 10-10-80
 
-            tradeGoodsNumber = Math.floor(currentGP * 0.4);
+            tradeGoodsNumber = Math.floor(currentGP * 0.8);
             tradeBarNumber = Math.floor(currentGP * 0.1);
             coinNumber = currentGP - tradeBarNumber - tradeGoodsNumber;
 
@@ -277,16 +275,38 @@ function calculateTreasureValue() {
             let tradeGoodsCheck = findPreviousToNextHigher(jsonData.tradeGoodsTable, tradeGoodsNumber);
             let tradeGoodsType = tradeGoodsCheck.type;
             let tradeGoodsValue = tradeGoodsCheck.value;
+            remainingGoldValue = currentGP - tradeBarValue - tradeGoodsValue;
 
-            TreasureRoll.treasureValuesText = coinNumber + "gp worth of coinage," +
+            TreasureRoll.treasureValuesOriginalText = coinNumber + "gp worth of coin," +
                 " " + tradeBarNumber + "gp worth of trade bars," +
-                "<br>" + " and " + tradeGoodsNumber + "gp worth of trade goods" +
-                "<br>" + "including " + tradeGoodsType + " worth " + tradeGoodsValue + "gp total";
+                "<br>" + " and " + tradeGoodsNumber + "gp worth of trade goods";
+            TreasureRoll.treasureValuesText = tradeGoodsType + " worth " + tradeGoodsValue + "gp, " +
+                tradeBarType + " worth " + tradeBarValue + "gp, and coinage worth " + remainingGoldValue + "gp";
 
             break;
         case "Relics":
             // Art objects
-            TreasureRoll.treasureValuesText = currentGP + "gp worth of art objects";
+            let artCheck = findPreviousToNextHigher(jsonData.artObjectValues, currentGP);
+            let artCategory = jsonData.artObjects.find(art => art.name === artCheck.type);
+            let artType = rollOnTable(artCategory.table);
+            let artValue = artCheck.value;
+            remainingGoldValue2 = currentGP - artValue;
+
+            let artType2 = rollOnTable(jsonRollTablesData.treasures);
+            let artType3 = rollOnTable(jsonRollTablesData.miscItems);
+            if (remainingGoldValue2 - artValue > 0) {
+                remainingGoldValue3 = (remainingGoldValue2 - artValue) * 2 / 3;
+                remainingGoldValue4 = (remainingGoldValue2 - artValue) * 1 / 3;
+            } else {
+                remainingGoldValue3 = 0
+                remainingGoldValue4 = 0
+            }
+
+            TreasureRoll.treasureValuesOriginalText = currentGP + "gp worth of art objects";
+            TreasureRoll.treasureValuesText = artType + " worth " + artValue + "gp, " +
+                artType2 + " worth " + remainingGoldValue2 + "gp, " +
+                artType3 + " worth " + remainingGoldValue3 + "gp";
+
             break;
         case "Random":
             // Random treasure
@@ -307,16 +327,19 @@ function calculateTreasureValue() {
                     processCategory("Relics");
                     break;
                 case "Personal items":
-                    TreasureRoll.treasureValuesText = currentGP + "gp worth of personal items";
+                    let personalItemType = rollOnTable(jsonRollTablesData.artPersonalItems);
 
-                    // Insert code    
+                    TreasureRoll.treasureValuesOriginalText = currentGP + "gp worth of personal items";
+                    TreasureRoll.treasureValuesText = personalItemType + " worth " + currentGP + "gp";
                     break;
                 case "Equipment":
+                    let equipmentType = rollOnTable(jsonRollTablesData.equipment1);
 
-                    // Insert code
+                    TreasureRoll.treasureValuesOriginalText = currentGP + "gp worth of equipment";
+                    TreasureRoll.treasureValuesText = equipmentType + " worth " + currentGP + "gp";
                     break;
                 default:
-                    TreasureRoll.treasureValuesText = currentGP + "gp worth of equipment";
+                    TreasureRoll.treasureValuesText = currentGP + "gp worth of coinage";
                     break;
             }
             break;
@@ -332,8 +355,9 @@ function updateTreasureRollText() {
     TreasureRoll.currentTreasureText = '<div class="treasure-text-results">' +
         '<div>' + TreasureRoll.treasureText + '</div>' +
         '<div>' + TreasureRoll.magicItemText + '</div>' +
-        '<div class="treasure-split-text">' + TreasureRoll.treasureValuesText + '</div>' +
+        '<div class="treasure-values-text">' + TreasureRoll.treasureValuesText + '</div>' +
         '<div class="item-type">' + TreasureRoll.themeItemTypeText + '</div>' +
+        '<div class="treasure-values-original-text">' + TreasureRoll.treasureValuesOriginalText + '</div>' +
         '<div class="item-rarity-text">' + TreasureRoll.itemRarityText + '</div>' +
         '</div>';
 
