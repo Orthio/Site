@@ -3,8 +3,8 @@
 
 export let partyLevel = 7;
 
-export let currentTime = "4pm";
-export let currentDay = 8;
+export let currentTime = "1pm";
+export let currentDay = 9;
 export let currentTenday = 1;
 export let currentMonth = 14;
 export let currentYear = 1489;
@@ -112,6 +112,22 @@ export function findNextTableNumber(table, number) {
         }
     }
     return null; // Return null if no matching row is found
+}
+
+export function findPreviousToNextHigher(jsonTable, target) {
+    // Finds the next value on a table, 
+    // for instance searching for close to 30 on a table with 25 and 40 returns 25
+    let sortedItems = jsonTable.sort((a, b) => a.value - b.value); // Sort items by value
+    let nextHigher = sortedItems.find(item => item.value > target); // Find the first higher value
+
+    if (!nextHigher) return null; // If no higher value exists, return null
+
+    // Find the item just before the next higher
+    let previousItem = sortedItems
+        .filter(item => item.value < nextHigher.value) // Get all lower values
+        .pop(); // Get the last (largest lower value)
+
+    return previousItem || null; // Return the found item, or null if none exists
 }
 
 export function rollOnTable(table) {

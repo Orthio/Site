@@ -328,6 +328,10 @@ function removeLastEncounter() {
 
     Encounter.encounterCurrentId--;
     if (Encounter.encounterCurrentGroupNo == 1) {
+        if (Encounter.encounterCurrentId == -1) {
+            resetTables();
+            return
+        }
         Encounter.encounterCurrentGroupNo =
             Encounter.encounterObjects[Encounter.encounterCurrentId].encounterGroupTextNo;
     } else {
@@ -469,8 +473,8 @@ class Day {
     }
 
     static calculateFullDayXP() {
-        for (let dayId in Day.dayGroups) {
-            let day = Day.dayGroups[dayId];
+        for (let dayId in Day.dayObjects) {
+            let day = Day.dayObjects[dayId];
             day.calculateThisDayXP();
         }
     }
@@ -550,6 +554,7 @@ function CRUp() {
     Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
     Encounter.encounterObjects[Encounter.encounterCurrentId].calculateThisEncounterXP();
     Group.groupObjects[Group.groupCurrentId].calculateThisGroupXP();
+    Day.calculateFullDayXP();
     updateSheet();
 }
 
@@ -570,6 +575,7 @@ function CRDown() {
     Monster.monsterObjects[Monster.monsterCurrentId].monsterUpdate();
     Encounter.encounterObjects[Encounter.encounterCurrentId].calculateThisEncounterXP();
     Group.groupObjects[Group.groupCurrentId].calculateThisGroupXP();
+    Day.calculateFullDayXP();
     updateSheet();
 }
 

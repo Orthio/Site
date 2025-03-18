@@ -1,9 +1,33 @@
 {
     "indiTreasureTable": [
-        { "minCR": 0, "max": 4, "roll1": 3, "roll2": 6, "roll3": 1 },
-        { "minCR": 5, "max": 10, "roll1": 2, "roll2": 8, "roll3": 10 },
-        { "minCR": 11, "max": 16, "roll1": 2, "roll2": 10, "roll3": 100 },
-        { "minCR": 17, "max": 40, "roll1": 2, "roll2": 8, "roll3": 1000 }
+        {
+            "minCR": 0,
+            "max": 4,
+            "roll1": 3,
+            "roll2": 6,
+            "roll3": 1
+        },
+        {
+            "minCR": 5,
+            "max": 10,
+            "roll1": 2,
+            "roll2": 8,
+            "roll3": 10
+        },
+        {
+            "minCR": 11,
+            "max": 16,
+            "roll1": 2,
+            "roll2": 10,
+            "roll3": 100
+        },
+        {
+            "minCR": 17,
+            "max": 40,
+            "roll1": 2,
+            "roll2": 8,
+            "roll3": 1000
+        }
     ],
     "hoardTreasureTable": [
         {
@@ -48,49 +72,138 @@
         }
     ],
     "itemLevelTable": [
-        { "table": 0, "min": 1, "max": 4 },
-        { "table": 1, "min": 5, "max": 10 },
-        { "table": 2, "min": 11, "max": 16 },
-        { "table": 3, "min": 17, "max": 20 }
+        {
+            "table": 0,
+            "min": 1,
+            "max": 4
+        },
+        {
+            "table": 1,
+            "min": 5,
+            "max": 10
+        },
+        {
+            "table": 2,
+            "min": 11,
+            "max": 16
+        },
+        {
+            "table": 3,
+            "min": 17,
+            "max": 20
+        }
     ],
     "itemTableA": [
-        { "type": "Common", "min": 1, "max": 54 },
-        { "type": "Uncommon", "min": 55, "max": 91 },
-        { "type": "Rare", "min": 92, "max": 100 }
+        {
+            "rarity": "Common",
+            "min": 1,
+            "max": 54
+        },
+        {
+            "rarity": "Uncommon",
+            "min": 55,
+            "max": 91
+        },
+        {
+            "rarity": "Rare",
+            "min": 92,
+            "max": 100
+        }
     ],
     "itemTableB": [
-        { "type": "Common", "min": 1, "max": 30 },
-        { "type": "Uncommon", "min": 31, "max": 81 },
-        { "type": "Rare", "min": 82, "max": 98 },
-        { "type": "Very Rare", "min": 99, "max": 100 }
+        {
+            "rarity": "Common",
+            "min": 1,
+            "max": 30
+        },
+        {
+            "rarity": "Uncommon",
+            "min": 31,
+            "max": 81
+        },
+        {
+            "rarity": "Rare",
+            "min": 82,
+            "max": 98
+        },
+        {
+            "rarity": "Very Rare",
+            "min": 99,
+            "max": 100
+        }
     ],
     "itemTableC": [
-        { "type": "Common", "min": 1, "max": 11 },
-        { "type": "Uncommon", "min": 12, "max": 34 },
-        { "type": "Rare", "min": 35, "max": 70 },
-        { "type": "Very Rare", "min": 71, "max": 93 },
-        { "type": "Legendary", "min": 94, "max": 100 }
+        {
+            "rarity": "Common",
+            "min": 1,
+            "max": 11
+        },
+        {
+            "rarity": "Uncommon",
+            "min": 12,
+            "max": 34
+        },
+        {
+            "rarity": "Rare",
+            "min": 35,
+            "max": 70
+        },
+        {
+            "rarity": "Very Rare",
+            "min": 71,
+            "max": 93
+        },
+        {
+            "rarity": "Legendary",
+            "min": 94,
+            "max": 100
+        }
     ],
     "itemTableD": [
-        { "type": "Rare", "min": 1, "max": 20 },
-        { "type": "Very Rare", "min": 21, "max": 64 },
-        { "type": "Legendary", "min": 65, "max": 100 }
+        {
+            "rarity": "Rare",
+            "min": 1,
+            "max": 20
+        },
+        {
+            "rarity": "Very Rare",
+            "min": 21,
+            "max": 64
+        },
+        {
+            "rarity": "Legendary",
+            "min": 65,
+            "max": 100
+        }
     ],
-    
     "magicItemTypeTable": {
         "1": "Arcana",
         "2": "Armaments",
         "3": "Implements",
         "4": "Relics"
     },
-
     "treasureTypeTable": [
-        { "number": 0, "type": "Arcana", "treasure": "Gemstones" },
-        { "number": 1, "type": "Armaments", "treasure": "Coins, trade bars" }, 
-        { "number": 2, "type": "Implements", "treasure": "Coins, trade bars, trade goods" },
-        { "number": 3, "type": "Relics", "treasure": "Art objects" }
+        {
+            "number": 0,
+            "type": "Arcana",
+            "treasure": "Gemstones"
+        },
+        {
+            "number": 1,
+            "type": "Armaments",
+            "treasure": "Coins, trade bars"
+        },
+        {
+            "number": 2,
+            "type": "Implements",
+            "treasure": "Coins, trade bars, trade goods"
+        },
+        {
+            "number": 3,
+            "type": "Relics",
+            "treasure": "Art objects"
+        }
     ],
-
     "randomTreasureTypeTable": {
         "0": "Trade Bars",
         "1": "Trade Goods",
@@ -102,17 +215,262 @@
         "7": "Coinage"
     },
 
-
-
-
-
-
+    
     "tradeBarsTable": [
-        {"number": 0, "type": "2-pound silver bar", "gp": 10},
-        {"number": 1, "type": "5-pound silver bar", "gp": 25},
-        {"number": 2, "type": "5-pound gold bar", "gp": 250}
-    ]
+        {"value": 10, "type": "2-pound silver bar"},
+        {"value": 20, "type": "2-pound silver bar (x2)"},
+        {"value": 25, "type": "5-pound silver bar"},
+        {"value": 30, "type": "2-pound silver bar (x3)"},
+        {"value": 40, "type": "2-pound silver bar (x4)"},
+        {"value": 50, "type": "5-pound silver bar (x2)"},
+        {"value": 60, "type": "2-pound silver bar (x6)"},
+        {"value": 70, "type": "2-pound silver bar (x7)"},
+        {"value": 75, "type": "5-pound silver bar (x3)"},
+        {"value": 80, "type": "2-pound silver bar (x8)"},
+        {"value": 90, "type": "2-pound silver bar (x9)"},
+        {"value": 100, "type": "5-pound silver bar (x4)"},
+        {"value": 125, "type": "5-pound silver bar (x5)"},
+        {"value": 150, "type": "5-pound silver bar (x6)"},
+        {"value": 175, "type": "5-pound silver bar (x7)"},
+        {"value": 200, "type": "5-pound silver bar (x8)"},
+        {"value": 225, "type": "5-pound silver bar (x9)"},
+        {"value": 250, "type": "5-pound silver bar (x10)"},
+        {"value": 250, "type": "5-pound gold bar"},
+        {"value": 500, "type": "5-pound gold bar (x2)"},
+        {"value": 750, "type": "5-pound gold bar (x3)"},
+        {"value": 1000, "type": "5-pound gold bar (x4)"},
+        {"value": 1250, "type": "5-pound gold bar (x5)"},
+        {"value": 1500, "type": "5-pound gold bar (x6)"},
+        {"value": 1750, "type": "5-pound gold bar (x7)"},
+        {"value": 2000, "type": "5-pound gold bar (x8)"},
+        {"value": 2250, "type": "5-pound gold bar (x9)"},
+        {"value": 2500, "type": "5-pound platinum bar"},
+        {"value": 3000, "type": "5-pound mithral bar"},
+        {"value": 5000, "type": "5-pound platinum bar (x2)"},
+        {"value": 6000, "type": "5-pound mithral bar (x2)"},
+        {"value": 7500, "type": "5-pound platinum bar (x3)"},
+        {"value": 9000, "type": "5-pound mithral bar (x3)"},
+        {"value": 10000, "type": "5-pound adamantine bar (x2)"},
+        {"value": 12000, "type": "5-pound mithral bar (x4)"},
+        {"value": 12500, "type": "5-pound platinum bar (x5)"},
+        {"value": 15000, "type": "5-pound mithral bar (x5)"},
+        {"value": 17500, "type": "5-pound platinum bar (x7)"},
+        {"value": 18000, "type": "5-pound mithral bar (x6)"},
+        {"value": 20000, "type": "5-pound platinum bar (x8)"},
+        {"value": 21000, "type": "5-pound mithral bar (x7)"},
+        {"value": 22500, "type": "5-pound platinum bar (x9)"},
+        {"value": 24000, "type": "5-pound mithral bar (x8)"},
+        {"value": 25000, "type": "5-pound adamantine bar (x5)"},
+        {"value": 27000, "type": "5-pound mithral bar (x9)"},
+        {"value": 30000, "type": "5-pound adamantine bar (x6)"},
+        {"value": 35000, "type": "5-pound adamantine bar (x7)"},
+        {"value": 40000, "type": "5-pound adamantine bar (x8)"},
+        {"value": 45000, "type": "5-pound adamantine bar (x9)"},
+        {"value": 50000, "type": "5-pound adamantine bar (x10)"}
+    ],
+    
+    
+        "tradeGoodsTable": [
+          {"value": 1, "type": "1lb of ginger or one goat (x1)"},
+          {"value": 2, "type": "1lb of ginger or one goat (x2)"},
+          {"value": 2, "type": "1lb of cinnamon or pepper, or one sheep (x1)"},
+          {"value": 3, "type": "1lb of ginger or one goat (x3)"},
+          {"value": 3, "type": "1lb of cloves or one pig (x1)"},
+          {"value": 4, "type": "1lb of ginger or one goat (x4)"},
+          {"value": 4, "type": "1lb of cinnamon or pepper, or one sheep (x2)"},
+          {"value": 5, "type": "1lb of ginger or one goat (x5)"},
+          {"value": 5, "type": "1lb of silver or 1sq yd of linen (x1)"},
+          {"value": 6, "type": "1lb of cinnamon or pepper, or one sheep (x3)"},
+          {"value": 6, "type": "1lb of cloves or one pig (x2)"},
+          {"value": 8, "type": "1lb of cinnamon or pepper, or one sheep (x4)"},
+          {"value": 9, "type": "1lb of cloves or one pig (x3)"},
+          {"value": 10, "type": "1lb of cinnamon or pepper, or one sheep (x5)"},
+          {"value": 10, "type": "1lb of silver or 1sq yd of linen (x2)"},
+          {"value": 10, "type": "1lb of silk or one cow (x1)"},
+          {"value": 12, "type": "1lb of cloves or one pig (x4)"},
+          {"value": 15, "type": "1lb of cloves or one pig (x5)"},
+          {"value": 15, "type": "1lb of silver or 1sq yd of linen (x3)"},
+          {"value": 15, "type": "1lb of saffron or one ox (x1)"},
+          {"value": 20, "type": "1lb of silver or 1sq yd of linen (x4)"},
+          {"value": 20, "type": "1lb of silk or one cow (x2)"},
+          {"value": 25, "type": "1lb of silver or 1sq yd of linen (x5)"},
+          {"value": 30, "type": "1lb of silk or one cow (x3)"},
+          {"value": 30, "type": "1lb of saffron or one ox (x2)"},
+          {"value": 40, "type": "1lb of silk or one cow (x4)"},
+          {"value": 45, "type": "1lb of saffron or one ox (x3)"},
+          {"value": 50, "type": "1lb of silk or one cow (x5)"},
+          {"value": 60, "type": "1lb of saffron or one ox (x4)"},
+          {"value": 75, "type": "1lb of saffron or one ox (x5)"},
+          {"value": 100, "type": "1lb of Dragon Bone (x1)"},
+          {"value": 200, "type": "1lb of Dragon Bone (x2)"},
+          {"value": 250, "type": "1lb of Kraken Ink (x1)"},
+          {"value": 300, "type": "1lb of Dragon Bone (x3)"},
+          {"value": 400, "type": "1lb of Dragon Bone (x4)"},
+          {"value": 500, "type": "1lb of Dragon Bone (x5)"},
+          {"value": 500, "type": "1lb of Kraken Ink (x2)"},
+          {"value": 500, "type": "1lb of Beholder Eyestalks (x1)"},
+          {"value": 600, "type": "1lb of Ghost Lotus Petals (a rare ethereal flower) (x1)"},
+          {"value": 750, "type": "1lb of Kraken Ink (x3)"},
+          {"value": 1000, "type": "1lb of Kraken Ink (x4)"},
+          {"value": 1000, "type": "1lb of Beholder Eyestalks (x2)"},
+          {"value": 1000, "type": "1lb of Residuum (refined magical powder) (x1)"},
+          {"value": 1200, "type": "1lb of Ghost Lotus Petals (a rare ethereal flower) (x2)"},
+          {"value": 1250, "type": "1lb of Kraken Ink (x5)"},
+          {"value": 1500, "type": "1lb of Beholder Eyestalks (x3)"},
+          {"value": 1800, "type": "1lb of Ghost Lotus Petals (a rare ethereal flower) (x3)"},
+          {"value": 2000, "type": "1lb of Beholder Eyestalks (x4)"},
+          {"value": 2000, "type": "1lb of Residuum (refined magical powder) (x2)"},
+          {"value": 2000, "type": "1lb of Blood of a Solar (used in rare magics) (x1)"},
+          {"value": 2400, "type": "1lb of Ghost Lotus Petals (a rare ethereal flower) (x4)"},
+          {"value": 2500, "type": "1lb of Beholder Eyestalks (x5)"},
+          {"value": 3000, "type": "1lb of Ghost Lotus Petals (a rare ethereal flower) (x5)"},
+          {"value": 3000, "type": "1lb of Residuum (refined magical powder) (x3)"},
+          {"value": 4000, "type": "1lb of Residuum (refined magical powder) (x4)"},
+          {"value": 4000, "type": "1lb of Blood of a Solar (used in rare magics) (x2)"},
+          {"value": 5000, "type": "1lb of Residuum (refined magical powder) (x5)"},
+          {"value": 6000, "type": "1lb of Blood of a Solar (used in rare magics) (x3)"},
+          {"value": 8000, "type": "1lb of Blood of a Solar (used in rare magics) (x4)"},
+          {"value": 10000, "type": "1lb of Blood of a Solar (used in rare magics) (x5)"},
+          {"value": 10000, "type": "1lb of Tarrasque Scale (x1)"},
+          {"value": 20000, "type": "1lb of Tarrasque Scale (x2)"},
+          {"value": 30000, "type": "1lb of Tarrasque Scale (x3)"},
+          {"value": 40000, "type": "1lb of Tarrasque Scale (x4)"},
+          {"value": 50000, "type": "1lb of Tarrasque Scale (x5)"}
+        ],
+
+        
+            "gems": [
+              {
+                "name": "10 gp Gemstones",
+                "table": [
+                  "Azurite (opaque mottled deep blue)",
+                  "Banded agate (translucent striped brown, blue, white, or red)",
+                  "Blue quartz (transparent pale blue)",
+                  "Eye agate (translucent circles of gray, white brown, blue, or green)",
+                  "Hematite (opaque gray-black)",
+                  "Lapis lazuli (opaque light and dark blue with yellow flecks)",
+                  "Malachite (opaque striated light and dark green)",
+                  "Moss agate (translucent pink or yellow-white with mossy gray or green markings)",
+                  "Obsidian (opaque black)",
+                  "Rhodochrosite (opaque light pink)",
+                  "Tiger eye (translucent brown with golden center)",
+                  "Turquoise (opaque light blue-green)"
+                ]
+              },
+              {
+                "name": "50 gp Gemstones",
+                "table": [
+                  "Bloodstone (opaque dark gray with red flecks)",
+                  "Carnelian (opaque orange to red-brown)",
+                  "Chalcedony (opaque white)",
+                  "Chrysoprase (translucent green)",
+                  "Citrine (transparent pale yellow-brown)",
+                  "Jasper (opaque blue, black, or brown)",
+                  "Moonstone (translucent white with pale blue glow)",
+                  "Onyx (opaque bands of black and white, or pure black or white)",
+                  "Quartz (transparent white, smoky gray, or yellow)",
+                  "Sardonyx (opaque bands of red and white)",
+                  "Star rose quartz (translucent rosy stone with white star-shaped center)",
+                  "Zircon (transparent pale blue-green)"
+                ]
+              },
+              {
+                "name": "100 gp Gemstones",
+                "table": [
+                  "Amber (transparent watery gold to rich gold)",
+                  "Amethyst (transparent deep purple)",
+                  "Chrysoberyl (transparent yellow-green to pale green)",
+                  "Coral (opaque crimson)",
+                  "Garnet (transparent red, brown-green, or violet)",
+                  "Jade (translucent light green, deep green, or white)",
+                  "Jet (opaque deep black)",
+                  "Pearl (opaque lustrous white, yellow, or pink)",
+                  "Spinel (transparent red, red-brown, or deep green)",
+                  "Tourmaline (transparent pale green, blue, brown, or red)"
+                ]
+              },
+              {
+                "name": "500 gp Gemstones",
+                "table": [
+                  "Alexandrite (transparent dark green)",
+                  "Aquamarine (transparent pale blue-green)",
+                  "Black pearl (opaque pure black)",
+                  "Blue spinel (transparent deep blue)",
+                  "Peridot (transparent rich olive green)",
+                  "Topaz (transparent golden yellow)"
+                ]
+              },
+              {
+                "name": "1,000 gp Gemstones",
+                "table": [
+                  "Black opal (translucent dark green with black mottling and golden flecks)",
+                  "Blue sapphire (transparent blue-white to medium blue)",
+                  "Emerald (transparent deep bright green)",
+                  "Fire opal (translucent fiery red)",
+                  "Opal (translucent pale blue with green and golden mottling)",
+                  "Star ruby (translucent ruby with white star-shaped center)",
+                  "Star sapphire (translucent blue sapphire with white star-shaped center)",
+                  "Yellow sapphire (transparent fiery yellow or yellow-green)"
+                ]
+              },
+              {
+                "name": "5,000 gp Gemstones",
+                "table": [
+                  "Black sapphire (translucent lustrous black with glowing highlights)",
+                  "Diamond (transparent blue-white, canary, pink, brown, or blue)",
+                  "Jacinth (transparent fiery orange)",
+                  "Ruby (transparent clear red to deep crimson)"
+                ]
+              }
+            ],
+
+            
+            
+            
+                "gemstoneValues": [
+                  {"value": 10, "type": "10 gp Gemstones", "quantity": 1},
+                  {"value": 20, "type": "10 gp Gemstones", "quantity": 2},
+                  {"value": 30, "type": "10 gp Gemstones", "quantity": 3},
+                  {"value": 40, "type": "10 gp Gemstones", "quantity": 4},
+                  {"value": 50, "type": "50 gp Gemstones", "quantity": 1},
+                  {"value": 100, "type": "100 gp Gemstones", "quantity": 1},
+                  {"value": 150, "type": "50 gp Gemstones", "quantity": 3},
+                  {"value": 200, "type": "100 gp Gemstones", "quantity": 2},
+                  {"value": 250, "type": "50 gp Gemstones", "quantity": 5},
+                  {"value": 300, "type": "100 gp Gemstones", "quantity": 3},
+                  {"value": 400, "type": "100 gp Gemstones", "quantity": 4},
+                  {"value": 500, "type": "500 gp Gemstones", "quantity": 1},
+                  {"value": 1000, "type": "1,000 gp Gemstones", "quantity": 1},
+                  {"value": 1500, "type": "500 gp Gemstones", "quantity": 3},
+                  {"value": 2000, "type": "1,000 gp Gemstones", "quantity": 2},
+                  {"value": 2500, "type": "500 gp Gemstones", "quantity": 5},
+                  {"value": 3000, "type": "1,000 gp Gemstones", "quantity": 3},
+                  {"value": 4000, "type": "1,000 gp Gemstones", "quantity": 4},
+                  {"value": 5000, "type": "5,000 gp Gemstones", "quantity": 1},
+                  {"value": 6000, "type": "1,000 gp Gemstones", "quantity": 6},
+                  {"value": 7000, "type": "1,000 gp Gemstones", "quantity": 7},
+                  {"value": 8000, "type": "1,000 gp Gemstones", "quantity": 8},
+                  {"value": 9000, "type": "1,000 gp Gemstones", "quantity": 9},
+                  {"value": 10000, "type": "5,000 gp Gemstones", "quantity": 2},
+                  {"value": 15000, "type": "5,000 gp Gemstones", "quantity": 3},
+                  {"value": 20000, "type": "5,000 gp Gemstones", "quantity": 4},
+                  {"value": 25000, "type": "5,000 gp Gemstones", "quantity": 5},
+                  {"value": 30000, "type": "5,000 gp Gemstones", "quantity": 6},
+                  {"value": 35000, "type": "5,000 gp Gemstones", "quantity": 7},
+                  {"value": 40000, "type": "5,000 gp Gemstones", "quantity": 8},
+                  {"value": 45000, "type": "5,000 gp Gemstones", "quantity": 9},
+                  {"value": 50000, "type": "5,000 gp Gemstones", "quantity": 10}
+                ]
+              
+              
+              
+              
+              
+              
 
 
+          
+      
+      
 
 }
