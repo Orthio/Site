@@ -4,9 +4,9 @@
 export let partyLevel = 7;
 
 export let currentTime = "1pm";
-export let currentDay = 9;
+export let currentDay = 9; 
 export let currentTenday = 1;
-export let currentMonth = 14;
+export let currentMonth = 14; 
 export let currentYear = 1489;
 
 export let generalPartyDPS1r = 30.8;
@@ -58,7 +58,8 @@ export function getDateSuffix(day) {
 
 export function getDateName(day, month) {
     let suffix = getDateSuffix(day);
-    let currentDateName = day + suffix + monthsArray[(month - 1)].month;
+    let monthIndex = month - 1;
+    let currentDateName = day + suffix + monthsArray[monthIndex].month;
     return currentDateName;
 
     //The year consists of 365 days: 12 months of exactly 30 days each (due to the single moon and its followers), \
