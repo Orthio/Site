@@ -78,8 +78,8 @@ function createCharacter() {
     age: age,
     occupation: occupation,
     appearance: appearance,
-    quirk: quirk,
     trait: trait,
+    quirk: quirk,
     relationship: ' ',
     specialAdvantage: ' ',
     flaw: ' ',
@@ -121,7 +121,7 @@ function updateCharacterDisplay() {
       '<div>' + "<b>" + item.fullname + "</b>" + ' - ' + item.race + ' ' +
       item.sex + ', ' + item.age + " " + item.occupation + '</div>' +
       '<div>' + "<i>Appearance: </i>" + item.appearance + '</div>' +
-      '<div>' + "<i>Mannerisms: </i>" + item.quirk + ", " + item.trait + '</div>' +
+      '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +
       '<div>' + '<br>' + '</div>' +
       '<div>' + item.specialAdvantage + '</div>' +
@@ -327,7 +327,7 @@ function simpleCopy() {
   if (currentCharacter.voice === "") {
     simpleVoiceCheck = "";
   } else {
-    simpleVoiceCheck = ". " + currentCharacter.voice
+    simpleVoiceCheck = currentCharacter.voice
   };
 
   if (currentCharacter.villainy === "") {
@@ -336,19 +336,25 @@ function simpleCopy() {
     simpleVillainyCheck = ". " + currentCharacter.villainy
   };
 
+  let simpleSex;
+  if (currentCharacter.sex == "Male") {
+    simpleSex = "M"
+  } else {
+    simpleSex = "F"
+  }
+
   let simpleText =
     "<br>" +
     "<b>" + currentCharacter.fullname + "</b>" + " - ("
-    + "<i>" + currentCharacter.race + " " + currentCharacter.sex
-    + ", " + currentCharacter.age + " " + currentCharacter.occupation
+    + "<i>" + currentCharacter.race + " " + simpleSex
+    + ", " + currentCharacter.age + " " + currentCharacter.occupation + ")"
     + "<br>"
-    + currentCharacter.appearance + ". "
+    + currentCharacter.appearance
     + "<br>"
-    + currentCharacter.quirk
-    + ". " + currentCharacter.trait
-    + simpleFlawCheck
-    + simpleVoiceCheck + "</i>"
-    + ")";
+    + currentCharacter.trait
+    + ", " + currentCharacter.quirk
+    + simpleFlawCheck + "<br>"
+    + simpleVoiceCheck + "</i>";
 
   currentCharacter.simplified = simpleText;
   updateCharacterDisplay();
