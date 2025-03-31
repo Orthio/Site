@@ -3,9 +3,9 @@
 
 export let partyLevel = 7;
 
-export let currentTime = "1pm";
-export let currentDay = 9; 
-export let currentTenday = 1;
+export let currentTime = "1am";
+export let currentDay = 13; 
+export let currentTenday = 2;
 export let currentMonth = 14; 
 export let currentYear = 1489;
 
