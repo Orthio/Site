@@ -306,7 +306,8 @@ function addHook() {
   currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
   currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
   currentCharacter.hook =
-    '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' + hook2 + '</div>';
+    '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +
+    hook2 + '</div>' + '<br>';
   currentCharacter.goal = '<div>' + "<i>Goal: </i>" + goal + '</div>';
 }
 
@@ -344,9 +345,8 @@ function simpleCopy() {
   }
 
   let simpleText =
-    "<br>" +
-    "<b>" + currentCharacter.fullname + "</b>" + " - ("
-    + "<i>" + currentCharacter.race + " " + simpleSex
+    "<b>" + currentCharacter.fullname + "</b>" + " - <i>("
+    + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.age + " " + currentCharacter.occupation + ")"
     + "<br>"
     + currentCharacter.appearance
