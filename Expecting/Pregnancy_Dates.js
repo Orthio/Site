@@ -33,9 +33,9 @@ const currentDay = todaysDate.getDate();
 const formattedTodaysDate = formatDate(currentYear, currentMonth, currentDay);
 
 
-const conceptionYear = 2025;
-const conceptionMonth = 1;
-const conceptionDay = 12;
+const conceptionYear = 2024;
+const conceptionMonth = 12;
+const conceptionDay = 28;
 
 const conceptionDate = new Date(conceptionYear, conceptionMonth - 1, conceptionDay);
 
