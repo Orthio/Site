@@ -74,7 +74,7 @@ function generateArt() {
 
 
     let artResult = "<div><span class='no-select'><small>Art Object: </small></span><br>" +
-        objectChoice + "<br>" + 
+        objectChoice + "<br>" +
         artMetal + " and " + artMaterial + ", " + "<br>" +
         "With " + artGemstone + " and " + artDecorative + "<br>" +
         "</div>" + "<br>"
@@ -230,7 +230,7 @@ function generateScenario() {
 }
 
 function generateMonsterReaction() {
-    let reactionRoll = generalDiceRoll(6,2);
+    let reactionRoll = generalDiceRoll(6, 2);
     let reaction = jsonData.monsterReaction[reactionRoll];
 
     let reactionResult = "<div><span class='no-select'><small>Monster Reaction: </small></span><br>" +
@@ -238,6 +238,42 @@ function generateMonsterReaction() {
         "</div>" + "<br>";
 
     resultOutput.unshift(reactionResult);
+    updateOutput();
+}
+
+function generateIndoorDistance() {
+    let roll = 10 * (generalDiceRoll(6, 2));
+    // 2d6 * 10ft
+
+    let indoorDistText = "<div><span class='no-select'><small>Indoor Encounter Distance: </small></span><br>" +
+        "Enemies " + roll + "ft" +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(indoorDistText);
+    updateOutput();
+}
+
+function generateOutdoorOpenDistance() {
+    let roll = 60 * (generalDiceRoll(6, 2));
+    // 2d6 * 60ft
+
+    let outdoorOpenDistText = "<div><span class='no-select'><small>Outdoor Open Encounter Distance: </small></span><br>" +
+        "Enemies " + roll + "ft" +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(outdoorOpenDistText);
+    updateOutput();
+}
+
+function generateOutdoorObsDistance() {
+    let roll = 20 * (generalDiceRoll(6, 2));
+    // 2d6 * 20ft
+
+    let outdoorObsDistText = "<div><span class='no-select'><small>Outdoor Obstructed Encounter Distance: </small></span><br>" +
+        "Enemies " + roll + "ft" +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(outdoorObsDistText);
     updateOutput();
 }
 
@@ -290,5 +326,17 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 });
 
 document.getElementById('generate-reaction').addEventListener('click', () => {
-    generateMonsterReaction();
+    generateReaction();
+});
+
+document.getElementById('generate-indoor-distance').addEventListener('click', () => {
+    generateIndoorDistance();
+});
+
+document.getElementById('generate-outdoor-open-distance').addEventListener('click', () => {
+    generateOutdoorOpenDistance();
+});
+
+document.getElementById('generate-outdoor-obs-distance').addEventListener('click', () => {
+    generateOutdoorObsDistance();
 });
