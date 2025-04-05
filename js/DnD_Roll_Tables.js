@@ -229,6 +229,18 @@ function generateScenario() {
     updateOutput();
 }
 
+function generateMonsterReaction() {
+    let reactionRoll = generalDiceRoll(6,2);
+    let reaction = jsonData.monsterReaction[reactionRoll];
+
+    let reactionResult = "<div><span class='no-select'><small>Monster Reaction: </small></span><br>" +
+        "Enemies " + reaction +
+        "</div>" + "<br>";
+
+    resultOutput.unshift(reactionResult);
+    updateOutput();
+}
+
 function updateOutput() {
     if (resultOutput.length > 8) {
         resultOutput.pop();
@@ -275,4 +287,8 @@ document.getElementById('generate-trap').addEventListener('click', () => {
 
 document.getElementById('generate-scenario').addEventListener('click', () => {
     generateScenario();
+});
+
+document.getElementById('generate-reaction').addEventListener('click', () => {
+    generateMonsterReaction();
 });
