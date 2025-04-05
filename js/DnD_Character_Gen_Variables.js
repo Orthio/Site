@@ -1,6 +1,6 @@
 //Global variables used in both functions
 let currentCharacter = {};
-let resultsHistory = [];
+let displayHistory = [];
 let nameArray = [];
 let clanArray = [];
 
@@ -687,24 +687,42 @@ const voices = [
 ];
 
 const ideals = [
-  "Beauty or Domination",
-  "Charity or Greed",
-  "Greater good or Might",
-  "Life or Pain",
-  "Respect or Retribution",
-  "Self-sacrifice or Slaughter",
-  "Community or Change",
-  "Fairness or Creativity",
-  "Honor or Freedom",
-  "Logic or Independence",
-  "Responsibility or No limits",
-  "Tradition or Fun",
-  "Balance or Aspiration",
-  "Knowledge or Discovery",
-  "Live and let live or Glory",
-  "Moderation or Nation",
-  "Neutrality or Redemption",
-  "People or Self-knowledge"
+  "Beauty",
+  "Domination",
+  "Charity",
+  "Greed",
+  "Greater good",
+  "Might",
+  "Life",
+  "Pain",
+  "Respect",
+  "Retribution",
+  "Self-sacrifice",
+  "Slaughter",
+  "Community",
+  "Change",
+  "Fairness",
+  "Creativity",
+  "Honor",
+  "Freedom",
+  "Logic",
+  "Independence",
+  "Responsibility",
+  "No limits",
+  "Tradition",
+  "Fun",
+  "Balance",
+  "Aspiration",
+  "Knowledge",
+  "Discovery",
+  "Live and let live",
+  "Glory",
+  "Moderation",
+  "Nation",
+  "Neutrality",
+  "Redemption",
+  "People",
+  "Self-knowledge"
 ];
 
 const bonds = [
@@ -1669,7 +1687,7 @@ const occupations2 = [
 // Exporting all
 export const Variables = {
   currentCharacter,
-  resultsHistory,
+  displayHistory,
   nameArray,
   clanArray,
   raceType,
