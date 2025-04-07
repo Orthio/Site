@@ -130,7 +130,7 @@ function calcHoardTreasure() {
         updateRolledThemeText(TreasureRoll.themeItemTypeSelectedName);
     }
 
-    TreasureRoll.treasureText = TreasureRoll.currentId + ". TreasureHoard: " +
+    TreasureRoll.treasureText = TreasureRoll.currentId + ". Treasure Hoard: " +
         currentTreasureRoll.treasure + "gp, and "
         + currentTreasureRoll.magicItemsNo + magicItemsPluralText;
     TreasureRoll.magicItemText = "";
@@ -233,6 +233,7 @@ function calculateTreasureValue() {
     let gold = document.getElementById("GoldInput").value;
     if (gold != "") {
         currentGP = gold;
+        TreasureRoll.treasureObjects[TreasureRoll.currentId].treasure = gold;
     }
 
     switch (currentTreasureTheme) {
@@ -290,13 +291,13 @@ function calculateTreasureValue() {
             let artCategory = jsonData.artObjects.find(art => art.name === artCheck.type);
             let artType = rollOnTable(artCategory.table);
             let artValue = artCheck.value;
-            remainingGoldValue2 = currentGP - artValue;
+            remainingGoldValue2 = Math.floor(currentGP - artValue);
 
             let artType2 = rollOnTable(jsonRollTablesData.treasures);
             let artType3 = rollOnTable(jsonRollTablesData.miscItems);
             if (remainingGoldValue2 - artValue > 0) {
-                remainingGoldValue3 = (remainingGoldValue2 - artValue) * 2 / 3;
-                remainingGoldValue4 = (remainingGoldValue2 - artValue) * 1 / 3;
+                remainingGoldValue3 = Math.floor((remainingGoldValue2 - artValue) * 2 / 3);
+                remainingGoldValue4 = Math.floor((remainingGoldValue2 - artValue) * 1 / 3);
             } else {
                 remainingGoldValue3 = 0
                 remainingGoldValue4 = 0
