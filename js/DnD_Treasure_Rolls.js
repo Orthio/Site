@@ -84,10 +84,15 @@ function calcIndiTreasure() {
 
     calculateTreasureValue();
 
+    let miscItemsIndi = jsonRollTablesData.miscItems;
+    let treasuresIndi = jsonRollTablesData.treasures;
+    let miscItemsIndiRoll = rollOnTable(miscItemsIndi);
+    let treasuresIndiRoll = rollOnTable(treasuresIndi);
+
     TreasureRoll.treasureText = TreasureRoll.currentId + ". Individual Treasure: " + currentTreasureRoll.treasure + "gp";
     TreasureRoll.themeItemTypeText = "";
     TreasureRoll.treasureValuesOriginalText = "";
-    TreasureRoll.treasureValuesText = "";
+    TreasureRoll.treasureValuesText = miscItemsIndiRoll + ", " + treasuresIndiRoll;
     TreasureRoll.magicItemText = "";
     TreasureRoll.itemRarityText = "";
 
