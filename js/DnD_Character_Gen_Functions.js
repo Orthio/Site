@@ -347,7 +347,7 @@ function simpleCopy() {
   let simpleText =
     "<b>" + currentCharacter.fullname + "</b>" + " - <i>("
     + currentCharacter.race + " " + simpleSex
-    + ", " + currentCharacter.age + " " + currentCharacter.occupation + "</i>)"
+    + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation + "</i>)"
     + "<br>"
     + currentCharacter.appearance
     + "<br>"
