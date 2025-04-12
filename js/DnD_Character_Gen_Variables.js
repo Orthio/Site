@@ -38,7 +38,7 @@ const alignments = [
   "NG",
   "CG",
   "LN",
-  "N",
+  "TN",
   "CN",
   "LE",
   "NE",
