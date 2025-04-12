@@ -7,7 +7,7 @@ let {
   raceType, sexType, races
 } = Variables;
 
-const { sexes, nameDictionary, appearances, quirks,
+const { sexes, nameDictionary, alignments, appearances, quirks,
   traits, occupations, flaws, voices, ideals, bonds,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
@@ -45,6 +45,7 @@ function createCharacter() {
   }
 
   let occupation = rollOnTable(occupations);
+  let alignment = rollOnTable(alignments);
   let appearance = rollOnTable(appearances);
   let quirk = rollOnTable(quirks);
   let voice = rollOnTable(voices);
@@ -75,6 +76,7 @@ function createCharacter() {
     fullname: name + " " + clanName,
     race: race,
     sex: sex,
+    alignment: alignment,
     age: age,
     occupation: occupation,
     appearance: appearance,
@@ -127,8 +129,8 @@ function updateCharacterDisplay() {
   displayHistory.forEach(function (item) {
     charhistory +=
       '<div class="character-result">' +
-      '<div>' + "<b>" + item.fullname + "</b>" + ' - ' + item.race + ' ' +
-      item.sex + ', ' + item.age + " " + item.occupation + '</div>' +
+      '<div>' + "<b>" + item.fullname + "</b>" + ' - ' + 
+      item.race + ' ' + item.sex + ', ' + item.alignment + " " + item.age + " " + item.occupation + '</div>' +
       '<div>' + "<i>Appearance: </i>" + item.appearance + '</div>' +
       '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +

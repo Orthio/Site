@@ -33,6 +33,18 @@ let races = new
 
 const sexes = ["Male", "Female"];
 
+const alignments = [
+  "LG",
+  "NG",
+  "CG",
+  "LN",
+  "N",
+  "CN",
+  "LE",
+  "NE",
+  "CE"
+];
+
 // #region Name Listing Region
 
 const nameListings = {
@@ -1612,7 +1624,6 @@ const occupations2 = [
   "Brewer",
   "Musician",
   "Burglar",
-  "Orphan",
   "Circus performer",
   "Outlander",
   "Carpenter",
@@ -1631,19 +1642,16 @@ const occupations2 = [
   "Priest",
   "Dogcatcher",
   "Prince",
-  "Dramaturge",
   "Privateer",
   "Duke",
   "Ratcatcher",
   "Earl",
   "Scholar",
-  "Eunuch",
   "Scribe",
   "Executioner",
   "Sellsword",
   "Falconer",
   "Ship’s captain",
-  "Farmer",
   "Shopkeeper",
   "Fence",
   "Smuggler",
@@ -1662,7 +1670,7 @@ const occupations2 = [
   "General",
   "Tavern wench",
   "Gladiator",
-  "Thespian",
+  "Actor",
   "Governess",
   "Tomb robber",
   "Gravedigger",
@@ -1676,7 +1684,7 @@ const occupations2 = [
   "Hermit",
   "Viscount",
   "Hunter",
-  "Vizier",
+  "High Official",
   "Innkeeper",
   "Wigmaker",
   "Interpreter",
@@ -1692,6 +1700,7 @@ export const Variables = {
   clanArray,
   raceType,
   sexType,
+  alignments,
   flawText,
   voiceText,
   races,
