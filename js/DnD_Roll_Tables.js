@@ -16,6 +16,10 @@ fetch('json/DnD_Roll_Tables.json')
 
 let resultOutput = [];
 
+let monsterReactionMod = 0;
+const extraText = document.getElementById("monster-reaction-table-text");
+
+
 function generateArt() {
     // console.log("Art Gen started");
     let natureIndex = generalDiceRoll(5, 1);
@@ -231,16 +235,79 @@ function generateScenario() {
 
 function generateMonsterReaction() {
     let reactionRoll = generalDiceRoll(6, 2);
-    let reaction = jsonData.monsterReaction[reactionRoll];
+    let reactionRoll2 = reactionRoll + monsterReactionMod;
+    let reaction = jsonData.monsterReaction[reactionRoll2 - 1];
 
     let reactionResult = "<div><span class='no-select'><small>Monster Reaction: </small></span><br>" +
-        "Enemies " + reaction +
+        reactionRoll + "&nbsp&nbsp&nbsp" + reaction +
         "</div>" + "<br>";
 
     resultOutput.unshift(reactionResult);
     updateOutput();
 }
 
+function addReaction() {
+    if (monsterReactionMod > -4) {
+        monsterReactionMod -= 2;
+    }
+    updateExtraText()
+}
+
+function detractReaction() {
+    if (monsterReactionMod < 4) {
+        monsterReactionMod += 2;
+    }
+    updateExtraText()
+}
+
+function updateExtraText() {
+    extraText.innerHTML = `
+    <p>Current Reaction: ${monsterReactionMod}</p>
+
+                <table class="stats-table" id="reaction-table">
+                    <thead>
+                        <tr>
+                            <td>2d6</td>
+                            <td>Reaction</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 2 - 3</td>
+                            <td>Immediate Attack</td>
+                        </tr>
+                        <tr>
+                            <td> 4 - 5</td>
+                            <td>Hostile</td>
+                        </tr>
+                        <tr>
+                            <td> 6 - 8</td>
+                            <td>Cautious / Threatening</td>
+                        </tr>
+                        <tr>
+                            <td> 9 - 10</td>
+                            <td> Neutral</td>
+                        </tr>
+                        <tr>
+                            <td> 11 - 12</td>
+                            <td> Amiable</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <ul>
+
+                    <li> -2 to -4 for aggressive creatures, +2 to +4 for friendly </li>
+                    <li> Charisma checks can be used to alter the circumstance </li>
+                    <li class="p-link"><a
+                            href="https://web.archive.org/web/20170519041648/http://1d8.blogspot.com/2011/04/what-are-those-wandering-monsters-up-to.html">
+                            What are those monsters up to</a></li>
+                </ul>
+                `;
+
+    extraText.style.display = "block";
+}
 function generateIndoorDistance() {
     let roll = 10 * (generalDiceRoll(6, 2));
     // 2d6 * 10ft
@@ -326,7 +393,7 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 });
 
 document.getElementById('generate-reaction').addEventListener('click', () => {
-    generateReaction();
+    generateMonsterReaction();
 });
 
 document.getElementById('generate-indoor-distance').addEventListener('click', () => {
@@ -339,4 +406,27 @@ document.getElementById('generate-outdoor-open-distance').addEventListener('clic
 
 document.getElementById('generate-outdoor-obs-distance').addEventListener('click', () => {
     generateOutdoorObsDistance();
+});
+
+document.getElementById('add-reaction').addEventListener('click', () => {
+    addReaction();
+});
+
+document.getElementById('detract-reaction').addEventListener('click', () => {
+    detractReaction();
+});
+
+const words = document.querySelectorAll("#monster-reaction-link");
+
+words.forEach(word => {
+    word.addEventListener("click", function () {
+        const isHidden = window.getComputedStyle(extraText).display === "none";
+
+        if (isHidden) {
+            updateExtraText();
+        } else {
+            // Hide the additional text
+            extraText.style.display = "none";
+        }
+    });
 });

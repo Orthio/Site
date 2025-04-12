@@ -3485,6 +3485,13 @@
         "Young lady"
     ],
     "monsterReaction": {
+        "-5": "Immediate Attack",
+        "-4": "Immediate Attack",
+        "-3": "Immediate Attack",
+        "-2": "Immediate Attack",
+        "-1": "Immediate Attack",
+        "0": "Immediate Attack",
+        "1": "Immediate Attack",
         "2": "Immediate Attack",
         "3": "Immediate Attack",
         "4": "Hostile",
@@ -3494,6 +3501,13 @@
         "8": "Neutral",
         "9": "Neutral",
         "10": "Amiable",
-        "11": "Amiable"
+        "11": "Amiable",
+        "12": "Amiable",
+        "13": "Amiable",
+        "14": "Amiable",
+        "15": "Amiable",
+        "16": "Amiable"
+
+
     }
 }
