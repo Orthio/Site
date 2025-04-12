@@ -303,6 +303,7 @@ function updateExtraText() {
                     <li class="p-link"><a
                             href="https://web.archive.org/web/20170519041648/http://1d8.blogspot.com/2011/04/what-are-those-wandering-monsters-up-to.html">
                             What are those monsters up to</a></li>
+                            <li>What makes them unique, Where are they from, What are they doing, What's their reaction</li>
                 </ul>
                 `;
 
