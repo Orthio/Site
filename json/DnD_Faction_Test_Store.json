@@ -1,6 +1,6 @@
 {
     "test": [
-        {"number": 1, "text-goal": "Test assaults a town","circle-fill": 0,"circle-size": 6, "colour": "Blue"}
+        {"number": 1, "text-goal": "Test assaults a town","circle-fill": 1,"circle-size": 6, "colour": "Blue"}
     ]
 }
 

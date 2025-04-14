@@ -89,7 +89,7 @@ function generateGoals(data) {
 
         const img = document.createElement("img");
         img.id = `js-circle${i + 1}`;
-        img.src = `../images/Progress_Clocks/Clock-${goalData.colour}-${goalData["circle-fill"]}-${goalData["circle-size"]}.png`;
+        img.src = `../images/Progress_Clocks/Clock-${goalData.colour}-${goalData["circle-size"]}-${goalData["circle-fill"]}.png`;
         img.alt = "Circle Pic";
         img.dataset.circle = `${goalData["circle-size"]}-${goalData["circle-fill"]}`;
         img.width = 100;
