@@ -55,7 +55,7 @@
             "max": 16,
             "roll1": 8,
             "roll2": 8,
-            "roll3": 10000,
+            "roll3": 1000,
             "mroll1": 1,
             "mroll2": 4,
             "mroll3": 0
