@@ -770,6 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializePage() {
     createNewDay();
     // createGroupTable();
+    document.getElementById('js-party-levelinput').value = partyLevel;
 }
 
 const addEncounterCurrentButton = document.querySelector("#add-encounter-current-button");
