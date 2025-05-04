@@ -1774,6 +1774,8 @@ export const Variables = {
   waylaysolutions,
   villainTraits,
   villainCrooks,
+  pettyAttitude,
+  pettyTension,
   menuRaces,
   charAge,
   occupations2,
