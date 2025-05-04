@@ -286,13 +286,13 @@ function addVillainy() {
   let villainCrookIndex = Math.floor((Math.random() * 50) + 1);
   let villainCrook = villainCrooks[villainCrookIndex];
   let villainGoal = rollOnTable(jsonData.villainGoals);
-  let pettyAttitude = rollOnTable(pettyAttitude);
-  let pettyTension = rollOnTable(pettyTension);
+  let pickedPettyAttitude = rollOnTable(pettyAttitude);
+  let pickedPettyTension = rollOnTable(pettyTension);
 
   currentCharacter.villainy =
     '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>' +
     '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>' +
-    '<div>' + "<i>Petty Attitude: </i>" + pettyAttitude + " " + pettyTension + '</div>' +
+    '<div>' + "<i>Petty Attitude: </i>" + pickedPettyAttitude + " " + pickedPettyTension + '</div>' +
     '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
 }
 
