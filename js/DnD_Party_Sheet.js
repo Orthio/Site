@@ -3,7 +3,7 @@ import { partyLevel } from './DnD_General.js';
 
 // Global variables 
 
-var fireboltDamage = {
+let fireboltDamage = {
   // By level
   1: {dice:"1d10", damage: 5.5},
   2: {dice:"1d10", damage: 5.5},
@@ -27,7 +27,7 @@ var fireboltDamage = {
   20: {dice:"4d10", damage: 22},
 };
 
-var SacredFlameDamage = {
+let SacredFlameDamage = {
   // By level.
   // Same damage for Starry Wisp
   1: {dice:"1d8", damage: 4.5},
@@ -52,7 +52,7 @@ var SacredFlameDamage = {
   20: {dice:"4d8", damage: 18},
 };
 
-var dieDamageAverage = {
+let dieDamageAverage = {
 d4:	2.5, // 1 2 3 4 -> 10 / 4 = 2.5
 d6:	3.5,
 d8:	4.5,
@@ -62,7 +62,7 @@ d20: 10.5
 };
 
 // Proficiency Bonus Listing
-var proficiencyBonus = {
+let proficiencyBonus = {
   1: 2,
   2: 2,
   3: 2,
@@ -85,11 +85,11 @@ var proficiencyBonus = {
   20: 6
 };
 
-var levelToCR = {
+let levelToCR = {
   4: 8
 };
 
-var abilityToBonus = {
+let abilityToBonus = {
   1: -5,
   2: -4,
   3: -4,
@@ -485,7 +485,7 @@ function updateSheet() {
   document.getElementById("party-level").innerText = partyLevel;
   document.getElementById("prof-bonus").innerText = proficiencyBonus[partyLevel];
 
-  var characters = [Doris, Faelar, Kandryn, Eiran, Breiar];
+  let characters = [Doris, Faelar, Kandryn, Eiran, Breiar];
 
   characters.forEach(character => {
 
@@ -517,7 +517,7 @@ function updateSheet() {
   document.getElementById("party-carrying-capacity").innerText = Party.partyCarryingCapacity;
   document.getElementById("party-carrying-after").innerText = Party.partyCarryingCapacity - 60 - 50;
 
- var characters2 = [Doris, Faelar, Kandryn, Eiran];
+ let characters2 = [Doris, Faelar, Kandryn, Eiran];
 
   characters2.forEach(character => {
     document.getElementById(character.Name.toLowerCase() + "-skill-prof").innerText = character.SkillProfText;

@@ -1,18 +1,20 @@
-import { generalDiceRoll, currentDay, currentMonth, getDateName, getMonthDays } from './DnD_General.js';
+import { generalDiceRoll, currentDay, currentMonth, currentYear, getDateName, getMonthDays } from './DnD_General.js';
 
 // Global Variables
-var weatherArray = [];
-var windArray = [];
-var rainArray = [];
-var windDirArray = [];
-var effectsArray = [];
-var weatherCurrent = '';
-var windCurrent = '';
-var rainCurrent = '';
-var windDirectionCurrent = '';
-var weatherCRoll;
-var windCRoll;
-var effectsSave = [];
+let weatherArray = [];
+let windArray = [];
+let rainArray = [];
+let windDirArray = [];
+let effectsArray = [];
+let weatherCurrent = '';
+let windCurrent = '';
+let rainCurrent = '';
+let windDirectionCurrent = '';
+let weatherCRoll;
+let windCRoll;
+let effectsSave = [];
+let jsonArray = [];
+let jsonHistory = "";
 
 let weatherData = {};
 let isWeatherDataLoaded = false; // Flag to check if data is loaded
@@ -26,7 +28,7 @@ fetch('json/DnD_Weather.json')
 
     })
     .catch(error => console.error('Error loading the JSON data:', error));
-  
+
 
 
 function decideConditions(roll, table) {
@@ -76,7 +78,7 @@ function fetchEffects(current, roll, windroll) {
 }
 
 function weatherFunction() {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 30; i++) {
         if (i > 0 && Math.random() < 0.25) {
             weatherArray.push(weatherArray[i - 1]);
             windCRoll = generalDiceRoll(20);
@@ -128,21 +130,28 @@ function displayResults() {
     let weatherHistory = '';
     let day = currentDay;
     let month = currentMonth;
+    let year = currentYear;
 
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 30; i++) {
         let thisMonthsDays = getMonthDays(month);
         if (day > thisMonthsDays) {
             day = 1;
             month++;
         }
-        if (month > 18) {
+        if (month > 17) {
             month = 1;
+            year++;
         }
 
         let dateName = getDateName(day, month);
         weatherHistory += `<div><b>Day ${i + 1}, ${dateName}</b></div>
             <div>${weatherArray[i]} ${windArray[i]} ${windDirArray[i]} ${rainArray[i]}</div><br>`;
-            day ++;
+        jsonHistory += "{" + '<br>' +
+            '"date": "' + day + "-" + month + "-" + year + '",' + '<br>' +
+            '"title": "' + weatherArray[i] + windArray[i] + windDirArray[i] + rainArray[i] + '"' + '<br>' +
+            "}," + '<br>';
+
+        day++;
 
     }
 
@@ -163,10 +172,27 @@ function effectsFunction() {
     document.getElementById("effectsresults").innerHTML = "<br>" + effectshistory + "___________________________________ ";
 }
 
+function jsonFunction() {
+    if (jsonHistory.length === 0) {
+        console.error("No json data to display.");
+        return;
+    }
+
+    /*   let jsonText = "";
+      jsonArray.forEach(jsonBit => {
+          jsonText += "<div>" + jsonBit + "<br><div><br></div>";
+      });
+   */
+
+    document.getElementById("json-results").innerHTML = "<br>" + jsonHistory + "___________________________________ ";
+
+}
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     const weatherFunctionButton = document.querySelector("#weather-function");
     const effectsFunctionButton = document.querySelector("#effects-function");
+    const jsonFunctionButton = document.querySelector('#json-function');
 
     weatherFunctionButton.addEventListener("click", () => {
         if (isWeatherDataLoaded) {
@@ -175,4 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     effectsFunctionButton.addEventListener("click", effectsFunction);
+
+    jsonFunctionButton.addEventListener("click", jsonFunction);
 });

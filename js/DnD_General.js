@@ -1,17 +1,17 @@
 
 //Global Variables
 
-export var partyLevel = 7;
+export let partyLevel = 8;
 
-export var currentTime = "9am";
-export var currentDay = 7;
-export var currentTenday = 1;
-export var currentMonth = 14;
-export var currentYear = 1489;
+export let currentTime = "12pm";
+export let currentDay = 16; 
+export let currentTenday = 2;
+export let currentMonth = 14; 
+export let currentYear = 1489;
 
-export var generalPartyDPS1r = 30.8;
+export let generalPartyDPS1r = 30.8;
 
-export var monthsArray = [
+export let monthsArray = [
     { number: 1, month: "Hammer", days: 30, desc: "('Deepwinter') the first month", holiday: "Midwinter" },
     { number: 2, month: "Midwinter", days: 1, desc: "" },
     { number: 3, month: "Alturiak", days: 30, desc: " ('The Claws of the Cold') the second month" },
@@ -58,7 +58,8 @@ export function getDateSuffix(day) {
 
 export function getDateName(day, month) {
     let suffix = getDateSuffix(day);
-    let currentDateName = day + suffix + monthsArray[(month - 1)].month;
+    let monthIndex = month - 1;
+    let currentDateName = day + suffix + monthsArray[monthIndex].month;
     return currentDateName;
 
     //The year consists of 365 days: 12 months of exactly 30 days each (due to the single moon and its followers), \
@@ -68,7 +69,7 @@ export function getDateName(day, month) {
 
 export function generalDiceRoll(dice, qty, adv) {
     // Roll a dice (d6 d20) a no of times, with advantage or disadvantage
-    var rollResult = [];
+    let rollResult = [];
     if (qty === undefined) {
         qty = 1;
     }
@@ -76,7 +77,7 @@ export function generalDiceRoll(dice, qty, adv) {
         qty = 2;
     }
 
-    for (var i = 0; i < qty; i++) {
+    for (let i = 0; i < qty; i++) {
         rollResult.push(Math.floor(Math.random() * dice) + 1);
     }
     switch (adv) {
@@ -87,7 +88,7 @@ export function generalDiceRoll(dice, qty, adv) {
             return Math.max.apply(null, rollResult);
             break;
         case "Fortune":
-            var countSixes = rollResult.filter(num => num === 6).length;
+            let countSixes = rollResult.filter(num => num === 6).length;
             if (countSixes >= 2) {
                 return 7;
             }
@@ -103,3 +104,36 @@ export function generalDiceRoll(dice, qty, adv) {
             return totalResult;
     }
 };
+
+export function findNextTableNumber(table, number) {
+    // Finds the next part of the searched table based on number, checking the first value of the table
+    for (let i = 0; i < table.length; i++) {
+        if (table[i].max >= number) {
+            return table[i]; // Return the matching row
+        }
+    }
+    return null; // Return null if no matching row is found
+}
+
+export function findPreviousToNextHigher(jsonTable, target) {
+    // Finds the next value on a table, 
+    // for instance searching for close to 30 on a table with 25 and 40 returns 25
+    let sortedItems = jsonTable.sort((a, b) => a.value - b.value); // Sort items by value
+    let nextHigher = sortedItems.find(item => item.value > target); // Find the first higher value
+
+    if (!nextHigher) return null; // If no higher value exists, return null
+
+    // Find the item just before the next higher
+    let previousItem = sortedItems
+        .filter(item => item.value < nextHigher.value) // Get all lower values
+        .pop(); // Get the last (largest lower value)
+
+    return previousItem || null; // Return the found item, or null if none exists
+}
+
+export function rollOnTable(table) {
+    // Rolls on a specific table
+    let index = Math.floor(Math.random() * table.length);
+
+    return table[index];
+}

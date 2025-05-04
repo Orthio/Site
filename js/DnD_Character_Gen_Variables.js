@@ -1,18 +1,16 @@
-//Global var used in both functions
-var currentCharacter = {};
-var resultsHistory = [];
-var nameArray = [];
-var clanArray = [];
+//Global variables used in both functions
+let currentCharacter = {};
+let displayHistory = [];
+let nameArray = [];
+let clanArray = [];
 
-var race = "";
-var sex = "";
-var raceType = "Random";
-var sexType = "Random";
+let raceType = "Random";
+let sexType = "Random";
 
-var flawText = "";
-var voiceText = "";
+let flawText = "";
+let voiceText = "";
 
-var races = new
+let races = new
   Array(200).fill("Human")
   .concat(new Array(40).fill("Dwarf"))
   .concat(new Array(40).fill("Elf"))
@@ -33,331 +31,398 @@ var races = new
   .concat(["Genasi", "Lizardfolk",
     "Yuan-Ti", "Tortle", "Centaur", "Minotaur", "Shifter", "Changeling", "Aasimar"]);
 
-var sexes = ["Male", "Female"];
+const sexes = ["Male", "Female"];
+
+const alignments = [
+  "LG",
+  "NG",
+  "CG",
+  "LN",
+  "TN",
+  "CN",
+  "LE",
+  "NE",
+  "CE"
+];
 
 // #region Name Listing Region
 
-var HumanFemaleNames = [
-  "Glouris", "Maeve", "Sevaera", "Xaemarra", "Zraela", "Aisha", "Farah", "Nura", "Rashida", "Zalebyeh", "Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida", "Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele", "Alethra", "Kara", "Katernin", "Mara", "Natali", "Olma", "Tana", "Zora", "Alicia", "Gennifer", "Meridith", "Elaine", "Olivia", "Varra", "Ulmarra", "Imza", "Navarra", "Yuldra", "Aithe", "Chalan", "Oloma", "Phaele", "Sarade", "Amafrey", "Betha", "Cefrey", "Kethra", "Mara", "Olga", "Silifrey", "Westra", "Apret", "Bask", "Fanul", "Mokat", "Nismet", "Ril", "Arizima", "Chathi", "Nephis", "Nulara", "Murithi", "Sefris", "Thola", "Umara", "Zolis", "Anva", "Dasha", "Dima", "Olga", "Westra", "Zlatara", "Fyevarra", "Hulmarra", "Immith", "Imzel", "Navarra", "Shevarra", "Tammith", "Yuldra", "Anet", "Bes", "Idim", "Lenet", "Moqem", "Neghet", "Sihvet", "Bai", "Chao", "Jia", "Lei", "Mei", "Qiao", "Shui", "Tai", "Bolormaa", "Bortai", "Erdene", "Naran", "Ulutiun", "Balama", "Dona", "Faila", "Jalana", "Luisa", "Marta", "Quara", "Selise", "Vonda", "Akna", "Chena", "Kaya", "Sedna", "Ublereak", "Aaliyah", "Aida", "Akilah", "Alia", "Amina", "Atefeh", "Chaima", "Dalia", "Ehsan", "Elham", "Farah", "Fatemah", "Gamila", "Iesha", "Inbar", "Kamaria", "Khadija", "Layla", "Lupe", "Nabila", "Nadine", "Naima", "Najila", "Najwa", "Nakia", "Nashwa", "Nawra", "Nuha", "Nura", "Oma", "Qadira", "Qamar", "Qistina", "Rahima", "Rihanna", "Saadia", "Sabah", "Sada", "Saffron", "Sahar", "Salma", "Shatha", "Tahira", "Takisha", "Thana", "Yadira", "Zahra", "Zaida", "Zaina", "Zeinab", "Aife", "Aina", "Alane", "Ardena", "Arienh", "Beatha", "Birgit", "Briann", "Caomh", "Cara", "Cinnia", "Cordelia", "Deheune", "Divone", "Donia", "Doreena", "Elsha", "Enid", "Ethne", "Evelina", "Fianna", "Genevieve", "Gilda", "Gitta", "Grania", "Gwyndolin", "Idelisa", "Isolde", "Keelin", "Kennocha", "Lavena", "Lesley", "Linnette", "Lyonesse", "Mabina", "Marvina", "Mavis", "Mima", "Morgan", "Muriel", "Nareena", "Oriana", "Regan", "Ronat", "Rowena", "Selma", "Ula", "Venetia", "Wynne", "Yseult", "Ai", "Anming", "Baozhai", "Bei", "Caixia", "Changchang", "Chen", "Chou", "Chunhua", "Daianna", "Daiyu", "Die", "Ehuang", "Fenfang", "Ge", "Hong", "Huan", "Huifang", "Jia", "Jiao", "Jiaying", "Jingfei", "Jinjing", "Lan", "Li", "Lihua", "Lin", "Ling", "Liu", "Meili", "Ning", "Qi", "Qiao", "Rong", "Shu", "Shuang", "Song", "Ting", "Wen", "Xia", "Xiaodan", "Xiaoli", "Xingjuan", "Xue", "Ya", "Yan", "Ying", "Yuan", "Yue", "Yun", "A'at", "Ahset", "Amunet", "Aneski", "Atet", "Baketamon", "Betrest", "Bunefer", "Dedyet", "Hatshepsut", "Hentie", "Herit", "Hetepheres", "Intakaes", "Ipwet", "Itet", "Joba", "Kasmut", "Kemanub", "Khemut", "Kiya", "Maia", "Menhet", "Merit", "Meritamen", "Merneith", "Merseger", "Muyet", "Nebet", "Nebetah", "Nedjemmut", "Nefertiti", "Neferu", "Neithotep", "Nit", "Nofret", "Nubemiunu", "Peseshet", "Pypuy", "Qalhata", "Rai", "Redji", "Sadeh", "Sadek", "Sitamun", "Sitre", "Takhat", "Tarset", "Taweret", "Werenro", "Adelaide", "Agatha", "Agnes", "Aline", "Avelina", "Avice", "Cecily", "Egelina", "Eloise", "Elysande", "Emeny", "Emma", "Emmeline", "Ermina", "Eva", "Galiena", "Geva", "Giselle", "Griselda", "Hadwisa", "Herleva", "Hugolina", "Ida", "Margery", "Maynild", "Millicent", "Oriel", "Rohesia", "Rosalind", "Rosamund", "Sybil", "Williamina", "Yvonne", "Aalis", "Agatha", "Agnez", "Alberea", "Alips", "Amee", "Amelot", "Avelina", "Blancha", "Cateline", "Cecilia", "Claricia", "Collette", "Denisete", "Dorian", "Edelina", "Emelina", "Emmelot", "Ermentrudis", "Gibelina", "Gila", "Gillette", "Guiburgis", "Guillemette", "Guoite", "Hecelina", "Heloysis", "Helyoudis", "Hodeardis", "Isabellis", "Jaquette", "Jehan", "Johanna", "Juliote", "Katerine", "Luciana", "Margot", "Marguerite", "Maria", "Melisende", "Odelina", "Perrette", "Petronilla", "Sedilia", "Stephana", "Sybilla", "Ysabeau", "Ysabel", "Adelhayt", "Affra", "Agatha", "Allet", "Angnes", "Anna", "Apell", "Applonia", "Barbara", "Brida", "Brigita", "Cecilia", "Clara", "Cristina", "Dorothea", "Duretta", "Els", "Elsbeth", "Engel", "Enlein", "Enndlin", "Eva", "Fela", "Fronicka", "Genefe", "Geras", "Gerhauss", "Gertrudt", "Guttel", "Helena", "Irmel", "Jonata", "Katerina", "Kuen", "Kungund", "Lucia", "Madalena", "Magdalen", "Marlein", "Martha", "Otilia", "Ottilg", "Peternella", "Reusin", "Sibilla", "Ursel", "Vrsula", "Walpurg", "Acantha", "Aella", "Alektos", "Alkippe", "Andromeda", "Antigone", "Ariadne", "Astraea", "Chloros", "Chryseos", "Daphne", "Despoina", "Dione", "Eileithyia", "Elektra", "Euadne", "Eudora", "Eunomia", "Hekabe", "Helene", "Hermoione", "Hippolyte", "Ianthe", "Iokaste", "Iole", "Iphigenia", "Ismene", "Kalliope", "Kallisto", "Kalypso", "Karme", "Kassandra", "Kassiopeia", "Kirke", "Kleio", "Klotho", "Klytie", "Kynthia", "Leto", "Megaera", "Melaina", "Melpomene", "Nausikaa", "Nemesis", "Niobe", "Ourania", "Phaenna", "Polymnia", "Semele", "Theia", "Abha", "Aishwarya", "Amala", "Ananda", "Ankita", "Archana", "Avani", "Chandana", "Chandrakanta", "Chetan", "Darshana", "Devi", "Dipti", "Esha", "Gauro", "Gita", "Indira", "Indu", "Jaya", "Kala", "Kalpana", "Kamala", "Kanta", "Kashi", "Kishori", "Lalita", "Lina", "Madhur", "Manju", "Meera", "Mohana", "Mukta", "Nisha", "Nitya", "Padma", "Pratima", "Priya", "Rani", "Sarala", "Shakti", "Shanta", "Shobha", "Sima", "Sonal", "Sumana", "Sunita", "Tara", "Valli", "Vijaya", "Vimala", "Aika", "Akemi", "Akiko", "Amaya", "Asami", "Ayumi", "Bunko", "Chieko", "Chika", "Chiyo", "Cho", "Eiko", "Emiko", "Eri", "Etsuko", "Gina", "Hana", "Haruki", "Hideko", "Hikari", "Hiroko", "Hisoka", "Hishi", "Hotaru", "Izumi", "Kameyo", "Kasumi", "Kimiko", "Kotone", "Kyoko", "Maiko", "Masako", "Mi", "Minori", "Mizuki", "Naoki", "Natsuko", "Noriko", "Rei", "Ren", "Saki", "Shigeko", "Shinju", "Sumiko", "Toshiko", "Tsukiko", "Ume", "Usagi", "Yasuko", "Yuriko", "Ahuiliztli", "Atl", "Eluia", "Eztli", "Ichtaca", "Izel", "Mecatl", "Meztli", "Nahuatl", "Necahual", "Nenetl", "Nochtli", "Papan", "Patli", "Sacnite", "Teicui", "Tepin", "Teuicui", "Teyacapan", "Tlaco", "Abebi", "Abena", "Abimbola", "Akoko", "Akachi", "Alaba", "Anuli", "Ayo", "Bolanle", "Bosede", "Chiamaka", "Chidi", "Chidimma", "Chinyere", "Chioma", "Dada", "Ebele", "Efemena", "Ejiro", "Ekundayo", "Enitan", "Funanya", "Ifunanya", "Ige", "Ime", "Kunto", "Lesedi", "Lumusi", "Mojisola", "Monifa", "Nakato", "Ndidi", "Ngozi", "Nkiruka", "Nneka", "Ogechi", "Olamide", "Oluchi", "Omolara", "Onyeka", "Simisola", "Temitope", "Thema", "Titlayo", "Udo", "Uduak", "Ufuoma", "Yaa", "Yejide", "Yewande", "Alfhild", "Arnbjorg", "Ase", "Aslog", "Astrid", "Auda", "Audhid", "Bergljot", "Birghild", "Bodil", "Brenna", "Brynhild", "Dagmar", "Eerika", "Eira", "Gudrun", "Gunborg", "Gunhild", "Gunvor", "Helga", "Hertha", "Hilde", "Hillevi", "Ingrid", "Iona", "Jorunn", "Kari", "Kenna", "Magnhild", "Nanna", "Olga", "Ragna", "Ragnhild", "Ranveig", "Runa", "Saga", "Sigfrid", "Signe", "Sigrid", "Sigwjnn", "Solveg", "Svanhild", "Thora", "Torborg", "Torunn", "Tove", "Unn", "Vigdis", "Ylva", "Yngvild", "Ahulani", "Airini", "Alani", "Aluala", "Anahera", "Anuhea", "Aolani", "Elenoa", "Emele", "Fetia", "Fiva", "Halona", "Hi'ilei", "Hina", "Hinatea", "Huali", "Inia", "Inina", "Iolani", "Isa", "Ka'ana'ana", "Ka'ena", "Kaamia", "Kahula", "Kailani", "Kamaile", "Kamakani", "Kamea", "Latai", "Liona", "Lokelani", "Marva", "Mehana", "Millawa", "Moana", "Ngana", "Nohea", "Pelika", "Sanoe", "Satina", "Tahia", "Tasi", "Tiaho", "Tihani", "Toroa", "Ulanni", "Uluwehi", "Vaina", "Waiola", "Waitara", "Aelia", "Aemilia", "Agrippina", "Alba", "Antonia", "Aquila", "Augusta", "Aurelia", "Balbina", "Blandina", "Caelia", "Camilla", "Casia", "Claudia", "Cloelia", "Domitia", "Drusa", "Fabia", "Fabricia", "Fausta", "Flavia", "Floriana", "Fulvia", "Germana", "Glaucia", "Gratiana", "Hadriana", "Hermina", "Horatia", "Hortensia", "Iovita", "Iulia", "Laelia", "Laurentia", "Livia", "Longina", "Lucilla", "Lucretia", "Marcella", "Marcia", "Maxima", "Nona", "Octavia", "Paulina", "Petronia", "Porcia", "Tacita", "Tullia", "Verginia", "Vita", "Agripina", "Anastasiya", "Bogdana", "Boleslava", "Bozhena", "Danica", "Darya", "Desislava", "Dragoslava", "Dunja", "Efrosinia", "Ekaterina", "Elena", "Faina", "Galina", "Irina", "Iskra", "Jasna", "Katarina", "Katya", "Kresimira", "Lyudmila", "Magda", "Mariya", "Militsa", "Miloslava", "Mira", "Miroslava", "Mokosh", "Morana", "Natasha", "Nika", "Olga", "Rada", "Radoslava", "Raisa", "Slavitsa", "Sofiya", "Stanislava", "Svetlana", "Tatyana", "Tomislava", "Veronika", "Vesna", "Vladimira", "Yaroslava", "Yelena", "Zaria", "Zarya", "Zoria", "Abella", "Adalina", "Adora", "Adriana", "Ana", "Antonia", "Basilia", "Beatriz", "Bonita", "Camila", "Cande", "Carmen", "Catlina", "Dolores", "Dominga", "Dorotea", "Elena", "Elicia", "Esmerelda", "Felipina", "Francisca", "Gabriela", "Imelda", "Ines", "Isabel", "Juana", "Leocadia", "Leonor", "Leta", "Lucinda", "Maresol", "Maria", "Maricela", "Matilde", "Melania", "Monica", "Neva", "Nilda", "Petrona", "Rafaela", "Ramira", "Rosario", "Sofia", "Suelo", "Teresa", "Tomasa", "Valentia", "Veronica", "Ynes", "Ysabel"
-];
-var HumanMaleNames = [
-  "Houn", "Rhivaun", "Umbril", "Xaemar", "Zeltaebar", "Aali", "Rashid", "Tahnon", "Tanzim", "Whalide", "Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir", "Darvin", "Dorn", "Evendur", "Gorstag", "Grim", "Helm", "Malark", "Morn", "Randal", "Stedd", "Bor", "Fodel", "Glar", "Grigor", "Igan", "Ivor", "Kosef", "Mival", "Orel", "Pavel", "Sergor", "Artur", "Bern", "Colin", "Manfred", "Tristan", "Boriv", "Gardar", "Madevik", "Vlad", "Aldym", "Chand", "Meleghost", "Presmer", "Sandrue", "Uregaunt", "Ander", "Blath", "Bran", "Frath", "Geth", "Lander", "Luth", "Malcer", "Stor", "Taman", "Urth", "Charva", "Duma", "Hukir", "Jama", "Pradir", "Sikhil", "Aoth", "Bareris", "Ehput-Ki", "Kethoth", "Mumed", "Ramas", "So-Kehur", "Thazar-De", "Urhur", "Avan", "Ostaram", "Petro", "Stor", "Taman", "Thalaman", "Urth", "Borivik", "Faurgar", "Jandar", "Kanithar", "Madislak", "Ralmevik", "Shaumar", "Vladislak", "Awar", "Cohis", "Damota", "Gewar", "Hapah", "Laskaw", "Senesaw", "Tokhis", "An", "Chen", "Chi", "Fai", "Jiang", "Jun", "Lian", "Long", "Meng", "On", "Shan", "Shui", "Wen", "Atlan", "Bayar", "Chingis", "Chinua", "Mongke", "Temur", "Amak", "Chu", "Imnek", "Kanut", "Siku", "Abbad", "Abdul", "Achmed", "Akeem", "Alif", "Amir", "Asim", "Bashir", "Bassam", "Fahim", "Farid", "Farouk", "Fayez", "Fayyaad", "Fazil", "Hakim", "Halil", "Hamid", "Hazim", "Heydar", "Hussein", "Jabari", "Jafar", "Jahid", "Jamal", "Kalim", "Karim", "Kazim", "Khadim", "Khalid", "Mahmud", "Mansour", "Musharraf", "Mustafa", "Nadir", "Nazim", "Omar", "Qadir", "Qusay", "Rafiq", "Rakim", "Rashad", "Rauf", "Saladin", "Sami", "Samir", "Talib", "Tamir", "Tariq", "Yazid", "Airell", "Airic", "Alan", "Anghus", "Aodh", "Bardon", "Bearacb", "Bevyn", "Boden", "Bran", "Brasil", "Bredon", "Brian", "Bricriu", "Bryant", "Cadman", "Caradoc", "Cedric", "Conalt", "Conchobar", "Condon", "Darcy", "Devin", "Dillion", "Donaghy", "Donall", "Duer", "Eghan", "Ewyn", "Ferghus", "Galvyn", "Gildas", "Guy", "Harvey", "Iden", "Irven", "Karney", "Kayne", "Kelvyn", "Kunsgnos", "Leigh", "Maccus", "Moryn", "Neale", "Owyn", "Pryderi", "Reaghan", "Taliesin", "Tiernay", "Turi", "Bingwen", "Bo", "Bolin", "Chang", "Chao", "Chen", "Cheng", "Da", "Dingxiang", "Fang", "Feng", "Fu", "Gang", "Guang", "Hai", "Heng", "Hong", "Huan", "Huang", "Huiliang", "Huizhong", "Jian", "Jiayi", "Junjie", "Kang", "Lei", "Liang", "Ling", "Liwei", "Meilin", "Niu", "Peizhi", "Peng", "Ping", "Qiang", "Qiu", "Quan", "Renshu", "Rong", "Ru", "Shan", "Shen", "Tengfei", "Wei", "Xiaobo", "Xiaoli", "Xin", "Yang", "Ying", "Zhong", "Ahmose", "Akhoim", "Amasis", "Amenemhet", "Anen", "Banefre", "Bek", "Djedefre", "Djoser", "Hekaib", "Henenu", "Horemheb", "Horwedja", "Huya", "Ibebi", "Idu", "Imhotep", "Ineni", "Ipuki", "Irsu", "Kagemni", "Kawab", "Kenamon", "Kewap", "Khaemwaset", "Khafra", "Khusebek", "Masaharta", "Meketre", "Menkhaf", "Merenre", "Metjen", "Nebamun", "Nebetka", "Nehi", "Nekure", "Nessumontu", "Pakhom", "Pawah", "Pawero", "Ramose", "Rudjek", "Sabaf", "Sebek-khu", "Sebni", "Senusret", "Shabaka", "Somintu", "Thaneni", "Thethi", "Ambroys", "Ame", "Andri", "Andriet", "Anthoine", "Bernard", "Charles", "Chariot", "Colin", "Denis", "Durant", "Edouart", "Eremon", "Ernault", "Ethor", "Felix", "Floquart", "Galleren", "Gaultier", "Gilles", "Guy", "Henry", "Hugo", "Imbert", "Jacques", "Jacquot", "Jean", "Jehannin", "Louis", "Louys", "Loys", "Martin", "Michel", "Mille", "Morelet", "Nicolas", "Nicolle", "Oudart", "Perrin", "Phillippe", "Pierre", "Regnault", "Richart", "Robert", "Robinet", "Sauvage", "Simon", "Talbot", "Tanguy", "Vincent", "Albrecht", "Allexander", "Baltasar", "Benedick", "Berhart", "Caspar", "Clas", "Cristin", "Cristoff", "Dieterich", "Engelhart", "Erhart", "Felix", "Frantz", "Fritz", "Gerhart", "Gotleib", "Hans", "Hartmann", "Heintz", "Herman", "Jacob", "Jeremias", "Jorg", "Karll", "Kilian", "Linhart", "Lorentz", "Ludwig", "Marx", "Melchor", "Mertin", "Michel", "Moritz", "Osswald", "Ott", "Peter", "RudolfF", "Ruprecht", "Sewastian", "Sigmund", "Steffan", "Symon", "Thoman", "Ulrich", "Vallentin", "Wendel", "Wilhelm", "Wolff", "Wolfgang", "Adonis", "Adrastos", "Aeson", "Aias", "Aineias", "Aiolos", "Alekto", "Alkeides", "Argos", "Brontes", "Damazo", "Dardanos", "Deimos", "Diomedes", "Endymion", "Epimetheus", "Erebos", "Euandros", "Ganymedes", "Glaukos", "Hektor", "Heros", "Hippolytos", "Iacchus", "Iason", "Kadmos", "Kastor", "Kephalos", "Kepheus", "Koios", "Kreios", "Laios", "Leandros", "Linos", "Lykos", "Melanthios", "Menelaus", "Mentor", "Neoptolemus", "Okeanos", "Orestes", "Pallas", "Patroklos", "Philandros", "Phoibos", "Phrixus", "Priamos", "Pyrrhos", "Xanthos", "Zephyros", "Abhay", "Ahsan", "Ajay", "Ajit", "Akhil", "Amar", "Amit", "Ananta", "Aseem", "Ashok", "Bahadur", "Basu", "Chand", "Chandra", "Damodar", "Darhsan", "Devdan", "Dinesh", "Dipak", "Gopal", "Govind", "Harendra", "Harsha", "Ila", "Isha", "Johar", "Kalyan", "Kiran", "Kumar", "Lakshmana", "Mahavir", "Narayan", "Naveen", "Nirav", "Prabhakar", "Prasanna", "Raghu", "Rajanikant", "Rakesh", "Ranjeet", "Rishi", "Sanjay", "Sekar", "Shandar", "Sumantra", "Vijay", "Vikram", "Vimal", "Vishal", "Yash", "Akio", "Atsushi", "Daichi", "Daiki", "Daisuke", "Eiji", "Fumio", "Hajime", "Haru", "Hideaki", "Hideo", "Hikaru", "Hiro", "Hiroki", "Hisao", "Hitoshi", "Isamu", "Isao", "Jun", "Katashi", "Katsu", "Kei", "Ken", "Kenshin", "Kenta", "Kioshi", "Makoto", "Mamoru", "Masato", "Masumi", "Noboru", "Norio", "Osamu", "Ryota", "Sadao", "Satoshi", "Shigeo", "Shin", "Sora", "Tadao", "Takehiko", "Takeo", "Takeshi", "Takumi", "Tamotsu", "Tatsuo", "Toru", "Toshio", "Yasio", "Yukio", "Abebe", "Abel", "Abidemi", "Abrafo", "Adisa", "Amadi", "Amara", "Anyim", "Azubuike", "Bapoto", "Baraka", "Bohlale", "Bongani", "Bujune", "Buziba", "Chakide", "Chibuzo", "Chika", "Chimola", "Chiratidzo", "Dabulamanzi", "Dumisa", "Dwanh", "Emeka", "Folami", "Gatura", "Gebhuza", "Gero", "Isoba", "Kagiso", "Kamau", "Katlego", "Masego", "Matata", "Nthanda", "Ogechi", "Olwenyo", "Osumare", "Paki", "Qinisela", "Quanda", "Samanya", "Shanika", "Sibonakaliso", "Tapiwa", "Thabo", "Themba", "Uzoma", "Zuberi", "Zuri", "Agni", "Alaric", "Anvindr", "Arvid", "Asger", "Asmund", "Bjarte", "Bjorg", "Bjorn", "Brandr", "Brandt", "Brynjar", "Calder", "Colborn", "Cuyler", "Egil", "Einar", "Eric", "Erland", "Fiske", "Folkvar", "Fritjof", "Frode", "Geir", "Halvar", "Hemming", "Hjalmar", "Hjortr", "Ingimarr", "Ivar", "Knud", "Leif", "Liufr", "Manning", "Oddr", "Olin", "Ormr", "Ove", "Rannulfr", "Sigurd", "Skari", "Snorri", "Sten", "Stigandr", "Stigr", "Sven", "Trygve", "Ulf", "Vali", "Vidar", "Afa", "Ahohako", "Aisake", "Aleki", "Anewa", "Anitelu", "Aputi", "Ariki", "Butat", "Enele", "Fef", "Fuifui", "Ha'aheo", "Hanohano", "Haunui", "Hekili", "Hiapo", "Hikawera", "Hanano", "Ho'onani", "Hoku", "Hu'eu", "Ina", "Itu", "Ka'aukai", "Ka'eo", "Kaelani", "Kahale", "Kaiea", "Kaikoa", "Kana'l", "Koamalu", "Ka", "Laki", "Makai", "Manu", "Manuka", "Nui", "Pono", "Popoki", "Ruru", "Tahu", "Taurau", "Tuala", "Turoa", "Tusitala", "Uaine", "Waata", "Waipuna", "Zamar", "Alexandre", "Alfonso", "Alonso", "Anthon", "Arcos", "Arnaut", "Arturo", "Bartoleme", "Benito", "Bernat", "Blasco", "Carlos", "Damian", "Diego", "Domingo", "Enrique", "Escobar", "Ettor", "Fernando", "Franciso", "Gabriel", "Garcia", "Gaspar", "Gil", "Gomes", "Goncalo", "Gostantin", "Jayme", "Joan", "Jorge", "Jose", "Juan", "Machin", "Martin", "Mateu", "Miguel", "Nicolas", "Pascual", "Pedro", "Porico", "Ramiro", "Ramon", "Rodrigo", "Sabastian", "Salvador", "Simon", "Tomas", "Tristan", "Valeriano", "Ynigo"
-];
+const nameListings = {
+  HumanFemaleNames: [
+    "Glouris", "Maeve", "Sevaera", "Xaemarra", "Zraela", "Aisha", "Farah", "Nura", "Rashida", "Zalebyeh", "Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida", "Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele", "Alethra", "Kara", "Katernin", "Mara", "Natali", "Olma", "Tana", "Zora", "Alicia", "Gennifer", "Meridith", "Elaine", "Olivia", "Varra", "Ulmarra", "Imza", "Navarra", "Yuldra", "Aithe", "Chalan", "Oloma", "Phaele", "Sarade", "Amafrey", "Betha", "Cefrey", "Kethra", "Mara", "Olga", "Silifrey", "Westra", "Apret", "Bask", "Fanul", "Mokat", "Nismet", "Ril", "Arizima", "Chathi", "Nephis", "Nulara", "Murithi", "Sefris", "Thola", "Umara", "Zolis", "Anva", "Dasha", "Dima", "Olga", "Westra", "Zlatara", "Fyevarra", "Hulmarra", "Immith", "Imzel", "Navarra", "Shevarra", "Tammith", "Yuldra", "Anet", "Bes", "Idim", "Lenet", "Moqem", "Neghet", "Sihvet", "Bai", "Chao", "Jia", "Lei", "Mei", "Qiao", "Shui", "Tai", "Bolormaa", "Bortai", "Erdene", "Naran", "Ulutiun", "Balama", "Dona", "Faila", "Jalana", "Luisa", "Marta", "Quara", "Selise", "Vonda", "Akna", "Chena", "Kaya", "Sedna", "Ublereak", "Aaliyah", "Aida", "Akilah", "Alia", "Amina", "Atefeh", "Chaima", "Dalia", "Ehsan", "Elham", "Farah", "Fatemah", "Gamila", "Iesha", "Inbar", "Kamaria", "Khadija", "Layla", "Lupe", "Nabila", "Nadine", "Naima", "Najila", "Najwa", "Nakia", "Nashwa", "Nawra", "Nuha", "Nura", "Oma", "Qadira", "Qamar", "Qistina", "Rahima", "Rihanna", "Saadia", "Sabah", "Sada", "Saffron", "Sahar", "Salma", "Shatha", "Tahira", "Takisha", "Thana", "Yadira", "Zahra", "Zaida", "Zaina", "Zeinab", "Aife", "Aina", "Alane", "Ardena", "Arienh", "Beatha", "Birgit", "Briann", "Caomh", "Cara", "Cinnia", "Cordelia", "Deheune", "Divone", "Donia", "Doreena", "Elsha", "Enid", "Ethne", "Evelina", "Fianna", "Genevieve", "Gilda", "Gitta", "Grania", "Gwyndolin", "Idelisa", "Isolde", "Keelin", "Kennocha", "Lavena", "Lesley", "Linnette", "Lyonesse", "Mabina", "Marvina", "Mavis", "Mima", "Morgan", "Muriel", "Nareena", "Oriana", "Regan", "Ronat", "Rowena", "Selma", "Ula", "Venetia", "Wynne", "Yseult", "Ai", "Anming", "Baozhai", "Bei", "Caixia", "Changchang", "Chen", "Chou", "Chunhua", "Daianna", "Daiyu", "Die", "Ehuang", "Fenfang", "Ge", "Hong", "Huan", "Huifang", "Jia", "Jiao", "Jiaying", "Jingfei", "Jinjing", "Lan", "Li", "Lihua", "Lin", "Ling", "Liu", "Meili", "Ning", "Qi", "Qiao", "Rong", "Shu", "Shuang", "Song", "Ting", "Wen", "Xia", "Xiaodan", "Xiaoli", "Xingjuan", "Xue", "Ya", "Yan", "Ying", "Yuan", "Yue", "Yun", "A'at", "Ahset", "Amunet", "Aneski", "Atet", "Baketamon", "Betrest", "Bunefer", "Dedyet", "Hatshepsut", "Hentie", "Herit", "Hetepheres", "Intakaes", "Ipwet", "Itet", "Joba", "Kasmut", "Kemanub", "Khemut", "Kiya", "Maia", "Menhet", "Merit", "Meritamen", "Merneith", "Merseger", "Muyet", "Nebet", "Nebetah", "Nedjemmut", "Nefertiti", "Neferu", "Neithotep", "Nit", "Nofret", "Nubemiunu", "Peseshet", "Pypuy", "Qalhata", "Rai", "Redji", "Sadeh", "Sadek", "Sitamun", "Sitre", "Takhat", "Tarset", "Taweret", "Werenro", "Adelaide", "Agatha", "Agnes", "Aline", "Avelina", "Avice", "Cecily", "Egelina", "Eloise", "Elysande", "Emeny", "Emma", "Emmeline", "Ermina", "Eva", "Galiena", "Geva", "Giselle", "Griselda", "Hadwisa", "Herleva", "Hugolina", "Ida", "Margery", "Maynild", "Millicent", "Oriel", "Rohesia", "Rosalind", "Rosamund", "Sybil", "Williamina", "Yvonne", "Aalis", "Agatha", "Agnez", "Alberea", "Alips", "Amee", "Amelot", "Avelina", "Blancha", "Cateline", "Cecilia", "Claricia", "Collette", "Denisete", "Dorian", "Edelina", "Emelina", "Emmelot", "Ermentrudis", "Gibelina", "Gila", "Gillette", "Guiburgis", "Guillemette", "Guoite", "Hecelina", "Heloysis", "Helyoudis", "Hodeardis", "Isabellis", "Jaquette", "Jehan", "Johanna", "Juliote", "Katerine", "Luciana", "Margot", "Marguerite", "Maria", "Melisende", "Odelina", "Perrette", "Petronilla", "Sedilia", "Stephana", "Sybilla", "Ysabeau", "Ysabel", "Adelhayt", "Affra", "Agatha", "Allet", "Angnes", "Anna", "Apell", "Applonia", "Barbara", "Brida", "Brigita", "Cecilia", "Clara", "Cristina", "Dorothea", "Duretta", "Els", "Elsbeth", "Engel", "Enlein", "Enndlin", "Eva", "Fela", "Fronicka", "Genefe", "Geras", "Gerhauss", "Gertrudt", "Guttel", "Helena", "Irmel", "Jonata", "Katerina", "Kuen", "Kungund", "Lucia", "Madalena", "Magdalen", "Marlein", "Martha", "Otilia", "Ottilg", "Peternella", "Reusin", "Sibilla", "Ursel", "Vrsula", "Walpurg", "Acantha", "Aella", "Alektos", "Alkippe", "Andromeda", "Antigone", "Ariadne", "Astraea", "Chloros", "Chryseos", "Daphne", "Despoina", "Dione", "Eileithyia", "Elektra", "Euadne", "Eudora", "Eunomia", "Hekabe", "Helene", "Hermoione", "Hippolyte", "Ianthe", "Iokaste", "Iole", "Iphigenia", "Ismene", "Kalliope", "Kallisto", "Kalypso", "Karme", "Kassandra", "Kassiopeia", "Kirke", "Kleio", "Klotho", "Klytie", "Kynthia", "Leto", "Megaera", "Melaina", "Melpomene", "Nausikaa", "Nemesis", "Niobe", "Ourania", "Phaenna", "Polymnia", "Semele", "Theia", "Abha", "Aishwarya", "Amala", "Ananda", "Ankita", "Archana", "Avani", "Chandana", "Chandrakanta", "Chetan", "Darshana", "Devi", "Dipti", "Esha", "Gauro", "Gita", "Indira", "Indu", "Jaya", "Kala", "Kalpana", "Kamala", "Kanta", "Kashi", "Kishori", "Lalita", "Lina", "Madhur", "Manju", "Meera", "Mohana", "Mukta", "Nisha", "Nitya", "Padma", "Pratima", "Priya", "Rani", "Sarala", "Shakti", "Shanta", "Shobha", "Sima", "Sonal", "Sumana", "Sunita", "Tara", "Valli", "Vijaya", "Vimala", "Aika", "Akemi", "Akiko", "Amaya", "Asami", "Ayumi", "Bunko", "Chieko", "Chika", "Chiyo", "Cho", "Eiko", "Emiko", "Eri", "Etsuko", "Gina", "Hana", "Haruki", "Hideko", "Hikari", "Hiroko", "Hisoka", "Hishi", "Hotaru", "Izumi", "Kameyo", "Kasumi", "Kimiko", "Kotone", "Kyoko", "Maiko", "Masako", "Mi", "Minori", "Mizuki", "Naoki", "Natsuko", "Noriko", "Rei", "Ren", "Saki", "Shigeko", "Shinju", "Sumiko", "Toshiko", "Tsukiko", "Ume", "Usagi", "Yasuko", "Yuriko", "Ahuiliztli", "Atl", "Eluia", "Eztli", "Ichtaca", "Izel", "Mecatl", "Meztli", "Nahuatl", "Necahual", "Nenetl", "Nochtli", "Papan", "Patli", "Sacnite", "Teicui", "Tepin", "Teuicui", "Teyacapan", "Tlaco", "Abebi", "Abena", "Abimbola", "Akoko", "Akachi", "Alaba", "Anuli", "Ayo", "Bolanle", "Bosede", "Chiamaka", "Chidi", "Chidimma", "Chinyere", "Chioma", "Dada", "Ebele", "Efemena", "Ejiro", "Ekundayo", "Enitan", "Funanya", "Ifunanya", "Ige", "Ime", "Kunto", "Lesedi", "Lumusi", "Mojisola", "Monifa", "Nakato", "Ndidi", "Ngozi", "Nkiruka", "Nneka", "Ogechi", "Olamide", "Oluchi", "Omolara", "Onyeka", "Simisola", "Temitope", "Thema", "Titlayo", "Udo", "Uduak", "Ufuoma", "Yaa", "Yejide", "Yewande", "Alfhild", "Arnbjorg", "Ase", "Aslog", "Astrid", "Auda", "Audhid", "Bergljot", "Birghild", "Bodil", "Brenna", "Brynhild", "Dagmar", "Eerika", "Eira", "Gudrun", "Gunborg", "Gunhild", "Gunvor", "Helga", "Hertha", "Hilde", "Hillevi", "Ingrid", "Iona", "Jorunn", "Kari", "Kenna", "Magnhild", "Nanna", "Olga", "Ragna", "Ragnhild", "Ranveig", "Runa", "Saga", "Sigfrid", "Signe", "Sigrid", "Sigwjnn", "Solveg", "Svanhild", "Thora", "Torborg", "Torunn", "Tove", "Unn", "Vigdis", "Ylva", "Yngvild", "Ahulani", "Airini", "Alani", "Aluala", "Anahera", "Anuhea", "Aolani", "Elenoa", "Emele", "Fetia", "Fiva", "Halona", "Hi'ilei", "Hina", "Hinatea", "Huali", "Inia", "Inina", "Iolani", "Isa", "Ka'ana'ana", "Ka'ena", "Kaamia", "Kahula", "Kailani", "Kamaile", "Kamakani", "Kamea", "Latai", "Liona", "Lokelani", "Marva", "Mehana", "Millawa", "Moana", "Ngana", "Nohea", "Pelika", "Sanoe", "Satina", "Tahia", "Tasi", "Tiaho", "Tihani", "Toroa", "Ulanni", "Uluwehi", "Vaina", "Waiola", "Waitara", "Aelia", "Aemilia", "Agrippina", "Alba", "Antonia", "Aquila", "Augusta", "Aurelia", "Balbina", "Blandina", "Caelia", "Camilla", "Casia", "Claudia", "Cloelia", "Domitia", "Drusa", "Fabia", "Fabricia", "Fausta", "Flavia", "Floriana", "Fulvia", "Germana", "Glaucia", "Gratiana", "Hadriana", "Hermina", "Horatia", "Hortensia", "Iovita", "Iulia", "Laelia", "Laurentia", "Livia", "Longina", "Lucilla", "Lucretia", "Marcella", "Marcia", "Maxima", "Nona", "Octavia", "Paulina", "Petronia", "Porcia", "Tacita", "Tullia", "Verginia", "Vita", "Agripina", "Anastasiya", "Bogdana", "Boleslava", "Bozhena", "Danica", "Darya", "Desislava", "Dragoslava", "Dunja", "Efrosinia", "Ekaterina", "Elena", "Faina", "Galina", "Irina", "Iskra", "Jasna", "Katarina", "Katya", "Kresimira", "Lyudmila", "Magda", "Mariya", "Militsa", "Miloslava", "Mira", "Miroslava", "Mokosh", "Morana", "Natasha", "Nika", "Olga", "Rada", "Radoslava", "Raisa", "Slavitsa", "Sofiya", "Stanislava", "Svetlana", "Tatyana", "Tomislava", "Veronika", "Vesna", "Vladimira", "Yaroslava", "Yelena", "Zaria", "Zarya", "Zoria", "Abella", "Adalina", "Adora", "Adriana", "Ana", "Antonia", "Basilia", "Beatriz", "Bonita", "Camila", "Cande", "Carmen", "Catlina", "Dolores", "Dominga", "Dorotea", "Elena", "Elicia", "Esmerelda", "Felipina", "Francisca", "Gabriela", "Imelda", "Ines", "Isabel", "Juana", "Leocadia", "Leonor", "Leta", "Lucinda", "Maresol", "Maria", "Maricela", "Matilde", "Melania", "Monica", "Neva", "Nilda", "Petrona", "Rafaela", "Ramira", "Rosario", "Sofia", "Suelo", "Teresa", "Tomasa", "Valentia", "Veronica", "Ynes", "Ysabel"
+  ],
+  HumanMaleNames: [
+    "Houn", "Rhivaun", "Umbril", "Xaemar", "Zeltaebar", "Aali", "Rashid", "Tahnon", "Tanzim", "Whalide", "Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir", "Darvin", "Dorn", "Evendur", "Gorstag", "Grim", "Helm", "Malark", "Morn", "Randal", "Stedd", "Bor", "Fodel", "Glar", "Grigor", "Igan", "Ivor", "Kosef", "Mival", "Orel", "Pavel", "Sergor", "Artur", "Bern", "Colin", "Manfred", "Tristan", "Boriv", "Gardar", "Madevik", "Vlad", "Aldym", "Chand", "Meleghost", "Presmer", "Sandrue", "Uregaunt", "Ander", "Blath", "Bran", "Frath", "Geth", "Lander", "Luth", "Malcer", "Stor", "Taman", "Urth", "Charva", "Duma", "Hukir", "Jama", "Pradir", "Sikhil", "Aoth", "Bareris", "Ehput-Ki", "Kethoth", "Mumed", "Ramas", "So-Kehur", "Thazar-De", "Urhur", "Avan", "Ostaram", "Petro", "Stor", "Taman", "Thalaman", "Urth", "Borivik", "Faurgar", "Jandar", "Kanithar", "Madislak", "Ralmevik", "Shaumar", "Vladislak", "Awar", "Cohis", "Damota", "Gewar", "Hapah", "Laskaw", "Senesaw", "Tokhis", "An", "Chen", "Chi", "Fai", "Jiang", "Jun", "Lian", "Long", "Meng", "On", "Shan", "Shui", "Wen", "Atlan", "Bayar", "Chingis", "Chinua", "Mongke", "Temur", "Amak", "Chu", "Imnek", "Kanut", "Siku", "Abbad", "Abdul", "Achmed", "Akeem", "Alif", "Amir", "Asim", "Bashir", "Bassam", "Fahim", "Farid", "Farouk", "Fayez", "Fayyaad", "Fazil", "Hakim", "Halil", "Hamid", "Hazim", "Heydar", "Hussein", "Jabari", "Jafar", "Jahid", "Jamal", "Kalim", "Karim", "Kazim", "Khadim", "Khalid", "Mahmud", "Mansour", "Musharraf", "Mustafa", "Nadir", "Nazim", "Omar", "Qadir", "Qusay", "Rafiq", "Rakim", "Rashad", "Rauf", "Saladin", "Sami", "Samir", "Talib", "Tamir", "Tariq", "Yazid", "Airell", "Airic", "Alan", "Anghus", "Aodh", "Bardon", "Bearacb", "Bevyn", "Boden", "Bran", "Brasil", "Bredon", "Brian", "Bricriu", "Bryant", "Cadman", "Caradoc", "Cedric", "Conalt", "Conchobar", "Condon", "Darcy", "Devin", "Dillion", "Donaghy", "Donall", "Duer", "Eghan", "Ewyn", "Ferghus", "Galvyn", "Gildas", "Guy", "Harvey", "Iden", "Irven", "Karney", "Kayne", "Kelvyn", "Kunsgnos", "Leigh", "Maccus", "Moryn", "Neale", "Owyn", "Pryderi", "Reaghan", "Taliesin", "Tiernay", "Turi", "Bingwen", "Bo", "Bolin", "Chang", "Chao", "Chen", "Cheng", "Da", "Dingxiang", "Fang", "Feng", "Fu", "Gang", "Guang", "Hai", "Heng", "Hong", "Huan", "Huang", "Huiliang", "Huizhong", "Jian", "Jiayi", "Junjie", "Kang", "Lei", "Liang", "Ling", "Liwei", "Meilin", "Niu", "Peizhi", "Peng", "Ping", "Qiang", "Qiu", "Quan", "Renshu", "Rong", "Ru", "Shan", "Shen", "Tengfei", "Wei", "Xiaobo", "Xiaoli", "Xin", "Yang", "Ying", "Zhong", "Ahmose", "Akhoim", "Amasis", "Amenemhet", "Anen", "Banefre", "Bek", "Djedefre", "Djoser", "Hekaib", "Henenu", "Horemheb", "Horwedja", "Huya", "Ibebi", "Idu", "Imhotep", "Ineni", "Ipuki", "Irsu", "Kagemni", "Kawab", "Kenamon", "Kewap", "Khaemwaset", "Khafra", "Khusebek", "Masaharta", "Meketre", "Menkhaf", "Merenre", "Metjen", "Nebamun", "Nebetka", "Nehi", "Nekure", "Nessumontu", "Pakhom", "Pawah", "Pawero", "Ramose", "Rudjek", "Sabaf", "Sebek-khu", "Sebni", "Senusret", "Shabaka", "Somintu", "Thaneni", "Thethi", "Ambroys", "Ame", "Andri", "Andriet", "Anthoine", "Bernard", "Charles", "Chariot", "Colin", "Denis", "Durant", "Edouart", "Eremon", "Ernault", "Ethor", "Felix", "Floquart", "Galleren", "Gaultier", "Gilles", "Guy", "Henry", "Hugo", "Imbert", "Jacques", "Jacquot", "Jean", "Jehannin", "Louis", "Louys", "Loys", "Martin", "Michel", "Mille", "Morelet", "Nicolas", "Nicolle", "Oudart", "Perrin", "Phillippe", "Pierre", "Regnault", "Richart", "Robert", "Robinet", "Sauvage", "Simon", "Talbot", "Tanguy", "Vincent", "Albrecht", "Allexander", "Baltasar", "Benedick", "Berhart", "Caspar", "Clas", "Cristin", "Cristoff", "Dieterich", "Engelhart", "Erhart", "Felix", "Frantz", "Fritz", "Gerhart", "Gotleib", "Hans", "Hartmann", "Heintz", "Herman", "Jacob", "Jeremias", "Jorg", "Karll", "Kilian", "Linhart", "Lorentz", "Ludwig", "Marx", "Melchor", "Mertin", "Michel", "Moritz", "Osswald", "Ott", "Peter", "RudolfF", "Ruprecht", "Sewastian", "Sigmund", "Steffan", "Symon", "Thoman", "Ulrich", "Vallentin", "Wendel", "Wilhelm", "Wolff", "Wolfgang", "Adonis", "Adrastos", "Aeson", "Aias", "Aineias", "Aiolos", "Alekto", "Alkeides", "Argos", "Brontes", "Damazo", "Dardanos", "Deimos", "Diomedes", "Endymion", "Epimetheus", "Erebos", "Euandros", "Ganymedes", "Glaukos", "Hektor", "Heros", "Hippolytos", "Iacchus", "Iason", "Kadmos", "Kastor", "Kephalos", "Kepheus", "Koios", "Kreios", "Laios", "Leandros", "Linos", "Lykos", "Melanthios", "Menelaus", "Mentor", "Neoptolemus", "Okeanos", "Orestes", "Pallas", "Patroklos", "Philandros", "Phoibos", "Phrixus", "Priamos", "Pyrrhos", "Xanthos", "Zephyros", "Abhay", "Ahsan", "Ajay", "Ajit", "Akhil", "Amar", "Amit", "Ananta", "Aseem", "Ashok", "Bahadur", "Basu", "Chand", "Chandra", "Damodar", "Darhsan", "Devdan", "Dinesh", "Dipak", "Gopal", "Govind", "Harendra", "Harsha", "Ila", "Isha", "Johar", "Kalyan", "Kiran", "Kumar", "Lakshmana", "Mahavir", "Narayan", "Naveen", "Nirav", "Prabhakar", "Prasanna", "Raghu", "Rajanikant", "Rakesh", "Ranjeet", "Rishi", "Sanjay", "Sekar", "Shandar", "Sumantra", "Vijay", "Vikram", "Vimal", "Vishal", "Yash", "Akio", "Atsushi", "Daichi", "Daiki", "Daisuke", "Eiji", "Fumio", "Hajime", "Haru", "Hideaki", "Hideo", "Hikaru", "Hiro", "Hiroki", "Hisao", "Hitoshi", "Isamu", "Isao", "Jun", "Katashi", "Katsu", "Kei", "Ken", "Kenshin", "Kenta", "Kioshi", "Makoto", "Mamoru", "Masato", "Masumi", "Noboru", "Norio", "Osamu", "Ryota", "Sadao", "Satoshi", "Shigeo", "Shin", "Sora", "Tadao", "Takehiko", "Takeo", "Takeshi", "Takumi", "Tamotsu", "Tatsuo", "Toru", "Toshio", "Yasio", "Yukio", "Abebe", "Abel", "Abidemi", "Abrafo", "Adisa", "Amadi", "Amara", "Anyim", "Azubuike", "Bapoto", "Baraka", "Bohlale", "Bongani", "Bujune", "Buziba", "Chakide", "Chibuzo", "Chika", "Chimola", "Chiratidzo", "Dabulamanzi", "Dumisa", "Dwanh", "Emeka", "Folami", "Gatura", "Gebhuza", "Gero", "Isoba", "Kagiso", "Kamau", "Katlego", "Masego", "Matata", "Nthanda", "Ogechi", "Olwenyo", "Osumare", "Paki", "Qinisela", "Quanda", "Samanya", "Shanika", "Sibonakaliso", "Tapiwa", "Thabo", "Themba", "Uzoma", "Zuberi", "Zuri", "Agni", "Alaric", "Anvindr", "Arvid", "Asger", "Asmund", "Bjarte", "Bjorg", "Bjorn", "Brandr", "Brandt", "Brynjar", "Calder", "Colborn", "Cuyler", "Egil", "Einar", "Eric", "Erland", "Fiske", "Folkvar", "Fritjof", "Frode", "Geir", "Halvar", "Hemming", "Hjalmar", "Hjortr", "Ingimarr", "Ivar", "Knud", "Leif", "Liufr", "Manning", "Oddr", "Olin", "Ormr", "Ove", "Rannulfr", "Sigurd", "Skari", "Snorri", "Sten", "Stigandr", "Stigr", "Sven", "Trygve", "Ulf", "Vali", "Vidar", "Afa", "Ahohako", "Aisake", "Aleki", "Anewa", "Anitelu", "Aputi", "Ariki", "Butat", "Enele", "Fef", "Fuifui", "Ha'aheo", "Hanohano", "Haunui", "Hekili", "Hiapo", "Hikawera", "Hanano", "Ho'onani", "Hoku", "Hu'eu", "Ina", "Itu", "Ka'aukai", "Ka'eo", "Kaelani", "Kahale", "Kaiea", "Kaikoa", "Kana'l", "Koamalu", "Ka", "Laki", "Makai", "Manu", "Manuka", "Nui", "Pono", "Popoki", "Ruru", "Tahu", "Taurau", "Tuala", "Turoa", "Tusitala", "Uaine", "Waata", "Waipuna", "Zamar", "Alexandre", "Alfonso", "Alonso", "Anthon", "Arcos", "Arnaut", "Arturo", "Bartoleme", "Benito", "Bernat", "Blasco", "Carlos", "Damian", "Diego", "Domingo", "Enrique", "Escobar", "Ettor", "Fernando", "Franciso", "Gabriel", "Garcia", "Gaspar", "Gil", "Gomes", "Goncalo", "Gostantin", "Jayme", "Joan", "Jorge", "Jose", "Juan", "Machin", "Martin", "Mateu", "Miguel", "Nicolas", "Pascual", "Pedro", "Porico", "Ramiro", "Ramon", "Rodrigo", "Sabastian", "Salvador", "Simon", "Tomas", "Tristan", "Valeriano", "Ynigo"
+  ],
 
-var HumanClanNames = [
-  "Lharaendo", "Mristar", "Wyndael", "Alaii", "Bordjia", "Clelarra", "Desai", "Dakawa", "Dursalai", "Goldor", "Iriphawa", "Kellordrai", "Lalajar", "Qahtan", "Yethtai", "Zazalaar", "Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein", "Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag", "Bersk", "Chernin", "Dotsk", "Kulenov", "Marsk", "Nemetsk", "Shemov", "Starag", "Archer", "Gareth", "Leed", "Kendrick", "Morgan", "Waters", "Chergoba", "Drazlad", "Tazyara", "Vargoba", "Stayankina", "Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver", "Datharathi", "Melpurvatta", "Nalambar", "Tiliputakas", "Ankhalab", "Anskuld", "Fezim", "Hahpet", "Nathandem", "Sepret", "Uuthrakt", "Chergoba", "Dyernina", "Iltazyara", "Murnyethara", "Stayanoga", "Ulmokina", "Cor", "Marak", "Laumee", "Harr", "Moq", "Qo", "Harr", "Woraw", "Tarak", "Chien", "Huang", "Kao", "Kung", "Lao", "Ling", "Mei", "Pin", "Shin", "Sum", "Tan", "Wan", "Atlan", "Bayar", "Chingis", "Chinua", "Mongke", "Temur", "Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo", "Amak", "Chu", "Imnek", "Kanut", "Siku", "al-Kaabi", "Aileanach", "Barrach", "Beitean", "Càidh", "Dalais", "Druimein", "Foirbeis", "Flimean", "Guaire", "Guinne", "Munna", "Paorach", "Seagha", "Tuairnear", "Umphraidh", "Duàn", "Hao", "Jin", "Shèng", "Akila", "Aziza", "Bahiti", "Banafrit", "Chione", "Djeserit", "Eshe", "Hasina", "Mosi", "Tale", "Salama", "Abasi", "Adio", "Akiiki", "Baruti", "Chenzira", "Donkor", "Jumoke", "Idogbe", "Hondo", "Hanif", "Ngozi", "Alder", "Berry", "Croft", "Gorsuch", "Freeman", "Forrest", "Greeves", "Brook", "Heather", "Holt", "Keats", "Lea", "Marshal", "Cadiot", "Ciraisse", "Lucast", "Perrechon", "Rengault", "Quilletau", "Poucin", "Veaser", "Seramet", "Wateure", "Rivier", "Gilleberty", "Herbelot", "Cappus", "Rufflin", "Schawch", "Steller", "Schycker", "Veste", "Weyck", "Zech", "Zika", "Zervas", "Toles", "Rubis", "Vassos", "Neeru", "Lata", "Madan", "Soni", "Uddin", "Abe", "Maeda", "Sugiyama", "Ohno", "Tlapa", "Ehecatl", "Jaja", "Ezekwesili", "Okonjo", "Yar-Adua", "Inn", "Ánauðgi", "Bægifótr", "Feilan", "Fullspakr", "Galinn", "Harðfari", "Kuggi", "Kaða", "Skáld", "Styggr", "Tiorvi", "Tálkni", "Var", "Vífill", "Dainggati", "Yasawa", "Serevi", "Reihana", "Nakaunicina", "Maikelekelevesi", "Kini", "Kanani", "Ipo", "Mala", "Ulani", "Wana'ao", "Anuenue", "Pawakaho", "Pakeka", "Parepupuhi", "Pohomare", "Iahaukina", "Huapia", "Hauraki", "Ewe", "Hae", "Latu", "Olopoto", "Latu", "Paea", "Bursio", "Capitolinus", "Iunianus", "Rullianus", "Hnilo", "Semenov", "Kowacewicz", "Peña", "Márquez", "Nieto",
-];
+  HumanClanNames: [
+    "Lharaendo", "Mristar", "Wyndael", "Alaii", "Bordjia", "Clelarra", "Desai", "Dakawa", "Dursalai", "Goldor", "Iriphawa", "Kellordrai", "Lalajar", "Qahtan", "Yethtai", "Zazalaar", "Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein", "Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag", "Bersk", "Chernin", "Dotsk", "Kulenov", "Marsk", "Nemetsk", "Shemov", "Starag", "Archer", "Gareth", "Leed", "Kendrick", "Morgan", "Waters", "Chergoba", "Drazlad", "Tazyara", "Vargoba", "Stayankina", "Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver", "Datharathi", "Melpurvatta", "Nalambar", "Tiliputakas", "Ankhalab", "Anskuld", "Fezim", "Hahpet", "Nathandem", "Sepret", "Uuthrakt", "Chergoba", "Dyernina", "Iltazyara", "Murnyethara", "Stayanoga", "Ulmokina", "Cor", "Marak", "Laumee", "Harr", "Moq", "Qo", "Harr", "Woraw", "Tarak", "Chien", "Huang", "Kao", "Kung", "Lao", "Ling", "Mei", "Pin", "Shin", "Sum", "Tan", "Wan", "Atlan", "Bayar", "Chingis", "Chinua", "Mongke", "Temur", "Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo", "Amak", "Chu", "Imnek", "Kanut", "Siku", "al-Kaabi", "Aileanach", "Barrach", "Beitean", "Càidh", "Dalais", "Druimein", "Foirbeis", "Flimean", "Guaire", "Guinne", "Munna", "Paorach", "Seagha", "Tuairnear", "Umphraidh", "Duàn", "Hao", "Jin", "Shèng", "Akila", "Aziza", "Bahiti", "Banafrit", "Chione", "Djeserit", "Eshe", "Hasina", "Mosi", "Tale", "Salama", "Abasi", "Adio", "Akiiki", "Baruti", "Chenzira", "Donkor", "Jumoke", "Idogbe", "Hondo", "Hanif", "Ngozi", "Alder", "Berry", "Croft", "Gorsuch", "Freeman", "Forrest", "Greeves", "Brook", "Heather", "Holt", "Keats", "Lea", "Marshal", "Cadiot", "Ciraisse", "Lucast", "Perrechon", "Rengault", "Quilletau", "Poucin", "Veaser", "Seramet", "Wateure", "Rivier", "Gilleberty", "Herbelot", "Cappus", "Rufflin", "Schawch", "Steller", "Schycker", "Veste", "Weyck", "Zech", "Zika", "Zervas", "Toles", "Rubis", "Vassos", "Neeru", "Lata", "Madan", "Soni", "Uddin", "Abe", "Maeda", "Sugiyama", "Ohno", "Tlapa", "Ehecatl", "Jaja", "Ezekwesili", "Okonjo", "Yar-Adua", "Inn", "Ánauðgi", "Bægifótr", "Feilan", "Fullspakr", "Galinn", "Harðfari", "Kuggi", "Kaða", "Skáld", "Styggr", "Tiorvi", "Tálkni", "Var", "Vífill", "Dainggati", "Yasawa", "Serevi", "Reihana", "Nakaunicina", "Maikelekelevesi", "Kini", "Kanani", "Ipo", "Mala", "Ulani", "Wana'ao", "Anuenue", "Pawakaho", "Pakeka", "Parepupuhi", "Pohomare", "Iahaukina", "Huapia", "Hauraki", "Ewe", "Hae", "Latu", "Olopoto", "Latu", "Paea", "Bursio", "Capitolinus", "Iunianus", "Rullianus", "Hnilo", "Semenov", "Kowacewicz", "Peña", "Márquez", "Nieto",
+  ],
 
-var DwarfFemaleNames =
-  ["Anbera", "Artin", "Audhild", "Balifra", "Barbena", "Bardryn", "Bolhild", "Dagnal", "Dariff", "Delre", "Diesa", "Eldeth", "Eridred", "Falkrunn", "Fallthra", "Finellen", "Gillydd", "Gunnloda", "Gurdis", "Helgret", "Helja", "Hlin", "Ilde", "Jarana", "Kathra", "Kilia", "Kristryd", "Liftrasa", "Marastyr", "Mardred", "Morana", "Nalaed", "Nora", "Nurkara", "Oriff", "Ovina", "Riswynn", "Sannl", "Therlin", "Thodris", "Torbera", "Tordrid", "Torgga", "Urshar", "Valida", "Vistra", "Vonana", "Werydd", "Whurdred", "Yurgunn"];
+  DwarfFemaleNames: [
+    "Anbera", "Artin", "Audhild", "Balifra", "Barbena", "Bardryn", "Bolhild", "Dagnal", "Dariff", "Delre", "Diesa", "Eldeth", "Eridred", "Falkrunn", "Fallthra", "Finellen", "Gillydd", "Gunnloda", "Gurdis", "Helgret", "Helja", "Hlin", "Ilde", "Jarana", "Kathra", "Kilia", "Kristryd", "Liftrasa", "Marastyr", "Mardred", "Morana", "Nalaed", "Nora", "Nurkara", "Oriff", "Ovina", "Riswynn", "Sannl", "Therlin", "Thodris", "Torbera", "Tordrid", "Torgga", "Urshar", "Valida", "Vistra", "Vonana", "Werydd", "Whurdred", "Yurgunn"
+  ],
 
-var DwarfMaleNames =
-  ["Adrik", "Alberich", "Baern", "Barendd", "Beloril", "Brottor", "Dain", "Dalgal", "Darrak", "Delg", "Duergath", "Dworic", "Eberk", "Einkil", "Elaim", "Erias", "Fallond", "Fargrim", "Gardain", "Gilthur", "Gimgen", "Gimurt", "Harbek", "Kildrak", "Kilvar", "Morgran", "Morkral", "Nalral", "Nordak", "Nuraval", "Oloric", "Olunt", "Orsik", "Oskar", "Rangrim", "Reirak", "Rurik", "Taklinn", "Thoradin", "Thorin", "Thradal", "Tordek", "Traubon", "Travok", "Ulfgar", "Uraim", "Veit", "Vonbin", "Vondal", "Whurbin"];
+  DwarfMaleNames: [
+    "Adrik", "Alberich", "Baern", "Barendd", "Beloril", "Brottor", "Dain", "Dalgal", "Darrak", "Delg", "Duergath", "Dworic", "Eberk", "Einkil", "Elaim", "Erias", "Fallond", "Fargrim", "Gardain", "Gilthur", "Gimgen", "Gimurt", "Harbek", "Kildrak", "Kilvar", "Morgran", "Morkral", "Nalral", "Nordak", "Nuraval", "Oloric", "Olunt", "Orsik", "Oskar", "Rangrim", "Reirak", "Rurik", "Taklinn", "Thoradin", "Thorin", "Thradal", "Tordek", "Traubon", "Travok", "Ulfgar", "Uraim", "Veit", "Vonbin", "Vondal", "Whurbin"
+  ],
 
 
-var DwarfClanNames =
-  ["Aranore", "Balderk", "Battlehammer", "Bigtoe", "Bloodkith", "Bofdann", "Brawnanvil", "Brazzik", "Broodfist", "Burrowfound", "Caebrek", "Daerdahk", "Dankil", "Daraln", "Deepdelver", "Durthane", "Eversharp", "Fallack", "Fireforge", "Foamtankard", "Frostbeard", "Glanhig", "Goblinbane", "Goldfinder", "Gorunn", "Graybeard", "Hammerstone", "Helcral", "Holderhek", "Ironfist", "Loderr", "Lutgehr", "Morigak", "Orcfoe", "Rakankrak", "Ruby-Eye", "Rumnaheim", "Silveraxe", "Silverstone", "Steelfist", "Stoutale", "Strakeln", "Strongheart", "Thrahak", "Torevir", "Torunn", "Trollbleeder", "Trueanvil", "Trueblood", "Ungart"];
+  DwarfClanNames: [
+    "Aranore", "Balderk", "Battlehammer", "Bigtoe", "Bloodkith", "Bofdann", "Brawnanvil", "Brazzik", "Broodfist", "Burrowfound", "Caebrek", "Daerdahk", "Dankil", "Daraln", "Deepdelver", "Durthane", "Eversharp", "Fallack", "Fireforge", "Foamtankard", "Frostbeard", "Glanhig", "Goblinbane", "Goldfinder", "Gorunn", "Graybeard", "Hammerstone", "Helcral", "Holderhek", "Ironfist", "Loderr", "Lutgehr", "Morigak", "Orcfoe", "Rakankrak", "Ruby-Eye", "Rumnaheim", "Silveraxe", "Silverstone", "Steelfist", "Stoutale", "Strakeln", "Strongheart", "Thrahak", "Torevir", "Torunn", "Trollbleeder", "Trueanvil", "Trueblood", "Ungart"
+  ],
 
-var ElfFemaleNames =
-  ["Adrie", "Ahinar", "Althaea", "Anastrianna", "Andraste", "Antinua", "Arara", "Baelitae", "Bethrynna", "Birel", "Caelynn", "Chaedi", "Claira", "Dara", "Drusilia", "Elama", "Enna", "Faral", "Felosial", "Hatae", "Ielenia", "Ilanis", "Irann", "Jarsali", "Jelenneth", "Keyleth", "Leshanna", "Lia", "Maiathah", "Malquis", "Meriele", "Mialee", "Myathethin", "Naivara", "Quelenna", "Quillathe", "Ridaro", "Sariel", "Shanairra", "Shava", "Silaqui", "Summes", "Theirastra", "Thiala", "Tiaathque", "Traulam", "Vadania", "Valanthe", "Valna", "Xanaphia"];
+  ElfFemaleNames: [
+    "Adrie", "Ahinar", "Althaea", "Anastrianna", "Andraste", "Antinua", "Arara", "Baelitae", "Bethrynna", "Birel", "Caelynn", "Chaedi", "Claira", "Dara", "Drusilia", "Elama", "Enna", "Faral", "Felosial", "Hatae", "Ielenia", "Ilanis", "Irann", "Jarsali", "Jelenneth", "Keyleth", "Leshanna", "Lia", "Maiathah", "Malquis", "Meriele", "Mialee", "Myathethin", "Naivara", "Quelenna", "Quillathe", "Ridaro", "Sariel", "Shanairra", "Shava", "Silaqui", "Summes", "Theirastra", "Thiala", "Tiaathque", "Traulam", "Vadania", "Valanthe", "Valna", "Xanaphia"
+  ],
 
-var ElfMaleNames =
-  ["Adran", "Aelar", "Aerdeth", "Ahvain", "Aramil", "Arannis", "Aust", "Azaki", "Beiro", "Berrian", "Caeldrim", "Carric", "Dayereth", "Dreali", "Efferil", "Eiravel", "Enialis", "Erdan", "Erevan", "Fivin", "Galinndan", "Gennal", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Lucan", "Mindartis", "Naal", "Nutae", "Paelias", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Suhnae", "Thamior", "Tharivol", "Theren", "Theriatis", "Thervan", "Uthemar", "Vanuath", "Varis"];
+  ElfMaleNames: [
+    "Adran", "Aelar", "Aerdeth", "Ahvain", "Aramil", "Arannis", "Aust", "Azaki", "Beiro", "Berrian", "Caeldrim", "Carric", "Dayereth", "Dreali", "Efferil", "Eiravel", "Enialis", "Erdan", "Erevan", "Fivin", "Galinndan", "Gennal", "Hadarai", "Halimath", "Heian", "Himo", "Immeral", "Ivellios", "Korfel", "Lamlis", "Laucian", "Lucan", "Mindartis", "Naal", "Nutae", "Paelias", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Suhnae", "Thamior", "Tharivol", "Theren", "Theriatis", "Thervan", "Uthemar", "Vanuath", "Varis"
+  ],
 
-var ElfClanNames =
-  ["Aloro", "Amakiir", "Amastacia", "Ariessus", "Aruanna", "Berevan", "Caerdonel", "Caphaxath", "Casilltenirra", "Cithreth", "Dalanthan", "Eathalena", "Erenaeth", "Ethanasath", "Fasharash", "Firahel", "Floshem", "Galanodel", "Goltorah", "Hanali", "Holimion", "Horineth", "Iathrana", "Ilphelkiir", "Iranapha", "Koehlanna", "Lathalas", "Liadon", "Meliamne", "Mellerelel", "Mystralath", "Naïlo", "Netyoive", "Ofandrus", "Ostoroth", "Othronus", "Qualanthri", "Raethran", "Rothenel", "Selevarun", "Siannodel", "Suithrasas", "Sylvaranth", "Teinithra", "Tiltathana", "Wasanthi", "Withrethin", "Xiloscient", "Xistsrith", "Yaeldrin"];
+  ElfClanNames: [
+    "Aloro", "Amakiir", "Amastacia", "Ariessus", "Aruanna", "Berevan", "Caerdonel", "Caphaxath", "Casilltenirra", "Cithreth", "Dalanthan", "Eathalena", "Erenaeth", "Ethanasath", "Fasharash", "Firahel", "Floshem", "Galanodel", "Goltorah", "Hanali", "Holimion", "Horineth", "Iathrana", "Ilphelkiir", "Iranapha", "Koehlanna", "Lathalas", "Liadon", "Meliamne", "Mellerelel", "Mystralath", "Naïlo", "Netyoive", "Ofandrus", "Ostoroth", "Othronus", "Qualanthri", "Raethran", "Rothenel", "Selevarun", "Siannodel", "Suithrasas", "Sylvaranth", "Teinithra", "Tiltathana", "Wasanthi", "Withrethin", "Xiloscient", "Xistsrith", "Yaeldrin"
+  ],
 
-var GnomeFemaleNames =
-  ["Abalaba", "Bimpnottin", "Breena", "Buvvie", "Callybon", "Caramip", "Carlin", "Cumpen", "Dalaba", "Donella", "Duvamil", "Ella", "Ellyjoybell", "Ellywick", "Enidda", "Lilli", "Loopmottin", "Lorilla", "Luthra", "Mardnab", "Meena", "Menny", "Mumpena", "Nissa", "Numba", "Nyx", "Oda", "Oppah", "Orla", "Panana", "Pyntle", "Quilla", "Ranala", "Reddlepop", "Roywyn", "Salanop", "Shamil", "Siffress", "Symma", "Tana", "Tenena", "Tervaround", "Tippletoe", "Ulla", "Unvera", "Veloptima", "Virra", "Waywocket", "Yebe", "Zanna"];
+  GnomeFemaleNames: [
+    "Abalaba", "Bimpnottin", "Breena", "Buvvie", "Callybon", "Caramip", "Carlin", "Cumpen", "Dalaba", "Donella", "Duvamil", "Ella", "Ellyjoybell", "Ellywick", "Enidda", "Lilli", "Loopmottin", "Lorilla", "Luthra", "Mardnab", "Meena", "Menny", "Mumpena", "Nissa", "Numba", "Nyx", "Oda", "Oppah", "Orla", "Panana", "Pyntle", "Quilla", "Ranala", "Reddlepop", "Roywyn", "Salanop", "Shamil", "Siffress", "Symma", "Tana", "Tenena", "Tervaround", "Tippletoe", "Ulla", "Unvera", "Veloptima", "Virra", "Waywocket", "Yebe", "Zanna"
+  ],
 
-var GnomeMaleNames =
-  ["Alston", "Alvyn", "Anverth", "Arumawann", "Bilbron", "Boddynock", "Brocc", "Burgell", "Cockaby", "Crampernap", "Dabbledob", "Delebean", "Dimble", "Eberdeb", "Eldon", "Erky", "Fablen", "Fibblestib", "Fonkin", "Frouse", "Frug", "Gerbo", "Gimble", "Glim", "Igden", "Jabble", "Jebeddo", "Kellen", "Kipper", "Namfoodle", "Oppleby", "Orryn", "Paggen", "Pallabar", "Pog", "Qualen", "Ribbles", "Rimple", "Roondar", "Sapply", "Seebo", "Senteq", "Sindri", "Umpen", "Warryn", "Wiggens", "Wobbles", "Wrenn", "Zaffrab", "Zook"];
+  GnomeMaleNames: [
+    "Alston", "Alvyn", "Anverth", "Arumawann", "Bilbron", "Boddynock", "Brocc", "Burgell", "Cockaby", "Crampernap", "Dabbledob", "Delebean", "Dimble", "Eberdeb", "Eldon", "Erky", "Fablen", "Fibblestib", "Fonkin", "Frouse", "Frug", "Gerbo", "Gimble", "Glim", "Igden", "Jabble", "Jebeddo", "Kellen", "Kipper", "Namfoodle", "Oppleby", "Orryn", "Paggen", "Pallabar", "Pog", "Qualen", "Ribbles", "Rimple", "Roondar", "Sapply", "Seebo", "Senteq", "Sindri", "Umpen", "Warryn", "Wiggens", "Wobbles", "Wrenn", "Zaffrab", "Zook"
+  ],
 
-var GnomeClanNames =
-  ["Albaratie", "Bafflestone", "Beren", "Boondiggles", "Cobblelob", "Daergel", "Dunben", "Fabblestabble", "Fapplestamp", "Fiddlefen", "Folkor", "Garrick", "Gimlen", "Glittergem", "Gobblefirn", "Gummen", "Horcusporcus", "Humplebumple", "Ironhide", "Leffery", "Lingenhall", "Loofollue", "Maekkelferce", "Miggledy", "Munggen", "Murnig", "Musgraben", "Nackle", "Ningel", "Nopenstallen", "Nucklestamp", "Offund", "Oomtrowl", "Pilwicken", "Pingun", "Quillsharpener", "Raulnor", "Reese", "Rofferton", "Scheppen", "Shadowcloak", "Silverthread", "Sympony", "Tarkelby", "Timbers", "Turen", "Umbodoben", "Waggletop", "Welber", "Wildwander"];
+  GnomeClanNames: [
+    "Albaratie", "Bafflestone", "Beren", "Boondiggles", "Cobblelob", "Daergel", "Dunben", "Fabblestabble", "Fapplestamp", "Fiddlefen", "Folkor", "Garrick", "Gimlen", "Glittergem", "Gobblefirn", "Gummen", "Horcusporcus", "Humplebumple", "Ironhide", "Leffery", "Lingenhall", "Loofollue", "Maekkelferce", "Miggledy", "Munggen", "Murnig", "Musgraben", "Nackle", "Ningel", "Nopenstallen", "Nucklestamp", "Offund", "Oomtrowl", "Pilwicken", "Pingun", "Quillsharpener", "Raulnor", "Reese", "Rofferton", "Scheppen", "Shadowcloak", "Silverthread", "Sympony", "Tarkelby", "Timbers", "Turen", "Umbodoben", "Waggletop", "Welber", "Wildwander"
+  ],
 
-var TieflingFemaleNames =
-  ["Ambition", "Art", "Carrion", "Chant", "Creed", "Death", "Debauchery", "Despair", "Doom", "Doubt", "Dread", "Ecstacy", "Ennui", "Entropy", "Excellence", "Fear", "Glory", "Gluttony", "Grief", "Hate", "Hope", "Horror", "Ideal", "Ignominy", "Laughter", "Love", "Lust", "Mayhem", "Mockery", "Murder", "Muse", "Music", "Mystery", "Nowhere", "Open", "Pain", "Passion", "Poetry", "Quest", "Reverence", "Revulsion", "Sorrow", "Temerity", "Torment", "Tragedy", "Vice", "Virtue", "Weary", "Wit"];
+  TieflingFemaleNames: [
+    "Ambition", "Art", "Carrion", "Chant", "Creed", "Death", "Debauchery", "Despair", "Doom", "Doubt", "Dread", "Ecstacy", "Ennui", "Entropy", "Excellence", "Fear", "Glory", "Gluttony", "Grief", "Hate", "Hope", "Horror", "Ideal", "Ignominy", "Laughter", "Love", "Lust", "Mayhem", "Mockery", "Murder", "Muse", "Music", "Mystery", "Nowhere", "Open", "Pain", "Passion", "Poetry", "Quest", "Reverence", "Revulsion", "Sorrow", "Temerity", "Torment", "Tragedy", "Vice", "Virtue", "Weary", "Wit"
+  ],
 
-var TieflingMaleNames =
-  ["Ambition", "Art", "Carrion", "Chant", "Creed", "Death", "Debauchery", "Despair", "Doom", "Doubt", "Dread", "Ecstacy", "Ennui", "Entropy", "Excellence", "Fear", "Glory", "Gluttony", "Grief", "Hate", "Hope", "Horror", "Ideal", "Ignominy", "Laughter", "Love", "Lust", "Mayhem", "Mockery", "Murder", "Muse", "Music", "Mystery", "Nowhere", "Open", "Pain", "Passion", "Poetry", "Quest", "Reverence", "Revulsion", "Sorrow", "Temerity", "Torment", "Tragedy", "Vice", "Virtue", "Weary", "Wit"];
+  TieflingMaleNames: [
+    "Ambition", "Art", "Carrion", "Chant", "Creed", "Death", "Debauchery", "Despair", "Doom", "Doubt", "Dread", "Ecstacy", "Ennui", "Entropy", "Excellence", "Fear", "Glory", "Gluttony", "Grief", "Hate", "Hope", "Horror", "Ideal", "Ignominy", "Laughter", "Love", "Lust", "Mayhem", "Mockery", "Murder", "Muse", "Music", "Mystery", "Nowhere", "Open", "Pain", "Passion", "Poetry", "Quest", "Reverence", "Revulsion", "Sorrow", "Temerity", "Torment", "Tragedy", "Vice", "Virtue", "Weary", "Wit"
+  ],
 
-var TieflingClanNames = HumanClanNames;
+  TieflingClanNames: null,
 
-var HalflingFemaleNames =
-  ["Alain", "Andry", "Anne", "Bella", "Blossom", "Bree", "Callie", "Chenna", "Cora", "Dee", "Dell", "Eida", "Eran", "Euphemia", "Georgina", "Gynnie", "Harriet", "Jasmine", "Jillian", "Jo", "Kithri", "Lavinia", "Lidda", "Maegan", "Marigold", "Merla", "Myria", "Nedda", "Nikki", "Nora", "Olivia", "Paela", "Pearl", "Pennie", "Philomena", "Portia", "Robbie", "Rose", "Saral", "Seraphina", "Shaena", "Stacee", "Tawna", "Thea", "Trym", "Tyna", "Vani", "Verna", "Wella", "Willow"];
+  HalflingFemaleNames: [
+    "Alain", "Andry", "Anne", "Bella", "Blossom", "Bree", "Callie", "Chenna", "Cora", "Dee", "Dell", "Eida", "Eran", "Euphemia", "Georgina", "Gynnie", "Harriet", "Jasmine", "Jillian", "Jo", "Kithri", "Lavinia", "Lidda", "Maegan", "Marigold", "Merla", "Myria", "Nedda", "Nikki", "Nora", "Olivia", "Paela", "Pearl", "Pennie", "Philomena", "Portia", "Robbie", "Rose", "Saral", "Seraphina", "Shaena", "Stacee", "Tawna", "Thea", "Trym", "Tyna", "Vani", "Verna", "Wella", "Willow"
+  ],
 
-var HalflingMaleNames =
-  ["Alton", "Ander", "Bernie", "Bobbin", "Cade", "Callus", "Corrin", "Dannad", "Danniel", "Eddie", "Egart", "Eldon", "Errich", "Fildo", "Finnan", "Franklin", "Garret", "Garth", "Gilbert", "Gob", "Harol", "Igor", "Jasper", "Keith", "Kevin", "Lazam", "Lerry", "Lindal", "Lyle", "Merric", "Mican", "Milo", "Morrin", "Nebin", "Nevil", "Osborn", "Ostran", "Oswalt", "Perrin", "Poppy", "Reed", "Roscoe", "Sam", "Shardon", "Tye", "Ulmo", "Wellby", "Wendel", "Wenner", "Wes"];
+  HalflingMaleNames: [
+    "Alton", "Ander", "Bernie", "Bobbin", "Cade", "Callus", "Corrin", "Dannad", "Danniel", "Eddie", "Egart", "Eldon", "Errich", "Fildo", "Finnan", "Franklin", "Garret", "Garth", "Gilbert", "Gob", "Harol", "Igor", "Jasper", "Keith", "Kevin", "Lazam", "Lerry", "Lindal", "Lyle", "Merric", "Mican", "Milo", "Morrin", "Nebin", "Nevil", "Osborn", "Ostran", "Oswalt", "Perrin", "Poppy", "Reed", "Roscoe", "Sam", "Shardon", "Tye", "Ulmo", "Wellby", "Wendel", "Wenner", "Wes"
+  ],
 
-var HalflingClanNames =
-  ["Appleblossom", "Bigheart", "Brightmoon", "Brushgather", "Cherrycheeks", "Copperkettle", "Deephollow", "Elderberry", "Fastfoot", "Fatrabbit", "Glenfellow", "Goldfound", "Goodbarrel", "Goodearth", "Greenbottle", "Greenleaf", "High-hill", "Hilltopple", "Hogcollar", "Honeypot", "Jamjar", "Kettlewhistle", "Leagallow", "Littlefoot", "Nimblefingers", "Porridgepot", "Quickstep", "Reedfellow", "Shadowquick", "Silvereyes", "Smoothhands", "Stonebridge", "Stoutbridge", "Stoutman", "Strongbones", "Sunmeadow", "Swiftwhistle", "Tallfellow", "Tealeaf", "Tenpenny", "Thistletop", "Thorngage", "Tosscobble", "Underbough", "Underfoot", "Warmwater", "Whispermouse", "Wildcloak", "Wildheart", "Wiseacre"];
+  HalflingClanNames: [
+    "Appleblossom", "Bigheart", "Brightmoon", "Brushgather", "Cherrycheeks", "Copperkettle", "Deephollow", "Elderberry", "Fastfoot", "Fatrabbit", "Glenfellow", "Goldfound", "Goodbarrel", "Goodearth", "Greenbottle", "Greenleaf", "High-hill", "Hilltopple", "Hogcollar", "Honeypot", "Jamjar", "Kettlewhistle", "Leagallow", "Littlefoot", "Nimblefingers", "Porridgepot", "Quickstep", "Reedfellow", "Shadowquick", "Silvereyes", "Smoothhands", "Stonebridge", "Stoutbridge", "Stoutman", "Strongbones", "Sunmeadow", "Swiftwhistle", "Tallfellow", "Tealeaf", "Tenpenny", "Thistletop", "Thorngage", "Tosscobble", "Underbough", "Underfoot", "Warmwater", "Whispermouse", "Wildcloak", "Wildheart", "Wiseacre"
+  ],
 
-var HalfElfFemaleNames = HumanFemaleNames;
+  HalfElfFemaleNames: null,
 
-var HalfElfMaleNames = HumanMaleNames;
+  HalfElfMaleNames: null,
 
-var HalfElfClanNames = HumanClanNames;
+  HalfElfClanNames: null,
 
-var KoboldFemaleNames =
-  ["Arix", "Eks", "Ett", "Galax", "Garu", "Hagnar", "Hox", "Irtos", "Kashak", "Meepo", "Molo", "Ohsoss", "Rotom", "Sagin", "Sik", "Sniv", "Taklak", "Tes", "Urak", "Varn"];
+  KoboldFemaleNames: [
+    "Arix", "Eks", "Ett", "Galax", "Garu", "Hagnar", "Hox", "Irtos", "Kashak", "Meepo", "Molo", "Ohsoss", "Rotom", "Sagin", "Sik", "Sniv", "Taklak", "Tes", "Urak", "Varn"
+  ],
 
-var KoboldMaleNames =
-  ["Arix", "Eks", "Ett", "Galax", "Garu", "Hagnar", "Hox", "Irtos", "Kashak", "Meepo", "Molo", "Ohsoss", "Rotom", "Sagin", "Sik", "Sniv", "Taklak", "Tes", "Urak", "Varn"];
+  KoboldMaleNames: [
+    "Arix", "Eks", "Ett", "Galax", "Garu", "Hagnar", "Hox", "Irtos", "Kashak", "Meepo", "Molo", "Ohsoss", "Rotom", "Sagin", "Sik", "Sniv", "Taklak", "Tes", "Urak", "Varn"
+  ],
 
-var KoboldClanNames = " ";
+  KoboldClanNames: [" "],
 
-var TabaxiFemaleNames =
-  ["Cloud on the Mountaintop", "Five Timber", "Jade Shoe", "Left-Handed Hummingbird", "Seven Thundercloud", "Skirt of Snakes ", "Smoking Mirror"];
+  TabaxiFemaleNames: [
+    "Cloud on the Mountaintop", "Five Timber", "Jade Shoe", "Left-Handed Hummingbird", "Seven Thundercloud", "Skirt of Snakes ", "Smoking Mirror"
+  ],
 
-var TabaxiMaleNames =
-  ["Cloud on the Mountaintop", "Five Timber", "Jade Shoe", "Left-Handed Hummingbird", "Seven Thundercloud", "Skirt of Snakes ", "Smoking Mirror"];
+  TabaxiMaleNames: [
+    "Cloud on the Mountaintop", "Five Timber", "Jade Shoe", "Left-Handed Hummingbird", "Seven Thundercloud", "Skirt of Snakes ", "Smoking Mirror"
+  ],
 
-var TabaxiClanNames = " ";
+  TabaxiClanNames: [" "],
 
-var HarengonFemaleNames = HalflingFemaleNames;
+  HarengonFemaleNames: null,
 
-var HarengonMaleNames = HalflingMaleNames;
+  HarengonMaleNames: null,
 
-var HarengonClanNames = " ";
+  HarengonClanNames: [" "],
 
-var AarakocraFemaleNames =
-  ["Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"];
+  AarakocraFemaleNames: [
+    "Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"
+  ],
 
-var AarakocraMaleNames =
-  ["Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"];
+  AarakocraMaleNames: [
+    "Aera", "Aial", "Aur", "Deekek", "Errk", "Heehk", "Ikki", "Kleeck", "Oorr", "Ouss", "Quaf", "Quierk", "Salleek", "Urreek", "Zeed"
+  ],
 
-var AarakocraClanNames = " ";
+  AarakocraClanNames: [" "],
 
-var KenkuFemaleNames =
-  ["Basher", "Clanger", "Cutter", "Growler", "Hammerer", "Mouser", "Rat Scratch", "Sail Snap", "Slicer", "Smasher", "Whistler"];
+  KenkuFemaleNames: [
+    "Basher", "Clanger", "Cutter", "Growler", "Hammerer", "Mouser", "Rat Scratch", "Sail Snap", "Slicer", "Smasher", "Whistler"
+  ],
 
-var KenkuMaleNames =
-  ["Basher", "Clanger", "Cutter", "Growler", "Hammerer", "Mouser", "Rat Scratch", "Sail Snap", "Slicer", "Smasher", "Whistler"];
+  KenkuMaleNames: [
+    "Basher", "Clanger", "Cutter", "Growler", "Hammerer", "Mouser", "Rat Scratch", "Sail Snap", "Slicer", "Smasher", "Whistler"
+  ],
 
-var KenkuClanNames = " ";
+  KenkuClanNames: [" "],
 
-var MouseFemaleNames = ["Brie", "Chechil", "Bergkase", "Brimsen", "Staazer", "Herve", "Gouda"];
+  MouseFemaleNames: ["Brie", "Chechil", "Bergkase", "Brimsen", "Staazer", "Herve", "Gouda"],
 
-var MouseMaleNames = ["Brie", "Chechil", "Bergkase", "Brimsen", "Staazer", "Herve", "Gouda"];
+  MouseMaleNames: ["Brie", "Chechil", "Bergkase", "Brimsen", "Staazer", "Herve", "Gouda"],
 
-var MouseClanNames = " ";
+  MouseClanNames: [" "],
 
-var FirbolgFemaleNames = HumanFemaleNames;
+  FirbolgFemaleNames: null,
 
-var FirbolgMaleNames = HumanMaleNames;
+  FirbolgMaleNames: null,
 
-var FirbolgClanNames = HumanClanNames;
+  FirbolgClanNames: null,
 
-var GithyankiFemaleNames =
-  ["Aaryl", "B'noor", "Fenelzi'ir", "Jen'lig", "Pah'zel", "Quorstyl", "Sirruth", "Vaira", "Yessune", "Zar'ryth"];
+  GithyankiFemaleNames: [
+    "Aaryl", "B'noor", "Fenelzi'ir", "Jen'lig", "Pah'zel", "Quorstyl", "Sirruth", "Vaira", "Yessune", "Zar'ryth"
+  ],
 
-var GithyankiMaleNames =
-  ["Elirdain", "Gaath", "Ja'adoc", "Kar'i'nas", "Lykus", "Quith", "Ris'a'an", "Tropos", "Viran", "Xamodas"];
+  GithyankiMaleNames: [
+    "Elirdain", "Gaath", "Ja'adoc", "Kar'i'nas", "Lykus", "Quith", "Ris'a'an", "Tropos", "Viran", "Xamodas"
+  ],
 
-var GithyankiClanNames = " ";
+  GithyankiClanNames: [" "],
 
-var GithzeraiFemaleNames =
-  ["Adaka", "Adeya", "Ella", "Ezhelya", "Immilzin", "Izera", "Janara", "Loraya", "Uweya", "Vithka"];
+  GithzeraiFemaleNames: [
+    "Adaka", "Adeya", "Ella", "Ezhelya", "Immilzin", "Izera", "Janara", "Loraya", "Uweya", "Vithka"
+  ],
 
-var GithzeraiMaleNames =
-  ["Dak", "Duurth", "Ferzth", "Greth", "Hurm", "Kalla", "Muurg", "Nurm", "Shrakk", "Xorm"];
+  GithzeraiMaleNames: [
+    "Dak", "Duurth", "Ferzth", "Greth", "Hurm", "Kalla", "Muurg", "Nurm", "Shrakk", "Xorm"
+  ],
 
-var GithzeraiClanNames = " ";
+  GithzeraiClanNames: [" "],
 
-var GenasiFemaleNames = HumanFemaleNames;
+  GenasiFemaleNames: null,
 
-var GenasiMaleNames = HumanMaleNames;
+  GenasiMaleNames: null,
 
-var GenasiClanNames = HumanClanNames;
+  GenasiClanNames: null,
 
-var LizardFemaleNames =
-  ["Achuak (Green)", "Aryte (War)", "Bae-shra (Animal)", "Darastrix (Dragon)", "Garurt (Axe)", "Irhtos (Secret)", "Jhank (Hammer)", "Kepesk (Storm)", "Kethend (Gem)", "Korth (Danger)", "Kosj (Small)", "Kothar (Demon)", "Li-trix (Armor)", "Mirik (Song)", "Othokent (Smart)", "Sauriv (Eye)", "Throden (Many)", "Thurkear (Night)", "Usk (Iron)", "Valignat (Burn)", "Vargach (Battle)", "Verthica (Mountain)", "Vutha (Black)", "Vyth (Steel)"];
+  LizardFemaleNames: [
+    "Achuak (Green)", "Aryte (War)", "Bae-shra (Animal)", "Darastrix (Dragon)", "Garurt (Axe)", "Irhtos (Secret)", "Jhank (Hammer)", "Kepesk (Storm)", "Kethend (Gem)", "Korth (Danger)", "Kosj (Small)", "Kothar (Demon)", "Li-trix (Armor)", "Mirik (Song)", "Othokent (Smart)", "Sauriv (Eye)", "Throden (Many)", "Thurkear (Night)", "Usk (Iron)", "Valignat (Burn)", "Vargach (Battle)", "Verthica (Mountain)", "Vutha (Black)", "Vyth (Steel)"
+  ],
 
-var LizardMaleNames =
-  ["Achuak (Green)", "Aryte (War)", "Bae-shra (Animal)", "Darastrix (Dragon)", "Garurt (Axe)", "Irhtos (Secret)", "Jhank (Hammer)", "Kepesk (Storm)", "Kethend (Gem)", "Korth (Danger)", "Kosj (Small)", "Kothar (Demon)", "Li-trix (Armor)", "Mirik (Song)", "Othokent (Smart)", "Sauriv (Eye)", "Throden (Many)", "Thurkear (Night)", "Usk (Iron)", "Valignat (Burn)", "Vargach (Battle)", "Verthica (Mountain)", "Vutha (Black)", "Vyth (Steel)"];
+  LizardMaleNames: [
+    "Achuak (Green)", "Aryte (War)", "Bae-shra (Animal)", "Darastrix (Dragon)", "Garurt (Axe)", "Irhtos (Secret)", "Jhank (Hammer)", "Kepesk (Storm)", "Kethend (Gem)", "Korth (Danger)", "Kosj (Small)", "Kothar (Demon)", "Li-trix (Armor)", "Mirik (Song)", "Othokent (Smart)", "Sauriv (Eye)", "Throden (Many)", "Thurkear (Night)", "Usk (Iron)", "Valignat (Burn)", "Vargach (Battle)", "Verthica (Mountain)", "Vutha (Black)", "Vyth (Steel)"
+  ],
 
-var LizardClanNames = " ";
+  LizardClanNames: [" "],
 
-var YuanFemaleNames =
-  ["Asutali", "Eztli", "Hessatal", "Hitotee", "Issahu", "Itstli", "Manuya", "Meztli", "Nesalli", "Otleh", "Shalkashlah", "Sisava", "Sitlali", "Soakosh", "Ssimalli", "Suisatal", "Talash", "Teoshi", "Yaotal", "Zihu"];
+  YuanFemaleNames: [
+    "Asutali", "Eztli", "Hessatal", "Hitotee", "Issahu", "Itstli", "Manuya", "Meztli", "Nesalli", "Otleh", "Shalkashlah", "Sisava", "Sitlali", "Soakosh", "Ssimalli", "Suisatal", "Talash", "Teoshi", "Yaotal", "Zihu"
+  ],
 
-var YuanMaleNames =
-  ["Asutali", "Eztli", "Hessatal", "Hitotee", "Issahu", "Itstli", "Manuya", "Meztli", "Nesalli", "Otleh", "Shalkashlah", "Sisava", "Sitlali", "Soakosh", "Ssimalli", "Suisatal", "Talash", "Teoshi", "Yaotal", "Zihu"];
+  YuanMaleNames: [
+    "Asutali", "Eztli", "Hessatal", "Hitotee", "Issahu", "Itstli", "Manuya", "Meztli", "Nesalli", "Otleh", "Shalkashlah", "Sisava", "Sitlali", "Soakosh", "Ssimalli", "Suisatal", "Talash", "Teoshi", "Yaotal", "Zihu"
+  ],
 
-var YuanClanNames = " ";
+  YuanClanNames: [" "],
 
-var TortleFemaleNames =
-  ["Baka", "Damu", "Gar", "Gura", "Ini", "Jappa", "Kinlek", "Krull", "Lim", "Lop", "Nortle", "Nulka", "Olo", "Ploqwat", "Quee", "Queg", "Quott", "Sunny", "Tibor", "Ubo", "Uhok", "Wabu", "Xelbuk", "Xopa", "Yog"];
+  TortleFemaleNames: [
+    "Baka", "Damu", "Gar", "Gura", "Ini", "Jappa", "Kinlek", "Krull", "Lim", "Lop", "Nortle", "Nulka", "Olo", "Ploqwat", "Quee", "Queg", "Quott", "Sunny", "Tibor", "Ubo", "Uhok", "Wabu", "Xelbuk", "Xopa", "Yog"
+  ],
 
-var TortleMaleNames =
-  ["Baka", "Damu", "Gar", "Gura", "Ini", "Jappa", "Kinlek", "Krull", "Lim", "Lop", "Nortle", "Nulka", "Olo", "Ploqwat", "Quee", "Queg", "Quott", "Sunny", "Tibor", "Ubo", "Uhok", "Wabu", "Xelbuk", "Xopa", "Yog"];
+  TortleMaleNames: [
+    "Baka", "Damu", "Gar", "Gura", "Ini", "Jappa", "Kinlek", "Krull", "Lim", "Lop", "Nortle", "Nulka", "Olo", "Ploqwat", "Quee", "Queg", "Quott", "Sunny", "Tibor", "Ubo", "Uhok", "Wabu", "Xelbuk", "Xopa", "Yog"
+  ],
 
-var TortleClanNames = " ";
+  TortleClanNames: [" "],
 
-var CentaurFemaleNames =
-  ["Daiva", "Dunja", "Elnaya", "Galisnya", "Irinya", "Kotyali", "Lalya", "Litisia", "Madya", "Mira", "Nedja", "Nikya", "Ostani", "Pinya", "Rada", "Raisya", "Stasolya", "Tatna", "Zhendoya", "Zoria", "Honotia", "Kelitia", "Lileo", "Meloe", "Bido", "Daxa", "Saya", "Tesia"];
+  CentaurFemaleNames: [
+    "Daiva", "Dunja", "Elnaya", "Galisnya", "Irinya", "Kotyali", "Lalya", "Litisia", "Madya", "Mira", "Nedja", "Nikya", "Ostani", "Pinya", "Rada", "Raisya", "Stasolya", "Tatna", "Zhendoya", "Zoria", "Honotia", "Kelitia", "Lileo", "Meloe", "Bido", "Daxa", "Saya", "Tesia"
+  ],
 
-var CentaurMaleNames =
-  ["Bonmod", "Boruvo", "Chodi", "Drozan", "Kozim", "Milosh", "Ninos", "Oleksi", "Orval", "Radovas", "Radom", "Rostis", "Svetyos", "Tomis", "Trijiro", "Volim", "Vlodim", "Yarog", "Aughus", "Dririos", "Ormasos", "Volien", "Eno", "Roth", "Skelor", "Stihl"];
+  CentaurMaleNames: [
+    "Bonmod", "Boruvo", "Chodi", "Drozan", "Kozim", "Milosh", "Ninos", "Oleksi", "Orval", "Radovas", "Radom", "Rostis", "Svetyos", "Tomis", "Trijiro", "Volim", "Vlodim", "Yarog", "Aughus", "Dririos", "Ormasos", "Volien", "Eno", "Roth", "Skelor", "Stihl"
+  ],
 
-var CentaurClanNames = " ";
+  CentaurClanNames: [" "],
 
-var MinotaurFemaleNames =
-  ["Akra", "Bolsa", "Cica", "Dakka", "Drakisla", "Eleska", "Enka", "Irnaya", "Jaska", "Kalka", "Makla", "Noraka", "Pesha", "Raisha", "Sokali", "Takyat", "Vrokya", "Veska", "Yelka", "Zarka", "Zoka", "Bozzri", "Dhazdoro", "Erinimachis", "Ghalantzo", "Halafoti", "Kerania", "Mitevra", "Philoprodis", "Tavromiki", "Ypoudoris"];
+  MinotaurFemaleNames: [
+    "Akra", "Bolsa", "Cica", "Dakka", "Drakisla", "Eleska", "Enka", "Irnaya", "Jaska", "Kalka", "Makla", "Noraka", "Pesha", "Raisha", "Sokali", "Takyat", "Vrokya", "Veska", "Yelka", "Zarka", "Zoka", "Bozzri", "Dhazdoro", "Erinimachis", "Ghalantzo", "Halafoti", "Kerania", "Mitevra", "Philoprodis", "Tavromiki", "Ypoudoris"
+  ],
 
-var MinotaurMaleNames =
-  ["Alovnek", "Brogmir", "Brozhdar", "Dornik", "Drakmir", "Drazhan", "Grozdan", "Kalazmir", "Klattic", "Melislek", "Nirikov", "Prezhlek", "Radolak", "Rugilar", "Sarovnek", "Svarakov", "Trovik", "Vraslak", "Yarvem", "Bamvros", "Fotiyinos", "Halafotios", "Keranios", "Menetavro", "Nikavros", "Prodos", "Rhordon", "Tavrostenes", "Thyrogog"];
+  MinotaurMaleNames: [
+    "Alovnek", "Brogmir", "Brozhdar", "Dornik", "Drakmir", "Drazhan", "Grozdan", "Kalazmir", "Klattic", "Melislek", "Nirikov", "Prezhlek", "Radolak", "Rugilar", "Sarovnek", "Svarakov", "Trovik", "Vraslak", "Yarvem", "Bamvros", "Fotiyinos", "Halafotios", "Keranios", "Menetavro", "Nikavros", "Prodos", "Rhordon", "Tavrostenes", "Thyrogog"
+  ],
 
-var MinotaurClanNames = " ";
+  MinotaurClanNames: [" "],
 
-var ShifterNames =
-  ["Badger", "Bear", "Cat", "Fang", "Grace", "Grim", "Moon", "Rain", "Red", "Scar", "Stripe", "Swift", "Talon", "Wolf"];
+  ShifterNames: [
+    "Badger", "Bear", "Cat", "Fang", "Grace", "Grim", "Moon", "Rain", "Red", "Scar", "Stripe", "Swift", "Talon", "Wolf"
+  ],
 
-var ChangelingNames =
-  ["Aunn", "Bin", "Cas", "Dox", "Fie", "Hars", "Jin", "Lam", "Mas", "Nix", "Ot", "Paik", "Ruz", "Sim", "Toox", "Vil", "Yog"];
+  ChangelingNames: [
+    "Aunn", "Bin", "Cas", "Dox", "Fie", "Hars", "Jin", "Lam", "Mas", "Nix", "Ot", "Paik", "Ruz", "Sim", "Toox", "Vil", "Yog"
+  ],
+
+};
+
+nameListings.TieflingClanNames = nameListings.HumanClanNames;
+nameListings.HalfElfFemaleNames = nameListings.HumanFemaleNames;
+nameListings.HalfElfMaleNames = nameListings.HumanMaleNames;
+nameListings.HalfElfClanNames = nameListings.HumanClanNames;
+nameListings.HarengonFemaleNames = nameListings.HalflingFemaleNames;
+nameListings.HarengonMaleNames = nameListings.HalflingMaleNames;
+nameListings.FirbolgFemaleNames = nameListings.HumanFemaleNames;
+nameListings.FirbolgMaleNames = nameListings.HumanMaleNames;
+nameListings.FirbolgClanNames = nameListings.HumanClanNames;
+nameListings.GenasiFemaleNames = nameListings.HumanFemaleNames;
+nameListings.GenasiMaleNames = nameListings.HumanMaleNames;
+nameListings.GenasiClanNames = nameListings.HumanClanNames;
+
 
 // #endregion
 
 // #region Name Dictionary Region
-var NameDictionary = {
+const nameDictionary = {
 
   Human: {
-    Male: HumanMaleNames,
-    Female: HumanFemaleNames,
-    Clan: HumanClanNames
+    Male: nameListings.HumanMaleNames,
+    Female: nameListings.HumanFemaleNames,
+    Clan: nameListings.HumanClanNames
   },
   Dwarf: {
-    Male: DwarfMaleNames,
-    Female: DwarfFemaleNames,
-    Clan: DwarfClanNames
+    Male: nameListings.DwarfMaleNames,
+    Female: nameListings.DwarfFemaleNames,
+    Clan: nameListings.DwarfClanNames
   },
   Elf: {
-    Male: ElfMaleNames,
-    Female: ElfFemaleNames,
-    Clan: ElfClanNames
+    Male: nameListings.ElfMaleNames,
+    Female: nameListings.ElfFemaleNames,
+    Clan: nameListings.ElfClanNames
   },
   "Half-Orc": {
-    Male: HumanMaleNames,
-    Female: HumanFemaleNames,
-    Clan: HumanClanNames
+    Male: nameListings.HumanMaleNames,
+    Female: nameListings.HumanFemaleNames,
+    Clan: nameListings.HumanClanNames
   },
   Gnome: {
-    Male: GnomeMaleNames,
-    Female: GnomeFemaleNames,
-    Clan: GnomeClanNames
+    Male: nameListings.GnomeMaleNames,
+    Female: nameListings.GnomeFemaleNames,
+    Clan: nameListings.GnomeClanNames
   },
   Tiefling: {
-    Male: TieflingMaleNames,
-    Female: TieflingFemaleNames,
-    Clan: HumanClanNames
+    Male: nameListings.TieflingMaleNames,
+    Female: nameListings.TieflingFemaleNames,
+    Clan: nameListings.HumanClanNames
   },
   Halfling: {
-    Male: HalflingMaleNames,
-    Female: HalflingFemaleNames,
-    Clan: HalflingClanNames
+    Male: nameListings.HalflingMaleNames,
+    Female: nameListings.HalflingFemaleNames,
+    Clan: nameListings.HalflingClanNames
   },
   "Half-Elf": {
-    Male: HumanMaleNames,
-    Female: HumanFemaleNames,
-    Clan: HumanClanNames
+    Male: nameListings.HumanMaleNames,
+    Female: nameListings.HumanFemaleNames,
+    Clan: nameListings.HumanClanNames
   },
   Kobold: {
-    Male: KoboldMaleNames,
-    Female: KoboldFemaleNames,
-    Clan: KoboldClanNames
+    Male: nameListings.KoboldMaleNames,
+    Female: nameListings.KoboldFemaleNames,
+    Clan: nameListings.KoboldClanNames
   },
   Tabaxi: {
-    Male: TabaxiMaleNames,
-    Female: TabaxiFemaleNames,
-    Clan: TabaxiClanNames
+    Male: nameListings.TabaxiMaleNames,
+    Female: nameListings.TabaxiFemaleNames,
+    Clan: nameListings.TabaxiClanNames
   },
   Harengon: {
-    Male: HalflingMaleNames,
-    Female: HalflingFemaleNames,
-    Clan: HarengonClanNames
+    Male: nameListings.HalflingMaleNames,
+    Female: nameListings.HalflingFemaleNames,
+    Clan: nameListings.HarengonClanNames
   },
   Aarakocra: {
-    Male: AarakocraMaleNames,
-    Female: AarakocraFemaleNames,
-    Clan: AarakocraClanNames
+    Male: nameListings.AarakocraMaleNames,
+    Female: nameListings.AarakocraFemaleNames,
+    Clan: nameListings.AarakocraClanNames
   },
   Kenku: {
-    Male: KenkuMaleNames,
-    Female: KenkuFemaleNames,
-    Clan: KenkuClanNames
+    Male: nameListings.KenkuMaleNames,
+    Female: nameListings.KenkuFemaleNames,
+    Clan: nameListings.KenkuClanNames
   },
   Mousefolk: {
-    Male: MouseMaleNames,
-    Female: MouseFemaleNames,
-    Clan: GnomeClanNames
+    Male: nameListings.MouseMaleNames,
+    Female: nameListings.MouseFemaleNames,
+    Clan: nameListings.GnomeClanNames
   },
   Firbolg: {
-    Male: FirbolgMaleNames,
-    Female: FirbolgFemaleNames,
-    Clan: FirbolgClanNames
+    Male: nameListings.FirbolgMaleNames,
+    Female: nameListings.FirbolgFemaleNames,
+    Clan: nameListings.FirbolgClanNames
   },
   Githyanki: {
-    Male: GithyankiMaleNames,
-    Female: GithyankiFemaleNames,
-    Clan: GithyankiClanNames
+    Male: nameListings.GithyankiMaleNames,
+    Female: nameListings.GithyankiFemaleNames,
+    Clan: nameListings.GithyankiClanNames
   },
   Githzerai: {
-    Male: GithzeraiMaleNames,
-    Female: GithzeraiFemaleNames,
-    Clan: GithzeraiClanNames
+    Male: nameListings.GithzeraiMaleNames,
+    Female: nameListings.GithzeraiFemaleNames,
+    Clan: nameListings.GithzeraiClanNames
   },
   Genasi: {
-    Male: GenasiMaleNames,
-    Female: GenasiFemaleNames,
-    Clan: GenasiClanNames
+    Male: nameListings.GenasiMaleNames,
+    Female: nameListings.GenasiFemaleNames,
+    Clan: nameListings.GenasiClanNames
   },
   Lizardfolk: {
-    Male: LizardMaleNames,
-    Female: LizardFemaleNames,
-    Clan: LizardClanNames
+    Male: nameListings.LizardMaleNames,
+    Female: nameListings.LizardFemaleNames,
+    Clan: nameListings.LizardClanNames
   },
   "Yuan-Ti": {
-    Male: YuanMaleNames,
-    Female: YuanFemaleNames,
-    Clan: YuanClanNames
+    Male: nameListings.YuanMaleNames,
+    Female: nameListings.YuanFemaleNames,
+    Clan: nameListings.YuanClanNames
   },
   Tortle: {
-    Male: TortleMaleNames,
-    Female: TortleFemaleNames,
-    Clan: TortleClanNames
+    Male: nameListings.TortleMaleNames,
+    Female: nameListings.TortleFemaleNames,
+    Clan: nameListings.TortleClanNames
   },
   Centaur: {
-    Male: CentaurMaleNames,
-    Female: CentaurFemaleNames,
-    Clan: CentaurClanNames
+    Male: nameListings.CentaurMaleNames,
+    Female: nameListings.CentaurFemaleNames,
+    Clan: nameListings.CentaurClanNames
   },
   Minotaur: {
-    Male: MinotaurMaleNames,
-    Female: MinotaurFemaleNames,
-    Clan: MinotaurClanNames
+    Male: nameListings.MinotaurMaleNames,
+    Female: nameListings.MinotaurFemaleNames,
+    Clan: nameListings.MinotaurClanNames
   },
   Shifter: {
-    Male: ShifterNames,
-    Female: ShifterNames,
+    Male: nameListings.ShifterNames,
+    Female: nameListings.ShifterNames,
     Clan: " "
   },
   Changeling: {
-    Male: ChangelingNames,
-    Female: ChangelingNames,
+    Male: nameListings.ChangelingNames,
+    Female: nameListings.ChangelingNames,
     Clan: " "
   },
   Aasimar: {
-    Male: HumanMaleNames,
-    Female: HumanFemaleNames,
-    Clan: HumanClanNames
+    Male: nameListings.HumanMaleNames,
+    Female: nameListings.HumanFemaleNames,
+    Clan: nameListings.HumanClanNames
   }
 
 };
 
 // #endregion
 
-var appearances = [
+const appearances = [
   "Horribly burnt all over their body and face",
   "Broken nose",
   "Missing an ear",
@@ -432,7 +497,7 @@ var appearances = [
   "Has a huge amount of freckles"
 ];
 
-var quirks = [
+const quirks = [
   "Has perfect posture",
   "Slumps their shoulders",
   "Rubs their eyes",
@@ -484,18 +549,18 @@ var quirks = [
   "Relaxed on chair",
   "Focused pose",
   "Look around at times",
-  "Sip coffee all the time",
+  "Sips coffee all the time",
   "Hands together in prayer",
   "Boxing pose",
-  "Tap notepad they have",
-  "Cross arms",
-  "Slap table or legs like a lawyer",
-  "Wag finger",
-  "Shift hair",
-  "Dance shoulders",
-  "Hunched shoulders",
-  "Straight shoulders",
-  "Bang on table angrily",
+  "Taps notepad they have",
+  "Crosses arms",
+  "Slaps table or legs like a lawyer",
+  "Wags finger",
+  "Shifts hair",
+  "Dances shoulders",
+  "Hunches shoulders",
+  "Has Straight shoulders",
+  "Bangs on table angrily",
   "Straight robot hands",
   "Hands on hips",
   "Rubs dirt between fingers",
@@ -504,7 +569,7 @@ var quirks = [
   "Searches pockets"
 ];
 
-var traits = [
+const traits = [
   "Two Traits", "Kind", "Loyal", "Open-Minded", "Intelligent", "Rude", "Two-Faced", "Prejudice", "Ignorant", "Crazy", "Humble",
   "Brave", "Creative", "Assertive", "Arrogant", "Cowardly", "Cunning", "Hesitant", "Gentle", "Honest", "Decisive",
   "Spoiled", "Cruel", "Liar", "Indecisive", "Cautious", "Polite", "Generous", "Wise", "Reasonable", "Blunt", "Selfish",
@@ -515,7 +580,7 @@ var traits = [
   "Mischevious", "Persistent", "Pious", "Rash", "Obedient", "Meek", "Paranoid"
 ];
 
-var occupations = [
+const occupations = [
   "Temple Work", "Temple Work",
   "Gambler",
   "Criminal",
@@ -530,7 +595,7 @@ var occupations = [
   "Soldier", "Officer", "Cavalry", "Healer", "Military Cook",
 ];
 
-var flaws = [
+const flaws = [
   "Has a forbidden love or Susceptible to romance",
   "Enjoys decadent pleaseures",
   "Arrogant",
@@ -545,7 +610,7 @@ var flaws = [
   "Is foolhardily brave"
 ];
 
-var voices = [
+const voices = [
   "Speaks fast with a small lisp",
   "Deep voice with rolling R's",
   "Pronounces most S's like Z's",
@@ -633,28 +698,46 @@ var voices = [
   "High pitched and slightly raspy"
 ];
 
-var ideals = [
-  "Beauty or Domination",
-  "Charity or Greed",
-  "Greater good or Might",
-  "Life or Pain",
-  "Respect or Retribution",
-  "Self-sacrifice or Slaughter",
-  "Community or Change",
-  "Fairness or Creativity",
-  "Honor or Freedom",
-  "Logic or Independence",
-  "Responsibility or No limits",
-  "Tradition or Fun",
-  "Balance or Aspiration",
-  "Knowledge or Discovery",
-  "Live and let live or Glory",
-  "Moderation or Nation",
-  "Neutrality or Redemption",
-  "People or Self-knowledge"
+const ideals = [
+  "Beauty",
+  "Domination",
+  "Charity",
+  "Greed",
+  "Greater good",
+  "Might",
+  "Life",
+  "Pain",
+  "Respect",
+  "Retribution",
+  "Self-sacrifice",
+  "Slaughter",
+  "Community",
+  "Change",
+  "Fairness",
+  "Creativity",
+  "Honor",
+  "Freedom",
+  "Logic",
+  "Independence",
+  "Responsibility",
+  "No limits",
+  "Tradition",
+  "Fun",
+  "Balance",
+  "Aspiration",
+  "Knowledge",
+  "Discovery",
+  "Live and let live",
+  "Glory",
+  "Moderation",
+  "Nation",
+  "Neutrality",
+  "Redemption",
+  "People",
+  "Self-knowledge"
 ];
 
-var bonds = [
+const bonds = [
   "Dedicated to fulfilling a personal life goal",
   "Protective of close family members",
   "Protective of colleagues or compatriots",
@@ -667,7 +750,7 @@ var bonds = [
 ];
 
 // #region Motivation Region
-var motivationverbs = [
+const motivationverbs = [
   "Advises",
   "Shepherds",
   "Takes",
@@ -732,7 +815,7 @@ var motivationverbs = [
   "Supports"
 ];
 
-var motivationnouns1 = [
+const motivationnouns1 = [
   "Wealth",
   "Hardship",
   "Affluence",
@@ -755,7 +838,7 @@ var motivationnouns1 = [
   "Force"
 ];
 
-var motivationnouns2 = [
+const motivationnouns2 = [
   "The wealthy",
   "The populous",
   "Enemies",
@@ -778,7 +861,7 @@ var motivationnouns2 = [
   "The church"
 ];
 
-var motivationnouns3 = [
+const motivationnouns3 = [
   "Dreams",
   "Discretion",
   "Love",
@@ -801,7 +884,7 @@ var motivationnouns3 = [
   "Justice"
 ];
 
-var motivationnouns4 = [
+const motivationnouns4 = [
   "Gluttony",
   "Lust",
   "Envy",
@@ -824,7 +907,7 @@ var motivationnouns4 = [
   "Patience"
 ];
 
-var motivationnouns5 = [
+const motivationnouns5 = [
   "Advice",
   "Propaganda",
   "Science",
@@ -847,7 +930,7 @@ var motivationnouns5 = [
   "Spirits"
 ];
 
-var waylayadjectives = [
+const waylayadjectives = [
   "Futile",
   "Harsh",
   "Binding",
@@ -950,7 +1033,7 @@ var waylayadjectives = [
   "Afflicting"
 ];
 
-var waylaynouns = [
+const waylaynouns = [
   "Animals",
   "Mooks",
   "Mob",
@@ -1004,7 +1087,7 @@ var waylaynouns = [
   "The Wild"
 ];
 
-var waylaysolutions = [
+const waylaysolutions = [
   "Legendary help",
   "Act of nature",
   "The people",
@@ -1026,7 +1109,7 @@ var waylaysolutions = [
   "An unexpected power"
 ];
 
-var villainTraits = {
+const villainTraits = {
   1: "Aggressive",
   2: "Angry",
   3: "Awkward",
@@ -1079,7 +1162,7 @@ var villainTraits = {
   50: "Vulgar"
 };
 
-var villainCrooks = {
+const villainCrooks = {
   1: "Always seems to have an open wound or blemish",
   2: "Attends to an imaginary parent and speaks to him or her loudly and often",
   3: "Awakes at night screaming and falls asleep by day",
@@ -1181,3 +1264,518 @@ var pettyTension = [
 
 
 // #endregion
+
+const menuRaces = [
+  'Human', 'Dwarf', 'Elf', 'Half-Orc', 'Gnome', 'Tiefling', 'Halfling',
+  'Half-Elf', 'Kobold', 'Tabaxi', 'Harengon', 'Aarakocra', 'Kenku',
+  'Mousefolk', 'Firbolg', 'Githyanki', 'Githzerai', 'Genasi', 'Lizardfolk',
+  'Yuan-Ti', 'Tortle', 'Centaur', 'Minotaur', 'Shifter', 'Changeling', 'Aasimar'
+];
+
+const charAge = new
+  Array(1).fill("Kid")
+  .concat(new Array(4).fill("Teenage"))
+  .concat(new Array(10).fill("Young Adult"))
+  .concat(new Array(40).fill("Adult"))
+  .concat(new Array(45).fill("Late Adult"))
+  .concat(new Array(4).fill("Elderly"))
+  .concat(new Array(1).fill("Ancient"));
+
+const goals1 = [
+  "To avenge",
+  "To spread the good word",
+  "To reunite with a loved one",
+  "To make money",
+  "To make amends",
+  "To explore a mysterious place",
+  "To uncover a hidden truth",
+  "To locate a lost thing",
+  "To kill a hated foe",
+  "To conquer a faraway land",
+  "To cure an illness",
+  "To craft a masterwork",
+  "To survive just one more day",
+  "To earn affection",
+  "To prove a point",
+  "To be smarter, faster and stronger",
+  "To heal an old wound",
+  "To extinguish an evil forever",
+  "To hide from a shameful fact",
+  "To evangelize",
+  "To spread suffering",
+  "To prove worth",
+  "To rise in rank",
+  "To be praised",
+  "To discover the truth",
+  "To make good on a bet",
+  "To get out of an obligation",
+  "To convince someone to do their dirty work",
+  "To steal something valuable",
+  "To overcome a bad habit",
+  "To commit an atrocity",
+  "To earn renown",
+  "To accumulate power",
+  "To save someone from a monstrosity",
+  "To teach",
+  "To settle down",
+  "To get just one more haul",
+  "To preserve the law",
+  "To discover",
+  "To devour",
+  "To restore the family name",
+  "To live a quiet life",
+  "To help others",
+  "To atone",
+  "To prove their worth",
+  "To gain honor",
+  "To expand their land",
+  "To gain a title",
+  "To retreat from society",
+  "To escape",
+  "To party",
+  "To return home",
+  "To serve",
+  "To reclaim what was taken",
+  "To do what must be done",
+  "To be a champion",
+  "To avoid notice",
+  "To help a family member",
+  "To perfect a skill",
+  "To travel",
+  "To overcome a disadvantage",
+  "To play the game",
+  "To establish a dynasty",
+  "To improve the realm",
+  "To retire",
+  "To recover a lost memory",
+  "To battle",
+  "To become a terror to criminals",
+  "To raise dragons",
+  "To live up to expectations",
+  "To become someone else",
+  "To do what can’t be done",
+  "To be remembered in song",
+  "To be forgotten",
+  "To find true love",
+  "To lose their mind",
+  "To indulge",
+  "To make the best of it",
+  "To find the one",
+  "To destroy an artifact",
+  "To show them all",
+  "To bring about unending summer",
+  "To fly",
+  "To find the six-fingered man",
+  "To wake the ancient sleepers",
+  "To entertain",
+  "To follow an order",
+  "To die gloriously",
+  "To be careful",
+  "To show kindness",
+  "To not screw it all up",
+  "To uncover the past",
+  "To go where no man has gone before",
+  "To do good",
+  "To become a beast",
+  "To spill blood",
+  "To live forever",
+  "To hunt the most dangerous game",
+  "To hate",
+  "To run away"
+];
+
+const knacks = [
+  "Criminal connections",
+  "Muscle",
+  "Skill with a specific weapon",
+  "Hedge wizardry",
+  "Comprehensive local knowledge",
+  "Noble blood",
+  "A one-of-a-kind item",
+  "Special destiny",
+  "Unique perspective",
+  "Hidden knowledge",
+  "Magical awareness",
+  "Abnormal parentage",
+  "Political leverage",
+  "A tie to a monster",
+  "A secret",
+  "True love",
+  "An innocent heart",
+  "A plan for the perfect crime",
+  "A one-way ticket to paradise",
+  "A mysterious ore",
+  "Money, money, money",
+  "Divine blessing",
+  "Immunity from the law",
+  "Prophecy",
+  "Secret martial arts techniques",
+  "A ring of power",
+  "A much-needed bag of taters",
+  "A heart",
+  "A fortified position",
+  "Lawmaking",
+  "Tongues",
+  "A discerning eye",
+  "Endurance",
+  "A safe place",
+  "Visions",
+  "A beautiful mind",
+  "A clear voice",
+  "Stunning looks",
+  "A catchy tune",
+  "Invention",
+  "Baking",
+  "Brewing",
+  "Smelting",
+  "Woodworking",
+  "Writing",
+  "Immunity to fire",
+  "Cooking",
+  "Storytelling",
+  "Ratcatching",
+  "Lying",
+  "Utter unremarkableness",
+  "Mind-bending sexiness",
+  "Undefinable coolness",
+  "A way with knots",
+  "Wheels of polished steel",
+  "A magic carpet",
+  "Endless ideas",
+  "Persistence",
+  "A stockpile of food",
+  "A hidden path",
+  "Piety",
+  "Resistance to disease",
+  "A library",
+  "A silver tongue",
+  "Bloodline",
+  "An innate spell",
+  "Balance",
+  "Souls",
+  "Speed",
+  "A sense of right and wrong",
+  "Certainty",
+  "An eye for detail",
+  "Heroic self-sacrifice",
+  "Sense of direction",
+  "A big idea",
+  "A hidden entrance to the city",
+  "The love of someone powerful",
+  "Unquestioning loyalty",
+  "Exotic fruit",
+  "Poison",
+  "Perfect memory",
+  "The language of birds",
+  "A key to an important door",
+  "Metalworking",
+  "Mysterious benefactors",
+  "Steely nerves",
+  "Bluffing",
+  "A trained wolf",
+  "A long-lost sibling, regained",
+  "An arrow with your name on it",
+  "A true name",
+  "Luck",
+  "The attention of supernatural powers",
+  "Kindness",
+  "Strange tattoos",
+  "A majestic beard",
+  "A book in a strange language",
+  "Power overwhelming",
+  "Delusions of grandeur",
+  "The wind at his back and a spring in his step"
+];
+
+const relationships = [
+  "Acquaintance",
+  "Kidnapper",
+  "Admirer",
+  "Lover",
+  "Adviser",
+  "Maid",
+  "Ally",
+  "Master",
+  "Apprentice",
+  "Mentor",
+  "Assistant",
+  "Niece or nephew",
+  "Aunt or uncle",
+  "Nemesis",
+  "Believer",
+  "Oppressor",
+  "Beneficiary",
+  "Paid companion",
+  "Best friend",
+  "Paramour",
+  "Blackmailer",
+  "Parent",
+  "Bodyguard",
+  "Patron",
+  "Business partner",
+  "Pen pal",
+  "Business rival",
+  "Political prisoner",
+  "Buyer",
+  "Political rival",
+  "Captive",
+  "Predator",
+  "Captor",
+  "Prey",
+  "Champion",
+  "Prisoner",
+  "Child",
+  "Protege",
+  "Client",
+  "Quarry",
+  "Coach",
+  "Right hand",
+  "Collaborator",
+  "Rival suitor",
+  "Colleague",
+  "Servant",
+  "Competitor",
+  "Sibling",
+  "Confessor",
+  "Snitch",
+  "Confidant",
+  "Social rival",
+  "Contact",
+  "Source",
+  "Crush",
+  "Sponsor",
+  "Customer",
+  "Spouse",
+  "Debtholder",
+  "Stalker",
+  "Debtor",
+  "Step-child",
+  "Disciple",
+  "Step-parent",
+  "Donor",
+  "Step-sibling",
+  "Employee",
+  "Steward",
+  "Employer",
+  "Student",
+  "Ex-spouse",
+  "Suitor",
+  "Fan",
+  "Supplicant",
+  "Fiance",
+  "Supplier",
+  "Frenemy",
+  "Sweetheart",
+  "Grandchild",
+  "Teacher",
+  "Grandparent",
+  "Teammate",
+  "Guardian",
+  "Thrall",
+  "Guest",
+  "Tormentor",
+  "Half-sibling",
+  "Trainer",
+  "Harasser",
+  "Unrequited love",
+  "Henchman",
+  "Valet",
+  "Housekeeper",
+  "Vassal",
+  "Idol",
+  "Victim",
+  "Investor",
+  "War buddy",
+  "Jilted lover",
+  "Ward",
+  "Hates",
+  "Is blackmailing",
+  "Is illegitimate child of",
+  "Heard rumours about",
+  "Using black magic on",
+  "Is extorting",
+  "Constantly mocks",
+  "Suspicious of",
+  "Jealous of",
+  "Has stolen from",
+  "Always seeks to outdo",
+  "Collect on a debt",
+  "Is cheating on",
+  "Is the friend that always gets them in trouble",
+  "Is turning people against",
+  "Sabotaging their relationship",
+  "Spying on",
+  "Claims credit for their accomplishments",
+  "Feeds disinformation to",
+  "Is owed a gambling debt by",
+  "Was once an adventurer with them, which ended badly",
+  "Knows secrets about",
+  "Is an estranged lover of",
+  "Is an estranged lover of their sibling",
+  "Was a failed business partner of",
+  "Family history of conflict with",
+  "Lost a legal judgement to",
+  "Friend",
+  "Ally",
+  "In love with",
+  "Courting",
+  "Firm friends with",
+  "Secretly protecting",
+  "Generous towards",
+  "Admirer of",
+  "Doing nice things for",
+  "Neighbours with",
+  "Walks dogs for",
+  "Coworkers with",
+  "Went to school with",
+  "Gave good advice to",
+  "Student of",
+  "Tutor of",
+  "Employed by",
+  "Bodyguard of",
+  "Tended to while sick",
+  "Saved by",
+  "Met on the road",
+  "Met during adventure",
+  "Tavern frequenters",
+  "Have traded goods for a long time"
+];
+
+const occupations2 = [
+  "Abbot",
+  "Jailer",
+  "Acolyte",
+  "Jester",
+  "Acrobat",
+  "Jeweler",
+  "Adviser",
+  "Juggler",
+  "Alchemist",
+  "Knight",
+  "Apothecary",
+  "Lady",
+  "Archer",
+  "Locksmith",
+  "Magician",
+  "Artisan",
+  "Mariner",
+  "Artist",
+  "Merchant",
+  "Baker",
+  "Minstrel",
+  "Beggar",
+  "Monarch",
+  "Blacksmith",
+  "Moneylender",
+  "Bookbinder",
+  "Monk",
+  "Brewer",
+  "Musician",
+  "Burglar",
+  "Circus performer",
+  "Outlander",
+  "Carpenter",
+  "Outlaw",
+  "Composer",
+  "Page",
+  "Cook",
+  "Peddler",
+  "Count",
+  "Pilgrim",
+  "Courtier",
+  "Poacher",
+  "Cutpurse",
+  "Poisoner",
+  "Doctor",
+  "Priest",
+  "Dogcatcher",
+  "Prince",
+  "Privateer",
+  "Duke",
+  "Ratcatcher",
+  "Earl",
+  "Scholar",
+  "Scribe",
+  "Executioner",
+  "Sellsword",
+  "Falconer",
+  "Ship’s captain",
+  "Shopkeeper",
+  "Fence",
+  "Smuggler",
+  "Fisherman",
+  "Soldier",
+  "Fishwife",
+  "Spy",
+  "Fortuneteller",
+  "Squire",
+  "Galley slave",
+  "Student",
+  "Gambler",
+  "Swindler",
+  "Gardener",
+  "Tailor",
+  "General",
+  "Tavern wench",
+  "Gladiator",
+  "Actor",
+  "Governess",
+  "Tomb robber",
+  "Gravedigger",
+  "Torturer",
+  "Horse breeder",
+  "Trapper",
+  "Guard",
+  "Urchin",
+  "Herbalist",
+  "Vagrant",
+  "Hermit",
+  "Viscount",
+  "Hunter",
+  "High Official",
+  "Innkeeper",
+  "Wigmaker",
+  "Interpreter",
+  "Young lady"
+];
+
+
+// Exporting all
+export const Variables = {
+  currentCharacter,
+  displayHistory,
+  nameArray,
+  clanArray,
+  raceType,
+  sexType,
+  alignments,
+  flawText,
+  voiceText,
+  races,
+  sexes,
+  nameListings,
+  nameDictionary,
+  appearances,
+  quirks,
+  traits,
+  occupations,
+  flaws,
+  voices,
+  ideals,
+  bonds,
+  motivationverbs,
+  motivationnouns1,
+  motivationnouns2,
+  motivationnouns3,
+  motivationnouns4,
+  motivationnouns5,
+  waylayadjectives,
+  waylaynouns,
+  waylaysolutions,
+  villainTraits,
+  villainCrooks,
+  menuRaces,
+  charAge,
+  occupations2,
+  relationships
+}

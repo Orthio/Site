@@ -1,0 +1,17 @@
+.row-buttons {
+    margin: 5px;
+}
+
+/* #second-row-buttons {
+    margin: 5px;
+} */
+
+.p-link a {
+    /* font-weight: bold; */
+    text-decoration: none;
+    color: black;
+}
+
+#reaction-table td:nth-child(1) {
+    width: 70px;
+}

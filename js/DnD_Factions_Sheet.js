@@ -17,18 +17,18 @@ function checkOutcome(roll) {
 };
 
 function rollFortune() {
-    var traitRating = parseInt(document.getElementById('trait-rating').value);
-    var majorAdv = parseInt(document.getElementById('major-advantage').value);
-    var majorDisAdv = parseInt(document.getElementById('major-disadvantage').value);
-    var roll0d = "Fortune";
-    var diceQty = traitRating + majorAdv - majorDisAdv;
+    let traitRating = parseInt(document.getElementById('trait-rating').value);
+    let majorAdv = parseInt(document.getElementById('major-advantage').value);
+    let majorDisAdv = parseInt(document.getElementById('major-disadvantage').value);
+    let roll0d = "Fortune";
+    let diceQty = traitRating + majorAdv - majorDisAdv;
     if (diceQty < 1) {
         diceQty = 2;
         roll0d = "0d"; // Rolling both dice at disadvantage
     }
-    var diceOutcome = generalDiceRoll(6,diceQty,roll0d);
-    var fortuneOutcome = checkOutcome(diceOutcome);
-    var fortuneResult = diceOutcome + ": " + fortuneOutcome;
+    let diceOutcome = generalDiceRoll(6,diceQty,roll0d);
+    let fortuneOutcome = checkOutcome(diceOutcome);
+    let fortuneResult = diceOutcome + ": " + fortuneOutcome;
     document.getElementById('fortune-result').innerHTML = fortuneResult;
 };
 

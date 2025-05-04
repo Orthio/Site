@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Report</title>
+  <link rel="stylesheet" href="css/DnD_Calendar.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 id="header-title">Weather Report</h1>
+        <div id="month-weather"></div>
+        <div id="current-date"></div>
+      </div>
+      <div>
+        <button type="button" id="btnBack"><i class="fa fa-angle-left"></i>&#129032;</button>
+        <button type="button" id="btnNext"><i class="fa fa-angle-right"></i>&#129034;</button>
+      </div>
+    </div>
+
+    <div id="calendar">
+
+
+    </div>
+    <div class="arrivalDays">
+      <p> Estimated arrival time:</p>
+      <div id="cairn-div">
+        <p>Cairn: <span id="arrive-cairn"></span></p>
+      </div>
+      <div id="baldurs-div">
+        <p>Baldur's Gate: <span id="arrive-baldurs"></span></p>
+      </div>
+      <button type="button" id="btn-effects">Check Effects</button>
+      <div id="effects-div">
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal"></div>
+  <div id="addEvent">
+    <h2>Add Event</h2>
+    <input type="text" id="txtTitle" placeholder="Event Title" />
+    <button type="button" id="btnSave">Save</button>
+    <button type="button" class="btnClose">Close</button>
+  </div>
+
+  <div id="viewEvent">
+    <h2>Event</h2>
+    <p id="eventText">This is Sample Event</p>
+    <button type="button" id="btnDelete">Delete</button>
+    <button type="button" class="btnClose">Close</button>
+  </div>
+
+  <script type="module" src="js/DnD_General.js"></script>
+  <script type="module" src="js/DnD_Weather_Report.js"></script>
+
+</body>
+
+</html>

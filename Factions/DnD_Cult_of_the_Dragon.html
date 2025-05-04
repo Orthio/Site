@@ -11,7 +11,11 @@
 <body>
     <h1>Cult of the Dragon</h1>
     <p id="tier-rank">Tier 4</p>
-    <p>Impulse: To establish and follow doctrine, convince more dragons to join and become dracolich, pour souls and sacrifices to Sharruth</p>
+    <p><span class="button-gm-goals">Impulse</span>: To establish and follow doctrine <br>
+        Convince more dragons to join and become dracolich <br>
+        Pour souls and sacrifices to Sharruth, by taking slaves and performing grove rituals <br>
+        Build lairs <br>
+        Aid dragons</p>
     <p>Cast: Sharruth <br>
         Allies: Flaming Fist</p>
 
@@ -19,10 +23,41 @@
         Usurpation - Sharruth rules <br>
         Destruction - Lines at will as Sharruth and Cult gain dragons and divide material</p>
 
+    <div id="gm-goals-text"></div>
+
     <iframe class="iframe" title="iframe" src="DnD_Cult_of_the_Dragon_Progress.html" width="1000"
         height="1500"></iframe>
     <script type="module" src="../js/DnD_General.js"></script>
     <script type="module" src="../js/DnD_Factions.js"></script>
+    <script>
+        const words = document.querySelectorAll(".button-gm-goals");
+
+        words.forEach(word => {
+            word.addEventListener("click", function () {
+                const extraText = document.getElementById("gm-goals-text");
+                const isHidden = window.getComputedStyle(extraText).display === "none";
+
+                if (isHidden) {
+                    extraText.innerHTML = `
+                    GM Moves for Ambitious Organizations <br>
+                    • Attack someone by stealthy means (kidnapping, etc.) <br>
+                    • Attack someone directly (with a gang or single assailant) <br>
+                    • Absorb or buy out someone important (an ally, perhaps) <br>
+                    • Influence a powerful institution (change a law, manipulate doctrine) <br>
+                    • Establish a new rule (within the organization) <br>
+                    • Claim territory or resources <br>
+                    • Negotiate a deal <br>
+                    • Observe a potential foe in great detail <br>
+                     `;
+
+                    extraText.style.display = "block";
+                } else {
+                    // Hide the additional text
+                    extraText.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

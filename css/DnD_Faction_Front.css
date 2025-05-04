@@ -30,3 +30,7 @@ label {
 ul {
     margin-top: 0; /* Remove top margin of the ul list */
 }
+
+#button-gm-goals span {
+    cursor: copy;
+}

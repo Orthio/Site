@@ -1,94 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Character Generator</title>
   <link rel="stylesheet" href="css/DnD_Character_Generator.css" />
 </head>
+
 <body>
-    <h1>Character Creator</h1>
-    
-    <button type="button" onclick="createCharacter()" class = "button buttonCreate" > Create </button>
-        
+  <h1>Character Creator</h1>
 
-    <div class="dropdown">
-      <button type="button" onclick="dropFunction()" class="dropbtn" id="raceButton">Race Dropdown</button>
-      <div id="myDropdown" class="dropdown-content">
-        <a onclick="randomFunction();">Random</a>
-        <a onclick="selectRaceSex('Human','Male');">Human Male</a>
-        <a onclick="selectRaceSex('Human','Female');">Human Female</a>
-        <a onclick="selectRaceSex('Dwarf','Male');">Dwarf Male</a>
-        <a onclick="selectRaceSex('Dwarf','Female');">Dwarf Female</a>
-        <a onclick="selectRaceSex('Elf','Male');">Elf Male</a>
-        <a onclick="selectRaceSex('Elf','Female');">Elf Female</a>
-        <a onclick="selectRaceSex('Half-Orc','Male');">Half-Orc Male</a>
-        <a onclick="selectRaceSex('Half-Orc','Female');">Half-Orc Female</a>
-        <a onclick="selectRaceSex('Gnome','Male');">Gnome Male</a>
-        <a onclick="selectRaceSex('Gnome','Female');">Gnome Female</a>
-        <a onclick="selectRaceSex('Tiefling','Male');">Tiefling Male</a>
-        <a onclick="selectRaceSex('Tiefling','Female');">Tiefling Female</a>
-        <a onclick="selectRaceSex('Halfling','Male');">Halfling Male</a>
-        <a onclick="selectRaceSex('Halfling','Female');">Halfling Female</a>
-        <a onclick="selectRaceSex('Half-Elf','Male');">Half-Elf Male</a>
-        <a onclick="selectRaceSex('Half-Elf','Female');">Half-Elf Female</a>
-        <a onclick="selectRaceSex('Kobold','Male');">Kobold Male</a>
-        <a onclick="selectRaceSex('Kobold','Female');">Kobold Female</a>
-        <a onclick="selectRaceSex('Tabaxi','Male');">Tabaxi Male</a>
-        <a onclick="selectRaceSex('Tabaxi','Female');">Tabaxi Female</a>
-        <a onclick="selectRaceSex('Harengon','Male');">Harengon Male</a>
-        <a onclick="selectRaceSex('Harengon','Female');">Harengon Female</a>
-        <a onclick="selectRaceSex('Aarakocra','Male');">Aarakocra Male</a>
-        <a onclick="selectRaceSex('Aarakocra','Female');">Aarakocra Female</a>
-        <a onclick="selectRaceSex('Kenku','Male');">Kenku Male</a>
-        <a onclick="selectRaceSex('Kenku','Female');">Kenku Female</a>
-        <a onclick="selectRaceSex('Mousefolk','Male');">Mousefolk Male</a>
-        <a onclick="selectRaceSex('Mousefolk','Female');">Mousefolk Female</a>
-        <a onclick="selectRaceSex('Firbolg','Male');">Firbolg Male</a>
-        <a onclick="selectRaceSex('Firbolg','Female');">Firbolg Female</a>
-        <a onclick="selectRaceSex('Githyanki','Male');">Githyanki Male</a>
-        <a onclick="selectRaceSex('Githyanki','Female');">Githyanki Female</a>
-        <a onclick="selectRaceSex('Githzerai','Male');">Githzerai Male</a>
-        <a onclick="selectRaceSex('Githzerai','Female');">Githzerai Female</a>
-        <a onclick="selectRaceSex('Genasi','Male');">Genasi Male</a>
-        <a onclick="selectRaceSex('Genasi','Female');">Genasi Female</a>
-        <a onclick="selectRaceSex('Lizardfolk','Male');">Lizardfolk Male</a>
-        <a onclick="selectRaceSex('Lizardfolk','Female');">Lizardfolk Female</a>
-        <a onclick="selectRaceSex('Yuan-Ti','Male');">Yuan-Ti Male</a>
-        <a onclick="selectRaceSex('Yuan-Ti','Female');">Yuan-Ti Female</a>
-        <a onclick="selectRaceSex('Tortle','Male');">Tortle Male</a>
-        <a onclick="selectRaceSex('Tortle','Female');">Tortle Female</a>
-        <a onclick="selectRaceSex('Centaur','Male');">Centaur Male</a>
-        <a onclick="selectRaceSex('Centaur','Female');">Centaur Female</a>
-        <a onclick="selectRaceSex('Minotaur','Male');">Minotaur Male</a>
-        <a onclick="selectRaceSex('Minotaur','Female');">Minotaur Female</a>
-        <a onclick="selectRaceSex('Shifter','Male');">Shifter Male</a>
-        <a onclick="selectRaceSex('Shifter','Female');">Shifter Female</a>
-        <a onclick="selectRaceSex('Changeling','Male');">Changeling Male</a>
-        <a onclick="selectRaceSex('Changeling','Female');">Changeling Female</a>
-        <a onclick="selectRaceSex('Aasimar','Male');">Aasimar Male</a>
-        <a onclick="selectRaceSex('Aasimar','Female');">Aasimar Female</a>
-        
-      </div>
-    </div>
+  <button type="button" class="button buttonCreate" id="button-create"> Create </button>
 
-    <button  type="button" onclick="simpleCopy()" class = "button buttonSimple" > Simple Copy </button>
+  <div class="dropdown">
+    <button type="button" class="dropbtn" id="button-race">Race Dropdown</button>
+    <div id="myDropdown" class="dropdown-content"></div>
+  </div>
 
-    <br>
-    
-    <button type="button" onclick="renameCharacter()" class = "button buttonRename" > Rename </button>
+  <br>
 
-    <button type="button" onclick="addFlaw()" class = "button buttonFlaw" > Add Flaw </button>
+  <button type="button" class="button buttonRename" id="button-rename"> Rename </button>
 
-    <button type="button" onclick="addBackground()" class = "button buttonBackground" > Add Background </button>
+  <button type="button" class="button buttonDetail" id="button-detail"> Add Detail </button>
 
-    <button type="button" onclick="addVillainy()" class = "button buttonVillainy" > Add Villainy </button>
+  <button type="button" class="button buttonSimple" id="button-simple"> Simple Copy </button>
 
-    <div id="characterDisplay"></div>
-    <div id="results"></div>
+  <br>
 
-<script src="js/DnD_Character_Gen_Variables.js"></script>
-<script src="js/DnD_Character_Gen_Functions.js"></script>
+  <div id="character-display"></div>
+
+  <script type="module" src="js/DnD_Character_Gen_Variables.js"></script>
+  <script type="module" src="js/DnD_Character_Gen_Functions.js"></script>
 
 </body>
+
 </html>

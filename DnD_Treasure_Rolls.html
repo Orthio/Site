@@ -27,7 +27,12 @@
             <input type="number" id="LevelInput" name="LevelInput" value="7" min="1" step="1">
         </div>
     </div>
-    
+
+    <div class="treasure-gp-group">
+        <label for="GoldInput"><i>Gold Amount: </i></label>
+        <input type="number" id="GoldInput" name="GoldInput" value="" min="1" step="1">
+    </div>
+
     <br>
 
     <button type="button" id="button-individual-treasure" class="button">Generate Individual Treasure</button>
@@ -100,7 +105,7 @@
                     </tr>
                     <tr>
                         <td>11-16</td>
-                        <td>8d8 * 10,000 gp</td>
+                        <td>8d8 * 1,000 gp</td>
                         <td>1d4</td>
                     </tr>
                     <tr>
@@ -111,9 +116,9 @@
                 </tbody>
             </table>
 
-            <p><small> DMG 2024: pg213 Treasure Chapter, <br>
-                    &nbsp&nbsp&nbsp pg218 Magic Item rolls, <br>
-                    &nbsp&nbsp&nbsp pg326 Magic Item Tables <br>
+            <p><small> DMG 2024: pg326 Magic Item Tables,<br>
+                    &nbsp&nbsp&nbsp pg213 Treasure Chapter, <br>
+                    &nbsp&nbsp&nbsp pg218 Magic Item rolls,  <br>
                     XTG: pg135 Minor to Major Distribution <br>
                     DMG 2014: pg137 Treasure Hoard <br>
                     Treasure based on CR and Magic Items based on Level
@@ -130,15 +135,13 @@
                 <thead>
                     <tr>
                         <th>Levels 1-4</th>
-                        <th id="id-minor">Minor</th>
+ <!--                        <th id="id-minor">Minor</th>
                         <th></th>
                         <th id="id-major">Major</th>
-                        <th></th>
+                        <th></th> -->
                     </tr>
                     <tr>
                         <th>Rarity</th>
-                        <th>Gained</th>
-                        <th>Expected</th>
                         <th>Gained</th>
                         <th>Expected</th>
                     </tr>
@@ -148,20 +151,14 @@
                         <td>Common</td>
                         <td>6</td>
                         <td>6</td>
-                        <td></td>
-                        <td>-</td>
                     </tr>
                     <tr>
                         <td>Uncommon</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
+                        <td>4</td>
+                        <td>4</td>
                     </tr>
                     <tr>
                         <td>Rare</td>
-                        <td>1</td>
-                        <td>1</td>
                         <td>1</td>
                         <td>1</td>
                     </tr>
@@ -176,38 +173,29 @@
                 <tbody>
                     <tr>
                         <td>Common</td>
-                        <td>1</td>
+                        <td>3</td>
                         <td>10</td>
-                        <td></td>
-                        <td>-</td>
+
                     </tr>
                     <tr>
                         <td>Uncommon</td>
-                        <td>6</td>
-                        <td>12</td>
-                        <td>5</td>
-                        <td>5</td>
+                        <td>11</td>
+                        <td>17</td>
                     </tr>
                     <tr>
                         <td>Rare</td>
-                        <td></td>
-                        <td>5</td>
                         <td>7</td>
-                        <td>2</td>
+                        <td>6</td>
                     </tr>
                     <tr>
                         <td>Very Rare</td>
                         <td></td>
                         <td>1</td>
-                        <td></td>
-                        <td>-</td>
                     </tr>
                 </tbody>
                 <thead>
                     <tr>
                         <th>Levels 11-16</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -215,66 +203,48 @@
                         <td>Common</td>
                         <td></td>
                         <td>3</td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td>Uncommon</td>
                         <td></td>
-                        <td>6</td>
-                        <td></td>
-                        <td>1</td>
+                        <td>7</td>
                     </tr>
                     <tr>
                         <td>Rare</td>
                         <td></td>
-                        <td>9</td>
-                        <td></td>
-                        <td>1</td>
+                        <td>11</td>
                     </tr>
                     <tr>
                         <td>Very Rare</td>
                         <td></td>
-                        <td>5</td>
-                        <td></td>
-                        <td>2</td>
+                        <td>7</td>
                     </tr>
                     <tr>
                         <td>Legendary</td>
                         <td></td>
-                        <td>1</td>
-                        <td></td>
-                        <td>1</td>
+                        <td>2</td>
                     </tr>
                 </tbody>
                 <thead>
                     <tr>
                         <th>Levels 17-20</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Rare</td>
                         <td></td>
-                        <td>4</td>
-                        <td></td>
-                        <td>2</td>
+                        <td>5</td>
                     </tr>
                     <tr>
                         <td>Very Rare</td>
                         <td></td>
-                        <td>9</td>
-                        <td></td>
-                        <td>2</td>
+                        <td>11</td>
                     </tr>
                     <tr>
                         <td>Legendary</td>
                         <td></td>
-                        <td>6</td>
-                        <td></td>
-                        <td>3</td>
+                        <td>9</td>
                     </tr>
                 </tbody>
             </table>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Tables</title>
+    <link rel="stylesheet" href="css/DnD_Roll_Tables.css" />
+    <style>
+        .p {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .no-select {
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Roll Tables</h1>
+
+    <p><b>Items</b></p>
+    <div class="row-buttons">
+        <button type="button" id="generate-treasures" class="button">Generate Treasures</button>
+        <button type="button" id="generate-enemy-weapon-button" class="button">Generate Enemy Weapon</button>
+        <button type="button" id="generate-party-weapon-button" class="button">Generate Party Weapon</button>
+    </div>
+
+    <div class="row-buttons">
+        <button type="button" id="generate-art-button" class="button">Generate Art Objects</button>
+        <button type="button" id="generate-equipment" class="button">Generate Equipment</button>
+        <button type="button" id="generate-misc-items" class="button">Generate Misc Items</button>
+    </div>
+    <p><b>Place</b></p>
+    <div class="row-buttons">
+        <button type="button" id="generate-place" class="button">Generate Place</button>
+        <button type="button" id="generate-dungeon" class="button">Generate Dungeon</button>
+        <button type="button" id="generate-trap" class="button">Generate Trap</button>
+        <button type="button" id="generate-scenario" class="button">Generate Scenario</button>
+    </div>
+    <p class="p-link" id="monster-reaction-link"><b>Monster</b></p>
+
+    <div class="row-buttons">
+        <button type="button" id="generate-reaction" class="button">Generate Reaction</button>
+        <button type="button" id="add-reaction" class="button">More Aggressive</button>
+        <button type="button" id="detract-reaction" class="button">More Friendly</button>
+
+
+    </div>
+    <div class="row-buttons">
+
+        <button type="button" id="generate-indoor-distance" class="button">Generate Indoor Distance</button>
+        <button type="button" id="generate-outdoor-open-distance" class="button">Generate Outdoor Open Distance</button>
+        <button type="button" id="generate-outdoor-obs-distance" class="button">Generate Outdoor Obstructed
+            Distance</button>
+    </div>
+
+
+    <br>
+    <br>
+
+    <div id="monster-reaction-table-text"></div>
+
+    <div id="result-output"></div>
+
+    <script type="module" src="js/DnD_Roll_Tables.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="../css/DnD_Faction_Front.css" />
+</head>
+
+<body>
+    <h1>Test</h1>
+    <p id="tier-rank">Tier 3</p>
+
+    <p><span class="button-gm-goals">Impulse</span>: To Test
+    </p>
+    <p> Cast: Me<br>
+        Allies: Me
+    </p>
+
+    <p>Impending Doom: <br>
+        </p>
+
+    <div id="gm-goals-text"></div>
+
+    <div id="form-goal-overall">
+
+    </div>
+
+    <!-- <iframe class="iframe" title="iframe" id="progress-frame" src="DnD_Test_Progress.html" width="1200" height="1500"></iframe> -->
+    <script type="module" src="../js/DnD_General.js"></script>
+    <script type="module" src="../js/DnD_Factions_Test.js"></script>
+    <script>
+        const words = document.querySelectorAll(".button-gm-goals");
+
+        words.forEach(word => {
+            word.addEventListener("click", function () {
+                const extraText = document.getElementById("gm-goals-text");
+                const isHidden = window.getComputedStyle(extraText).display === "none";
+
+                if (isHidden) {
+                    extraText.innerHTML = `
+                GM Moves for Hordes <br>
+                • Assault a bastion of civilization <br>
+                • Embrace internal chaos <br>
+                • Change direction suddenly <br>
+                • Overwhelm a weaker force <br>
+                • Perform a show of dominance <br>
+                • Abandon an old home, find a new one <br>
+                • Grow in size by breeding or conquest <br>
+                • Appoint a champion <br>
+                • Declare war and act upon that declaration without hesitation or deliberation
+                `;
+
+                    extraText.style.display = "block";
+                } else {
+                    // Hide the additional text
+                    extraText.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+
+</html>

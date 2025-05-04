@@ -261,3 +261,160 @@ var encumberanceTable = {
       29: {"Encumb": 9, "Heavy": 19, "Carrying": 29},
       30: {"Encumb": 10, "Heavy": 20, "Carrying": 30}
   }
+
+  <div id="table-items-gained">
+            <label id="label-items-gained">Item Distribution</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Levels 1-4</th>
+                        <th id="id-minor">Minor</th>
+                        <th></th>
+                        <th id="id-major">Major</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Rarity</th>
+                        <th>Gained</th>
+                        <th>Expected</th>
+                        <th>Gained</th>
+                        <th>Expected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Common</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Uncommon</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Rare</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Levels 5-10</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Common</td>
+                        <td>1</td>
+                        <td>10</td>
+                        <td></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Uncommon</td>
+                        <td>6</td>
+                        <td>12</td>
+                        <td>5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Rare</td>
+                        <td></td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Very Rare</td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Levels 11-16</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Common</td>
+                        <td></td>
+                        <td>3</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Uncommon</td>
+                        <td></td>
+                        <td>6</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Rare</td>
+                        <td></td>
+                        <td>9</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Very Rare</td>
+                        <td></td>
+                        <td>5</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Legendary</td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Levels 17-20</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rare</td>
+                        <td></td>
+                        <td>4</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Very Rare</td>
+                        <td></td>
+                        <td>9</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Legendary</td>
+                        <td></td>
+                        <td>6</td>
+                        <td></td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

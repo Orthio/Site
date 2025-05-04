@@ -45,6 +45,15 @@ p {
   width: 100px;
 }
 
+#encounter-add-form-1 {
+  margin: 5px;
+}
+
+#encounter-add-form-2 {
+  margin: 5px;
+  margin-top: 10px;
+}
+
 #encounter-table td:nth-child(2) {
   width: 100px;
 }
@@ -54,9 +63,20 @@ p {
 }
 
 #encounter-table td:nth-child(4) {
-  width: 70px;
+  width: 90px;
 }
 
+#encounter-table td:nth-child(9) {
+  width: 50px;
+}
+
+#encounter-table td:nth-child(10) {
+  width: 50px;
+}
+
+#group-table td:nth-child(1) {
+  width: 60px;
+}
 .form-encounter {
   display: flex;
   flex-direction: row;

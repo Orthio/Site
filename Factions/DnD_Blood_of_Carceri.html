@@ -12,8 +12,13 @@
     <h1>Blood of Carceri</h1>
     <p id="tier-rank">Tier 3</p>
 
-    <p>Impulse: To create a separate demiplane, destroying the Leedn'th gate to do so </p>
-    <p> Cast: Emrys, Valars, Cloak, Vallentin <br>
+    <p><span class="button-gm-goals">Impulse</span>: To create a separate demiplane, destroying the Leedn'th gate to do
+        so
+        <br>
+        Gain Fey Treasures <br>
+        Gain resources to protect and distract
+    </p>
+    <p> Cast: Emrys, Valars, Cloak<br>
         Allies: Emerald Enclave, Craumerdaun traders
     </p>
 
@@ -21,10 +26,41 @@
         Rampant Chaos - Gate to afterlife destroyed <br>
         Laws of Reality changed </p>
 
-        <iframe class="iframe" title="iframe" src="DnD_Blood_of_Carceri_Progress.html" width="1200"
-            height="1500"></iframe>
-        <script type="module" src="../js/DnD_General.js"></script>
-        <script type="module" src="../js/DnD_Factions.js"></script>
+    <div id="gm-goals-text"></div>
+
+    <iframe class="iframe" title="iframe" src="DnD_Blood_of_Carceri_Progress.html" width="1200" height="1500"></iframe>
+    <script type="module" src="../js/DnD_General.js"></script>
+    <script type="module" src="../js/DnD_Factions.js"></script>
+    <script>
+        const words = document.querySelectorAll(".button-gm-goals");
+
+        words.forEach(word => {
+            word.addEventListener("click", function () {
+                const extraText = document.getElementById("gm-goals-text");
+                const isHidden = window.getComputedStyle(extraText).display === "none";
+
+                if (isHidden) {
+                    extraText.innerHTML = `
+                GM Moves for Hordes <br>
+                • Assault a bastion of civilization <br>
+                • Embrace internal chaos <br>
+                • Change direction suddenly <br>
+                • Overwhelm a weaker force <br>
+                • Perform a show of dominance <br>
+                • Abandon an old home, find a new one <br>
+                • Grow in size by breeding or conquest <br>
+                • Appoint a champion <br>
+                • Declare war and act upon that declaration without hesitation or deliberation
+                `;
+
+                    extraText.style.display = "block";
+                } else {
+                    // Hide the additional text
+                    extraText.style.display = "none";
+                }
+            });
+        });
+    </script>
 
 </body>
 

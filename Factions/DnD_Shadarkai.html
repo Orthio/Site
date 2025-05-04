@@ -11,8 +11,10 @@
 <body>
     <h1>Shadarkai</h1>
     <p id="tier-rank">Tier 3</p>
-    <p>Impulse: To eliminate disorder by finding treasures, tracking fey tattoos
-        Take down Sharruth, Take back Shadowfell gate </p>
+    <p><span class="button-gm-goals">Impulse</span>: To eliminate disorder <br>
+        Find Fey Treasures, tracking fey tattoos <br>
+        Take down Sharruth <br>
+        Take back Shadowfell gate </p>
 
     <p> Cast: Raven Queen, Serrach, Taladara <br>
         Allies: Council of Four </p>
@@ -22,10 +24,40 @@
         Chaos - May take revenge on Corellon, War on Kelemvor and attempt to take his position (with memories reclaimed)
     </p>
 
-    <iframe class="iframe" title="iframe" src="DnD_Shadarkai_Progress.html" width="1000"
-        height="1500"></iframe>
+    <div id="gm-goals-text"></div>
+
+    <iframe class="iframe" title="iframe" src="DnD_Shadarkai_Progress.html" width="1000" height="1500"></iframe>
     <script type="module" src="../js/DnD_General.js"></script>
     <script type="module" src="../js/DnD_Factions.js"></script>
+    <script>
+        const words = document.querySelectorAll(".button-gm-goals");
+
+        words.forEach(word => {
+            word.addEventListener("click", function () {
+                const extraText = document.getElementById("gm-goals-text");
+                const isHidden = window.getComputedStyle(extraText).display === "none";
+
+                if (isHidden) {
+                    extraText.innerHTML = `
+                GM Moves for Planar Forces<br>
+                • Turn an organization (corrupt or infiltrate with influence)<br>
+                • Give dreams of prophecy<br>
+                • Lay a Curse on a foe<br>
+                • Extract a promise in exchange for a boon<br>
+                • Attack indirectly, through intermediaries<br>
+                • Rarely, when the stars are right, attack directly<br>
+                • Foster rivalries with other, similar powers<br>
+                • Expose someone to a Truth, wanted or otherwise
+                `;
+
+                    extraText.style.display = "block";
+                } else {
+                    // Hide the additional text
+                    extraText.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
