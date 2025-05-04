@@ -246,6 +246,7 @@ function addVillainy() {
   var villainTrait2 = villainTraits[villainTraitIndex2];
   var villainCrookIndex = Math.floor((Math.random() * 50)+1);
   var villainCrook = villainCrooks[villainCrookIndex];
+  var pickedPettyAttitude = 
 
   currentCharacter.villainy = 
     '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>' + 
@@ -283,7 +284,7 @@ var simpleVillainyCheck = '';
   };
     
   var simpleText = 
-  "<b>" + currentCharacter.fullname + "</b>" + " - ("
+  currentCharacter.fullname + " - ("
   + "<i>" + currentCharacter.race + " " + currentCharacter.sex 
   + ", " + currentCharacter.occupation
   + " - " + currentCharacter.appearance 
