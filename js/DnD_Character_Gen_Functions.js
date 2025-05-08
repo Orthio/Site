@@ -11,7 +11,7 @@ const { sexes, nameDictionary, alignments, appearances, quirks,
   traits, occupations, flaws, voices, ideals, bonds,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
-  menuRaces, charAge, relationships
+  pettyAttitude, pettyTension, menuRaces, charAge, relationships
 } = Variables;
 
 let jsonData;
@@ -286,10 +286,13 @@ function addVillainy() {
   let villainCrookIndex = Math.floor((Math.random() * 50) + 1);
   let villainCrook = villainCrooks[villainCrookIndex];
   let villainGoal = rollOnTable(jsonData.villainGoals);
+  let pickedPettyAttitude = rollOnTable(pettyAttitude);
+  let pickedPettyTension = rollOnTable(pettyTension);
 
   currentCharacter.villainy =
     '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>' +
     '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>' +
+    '<div>' + "<i>Petty Attitude: </i>" + pickedPettyAttitude + " " + pickedPettyTension + '</div>' +
     '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
 }
 
@@ -345,7 +348,7 @@ function simpleCopy() {
   }
 
   let simpleText =
-    "<b>" + currentCharacter.fullname + "</b>" + " - <i>("
+    currentCharacter.fullname + " - <i>("
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation + "</i>)"
     + "<br>"

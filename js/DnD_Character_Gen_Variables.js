@@ -1215,6 +1215,54 @@ const villainCrooks = {
   50: "Wears a mask"
 };
 
+var pettyAttitude = [
+  "Acidic",
+  "Arrogant",
+  "Captious",
+  "Calculating",
+  "Cunning",
+  "Covetous",
+  "Cynical",
+  "Fuming",
+  "Grudging",
+  "Insecure",
+  "Insidious",
+  "Meddling",
+  "Murmuring",
+  "Petulant",
+  "Secretive",
+  "Selfish",
+  "Snide",
+  "Spiteful",
+  "Subtle",
+  "Sullen"
+];
+
+var pettyTension = [
+  "Animosity",
+  "Bitterness",
+  "Contempt",
+  "Contention",
+  "Dissatisfaction",
+  "Dispute",
+  "Grudge",
+  "Grievance",
+  "Indignation",
+  "Intrigue",
+  "Malice",
+  "Mockery",
+  "Rivalry",
+  "Revenge",
+  "Rumor",
+  "Snub",
+  "Squabble",
+  "Vanity",
+  "Whim",
+  "Yearning"
+];
+
+
+
 // #endregion
 
 const menuRaces = [
@@ -1726,6 +1774,8 @@ export const Variables = {
   waylaysolutions,
   villainTraits,
   villainCrooks,
+  pettyAttitude,
+  pettyTension,
   menuRaces,
   charAge,
   occupations2,
