@@ -402,12 +402,14 @@ class Group {
     }
 
     determineGroupDeadliness(groupXP) {
-        if (groupXP < Party.moderateThreshold) {
+        if (groupXP < Party.lowThreshold) {
             return "Low";
-        } else if (groupXP < Party.highThreshold) {
+        } else if (groupXP < Party.moderateThreshold) {
             return "Moderate";
-        } else {
+        } else if (groupXP < Party.highThreshold){
             return "High";
+        } else {
+            return "Very High"
         }
     }
 
