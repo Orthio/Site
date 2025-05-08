@@ -77,6 +77,11 @@ function fetchEffects(current, roll, windroll) {
     }
 }
 
+function checkSeason() {
+    let weatherDate = currentDay + "-" + currentMonth;
+    let currentSeason = calendarWeatherTable(weatherDate);
+}
+
 function weatherFunction() {
     for (let i = 0; i < 30; i++) {
         if (i > 0 && Math.random() < 0.25) {
