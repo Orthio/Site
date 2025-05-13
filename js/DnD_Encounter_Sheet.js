@@ -796,9 +796,10 @@ function renderResults(monsters) {
     monsters.forEach(mon => {
         const li = document.createElement('li');
         const ac = mon.ac?.[0] ?? '?';
-        const hp = mon.hp?.average ?? '?';
+        const originalHP = mon.hp?.average ?? '?';
         const initialCR = mon.cr ?? '?';
         var cr = 0;
+        var hp = 0;
 
         if (initialCR === "1/8") {
             cr = 0.125;
@@ -809,10 +810,16 @@ function renderResults(monsters) {
         else if (initialCR === "1/2") {
             cr = 0.5;
         } else {
-            cr = parseInt(initialCR,10.000);
+            cr = parseInt(initialCR, 10.000);
         }
 
-        li.textContent = `${mon.name} (CR ${cr}, AC ${ac}, HP ${hp})`;
+        if (cr >= 3) {
+            hp = Math.floor(originalHP * 0.9);
+        } else {
+            hp = originalHP;
+        }
+
+        li.textContent = `${mon.name} (CR ${cr}, AC ${ac}, HP ${originalHP})`;
 
         // ✅ Add click handler to populate HP input
         li.addEventListener('click', () => {
