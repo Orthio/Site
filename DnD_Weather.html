@@ -26,7 +26,9 @@
 <body>
     <h1 class="HeaderFaerunWeather"><a href="https://www.gmbinder.com/share/-M6xAC_2zw4BzpByxO-c">Faerun Weather</a>
     </h1>
-    <p><small><span id="date-name"></span></small></p>
+    <p><small><span id="date-text"></span> <br> <span id="season-name"></span> <br>
+    Spring begins 19th Ches (19-4), Summer begins 20th Kythorn (20-8), <br> 
+    Autumn begins 21st Eleint (21-12), Winter begins 20th Nightal (20-17)</small></p>
     <button type="button" id="weather-function">Create Weather</button>
     <button type="button" id="effects-function">Check Effects</button>
     <button type="button" id="json-function">Create json</button>
@@ -38,7 +40,7 @@
     <div id="json-results"></div>
     <div id="checkmonth"></div>
 
-    <script type="module">
+  <!--   <script type="module">
         import { currentDay, currentMonth, currentYear, getDateName } from './js/DnD_General.js';
         const date = getDateName(currentDay, currentMonth);
         const dateName = "Today is " + date + " " + currentYear;
@@ -47,7 +49,7 @@
             document.getElementById("date-name").innerHTML = dateName;
         });
 
-    </script>
+    </script> -->
     <script type="module" src="js/DnD_General.js"></script>
     <script type="module" src="js/DnD_Weather.js"></script>
 </body>

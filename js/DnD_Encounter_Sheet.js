@@ -33,26 +33,26 @@ const globalVariables = (function () {
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
     let combatEncounterDifficulty = {
-        1: { Low: 50, Moderate: 75, High: 100 },
-        2: { Low: 100, Moderate: 150, High: 200 },
-        3: { Low: 150, Moderate: 225, High: 400 },
-        4: { Low: 250, Moderate: 375, High: 500 },
-        5: { Low: 500, Moderate: 750, High: 1100 },
-        6: { Low: 600, Moderate: 1000, High: 1400 },
-        7: { Low: 750, Moderate: 1300, High: 1700 },
-        8: { Low: 1000, Moderate: 1700, High: 2100 },
-        9: { Low: 1300, Moderate: 2000, High: 2600 },
-        10: { Low: 1600, Moderate: 2300, High: 3100 },
-        11: { Low: 1900, Moderate: 2900, High: 4100 },
-        12: { Low: 2200, Moderate: 3700, High: 4700 },
-        13: { Low: 2600, Moderate: 4200, High: 5400 },
-        14: { Low: 2900, Moderate: 4900, High: 6200 },
-        15: { Low: 3300, Moderate: 5400, High: 7800 },
-        16: { Low: 3800, Moderate: 6100, High: 9800 },
-        17: { Low: 4500, Moderate: 7200, High: 11700 },
-        18: { Low: 5000, Moderate: 8700, High: 14200 },
-        19: { Low: 5500, Moderate: 10700, High: 17200 },
-        20: { Low: 6400, Moderate: 13200, High: 22000 }
+        1: { VeryLow: 25, Low: 50, Moderate: 75, High: 100 },
+        2: { VeryLow: 50, Low: 100, Moderate: 150, High: 200 },
+        3: { VeryLow: 75, Low: 150, Moderate: 225, High: 400 },
+        4: { VeryLow: 125, Low: 250, Moderate: 375, High: 500 },
+        5: { VeryLow: 250, Low: 500, Moderate: 750, High: 1100 },
+        6: { VeryLow: 300, Low: 600, Moderate: 1000, High: 1400 },
+        7: { VeryLow: 350, Low: 750, Moderate: 1300, High: 1700 },
+        8: { VeryLow: 550, Low: 1000, Moderate: 1700, High: 2100 },
+        9: { VeryLow: 650, Low: 1300, Moderate: 2000, High: 2600 },
+        10: { VeryLow: 800, Low: 1600, Moderate: 2300, High: 3100 },
+        11: { VeryLow: 950, Low: 1900, Moderate: 2900, High: 4100 },
+        12: { VeryLow: 1100, Low: 2200, Moderate: 3700, High: 4700 },
+        13: { VeryLow: 1300, Low: 2600, Moderate: 4200, High: 5400 },
+        14: { VeryLow: 1450, Low: 2900, Moderate: 4900, High: 6200 },
+        15: { VeryLow: 1650, Low: 3300, Moderate: 5400, High: 7800 },
+        16: { VeryLow: 1900, Low: 3800, Moderate: 6100, High: 9800 },
+        17: { VeryLow: 2250, Low: 4500, Moderate: 7200, High: 11700 },
+        18: { VeryLow: 2500, Low: 5000, Moderate: 8700, High: 14200 },
+        19: { VeryLow: 2750, Low: 5500, Moderate: 10700, High: 17200 },
+        20: { VeryLow: 3200, Low: 6400, Moderate: 13200, High: 22000 }
     };
 
     // Multipliers: Number of monsters, x1 multiplier
@@ -155,6 +155,7 @@ class Party {
     static partyExtraDailyBudget = 0;
     static partyShortRestBudget = 0;
     static partyInitialBudgetRemain = 0;
+    static easyThreshold = 0;
     static lowThreshold = 0;
     static moderateThreshold = 0;
     static highThreshold = 0;
@@ -167,6 +168,7 @@ class Party {
     }
     static calculatePartyDifficulties() {
         // Fetch thresholds for each difficulty level using the party level (cr)
+        Party.easyThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "VeryLow") * Party.partyNumber;
         Party.lowThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "Low") * Party.partyNumber;
         Party.moderateThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "Moderate") * Party.partyNumber;
         Party.highThreshold = globalVariables.getCombatEncounterDifficulty(Party.partyListedLevel, "High") * Party.partyNumber;
@@ -402,7 +404,9 @@ class Group {
     }
 
     determineGroupDeadliness(groupXP) {
-        if (groupXP < Party.lowThreshold) {
+        if (groupXP < Party.easyThreshold) {
+            return "Easy";
+        } else if (groupXP < Party.lowThreshold) {
             return "Low";
         } else if (groupXP < Party.moderateThreshold) {
             return "Moderate";
@@ -657,6 +661,7 @@ function updatePartyTable() {
     document.getElementById("partyshortbudget").innerText = Math.floor(Party.partyShortRestBudget);
     document.getElementById("partyinitialbudgetremain").innerText = Math.floor(Party.partyInitialBudgetRemain);
 
+    document.getElementById("difficulty-easy").innerText = Party.easyThreshold;
     document.getElementById("difficulty-low").innerText = Party.lowThreshold;
     document.getElementById("difficulty-moderate").innerText = Party.moderateThreshold;
     document.getElementById("difficulty-high").innerText = Party.highThreshold;

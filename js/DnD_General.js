@@ -67,6 +67,15 @@ export function getDateName(day, month) {
     //into three ten-day periods. These are known variously as "eves", "tendays", "domen", "hyrar", or "rides" throughout the Forgotten Realms.
 };
 
+export function getDayOfYear(day, monthNum) {
+    let total = 0;
+    for (let m of monthsArray) {
+        if (m.number === monthNum) break;
+        total += m.days;
+    }
+    return total + day;
+}
+
 export function generalDiceRoll(dice, qty, adv) {
     // Roll a dice (d6 d20) a no of times, with advantage or disadvantage
     let rollResult = [];

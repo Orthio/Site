@@ -1,4 +1,4 @@
-import { generalDiceRoll, currentDay, currentMonth, currentYear, getDateName, getMonthDays } from './DnD_General.js';
+import { generalDiceRoll, currentDay, currentMonth, currentYear, getDateName, getMonthDays, monthsArray, getDayOfYear } from './DnD_General.js';
 
 // Global Variables
 let weatherArray = [];
@@ -16,8 +16,18 @@ let effectsSave = [];
 let jsonArray = [];
 let jsonHistory = "";
 
+
 let weatherData = {};
 let isWeatherDataLoaded = false; // Flag to check if data is loaded
+
+const calendarWeatherTable = [
+    { seasonName: "Spring", seasonDay: 19, seasonMonth: 4 },  // Ches 19
+    { seasonName: "Summer", seasonDay: 20, seasonMonth: 8 },  // Kythorn 20
+    { seasonName: "Autumn", seasonDay: 21, seasonMonth: 12 }, // Eleint 21
+    { seasonName: "Winter", seasonDay: 20, seasonMonth: 17 }  // Nightal 20
+];
+
+var currentCalendarSeason = "Autumn";
 
 // Load the JSON data using fetch
 fetch('json/DnD_Weather.json')
@@ -77,12 +87,62 @@ function fetchEffects(current, roll, windroll) {
     }
 }
 
-function checkSeason() {
-    let weatherDate = currentDay + "-" + currentMonth;
-    let currentSeason = calendarWeatherTable(weatherDate);
+function getCurrentSeason(currentDay, currentMonth) {
+    const currentDayOfYear = getDayOfYear(currentDay, currentMonth);
+
+    const seasons = calendarWeatherTable.map(season => ({
+        ...season,
+        dayOfYear: getDayOfYear(season.seasonDay, season.seasonMonth)
+    })).sort((a, b) => a.dayOfYear - b.dayOfYear);
+
+    // If current day is before the first season starts, it's still Winter
+    if (currentDayOfYear < seasons[0].dayOfYear) {
+        return seasons[seasons.length - 1].seasonName; // Winter
+    }
+
+    // Find the most recent season start
+    for (let i = seasons.length - 1; i >= 0; i--) {
+        if (currentDayOfYear >= seasons[i].dayOfYear) {
+            return seasons[i].seasonName;
+        }
+    }
+
+    // Fallback (shouldn't hit this)
+    return "Unknown";
 }
 
+
 function weatherFunction() {
+
+    // Select correct season tables
+    var weatherTable;
+    var windTable;
+    var rainTable;
+
+    switch (currentCalendarSeason) {
+        case "Spring":
+            weatherTable = weatherData.springWeatherTable;
+            windTable = weatherData.springWindTable;
+            rainTable = weatherData.springRainTable;
+            break;
+        case "Summer":
+            weatherTable = weatherData.summerWeatherTable;
+            windTable = weatherData.summerWindTable;
+            rainTable = weatherData.summerRainTable;
+            break;
+        case "Autumn":
+            weatherTable = weatherData.autumnWeatherTable;
+            windTable = weatherData.autumnWindTable;
+            rainTable = weatherData.autumnRainTable;
+            break;
+        case "Winter":
+            weatherTable = weatherData.winterWeatherTable;
+            windTable = weatherData.winterWindTable;
+            rainTable = weatherData.winterRainTable;
+            break;
+    }
+
+    // Roll for season weather
     for (let i = 0; i < 30; i++) {
         if (i > 0 && Math.random() < 0.25) {
             weatherArray.push(weatherArray[i - 1]);
@@ -91,14 +151,14 @@ function weatherFunction() {
             weatherCRoll = generalDiceRoll(100);
             windCRoll = generalDiceRoll(20);
 
-            weatherCurrent = decideConditions(weatherCRoll, weatherData.winterWeatherTable);
+            weatherCurrent = decideConditions(weatherCRoll, weatherTable);
             weatherArray.push(weatherCurrent);
 
             fetchEffects(weatherCurrent, weatherCRoll, windCRoll);
         }
 
         if (isInRange(weatherCRoll, 20, 94)) {
-            windCurrent = decideConditions(windCRoll, weatherData.winterWindTable);
+            windCurrent = decideConditions(windCRoll, windTable);
             if (isInRange(windCRoll, 16, 20)) {
                 windDirectionCurrent = decideConditions(generalDiceRoll(4), weatherData.windDirectionTable);
             } else {
@@ -109,7 +169,7 @@ function weatherFunction() {
         }
 
         if (isInRange(weatherCRoll, 20, 59)) {
-            rainCurrent = decideConditions(generalDiceRoll(20), weatherData.winterRainTable);
+            rainCurrent = decideConditions(generalDiceRoll(20), rainTable);
         } else {
             rainCurrent = "";
         }
@@ -148,7 +208,7 @@ function displayResults() {
             year++;
         }
 
-        let dateName = getDateName(day, month);
+        var dateName = getDateName(day, month);
         weatherHistory += `<div><b>Day ${i + 1}, ${dateName}</b></div>
             <div>${weatherArray[i]} ${windArray[i]} ${windDirArray[i]} ${rainArray[i]}</div><br>`;
         jsonHistory += "{" + '<br>' +
@@ -183,12 +243,6 @@ function jsonFunction() {
         return;
     }
 
-    /*   let jsonText = "";
-      jsonArray.forEach(jsonBit => {
-          jsonText += "<div>" + jsonBit + "<br><div><br></div>";
-      });
-   */
-
     document.getElementById("json-results").innerHTML = "<br>" + jsonHistory + "___________________________________ ";
 
 }
@@ -198,6 +252,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const weatherFunctionButton = document.querySelector("#weather-function");
     const effectsFunctionButton = document.querySelector("#effects-function");
     const jsonFunctionButton = document.querySelector('#json-function');
+
+    const dateNameToday = getDateName(currentDay, currentMonth);
+    const dateText = "Today is " + dateNameToday + " " + currentYear + " (" + currentDay + "-" + currentMonth + "-" + currentYear + ")";
+    document.getElementById("date-text").innerHTML = dateText;
+
+    const seasonToday = currentCalendarSeason;
+    const seasonText = "The current season is " + seasonToday;
+    document.getElementById("season-name").innerHTML = seasonText;
 
     weatherFunctionButton.addEventListener("click", () => {
         if (isWeatherDataLoaded) {
