@@ -1,8 +1,26 @@
 
 import { generalDiceRoll, partyLevel } from './DnD_General.js';
 
-let encounterTable = document.getElementById("encounter-table");
-let groupTable = document.getElementById("group-table");
+fetch('json/bestiary-xmm.json')
+    .then(res => res.json())
+    .then(data => {
+        const monsters = data.monster;
+
+        /*     // Initial render: show full list
+            renderResults(monsters); */
+
+        // Filter on search
+        searchBar.addEventListener("input", () => {
+            const query = searchBar.value.toLowerCase();
+            const filtered = monsters.filter(mon =>
+                mon.name.toLowerCase().includes(query)
+            );
+            renderResults(filtered);
+        });
+    })
+    .catch(error => {
+        resultsList.innerHTML = `<li>Error loading monster data: ${error}</li>`;
+    });
 
 const globalVariables = (function () {
     let partyDPS = 30.8;
@@ -410,7 +428,7 @@ class Group {
             return "Low";
         } else if (groupXP < Party.moderateThreshold) {
             return "Moderate";
-        } else if (groupXP < Party.highThreshold){
+        } else if (groupXP < Party.highThreshold) {
             return "High";
         } else {
             return "Very High"
@@ -767,8 +785,108 @@ function updateDayTable() {
 
 }
 
+function renderResults(monsters) {
+    resultsList.innerHTML = ''; // Clear previous list
+
+    if (monsters.length === 0) {
+        resultsList.innerHTML = '<li>No monsters found.</li>';
+        return;
+    }
+
+    monsters.forEach(mon => {
+        const li = document.createElement('li');
+        const ac = mon.ac?.[0] ?? '?';
+        const hp = mon.hp?.average ?? '?';
+        const initialCR = mon.cr ?? '?';
+        var cr = 0;
+
+        if (initialCR === "1/8") {
+            cr = 0.125;
+        }
+        else if (initialCR === "1/4") {
+            cr = 0.25;
+        }
+        else if (initialCR === "1/2") {
+            cr = 0.5;
+        } else {
+            cr = parseInt(initialCR,10.000);
+        }
+
+        li.textContent = `${mon.name} (CR ${cr}, AC ${ac}, HP ${hp})`;
+
+        // ✅ Add click handler to populate HP input
+        li.addEventListener('click', () => {
+            const hpInput = document.getElementById('js-monster-hp-input');
+            if (hpInput) {
+                hpInput.value = hp;
+            }
+            const monsterNameInput = document.getElementById('js-monster-name-input');
+            if (monsterNameInput) {
+                monsterNameInput.value = mon.name;
+            }
+            const monsterCRInput = document.getElementById('js-monster-cr-input');
+            if (monsterCRInput) {
+                monsterCRInput.value = cr;
+            }
+        });
+
+        resultsList.appendChild(li);
+    });
+}
+
+function clearSearchBar() {
+    resultsList.innerHTML = ''; // Clear previous list
+}
+
+const addEncounterCurrentButton = document.querySelector("#add-encounter-current-button");
+addEncounterCurrentButton.addEventListener("click", () => {
+    addEncounter("Current");
+});
+
+const addEncounterNewButton = document.querySelector("#add-encounter-new-button");
+addEncounterNewButton.addEventListener("click", () => {
+    addEncounter("New");
+});
+
+const ResetButton = document.querySelector("#reset-button");
+ResetButton.addEventListener("click", () => {
+    resetTables();
+});
+
+const CRUpButton = document.querySelector("#cr-up-button");
+CRUpButton.addEventListener("click", () => {
+    CRUp();
+});
+
+const CRDownButton = document.querySelector("#cr-down-button");
+CRDownButton.addEventListener("click", () => {
+    CRDown();
+});
+
+const removeLastEncounterButton = document.querySelector("#remove-last-encounter");
+removeLastEncounterButton.addEventListener("click", () => {
+    removeEncounter();
+});
+
+const encounterTable = document.getElementById("encounter-table");
+const groupTable = document.getElementById("group-table");
+
+const searchBar = document.getElementById("search-bar");
+const resultsList = document.getElementById("resultsList");
+
+const clearSearchBarButton = document.querySelector("#clear-search-bar");
+clearSearchBarButton.addEventListener("click", () => {
+    clearSearchBar();
+});
+
+eventListeners.addInputListener('js-party-levelinput', updateSheet);
+
+eventListeners.addInputListener('js-party-numberinput', updateSheet);
+
+eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet);
 
 // Listen functions
+
 document.addEventListener('DOMContentLoaded', () => {
     // Your startup function here
     initializePage();
@@ -780,56 +898,8 @@ function initializePage() {
     document.getElementById('js-party-levelinput').value = partyLevel;
 }
 
-const addEncounterCurrentButton = document.querySelector("#add-encounter-current-button");
-
-addEncounterCurrentButton.addEventListener("click", () => {
-    addEncounter("Current");
-});
-
-const addEncounterNewButton = document.querySelector("#add-encounter-new-button");
-
-addEncounterNewButton.addEventListener("click", () => {
-    addEncounter("New");
-});
-
-const ResetButton = document.querySelector("#reset-button");
-
-ResetButton.addEventListener("click", () => {
-    resetTables();
-});
-
-const CRUpButton = document.querySelector("#cr-up-button");
-
-CRUpButton.addEventListener("click", () => {
-    CRUp();
-});
-
-const CRDownButton = document.querySelector("#cr-down-button");
-
-CRDownButton.addEventListener("click", () => {
-    CRDown();
-});
-
-const removeLastEncounterButton = document.querySelector("#remove-last-encounter");
-
-removeLastEncounterButton.addEventListener("click", () => {
-    removeEncounter();
-});
-
-
-
 window.onload = function () {
     // createNewDay();
 
     updateSheet();
 }
-
-eventListeners.addInputListener('js-party-levelinput', updateSheet);
-// eventListeners.addInputListener('js-party-levelinput', updateDeadliness);
-// eventListeners.addInputListener('js-party-levelinput', updateGroupTable("current"));
-
-eventListeners.addInputListener('js-party-numberinput', updateSheet);
-// eventListeners.addInputListener('js-party-numberinput', updateDeadliness);
-// eventListeners.addInputListener('js-party-numberinput', updateGroupTable("current"));
-
-eventListeners.addInputListener('js-xpgainedforcurrent', updateSheet);

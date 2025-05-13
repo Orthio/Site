@@ -45,6 +45,7 @@ p {
   width: 100px;
 }
 
+
 #encounter-add-form-1 {
   margin: 5px;
 }
@@ -77,6 +78,7 @@ p {
 #group-table td:nth-child(1) {
   width: 60px;
 }
+
 .form-encounter {
   display: flex;
   flex-direction: row;
@@ -90,8 +92,14 @@ p {
   width: 50px;
 }
 
+.form-encounter #js-monster-cr-input {
+  width: 70px;
+}
+
 .form-encounter .monster-name-input {
-  width: 150px;
+  width: 200px;
+  font-size: 15px;
+  height: 20px;
 }
 
 .form-encounter .form-row {
@@ -110,4 +118,8 @@ p {
 
 .form-encounter .monster-HP-input {
   width: 50px;
+}
+
+#resultsList {
+  cursor: alias;
 }

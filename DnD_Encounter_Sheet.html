@@ -34,8 +34,9 @@
   <p class="shortresttext">Current daily budget for the party: <span id="dailybudget"></span></p>
   <p class="shortresttext">Current budget per short rest: <span id="partyshortbudget"></span></p>
   <p class="shortresttext">Initial budget remaining: <span id="partyinitialbudgetremain"></span></p>
-  <p class="difficulty-ratings">Easy: <span id="difficulty-easy"></span> Low: <span id="difficulty-low"></span>xp Moderate:
-    <span id="difficulty-moderate"></span>xp High: <span id="difficulty-high"></span>xp
+  <p class="difficulty-ratings">Easy: <span id="difficulty-easy"></span>xp max,  Low: <span id="difficulty-low"></span>xp, 
+    Moderate:
+    <span id="difficulty-moderate"></span>xp, High: <span id="difficulty-high"></span>xp
   </p>
 
   <p>_______________________</p>
@@ -45,8 +46,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="js-monster-cr-input">Monster CR:</label>
-          <input type="number" id="js-monster-cr-input" name="js-monster-cr-input" class="CRInputClass" min="0" max="30"
-            value="7" step="1">
+          <input type="number" id="js-monster-cr-input" name="js-monster-cr-input" class="CRInputClass" value="7">
         </div>
         <div class="form-group">
           <label for="js-monster-qty-input">Monster Qty:</label>
@@ -66,7 +66,11 @@
     </form>
   </div>
 
+  <input type="text" id="search-bar" placeholder="Search monster name...">
+  <input type="button" id="clear-search-bar" value="Clear search bar">
+  <ul id="resultsList"></ul>
 
+  <br>
   <div>
     <form id="EncounterAddForm">
       <div id="encounter-add-form-1">
