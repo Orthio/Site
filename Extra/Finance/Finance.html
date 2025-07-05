@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance</title>
+    <link rel="stylesheet" href="Pregnancy_Dates.css" />
+
+</head>
+
+<body>
+    <h2>Finance</h2>
+
+    <h4>Expected Cost</h4>
+
+    <div>
+        <p>
+            Weekly Cost: £<span id="weekly-cost"></span>
+            <br>
+            Monthly Cost: £<span id="monthly-cost"></span>
+        </p>
+    </div>
+
+    <p><span id="child-maintenance-weekly"></span></p>
+
+    <p>_______________________</p>
+
+    <h4>Inputs</h4>
+
+    <label for="shift-input">Number of Shifts:</label>
+    <input type="number" id="shift-input" value="3" min="0" max="3">
+    <br>
+    <label for="children-number-input">Number of Children:</label>
+    <input type="number" id="children-number-input" value="1" min="1" max="3">
+    <br>
+    <label for="han-living-box">Living with Han? </label>
+    <input type="checkbox" id="han-living-box">
+    <br>
+
+
+    <label for="nights-input" id="nights-label">Number of Nights with Children:</label>
+    <input type="number" id="nights-input" value="3" min="0" max="4">
+
+    <p>_______________________</p>
+
+    <p>Rent Cost: £<span id="rent-cost"></span></p>
+
+    <script type="module" src="Finance.js"></script>
+
+</body>
+
+</html>
+
+<!-- http://localhost:8080/Expecting/Pregnancy_Dates.html -->

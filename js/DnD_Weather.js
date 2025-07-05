@@ -21,6 +21,7 @@ let weatherData = {};
 let isWeatherDataLoaded = false; // Flag to check if data is loaded
 
 const calendarWeatherTable = [
+    { seasonName: "Winter2", seasonDay: 1, seasonMonth: 1 },
     { seasonName: "Spring", seasonDay: 19, seasonMonth: 4 },  // Ches 19
     { seasonName: "Summer", seasonDay: 20, seasonMonth: 8 },  // Kythorn 20
     { seasonName: "Autumn", seasonDay: 21, seasonMonth: 12 }, // Eleint 21
@@ -87,7 +88,7 @@ function fetchEffects(current, roll, windroll) {
     }
 }
 
-function getCurrentSeason(currentDay, currentMonth) {
+/* function getCurrentSeason(currentDay, currentMonth) {
     const currentDayOfYear = getDayOfYear(currentDay, currentMonth);
 
     const seasons = calendarWeatherTable.map(season => ({
@@ -109,8 +110,7 @@ function getCurrentSeason(currentDay, currentMonth) {
 
     // Fallback (shouldn't hit this)
     return "Unknown";
-}
-
+} */
 
 function weatherFunction() {
 
