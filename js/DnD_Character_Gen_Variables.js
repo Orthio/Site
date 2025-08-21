@@ -580,6 +580,400 @@ const traits = [
   "Mischevious", "Persistent", "Pious", "Rash", "Obedient", "Meek", "Paranoid"
 ];
 
+const personalityAppearanceCues = {
+  "Kind": [
+    "wears a gentle, ready smile",
+    "relaxes their shoulders when others approach",
+    "softens their gaze when meeting eyes"
+  ],
+  "Loyal": [
+    "stands close to allies without crowding",
+    "tracks friends’ movements with steady eyes",
+    "nods reassurance when danger is near"
+  ],
+  "Open-Minded": [
+    "tilts head thoughtfully while listening",
+    "keeps brows lifted in curiosity",
+    "opens palms when others speak"
+  ],
+  "Intelligent": [
+    "eyes flick quickly, taking in details",
+    "creases brow in focused thought",
+    "speaks with precise, measured diction"
+  ],
+  "Rude": [
+    "rolls eyes or scoffs openly",
+    "lets a smirk tug at one corner of the mouth",
+    "turns slightly away while others speak"
+  ],
+  "Two-Faced": [
+    "smiles that don’t reach the eyes",
+    "glances sideways before answering",
+    "changes tone mid-sentence when noticed"
+  ],
+  "Prejudice": [
+    "tightens jaw around certain people",
+    "gives brief, dismissive looks",
+    "folds arms as a barrier"
+  ],
+  "Ignorant": [
+    "stares blankly at unfamiliar terms",
+    "asks obvious questions with confidence",
+    "grins at the wrong moments"
+  ],
+  "Crazy": [
+    "eyes shift unpredictably",
+    "smiles or laughs at odd beats",
+    "gestures in erratic, sudden bursts"
+  ],
+  "Humble": [
+    "keeps chin slightly lowered",
+    "deflects praise with a small shrug",
+    "meets eyes briefly, then looks away"
+  ],
+  "Brave": [
+    "square stance and steady gaze",
+    "steps forward first without prompting",
+    "keeps chin lifted under pressure"
+  ],
+  "Creative": [
+    "talks with animated hands drawing shapes",
+    "studies textures and patterns around them",
+    "eyes brighten when ideas spark"
+  ],
+  "Assertive": [
+    "plants feet and leans in slightly",
+    "speaks with clear, firm cadence",
+    "holds eye contact without strain"
+  ],
+  "Arrogant": [
+    "chin up as if looking down on others",
+    "wears a faint, knowing smirk",
+    "clasps hands behind back in display"
+  ],
+  "Cowardly": [
+    "hunches shoulders and scans exits",
+    "flinches at sudden sounds",
+    "keeps weight on back foot to retreat"
+  ],
+  "Cunning": [
+    "smiles with just the eyes",
+    "pauses before replying, as if weighing odds",
+    "watches others’ hands more than faces"
+  ],
+  "Hesitant": [
+    "half-raises a hand, then lowers it",
+    "starts a step and stops short",
+    "voice trails off at sentence ends"
+  ],
+  "Gentle": [
+    "moves with quiet, careful motions",
+    "speaks softly, easing tension",
+    "offers small, reassuring touches"
+  ],
+  "Honest": [
+    "meets gazes openly and steadily",
+    "speaks without visible guile",
+    "keeps posture open and squared"
+  ],
+  "Decisive": [
+    "answers promptly with minimal dithering",
+    "cuts through chatter with a crisp gesture",
+    "walks as if already chosen a path"
+  ],
+  "Spoiled": [
+    "pouts when refused",
+    "taps foot impatiently",
+    "handles objects like they’re owed"
+  ],
+  "Cruel": [
+    "eyes narrow in cold appraisal",
+    "wears a thin, mirthless smile",
+    "leans in to loom over others"
+  ],
+  "Liar": [
+    "glances away at key details",
+    "smiles a beat late after jokes",
+    "fidgets with rings or sleeves"
+  ],
+  "Indecisive": [
+    "looks between options repeatedly",
+    "hands hover, then retreat",
+    "voice wavers mid-choice"
+  ],
+  "Cautious": [
+    "tests floors and doorframes with toes",
+    "keeps back to a wall when possible",
+    "eyes sweep corners before entering"
+  ],
+  "Polite": [
+    "inclines head in small bows",
+    "keeps hands visible and still",
+    "waits to speak with patient posture"
+  ],
+  "Generous": [
+    "offers items palm-up",
+    "waves off thanks with a light laugh",
+    "leans forward to share space"
+  ],
+  "Wise": [
+    "speaks after a reflective pause",
+    "watches people more than things",
+    "uses small, economical gestures"
+  ],
+  "Reasonable": [
+    "paces speech evenly",
+    "raises a calming hand to slow tempers",
+    "lays out points with counting fingers"
+  ],
+  "Blunt": [
+    "keeps expression flat and frank",
+    "stands square, no embellishment",
+    "cuts through talk with a firm hand"
+  ],
+  "Selfish": [
+    "guards belongings with a close grip",
+    "steps ahead of others in queues",
+    "eyes linger on valuables"
+  ],
+  "Naive": [
+    "widens eyes in open wonder",
+    "nods eagerly at dubious claims",
+    "smiles without suspicion"
+  ],
+  "Stubborn": [
+    "sets jaw and plants feet",
+    "folds arms and refuses to budge",
+    "answers with clipped, final nods"
+  ],
+  "Outgoing": [
+    "greets with quick, bright eye contact",
+    "touches forearm lightly when speaking",
+    "projects voice across the room"
+  ],
+  "Diligent": [
+    "checks work with focused, steady eyes",
+    "keeps tools ordered and ready",
+    "leans into tasks without prompting"
+  ],
+  "Sincere": [
+    "speaks with unforced warmth",
+    "eyes don’t waver on difficult truths",
+    "hands mirror their words naturally"
+  ],
+  "Emotional": [
+    "expressions shift rapidly and openly",
+    "voice catches when feelings surge",
+    "hands clutch chest or temple"
+  ],
+  "Reserved": [
+    "keeps hands folded or behind back",
+    "lets silence stretch comfortably",
+    "wears small, contained smiles"
+  ],
+  "Careless": [
+    "shrugs at spills or scuffs",
+    "drops things and doesn’t notice",
+    "buttons and straps sit askew"
+  ],
+  "Sarcastic": [
+    "arches one eyebrow habitually",
+    "smiles crookedly when joking",
+    "air-quotes with quick fingers"
+  ],
+  "Apathetic": [
+    "half-lidded gaze and slow blinks",
+    "answers with a limp shrug",
+    "moves only when required"
+  ],
+  "Cheerful": [
+    "smiles easily and often",
+    "laugh lines crease at the eyes",
+    "walks with a light bounce"
+  ],
+  "Responsible": [
+    "keeps gear tidy and ready",
+    "double-checks straps, knots, and notes",
+    "stands watch without fidgeting"
+  ],
+  "Orderly": [
+    "aligns objects into neat rows",
+    "smooths wrinkles from clothing",
+    "straightens chairs as they pass"
+  ],
+  "Funny": [
+    "grins before punchlines land",
+    "uses broad, playful gestures",
+    "winks or deadpans theatrically"
+  ],
+  "Brooding": [
+    "brow furrowed, eyes downcast",
+    "answers in low, clipped tones",
+    "lingers in the edge of light"
+  ],
+  "Unreliable": [
+    "checks exits more than plans",
+    "arrives breathless and late",
+    "forgets straps, buckles, or names"
+  ],
+  "Messy": [
+    "ink stains on fingers",
+    "loose threads and untied laces",
+    "hair escapes whatever style it had"
+  ],
+  "Serious": [
+    "rarely cracks a smile",
+    "speaks in firm, even tones",
+    "keeps posture straight and still"
+  ],
+  "Sensitive": [
+    "winces at harsh phrasing",
+    "eyes glisten when tensions rise",
+    "touches arm or neck when hurt"
+  ],
+  "Shy": [
+    "avoids prolonged eye contact",
+    "keeps voice soft and brief",
+    "stands slightly behind companions"
+  ],
+  "Hardworking": [
+    "callused hands and steady grip",
+    "rolls sleeves without complaint",
+    "breathes in a measured work rhythm"
+  ],
+  "Charming": [
+    "meets eyes with warm sparkle",
+    "laughs lightly at others’ jokes",
+    "angles body to include everyone"
+  ],
+  "Callous": [
+    "eyes slide past suffering",
+    "shrugs at others’ pain",
+    "keeps a cool, unaffected face"
+  ],
+  "Impulsive": [
+    "steps forward before plans form",
+    "speaks over their own thoughts",
+    "hands already reaching for the latch"
+  ],
+  "Lazy": [
+    "slouches with half-lidded eyes",
+    "yawns without covering",
+    "drags feet when walking"
+  ],
+  "Moody": [
+    "expressions flip without warning",
+    "answers with sudden sharpness or softness",
+    "stares off, then snaps back"
+  ],
+  "Easygoing": [
+    "leans back with loose shoulders",
+    "smiles and waves off slights",
+    "walks at an unhurried pace"
+  ],
+  "Reckless": [
+    "grins at obvious risks",
+    "charges ahead without checking",
+    "laughs after near-misses"
+  ],
+  "Immature": [
+    "pouts when corrected",
+    "snickers at crude jokes",
+    "mimics others behind their back"
+  ],
+  "Independent": [
+    "keeps gear self-sufficiently packed",
+    "scans routes others miss",
+    "nods once, then acts alone"
+  ],
+  "Dependent": [
+    "looks to the nearest leader for cues",
+    "hovers at someone’s shoulder",
+    "asks permission with their eyes"
+  ],
+  "Energetic": [
+    "can’t keep still; taps toes or fingers",
+    "talks quickly with bright eyes",
+    "paces while thinking"
+  ],
+  "Frugal": [
+    "reuses cord and cloth with care",
+    "counts coin by touch alone",
+    "patches and darns meticulously"
+  ],
+  "Modest": [
+    "downplays compliments with a wave",
+    "keeps attire simple and neat",
+    "avoids center stage"
+  ],
+  "Determined": [
+    "jaw set and gaze unwavering",
+    "pushes through with purposeful strides",
+    "answers setbacks with a tight nod"
+  ],
+  "Quiet": [
+    "speaks in low, spare phrases",
+    "moves without drawing notice",
+    "watches more than they talk"
+  ],
+  "Extravagant": [
+    "chooses bold colors or flourishes",
+    "gestures grandly in conversation",
+    "adorns with extra rings or pins"
+  ],
+  "Vain": [
+    "checks reflection in any surface",
+    "adjusts hair and collar often",
+    "poses unconsciously when watched"
+  ],
+  "Petty": [
+    "keeps a tallying smirk",
+    "murmurs barbed asides under breath",
+    "exaggerates small slights with eye rolls"
+  ],
+  "Patient": [
+    "waits without fidgeting",
+    "breathes slow and steady",
+    "lets others finish before replying"
+  ],
+  "Mischevious": [
+    "eyes sparkle before pranks land",
+    "smiles with a conspiratorial tilt",
+    "hands hide small trinkets behind back"
+  ],
+  "Persistent": [
+    "returns to tasks again and again",
+    "sets jaw and repeats the motion",
+    "tracks goals with steady eyes"
+  ],
+  "Pious": [
+    "touches a charm or sigil when speaking",
+    "bows head briefly before action",
+    "keeps symbols polished and close"
+  ],
+  "Rash": [
+    "answers before the question ends",
+    "lunges into openings instantly",
+    "waves off warnings with a grin"
+  ],
+  "Obedient": [
+    "snaps to attention at commands",
+    "keeps gear regulation-neat",
+    "glances to superiors before acting"
+  ],
+  "Meek": [
+    "keeps voice small and yielding",
+    "steps aside to give way",
+    "folds hands to appear smaller"
+  ],
+  "Paranoid": [
+    "checks over shoulder at intervals",
+    "stands with back to walls and corners",
+    "eyes linger on windows and exits"
+  ]
+};
+
+
 const occupations = [
   "Temple Work", "Temple Work",
   "Gambler",
@@ -1779,5 +2173,6 @@ export const Variables = {
   menuRaces,
   charAge,
   occupations2,
-  relationships
+  relationships,
+  personalityAppearanceCues
 }

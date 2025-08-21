@@ -365,6 +365,13 @@ function simpleCopy() {
   navigator.clipboard.writeText(simpleText);
 }
 
+// Adding extra traits
+function cueForTrait(trait) {
+  const cues = personalityAppearanceCues[trait];
+  return cues ? cues[Math.floor(Math.random() * cues.length)] : null;
+}
+
+
 // Function to get a unique index
 function getUniqueIndex(length, lastIndices) {
   // length is the length of the array, lastIndices is the index to check
