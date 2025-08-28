@@ -11,7 +11,9 @@ const { sexes, nameDictionary, alignments, appearances, quirks,
   traits, occupations, flaws, voices, ideals, bonds,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
-  pettyAttitude, pettyTension, menuRaces, charAge, relationships
+  pettyAttitude, pettyTension, menuRaces, charAge, relationships, personalityAppearanceCues,
+  bodyDescription, skinHumanDescription, furDescription, hairHumanDescription, hairColours, extraDescription,
+  groups, roll2
 } = Variables;
 
 let jsonData;
@@ -44,9 +46,36 @@ function createCharacter() {
     sex = rollOnTable(sexes);
   }
 
+  let bodyDescript;
+  let bodySkinDescriptRoll;
+  let bodyHairDescript;
+  let bodyHairColourDescript;
+  let bodySkinDescript;
+  if (raceType === "Tabaxi") {
+    bodyDescript = rollOnTable(furDescription);
+    bodySkinDescriptRoll = "";
+    bodyHairDescript = "";
+    bodyHairColourDescript = "";
+  } else {
+    bodyDescript = rollOnTable(bodyDescription);
+    bodySkinDescriptRoll = rollOnTable(skinHumanDescription);
+    bodyHairDescript = rollOnTable(hairHumanDescription);
+    bodyHairColourDescript = rollOnTable(hairColours);
+  }
+  let bodyExtraDescript = rollOnTable(extraDescription);
+  let skinRoll = rollOnTable(roll2);
+  if (roll2 == 0) {
+    bodySkinDescript = "";
+  } else {
+    bodySkinDescript = bodySkinDescriptRoll;
+  }
+  let appearance = bodyDescript + ", " + bodySkinDescript + " skin, with " +
+    bodyHairDescript + " " + bodyHairColourDescript + " hair. " +
+    bodyExtraDescript;
+  let appearance2 = rollOnTable(appearances);
+
   let occupation = rollOnTable(occupations);
   let alignment = rollOnTable(alignments);
-  let appearance = rollOnTable(appearances);
   let quirk = rollOnTable(quirks);
   let voice = rollOnTable(voices);
 
@@ -80,6 +109,7 @@ function createCharacter() {
     age: age,
     occupation: occupation,
     appearance: appearance,
+
     trait: trait,
     quirk: quirk,
     voice: voice,
@@ -98,6 +128,7 @@ function createCharacter() {
     flaw: ' ',
     relationship: ' ',
     goal: '',
+    group: '',
     villainy: '',
     hook: '',
 
@@ -129,8 +160,8 @@ function updateCharacterDisplay() {
   displayHistory.forEach(function (item) {
     charhistory +=
       '<div class="character-result">' +
-      '<div>' + "<b>" + item.fullname + "</b>" + ' - ' + 
-      item.race + ' ' + item.sex + ', ' + item.alignment + " " + item.age + " " + item.occupation + '</div>' +
+      '<div>' + "<b>" + item.fullname + "</b>" + '<div>' +
+      '<div>' + item.race + ' ' + item.sex + ', ' + item.alignment + " " + item.age + " " + item.occupation + '</div>' +
       '<div>' + "<i>Appearance: </i>" + item.appearance + '</div>' +
       '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +
@@ -148,11 +179,12 @@ function updateCharacterDisplay() {
       '<div>' + item.flaw + '</div>' +
       '<div>' + item.relationship + '</div>' +
       '<div>' + item.goal + '</div>' +
+      '<div>' + item.group + '</div>' +
       '<div>' + item.villainy + '</div>' +
       '<div>' + item.hook + '</div>' +
       '<div>' + item.simplified + '</div>' +
       '<hr>'
-      '<div class="entry-border">' + '</div>'
+    '<div class="entry-border">' + '</div>'
     '</div>';
 
   })
@@ -302,6 +334,7 @@ function addHook() {
   let hook1 = rollOnTable(jsonData.hooks1);
   let hook2 = rollOnTable(jsonData.hooks2);
   let goal = rollOnTable(jsonData.goals);
+  let group = rollOnTable(groups);
   let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
   let flawRoll = rollOnTable(flaws);
 
@@ -312,6 +345,7 @@ function addHook() {
     '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +
     hook2 + '</div>' + '<br>';
   currentCharacter.goal = '<div>' + "<i>Goal: </i>" + goal + '</div>';
+  currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
 }
 
 
@@ -348,9 +382,9 @@ function simpleCopy() {
   }
 
   let simpleText =
-    currentCharacter.fullname + " - <i>("
+    currentCharacter.fullname + "<br>"
     + currentCharacter.race + " " + simpleSex
-    + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation + "</i>)"
+    + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
     + "<br>"
     + currentCharacter.appearance
     + "<br>"

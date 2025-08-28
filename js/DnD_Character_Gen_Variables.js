@@ -45,6 +45,333 @@ const alignments = [
   "CE"
 ];
 
+// #region Character Description Region
+const bodyDescription = [
+  // Disfigured
+  "Missing an arm",
+  "Missing a leg",
+  "Horribly burnt",
+  "Has a limp or a hunched back",
+  "Body marked by hard work",
+
+  //Obese
+  "Horribly overweight",
+  "Stubby legs",
+  "Plump",
+  "Oversized",
+  "Portly",
+  "Stout",
+  "Ample",
+  "Chubby",
+
+  //Thin
+  "Very thin",
+  "Not an ounce of fat",
+  "Delicate physique",
+  "Angular",
+  "Delicate",
+  "Gangly",
+  "Lank",
+  "Lean",
+  "Scrawny",
+  "Trim",
+  "Thin",
+  "Sleek",
+  "Slender",
+  "Slight",
+  "Trim",
+
+  //Muscular
+  "Strong with Wide Shoulders",
+  "Exceptionally athletic",
+  "Barrel chest",
+  "Active",
+  "Athletic",
+  "Beefy",
+  "Brawny",
+  "Built",
+  "Bullnecked",
+  "Durable",
+  "Hale",
+  "Lusty",
+  "Mighty",
+  "Muscular",
+  "Nimble",
+  "Pliant",
+  "Resilient",
+  "Solid",
+  "Strapping",
+  "Vigorous",
+
+  //Weak
+  "Ailing",
+  "Brittle",
+  "Crooked",
+  "Deteriorating",
+  "Feeble",
+  "Frail",
+
+  //Regular
+  "Incredibly boring in their looks",
+  "Looks like anyone else",
+  "Rosy cheeks",
+  "Easy smile",
+  "Nervous smile",
+  "Wandering eyes",
+  "Beauty spot",
+
+  //Tall
+  "Tall",
+  "Exceptionally long limbs",
+  "Big",
+  "Great",
+  "Soaring",
+  "Towering",
+  "Sizeable",
+
+  //Short
+  "Short",
+  "Bijou Short",
+  "Dainty",
+  "Diminutive",
+  "Little",
+  "Low-set",
+  "Low",
+  "Compact",
+  "Squat",
+
+
+  //Ugly
+  "Somehow sinister looking",
+  "Awkward",
+  "Gnarled",
+  "Grotesque",
+  "Hideous",
+  "Hunched",
+  "Powerless",
+  "Weak",
+  "Slack",
+  "Slouched",
+  "Wimpy",
+  "Wizened",
+  "Wrinkly",
+
+  //Beautiful
+  "Picture-beauty",
+  "Classically beautiful",
+  "Alluring",
+  "Busty",
+  "Buxom",
+  "Carved",
+  "Chesty",
+  "Comely",
+  "Eye-catching",
+  "Formideable",
+  "Graceful",
+  "Handsome",
+  "Imposing",
+  "Majestic",
+  "Neat",
+  "Sculpted",
+  "Shapely",
+  "Slinky",
+  "Stacked",
+  "Stately",
+  "Well-proportioned",
+  "Youthful",
+  "Smooth skin",
+
+  //Shaped
+  "Blocky",
+  "Bootylicious",
+  "Broad-shouldered",
+  "Bulbuous",
+  "Flat",
+  "Hourglass-shaped",
+  "Triangle body",
+  "Top-heavy",
+
+  //Face
+  "Wise look",
+  "Unusually androgynous",
+  "A noble, holier than thou look",
+  "Impressive facial hair",
+  "Impressive tattoos",
+  "Harmless and innocent look",
+];
+
+const skinHumanDescription = [
+  // Certain chance at description
+  //White
+  "Anemic",
+  "Black-and-blue",
+  "Bronzed",
+  "Chocolate",
+  "Coffee",
+  "Copper",
+  "Mottled",
+  "Golden",
+  "Pale",
+  "Pallid",
+  "Pink",
+  "Ruddy red patches",
+  "Swarthy Tanned",
+  "Tanned",
+  "Tawny ",
+  "Ochre brown",
+  "Umber dark yellow-brown",
+  "Sepia reddish-brown",
+  "Dark",
+
+  //Brown
+
+  //Latina
+
+  //Asian
+];
+
+const furDescription = [
+  "Glossy white",
+  "Silky black",
+  "Majestic golden",
+  "Slicked grey",
+  "Rich brown",
+  "Muddled brown",
+  "Colourful",
+  "Multi-coloured",
+  "Heavy brown",
+  "White spotted",
+];
+
+const hairHumanDescription = [
+  "Short",
+  "Braided",
+  "Bald",
+  "Long",
+  "Messy",
+  "Crewcut",
+  "Pony-tail",
+  "Coloured",
+  "Strange",
+  "Thick",
+  "Thinning",
+  "Neatly kept",
+  "Curly",
+  "Straight",
+  "Dreadlocks",
+  "Very long",
+  "Simple",
+  "In a bun",
+  "Curled",
+  "Junk-filled",
+  "Business-like",
+  "Pigtailed",
+  "Coloured roots",
+  "Sideburns",
+  "Mohawked",
+  "Spiky mohawked",
+  "Tangled mess",
+  "Shaved on one side",
+  "Shaved except for ponytail",
+  "Dyed",
+  "Big",
+  "Shoulder-length",
+  "Silky smooth",
+  "Frizzy",
+  "Light fade",
+  "Slicked-back"
+
+];
+
+const hairColours = [
+  "Brown",
+  "Brown",
+  "Blond",
+  "Black",
+  "Black",
+  "Red",
+  "Grey",
+  "Colourful",
+];
+
+const extraDescription = [
+  "Broken nose",
+  "Missing an ear",
+  "Missing a finger",
+  "Lost one of their senses - blind, deaf or mute",
+  "Way too much clothing",
+  "Wears a scarf, ribbon or vest",
+  "Overly accessorized",
+  "Covered in jewelry",
+  "Bare minimum of clothing",
+  "Won't wear clothing at all",
+  "Extremely colourful clothing",
+  "Bright flashy colours",
+  "Very sad, bland clothing",
+  "Wears clothing that no-one is wearing, yet",
+  "Immaculate clothing",
+  "Very elegant",
+  "Wears too much makeup",
+  "Looks horribly sick",
+  "Carrying a bag and followed by a sweet aroma",
+  "A strong belief shown by an emblem, tattoo",
+  "Clothing leaves little to the imagination",
+  "Covered in dirt",
+  "Look like they gave up on life",
+  "Air of a beast",
+  "Oddly coloured eyes",
+  "Huge amount of freckles",
+  "Bad acne",
+  "Squinted eyes",
+  "Missing teeth",
+  "Large bushy eyebrows",
+  "Glasses",
+  "An eyepatch",
+  "Freckles",
+  "Unkempt",
+  "Lipstick mark",
+  "Large scar",
+  "Patched clothing",
+  "Smells of farm animals",
+  "Smells of perfume",
+  "Smells of puke",
+  "Abnormally long nose",
+  "Accentuated cheekbones",
+  "Hollow cheeks",
+  "Large eyes",
+  "Large ears",
+  "Drooping ears",
+  "Nosering",
+  "Eyebrow ring",
+  "Lipstick",
+  "Smells like incense",
+  "Cold calculating eyes",
+  "Warm eyes",
+  "Wild eyes",
+  "Dry lips",
+  "Eyes of unique colour",
+  "Gold tooth",
+  "Missing tooth",
+  "Piercing eyes",
+  "Dark eyes",
+  "Faded clothing",
+  "Bright shiny eyes",
+  "Ink stains on hands",
+  "Hairy",
+  "Handlebar moustache",
+  "Goatee",
+  "Hook nose",
+  "Lots of makeup",
+  "Bright flashy clothing",
+  "Ears pierced",
+  "Carrying a pet",
+  "Carrying a cane",
+  "Carrying booze",
+  "Carrying a necklace",
+  "Carrying protection"
+];
+// #endregion
+
 // #region Name Listing Region
 
 const nameListings = {
@@ -423,23 +750,11 @@ const nameDictionary = {
 // #endregion
 
 const appearances = [
-  "Horribly burnt all over their body and face",
-  "Broken nose",
-  "Missing an ear",
-  "Missing a limb, finger, arm or leg",
-  "Lost one of their senses - blind, deaf or mute",
-  "Has the mark of a terrible disease on their body",
-  "Strong. Has shoulders as wide as they are tall",
-  "Exceptionally long limbs",
-  "Horribly overweight",
-  "Very thin",
-  "Somehow sinister looking",
-  "Has a limp or a hunched back",
-  "Incredibly boring in their looks",
-  "Look like any other person in the area",
-  "Old but look like they barely get out of their teens",
+
+
   "Young but look like they already saw all there was to see",
   "Has an exceptionally athletic body",
+
   "Not an ounce of fat is visible and they seem ready to jump into action at any time",
   "Has an unusually androgynous look",
   "Has something eerie, out of this world with their appearance. It's striking",
@@ -559,7 +874,7 @@ const quirks = [
   "Shifts hair",
   "Dances shoulders",
   "Hunches shoulders",
-  "Has Straight shoulders",
+  "Has straight shoulders",
   "Bangs on table angrily",
   "Straight robot hands",
   "Hands on hips",
@@ -975,7 +1290,7 @@ const personalityAppearanceCues = {
 
 
 const occupations = [
-  "Temple Work", "Temple Work",
+  "Temple Worker", "Temple Worker",
   "Gambler",
   "Criminal",
   "Entertainer",
@@ -1005,9 +1320,8 @@ const flaws = [
 ];
 
 const voices = [
-  "Speaks fast with a small lisp",
-  "Deep voice with rolling R's",
-  "Pronounces most S's like Z's",
+  "Deep voice with lingering vowels",
+  "Pronounces most S's like Z's - 'There iz a Znake'",
   "French accent - 'Monsieur'",
   "Low and grunting tone",
   "High pitched and excited",
@@ -1017,11 +1331,11 @@ const voices = [
   "Posh accent",
   "Mostly speaks with clenched teeth",
   "Soft and melodious voice",
-  "Pronounces most O's like U's",
+  "Pronounces most O's like U's - 'What a lurvely murning'",
   "Eastern European accent - 'Ven I was seventeeen. Back een Israell",
   "Old and thin voice",
-  "Farmer's accent - 'Ooh by gum'",
-  "Puts emphasis on the wrong part of words - ",
+  "Farmer's accent - 'Oohh by gum'",
+  "Puts emphasis on the wrong part of words - 'AND then there was..'",
   "Slow speaker",
   "Russian accent - 'Darr, I faind yorr frennd'",
   "Whispering most of the time",
@@ -1041,12 +1355,12 @@ const voices = [
   "Excited and jittery voice",
   "Warm and comforting accent",
   "Half singing most sentences",
-  "Speaks in the back of the mouth",
-  "Scandinavian accent 'Sp-illl-ing",
+  "Speaks in the back of the mouth 'Haighhh'",
+  "Scandinavian accent - 'Sp-illl-ing",
   "Speaks like royalty, uses complex vocabulary",
-  "Words like 'its' and 'is' become 'eats' and 'ease'",
+  "Words like 'its' and 'is' become 'eats' and 'ease' - 'eats okay'",
   "Vocalizes with an open throat",
-  "Jamaican Accent 'Ey mon!'",
+  "Jamaican Accent - 'Ey mon!'",
   "Frightened voice",
   "Hard of hearing, loud voice",
   "Dark and ominous tone",
@@ -1059,7 +1373,7 @@ const voices = [
   "Adds syllables to words to emphasize",
   "Vocalizes with a squeezed throat",
   "Squeaky accent",
-  "Pirate accent",
+  "Pirate accent - 'Yarrr'",
   "Speaks like their tongue is numb",
   "Classic creaky witch voice",
   "Spits and sputters whilst talking",
@@ -1069,9 +1383,8 @@ const voices = [
   "Soothing and warm voice",
   "Keeps vowels as short as possible",
   "Low rumbling, the words strung together",
-  "Strong lisp",
   "Mid range voice",
-  "German accent 'ein svein'",
+  "German accent - 'ein svein'",
   "Speaks with lips slightly pursed",
   "Speaks in third person about themselves",
   "Relaxed voice",
@@ -1085,11 +1398,14 @@ const voices = [
   "Often pronounces difficult words wrong",
   "Forgets to breathe when speaking",
   "Hollow sounding voice",
-  "Switches between three voices",
-  "Slurs words",
   "Voice like an elderly individual",
   "Speaks as if they have a cold/blocked nose",
-  "High pitched and slightly raspy"
+  "High pitched and slightly raspy",
+  "Geordie 'ye knaa what ah mean leik'",
+  "Yorkshire - 'did ye bek a ceke'",
+  "Estuary English - 'she laaughed as he took a long baaath'",
+  "West Country - 'comb yer air, sillie!'",
+
 ];
 
 const ideals = [
@@ -1778,6 +2094,19 @@ const goals1 = [
   "To run away"
 ];
 
+const groups = [
+  "Cairn",
+  "Dawn",
+  "Blood of carceri",
+  "Cult of the dragon",
+  "Emerald enclave",
+  "Flaming fist",
+  "Treasure",
+  "Environment",
+  "Monster",
+  "Monsters"
+];
+
 const knacks = [
   "Criminal connections",
   "Muscle",
@@ -2133,6 +2462,9 @@ const occupations2 = [
   "Young lady"
 ];
 
+const roll2 = [
+  0, 1
+];
 
 // Exporting all
 export const Variables = {
@@ -2174,5 +2506,13 @@ export const Variables = {
   charAge,
   occupations2,
   relationships,
-  personalityAppearanceCues
+  personalityAppearanceCues,
+  bodyDescription,
+  skinHumanDescription,
+  furDescription,
+  hairHumanDescription,
+  extraDescription,
+  hairColours,
+  groups,
+  roll2
 }
