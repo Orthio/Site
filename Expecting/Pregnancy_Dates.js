@@ -88,6 +88,7 @@ function getImage(weeksSince) {
         case 38: return ['38 - Canary Melon', "a"];
         case 39: return ['39 - Watermelon', "a"];
         case 40: return ['40 - Pumpkin', "a"];
+        case 99: return ['99 - Una Bambina', ""];
         default: return ['Unknown Week', ""];
     }
     
