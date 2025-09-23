@@ -26,10 +26,15 @@ function formatDate(year, month, day) {
 
 const currentYear = todaysDate.getFullYear();
 const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
-const currentDay = todaysDate.getDate();
+const currentDay = todaysDate.getDate(); 
+ 
+/* const currentYear = 2025;
+const currentMonth = 9;
+const currentDay = 30;  */
 
 // console.log(`${currentYear}-${currentMonth}-${currentDay}`); // Example output: "2025-03-17"
 
+const todaysCurrentDate = new Date(currentYear, currentMonth - 1, currentDay);
 const formattedTodaysDate = formatDate(currentYear, currentMonth, currentDay);
 
 
@@ -37,9 +42,15 @@ const conceptionYear = 2024;
 const conceptionMonth = 12;
 const conceptionDay = 28;
 
-const conceptionDate = new Date(conceptionYear, conceptionMonth - 1, conceptionDay);
+const birthYear = 2025;
+const birthMonth = 9;
+const birthDay = 29;
 
-const differenceInMilliseconds = todaysDate - conceptionDate;
+const conceptionDate = new Date(conceptionYear, conceptionMonth - 1, conceptionDay);
+const birthDate = new Date(birthYear, birthMonth - 1, birthDay);
+
+const differenceInMilliseconds = todaysCurrentDate - conceptionDate;
+const birthDiff = todaysCurrentDate - birthDate;
 
 const weeksSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7));
 
@@ -47,12 +58,21 @@ const weeksSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 
 
 document.getElementById("todays-date").innerText = formattedTodaysDate;
 
+if (birthDiff >= 0) {
+    document.getElementById("weeksSinceText").style.display = "none";
+} 
+else {
 document.getElementById("weeks-since-conception").innerText = weeksSinceConception;
+}
 
 function getImage(weeksSince) {
-    if (weeksSince < 8 || weeksSince > 40) {
+
+    if (weeksSince < 8) {
         console.log("Error: weeks out of range");
         document.getElementById("fruit-pic").alt = "Error: weeks out of range";
+    }
+    if (birthDiff >= 0) {
+        return ['99 - Una Bambina', ""];
     }
     switch (weeksSince) {
         case 8: return ['8 - Raspberry', "a"];
@@ -87,11 +107,12 @@ function getImage(weeksSince) {
         case 37: return ['37 - Swiss Chard', "a"];
         case 38: return ['38 - Canary Melon', "a"];
         case 39: return ['39 - Watermelon', "a"];
-        case 40: return ['40 - Pumpkin', "a"];
+        case 40: return ['40 - Una Bambina', ""];
         case 99: return ['99 - Una Bambina', ""];
         default: return ['Unknown Week', ""];
     }
-    
+
+
 }
 
 function findFruitName(fruit) {
