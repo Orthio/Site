@@ -26,11 +26,11 @@ function formatDate(year, month, day) {
 
 const currentYear = todaysDate.getFullYear();
 const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
-const currentDay = todaysDate.getDate(); 
- 
+const currentDay = todaysDate.getDate();  
+
 /* const currentYear = 2025;
-const currentMonth = 9;
-const currentDay = 30;  */
+const currentMonth = 10;
+const currentDay = 7; */
 
 // console.log(`${currentYear}-${currentMonth}-${currentDay}`); // Example output: "2025-03-17"
 
@@ -50,9 +50,32 @@ const conceptionDate = new Date(conceptionYear, conceptionMonth - 1, conceptionD
 const birthDate = new Date(birthYear, birthMonth - 1, birthDay);
 
 const differenceInMilliseconds = todaysCurrentDate - conceptionDate;
+const diffBirthMilliseconds = todaysCurrentDate - birthDate;
 const birthDiff = todaysCurrentDate - birthDate;
 
 const weeksSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+const daysSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+
+var daysInWeekText; //eg Week 1, or Week 0 Day 5
+
+const weeksSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24 * 7));
+const daysSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24));
+const daysInWeekSinceBirth = daysSinceBirth - (weeksSinceBirth * 7);
+
+if (daysInWeekSinceBirth === 0) {
+    daysInWeekText = "Week " + weeksSinceBirth;
+} else {
+    daysInWeekText = "Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
+}
+
+
+/* document.getElementById("days1").innerText = daysSinceBirth;
+document.getElementById("weeks1").innerText = weeksSinceBirth;
+document.getElementById("daysInWeek").innerText = daysInWeekSinceBirth;
+ */
+
+
+// const weeksAfterConception = 1;
 
 // console.log(`Weeks since conception: ${weeksSinceConception}`);
 
@@ -60,9 +83,16 @@ document.getElementById("todays-date").innerText = formattedTodaysDate;
 
 if (birthDiff >= 0) {
     document.getElementById("weeksSinceText").style.display = "none";
-} 
+}
 else {
-document.getElementById("weeks-since-conception").innerText = weeksSinceConception;
+    document.getElementById("weeks-since-conception").innerText = weeksSinceConception;
+}
+
+if (birthDiff <= 0) {
+    document.getElementById("weeksAfterText").style.display = "none";
+}
+else {
+    document.getElementById("weeks-after-conception").innerText = daysInWeekText;
 }
 
 function getImage(weeksSince) {
