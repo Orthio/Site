@@ -26,7 +26,7 @@ function formatDate(year, month, day) {
 
 const currentYear = todaysDate.getFullYear();
 const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
-const currentDay = todaysDate.getDate();  
+const currentDay = todaysDate.getDate();
 
 /* const currentYear = 2025;
 const currentMonth = 10;
@@ -93,6 +93,8 @@ if (birthDiff <= 0) {
 }
 else {
     document.getElementById("weeks-after-conception").innerText = daysInWeekText;
+    document.getElementById("days-after-conception").innerText = daysSinceBirth;
+
 }
 
 function getImage(weeksSince) {
