@@ -9,14 +9,14 @@
 </head>
 
 <body>
-    <h1>Dice Roller</h1>
+    <h1 id="diceRollerHeader">Dice Roller</h1>
 
     <div>
         <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
         <div class="input-container">
             <input type="number" id="diceNumberInput" name="diceNumberInput" value="1" min="1" step="1">
 
-          <!--   <div class="button-container">
+            <!--   <div class="button-container">
                 <button type="button" onclick="numberUp()" id="up">⬆</button>
                 <button type="button" onclick="numberDown()" id="down">⬇</button>
             </div> -->
@@ -25,7 +25,6 @@
         </div>
         <br>
     </div>
-    <br>
 
     <button type="button" onclick="diceRoll(4)" class="button buttond4">Roll d4</button>
     <button type="button" onclick="diceRoll(6)" class="button buttond6">Roll d6</button>
@@ -33,6 +32,8 @@
     <button type="button" onclick="diceRoll(10)" class="button buttond10">Roll d10</button>
     <button type="button" onclick="diceRoll(12)" class="button buttond12">Roll d12</button>
     <button type="button" onclick="diceRoll(20)" class="button buttond20">Roll d20</button>
+    <button type="button" onclick="diceRoll(24)" class="button buttond24">Roll d24</button>
+    <button type="button" onclick="diceRoll(30)" class="button buttond30">Roll d30</button>
     <button type="button" onclick="diceRoll(100)" class="button buttond100">Roll d100</button>
     <button type="button" onclick="diceRoll(1000)" class="button buttond1000">Roll d1000</button>
     <button type="button" onclick="diceReset()" class="button">Reset Dice</button>

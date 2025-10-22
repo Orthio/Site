@@ -4,6 +4,11 @@
     line-height: 1;
 }
 
+#diceRollerHeader {
+    margin: 2px;
+    padding: 2px;
+}
+
 #plus-numeral {
     font-size: 30px;
     font-style: bold;
@@ -17,6 +22,8 @@
     appearance: button;
     width: 70px;
     font-size: 40px;
+    margin: 2px;
+    padding: 2px;
 }
 
 #diceAddInput {
@@ -41,6 +48,20 @@
     margin-left: 5px;
     /* Add space between input and buttons */
 }
+
+button.button {
+    font-size: 1em;       /* Increases text size */
+    padding: 5px 5px;     /* Adds extra padding around text */
+    margin: 5px;            /* Adds spacing between buttons */
+    border-radius: 5px;    /* Rounds the corners */
+    cursor: pointer;        /* Makes it feel clickable */
+}
+
+button.button:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
 
 .ResultsClass {
     padding: 1px;
