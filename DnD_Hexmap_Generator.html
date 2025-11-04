@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DnD Hexmap Generator v3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/DnD_Hexmap_Generator.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div class="left"><h1>Hexmap Generator v3</h1></div>
+    <div id="ui" class="right">
+      <label for="seedInput">Seed:</label>
+      <input id="seedInput" type="text" value="" />
+      <button id="btnReroll">Reroll</button>
+      <span id="seedNote"></span>
+    </div>
+  </header>
+
+  <main id="layout">
+    <section id="mapWrap">
+      <svg id="map" viewBox="-400 -400 800 800" aria-label="Hex Map"></svg>
+    </section>
+
+    <aside id="panel">
+      <h3>Hex Details</h3>
+      <div class="kv"><span class="k">ID</span><span class="v" id="hexId">—</span></div>
+      <div class="kv"><span class="k">Coords</span><span class="v" id="hexCoords">—</span></div>
+      <div class="kv"><span class="k">Terrain</span><span class="v" id="hexTerrain">—</span></div>
+
+      <div class="group">
+        <label for="hexNatural">Natural features</label>
+        <textarea id="hexNatural" rows="5" placeholder="e.g., old grove, rocky outcrops, stream ford"></textarea>
+        <button id="saveNatural">Save natural features</button>
+      </div>
+
+      <div class="group grid2">
+        <div>
+          <label for="hexSettlement">Settlement</label>
+          <input id="hexSettlement" type="text" placeholder="e.g., village, waystation, Fort Driftwood" />
+        </div>
+        <div>
+          <label for="hexSettlementSize">Population</label>
+          <input id="hexSettlementSize" type="number" min="0" step="1" placeholder="e.g., 120" />
+        </div>
+        <div class="full">
+          <button id="saveSettlement">Save settlement</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Export / Import</label>
+        <div class="exportRow">
+          <button id="exportGrid">Export JSON</button>
+          <label class="fileBtn">
+            Import JSON
+            <input id="importGrid" type="file" accept="application/json" />
+          </label>
+        </div>
+      </div>
+
+      <p class="hint">Tip: press <b>R</b> to reroll a random seed.</p>
+      <p class="hint">Grid is 15×10, IDs 000.000 → 014.009 (even-q flat-top).</p>
+    </aside>
+  </main>
+
+  <footer id="footer">
+    <small>Appendix B transitions + hexInhabitation via json/DnD_Hexmap.json</small>
+  </footer>
+
+  <script type="module" src="js/DnD_HexMapMain.js"></script>
+</body>
+</html>
