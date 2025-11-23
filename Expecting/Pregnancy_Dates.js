@@ -62,18 +62,15 @@ const weeksSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24 
 
 const daysSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24));
 const daysInWeekSinceBirth = daysSinceBirth - (weeksSinceBirth * 7);
-const monthsSinceBirth = Math.floor(daysInWeekSinceBirth/28);
+const monthsSinceBirth = Math.floor(daysSinceBirth/28);
 
 
 if (daysInWeekSinceBirth === 0) {
     daysInWeekText = "Week " + weeksSinceBirth;
 } 
-else if (monthsSinceBirth === 0) {
-    daysInWeekText = "Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
-}
 else {
     daysInWeekText = "Month " + monthsSinceBirth + 
-    "Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
+    ", Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
 }
 
 /* document.getElementById("days1").innerText = daysSinceBirth;
@@ -90,7 +87,6 @@ document.getElementById("todays-date").innerText = formattedTodaysDate;
 
 if (birthDiff >= 0) {
     document.getElementById("weeksSinceText").style.display = "none";
-    document.getElementById("monthsSinceText").style.display = "none";
 }
 else {
     document.getElementById("weeks-since-conception").innerText = weeksSinceConception;
@@ -101,7 +97,7 @@ if (birthDiff <= 0) {
     document.getElementById("weeksAfterText").style.display = "none";
 }
 else {
-    document.getElementById("time-after-conception").innerText = daysInWeekText;
+    document.getElementById("weeks-after-conception").innerText = daysInWeekText;
     document.getElementById("days-after-conception").innerText = daysSinceBirth;
 
 }
