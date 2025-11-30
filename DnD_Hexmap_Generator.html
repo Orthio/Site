@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <title>DnD Hexmap Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/DnD_Hexmap_Generator.css" />
 </head>
+
 <body>
   <header id="topbar">
     <div class="left">
@@ -27,24 +29,22 @@
     <aside id="panel">
       <h3>Hex Details</h3>
       <div class="kv">
-        <span class="k">ID</span>
+        <span class="k">Id</span>
         <span class="v" id="hexId">—</span>
-      </div>
-      <div class="kv">
-        <span class="k">Coords</span>
-        <span class="v" id="hexCoords">—</span>
       </div>
       <div class="kv">
         <span class="k">Terrain</span>
         <span class="v" id="hexTerrain">—</span>
       </div>
-
-      <div class="group">
-        <label>Features</label>
-        <div id="hexFeatures" class="readout">—</div>
+      <div class="kv">
+        <span class="k">Terrain2</span>
+        <span class="v" id="hexTerrain2">—</span>
       </div>
-
-      <div class="group" id="ruinsBlock" style="display:none">
+       <div class="kv">
+        <span class="k">Features</span>
+        <span class="v" id="hexFeatures">—</span>
+      </div>
+      <div class="group" id="ruinsBlock">
         <label>Ruins details</label>
         <div id="hexRuins" class="readout">
           <div><b>Type:</b> <span id="ruinsType">—</span></div>
@@ -56,21 +56,14 @@
       <div class="group grid2">
         <div>
           <label for="hexSettlement">Settlement</label>
-          <input
-            id="hexSettlement"
-            type="text"
-            placeholder="e.g., village, waystation, Fort Driftwood"
-          />
+          <input id="hexSettlement" type="text" placeholder="e.g., village, waystation, Fort Driftwood" />
         </div>
         <div>
           <label for="hexSettlementSize">Population</label>
-          <input
-            id="hexSettlementSize"
-            type="number"
-            min="0"
-            step="1"
-            placeholder="e.g., 120"
-          />
+          <input id="hexSettlementSize" type="number" min="0" step="1" placeholder="e.g., 120" />
+        </div>
+         <div>
+          <input id="hexSettlementDesc" type="text" placeholder="-" />
         </div>
         <div class="full">
           <button id="saveSettlement">Save settlement</button>
@@ -99,4 +92,5 @@
 
   <script type="module" src="js/DnD_HexMapMain.js"></script>
 </body>
+
 </html>

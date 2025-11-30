@@ -22,8 +22,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   const data = await res.json();
 
   const terrain = data.hexWildernessTerrain ?? data.terrain ?? data;
-  const inhabitation = data.hexInhabitation ?? null;
   const features = data.hexFeatures ?? null;
+  const inhabitation = data.hexInhabitation ?? null;
   const special = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
   const ruinsType = data.ruinsType ?? null;
   const ruinsDecay = data.ruinsDecay ?? null;
@@ -31,11 +31,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   hexMap.setTables({
     terrain,
-    inhabitation,
     features,
+    inhabitation,
     special,
-    ruinsType,
     ruinsDecay,
+    ruinsType,
     ruinsInhabitants
   });
 
@@ -51,11 +51,12 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexId: document.getElementById("hexId"),
       hexCoords: document.getElementById("hexCoords"),
       hexTerrain: document.getElementById("hexTerrain"),
+      hexTerrain2: document.getElementById("hexTerrain2"),
 
       hexFeatures: document.getElementById("hexFeatures"),
       ruinsBlock: document.getElementById("ruinsBlock"),
-      ruinsType: document.getElementById("ruinsType"),
       ruinsDecay: document.getElementById("ruinsDecay"),
+      ruinsType: document.getElementById("ruinsType"),
       ruinsInhabitants: document.getElementById("ruinsInhabitants"),
 
       hexSettlement: document.getElementById("hexSettlement"),

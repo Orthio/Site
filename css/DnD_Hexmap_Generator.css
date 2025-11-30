@@ -75,8 +75,13 @@ body {
   dominant-baseline: middle;
   pointer-events: none;
   fill: #eee;
-  font-size: 8px;
+  font-size: 9px;
+  fill: #000000;              /* text color */
+  stroke: #ffffff;            /* outline color */
+  stroke-width: 2px;          /* thickness of outline */
+  paint-order: stroke fill;   /* ensures stroke is behind the fill */
 }
+
 .label-pond { fill: #5ab3ff; }
 .label-depression { fill: #b08bff; }
 
@@ -102,7 +107,6 @@ body {
 .kv .k {
   color: #aaa;
   font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: .04em;
 }
 .kv .v {
@@ -121,6 +125,10 @@ body {
   color: #bbb;
 }
 
+#ruinsBlock {
+  display: none;
+}
+
 /* Read-only feature / ruins boxes */
 .readout {
   background: #171717;
@@ -132,7 +140,8 @@ body {
 
 /* Settlement editing */
 #hexSettlement,
-#hexSettlementSize {
+#hexSettlementSize,
+#hexSettlementDesc  {
   background: #1b1b1b;
   border: 1px solid #333;
   color: #ddd;
@@ -192,6 +201,7 @@ body {
 
 /* Footer */
 #footer {
+  
   padding: 6px 14px;
   background: #0f0f0f;
   border-top: 1px solid #222;

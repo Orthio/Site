@@ -57,22 +57,25 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const idOut = dom?.hexId ?? document.getElementById("hexId");
   const crdOut = dom?.hexCoords ?? document.getElementById("hexCoords");
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
+  const terOut2 = dom?.hexTerrain2 ?? document.getElementById("hexTerrain2");
 
   const featOut = dom?.hexFeatures ?? document.getElementById("hexFeatures");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
-  const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
   const ruDecay = dom?.ruinsDecay ?? document.getElementById("ruinsDecay");
+  const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
   const ruInh = dom?.ruinsInhabitants ?? document.getElementById("ruinsInhabitants");
 
   const setIn = dom?.hexSettlement ?? document.getElementById("hexSettlement");
   const sizeIn = dom?.hexSettlementSize ?? document.getElementById("hexSettlementSize");
+  const setDesc = dom?.hexSettlementSize ?? document.getElementById("hexSettlementDesc");
   const saveSet = dom?.saveSettlement ?? document.getElementById("saveSettlement");
 
   svg.addEventListener("hexmap:select", (e) => {
     const c = e.detail.cell;
     if (idOut) idOut.textContent = c.id;
     if (crdOut) crdOut.textContent = `q=${c.q}, r=${c.r}`;
-    if (terOut) terOut.textContent = c.label;
+    if (terOut) terOut.textContent = c.baseName;
+    if (terOut2) terOut2.textContent = c.terrain2 || "—";
 
     // Features (natural + special, combined)
     const lines = [];
@@ -93,6 +96,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
     // Settlement editing
     if (setIn) setIn.value = c.settlement ?? "";
     if (sizeIn) sizeIn.value = c.settlementSize ?? "";
+    if (setDesc) setDesc.value = c.settlementSize ?? "";
   });
 
   // click polygon → select
