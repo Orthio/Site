@@ -65,6 +65,11 @@ export class HexMapCore {
       [this.T2.Pond]: "#5ab3ff",
       [this.T2.Depression]: "#b08bff"
     };
+    this.TERRAIN_COLOR_BASE = {
+      ForestWithHills: "Forest",
+      MountainsWithPass: "Mountains"
+    };
+
 
     // Thresholds for terrain having descriptive features such as gulch
     this.FEATURE_THRESH = {
@@ -140,7 +145,7 @@ export class HexMapCore {
         // Terrain via Appendix B from chosen parent
         const d20 = rollD20();
         const next = this.#nextFromJSON(baseParent, d20);
-        let child;
+        let child = { baseName: "", variant: "", terrain2: "" };
 
         if (next === "Pond") {
           // Keep underlying terrain as the parent, but mark variant + terrain2
@@ -148,7 +153,6 @@ export class HexMapCore {
         } else if (next === "Depression") {
           child = { baseName: baseParent, variant: "D", terrain2: "Depression" };
         } else {
-          // Normal terrain, no secondary terrain
           child = { baseName: next, variant: null, terrain2: null };
         }
 
@@ -226,33 +230,28 @@ export class HexMapCore {
   }
 
   #maybeAddTerrainExtra(cell, roll) {
-    // Option B: sometimes upgrade terrain to ForestWithHills or MountainsWithPass
     const base = cell.baseName;
 
-    // Which terrains are allowed to upgrade, and to what?
     let upgraded = null;
     if (base === "Forest") {
       upgraded = "ForestWithHills";
     } else if (base === "Mountains") {
       upgraded = "MountainsWithPass";
     } else {
-      // Plain, Hills, Marsh, Desert etc don't get this extra terrain, so bail.
       return;
     }
 
     const th = this.TERRAIN_ADD_THRESH[base] ?? 0;
     if (th <= 0) return;
+    if (roll(20) > th) return;
 
-    const d20 = roll(20);
-    if (d20 > th) return; // no upgrade this time
-
-    // Apply the upgrade
     cell.baseName = upgraded;
-    cell.terrain = cell.variant
-      ? `${upgraded}-${cell.variant}`
-      : upgraded;
-    // We *don't* need to touch color; it’s already using the base terrain colour.
+    cell.terrain = cell.variant ? `${upgraded}-${cell.variant}` : upgraded;
+
+    // NOTE: we *don't* touch colour here; #setCell already computed fill,
+    // and our color mapping ensures upgraded names map back to the right base.
   }
+
 
   #maybeAddInhabitation(cell, roll) {
     if (!this.inhabitation) return;
@@ -343,7 +342,6 @@ export class HexMapCore {
       poly.addEventListener("click", () => this.select(cell.q, cell.r));
       frag.appendChild(poly);
 
-      // Multi-line label: Terrain / Settlement (optional) / ID
       const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "text");
       labelGroup.setAttribute("x", x);
       labelGroup.setAttribute("y", y);
@@ -353,31 +351,43 @@ export class HexMapCore {
       if (cell.variant === "P") labelGroup.classList.add("label-pond");
       if (cell.variant === "D") labelGroup.classList.add("label-depression");
 
+      const hasSettlement = !!cell.settlement;
+      const lineHeightEm = 1.1;
+
       // Line 1: terrain
       const t1 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-      t1.textContent = cell.terrain;
+      t1.textContent = cell.terrain ?? cell.baseName;  // whatever you’re using
       t1.setAttribute("x", x);
-      t1.setAttribute("dy", "0");
+
+      // If there are 3 lines, start one line *above* the center.
+      // If there are 2 lines, start half a line above.
+      if (hasSettlement) {
+        t1.setAttribute("dy", `-${lineHeightEm}em`);
+      } else {
+        t1.setAttribute("dy", `-${lineHeightEm / 2}em`);
+      }
       labelGroup.appendChild(t1);
 
-      // Line 2: terrain2, showing if a pond or depression is there (optional)
-
-      // Line 3: settlement (optional)
-      if (cell.settlement) {
+      // Line 2: settlement (optional)
+      let lastDyOwner = t1;
+      if (hasSettlement) {
         const t2 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
         t2.textContent = cell.settlement;
         t2.setAttribute("x", x);
-        t2.setAttribute("dy", "1.1em");
+        t2.setAttribute("dy", `${lineHeightEm}em`);
         labelGroup.appendChild(t2);
+        lastDyOwner = t2;
       }
 
-      // Line 4: hex ID (always)
+      // Line 3: hex ID (always)
       const t3 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
       t3.textContent = cell.id;
       t3.setAttribute("x", x);
-      t3.setAttribute("dy", cell.settlement ? "1.1em" : "1.1em");
-      t3.setAttribute("fill", "#484848ff");
+      // Always one line below the previous line
+      t3.setAttribute("dy", `${lineHeightEm}em`);
+      t3.setAttribute("fill", "#aaa");
       labelGroup.appendChild(t3);
+
 
       frag.appendChild(labelGroup);
 
@@ -462,9 +472,18 @@ export class HexMapCore {
     this.startTerrain = snapshot.meta?.startTerrain ?? this.startTerrain;
     this.seed = snapshot.meta?.seed ?? this.seed;
 
+    let fill;
+
     for (const c of snapshot.cells) {
       const code = this.T[c.baseName] ?? this.T.Plain;
-      const fill = this.COLOR2[c.terrain2] || this.COLOR[code] || "#555";
+      if (c.terrain2) {
+        fill = this.COLOR2[c.terrain2];
+      } else if (c.baseName) {
+        fill = this.COLOR[code];
+      } else {
+        fill = "#555";
+      }
+
       this.grid.set(this.#key(c.q, c.r), {
         q: c.q,
         r: c.r,
@@ -496,10 +515,25 @@ export class HexMapCore {
   }
 
   #setCell(q, r, { baseName, variant, terrain2 = null }) {
-    const code = this.T[baseName] ?? this.T.Plain;
-    const fill = this.COLOR[code] || this.COLOR2[code] || "#555";
+    // Use special mapping for colour if this is a composite terrain
+    const colorBaseName = this.TERRAIN_COLOR_BASE[baseName] ?? baseName;
+    const code = this.T[colorBaseName] ?? this.T.Plain;
+
     const id = this.#hexId(q, r);
     const terrain = variant ? `${baseName}-${variant}` : baseName;
+
+    // Base colour from main terrain
+    let fill = this.COLOR[code] || "#555";
+
+    // Optional: override for Pond / Depression, if you're doing that too
+    if (terrain2 === "Pond" || terrain2 === "Depression") {
+      if (this.COLOR2 && this.COLOR2[terrain2]) {
+        fill = this.COLOR2[terrain2];
+      } else {
+        fill = terrain2 === "Pond" ? "#4da6ff" : "#b366ff";
+      }
+    }
+
     this.grid.set(this.#key(q, r), {
       q,
       r,
@@ -517,6 +551,7 @@ export class HexMapCore {
       settlementSize: null
     });
   }
+
 
 
   #nextFromJSON(currentTerrainName, d20) {
