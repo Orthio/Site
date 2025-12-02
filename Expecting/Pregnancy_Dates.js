@@ -61,7 +61,7 @@ var daysInWeekText; //eg Week 1, or Week 0 Day 5
 const weeksSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24 * 7));
 const daysSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24));
 const daysInWeekSinceBirth = daysSinceBirth - (weeksSinceBirth * 7);
-const monthsSinceBirth = Math.floor(weeksSinceBirth/(52/12));
+const monthsSinceBirth = Math.floor(daysSinceBirth/28);
 
 
 if (daysInWeekSinceBirth === 0) {
