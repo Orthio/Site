@@ -13,7 +13,7 @@ const { sexes, nameDictionary, alignments, appearances, quirks,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
   pettyAttitude, pettyTension, menuRaces, charAge, relationships, personalityAppearanceCues,
   bodyDescription, skinHumanDescription1, skinHumanDescription2, furDescription, hairHumanDescription,
-  hairColours, hairColours2, eyeColours, extraDescription, goals1, goals2, groups
+  hairColours, hairColours2, eyeColours, extraDescription, goals1, groups
 } = Variables;
 
 let jsonData;
@@ -149,7 +149,6 @@ function createCharacter() {
     bond: '',
     goal1: '',
     goal2: '',
-    goal3: '',
     specialAdvantage: ' ',
     flaw: ' ',
     motivationTitle: '',
@@ -203,7 +202,6 @@ function updateCharacterDisplay() {
       '<div>' + item.bond + '</div>' +
       '<div>' + item.goal1 + '</div>' +
       '<div>' + item.goal2 + '</div>' +
-      '<div>' + item.goal3 + '</div>' +
       '<br>' +
       '<div>' + item.motivationTitle + '</div>' +
       '<div>' + item.motivation1 + '</div>' +
@@ -336,7 +334,6 @@ function addBackground() {
   let hook2 = rollOnTable(jsonData.hooks2);
   let goal1 = rollOnTable(jsonData.goals);
   let goal2 = rollOnTable(goals1);
-  let goal3 = rollOnTable(goals2);
   let group = rollOnTable(groups);
   let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
   let flawRoll = rollOnTable(flaws);
@@ -359,7 +356,6 @@ function addBackground() {
     hook2 + '</div>' + '<br>';
   currentCharacter.goal1 = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
   currentCharacter.goal2 = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
-  currentCharacter.goal3 = '<div>' + "<i>Goal3: </i>" + goal3 + '</div>';
   currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
 
 
