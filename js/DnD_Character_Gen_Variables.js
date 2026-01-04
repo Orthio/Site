@@ -82,7 +82,7 @@ const bodyDescription = [
   "Trim",
 
   //Muscular
-  "Strong with Wide Shoulders",
+  "Strong with wide shoulders",
   "Exceptionally athletic",
   "Barrel chest",
   "Athletic",
@@ -120,7 +120,7 @@ const bodyDescription = [
 
   //Short
   "Short",
-  "Bijou Short",
+  "Bijou-short",
   "Dainty",
   "Diminutive",
   "Little",
