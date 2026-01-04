@@ -79,7 +79,7 @@ function createCharacter() {
     eyesDescriptRoll = lowerCaseArray(rollOnTable(eyeColours));
   }
   let bodyExtraDescript;
-  let extraDescriptRoll = generalDiceRoll(2);
+  let extraDescriptRoll = generalDiceRoll(6);
   if (extraDescriptRoll == 1) {
     bodyExtraDescript = rollOnTable(extraDescription);
   } else {

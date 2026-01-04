@@ -377,7 +377,6 @@ const hairColours2 = [
 
 const eyeColours = [
   "Light white",
-  "Red",
   "Blue",
   "Blue",
   "Amber",
