@@ -79,9 +79,11 @@ function createCharacter() {
     eyesDescriptRoll = lowerCaseArray(rollOnTable(eyeColours));
   }
   let bodyExtraDescript;
-  let extraDescriptRoll = generalDiceRoll(6);
-  if (extraDescriptRoll == 1) {
-    bodyExtraDescript = rollOnTable(extraDescription);
+  let bodyExtraDescriptRoll;
+  let extraDescriptCheck = generalDiceRoll(6);
+  if (extraDescriptCheck == 1) {
+    bodyExtraDescriptRoll = rollOnTable(extraDescription);
+    bodyExtraDescript = ". " + bodyExtraDescriptRoll;
   } else {
     bodyExtraDescript = "";
   }
@@ -101,7 +103,7 @@ function createCharacter() {
   }
 
   let appearance = bodyDescript + ", " + bodySkinDescript + " with " +
-    bodyHairDescript + " " + bodyHairColourDescript + " hair" + eyesDescript + ". " +
+    bodyHairDescript + " " + bodyHairColourDescript + " hair" + eyesDescript +
     bodyExtraDescript;
   let appearance2 = rollOnTable(appearances);
 
