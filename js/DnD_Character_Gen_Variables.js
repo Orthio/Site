@@ -1809,17 +1809,20 @@ const occupationsOrig = [
 
 const flaws = [
   "Has a forbidden love or Susceptible to romance",
-  "Enjoys decadent pleaseures",
-  "Arrogant",
-  "Envies another's possessions or station",
-  "Is overpoweringly greedy",
-  "Prone to rage",
   "Has a powerful enemy",
-  "Has a specific phobia",
+  "Envies another's possessions or station",
   "Shameful or Scandalous history",
   "Secret crime or Misdeed",
+  "Poor health",
+  "Low skills",
   "Possession of forbidden lore",
-  "Is foolhardily brave"
+  "Doesn't know enough",
+  "Weak to a decadent pleasure",
+  "Arrogant",
+  "Is overpoweringly greedy",
+  "Prone to rage",
+  "Has a specific fear",
+  "Nervous"
 ];
 
 const voices = [

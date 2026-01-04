@@ -151,6 +151,7 @@ function createCharacter() {
     bond: '',
     goal1: '',
     goal2: '',
+    advantage: '',
     specialAdvantage: ' ',
     flaw: ' ',
     motivationTitle: '',
@@ -204,7 +205,11 @@ function updateCharacterDisplay() {
       '<div>' + item.bond + '</div>' +
       '<div>' + item.goal1 + '</div>' +
       '<div>' + item.goal2 + '</div>' +
+      '<div>' + item.advantage + '</div>' +
+      '<div>' + item.flaw + '</div>' +
+
       '<br>' +
+      '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.motivationTitle + '</div>' +
       '<div>' + item.motivation1 + '</div>' +
       '<div>' + item.motivation2 + '</div>' +
@@ -212,8 +217,6 @@ function updateCharacterDisplay() {
       '<div>' + item.backgroundTitle + '</div>' +
       '<div>' + item.background1 + '</div>' +
       '<div>' + item.background2 + '</div>' +
-      '<div>' + item.specialAdvantage + '</div>' +
-      '<div>' + item.flaw + '</div>' +
       '<div>' + item.relationship + '</div>' +
       '<div>' + item.group + '</div>' +
       '<div>' + item.villainy + '</div>' +
@@ -337,6 +340,7 @@ function addBackground() {
   let goal1 = rollOnTable(jsonData.goals);
   let goal2 = rollOnTable(goals1);
   let group = rollOnTable(groups);
+  let advantage = rollOnTable(jsonData.advantages);
   let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
   let flawRoll = rollOnTable(flaws);
 
@@ -351,7 +355,8 @@ function addBackground() {
   currentCharacter.background2 = '<div>' + "&nbsp;&nbsp;&nbsp;" + waylayAdjective2 + " " + waylayNoun2 + " solved by " + waylaySolution2 + '</div>';
 
   currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
-  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
+  currentCharacter.advantage = '<div>' + "<i>Advantage: </i>" + advantage;
+  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage Examples: </i>" + specialAdvantage;
   currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
   currentCharacter.hook =
     '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +

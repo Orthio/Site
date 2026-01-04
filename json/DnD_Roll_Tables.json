@@ -1735,6 +1735,15 @@
         "Malachite",
         "Whale ivory"
     ],
+    "advantages": [
+        "Connections and social standing",
+        "Body and health",
+        "Skill and Ability",
+        "Knowledge and Secrets",
+        "An item",
+        "Mental strength"
+    ],
+    
     "specialAdvantage": [
         "Criminal connections",
         "Muscle",
@@ -3506,7 +3515,5 @@
         "14": "Amiable",
         "15": "Amiable",
         "16": "Amiable"
-
-
     }
 }
