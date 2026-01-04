@@ -74,7 +74,7 @@ const bodyDescription = [
   "Lank",
   "Lean",
   "Scrawny",
-  "Trim",
+  "Trim figure",
   "Thin",
   "Sleek",
   "Slender",
@@ -85,7 +85,6 @@ const bodyDescription = [
   "Strong with Wide Shoulders",
   "Exceptionally athletic",
   "Barrel chest",
-  "Active",
   "Athletic",
   "Beefy",
   "Brawny",
@@ -101,7 +100,6 @@ const bodyDescription = [
   "Resilient",
   "Solid",
   "Strapping",
-  "Vigorous",
 
   //Weak
   "Ailing",
@@ -110,15 +108,6 @@ const bodyDescription = [
   "Deteriorating",
   "Feeble",
   "Frail",
-
-  //Regular
-  "Incredibly boring in their looks",
-  "Looks like anyone else",
-  "Rosy cheeks",
-  "Easy smile",
-  "Nervous smile",
-  "Wandering eyes",
-  "Beauty spot",
 
   //Tall
   "Tall",
@@ -198,9 +187,92 @@ const bodyDescription = [
   "Impressive facial hair",
   "Impressive tattoos",
   "Harmless and innocent look",
+
+  //Face2
+  "Round face",
+  "Plump face",
+  "Chubby face",
+  "Angelic face",
+  "Angular face",
+  "Defined face",
+  "Strong-looking face",
+  "Masculine face",
+  "Square face",
+  "Pointy face",
+  "Triangular face",
+  "Face is narrow at the chin",
+  "Face has prominent cheekbones",
+  "Long face",
+  "Narrow face",
+  "Wide-jawed face",
+
+  //Facial Features
+  "Rosy cheeks",
+  "Plump cheeks",
+  "Gaunt cheeks",
+  "Sunken cheeks",
+  "Dimpled cheeks",
+  "Hollow cheeks",
+  "Pointed chin",
+  "Cleft chin (y-shape)",
+  "Round chin",
+  "Weak chin",
+  "Strong chin",
+  "Square chin",
+  "Large ears",
+  "Small ears",
+  "A Pierced ear",
+  "Pierced ears",
+  "Very pierced ears",
+  "Round ears",
+  "Deep-set eyes",
+  "Angled eyes",
+  "Bright eyes",
+  "Piercing eyes",
+  "Wide-set eyes",
+  "Close-set eyes",
+  "Sleepy eyes",
+  "Sparkling eyes",
+  "High forehead",
+  "Wrinkled foreead",
+  "Receding forehead",
+  "Strong jaw",
+  "Hooked nose",
+  "Straight nose",
+  "Button nose",
+  "Long nose",
+  "Broad nose",
+  "Narrow nose",
+  "Arched eyebrows",
+  "Bushy eyebrows",
+  "Thin eyebrows",
+  "Unkempt eyebrows",
+  "Straight eyebrows",
+  "Curved eyebrows"
+
 ];
 
-const skinHumanDescription = [
+const skinHumanDescription1 = [
+  "Black",
+  "Brown",
+  "Pink",
+  "Bronze",
+];
+
+const skinHumanDescription2 = [
+  "Dark",
+  "Deep",
+  "Rich",
+  "Cool",
+  "Warm",
+  "Medium",
+  "Tan",
+  "Fair",
+  "Light",
+  "Pale"
+];
+
+const skinHumanDescription3 = [
   // Certain chance at description
   //White
   "Anemic",
@@ -223,11 +295,6 @@ const skinHumanDescription = [
   "Sepia reddish-brown",
   "Dark",
 
-  //Brown
-
-  //Latina
-
-  //Asian
 ];
 
 const furDescription = [
@@ -244,42 +311,42 @@ const furDescription = [
 ];
 
 const hairHumanDescription = [
-  "Short",
-  "Braided",
-  "Bald",
-  "Long",
-  "Messy",
-  "Crewcut",
-  "Pony-tail",
-  "Coloured",
-  "Strange",
-  "Thick",
-  "Thinning",
-  "Neatly kept",
-  "Curly",
-  "Straight",
-  "Dreadlocks",
-  "Very long",
-  "Simple",
-  "In a bun",
-  "Curled",
-  "Junk-filled",
-  "Business-like",
-  "Pigtailed",
-  "Coloured roots",
-  "Sideburns",
-  "Mohawked",
-  "Spiky mohawked",
-  "Tangled mess",
-  "Shaved on one side",
-  "Shaved except for ponytail",
-  "Dyed",
-  "Big",
-  "Shoulder-length",
-  "Silky smooth",
-  "Frizzy",
-  "Light fade",
-  "Slicked-back"
+  "short",
+  "braided",
+  "bald",
+  "long",
+  "messy",
+  "crewcut",
+  "pony-tail",
+  "coloured",
+  "strange",
+  "thick",
+  "thinning",
+  "neatly kept",
+  "curly",
+  "straight",
+  "dreadlocks",
+  "very long",
+  "simple",
+  "in a bun",
+  "curled",
+  "junk-filled",
+  "business-like",
+  "pigtailed",
+  "coloured roots",
+  "sideburns",
+  "mohawked",
+  "spiky mohawked",
+  "tangled mess",
+  "shaved sides",
+  "ponytailed",
+  "dyed",
+  "big",
+  "shoulder-length",
+  "silky smooth",
+  "frizzy",
+  "light fade",
+  "slicked-back"
 
 ];
 
@@ -291,11 +358,41 @@ const hairColours = [
   "Black",
   "Red",
   "Grey",
-  "Colourful",
+];
+
+const hairColours2 = [
+  "Sea-blue",
+  "Light-blue",
+  "Wine-red",
+  "Canary-yellow",
+  "Candyfloss-pink",
+  "Firey-red",
+  "Emerald-green",
+  "Hot-purple",
+  "Lime-green",
+  "True-white",
+  "Silver",
+  "Lavender"
+];
+
+const eyeColours = [
+  "Light white",
+  "Red",
+  "Blue",
+  "Blue",
+  "Amber",
+  "Silver",
+  "Green",
+  "Green",
+  "Grey",
+  "Hazel",
+  "Hazel",
+  "Hazel"
 ];
 
 const extraDescription = [
   "Broken nose",
+  "Easy smile",
   "Missing an ear",
   "Missing a finger",
   "Lost one of their senses - blind, deaf or mute",
@@ -2501,6 +2598,19 @@ const goals1 = [
   "To run away"
 ];
 
+const goals2 = [
+  "Sustenance (water/food/air)",
+  "Shelter",
+  "Rest or recovery (includes being injured)",
+  "Security",
+  "Stability",
+  "Friendship",
+  "Acceptance",
+  "Respect or status",
+  "Recognition",
+  "Creativity or achieving self-defined potential"
+];
+
 const groups = [
   "Cairn",
   "Dawn",
@@ -2869,8 +2979,8 @@ const occupations2 = [
   "Young lady"
 ];
 
-const roll2 = [
-  0, 1
+const roll4 = [
+  0, 1, 2, 3
 ];
 
 // Exporting all
@@ -2909,17 +3019,22 @@ export const Variables = {
   villainCrooks,
   pettyAttitude,
   pettyTension,
+  goals1,
+  goals2,
   menuRaces,
   charAge,
   occupations2,
   relationships,
   personalityAppearanceCues,
   bodyDescription,
-  skinHumanDescription,
+  skinHumanDescription1,
+  skinHumanDescription2,
   furDescription,
   hairHumanDescription,
+  eyeColours,
   extraDescription,
   hairColours,
+  hairColours2,
   groups,
-  roll2
+  roll4
 }

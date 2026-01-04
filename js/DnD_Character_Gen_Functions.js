@@ -12,8 +12,8 @@ const { sexes, nameDictionary, alignments, appearances, quirks,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
   pettyAttitude, pettyTension, menuRaces, charAge, relationships, personalityAppearanceCues,
-  bodyDescription, skinHumanDescription, furDescription, hairHumanDescription, hairColours, extraDescription,
-  groups, roll2
+  bodyDescription, skinHumanDescription1, skinHumanDescription2, furDescription, hairHumanDescription,
+  hairColours, hairColours2, eyeColours, extraDescription, goals1, goals2, groups
 } = Variables;
 
 let jsonData;
@@ -47,30 +47,61 @@ function createCharacter() {
   }
 
   let bodyDescript;
-  let bodySkinDescriptRoll;
   let bodyHairDescript;
   let bodyHairColourDescript;
+  let bodyHairDescriptCheck = generalDiceRoll(15);
+  let eyesDescript;
+  let eyesDescriptRoll;
   let bodySkinDescript;
+  let bodySkinDescriptRoll1;
+  let bodySkinDescriptRoll2;
+
   if (raceType === "Tabaxi") {
     bodyDescript = rollOnTable(furDescription);
-    bodySkinDescriptRoll = "";
+    bodySkinDescriptRoll1 = "";
+    bodySkinDescriptRoll2 = "";
     bodyHairDescript = "";
     bodyHairColourDescript = "";
+    eyesDescriptRoll = "";
+
   } else {
     bodyDescript = rollOnTable(bodyDescription);
-    bodySkinDescriptRoll = rollOnTable(skinHumanDescription);
+    bodySkinDescriptRoll1 = lowerCaseArray(rollOnTable(skinHumanDescription1));
+    bodySkinDescriptRoll2 = lowerCaseArray(rollOnTable(skinHumanDescription2));
     bodyHairDescript = rollOnTable(hairHumanDescription);
-    bodyHairColourDescript = rollOnTable(hairColours);
+
+    if (bodyHairDescriptCheck == 1) {
+      bodyHairColourDescript = lowerCaseArray(rollOnTable(hairColours2));
+    } else {
+      bodyHairColourDescript = lowerCaseArray(rollOnTable(hairColours));
+    }
+
+    eyesDescriptRoll = lowerCaseArray(rollOnTable(eyeColours));
   }
-  let bodyExtraDescript = rollOnTable(extraDescription);
-  let skinRoll = rollOnTable(roll2);
-  if (roll2 == 0) {
-    bodySkinDescript = "";
+  let bodyExtraDescript;
+  let extraDescriptRoll = generalDiceRoll(2);
+  if (extraDescriptRoll == 1) {
+    bodyExtraDescript = rollOnTable(extraDescription);
   } else {
-    bodySkinDescript = bodySkinDescriptRoll;
+    bodyExtraDescript = "";
   }
-  let appearance = bodyDescript + ", " + bodySkinDescript + " skin, with " +
-    bodyHairDescript + " " + bodyHairColourDescript + " hair. " +
+
+  let skinRoll = generalDiceRoll(4);
+  if (skinRoll == 1) {
+    bodySkinDescript = bodySkinDescriptRoll2 + " " + bodySkinDescriptRoll1 + " skin,";
+  } else {
+    bodySkinDescript = "";
+  }
+
+  let eyeRoll = generalDiceRoll(6);
+  if (eyeRoll == 1) {
+    eyesDescript = " and " + eyesDescriptRoll + " eyes";
+  } else {
+    eyesDescript = "";
+  }
+
+  let appearance = bodyDescript + ", " + bodySkinDescript + " with " +
+    bodyHairDescript + " " + bodyHairColourDescript + " hair" + eyesDescript + ". " +
     bodyExtraDescript;
   let appearance2 = rollOnTable(appearances);
 
@@ -116,6 +147,11 @@ function createCharacter() {
 
     ideal: '',
     bond: '',
+    goal1: '',
+    goal2: '',
+    goal3: '',
+    specialAdvantage: ' ',
+    flaw: ' ',
     motivationTitle: '',
     motivation1: '',
     motivation2: '',
@@ -124,10 +160,7 @@ function createCharacter() {
     background1: '',
     background2: '',
     background3: '',
-    specialAdvantage: ' ',
-    flaw: ' ',
     relationship: ' ',
-    goal: '',
     group: '',
     villainy: '',
     hook: '',
@@ -168,6 +201,10 @@ function updateCharacterDisplay() {
       '<div>' + '<br>' + '</div>' +
       '<div>' + item.ideal + '</div>' +
       '<div>' + item.bond + '</div>' +
+      '<div>' + item.goal1 + '</div>' +
+      '<div>' + item.goal2 + '</div>' +
+      '<div>' + item.goal3 + '</div>' +
+      '<br>' +
       '<div>' + item.motivationTitle + '</div>' +
       '<div>' + item.motivation1 + '</div>' +
       '<div>' + item.motivation2 + '</div>' +
@@ -178,7 +215,6 @@ function updateCharacterDisplay() {
       '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.flaw + '</div>' +
       '<div>' + item.relationship + '</div>' +
-      '<div>' + item.goal + '</div>' +
       '<div>' + item.group + '</div>' +
       '<div>' + item.villainy + '</div>' +
       '<div>' + item.hook + '</div>' +
@@ -240,7 +276,6 @@ function addDetail() {
 
   addBackground();
   addVillainy();
-  addHook();
 
   updateCharacterDisplay();
   if (displayHistory.length > 6) {
@@ -296,6 +331,15 @@ function addBackground() {
   let waylayNoun2 = rollOnTable(waylaynouns);
   let waylaySolution2 = waylaysolutions[waylaysolutionsIndex2];
 
+  let relationship = rollOnTable(relationships);
+  let hook1 = rollOnTable(jsonData.hooks1);
+  let hook2 = rollOnTable(jsonData.hooks2);
+  let goal1 = rollOnTable(jsonData.goals);
+  let goal2 = rollOnTable(goals1);
+  let goal3 = rollOnTable(goals2);
+  let group = rollOnTable(groups);
+  let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
+  let flawRoll = rollOnTable(flaws);
 
   currentCharacter.ideal = '<div>' + "<i>Ideals: </i>" + ideal + '</div>';
   currentCharacter.bond = '<div>' + "<i>Bonds: </i>" + bond + '</div>';
@@ -306,6 +350,18 @@ function addBackground() {
   currentCharacter.backgroundTitle = '<div>' + "<i>Background: </i>" + '</div>';
   currentCharacter.background1 = '<div>' + "&nbsp;&nbsp;&nbsp;" + waylayAdjective1 + " " + waylayNoun1 + " solved by " + waylaySolution1 + '</div>';
   currentCharacter.background2 = '<div>' + "&nbsp;&nbsp;&nbsp;" + waylayAdjective2 + " " + waylayNoun2 + " solved by " + waylaySolution2 + '</div>';
+
+  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
+  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
+  currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
+  currentCharacter.hook =
+    '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +
+    hook2 + '</div>' + '<br>';
+  currentCharacter.goal1 = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
+  currentCharacter.goal2 = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
+  currentCharacter.goal3 = '<div>' + "<i>Goal3: </i>" + goal3 + '</div>';
+  currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
+
 
 }
 
@@ -326,26 +382,6 @@ function addVillainy() {
     '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>' +
     '<div>' + "<i>Petty Attitude: </i>" + pickedPettyAttitude + " " + pickedPettyTension + '</div>' +
     '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
-}
-
-// Function add hook
-function addHook() {
-  let relationship = rollOnTable(relationships);
-  let hook1 = rollOnTable(jsonData.hooks1);
-  let hook2 = rollOnTable(jsonData.hooks2);
-  let goal = rollOnTable(jsonData.goals);
-  let group = rollOnTable(groups);
-  let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
-  let flawRoll = rollOnTable(flaws);
-
-  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
-  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage: </i>" + specialAdvantage;
-  currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
-  currentCharacter.hook =
-    '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +
-    hook2 + '</div>' + '<br>';
-  currentCharacter.goal = '<div>' + "<i>Goal: </i>" + goal + '</div>';
-  currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
 }
 
 
@@ -447,7 +483,10 @@ function randomFunction() {
   document.getElementById('button-race').textContent = "Random";
 }
 
-
+// Convert first letter of array to lowercase
+function lowerCaseArray(string) {
+  return string.charAt(0).toLowerCase() + string.slice(1);
+}
 
 const addCreateCharacterButton = document.querySelector("#button-create");
 
