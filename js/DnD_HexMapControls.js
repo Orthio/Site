@@ -57,7 +57,6 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const idOut = dom?.hexId ?? document.getElementById("hexId");
   const crdOut = dom?.hexCoords ?? document.getElementById("hexCoords");
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
-  const terOut2 = dom?.hexTerrain2 ?? document.getElementById("hexTerrain2");
 
   const featOut = dom?.hexFeatures ?? document.getElementById("hexFeatures");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
@@ -75,7 +74,6 @@ export function initControls({ hexMap, dom, initialSeed }) {
     if (idOut) idOut.textContent = c.id;
     if (crdOut) crdOut.textContent = `q=${c.q}, r=${c.r}`;
     if (terOut) terOut.textContent = c.baseName;
-    if (terOut2) terOut2.textContent = c.terrain2 || "—";
 
     // Features (natural + special, combined)
     const lines = [];

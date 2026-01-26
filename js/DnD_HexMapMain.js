@@ -51,7 +51,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexId: document.getElementById("hexId"),
       hexCoords: document.getElementById("hexCoords"),
       hexTerrain: document.getElementById("hexTerrain"),
-      hexTerrain2: document.getElementById("hexTerrain2"),
 
       hexFeatures: document.getElementById("hexFeatures"),
       ruinsBlock: document.getElementById("ruinsBlock"),

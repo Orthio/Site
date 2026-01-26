@@ -443,7 +443,6 @@ export class HexMapCore {
         baseName: c.baseName,
         variant: c.variant,
         terrain: c.terrain,
-        terrain2: c.terrain2 ?? null,
         feature: c.feature ?? null,
         special: c.special ?? null,
         ruins: c.ruins ?? null,
@@ -468,13 +467,6 @@ export class HexMapCore {
 
     for (const c of snapshot.cells) {
       const code = this.T[c.baseName] ?? this.T.Plain;
-      if (c.terrain2) {
-        fill = this.COLOR2[c.terrain2];
-      } else if (c.baseName) {
-        fill = this.COLOR[code];
-      } else {
-        fill = "#555";
-      }
 
       this.grid.set(this.#key(c.q, c.r), {
         q: c.q,
@@ -483,7 +475,6 @@ export class HexMapCore {
         baseName: c.baseName,
         variant: c.variant,
         terrain: c.terrain,
-        terrain2: c.terrain2 ?? null,
         code,
         fill,
         feature: c.feature ?? null,
@@ -506,7 +497,7 @@ export class HexMapCore {
     return `${this.#pad3(q)}.${this.#pad3(r)}`;
   }
 
-  #setCell(q, r, { baseName, variant, terrain2 = null }) {
+  #setCell(q, r, { baseName, variant }) {
     // Use special mapping for colour if this is a composite terrain
     const colorBaseName = this.TERRAIN_COLOR_BASE[baseName] ?? baseName;
     const code = this.T[colorBaseName] ?? this.T.Plain;
