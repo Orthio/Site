@@ -3,6 +3,7 @@
 // IDs are "000.000" .. "014.009".
 // Uses:
 //   - hexTerrain for terrain transitions, Plains etc
+//   - hexTerrain2 for Pond or Depression
 //   - hexFeatures for terrain-based features, Gulch etc
 //   - hexInhabitation (Dense, maybe Special)
 //   - ruinsType / ruinsDecay / ruinsInhabitants for ruins
@@ -21,6 +22,7 @@ export class HexMapCore {
 
     // Data/state
     this.table = null;              // terrain
+    this.terrain2 = null;
     this.features = null;           // hexFeatures
     this.inhabitation = null;       // hexInhabitation
     this.specialInhabitation = null;// special table
@@ -45,7 +47,11 @@ export class HexMapCore {
       MountainsWithPass: 9,
       Marsh: 10,
       Lake: 11,
-      Valley: 12,
+      Depression: 12,
+    };
+    this.T2 = {
+      Pond: 1,
+      Depression: 2
     };
     this.COLOR = {
       [this.T.Plain]: "#9bfe03",
@@ -59,8 +65,12 @@ export class HexMapCore {
       [this.T.MountainsWithPass]: "#845704",
       [this.T.Marsh]: "#74a8a6",
       [this.T.Lake]: "#5ab3ff",
-      [this.T.Valley]: "#b08bff"
+      [this.T.Depression]: "#b08bff"
 
+    };
+    this.COLOR2 = {
+      [this.T2.Pond]: "#5ab3ff",
+      [this.T2.Depression]: "#b08bff"
     };
     this.TERRAIN_COLOR_BASE = {
       ForestWithHills: "Forest",
@@ -71,17 +81,17 @@ export class HexMapCore {
     // Thresholds for terrain having descriptive features such as gulch
     this.FEATURE_THRESH = {
       Plain: 4,
-      Scrub: 20,
+      Scrub: 0,
       Forest: 8,
       ForestWithHills: 8,
-      Rough: 20,
+      Rough: 0,
       Desert: 9,
       Hills: 6,
       Mountains: 10,
       MountainsWithPass: 10,
       Marsh: 17,   // uses swampFeatures in JSON
-      Lake: 20,
-      Valley: 20
+      Lake: 0,
+      Depression: 0
     };
     // Thesholds for forests becoming forest with hills, mountains having a pass
     this.TERRAIN_ADD_THRESH = {
@@ -94,22 +104,20 @@ export class HexMapCore {
     };
     this.FEATURE_KEYS = {
       Plain: "plainsFeatures",
-      Scrub: "plainsFeatures",
       Forest: "forestFeatures",
       ForestWithHills: "forestWithHillsFeatures",
-      Rough: "plainsFeatures",
-      Desert: "desertFeatures",
       Hills: "hillsFeatures",
+      Desert: "desertFeatures",
       Mountains: "mountainsFeatures",
       MountainsWithPass: "mountainsFeatures",
       Marsh: "swampFeatures",
-      Lake: "swampFeatures",
-      Valley: "hillsFeatures"
+
     };
   }
 
   setTables({
     terrain,
+    terrain2,
     features = null,
     inhabitation = null,
     special = null,
@@ -121,6 +129,7 @@ export class HexMapCore {
       throw new Error("HexMapCore.setTables: terrain missing or invalid");
     }
     this.table = terrain;
+    this.terrain2 = terrain2 && typeof terrain2 === "object" ? terrain2 : null;
     this.features = features && typeof features === "object" ? features : null;
     this.inhabitation = inhabitation && typeof inhabitation === "object" ? inhabitation : null;
     this.specialInhabitation = special && typeof special === "object" ? special : null;
@@ -148,7 +157,16 @@ export class HexMapCore {
         // Terrain via Appendix B from chosen parent
         const d20 = rollD20();
         const next = this.#nextFromJSON(baseParent, d20);
-        let child = { baseName: next };
+        let child = { baseName: "", variant: "", terrain2: "" };
+
+        if (next === "Pond") {
+          // Keep underlying terrain as the parent, but mark variant + terrain2
+          child = { baseName: baseParent, variant: "P", terrain2: "Pond" };
+        } else if (next === "Depression") {
+          child = { baseName: baseParent, variant: "D", terrain2: "Depression" };
+        } else {
+          child = { baseName: next, variant: null, terrain2: null };
+        }
 
         this.#setCell(q, r, child);
         const cell = this.getCell(q, r);
@@ -342,6 +360,8 @@ export class HexMapCore {
       labelGroup.setAttribute("class", "label");
       labelGroup.setAttribute("text-anchor", "middle");
       labelGroup.setAttribute("dominant-baseline", "middle");
+      if (cell.variant === "P") labelGroup.classList.add("label-pond");
+      if (cell.variant === "D") labelGroup.classList.add("label-depression");
 
       const hasSettlement = !!cell.settlement;
       const lineHeightEm = 1.1;
@@ -517,12 +537,23 @@ export class HexMapCore {
     // Base colour from main terrain
     let fill = this.COLOR[code] || "#555";
 
+    // Optional: override for Pond / Depression, if you're doing that too
+    if (terrain2 === "Pond" || terrain2 === "Depression") {
+      if (this.COLOR2 && this.COLOR2[terrain2]) {
+        fill = this.COLOR2[terrain2];
+      } else {
+        fill = terrain2 === "Pond" ? "#4da6ff" : "#b366ff";
+      }
+    }
+
     this.grid.set(this.#key(q, r), {
       q,
       r,
       id,
       baseName,
+      variant,
       terrain,
+      terrain2,
       code,
       fill,
       feature: null,

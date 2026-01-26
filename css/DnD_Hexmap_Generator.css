@@ -82,9 +82,6 @@ body {
   paint-order: stroke fill;   /* ensures stroke is behind the fill */
 }
 
-.label-pond { fill: #5ab3ff; }
-.label-depression { fill: #b08bff; }
-
 /* Side panel */
 #panel {
   background: #0f0f0f;

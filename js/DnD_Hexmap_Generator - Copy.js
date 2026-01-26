@@ -156,7 +156,10 @@ function regenerate(seed, TABLE_ROOT) {
             const d20 = rollD20();
             const result = nextFromJSON(TABLE_ROOT, parentBaseName, d20);
 
-            const child = { baseName: result, variant: null };
+            const child =
+                result === "Lake" ? { baseName: parentBaseName, variant: 'P' } :
+                    result === "Depression" ? { baseName: parentBaseName, variant: 'D' } :
+                        { baseName: result, variant: null };
 
             setCell(nq, nr, child);
             frontier.push([nq, nr]);
@@ -173,29 +176,22 @@ const T = {
     Plain: 1,
     Scrub: 2,
     Forest: 3,
-    ForestWithHills: 4,
-    Rough: 5,
-    Desert: 6,
-    Hills: 7,
-    Mountains: 8,
-    MountainsWithPass: 9,
-    Marsh: 10,
-    Lake: 11,
-    Valley: 12,
+    Rough: 4,
+    Desert: 5,
+    Hills: 6,
+    Mountains: 7,
+    Marsh: 8
+    // Lake / Depression are treated as modifiers, not base terrains
 };
 const TERRAIN_COLOR = {
-    [this.T.Plain]: "#9bfe03",
-    [this.T.Scrub]: "#8bbf71",
-    [this.T.Forest]: "#14d000",
-    [this.T.ForestWithHills]: "#14d000",
-    [this.T.Rough]: "#977926",
-    [this.T.Desert]: "#f7d77d",
-    [this.T.Hills]: "#be9006",
-    [this.T.Mountains]: "#845704",
-    [this.T.MountainsWithPass]: "#845704",
-    [this.T.Marsh]: "#74a8a6",
-    [this.T.Lake]: "#5ab3ff",
-    [this.T.Valley]: "#b08bff"
+    [T.Plain]: "#6caf5f",
+    [T.Scrub]: "#8bbf71",
+    [T.Forest]: "#2e7d32",
+    [T.Rough]: "#7a6756",
+    [T.Desert]: "#c9ab52",
+    [T.Hills]: "#8a7e63",
+    [T.Mountains]: "#9aa3a7",
+    [T.Marsh]: "#4b7068"
 };
 
 // ---- Hex math (axial, pointy top) ----
@@ -289,6 +285,13 @@ function render(grid) {
         label.setAttribute("y", y);
         label.setAttribute("class", "label");
         label.setAttribute("font-size", `${fontPx}px`);
+
+        // Variant text colour
+        if (cell.variant === 'P') {
+            label.classList.add("label-lake");
+        } else if (cell.variant === 'D') {
+            label.classList.add("label-depression");
+        }
 
         // Show compact label e.g. "Plain-P"
         label.textContent = cell.label;

@@ -18,9 +18,9 @@
             "15": "Hills",
             "16": "Mountains",
             "17": "Marsh",
-            "18": "Pond",
-            "19": "Depression",
-            "20": "Depression"
+            "18": "Lake",
+            "19": "Valley",
+            "20": "Valley"
         },
         "Scrub": {
             "1": "Plain",
@@ -41,8 +41,8 @@
             "16": "Mountains",
             "17": "Mountains",
             "18": "Marsh",
-            "19": "Pond",
-            "20": "Depression"
+            "19": "Lake",
+            "20": "Valley"
         },
         "Forest": {
             "1": "Plain",
@@ -64,7 +64,29 @@
             "17": "Hills",
             "18": "Mountains",
             "19": "Marsh",
-            "20": "Depression"
+            "20": "Valley"
+        },
+        "ForestWithHills": {
+            "1": "Plain",
+            "2": "Scrub",
+            "3": "Scrub",
+            "4": "Scrub",
+            "5": "Forest",
+            "6": "Forest",
+            "7": "Forest",
+            "8": "Forest",
+            "9": "Forest",
+            "10": "Forest",
+            "11": "Forest",
+            "12": "Forest",
+            "13": "Forest",
+            "14": "Forest",
+            "15": "Rough",
+            "16": "Hills",
+            "17": "Hills",
+            "18": "Mountains",
+            "19": "Marsh",
+            "20": "Valley"
         },
         "Rough": {
             "1": "Plain",
@@ -85,8 +107,8 @@
             "16": "Mountains",
             "17": "Mountains",
             "18": "Marsh",
-            "19": "Pond",
-            "20": "Depression"
+            "19": "Lake",
+            "20": "Valley"
         },
         "Desert": {
             "1": "Plain",
@@ -107,8 +129,8 @@
             "16": "Mountains",
             "17": "Mountains",
             "18": "Marsh",
-            "19": "Pond",
-            "20": "Depression"
+            "19": "Lake",
+            "20": "Valley"
         },
         "Hills": {
             "1": "Plain",
@@ -128,9 +150,9 @@
             "15": "Mountains",
             "16": "Mountains",
             "17": "Marsh",
-            "18": "Pond",
-            "19": "Pond",
-            "20": "Depression"
+            "18": "Lake",
+            "19": "Lake",
+            "20": "Valley"
         },
         "Mountains": {
             "1": "Plain",
@@ -151,8 +173,30 @@
             "16": "Mountains",
             "17": "Mountains",
             "18": "Mountains",
-            "19": "Pond",
-            "20": "Depression"
+            "19": "Lake",
+            "20": "Valley"
+        },
+        "MountainsWithPass": {
+            "1": "Plain",
+            "2": "Scrub",
+            "3": "Forest",
+            "4": "Rough",
+            "5": "Rough",
+            "6": "Desert",
+            "7": "Hills",
+            "8": "Hills",
+            "9": "Hills",
+            "10": "Hills",
+            "11": "Mountains",
+            "12": "Mountains",
+            "13": "Mountains",
+            "14": "Mountains",
+            "15": "Mountains",
+            "16": "Mountains",
+            "17": "Mountains",
+            "18": "Mountains",
+            "19": "Lake",
+            "20": "Valley"
         },
         "Marsh": {
             "1": "Plain",
@@ -174,7 +218,51 @@
             "17": "Mountains",
             "18": "Mountains",
             "19": "Mountains",
-            "20": "Depression"
+            "20": "Valley"
+        },
+        "Lake": {
+            "1": "Plain",
+            "2": "Plain",
+            "3": "Plain",
+            "4": "Plain",
+            "5": "Plain",
+            "6": "Plain",
+            "7": "Lake",
+            "8": "Lake",
+            "9": "Lake",
+            "10": "Lake",
+            "11": "Lake",
+            "12": "Scrub",
+            "13": "Forest",
+            "14": "Rough",
+            "15": "Hills",
+            "16": "Mountains",
+            "17": "Marsh",
+            "18": "Marsh",
+            "19": "Lake",
+            "20": "Valley"
+        },
+        "Valley": {
+            "1": "Plain",
+            "2": "Plain",
+            "3": "Plain",
+            "4": "Plain",
+            "5": "Plain",
+            "6": "Plain",
+            "7": "Plain",
+            "8": "Valley",
+            "9": "Valley",
+            "10": "Valley",
+            "11": "Valley",
+            "12": "Scrub",
+            "13": "Forest",
+            "14": "Rough",
+            "15": "Hills",
+            "16": "Mountains",
+            "17": "Marsh",
+            "18": "Lake",
+            "19": "Valley",
+            "20": "Valley"
         }
     },
     "hexInhabitation": {
