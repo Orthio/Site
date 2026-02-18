@@ -4,11 +4,25 @@
 // Uses:
 //   - hexTerrain for terrain transitions, Plains etc
 //   - hexFeatures for terrain-based features, Gulch etc
+//   - wildernessRolls for encounters found in the hex
 //   - hexInhabitation (Dense, maybe Special)
 //   - ruinsType / ruinsDecay / ruinsInhabitants for ruins
 //   - specialInhabitation when "Special" appears in inhabitation
 
 export class HexMapCore {
+
+  static async load() {
+    const res = await fetch("json/DnD_Hexmap.json");
+
+    if (!res.ok) {
+      throw new Error(
+        `Failed to load json/DnD_Hexmap.json: ${res.status} ${res.statusText}`
+      );
+    }
+
+    return await res.json();
+  }
+
   constructor(svgEl, opts = {}) {
     if (!svgEl) throw new Error("HexMapCore: svgEl is required");
     this.svg = svgEl;
@@ -22,6 +36,11 @@ export class HexMapCore {
     // Data/state
     this.table = null;              // terrain
     this.features = null;           // hexFeatures
+    this.encFeatures1 = null;
+    this.encFeatures2 = null;
+    this.encFeatures3 = null;
+    this.wildernessRolls = null;
+    this.wildernessFeatureChance = null;
     this.inhabitation = null;       // hexInhabitation
     this.specialInhabitation = null;// special table
     this.ruinsDecay = null;
@@ -106,12 +125,31 @@ export class HexMapCore {
       Lake: "swampFeatures",
       Valley: "hillsFeatures"
     };
+    this.ENCOUNTER_FEATURE_KEYS = {
+      // Points to the right part of encFeaturesTable on json
+      Plain: "Clear",
+      Scrub: "Clear",
+      Forest: "Forest",
+      ForestWithHills: "Forest",
+      Rough: "Hills",
+      Desert: "Desert",
+      Hills: "Hills",
+      Mountains: "Hills",
+      MountainsWithPass: "Hills",
+      Marsh: "Swamp",
+      Lake: "Ocean",
+      Valley: "Desert"
+    };
   }
 
   setTables({
     terrain,
     features = null,
     inhabitation = null,
+    wildernessRolls = null,
+    wildernessFeatureChance = null,
+    wildernessEncountersTable = null,
+    specificEncountersTable = null,
     special = null,
     ruinsType = null,
     ruinsDecay = null,
@@ -123,6 +161,10 @@ export class HexMapCore {
     this.table = terrain;
     this.features = features && typeof features === "object" ? features : null;
     this.inhabitation = inhabitation && typeof inhabitation === "object" ? inhabitation : null;
+    this.wildernessRolls = wildernessRolls && typeof wildernessRolls === "object" ? wildernessRolls : null;
+    this.wildernessFeatureChance = wildernessFeatureChance && typeof wildernessFeatureChance === "object" ? wildernessFeatureChance : null;
+    this.wildernessEncountersTable = wildernessEncountersTable && typeof wildernessEncountersTable === "object" ? wildernessEncountersTable : null;
+    this.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
     this.specialInhabitation = special && typeof special === "object" ? special : null;
     this.ruinsType = ruinsType && typeof ruinsType === "object" ? ruinsType : null;
     this.ruinsDecay = ruinsDecay && typeof ruinsDecay === "object" ? ruinsDecay : null;
@@ -165,6 +207,8 @@ export class HexMapCore {
         // If feature mentions ruins, roll ruins details
         this.#maybeAddRuinsDetails(cell, roll);
 
+        // Check for encounters 1 to 3
+        this.#maybeAddEncounterFeatures(cell, roll);
       }
     }
   }
@@ -214,6 +258,8 @@ export class HexMapCore {
     if (d30 > th) return;
 
     const key = this.FEATURE_KEYS[base];
+
+
     const list = key && Array.isArray(this.features[key]) ? this.features[key] : null;
     if (!list || list.length === 0) return;
 
@@ -262,10 +308,13 @@ export class HexMapCore {
     // Special handling
     if (/special/i.test(type)) {
       const specialTbl = this.specialInhabitation ?? this.inhabitation.Special ?? null;
-      if (specialTbl) {
+      if (cell.baseName === "Hills" || cell.baseName === "Mountains") {
+        cell.settlement = "Mine";
+      }
+      else if (specialTbl) {
         const special = this.#lookupFromTable(specialTbl, roll(30));
         if (special) {
-          cell.special = special; // we can display this under FEATURES
+          cell.settlement = special; // we can display this under FEATURES
         }
       }
       return;
@@ -298,6 +347,75 @@ export class HexMapCore {
       inhabitants: inhabitants ?? "—"
     };
   }
+
+  #maybeAddEncounterFeatures(cell, roll) {
+    if (!this.wildernessEncountersTable) return;
+    if (!this.wildernessRolls) return;
+    if (!this.specificEncountersTable) return;
+
+
+    const base = cell.baseName;
+
+    const rolls = this.wildernessRolls[base] ?? 0;            // e.g. Forest -> 2
+    if (rolls <= 0) return;
+
+    // which column of encFeaturesTable to use for this terrain
+    const tableKey = this.ENCOUNTER_FEATURE_KEYS[base];
+    const col = tableKey && typeof this.wildernessEncountersTable[tableKey] === "object"
+      ? this.wildernessEncountersTable[tableKey]
+      : null;
+    if (!col) return;
+
+    // clear previous results (so rerolls don't keep old ones)
+    cell.encounterFeatures1 = null;
+    cell.encounterFeatures2 = null;
+    cell.encounterFeatures3 = null;
+
+    for (let i = 1; i <= Math.min(3, rolls); i++) {
+
+      // d8 on the column
+      const categoryPick = col[String(roll(8))] ?? null;
+      if (!categoryPick) continue;
+
+      // d20 on the type
+      const subTableColumn = this.specificEncountersTable[categoryPick];
+      /*     const subTable = subTableColumn && typeof this.specificEncountersTable[subTableColumn] === "object"
+            ? this.specificEncountersTable[subTableColumn]
+            : null;
+          if (!subTable) return; */
+      const animalPick = subTableColumn[String(roll(20))] ?? null;
+
+      cell[`encounterFeatures${i}`] = categoryPick + ", " + animalPick;
+    }
+
+
+  }
+
+  // Reroll feature + encounter features for a single hex
+  rerollAllFeaturesAndEncounters() {
+    const batchSeed = (Date.now() ^ ((Math.random() * 0xFFFFFFFF) >>> 0)) >>> 0;
+
+    for (const cell of this.grid.values()) {
+      const rng = this.#mulberry32(
+        (batchSeed ^ ((cell.q + 1) * 2654435761) ^ ((cell.r + 1) * 1597334677)) >>> 0
+      );
+      const roll = (sides) => 1 + Math.floor(rng() * sides);
+
+      // Clear only the fields you want to reroll
+      cell.feature = null;
+      cell.ruins = null;
+      cell.encounterFeatures1 = null;
+      cell.encounterFeatures2 = null;
+      cell.encounterFeatures3 = null;
+
+      // Rebuild
+      this.#maybeAddFeature(cell, roll);
+      this.#maybeAddEncounterFeatures(cell, roll);
+    }
+  }
+
+
+
 
   // --- rendering ---
   render() {
@@ -440,14 +558,16 @@ export class HexMapCore {
         q: c.q,
         r: c.r,
         id: c.id,
-        baseName: c.baseName,
-        variant: c.variant,
         terrain: c.terrain,
         feature: c.feature ?? null,
-        special: c.special ?? null,
+        encounterFeatures1: c.encounterFeatures1 ?? null,
+        encounterFeatures2: c.encounterFeatures2 ?? null,
+        encounterFeatures3: c.encounterFeatures3 ?? null,
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
-        settlementSize: c.settlementSize ?? null
+        settlementSize: c.settlementSize ?? null,
+        rerollSeed: c.rerollSeed ?? null,
+
       }))
     };
   }
@@ -456,6 +576,7 @@ export class HexMapCore {
     if (!snapshot || !Array.isArray(snapshot.cells)) {
       throw new Error("HexMapCore.fromJSON: bad payload");
     }
+
     this.grid.clear();
     this.cols = snapshot.meta?.cols ?? this.cols;
     this.rows = snapshot.meta?.rows ?? this.rows;
@@ -463,28 +584,47 @@ export class HexMapCore {
     this.startTerrain = snapshot.meta?.startTerrain ?? this.startTerrain;
     this.seed = snapshot.meta?.seed ?? this.seed;
 
-    let fill;
-
     for (const c of snapshot.cells) {
-      const code = this.T[c.baseName] ?? this.T.Plain;
+      // Use terrain as the primary source if baseName is missing
+      const terrainStr = c.terrain ?? this.startTerrain;
+
+      // Infer baseName + variant from terrainStr like "Plain-P"
+      const inferredBaseName = c.baseName ?? terrainStr.split("-")[0];
+      const inferredVariant = c.variant ?? (terrainStr.includes("-") ? terrainStr.split("-")[1] : null);
+
+      // Final terrain string (preserve what was saved)
+      const terrain = terrainStr;
+
+      // Colour using inferredBaseName (or switch to terrain if you prefer)
+      const colorBaseName = this.TERRAIN_COLOR_BASE[inferredBaseName] ?? inferredBaseName;
+      const code = this.T[colorBaseName] ?? this.T.Plain;
+      const fill = this.COLOR[code] || "#555";
 
       this.grid.set(this.#key(c.q, c.r), {
         q: c.q,
         r: c.r,
-        id: c.id,
-        baseName: c.baseName,
-        variant: c.variant,
-        terrain: c.terrain,
+        id: c.id ?? this.#hexId(c.q, c.r),
+        baseName: inferredBaseName,
+        variant: inferredVariant,
+        terrain,
         code,
         fill,
         feature: c.feature ?? null,
-        special: c.special ?? null,
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
-        settlementSize: c.settlementSize ?? null
+        settlementSize: c.settlementSize ?? null,
+        encounterFeatures1: c.encounterFeatures1 ?? null,
+        encounterFeatures2: c.encounterFeatures2 ?? null,
+        encounterFeatures3: c.encounterFeatures3 ?? null,
+        rerollSeed: c.rerollSeed ?? null,
+
       });
     }
+
+
   }
+
+
 
   // ---------- private helpers ----------
   #key(q, r) {

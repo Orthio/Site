@@ -36,9 +36,21 @@
         <span class="k">Terrain</span>
         <span class="v" id="hexTerrain">—</span>
       </div>
-       <div class="kv">
-        <span class="k">Features</span>
+      <div class="kv">
+        <span class="k">Terrain Features</span>
         <span class="v" id="hexFeatures">—</span>
+      </div>
+      <div class="kv">
+        <span class="k">Encounter Features 1</span>
+        <span class="v" id="encounterFeatures1">—</span>
+      </div>
+      <div class="kv">
+        <span class="k">Encounter Features 2</span>
+        <span class="v" id="encounterFeatures2">—</span>
+      </div>
+      <div class="kv">
+        <span class="k">Encounter Features 3</span>
+        <span class="v" id="encounterFeatures3">—</span>
       </div>
       <div class="group" id="ruinsBlock">
         <label>Ruins details</label>
@@ -58,9 +70,9 @@
           <label for="hexSettlementSize">Population</label>
           <input id="hexSettlementSize" type="number" min="0" step="1" placeholder="e.g., 120" />
         </div>
-         <div>
+        <!--          <div>
           <input id="hexSettlementDesc" type="text" placeholder="-" />
-        </div>
+        </div> -->
         <div class="full">
           <button id="saveSettlement">Save settlement</button>
         </div>
@@ -74,6 +86,13 @@
             Import JSON
             <input id="importGrid" type="file" accept="application/json" />
           </label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Re-roll features</label>
+        <div class="rerollRow">
+          <button id="rerollButton">Re-roll Features</button>
         </div>
       </div>
 

@@ -24,6 +24,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   const terrain = data.hexWildernessTerrain ?? data.terrain ?? data;
   const features = data.hexFeatures ?? null;
   const inhabitation = data.hexInhabitation ?? null;
+  const wildernessRolls = data.wildernessRolls ?? null
+  const wildernessFeatureChance = data.wildernessFeatureChance ?? null;
+  const wildernessEncountersTable = data.wildernessEncountersTable ?? null;
+  const specificEncountersTable = data.specificEncountersTable ?? null;
   const special = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
   const ruinsType = data.ruinsType ?? null;
   const ruinsDecay = data.ruinsDecay ?? null;
@@ -33,6 +37,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     terrain,
     features,
     inhabitation,
+    wildernessRolls,
+    wildernessFeatureChance,
+    wildernessEncountersTable,
+    specificEncountersTable,
     special,
     ruinsDecay,
     ruinsType,
@@ -53,6 +61,9 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexTerrain: document.getElementById("hexTerrain"),
 
       hexFeatures: document.getElementById("hexFeatures"),
+      encounterFeatures1: document.getElementById("encounterFeatures1"),
+      encounterFeatures2: document.getElementById("encounterFeatures2"),
+      encounterFeatures3: document.getElementById("encounterFeatures3"),
       ruinsBlock: document.getElementById("ruinsBlock"),
       ruinsDecay: document.getElementById("ruinsDecay"),
       ruinsType: document.getElementById("ruinsType"),

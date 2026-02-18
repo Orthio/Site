@@ -39,6 +39,23 @@ export function initControls({ hexMap, dom, initialSeed }) {
     });
   }
 
+
+  // Button for rerolling features after importing a json
+  const rerollBtn = document.getElementById("rerollButton");
+  if (rerollBtn) {
+    rerollBtn.addEventListener("click", () => {
+      hexMap.rerollAllFeaturesAndEncounters();
+
+      hexMap.render();
+      if (hexMap.selectedKey) {
+        const [q, r] = hexMap.selectedKey.split(",").map(Number);
+        hexMap.select(q, r); // refresh side panel if something is selected
+      }
+    });
+
+  }
+
+
   // R hotkey
   window.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "r") {
@@ -59,6 +76,9 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
 
   const featOut = dom?.hexFeatures ?? document.getElementById("hexFeatures");
+  const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
+  const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
+  const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
   const ruDecay = dom?.ruinsDecay ?? document.getElementById("ruinsDecay");
   const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
@@ -66,7 +86,6 @@ export function initControls({ hexMap, dom, initialSeed }) {
 
   const setIn = dom?.hexSettlement ?? document.getElementById("hexSettlement");
   const sizeIn = dom?.hexSettlementSize ?? document.getElementById("hexSettlementSize");
-  const setDesc = dom?.hexSettlementSize ?? document.getElementById("hexSettlementDesc");
   const saveSet = dom?.saveSettlement ?? document.getElementById("saveSettlement");
 
   svg.addEventListener("hexmap:select", (e) => {
@@ -80,6 +99,10 @@ export function initControls({ hexMap, dom, initialSeed }) {
     if (c.feature) lines.push(c.feature);
     if (c.special) lines.push(`Special: ${c.special}`);
     if (featOut) featOut.textContent = lines.length ? lines.join(" | ") : "—";
+    if (enc1Out) enc1Out.textContent = c.encounterFeatures1 ?? "—";
+    if (enc2Out) enc2Out.textContent = c.encounterFeatures2 ?? "—";
+    if (enc3Out) enc3Out.textContent = c.encounterFeatures3 ?? "—";
+
 
     // Ruins details
     if (c.ruins && ruinsBlock) {
@@ -94,7 +117,6 @@ export function initControls({ hexMap, dom, initialSeed }) {
     // Settlement editing
     if (setIn) setIn.value = c.settlement ?? "";
     if (sizeIn) sizeIn.value = c.settlementSize ?? "";
-    if (setDesc) setDesc.value = c.settlementSize ?? "";
   });
 
   // click polygon → select
