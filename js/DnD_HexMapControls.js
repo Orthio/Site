@@ -140,4 +140,19 @@ export function initControls({ hexMap, dom, initialSeed }) {
       hexMap.render(); // redraw to reflect settlement dot / label
     });
   }
+
+  // Toggle button to show encounter features
+  const toggleBtn = document.getElementById("toggleEncounterLabels");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      hexMap.labelMode = (hexMap.labelMode === "encounters") ? "default" : "encounters";
+      toggleBtn.textContent = (hexMap.labelMode === "encounters") ? "Show Terrain" : "Show Encounters";
+
+      hexMap.render();
+      if (hexMap.selectedKey) {
+        const [q, r] = hexMap.selectedKey.split(",").map(Number);
+        hexMap.select(q, r); // keep side panel synced
+      }
+    });
+  }
 }

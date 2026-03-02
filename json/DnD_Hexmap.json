@@ -323,13 +323,15 @@
         "1-3": "Manor",
         "4-11": "Trading Post",
         "12-16": "Military Outpost",
-        "17-18": "Prison",
+        "17": "Prison",
+        "18": "Toll",
         "19-20": "Work Camp",
         "21": "Abbey",
-        "22": "Priory",
+        "22": "Watchtower",
         "23": "Nunnery",
         "24-26": "Farmstead",
-        "27-30": "Nomad Camp"
+        "27-29": "Nomad Camp",
+        "30": "Brewery"
     },
     "ruinsDecay": [
         "Burned",

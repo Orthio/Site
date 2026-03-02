@@ -371,9 +371,6 @@ export class HexMapCore {
     cell.encounterFeatures1 = null;
     cell.encounterFeatures2 = null;
     cell.encounterFeatures3 = null;
-    cell.encounterAnimals1 = null;
-    cell.encounterAnimals2 = null;
-    cell.encounterAnimals3 = null;
 
     for (let i = 1; i <= Math.min(3, rolls); i++) {
 
@@ -390,7 +387,6 @@ export class HexMapCore {
       const animalPick = subTableColumn[String(roll(20))] ?? null;
 
       cell[`encounterFeatures${i}`] = categoryPick + ", " + animalPick;
-      cell[`encounterAnimals${i}`] = animalPick;
     }
 
 
@@ -412,9 +408,6 @@ export class HexMapCore {
       cell.encounterFeatures1 = null;
       cell.encounterFeatures2 = null;
       cell.encounterFeatures3 = null;
-      cell.encounterAnimals1 = null;
-      cell.encounterAnimals2 = null;
-      cell.encounterAnimals3 = null;
 
       // Rebuild
       this.#maybeAddFeature(cell, roll);
@@ -451,23 +444,6 @@ export class HexMapCore {
 
     const frag = document.createDocumentFragment();
 
-    const hexLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    hexLayer.setAttribute("id", "hexLayer");
-
-    const markerLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    markerLayer.setAttribute("id", "markerLayer");
-
-    const labelLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    labelLayer.setAttribute("id", "labelLayer");
-
-    // Labels should not block clicking the hex polygons
-    labelLayer.setAttribute("pointer-events", "none");
-
-    // Order matters: hexes at bottom, then markers, then labels on top
-    frag.appendChild(hexLayer);
-    frag.appendChild(markerLayer);
-    frag.appendChild(labelLayer);
-
     for (const cell of this.grid.values()) {
       const { x, y } = this.#offsetToPixel(cell.q, cell.r);
 
@@ -477,7 +453,8 @@ export class HexMapCore {
       poly.setAttribute("fill", cell.fill);
       poly.dataset.key = this.#key(cell.q, cell.r);
       poly.addEventListener("click", () => this.select(cell.q, cell.r));
-      hexLayer.appendChild(poly);
+      frag.appendChild(poly);
+
       const labelGroup = document.createElementNS("http://www.w3.org/2000/svg", "text");
       labelGroup.setAttribute("x", x);
       labelGroup.setAttribute("y", y);
@@ -485,54 +462,45 @@ export class HexMapCore {
       labelGroup.setAttribute("text-anchor", "middle");
       labelGroup.setAttribute("dominant-baseline", "middle");
 
-      // base size you currently use (example: 12px)
-      const baseSize = 12;
-      const size = (this.labelMode === "encounters") ? (baseSize - 2) : baseSize;
-      labelGroup.setAttribute("font-size", `${size}px`);
+      const hasSettlement = !!cell.settlement;
+      const lineHeightEm = 1.1;
 
-      const lineHeightEm = (this.labelMode === "encounters") ? 1.0 : 1.1;
+      // Line 1: terrain
+      const t1 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      t1.textContent = cell.terrain ?? cell.baseName;  // whatever you’re using
+      t1.setAttribute("x", x);
 
-      let lines = [];
-
-      if (this.labelMode === "encounters") {
-        // Up to 3 encounter lines, then id
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals1);
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals2);
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals3);
-
-        // If none exist, show a dash (optional but helps readability)
-        if (lines.length === 0) lines.push("—");
-
-        lines.push(cell.id);
+      // If there are 3 lines, start one line *above* the center.
+      // If there are 2 lines, start half a line above.
+      if (hasSettlement) {
+        t1.setAttribute("dy", `-${lineHeightEm}em`);
       } else {
-        // Your existing default behaviour
-        lines.push(cell.terrain ?? cell.baseName);
+        t1.setAttribute("dy", `-${lineHeightEm / 2}em`);
+      }
+      labelGroup.appendChild(t1);
 
-        if (cell.settlement) lines.push(cell.settlement);
-
-        lines.push(cell.id);
+      // Line 2: settlement (optional)
+      let lastDyOwner = t1;
+      if (hasSettlement) {
+        const t2 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        t2.textContent = cell.settlement;
+        t2.setAttribute("x", x);
+        t2.setAttribute("dy", `${lineHeightEm}em`);
+        labelGroup.appendChild(t2);
+        lastDyOwner = t2;
       }
 
-      // Render tspans
-      // Start vertically so the whole block is centered
-      const startDy = -((lines.length - 1) * lineHeightEm) / 2;
+      // Line 3: hex ID (always)
+      const t3 = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      t3.textContent = cell.id;
+      t3.setAttribute("x", x);
+      // Always one line below the previous line
+      t3.setAttribute("dy", `${lineHeightEm}em`);
+      t3.setAttribute("fill", "#aaa");
+      labelGroup.appendChild(t3);
 
-      lines.forEach((text, idx) => {
-        const t = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-        t.textContent = text;
-        t.setAttribute("x", x);
 
-        // First line sets the initial dy from the text element's y,
-        // subsequent lines step down
-        t.setAttribute("dy", `${idx === 0 ? startDy : lineHeightEm}em`);
-
-        // Make ID a lighter colour (last line is always id)
-        if (idx === lines.length - 1) t.setAttribute("fill", "#aaa");
-
-        labelGroup.appendChild(t);
-      });
-
-      labelLayer.appendChild(labelGroup);
+      frag.appendChild(labelGroup);
 
       // Tiny settlement marker (if any) near bottom of hex
       if (cell.settlement) {
@@ -543,7 +511,7 @@ export class HexMapCore {
         dot.setAttribute("fill", "#ddd");
         dot.setAttribute("opacity", "0.9");
         dot.setAttribute("pointer-events", "none");
-        labelLayer.appendChild(labelGroup);
+        frag.appendChild(dot);
       }
     }
 
@@ -596,9 +564,6 @@ export class HexMapCore {
         encounterFeatures1: c.encounterFeatures1 ?? null,
         encounterFeatures2: c.encounterFeatures2 ?? null,
         encounterFeatures3: c.encounterFeatures3 ?? null,
-        /*  encounterAnimals1: c.encounterAnimals1 ?? null,
-         encounterAnimals2: c.encounterAnimals2 ?? null,
-         encounterAnimals3: c.encounterAnimals3 ?? null, */
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
         settlementSize: c.settlementSize ?? null,
@@ -652,9 +617,6 @@ export class HexMapCore {
         encounterFeatures1: c.encounterFeatures1 ?? null,
         encounterFeatures2: c.encounterFeatures2 ?? null,
         encounterFeatures3: c.encounterFeatures3 ?? null,
-        encounterAnimals1: this.#extractEncounterAnimal(c.encounterFeatures1),
-        encounterAnimals2: this.#extractEncounterAnimal(c.encounterFeatures2),
-        encounterAnimals3: this.#extractEncounterAnimal(c.encounterFeatures3),
         rerollSeed: c.rerollSeed ?? null,
 
       });
@@ -822,13 +784,5 @@ export class HexMapCore {
     h = Math.imul(h ^ a, 16777619);
     h = Math.imul(h ^ b, 16777619);
     return h | 0;
-  }
-  #extractEncounterAnimal(feature) {
-    if (!feature || typeof feature !== "string") return null;
-
-    const idx = feature.indexOf(", ");
-    if (idx === -1) return feature; // fallback safety
-
-    return feature.slice(idx + 2);
   }
 }
