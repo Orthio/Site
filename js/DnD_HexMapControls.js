@@ -79,14 +79,13 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
   const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
   const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
+  const wildFeatOut = dom?.wildFeaturesText ?? document.getElementById("wildFeaturesText");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
   const ruDecay = dom?.ruinsDecay ?? document.getElementById("ruinsDecay");
   const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
   const ruInh = dom?.ruinsInhabitants ?? document.getElementById("ruinsInhabitants");
 
-  const setIn = dom?.hexSettlement ?? document.getElementById("hexSettlement");
-  const sizeIn = dom?.hexSettlementSize ?? document.getElementById("hexSettlementSize");
-  const saveSet = dom?.saveSettlement ?? document.getElementById("saveSettlement");
+  const setOut = dom?.settlementText ?? document.getElementById("settlementText");
 
   svg.addEventListener("hexmap:select", (e) => {
     const c = e.detail.cell;
@@ -102,7 +101,8 @@ export function initControls({ hexMap, dom, initialSeed }) {
     if (enc1Out) enc1Out.textContent = c.encounterFeatures1 ?? "—";
     if (enc2Out) enc2Out.textContent = c.encounterFeatures2 ?? "—";
     if (enc3Out) enc3Out.textContent = c.encounterFeatures3 ?? "—";
-
+    if (wildFeatOut) wildFeatOut.textContent = c.wildFeaturesText ?? "—";
+    if (setOut) setOut.textContent = c.settlementText ?? "";
 
     // Ruins details
     if (c.ruins && ruinsBlock) {
@@ -114,9 +114,6 @@ export function initControls({ hexMap, dom, initialSeed }) {
       ruinsBlock.style.display = "none";
     }
 
-    // Settlement editing
-    if (setIn) setIn.value = c.settlement ?? "";
-    if (sizeIn) sizeIn.value = c.settlementSize ?? "";
   });
 
   // click polygon → select
@@ -128,25 +125,50 @@ export function initControls({ hexMap, dom, initialSeed }) {
     hexMap.select(q, r);
   });
 
-  // Save settlement edits
-  if (saveSet) {
-    saveSet.addEventListener("click", () => {
-      const key = hexMap.selectedKey;
-      if (!key) return;
-      const [q, r] = key.split(",").map(Number);
-      const name = setIn?.value ?? "";
-      const size = sizeIn?.value ?? null;
-      hexMap.setSettlement(q, r, name, size);
-      hexMap.render(); // redraw to reflect settlement dot / label
+  // Toggle button to show encounter features
+  const toggleEncBtn = document.getElementById("toggleEncounterLabels");
+  if (toggleEncBtn) {
+    toggleEncBtn.addEventListener("click", () => {
+      if (hexMap.labelMode === "encounters") {
+        hexMap.labelMode = "default";
+        toggleEncBtn.textContent = "Show Encounters";
+        toggleWildBtn.textContent = "Show Wilderness Stocking";
+      } else if (hexMap.labelMode === "wildStocking") {
+        hexMap.labelMode = "encounters"
+        toggleEncBtn.textContent = "Show Terrain";
+        toggleWildBtn.textContent = "Show Wilderness Stocking";
+      } else {
+        hexMap.labelMode = "encounters"
+        toggleEncBtn.textContent = "Show Terrain";
+        toggleWildBtn.textContent = "Show Wilderness Stocking";
+      }
+
+      hexMap.render();
+      if (hexMap.selectedKey) {
+        const [q, r] = hexMap.selectedKey.split(",").map(Number);
+        hexMap.select(q, r); // keep side panel synced
+      }
     });
   }
 
-  // Toggle button to show encounter features
-  const toggleBtn = document.getElementById("toggleEncounterLabels");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      hexMap.labelMode = (hexMap.labelMode === "encounters") ? "default" : "encounters";
-      toggleBtn.textContent = (hexMap.labelMode === "encounters") ? "Show Terrain" : "Show Encounters";
+  // Toggle button to show wilderness stocking features
+  const toggleWildBtn = document.getElementById("toggleWildLabels");
+  if (toggleWildBtn) {
+    toggleWildBtn.addEventListener("click", () => {
+      
+      if (hexMap.labelMode === "wildStocking") {
+        hexMap.labelMode = "default";
+        toggleEncBtn.textContent = "Show Encounters";
+        toggleWildBtn.textContent = "Show Wilderness Stocking";
+      } else if (hexMap.labelMode === "encounters") {
+        hexMap.labelMode = "wildStocking"
+        toggleEncBtn.textContent = "Show Encounters";
+        toggleWildBtn.textContent = "Show Terrain";
+      } else {
+        hexMap.labelMode = "wildStocking"
+        toggleEncBtn.textContent = "Show Encounters";
+        toggleWildBtn.textContent = "Show Terrain";
+      }
 
       hexMap.render();
       if (hexMap.selectedKey) {

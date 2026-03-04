@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const wildernessFeatureChance = data.wildernessFeatureChance ?? null;
   const wildernessEncountersTable = data.wildernessEncountersTable ?? null;
   const specificEncountersTable = data.specificEncountersTable ?? null;
+  const wildernessFeaturesTable = data.wildernessFeaturesTable ?? null;
   const special = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
   const ruinsType = data.ruinsType ?? null;
   const ruinsDecay = data.ruinsDecay ?? null;
@@ -41,6 +42,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     wildernessFeatureChance,
     wildernessEncountersTable,
     specificEncountersTable,
+    wildernessFeaturesTable,
     special,
     ruinsDecay,
     ruinsType,
@@ -64,14 +66,12 @@ window.addEventListener("DOMContentLoaded", async () => {
       encounterFeatures1: document.getElementById("encounterFeatures1"),
       encounterFeatures2: document.getElementById("encounterFeatures2"),
       encounterFeatures3: document.getElementById("encounterFeatures3"),
+      wildFeaturesText: document.getElementById("wildFeaturesText"),
       ruinsBlock: document.getElementById("ruinsBlock"),
       ruinsDecay: document.getElementById("ruinsDecay"),
       ruinsType: document.getElementById("ruinsType"),
       ruinsInhabitants: document.getElementById("ruinsInhabitants"),
-
-      hexSettlement: document.getElementById("hexSettlement"),
-      hexSettlementSize: document.getElementById("hexSettlementSize"),
-      saveSettlement: document.getElementById("saveSettlement")
+      settlementText: document.getElementById("settlementText"),
     },
     initialSeed
   });

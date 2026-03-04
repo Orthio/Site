@@ -151,6 +151,7 @@ export class HexMapCore {
     wildernessFeatureChance = null,
     wildernessEncountersTable = null,
     specificEncountersTable = null,
+    wildernessFeaturesTable = null,
     special = null,
     ruinsType = null,
     ruinsDecay = null,
@@ -166,6 +167,8 @@ export class HexMapCore {
     this.wildernessFeatureChance = wildernessFeatureChance && typeof wildernessFeatureChance === "object" ? wildernessFeatureChance : null;
     this.wildernessEncountersTable = wildernessEncountersTable && typeof wildernessEncountersTable === "object" ? wildernessEncountersTable : null;
     this.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
+    this.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
+    this.wildernessFeaturesTable = wildernessFeaturesTable && typeof wildernessFeaturesTable === "object" ? wildernessFeaturesTable : null;
     this.specialInhabitation = special && typeof special === "object" ? special : null;
     this.ruinsType = ruinsType && typeof ruinsType === "object" ? ruinsType : null;
     this.ruinsDecay = ruinsDecay && typeof ruinsDecay === "object" ? ruinsDecay : null;
@@ -327,6 +330,10 @@ export class HexMapCore {
     if (category) {
       cell.settlementSize = this.#populationForCategory(category, roll);
     }
+    cell.settlementText =
+      cell.settlementSize != null
+        ? `${cell.settlement} pop.${cell.settlementSize}`
+        : (cell.settlement ?? null);
   }
 
   #maybeAddRuinsDetails(cell, roll) {
@@ -353,6 +360,7 @@ export class HexMapCore {
     if (!this.wildernessEncountersTable) return;
     if (!this.wildernessRolls) return;
     if (!this.specificEncountersTable) return;
+    if (!this.wildernessFeaturesTable) return;
 
 
     const base = cell.baseName;
@@ -374,6 +382,8 @@ export class HexMapCore {
     cell.encounterAnimals1 = null;
     cell.encounterAnimals2 = null;
     cell.encounterAnimals3 = null;
+    cell.wildFeatures = null
+    cell.wildFeaturesText = null
 
     for (let i = 1; i <= Math.min(3, rolls); i++) {
 
@@ -389,10 +399,33 @@ export class HexMapCore {
           if (!subTable) return; */
       const animalPick = subTableColumn[String(roll(20))] ?? null;
 
-      cell[`encounterFeatures${i}`] = categoryPick + ", " + animalPick;
-      cell[`encounterAnimals${i}`] = animalPick;
+      const villageTypes = ["Village", "Small Town", "Large Town", "City"];
+
+      if (!villageTypes.includes(cell.settlement)) {
+        cell[`encounterFeatures${i}`] = categoryPick + ", " + animalPick;
+        cell[`encounterAnimals${i}`] = animalPick;
+      }
     }
 
+    if (roll(2) > 1) {
+      const wildFeaturesRoll = String(roll(36));
+      const wildFeaturesPick1 = this.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
+      const wildFeaturesPick2 = this.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
+      cell.wildFeatures = wildFeaturesPick1;
+      cell.wildFeaturesText = wildFeaturesPick1 + ": " + wildFeaturesPick2;
+    } else {
+      cell.wildFeatures = null;
+      cell.wildFeaturesText = null;
+    }
+
+    if (base === "Lake") {
+      cell.wildFeatures = null;
+      cell.wildFeaturesText = null;
+    }
+    if (cell.settlement != null) {
+      cell.wildFeatures = null;
+      cell.wildFeaturesText = null;
+    }
 
   }
 
@@ -415,6 +448,8 @@ export class HexMapCore {
       cell.encounterAnimals1 = null;
       cell.encounterAnimals2 = null;
       cell.encounterAnimals3 = null;
+      cell.wildFeatures = null;
+      cell.wildFeaturesText = null;
 
       // Rebuild
       this.#maybeAddFeature(cell, roll);
@@ -487,23 +522,39 @@ export class HexMapCore {
 
       // base size you currently use (example: 12px)
       const baseSize = 12;
-      const size = (this.labelMode === "encounters") ? (baseSize - 2) : baseSize;
-      labelGroup.setAttribute("font-size", `${size}px`);
+      const size = (this.labelMode === "encounters" || this.labelMode === "wildStocking") ? (baseSize - 2) : baseSize;
+      const baseStrokeSize = 2;
+      const newStrokeSize = (this.labelMode === "encounters" || this.labelMode === "wildStocking") ? (baseStrokeSize - 0.4) : baseStrokeSize;
 
-      const lineHeightEm = (this.labelMode === "encounters") ? 1.0 : 1.1;
+      labelGroup.setAttribute("font-size", `${size}px`);
+      labelGroup.setAttribute("stroke-width", `${newStrokeSize}px`);
+
+      const lineHeightEm = (this.labelMode === "encounters" || this.labelMode === "wildStocking") ? 1.0 : 1.1;
 
       let lines = [];
 
       if (this.labelMode === "encounters") {
-        // Up to 3 encounter lines, then id
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals1);
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals2);
-        if (cell.encounterFeatures1) lines.push(cell.encounterAnimals3);
+        // Up to 3 encounter lines, then settlement and id
+        if (cell.encounterFeatures1) lines.push(this.#extractEncounterAnimal(cell.encounterFeatures1) ?? cell.encounterFeatures1);
+        if (cell.encounterFeatures2) lines.push(this.#extractEncounterAnimal(cell.encounterFeatures2) ?? cell.encounterFeatures2);
+        if (cell.encounterFeatures3) lines.push(this.#extractEncounterAnimal(cell.encounterFeatures3) ?? cell.encounterFeatures3);
+
+        if (cell.settlement) lines.push(cell.settlement);
 
         // If none exist, show a dash (optional but helps readability)
         if (lines.length === 0) lines.push("—");
 
         lines.push(cell.id);
+      } else if (this.labelMode === "wildStocking") {
+        // The wilderness stocking, then settlement and id
+        if (cell.wildFeatures) lines.push(cell.wildFeatures);
+
+        if (cell.settlement) lines.push(cell.settlement);
+
+        if (lines.length === 0) lines.push("—");
+
+        lines.push(cell.id);
+
       } else {
         // Your existing default behaviour
         lines.push(cell.terrain ?? cell.baseName);
@@ -543,7 +594,7 @@ export class HexMapCore {
         dot.setAttribute("fill", "#ddd");
         dot.setAttribute("opacity", "0.9");
         dot.setAttribute("pointer-events", "none");
-        labelLayer.appendChild(labelGroup);
+        labelLayer.appendChild(dot);
       }
     }
 
@@ -596,9 +647,7 @@ export class HexMapCore {
         encounterFeatures1: c.encounterFeatures1 ?? null,
         encounterFeatures2: c.encounterFeatures2 ?? null,
         encounterFeatures3: c.encounterFeatures3 ?? null,
-        /*  encounterAnimals1: c.encounterAnimals1 ?? null,
-         encounterAnimals2: c.encounterAnimals2 ?? null,
-         encounterAnimals3: c.encounterAnimals3 ?? null, */
+        wildFeaturesText: c.wildFeaturesText ?? null,
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
         settlementSize: c.settlementSize ?? null,
@@ -649,12 +698,15 @@ export class HexMapCore {
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
         settlementSize: c.settlementSize ?? null,
+        settlementText: c.settlementText ?? null,
         encounterFeatures1: c.encounterFeatures1 ?? null,
         encounterFeatures2: c.encounterFeatures2 ?? null,
         encounterFeatures3: c.encounterFeatures3 ?? null,
         encounterAnimals1: this.#extractEncounterAnimal(c.encounterFeatures1),
         encounterAnimals2: this.#extractEncounterAnimal(c.encounterFeatures2),
         encounterAnimals3: this.#extractEncounterAnimal(c.encounterFeatures3),
+        wildFeatures: this.#extractWildernessStocking(c.wildFeaturesText)  ?? null,
+        wildFeaturesText: c.wildFeaturesText ?? null,
         rerollSeed: c.rerollSeed ?? null,
 
       });
@@ -699,7 +751,8 @@ export class HexMapCore {
       special: null,
       ruins: null,
       settlement: null,
-      settlementSize: null
+      settlementSize: null,
+      settlementText: null
     });
   }
 
@@ -830,5 +883,13 @@ export class HexMapCore {
     if (idx === -1) return feature; // fallback safety
 
     return feature.slice(idx + 2);
+  }
+    #extractWildernessStocking(feature) {
+    if (!feature || typeof feature !== "string") return null;
+
+    const idx = feature.indexOf(": ");
+    if (idx === -1) return feature; // fallback safety
+
+    return feature.slice(0, idx);
   }
 }

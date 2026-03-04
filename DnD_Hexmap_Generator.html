@@ -52,6 +52,15 @@
         <span class="k">Encounter Features 3</span>
         <span class="v" id="encounterFeatures3">—</span>
       </div>
+      <div class="kv">
+        <span class="k">Wilderness Features</span>
+        <span class="v" id="wildFeaturesText">—</span>
+      </div>
+      <div class="kv">
+        <span class="k">Settlement</span>
+        <span class="v" id="settlementText">—</span>
+      </div>
+
       <div class="group" id="ruinsBlock">
         <label>Ruins details</label>
         <div id="hexRuins" class="readout">
@@ -61,30 +70,13 @@
         </div>
       </div>
 
-      <div class="group grid2">
-        <div>
-          <label for="hexSettlement">Settlement</label>
-          <input id="hexSettlement" type="text" placeholder="e.g., village, waystation, Fort Driftwood" />
-        </div>
-        <div>
-          <label for="hexSettlementSize">Population</label>
-          <input id="hexSettlementSize" type="number" min="0" step="1" placeholder="e.g., 120" />
-        </div>
-        <!--          <div>
-          <input id="hexSettlementDesc" type="text" placeholder="-" />
-        </div> -->
-        <div class="full">
-          <button id="saveSettlement">Save settlement</button>
-        </div>
-      </div>
-
       <div class="group">
         <label>Export / Import</label>
         <div class="exportRow">
-          <button id="exportGrid">Export JSON</button>
+          <button class="buttonClass" id="exportGrid">Export JSON</button>
           <label class="fileBtn">
             Import JSON
-            <input id="importGrid" type="file" accept="application/json" />
+            <input class="buttonClass" id="importGrid" type="file" accept="application/json" />
           </label>
         </div>
       </div>
@@ -92,14 +84,21 @@
       <div class="group">
         <label>Toggle to show Encounter Features</label>
         <div class="toggleEncRow">
-          <button id="toggleEncounterLabels">Show Encounters</button>
+          <button class="buttonClass" id="toggleEncounterLabels">Show Encounters</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Toggle to show Wilderness Stocking Features</label>
+        <div class="toggleWildRow">
+          <button class="buttonClass" id="toggleWildLabels">Show Wilderness Stocking</button>
         </div>
       </div>
 
       <div class="group">
         <label>Re-roll features</label>
         <div class="rerollRow">
-          <button id="rerollButton">Re-roll Features</button>
+          <button class="buttonClass" id="rerollButton">Re-roll Features</button>
         </div>
       </div>
 

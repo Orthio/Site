@@ -289,8 +289,8 @@
             "20": "Castle",
             "21": "Castle",
             "22": "Castle",
-            "23": "",
-            "24": "",
+            "23": "Landmark",
+            "24": "Landmark",
             "25": "Temple",
             "26": "Temple",
             "27": "Temple",
@@ -1534,5 +1534,151 @@
             "19": "Termite, Water",
             "20": "Turtle, Snapping"
         }
+    },
+    "wildernessFeaturesTable": {
+        "1": [
+            "Landmark",
+            "A Hidden Feature that takes Time to Uncover or Investigate."
+        ],
+        "2": [
+            "Landmark",
+            "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens."
+        ],
+        "3": [
+            "Landmark",
+            "A change in Elevation that might create a vantage point to obtain the Lay of the Land"
+        ],
+        "4": [
+            "Landmark",
+            "A Vignette to assist with Portraying a sense of Place."
+        ],
+        "5": [
+            "Landmark",
+            "Something placed by Current/Former Denizens that speaks of other Inhabitants"
+        ],
+        "6": [
+            "Landmark/Resource",
+            "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies"
+        ],
+        "7": [
+            "Landmark",
+            "Add some Wilderness Fauna to breathe life into the place."
+        ],
+        "8": [
+            "Landmark",
+            "Add some Distinctive Trees or other native Plants"
+        ],
+        "9": [
+            "Landmark",
+            "Add a few Discarded Items that may speak to the Denizens or fellow Travelers"
+        ],
+        "10": [
+            "Landmark",
+            "Add something that speaks to the Season or recent Changes in the Weather."
+        ],
+        "11": [
+            "Landmark",
+            "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions."
+        ],
+        "12": [
+            "Landmark/Resource",
+            "Add a Resource that may not be immediately useful now, but might be important Later."
+        ],
+        "13": [
+            "Lair",
+            "Give them a Desire or Need that is in direct conflict with another Faction."
+        ],
+        "14": [
+            "Lair",
+            "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship."
+        ],
+        "15": [
+            "Lair",
+            "Apply a Mien to assist with Portrayal of the Encounter."
+        ],
+        "16": [
+            "Lair/Resource",
+            "Placie Resource with a Past, enough to garner Rumors and Gossip in the outside world."
+        ],
+        "17": [
+            "Lair/Resource",
+            "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)."
+        ],
+        "18": [
+            "Lair/Resource",
+            "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly."
+        ],
+        "19": [
+            "Lair",
+            "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements."
+        ],
+        "20": [
+            "Lair",
+            "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear."
+        ],
+        "21": [
+            "Lair",
+            "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation."
+        ],
+        "22": [
+            "Lair/Resource",
+            "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way."
+        ],
+        "23": [
+            "Lair/Resource",
+            "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier"
+        ],
+        "24": [
+            "Lair/Resource",
+            "Consider placing a Resource that is actively being exploited by the Monsters in some way"
+        ],
+        "25": [
+            "Special",
+            "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool."
+        ],
+        "26": [
+            "Special",
+            "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource"
+        ],
+        "27": [
+            "Special",
+            "Consider an area where Magic might function in a fashion different from Expectations."
+        ],
+        "28": [
+            "Special",
+            "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both."
+        ],
+        "29": [
+            "Special",
+            "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires."
+        ],
+        "30": [
+            "Special",
+            "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes."
+        ],
+        "31": [
+            "Hazard",
+            "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury."
+        ],
+        "32": [
+            "Hazard",
+            "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice."
+        ],
+        "33": [
+            "Hazard",
+            "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers."
+        ],
+        "34": [
+            "Hazard",
+            "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately."
+        ],
+        "35": [
+            "Hazard/Resource",
+            "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi."
+        ],
+        "36": [
+            "Hazard/Resource",
+            "Consider a Hazard that renders the Resource invaluable or inaccessible in some way."
+        ]
     }
 }

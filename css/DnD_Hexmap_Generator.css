@@ -96,7 +96,7 @@ body {
   text-anchor: middle;
   dominant-baseline: middle;
   pointer-events: none;
-  fill: #eee;
+  /* fill: #eee; */
   font-size: 9px;
   fill: #000000;
   /* text color */
@@ -126,7 +126,7 @@ body {
   display: grid;
   grid-template-columns: 90px 1fr;
   gap: 6px 10px;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 6px;
 }
 
@@ -191,6 +191,10 @@ body {
   width: fit-content;
 }
 
+.buttonClass {
+  font-size: 12px;
+}
+
 .exportRow button,
 .fileBtn {
   font-family: inherit;
@@ -200,7 +204,6 @@ body {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
 }
 
 .fileBtn input {
