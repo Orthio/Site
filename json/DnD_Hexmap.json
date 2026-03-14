@@ -365,7 +365,10 @@
         "Prison",
         "Wizard's Stronghold",
         "Zoo",
-        "Catacombs"
+        "Catacombs",
+        "Portal",
+        "Spacecraft",
+        "Enchanted Castle"
     ],
     "ruinsInhabitants": [
         "Chimeras",
@@ -379,7 +382,7 @@
         "Reptiles/Reptilians",
         "Undead"
     ],
-    "hexFeatures": {
+    "terrainFeatures": {
         "hillsFeatures": [
             "Bluff",
             "Butte",
@@ -626,7 +629,7 @@
         "Lake": 9,
         "Valley": 29
     },
-    "wildernessRolls": {
+    "wildernessRollsTable": {
         "Plain": 1,
         "Scrub": 1,
         "Forest": 2,
@@ -1538,147 +1541,495 @@
     "wildernessFeaturesTable": {
         "1": [
             "Landmark",
-            "A Hidden Feature that takes Time to Uncover or Investigate."
+            "A Hidden Feature that takes Time to Uncover or Investigate.",
+            "1-1"
         ],
         "2": [
             "Landmark",
-            "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens."
+            "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens.",
+            "1-2"
         ],
         "3": [
             "Landmark",
-            "A change in Elevation that might create a vantage point to obtain the Lay of the Land"
+            "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+            "1-3"
         ],
         "4": [
             "Landmark",
-            "A Vignette to assist with Portraying a sense of Place."
+            "A Vignette to assist with Portraying a sense of Place.",
+            "1-4"
         ],
         "5": [
             "Landmark",
-            "Something placed by Current/Former Denizens that speaks of other Inhabitants"
+            "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+            "1-5"
         ],
         "6": [
             "Landmark/Resource",
-            "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies"
+            "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+            "1-6"
         ],
         "7": [
             "Landmark",
-            "Add some Wilderness Fauna to breathe life into the place."
+            "Add some Wilderness Fauna to breathe life into the place.",
+            "2-1"
         ],
         "8": [
             "Landmark",
-            "Add some Distinctive Trees or other native Plants"
+            "Add some Distinctive Trees or other native Plants",
+            "2-2"
         ],
         "9": [
             "Landmark",
-            "Add a few Discarded Items that may speak to the Denizens or fellow Travelers"
+            "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+            "2-3"
         ],
         "10": [
             "Landmark",
-            "Add something that speaks to the Season or recent Changes in the Weather."
+            "Add something that speaks to the Season or recent Changes in the Weather.",
+            "2-4"
         ],
         "11": [
             "Landmark",
-            "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions."
+            "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions.",
+            "2-5"
         ],
         "12": [
             "Landmark/Resource",
-            "Add a Resource that may not be immediately useful now, but might be important Later."
+            "Add a Resource that may not be immediately useful now, but might be important later.",
+            "2-6"
         ],
         "13": [
             "Lair",
-            "Give them a Desire or Need that is in direct conflict with another Faction."
+            "Give them a Desire or Need that is in direct conflict with another Faction.",
+            "3-1"
         ],
         "14": [
             "Lair",
-            "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship."
+            "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship.",
+            "3-2"
         ],
         "15": [
             "Lair",
-            "Apply a Mien to assist with Portrayal of the Encounter."
+            "Apply a Mien to assist with Portrayal of the Encounter.",
+            "3-3"
         ],
         "16": [
             "Lair/Resource",
-            "Placie Resource with a Past, enough to garner Rumors and Gossip in the outside world."
+            "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world.",
+            "3-4"
         ],
         "17": [
             "Lair/Resource",
-            "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)."
+            "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize).",
+            "3-5"
         ],
         "18": [
             "Lair/Resource",
-            "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly."
+            "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly.",
+            "3-6"
         ],
         "19": [
             "Lair",
-            "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements."
+            "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements.",
+            "4-1"
         ],
         "20": [
             "Lair",
-            "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear."
+            "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear.",
+            "4-2"
         ],
         "21": [
             "Lair",
-            "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation."
+            "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation.",
+            "4-3"
         ],
         "22": [
             "Lair/Resource",
-            "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way."
+            "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way.",
+            "4-4"
         ],
         "23": [
             "Lair/Resource",
-            "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier"
+            "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+            "4-5"
         ],
         "24": [
             "Lair/Resource",
-            "Consider placing a Resource that is actively being exploited by the Monsters in some way"
+            "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+            "4-6"
         ],
         "25": [
             "Special",
-            "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool."
+            "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool.",
+            "5-1"
         ],
         "26": [
             "Special",
-            "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource"
+            "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+            "5-2"
         ],
         "27": [
             "Special",
-            "Consider an area where Magic might function in a fashion different from Expectations."
+            "Consider an area where Magic might function in a fashion different from Expectations.",
+            "5-3"
         ],
         "28": [
             "Special",
-            "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both."
+            "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both.",
+            "5-4"
         ],
         "29": [
             "Special",
-            "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires."
+            "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires.",
+            "5-5"
         ],
         "30": [
             "Special",
-            "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes."
+            "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes.",
+            "5-6"
         ],
         "31": [
             "Hazard",
-            "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury."
+            "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury.",
+            "6-1"
         ],
         "32": [
             "Hazard",
-            "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice."
+            "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice.",
+            "6-2"
         ],
         "33": [
             "Hazard",
-            "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers."
+            "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers.",
+            "6-3"
         ],
         "34": [
             "Hazard",
-            "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately."
+            "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately.",
+            "6-4"
         ],
         "35": [
             "Hazard/Resource",
-            "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi."
+            "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi.",
+            "6-5"
         ],
         "36": [
             "Hazard/Resource",
-            "Consider a Hazard that renders the Resource invaluable or inaccessible in some way."
+            "Consider a Hazard that renders the Resource invaluable or inaccessible in some way.",
+            "6-6"
         ]
-    }
+    },
+    "wildFeaturesWithSuppArray": [
+        "1-2",
+        "1-4",
+        "2-1",
+        "2-2",
+        "2-3",
+        "2-4",
+        "3-3",
+        "4-3",
+        "5-1",
+        "5-4",
+        "5-6",
+        "6-3",
+        "6-5"
+    ],
+    "fillingFeatureTable": {
+        "1": "Geologic",
+        "2": "Geologic",
+        "3": "Geologic",
+        "4": "Geologic",
+        "5": "Structure",
+        "6": "Structure",
+        "7": "Structure",
+        "8": "Structure",
+        "9": "Resource",
+        "10": "Resource",
+        "11": "Resource",
+        "12": "Resource",
+        "13": "Hazard",
+        "14": "Sign",
+        "15": "Dungeon",
+        "16": "Terrain",
+        "17": "Terrain",
+        "18": "Settlement",
+        "19": "Water",
+        "20": "Magic"
+    },
+    "sandboxGenLandmarkStartingTable": [
+        [
+            "Natural",
+            "sandboxGenLandmarkNaturalTable"
+        ],
+        [
+            "Natural",
+            "sandboxGenLandmarkNaturalTable"
+        ],
+        [
+            "Natural",
+            "sandboxGenLandmarkNaturalTable"
+        ],
+        [
+            "Artificial",
+            "sandboxGenLandmarkArtificialTable"
+        ],
+        [
+            "Artificial",
+            "sandboxGenLandmarkArtificialTable"
+        ],
+        [
+            "Magic",
+            "sandboxGenLandmarkMagicTable"
+        ]
+    ],
+    "sandboxGenLandmarkNaturalTable": [
+        "Animal boneyard",
+        "Anthill",
+        "Beaver dam",
+        "Giant animal (exo)skeleton",
+        "Giant bird nest",
+        "Giant snail shell",
+        "Huge galleries",
+        "Location covered with crows",
+        "Predator’s hunting ground",
+        "Ransacked area",
+        "Ford",
+        "Hotspring",
+        "Lake",
+        "Pond",
+        "Rapids",
+        "River",
+        "Spring",
+        "Stream",
+        "Water-filled cave",
+        "Waterfall",
+        "Berry bush",
+        "Bramble overgrown area",
+        "Burnt area",
+        "Centennial tree",
+        "Dead tree",
+        "Exotic tree",
+        "Fallen tree",
+        "Flower circle",
+        "Fruit tree",
+        "Giant flower",
+        "Giant mushroom",
+        "Hollow tree",
+        "Impenetrable thicket",
+        "Mushroom circle",
+        "Mushroom spot",
+        "Mycelial proliferation",
+        "Rare plant spot",
+        "Root arch",
+        "Tree alignment",
+        "Water-filled plant",
+        "Animal shaped rock",
+        "Cave",
+        "Chasm",
+        "Crater",
+        "Crystalline proliferation",
+        "Giant crystal",
+        "Lava pool",
+        "Mudpit",
+        "Pit",
+        "Precious metal vein",
+        "Ravine",
+        "Rift",
+        "Rock hole",
+        "Rock needle",
+        "Scree",
+        "Sinkhole",
+        "Stone arch",
+        "Stone bridge",
+        "Stone stairs"
+    ],
+    "sandboxGenLandmarkArtificialTable": [
+        "Barn",
+        "Felled trees",
+        "Field",
+        "Granary",
+        "Labor camp",
+        "Meadow",
+        "Quarry",
+        "Straw man",
+        "Swidden field",
+        "Water tower",
+        "Abandoned tavern",
+        "Burnt barn",
+        "Collapsed mine entrance",
+        "Decrepit mansion",
+        "Desecrated church",
+        "Destroyed house",
+        "Overgrown tower",
+        "Pile of rubble",
+        "Razed village",
+        "Ruined castle",
+        "Carved rock",
+        "Dolmen",
+        "Hanging bones",
+        "Heads on spikes",
+        "Masks",
+        "Pile of bones",
+        "Rock stack",
+        "Standing stones",
+        "Straw dolls",
+        "Totem",
+        "Bench",
+        "Bivouac area",
+        "Gazebo",
+        "Hunter’s cabin",
+        "Hunting tower",
+        "Kennel",
+        "Outhouse",
+        "Palisade",
+        "Well",
+        "Wooden fence",
+        "Boardwalks",
+        "Boundary stone",
+        "Bridge",
+        "Broken bridge",
+        "Danger sign",
+        "Ledge",
+        "Signboard",
+        "Stairs",
+        "Suspension bridge",
+        "Zipline",
+        "Bell/Gong",
+        "Calvary",
+        "Cemetery",
+        "Cross",
+        "Holy place",
+        "Idol",
+        "Shrine",
+        "Tomb",
+        "Tumulus"
+    ],
+    "sandboxGenLandmarkMagicTable": [
+        "Always snowy area",
+        "Anti-magic zone",
+        "Area bringing back the dead",
+        "Area where nothing grows",
+        "Bad luck area",
+        "Dome of darkness",
+        "Force field",
+        "Incessant cyclone",
+        "Protection from Evil",
+        "Time is frozen",
+        "Area covered with fairy dust",
+        "Bloody altar",
+        "Corpse covered in crystals",
+        "Corrupt area",
+        "Destroyed golem",
+        "Magic battlefield",
+        "Old shrine",
+        "Petrified travelers",
+        "Remnants of a ceremony",
+        "Signs of an explosion",
+        "Ancient burial grounds",
+        "Birthplace/Tomb of a saint",
+        "Magic beacon",
+        "Mana well",
+        "Neolithic rock monument",
+        "Preserved natural place",
+        "Root of the World Tree",
+        "Sacred waters",
+        "Sun focal point",
+        "Ziggurat of old",
+        "Everburning tree",
+        "Evermelting ice",
+        "Floating crystal",
+        "Ghost building",
+        "Luminous engravings",
+        "Reverse waterfall",
+        "Singing crystal",
+        "Strong magnetism",
+        "Talking rock",
+        "Whispers in the wind",
+        "Curative basin",
+        "Enchanted bell",
+        "Fertility stone",
+        "Magic fountain/spring",
+        "Magic fruits tree",
+        "Mutation pit",
+        "Stone of knowledge",
+        "Sword stuck in a rock",
+        "Visions pool",
+        "Witch cauldron",
+        "Breathable water",
+        "Glowing mushrooms trail",
+        "Illusory path",
+        "Invisible bridge",
+        "Levitating staircase",
+        "Magic mirror",
+        "Rainbow bridge",
+        "Riddle bridge",
+        "Walkable water",
+        "Wormhole"
+    ],
+    "sandboxGenHazardTable": [
+        "Acid pits",
+        "Allergenic plants",
+        "Ancient dormant illness",
+        "Curse",
+        "Dangerous footing",
+        "Easy to get lost",
+        "Fog",
+        "Fumes (smoke, toxic, etc.)",
+        "Ghosts",
+        "Hallucinogenic spores",
+        "Hidden pits",
+        "Hunting traps",
+        "Magic corruption",
+        "Plague",
+        "Quicksands",
+        "Radiations",
+        "Sabotage/Trap",
+        "Unstable/Likely to break",
+        "Venomous animals (hornets, snakes, scorpions, etc.)",
+        "Volcanic area"
+    ],
+    "sandboxGenEmptyTable": [
+        "Info. about nearby monsters (ecology, lair, weakness, etc.)",
+        "Info. about nearby monsters (ecology, lair, weakness, etc.)",
+        "Info. about nearby monsters (ecology, lair, weakness, etc.)",
+        "Info. about nearby monsters (ecology, lair, weakness, etc.)",
+        "Info. about nearby monsters (ecology, lair, weakness, etc.)",
+        "Alchemy recipe",
+        "Curative effects (water, plant)",
+        "Directions to a settlement",
+        "Dungeon location",
+        "Future event",
+        "Important past event",
+        "Legend/Myth",
+        "Local custom",
+        "Password",
+        "Secret passage location",
+        "Spell/Ritual",
+        "Tale about a magic weapon",
+        "Toxicity of something",
+        "Upcoming weather",
+        "Words from a (random) monster language"
+    ],
+    "sandboxGenSpecialStartTable": [
+        "Arbitrate a dispute",
+        "Prevent a threat",
+        "Solve a puzzle/riddle",
+        "Uncover a mystery",
+        "Uncover a mystery",
+        "Uncover a mystery",
+        "NPC(s)/Monster(s) in need",
+        "NPC(s)/Monster(s) in need",
+        "Related to landmark",
+        "Related to landmark",
+        "Related to landmark"
+    ],
+    "sandboxGenSpecialDisputeTable": [
+        "Adultery",
+        "Broken trade agreement",
+        "Division of an inheritance",
+        "Murder investigation",
+        "Territorial boundaries",
+        "Trial"
+    ]
 }

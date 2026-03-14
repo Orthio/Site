@@ -1,0 +1,3 @@
+ctrl shift o - checks symbols
+ctrl shift p, outline view - shows parts
+ctrl b - hides sidebar

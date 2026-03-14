@@ -21,32 +21,34 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
   const data = await res.json();
 
-  const terrain = data.hexWildernessTerrain ?? data.terrain ?? data;
-  const features = data.hexFeatures ?? null;
-  const inhabitation = data.hexInhabitation ?? null;
-  const wildernessRolls = data.wildernessRolls ?? null
+  const terrainTable = data.hexWildernessTerrain ?? data.terrain ?? data;
+  const terrainFeaturesTable = data.terrainFeatures ?? null;
+  const inhabitationTable = data.hexInhabitation ?? null;
+  const wildernessRollsTable = data.wildernessRollsTable ?? null
   const wildernessFeatureChance = data.wildernessFeatureChance ?? null;
   const wildernessEncountersTable = data.wildernessEncountersTable ?? null;
   const specificEncountersTable = data.specificEncountersTable ?? null;
   const wildernessFeaturesTable = data.wildernessFeaturesTable ?? null;
-  const special = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
-  const ruinsType = data.ruinsType ?? null;
-  const ruinsDecay = data.ruinsDecay ?? null;
-  const ruinsInhabitants = data.ruinsInhabitants ?? null;
+  const wildFeaturesWithSuppArray = data.wildFeaturesWithSuppArray ?? null;
+  const specialTable = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
+  const ruinsTypeTable = data.ruinsType ?? null;
+  const ruinsDecayTable = data.ruinsDecay ?? null;
+  const ruinsInhabitantsTable = data.ruinsInhabitants ?? null;
 
   hexMap.setTables({
-    terrain,
-    features,
-    inhabitation,
-    wildernessRolls,
+    terrainTable,
+    terrainFeaturesTable,
+    inhabitationTable,
+    wildernessRollsTable,
     wildernessFeatureChance,
     wildernessEncountersTable,
     specificEncountersTable,
     wildernessFeaturesTable,
-    special,
-    ruinsDecay,
-    ruinsType,
-    ruinsInhabitants
+    wildFeaturesWithSuppArray,
+    specialTable,
+    ruinsDecayTable,
+    ruinsTypeTable,
+    ruinsInhabitantsTable
   });
 
   const initialSeed = getSeedFromURL() ?? randomUint32();
@@ -62,7 +64,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexCoords: document.getElementById("hexCoords"),
       hexTerrain: document.getElementById("hexTerrain"),
 
-      hexFeatures: document.getElementById("hexFeatures"),
+      terrainFeatures: document.getElementById("terrainFeatures"),
       encounterFeatures1: document.getElementById("encounterFeatures1"),
       encounterFeatures2: document.getElementById("encounterFeatures2"),
       encounterFeatures3: document.getElementById("encounterFeatures3"),
@@ -72,6 +74,12 @@ window.addEventListener("DOMContentLoaded", async () => {
       ruinsType: document.getElementById("ruinsType"),
       ruinsInhabitants: document.getElementById("ruinsInhabitants"),
       settlementText: document.getElementById("settlementText"),
+      hexFeatureObvious1: document.getElementById("hexFeatureObvious1"),
+      hexFeatureObvious2: document.getElementById("hexFeatureObvious2"),
+      hexFeatureObvious3: document.getElementById("hexFeatureObvious3"),
+      hexFeatureHidden1: document.getElementById("hexFeatureHidden1"),
+      hexFeatureHidden2: document.getElementById("hexFeatureHidden2"),
+
     },
     initialSeed
   });

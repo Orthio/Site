@@ -79,30 +79,42 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
   const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
   const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
-  const wildFeatOut = dom?.wildFeaturesText ?? document.getElementById("wildFeaturesText");
+  const wildFeatOut = dom?.wildFeaturesDescription ?? document.getElementById("wildFeaturesText");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
   const ruDecay = dom?.ruinsDecay ?? document.getElementById("ruinsDecay");
   const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
   const ruInh = dom?.ruinsInhabitants ?? document.getElementById("ruinsInhabitants");
-
   const setOut = dom?.settlementText ?? document.getElementById("settlementText");
+
+  const hexObvOut1 = dom?.hexFeatureObvious1 ?? document.getElementById("hexFeatureObvious1");
+  const hexObvOut2 = dom?.hexFeatureObvious2 ?? document.getElementById("hexFeatureObvious2");
+  const hexObvOut3 = dom?.hexFeatureObvious3 ?? document.getElementById("hexFeatureObvious3");
+  const hexHidOut1 = dom?.hexFeatureHidden1 ?? document.getElementById("hexFeatureHidden1");
+  const hexHidOut2 = dom?.hexFeatureHidden2 ?? document.getElementById("hexFeatureHidden2");
+
 
   svg.addEventListener("hexmap:select", (e) => {
     const c = e.detail.cell;
     if (idOut) idOut.textContent = c.id;
     if (crdOut) crdOut.textContent = `q=${c.q}, r=${c.r}`;
-    if (terOut) terOut.textContent = c.baseName;
+    if (terOut) terOut.textContent = c.terrain;
 
     // Features (natural + special, combined)
     const lines = [];
     if (c.feature) lines.push(c.feature);
     if (c.special) lines.push(`Special: ${c.special}`);
     if (featOut) featOut.textContent = lines.length ? lines.join(" | ") : "—";
-    if (enc1Out) enc1Out.textContent = c.encounterFeatures1 ?? "—";
-    if (enc2Out) enc2Out.textContent = c.encounterFeatures2 ?? "—";
-    if (enc3Out) enc3Out.textContent = c.encounterFeatures3 ?? "—";
-    if (wildFeatOut) wildFeatOut.textContent = c.wildFeaturesText ?? "—";
-    if (setOut) setOut.textContent = c.settlementText ?? "";
+    if (enc1Out) enc1Out.textContent = Array.isArray(c.encounterFeatures1) ? c.encounterFeatures1[1] : "—";
+    if (enc2Out) enc2Out.textContent = Array.isArray(c.encounterFeatures2) ? c.encounterFeatures2[1] : "—";
+    if (enc3Out) enc3Out.textContent = Array.isArray(c.encounterFeatures3) ? c.encounterFeatures3[1] : "—";
+    if (wildFeatOut) wildFeatOut.textContent = c.wildFeaturesDescription ?
+      (c.wildFeaturesType + ": " + c.wildFeaturesDescription) : "—";
+    if (setOut) setOut.textContent = c.settlementText ? c.settlementText : "—";
+    if (hexObvOut1) hexObvOut1.textContent = c.hexFeatureObvious1 ?? "—";
+    if (hexObvOut2) hexObvOut2.textContent = c.hexFeatureObvious2 ?? "—";
+    if (hexObvOut3) hexObvOut3.textContent = c.hexFeatureObvious3 ?? "—";
+    if (hexHidOut1) hexHidOut1.textContent = c.hexFeatureHidden1 ?? "—";
+    if (hexHidOut2) hexHidOut2.textContent = c.hexFeatureHidden2 ?? "—";
 
     // Ruins details
     if (c.ruins && ruinsBlock) {
@@ -133,14 +145,19 @@ export function initControls({ hexMap, dom, initialSeed }) {
         hexMap.labelMode = "default";
         toggleEncBtn.textContent = "Show Encounters";
         toggleWildBtn.textContent = "Show Wilderness Stocking";
+        // const labelColor =  "#000000";
+        // labelGroup.style.fill = labelColor;
       } else if (hexMap.labelMode === "wildStocking") {
         hexMap.labelMode = "encounters"
         toggleEncBtn.textContent = "Show Terrain";
         toggleWildBtn.textContent = "Show Wilderness Stocking";
+        // const labelColor =  "#000000";
+        // labelGroup.style.fill = labelColor;
       } else {
         hexMap.labelMode = "encounters"
         toggleEncBtn.textContent = "Show Terrain";
         toggleWildBtn.textContent = "Show Wilderness Stocking";
+
       }
 
       hexMap.render();
@@ -155,7 +172,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const toggleWildBtn = document.getElementById("toggleWildLabels");
   if (toggleWildBtn) {
     toggleWildBtn.addEventListener("click", () => {
-      
+
       if (hexMap.labelMode === "wildStocking") {
         hexMap.labelMode = "default";
         toggleEncBtn.textContent = "Show Encounters";

@@ -127,17 +127,17 @@ function regenerate(seed, TABLE_ROOT) {
     const rollD20 = () => 1 + Math.floor(rng() * 20);
 
     const grid = new Map();
-    function setCell(q, r, { baseName, variant }) {
-        const code = T[baseName] ?? T.Plain;
+    function setCell(q, r, { inputTerrain }) {
+        const code = T[inputTerrain] ?? T.Plain;
         const fill = TERRAIN_COLOR[code] || "#555";
         grid.set(`${q},${r}`, {
-            q, r, baseName, variant, code, fill,
-            label: variant ? `${baseName}-${variant}` : baseName
+            q, r, inputTerrain, code, fill,
+            label: inputTerrain
         });
     }
 
     // seed
-    setCell(0, 0, { baseName: "Plain", variant: null });
+    setCell(0, 0, { inputTerrain: "Plain", variant: null });
 
     // BFS
     const frontier = [[0, 0]];
@@ -152,11 +152,11 @@ function regenerate(seed, TABLE_ROOT) {
             const k = `${nq},${nr}`;
             if (grid.has(k)) continue;
 
-            const parentBaseName = curr.baseName;
+            const parentTerrain = curr.terrain;
             const d20 = rollD20();
-            const result = nextFromJSON(TABLE_ROOT, parentBaseName, d20);
+            const result = nextFromJSON(TABLE_ROOT, parentTerrain, d20);
 
-            const child = { baseName: result, variant: null };
+            const child = { inputTerrain: result, variant: null };
 
             setCell(nq, nr, child);
             frontier.push([nq, nr]);
