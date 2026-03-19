@@ -3,11 +3,10 @@
 // IDs are "000.000" .. "014.009".
 // Uses:
 //   - hexTerrain for terrain transitions, Plains etc
-//   - terrainFeatures for terrain-based features, Gulch etc
+//   - terrainFeature for terrain-based features, Gulch etc
 //   - wildernessRollsTable for encounters found in the hex
 //   - hexInhabitation (Dense, maybe Special)
 //   - ruinsType / ruinsDecay / ruinsInhabitants for ruins
-//   - specialInhabitation when "Special" appears in inhabitation
 
 /**
  * @typedef {Object} HexCell
@@ -27,15 +26,16 @@
  * @property {[string, number]|null} settlement, settlementSize  // Small town, 900
  * @property {number|null} settlementSize  // 900
  * @property {string|null} settlementText  // Small town, pop.900
- * @property {string|null} special  // Chapel
  * @property {string|null} ruins  
  * 
- * @property {[number,string]|null} regionName // [[01, Green hill zone]
+ * @property {string|null} regionName // 01 Green hill zone
+ * @property {string|null} regionNameText // Green hill zone
  *
  * @property {[string,string]|null} encounterFeatures1  // O-Swimmer, Fish, swordfish
  * @property {[string,string]|null} encounterFeatures2  // O-Swimmer, Fish, swordfish
  * @property {[string,string]|null} encounterFeatures3  // O-Swimmer, Fish, swordfish
 *
+* @property {[number, number]} noFeatures  // 2, 1 
 * @property {string|null} hexFeatureObvious1
 * @property {string|null} hexFeatureObvious2
 * @property {string|null} hexFeatureObvious3
@@ -63,6 +63,8 @@ export class HexMapCore {
     if (!svgEl) throw new Error("HexMapCore: svgEl is required");
     this.svg = svgEl;
 
+    this.tables = {};
+    
     // Grid settings
     this.cols = opts.cols ?? 15; // q: 0..14
     this.rows = opts.rows ?? 10; // r: 0..9
@@ -71,15 +73,13 @@ export class HexMapCore {
     this.labelMode = "default"; // "default" | "encounters"
 
     // Data/state
-    this.table = null;              // terrain
-    this.features = null;           // terrainFeatures
+    this.terrainFeature = null;           
     this.encFeatures1 = null;
     this.encFeatures2 = null;
     this.encFeatures3 = null;
     this.wildernessRolls = null;
     this.wildernessFeatureChance = null;
     this.inhabitation = null;       // hexInhabitation
-    this.specialInhabitation = null; // special table
     this.ruinsDecay = null;
     this.ruinsType = null;
     this.ruinsInhabitants = null;
@@ -88,8 +88,10 @@ export class HexMapCore {
     this.grid = new Map();          // key "q,r" -> cell
     this.selectedKey = null;
 
+    this.tables2 = {};
+
     // Base terrains
-    this.T = {
+    this.tables2.T = {
       Plain: 1,
       Scrub: 2,
       Forest: 3,
@@ -104,18 +106,18 @@ export class HexMapCore {
       Valley: 12,
     };
     this.COLOR = {
-      [this.T.Plain]: "#9bfe03",
-      [this.T.Scrub]: "#8bbf71",
-      [this.T.Forest]: "#14d000",
-      [this.T.ForestWithHills]: "#14d000",
-      [this.T.Rough]: "#977926",
-      [this.T.Desert]: "#f7d77d",
-      [this.T.Hills]: "#be9006",
-      [this.T.Mountains]: "#845704",
-      [this.T.MountainsWithPass]: "#845704",
-      [this.T.Marsh]: "#74a8a6",
-      [this.T.Lake]: "#5ab3ff",
-      [this.T.Valley]: "#b08bff"
+      [this.tables2.T.Plain]: "#9bfe03",
+      [this.tables2.T.Scrub]: "#8bbf71",
+      [this.tables2.T.Forest]: "#14d000",
+      [this.tables2.T.ForestWithHills]: "#14d000",
+      [this.tables2.T.Rough]: "#977926",
+      [this.tables2.T.Desert]: "#f7d77d",
+      [this.tables2.T.Hills]: "#be9006",
+      [this.tables2.T.Mountains]: "#845704",
+      [this.tables2.T.MountainsWithPass]: "#845704",
+      [this.tables2.T.Marsh]: "#74a8a6",
+      [this.tables2.T.Lake]: "#5ab3ff",
+      [this.tables2.T.Valley]: "#b08bff"
 
     };
 
@@ -136,7 +138,7 @@ export class HexMapCore {
       Valley: 20
     };
     // Thesholds for forests becoming forest with hills, mountains having a pass
-    this.TERRAIN_ADD_THRESH = {
+    this.tables2.TERRAIN_ADD_THRESH = {
       Plain: 20,
       Forest: 2,
       Hills: 2,
@@ -176,7 +178,7 @@ export class HexMapCore {
   }
 
   setTables({
-    terrainTable,
+    terrainTable = null,
     terrainFeaturesTable = null,
     inhabitationTable = null,
     wildernessRollsTable = null,
@@ -185,7 +187,7 @@ export class HexMapCore {
     specificEncountersTable = null,
     wildernessFeaturesTable = null,
     wildFeaturesWithSuppArray = null,
-    specialTable = null,
+    specialInhabitationTable = null,
     ruinsTypeTable = null,
     ruinsDecayTable = null,
     ruinsInhabitantsTable = null,
@@ -202,33 +204,33 @@ export class HexMapCore {
     if (!terrainTable || typeof terrainTable !== "object") {
       throw new Error("HexMapCore.setTables: terrain missing or invalid");
     }
-    this.terrainTable = terrainTable;
-    this.terrainFeaturesTable = terrainFeaturesTable && typeof terrainFeaturesTable === "object" ? terrainFeaturesTable : null;
-    this.inhabitationTable = inhabitationTable && typeof inhabitationTable === "object" ? inhabitationTable : null;
-    this.wildernessRollsTable = wildernessRollsTable && typeof wildernessRollsTable === "object" ? wildernessRollsTable : null;
-    this.wildernessFeatureChance = wildernessFeatureChance && typeof wildernessFeatureChance === "object" ? wildernessFeatureChance : null;
-    this.wildernessEncountersTable = wildernessEncountersTable && typeof wildernessEncountersTable === "object" ? wildernessEncountersTable : null;
-    this.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
-    this.wildernessFeaturesTable = wildernessFeaturesTable && typeof wildernessFeaturesTable === "object" ? wildernessFeaturesTable : null;
-    this.wildFeaturesWithSuppArray = wildFeaturesWithSuppArray && typeof wildFeaturesWithSuppArray === "object" ? wildFeaturesWithSuppArray : null;
-    this.specialInhabitationTable = specialTable && typeof specialTable === "object" ? specialTable : null;
-    this.ruinsTypeTable = ruinsTypeTable && typeof ruinsTypeTable === "object" ? ruinsTypeTable : null;
-    this.ruinsDecayTable = ruinsDecayTable && typeof ruinsDecayTable === "object" ? ruinsDecayTable : null;
-    this.ruinsInhabitantsTable =
+    this.tables.terrainTable = terrainTable;
+    this.tables.terrainFeaturesTable = terrainFeaturesTable && typeof terrainFeaturesTable === "object" ? terrainFeaturesTable : null;
+    this.tables.inhabitationTable = inhabitationTable && typeof inhabitationTable === "object" ? inhabitationTable : null;
+    this.tables.wildernessRollsTable = wildernessRollsTable && typeof wildernessRollsTable === "object" ? wildernessRollsTable : null;
+    this.tables.wildernessFeatureChance = wildernessFeatureChance && typeof wildernessFeatureChance === "object" ? wildernessFeatureChance : null;
+    this.tables.wildernessEncountersTable = wildernessEncountersTable && typeof wildernessEncountersTable === "object" ? wildernessEncountersTable : null;
+    this.tables.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
+    this.tables.wildernessFeaturesTable = wildernessFeaturesTable && typeof wildernessFeaturesTable === "object" ? wildernessFeaturesTable : null;
+    this.tables.wildFeaturesWithSuppArray = wildFeaturesWithSuppArray && typeof wildFeaturesWithSuppArray === "object" ? wildFeaturesWithSuppArray : null;
+    this.tables.specialInhabitationTable = specialInhabitationTable && typeof specialInhabitationTable === "object" ? specialInhabitationTable : null;
+    this.tables.ruinsTypeTable = ruinsTypeTable && typeof ruinsTypeTable === "object" ? ruinsTypeTable : null;
+    this.tables.ruinsDecayTable = ruinsDecayTable && typeof ruinsDecayTable === "object" ? ruinsDecayTable : null;
+    this.tables.ruinsInhabitantsTable =
       ruinsInhabitantsTable && typeof ruinsInhabitantsTable === "object" ? ruinsInhabitantsTable : null;
-    this.sandboxGenLandmarkStartingTable = sandboxGenLandmarkStartingTable;
-    this.sandboxGenLandmarkNaturalTable = sandboxGenLandmarkNaturalTable;
-    this.sandboxGenLandmarkArtificialTable = sandboxGenLandmarkArtificialTable;
-    this.sandboxGenLandmarkMagicTable = sandboxGenLandmarkMagicTable;
-    this.sandboxGenHazardTable = sandboxGenHazardTable;
-    this.sandboxGenEmptyTable = sandboxGenEmptyTable;
-    this.sandboxGenSpecialStartTable = sandboxGenSpecialStartTable;
+    this.tables.sandboxGenLandmarkStartingTable = sandboxGenLandmarkStartingTable;
+    this.tables.sandboxGenLandmarkNaturalTable = sandboxGenLandmarkNaturalTable;
+    this.tables.sandboxGenLandmarkArtificialTable = sandboxGenLandmarkArtificialTable;
+    this.tables.sandboxGenLandmarkMagicTable = sandboxGenLandmarkMagicTable;
+    this.tables.sandboxGenHazardTable = sandboxGenHazardTable;
+    this.tables.sandboxGenEmptyTable = sandboxGenEmptyTable;
+    this.tables.sandboxGenSpecialStartTable = sandboxGenSpecialStartTable;
 
   }
 
   // --- generation (rectangular, row-major) ---
   generate(seed) {
-    if (!this.terrainTable) throw new Error("HexMapCore.generate: call setTables() first");
+    if (!this.tables.terrainTable) throw new Error("HexMapCore.generate: call setTables() first");
     this.seed = seed >>> 0;
     const rng = this.#mulberry32(this.seed);
     const roll = (n) => 1 + Math.floor(rng() * n); // 1..n
@@ -312,7 +314,7 @@ export class HexMapCore {
   // --- helpers for generation: features / inhabitation / ruins ---
 
   #maybeAddFeature(cell, roll) {
-    if (!this.terrainFeaturesTable) return;
+    if (!this.tables.terrainFeaturesTable) return;
     const checkingTerrain = cell.terrain;
     const th = this.FEATURE_THRESH[checkingTerrain] ?? 0;
     if (th <= 0) return;
@@ -323,13 +325,13 @@ export class HexMapCore {
     const key = this.FEATURE_KEYS[checkingTerrain];
 
 
-    const list = key && Array.isArray(this.terrainFeaturesTable[key]) ? this.terrainFeaturesTable[key] : null;
+    const list = key && Array.isArray(this.tables.terrainFeaturesTable[key]) ? this.tables.terrainFeaturesTable[key] : null;
     if (!list || list.length === 0) return;
 
     const pick = list[roll(list.length) - 1];
     if (!pick) return;
 
-    cell.feature = pick;
+    cell.terrainFeature = pick;
   }
 
   #maybeAddTerrainExtra(cell, roll) {
@@ -344,7 +346,7 @@ export class HexMapCore {
       return;
     }
 
-    const th = this.TERRAIN_ADD_THRESH[checkingTerrain] ?? 0;
+    const th = this.tables2.TERRAIN_ADD_THRESH[checkingTerrain] ?? 0;
     if (th <= 0) return;
     if (roll(20) > th) return;
 
@@ -356,9 +358,9 @@ export class HexMapCore {
 
 
   #maybeAddInhabitation(cell, roll) {
-    if (!this.inhabitationTable) return;
+    if (!this.tables.inhabitationTable) return;
 
-    const denseTable = this.inhabitationTable.Dense ?? null;
+    const denseTable = this.tables.inhabitationTable.Dense ?? null;
     if (!denseTable) return;
 
     // 1d3; on 1 → 1d30 on Dense
@@ -369,9 +371,9 @@ export class HexMapCore {
 
     // Special handling
     if (/special/i.test(type)) {
-      const specialTbl = this.specialInhabitationTable ?? this.inhabitation.Special ?? null;
+      const specialTbl = this.tables.specialInhabitationTable ?? null;
       if (cell.terrain === "Hills" || cell.terrain === "Mountains") {
-        cell.settlement = ["Mine",null];
+        cell.settlement = ["Mine", null];
       }
       else if (specialTbl) {
         const special = this.#lookupFromTable(specialTbl, roll(30));
@@ -415,21 +417,21 @@ export class HexMapCore {
   }
 
   #maybeAddEncounterFeatures(cell, roll) {
-    if (!this.wildernessEncountersTable) return;
-    if (!this.wildernessRollsTable) return;
-    if (!this.specificEncountersTable) return;
-    if (!this.wildernessFeaturesTable) return;
+    if (!this.tables.wildernessEncountersTable) return;
+    if (!this.tables.wildernessRollsTable) return;
+    if (!this.tables.specificEncountersTable) return;
+    if (!this.tables.wildernessFeaturesTable) return;
 
 
     const terrainCheck = cell.terrain;
 
-    const rolls = this.wildernessRollsTable[terrainCheck] ?? 0;            // e.g. Forest -> 2
+    const rolls = this.tables.wildernessRollsTable[terrainCheck] ?? 0;            // e.g. Forest -> 2
     if (rolls <= 0) return;
 
     // which column of encFeaturesTable to use for this terrain
     const tableKey = this.ENCOUNTER_FEATURE_KEYS[terrainCheck];
-    const col = tableKey && typeof this.wildernessEncountersTable[tableKey] === "object"
-      ? this.wildernessEncountersTable[tableKey]
+    const col = tableKey && typeof this.tables.wildernessEncountersTable[tableKey] === "object"
+      ? this.tables.wildernessEncountersTable[tableKey]
       : null;
     if (!col) return;
 
@@ -449,11 +451,7 @@ export class HexMapCore {
       if (!categoryPick) continue;
 
       // d20 on the type
-      const subTableColumn = this.specificEncountersTable[categoryPick];
-      /*     const subTable = subTableColumn && typeof this.specificEncountersTable[subTableColumn] === "object"
-            ? this.specificEncountersTable[subTableColumn]
-            : null;
-          if (!subTable) return; */
+      const subTableColumn = this.tables.specificEncountersTable[categoryPick];
       const animalPick = subTableColumn[String(roll(20))] ?? null;
 
       const villageTypes = ["Village", "Small Town", "Large Town", "City"];
@@ -465,10 +463,10 @@ export class HexMapCore {
 
     if (roll(2) > 1) {
       const wildFeaturesRoll = String(roll(36));
-      cell.wildFeaturesType = this.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
-      cell.wildFeaturesDescription = this.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
-      cell.wildFeaturesIndex = this.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
-      cell.wildFeaturesHighlight = this.wildFeaturesWithSuppArray?.includes(cell.wildFeaturesIndex) ?? false;
+      cell.wildFeaturesType = this.tables.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
+      cell.wildFeaturesDescription = this.tables.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
+      cell.wildFeaturesIndex = this.tables.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
+      cell.wildFeaturesHighlight = this.tables.wildFeaturesWithSuppArray?.includes(cell.wildFeaturesIndex) ?? false;
     } else {
       cell.wildFeaturesType = null;
       cell.wildFeaturesDescription = null;
@@ -491,7 +489,7 @@ export class HexMapCore {
 
   }
 
-  // Reroll feature + encounter features for a single hex
+  // Reroll feature + encounter features for a single hex, keeping same terrain
   rerollAllFeaturesAndEncounters() {
     const batchSeed = (Date.now() ^ ((Math.random() * 0xFFFFFFFF) >>> 0)) >>> 0;
 
@@ -502,7 +500,6 @@ export class HexMapCore {
       const roll = (sides) => 1 + Math.floor(rng() * sides);
 
       // Clear only the fields you want to reroll
-      cell.feature = null;
       cell.ruins = null;
       cell.encounterFeatures1 = null;
       cell.encounterFeatures2 = null;
@@ -519,9 +516,7 @@ export class HexMapCore {
     }
   }
 
-
-
-
+ 
   // --- rendering ---
   render() {
     const HEX = this.hexSize;
@@ -584,9 +579,9 @@ export class HexMapCore {
       labelGroup.setAttribute("class", "label");
       labelGroup.setAttribute("text-anchor", "middle");
       labelGroup.setAttribute("dominant-baseline", "middle");
-      
-       const labelColor = cell.wildFeaturesHighlight ? "#ff44f3" : "#000000";
-        labelGroup.style.fill = labelColor;
+
+      const labelColor = cell.wildFeaturesHighlight ? "#ff44f3" : "#000000";
+      labelGroup.style.fill = labelColor;
 
       // base size you currently use (example: 12px)
       const baseSize = 12;
@@ -688,7 +683,7 @@ export class HexMapCore {
   setSettlement(q, r, settlement, settlementSize = null) {
     const c = this.getCell(q, r);
     if (!c) return false;
-    c.settlement = settlement ?? [null,null];
+    c.settlement = settlement ?? [null, null];
     c.settlement[1] =
       settlement[0] != null
         ? Number.isFinite(+settlement[1])
@@ -713,14 +708,16 @@ export class HexMapCore {
         id: c.id,
         terrain: c.terrain,
         terrainFeature: c.terrainFeature ?? null,
-        encounterFeatures1: c.encounterFeatures1 ?? [null,null],
-        encounterFeatures2: c.encounterFeatures2 ?? [null,null],
-        encounterFeatures3: c.encounterFeatures3 ?? [null,null],
+        encounterFeatures1: c.encounterFeatures1 ?? [null, null],
+        encounterFeatures2: c.encounterFeatures2 ?? [null, null],
+        encounterFeatures3: c.encounterFeatures3 ?? [null, null],
         wildFeatures: [c.wildFeaturesType, c.wildFeaturesDescription, c.wildFeaturesIndex] ?? null,
 
         ruins: c.ruins ?? null,
         settlement: c.settlement ?? null,
         // settlementSize: c.settlementSize ?? null,
+
+        regionName: c.regionName ?? null,
 
         hexFeatureObvious1: c.hexFeatureObvious1 ?? null,
         hexFeatureObvious2: c.hexFeatureObvious2 ?? null,
@@ -750,7 +747,7 @@ export class HexMapCore {
       const terrainStr = c.terrain ?? this.startTerrain;
 
       // Colour using terrain
-      const code = this.T[terrainStr] ?? this.T.Plain;
+      const code = this.tables2.T[terrainStr] ?? this.tables2.T.Plain;
       const fill = this.COLOR[code] || "#555";
 
       this.grid.set(this.#key(c.q, c.r), {
@@ -768,9 +765,12 @@ export class HexMapCore {
         wildFeaturesHighlight: this.wildFeaturesWithSuppArray?.includes(c.wildFeatures?.[2]) ?? false,
 
         settlement: c.settlement ?? null,
-        settlementText: c.settlement?.[0] ? (c.settlement?.[1] ? 
-          (c.settlement?.[0] + ", pop." + c.settlement?.[1]) : c.settlement?.[0] ) : null, 
+        settlementText: c.settlement?.[0] ? (c.settlement?.[1] ?
+          (c.settlement?.[0] + ", pop." + c.settlement?.[1]) : c.settlement?.[0]) : null,
         // settlementSize: c.settlementSize ?? null,
+
+        regionName: c.regionName ?? null,
+        regionNameText: c.regionName ? this.#extractRegionNameText(c.regionName) : null,
 
         encounterFeatures1: c.encounterFeatures1 ?? null,
         encounterFeatures2: c.encounterFeatures2 ?? null,
@@ -807,7 +807,7 @@ export class HexMapCore {
 
   #setCell(q, r, { inputTerrain }) {
     // Use special mapping for colour if this is a composite terrain
-    const code = this.T[inputTerrain] ?? this.T.Plain;
+    const code = this.tables2.T[inputTerrain] ?? this.tables2.T.Plain;
 
     const id = this.#hexId(q, r);
     const terrain = inputTerrain;
@@ -822,19 +822,19 @@ export class HexMapCore {
       terrain,
       code,
       fill,
-      feature: null,
-      special: null,
+      terrainFeature: null,
+      // special: null,
       ruins: null,
       settlement: [null,null],
       // settlementSize: null,
-      settlementText: null
+      settlementText: null,
     });
   }
 
 
 
   #nextFromJSON(currentTerrainName, d20) {
-    const col = this.terrainTable[currentTerrainName];
+    const col = this.tables.terrainTable[currentTerrainName];
     if (!col) return currentTerrainName;
     const exact = col[String(d20)];
     if (exact) return exact;
@@ -952,4 +952,9 @@ export class HexMapCore {
     return h | 0;
   }
 
+   //  get the region name text
+  #extractRegionNameText(entryText) {
+    let text = entryText.slice(3);
+    return text;
+  }
 }

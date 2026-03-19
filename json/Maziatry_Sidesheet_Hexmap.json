@@ -1,0 +1,3279 @@
+{
+  "meta": {
+    "cols": 15,
+    "rows": 10,
+    "hexSize": 28,
+    "startTerrain": "Plain",
+    "seed": 3979504685
+  },
+  "cells": [
+    {
+      "q": 0,
+      "r": 0,
+      "id": "000.000",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Blink Dog"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 1,
+      "id": "000.001",
+      "terrain": "Lake",
+      "terrainFeature": "Crooked Trees",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Dragon Turtle"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 2,
+      "id": "000.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Monster",
+        "Roper"
+      ],
+      "encounterFeatures2": [
+        "F-Animal",
+        "Cat, Tiger"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 3,
+      "id": "000.003",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Humanoid",
+        "Ogre"
+      ],
+      "encounterFeatures2": [
+        "F-Monster",
+        "Otyugh"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 4,
+      "id": "000.004",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Human",
+        "Trader"
+      ],
+      "encounterFeatures2": [
+        "F-Humanoid",
+        "Cyclops"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Castle Stone Foot",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 5,
+      "id": "000.005",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Fish, Swordfish"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 6,
+      "id": "000.006",
+      "terrain": "Plain",
+      "terrainFeature": "Natural Resource",
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Hippogriff"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Natural Resource",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 7,
+      "id": "000.007",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Killer Bee"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 8,
+      "id": "000.008",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Humanoid",
+        "Orc Camp"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Lycanthrope, Weretiger"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 0,
+      "r": 9,
+      "id": "000.009",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Monster",
+        "Treant"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Killer Bee"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 0,
+      "id": "001.000",
+      "terrain": "Scrub",
+      "terrainFeature": "Lava dome",
+      "encounterFeatures1": [
+        "G-Animal",
+        "Lizard, Flame"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "4-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 1,
+      "id": "001.001",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Whale"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 2,
+      "id": "001.002",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Muck",
+      "encounterFeatures1": [
+        "O-Human",
+        "Ex. Adventurers"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 3,
+      "id": "001.003",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Pathogens, surface",
+      "encounterFeatures1": [
+        "O-Human",
+        "Buccaneer Lair"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 4,
+      "id": "001.004",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Canopy",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Locathah"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 5,
+      "id": "001.005",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Hippocampus"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 6,
+      "id": "001.006",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Canopy",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Octopus, Giant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 7,
+      "id": "001.007",
+      "terrain": "Hills",
+      "terrainFeature": "Esker",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Lizard, Flame*"
+      ],
+      "encounterFeatures2": [
+        "B-Animal",
+        "Mule"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 8,
+      "id": "001.008",
+      "terrain": "Forest",
+      "terrainFeature": "Gully",
+      "encounterFeatures1": [
+        "F-Humanoid",
+        "Mutoid Lair"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Spider, Black Widow"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 1,
+      "r": 9,
+      "id": "001.009",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Ankheg"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Pegasus"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 0,
+      "id": "002.000",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragon, Copper"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider adding a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "4-5"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 1,
+      "id": "002.001",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "Bandit Camp"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Peryton"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 2,
+      "id": "002.002",
+      "terrain": "Lake",
+      "terrainFeature": "Dam, natural",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Termite, Water"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 3,
+      "id": "002.003",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Canopy",
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Couatl"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 4,
+      "id": "002.004",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Plants, floating",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Merman"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 5,
+      "id": "002.005",
+      "terrain": "Lake",
+      "terrainFeature": "Cypress Dome",
+      "encounterFeatures1": [
+        "O-Human",
+        "Merchant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 6,
+      "id": "002.006",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Trader"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 7,
+      "id": "002.007",
+      "terrain": "Valley",
+      "terrainFeature": "Rock Shelter",
+      "encounterFeatures1": [
+        "D-Animal",
+        "Snake, Rattler"
+      ],
+      "encounterFeatures2": [
+        "AA2",
+        "Gloop - Toad Humanoid"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Iron has been covered in grease nearby some trails",
+        "4-4"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Shrine of the Oozing Serpent",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 8,
+      "id": "002.008",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Monster",
+        "Roper"
+      ],
+      "encounterFeatures2": [
+        "F-Humanoid",
+        "Gnoll"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Tomb",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 2,
+      "r": 9,
+      "id": "002.009",
+      "terrain": "Forest",
+      "terrainFeature": "Pond",
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Catoblepas"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Scorpion, Giant"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 0,
+      "id": "003.000",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Human",
+        "Trader"
+      ],
+      "encounterFeatures2": [
+        "F-Animal",
+        "Spider, Phase"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Tomb",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 1,
+      "id": "003.001",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Humanoid",
+        "Giant, Cloud"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Centaur Lair"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider giving them a Desire or Need that is in direct conflict with another Faction",
+        "3-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 2,
+      "id": "003.002",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy algae",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Pseudo-Dragon"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 3,
+      "id": "003.003",
+      "terrain": "Forest",
+      "terrainFeature": "Pond",
+      "encounterFeatures1": [
+        "F-Human",
+        "Expert Adventurers"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Lycanthrope, Werewolf"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 4,
+      "id": "003.004",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Sea Dragon"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 5,
+      "id": "003.005",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Humanoid",
+        "Mutoid Lair"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding some Distinctive Trees or other native Plants",
+        "2-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 6,
+      "id": "003.006",
+      "terrain": "Valley",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "D-Human",
+        "Nomad Camp"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 7,
+      "id": "003.007",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Village, Gith",
+        50
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 8,
+      "id": "003.008",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Rot Grub"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Beetle, Fire"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding something that speaks to the Season or recent Changes in the Weather",
+        "2-4"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Caves",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 3,
+      "r": 9,
+      "id": "003.009",
+      "terrain": "Forest",
+      "terrainFeature": "Copse",
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Pixie"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Dragon, Red"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Castle",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 0,
+      "id": "004.000",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Monster",
+        "Blink Dog"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider applying a Mien to assist with Portrayal of the Encounter",
+        "3-3"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 1,
+      "id": "004.001",
+      "terrain": "Lake",
+      "terrainFeature": "Island, large",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Hydra (or Sea Hydra)"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "6-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 2,
+      "id": "004.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Animal",
+        "Frog, Poisonous"
+      ],
+      "encounterFeatures2": [
+        "F-Humanoid",
+        "Mutoid Lair"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 3,
+      "id": "004.003",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Mossing",
+      "encounterFeatures1": [
+        "O-Human",
+        "Pirate Crew"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 4,
+      "id": "004.004",
+      "terrain": "Lake",
+      "terrainFeature": "Quicksand",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Octopus, Giant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 5,
+      "id": "004.005",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Roc, Small"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Amphisbaena*"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 6,
+      "id": "004.006",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Animal",
+        "Frog, Mutant"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Griffon"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 7,
+      "id": "004.007",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Peryton"
+      ],
+      "encounterFeatures2": [
+        "F-Monster",
+        "Skeleton Briggards"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "River spans the way where they were heading",
+        "5-5"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Barrow of Bone Blaggards",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 8,
+      "id": "004.008",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Lycanthrope, Wereboar"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 4,
+      "r": 9,
+      "id": "004.009",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 0,
+      "id": "005.000",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Animal",
+        "Boar"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Lycanthrope, Wererat"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 1,
+      "id": "005.001",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Otyugh"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Roper"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Consider a Resource that may not be immediately useful now, but might be important later",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 2,
+      "id": "005.002",
+      "terrain": "Scrub",
+      "terrainFeature": "Rock Shelter",
+      "encounterFeatures1": [
+        "G-Humanoid",
+        "Troll"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 3,
+      "id": "005.003",
+      "terrain": "Lake",
+      "terrainFeature": "Natural gas vent",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Triton Castles and Caverns"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 4,
+      "id": "005.004",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Small Town, Lankhill",
+        1649
+      ],
+      "regionName": "01 Field of Lank",
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 5,
+      "id": "005.005",
+      "terrain": "Marsh",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "S-Swimmer",
+        "Termite, Water"
+      ],
+      "encounterFeatures2": [
+        "S-Swimmer",
+        "Leech, Giant"
+      ],
+      "encounterFeatures3": [
+        "S-Human",
+        "Merchant"
+      ],
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding some Wilderness Fauna to breathe life into the place",
+        "2-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 6,
+      "id": "005.006",
+      "terrain": "Lake",
+      "terrainFeature": "Mud flat",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Locathah"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 7,
+      "id": "005.007",
+      "terrain": "Forest",
+      "terrainFeature": "Grotto",
+      "encounterFeatures1": [
+        "F-Monster",
+        "Shambling Mound"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Sphinx"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
+        "2-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 8,
+      "id": "005.008",
+      "terrain": "Scrub",
+      "terrainFeature": "Heavy Shrubs",
+      "encounterFeatures1": [
+        "G-Humanoid",
+        "Goblin Lair"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider adding something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Caves",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 5,
+      "r": 9,
+      "id": "005.009",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Whale"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 0,
+      "id": "006.000",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Small Town, Dwarf",
+        2200
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 1,
+      "id": "006.001",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Locathah"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 2,
+      "id": "006.002",
+      "terrain": "Lake",
+      "terrainFeature": "Cypress Dome",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Sea Serpent"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 3,
+      "id": "006.003",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy Canopy",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Sea Serpent"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 4,
+      "id": "006.004",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Cockatrice"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 5,
+      "id": "006.005",
+      "terrain": "Scrub",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Noble"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider giving them a Desire or Need that is in direct conflict with another Faction",
+        "3-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 6,
+      "id": "006.006",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Lycanthrope, Wereboar"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 7,
+      "id": "006.007",
+      "terrain": "Forest",
+      "terrainFeature": "Cave, fracture",
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Pseudo-Dragon"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Bulette"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 8,
+      "id": "006.008",
+      "terrain": "Valley",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "D-Human",
+        "Nomad Camp"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 6,
+      "r": 9,
+      "id": "006.009",
+      "terrain": "Marsh",
+      "terrainFeature": "Heavy Plants, floating",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Mantis, Giant"
+      ],
+      "encounterFeatures2": [
+        "S-Human",
+        "Bandit"
+      ],
+      "encounterFeatures3": [
+        "S-Humanoid",
+        "Merrow"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 0,
+      "id": "007.000",
+      "terrain": "Scrub",
+      "terrainFeature": "Lake",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Beetle, Oil"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 1,
+      "id": "007.001",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Amphisbaena*"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 2,
+      "id": "007.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Flail Snail"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Scorpion, Giant"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 3,
+      "id": "007.003",
+      "terrain": "Forest",
+      "terrainFeature": "Caves with Crystals",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Wyvern"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Lycanthrope, Wereboar"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Caves, Grotto",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 4,
+      "id": "007.004",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragon, Bronze"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 5,
+      "id": "007.005",
+      "terrain": "Valley",
+      "terrainFeature": "Limestone Pavement",
+      "encounterFeatures1": [
+        "D-Human",
+        "Nomad Camp"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 6,
+      "id": "007.006",
+      "terrain": "Rough",
+      "terrainFeature": "Plateau",
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Otyugh"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 7,
+      "id": "007.007",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Humanoid",
+        "Troll"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Amphisbaena*"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider applying a Mien to assist with Portrayal of the Encounter",
+        null
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 8,
+      "id": "007.008",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Monster",
+        "Griffon"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider rolling on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 7,
+      "r": 9,
+      "id": "007.009",
+      "terrain": "Marsh",
+      "terrainFeature": "Crooked Trees",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Wasp, Giant"
+      ],
+      "encounterFeatures2": [
+        "S-Human",
+        "High-Level MU"
+      ],
+      "encounterFeatures3": [
+        "1-Flyer",
+        "Robber Fly"
+      ],
+      "wildFeatures": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 0,
+      "id": "008.000",
+      "terrain": "Scrub",
+      "terrainFeature": "Escarpment",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Robber Fly"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 1,
+      "id": "008.001",
+      "terrain": "Scrub",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Bandit"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 2,
+      "id": "008.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Hydra (or Sea Hydra)"
+      ],
+      "encounterFeatures2": [
+        "1-Insect",
+        "Wasp, Giant"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Caves",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 3,
+      "id": "008.003",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Roc, Small"
+      ],
+      "encounterFeatures2": [
+        "F-Humanoid",
+        "Satyr"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 4,
+      "id": "008.004",
+      "terrain": "ForestWithHills",
+      "terrainFeature": "Crag",
+      "encounterFeatures1": [
+        "F-Humanoid",
+        "Troll"
+      ],
+      "encounterFeatures2": [
+        "F-Monster",
+        "Gas Spore"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider adding a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 5,
+      "id": "008.005",
+      "terrain": "Lake",
+      "terrainFeature": "Island, small",
+      "encounterFeatures1": [
+        "O-Human",
+        "Merchant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 6,
+      "id": "008.006",
+      "terrain": "Scrub",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Noble"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Mine",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 7,
+      "id": "008.007",
+      "terrain": "Lake",
+      "terrainFeature": "Heavy plants, submerged",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Sea Serpent"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 8,
+      "id": "008.008",
+      "terrain": "Lake",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Whale"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 8,
+      "r": 9,
+      "id": "008.009",
+      "terrain": "Marsh",
+      "terrainFeature": "Cypress Dome",
+      "encounterFeatures1": [
+        "S-Swimmer",
+        "Gullygug"
+      ],
+      "encounterFeatures2": [
+        "S-Human",
+        "Expert Adventurers"
+      ],
+      "encounterFeatures3": [
+        "1-Flyer",
+        "Stirge"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 0,
+      "id": "009.000",
+      "terrain": "ForestWithHills",
+      "terrainFeature": "Lake",
+      "encounterFeatures1": [
+        "F-Human",
+        "Bandit"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Blink Dog"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 1,
+      "id": "009.001",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "Bandit"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Lizard, Flame*"
+      ],
+      "encounterFeatures3": [
+        "B-Humanoid",
+        "Orc Camp"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 2,
+      "id": "009.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Monster",
+        "Spider, Aranea"
+      ],
+      "encounterFeatures2": [
+        "F-Human",
+        "Basic Adventurers"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 3,
+      "id": "009.003",
+      "terrain": "Marsh",
+      "terrainFeature": "Mud flat",
+      "encounterFeatures1": [
+        "2-Undead",
+        "Wight"
+      ],
+      "encounterFeatures2": [
+        "S-Humanoid",
+        "Gullygug"
+      ],
+      "encounterFeatures3": [
+        "S-Swimmer",
+        "Insect Swarm"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 4,
+      "id": "009.004",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Lycanthrope, Wererat"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard",
+        "Consider Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 5,
+      "id": "009.005",
+      "terrain": "Scrub",
+      "terrainFeature": "Thicket",
+      "encounterFeatures1": [
+        "G-Human",
+        "Expert Adventurers"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 6,
+      "id": "009.006",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Basilisk*"
+      ],
+      "encounterFeatures2": [
+        "B-Animal",
+        "Cat, Mntn. Lion"
+      ],
+      "encounterFeatures3": [
+        "B-Human",
+        "Merchant"
+      ],
+      "wildFeatures": [
+        "Lair",
+        "Consider giving them a Desire or Need that is in direct conflict with another Faction",
+        "3-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 7,
+      "id": "009.007",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Monster",
+        "Griffon"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Roc, Giant"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard",
+        "Consider Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 8,
+      "id": "009.008",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Large Town, Human",
+        7500
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 9,
+      "r": 9,
+      "id": "009.009",
+      "terrain": "Lake",
+      "terrainFeature": "Mud flat",
+      "encounterFeatures1": [
+        "O-Swimmer",
+        "Jellyfish, Giant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 0,
+      "id": "010.000",
+      "terrain": "Forest",
+      "terrainFeature": "Spring, artesian",
+      "encounterFeatures1": [
+        "F-Animal",
+        "Frog, Poisonous"
+      ],
+      "encounterFeatures2": [
+        "F-Animal",
+        "Wolf"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 1,
+      "id": "010.001",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Salamander*"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Pseudo-Dragon"
+      ],
+      "encounterFeatures3": [
+        "B-Humanoid",
+        "Troll"
+      ],
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Consider a Resource that may not be immediately useful now, but might be important later",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 2,
+      "id": "010.002",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "F-Human",
+        "Basic Adventurers"
+      ],
+      "encounterFeatures2": [
+        "F-Monster",
+        "Wyvern"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 3,
+      "id": "010.003",
+      "terrain": "Marsh",
+      "terrainFeature": "Crooked Trees",
+      "encounterFeatures1": [
+        "S-Humanoid",
+        "Orc Camp"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Mantis, Giant"
+      ],
+      "encounterFeatures3": [
+        "S-Monster",
+        "Frog, Mutant"
+      ],
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Natural Resource",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 4,
+      "id": "010.004",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Expert Adventurers"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 5,
+      "id": "010.005",
+      "terrain": "Scrub",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Salamander*"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 6,
+      "id": "010.006",
+      "terrain": "Hills",
+      "terrainFeature": "Cave, lava tube",
+      "encounterFeatures1": [
+        "B-Monster",
+        "Hawk"
+      ],
+      "encounterFeatures2": [
+        "B-Humanoid",
+        "Mutoid Lair"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 7,
+      "id": "010.007",
+      "terrain": "Scrub",
+      "terrainFeature": "Heavy Underbrush",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Beetle, Oil"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Temple",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 8,
+      "id": "010.008",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragonne*"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 10,
+      "r": 9,
+      "id": "010.009",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "Neanderthal Village"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Peryton"
+      ],
+      "encounterFeatures3": [
+        "1-Dragon",
+        "Dragon, Red"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 0,
+      "id": "011.000",
+      "terrain": "Forest",
+      "terrainFeature": "Crooked Trees",
+      "encounterFeatures1": [
+        "F-Human",
+        "Merchant"
+      ],
+      "encounterFeatures2": [
+        "F-Animal",
+        "Spider, Crab"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 1,
+      "id": "011.001",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Spider, Phase"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Dragon, Green"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 2,
+      "id": "011.002",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Monster",
+        "Nightmare"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Will-o\u2019-the-Wisp"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding a Vignette to assist with Portraying a sense of Place",
+        "1-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 3,
+      "id": "011.003",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Monster",
+        "Manticore"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 4,
+      "id": "011.004",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Monster",
+        "Minotaur"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 5,
+      "id": "011.005",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Chimera"
+      ],
+      "encounterFeatures2": [
+        "B-Humanoid",
+        "Giant, Hill"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Mines",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 6,
+      "id": "011.006",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Humanoid",
+        "Mutoid Lair"
+      ],
+      "encounterFeatures2": [
+        "B-Animal",
+        "Cat, Mntn. Lion"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 7,
+      "id": "011.007",
+      "terrain": "Mountains",
+      "terrainFeature": "Geyser",
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Gorgon"
+      ],
+      "encounterFeatures2": [
+        "B-Human",
+        "High-Level Fighter"
+      ],
+      "encounterFeatures3": [
+        "B-Animal",
+        "Wolf, Winter"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 8,
+      "id": "011.008",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Stirge"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 11,
+      "r": 9,
+      "id": "011.009",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Gargoyle"
+      ],
+      "encounterFeatures2": [
+        "F-Monster",
+        "Will-o\u2019-the-Wisp"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Consider a Resource that may not be immediately useful now, but might be important later",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 0,
+      "id": "012.000",
+      "terrain": "Scrub",
+      "terrainFeature": "Lava dome",
+      "encounterFeatures1": [
+        "G-Humanoid",
+        "Snake Person"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding a Hidden Feature that takes Time to Uncover or Investigate",
+        "1-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 1,
+      "id": "012.001",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "High-Level MU"
+      ],
+      "encounterFeatures2": [
+        "2-Unusual",
+        "Lycanthrope, Werebear"
+      ],
+      "encounterFeatures3": [
+        "1-Dragon",
+        "Dragonne*"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 2,
+      "id": "012.002",
+      "terrain": "Scrub",
+      "terrainFeature": "Sinkhole",
+      "encounterFeatures1": [
+        "G-Animal",
+        "Dog, Wild"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair/Resource",
+        "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 3,
+      "id": "012.003",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragonne*"
+      ],
+      "encounterFeatures2": [
+        "B-Human",
+        "Bandit"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding some Wilderness Fauna to breathe life into the place",
+        "2-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 4,
+      "id": "012.004",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Animal",
+        "Ape, White"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Lamia"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 5,
+      "id": "012.005",
+      "terrain": "Forest",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Insect",
+        "Spider, Tarantella"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Griffon"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Tomb",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 6,
+      "id": "012.006",
+      "terrain": "Mountains",
+      "terrainFeature": "Geyser",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Hydra (or Sea Hydra)"
+      ],
+      "encounterFeatures2": [
+        "B-Animal",
+        "Wolf, Winter"
+      ],
+      "encounterFeatures3": [
+        "1-Dragon",
+        "Amphisbaena*"
+      ],
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Consider a Resource that may not be immediately useful now, but might be important later",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 7,
+      "id": "012.007",
+      "terrain": "Mountains",
+      "terrainFeature": "Crag",
+      "encounterFeatures1": [
+        "B-Humanoid",
+        "Giant, Hill"
+      ],
+      "encounterFeatures2": [
+        "B-Humanoid",
+        "Orc Camp"
+      ],
+      "encounterFeatures3": [
+        "B-Humanoid",
+        "Ettin"
+      ],
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Tomb",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 8,
+      "id": "012.008",
+      "terrain": "Desert",
+      "terrainFeature": "Cacti",
+      "encounterFeatures1": [
+        "2-Undead",
+        "Ghost"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 12,
+      "r": 9,
+      "id": "012.009",
+      "terrain": "Forest",
+      "terrainFeature": "Cave, limestone",
+      "encounterFeatures1": [
+        "F-Human",
+        "Brigand Lair"
+      ],
+      "encounterFeatures2": [
+        "F-Human",
+        "Brigand Lair"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 0,
+      "id": "013.000",
+      "terrain": "Rough",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "Neanderthal Village"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Cave",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 1,
+      "id": "013.001",
+      "terrain": "Desert",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Village, Elf",
+        982
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 2,
+      "id": "013.002",
+      "terrain": "Desert",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragon, Copper"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 3,
+      "id": "013.003",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragon, Green"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Pegasus"
+      ],
+      "encounterFeatures3": [
+        "B-Humanoid",
+        "Kobold Lair"
+      ],
+      "wildFeatures": [
+        "Special",
+        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
+        "5-1"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 4,
+      "id": "013.004",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Village, Human",
+        250
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 5,
+      "id": "013.005",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "1-Flyer",
+        "Mantis, Giant"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider applying a Mien to assist with Portrayal of the Encounter",
+        "3-3"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 6,
+      "id": "013.006",
+      "terrain": "MountainsWithPass",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 7,
+      "id": "013.007",
+      "terrain": "Plain",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "G-Human",
+        "Bandit"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark/Resource",
+        "Consider a Resource that may not be immediately useful now, but might be important later",
+        "2-6"
+      ],
+      "ruins": null,
+      "settlement": [
+        "Ruins",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 8,
+      "id": "013.008",
+      "terrain": "Forest",
+      "terrainFeature": "Cave, fracture",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Driver Ant"
+      ],
+      "encounterFeatures2": [
+        "F-Animal",
+        "Cat, Tiger"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 13,
+      "r": 9,
+      "id": "013.009",
+      "terrain": "Scrub",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "2-Unusual",
+        "Lycanthrope, Wererat"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 0,
+      "id": "014.000",
+      "terrain": "Mountains",
+      "terrainFeature": null,
+      "encounterFeatures1": null,
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Village, Elf",
+        650
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 1,
+      "id": "014.001",
+      "terrain": "Desert",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "D-Animal",
+        "Cat, Lion"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Castle",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 2,
+      "id": "014.002",
+      "terrain": "Desert",
+      "terrainFeature": "Rock Shelter",
+      "encounterFeatures1": [
+        "2-Undead",
+        "Mummy"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Landmark",
+        "Consider adding a change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 3,
+      "id": "014.003",
+      "terrain": "Marsh",
+      "terrainFeature": "Heavy Mossing",
+      "encounterFeatures1": [
+        "1-Insect",
+        "Spider, Crab"
+      ],
+      "encounterFeatures2": [
+        "1-Flyer",
+        "Gargoyle"
+      ],
+      "encounterFeatures3": [
+        "S-Swimmer",
+        "Insect Swarm"
+      ],
+      "wildFeatures": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 4,
+      "id": "014.004",
+      "terrain": "Lake",
+      "terrainFeature": "Island, small",
+      "encounterFeatures1": [
+        "O-Human",
+        "Buccaneer Lair"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 5,
+      "id": "014.005",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Animal",
+        "Rock Baboon"
+      ],
+      "encounterFeatures2": [
+        "1-Dragon",
+        "Chimera"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 6,
+      "id": "014.006",
+      "terrain": "Hills",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "B-Human",
+        "Berserker"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Hippogriff"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 7,
+      "id": "014.007",
+      "terrain": "Desert",
+      "terrainFeature": null,
+      "encounterFeatures1": [
+        "D-Animal",
+        "Camel"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 8,
+      "id": "014.008",
+      "terrain": "Rough",
+      "terrainFeature": "Butte",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Pseudo-Dragon"
+      ],
+      "encounterFeatures2": null,
+      "encounterFeatures3": null,
+      "wildFeatures": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2"
+      ],
+      "ruins": null,
+      "settlement": null,
+      "regionName": null,
+      "rerollSeed": null
+    },
+    {
+      "q": 14,
+      "r": 9,
+      "id": "014.009",
+      "terrain": "Hills",
+      "terrainFeature": "Strath",
+      "encounterFeatures1": [
+        "1-Dragon",
+        "Dragon, Green"
+      ],
+      "encounterFeatures2": [
+        "B-Monster",
+        "Sphinx"
+      ],
+      "encounterFeatures3": null,
+      "wildFeatures": null,
+      "ruins": null,
+      "settlement": [
+        "Temple",
+        null
+      ],
+      "regionName": null,
+      "rerollSeed": null
+    }
+  ]
+}

@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
   const data = await res.json();
 
-  const terrainTable = data.hexWildernessTerrain ?? data.terrain ?? data;
+  const terrainTable = data.hexWildernessTerrain ?? null;
   const terrainFeaturesTable = data.terrainFeatures ?? null;
   const inhabitationTable = data.hexInhabitation ?? null;
   const wildernessRollsTable = data.wildernessRollsTable ?? null
@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const specificEncountersTable = data.specificEncountersTable ?? null;
   const wildernessFeaturesTable = data.wildernessFeaturesTable ?? null;
   const wildFeaturesWithSuppArray = data.wildFeaturesWithSuppArray ?? null;
-  const specialTable = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
+  const specialInhabitationTable = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
   const ruinsTypeTable = data.ruinsType ?? null;
   const ruinsDecayTable = data.ruinsDecay ?? null;
   const ruinsInhabitantsTable = data.ruinsInhabitants ?? null;
@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     specificEncountersTable,
     wildernessFeaturesTable,
     wildFeaturesWithSuppArray,
-    specialTable,
+    specialInhabitationTable,
     ruinsDecayTable,
     ruinsTypeTable,
     ruinsInhabitantsTable
@@ -88,7 +88,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     hexMap,
     dom: {
       exportBtn: document.getElementById("exportGrid"),
-      importInput: document.getElementById("importGrid")
+      importInput: document.getElementById("importGrid"),
+      importMaz: document.getElementById("importMaz")
     }
   });
 });

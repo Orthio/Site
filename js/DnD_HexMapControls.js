@@ -75,7 +75,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const crdOut = dom?.hexCoords ?? document.getElementById("hexCoords");
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
 
-  const featOut = dom?.hexFeatures ?? document.getElementById("hexFeatures");
+  const terrainFeatOut = dom?.terrainFeatures ?? document.getElementById("terrainFeatures");
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
   const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
   const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
@@ -85,6 +85,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
   const ruInh = dom?.ruinsInhabitants ?? document.getElementById("ruinsInhabitants");
   const setOut = dom?.settlementText ?? document.getElementById("settlementText");
+  const regionNameOut = dom?.regionName ?? document.getElementById("regionNameText");
 
   const hexObvOut1 = dom?.hexFeatureObvious1 ?? document.getElementById("hexFeatureObvious1");
   const hexObvOut2 = dom?.hexFeatureObvious2 ?? document.getElementById("hexFeatureObvious2");
@@ -103,13 +104,14 @@ export function initControls({ hexMap, dom, initialSeed }) {
     const lines = [];
     if (c.feature) lines.push(c.feature);
     if (c.special) lines.push(`Special: ${c.special}`);
-    if (featOut) featOut.textContent = lines.length ? lines.join(" | ") : "—";
+    if (terrainFeatOut) terrainFeatOut.textContent = lines.length ? lines.join(" | ") : "—";
     if (enc1Out) enc1Out.textContent = Array.isArray(c.encounterFeatures1) ? c.encounterFeatures1[1] : "—";
     if (enc2Out) enc2Out.textContent = Array.isArray(c.encounterFeatures2) ? c.encounterFeatures2[1] : "—";
     if (enc3Out) enc3Out.textContent = Array.isArray(c.encounterFeatures3) ? c.encounterFeatures3[1] : "—";
     if (wildFeatOut) wildFeatOut.textContent = c.wildFeaturesDescription ?
       (c.wildFeaturesType + ": " + c.wildFeaturesDescription) : "—";
     if (setOut) setOut.textContent = c.settlementText ? c.settlementText : "—";
+    if (regionNameOut) regionNameOut.textContent = c.regionNameText ? c.regionNameText : "—";
     if (hexObvOut1) hexObvOut1.textContent = c.hexFeatureObvious1 ?? "—";
     if (hexObvOut2) hexObvOut2.textContent = c.hexFeatureObvious2 ?? "—";
     if (hexObvOut3) hexObvOut3.textContent = c.hexFeatureObvious3 ?? "—";

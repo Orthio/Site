@@ -28,6 +28,7 @@
 
     <button type="button" onclick="diceRoll(4)" class="button buttond4">Roll d4</button>
     <button type="button" onclick="diceRoll(6)" class="button buttond6">Roll d6</button>
+    <button type="button" onclick="diceRoll(6,2)" class="button buttond26">Roll 2d6</button>
     <button type="button" onclick="diceRoll(8)" class="button buttond8">Roll d8</button>
     <button type="button" onclick="diceRoll(10)" class="button buttond10">Roll d10</button>
     <button type="button" onclick="diceRoll(12)" class="button buttond12">Roll d12</button>
@@ -46,10 +47,10 @@
 
         var rollHistory = [];
 
-        function diceRoll(roll) {
+        function diceRoll(roll, no) {
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
-            var diceNumber = document.getElementById("diceNumberInput").value;
+            var diceNumber = !no ? no : document.getElementById("diceNumberInput").value;
             let diceAddCheck = Number(document.getElementById("diceAddInput").value);
 
             if (diceAddCheck === '' || diceAddCheck == '0') {

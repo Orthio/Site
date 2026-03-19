@@ -4,6 +4,7 @@ export function initPersistence({ hexMap, dom }) {
 
   const exportBtn = dom?.exportBtn ?? document.getElementById("exportGrid");
   const importIn = dom?.importInput ?? document.getElementById("importGrid");
+  const importMaz = dom?.importMaz ?? document.getElementById("importMaz");
 
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
@@ -36,6 +37,22 @@ export function initPersistence({ hexMap, dom }) {
         console.error(err);
       } finally {
         importIn.value = "";
+      }
+    });
+  }
+
+  if (importMaz) {
+    importMaz.addEventListener("click", async () => {
+      try {
+        const response = await fetch("json/Maziatry_Sidesheet_Hexmap.json");
+        if (!response.ok) throw new Error("Failed to load JSON");
+
+        const snapshot = await response.json();
+        hexMap.fromJSON(snapshot);
+        hexMap.render();
+      } catch (err) {
+        alert("Failed to load JSON file.");
+        console.error(err);
       }
     });
   }
