@@ -34,6 +34,25 @@ window.addEventListener("DOMContentLoaded", async () => {
   const ruinsTypeTable = data.ruinsType ?? null;
   const ruinsDecayTable = data.ruinsDecay ?? null;
   const ruinsInhabitantsTable = data.ruinsInhabitants ?? null;
+  const sandboxGenFeatureTable = data.sandboxGenFeatureTable ?? null;
+  const sandboxGenSettlementTable = data.sandboxGenSettlementTable ?? null;
+  const sandboxGenLandmarkStartingTable = data.sandboxGenLandmarkStartingTable ?? null;
+  const sandboxGenLandmarkNaturalTable = data.sandboxGenLandmarkNaturalTable ?? null;
+  const sandboxGenLandmarkArtificialTable = data.sandboxGenLandmarkArtificialTable ?? null;
+  const sandboxGenLandmarkMagicTable = data.sandboxGenLandmarkMagicTable ?? null;
+  const sandboxGenLandmarkContentTable = data.sandboxGenLandmarkContentTable ?? null;
+  const sandboxGenHazardTable = data.sandboxGenHazardTable ?? null;
+  const sandboxGenEmptyTable = data.sandboxGenEmptyTable ?? null;
+  const sandboxGenSpecialStartTable = data.sandboxGenSpecialStartTable ?? null;
+  const fillingFeatureTable = data.fillingFeatureTable ?? null;
+  const sandboxGenSpecialDisputeTable = data.sandboxGenSpecialDisputeTable ?? null;
+  const wildHexMatchingTable = data.wildHexMatchingTable ?? null;
+  const forestWildHexTable = data.forestWildHexTable ?? null;
+  const mountainWildHexTable = data.mountainWildHexTable ?? null;
+  const desertWildHexTable = data.desertWildHexTable ?? null;
+  const swampWildHexTable = data.swampWildHexTable ?? null;
+  const oceanWildHexTable = data.oceanWildHexTable ?? null;
+
 
   hexMap.setTables({
     terrainTable,
@@ -48,7 +67,25 @@ window.addEventListener("DOMContentLoaded", async () => {
     specialInhabitationTable,
     ruinsDecayTable,
     ruinsTypeTable,
-    ruinsInhabitantsTable
+    ruinsInhabitantsTable,
+    sandboxGenFeatureTable,
+    sandboxGenSettlementTable,
+    sandboxGenLandmarkStartingTable,
+    sandboxGenLandmarkNaturalTable,
+    sandboxGenLandmarkArtificialTable,
+    sandboxGenLandmarkMagicTable,
+    sandboxGenLandmarkContentTable,
+    sandboxGenHazardTable,
+    sandboxGenEmptyTable,
+    sandboxGenSpecialStartTable,
+    fillingFeatureTable,
+    sandboxGenSpecialDisputeTable,
+    wildHexMatchingTable,
+    forestWildHexTable,
+    mountainWildHexTable,
+    desertWildHexTable,
+    swampWildHexTable,
+    oceanWildHexTable
   });
 
   const initialSeed = getSeedFromURL() ?? randomUint32();
@@ -74,11 +111,11 @@ window.addEventListener("DOMContentLoaded", async () => {
       ruinsType: document.getElementById("ruinsType"),
       ruinsInhabitants: document.getElementById("ruinsInhabitants"),
       settlementText: document.getElementById("settlementText"),
-      hexFeatureObvious1: document.getElementById("hexFeatureObvious1"),
-      hexFeatureObvious2: document.getElementById("hexFeatureObvious2"),
-      hexFeatureObvious3: document.getElementById("hexFeatureObvious3"),
-      hexFeatureHidden1: document.getElementById("hexFeatureHidden1"),
-      hexFeatureHidden2: document.getElementById("hexFeatureHidden2"),
+      nFeatures: document.getElementById("nFeatures"),
+      obviousFeature1: document.getElementById("obviousFeature1"),
+      obviousFeature2: document.getElementById("obviousFeature2"),
+      obviousFeature3: document.getElementById("obviousFeature3"),
+      hiddenFeature1: document.getElementById("hiddenFeature1"),
 
     },
     initialSeed

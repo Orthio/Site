@@ -1551,7 +1551,7 @@
         ],
         "3": [
             "Landmark",
-            "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+            "A change in Elevation that might create a vantage point to obtain the Lay of the Land.",
             "1-3"
         ],
         "4": [
@@ -1561,12 +1561,12 @@
         ],
         "5": [
             "Landmark",
-            "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+            "Something placed by Current/Former Denizens that speaks of other Inhabitants.",
             "1-5"
         ],
         "6": [
             "Landmark/Resource",
-            "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+            "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies.",
             "1-6"
         ],
         "7": [
@@ -1576,12 +1576,12 @@
         ],
         "8": [
             "Landmark",
-            "Add some Distinctive Trees or other native Plants",
+            "Add some Distinctive Trees or other native Plants.",
             "2-2"
         ],
         "9": [
             "Landmark",
-            "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+            "Add a few Discarded Items that may speak to the Denizens or fellow Travelers.",
             "2-3"
         ],
         "10": [
@@ -1651,12 +1651,12 @@
         ],
         "23": [
             "Lair/Resource",
-            "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+            "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier.",
             "4-5"
         ],
         "24": [
             "Lair/Resource",
-            "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+            "Consider placing a Resource that is actively being exploited by the Monsters in some way.",
             "4-6"
         ],
         "25": [
@@ -1666,7 +1666,7 @@
         ],
         "26": [
             "Special",
-            "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+            "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource.",
             "5-2"
         ],
         "27": [
@@ -1757,6 +1757,22 @@
         "19": "Water",
         "20": "Magic"
     },
+    "sandboxGenFeatureTable": {
+        "1": "Landmark",
+        "2": "Landmark",
+        "3": "Landmark",
+        "4": "Settlement",
+        "5": "Lair",
+        "6": "Dungeon"
+    },
+    "sandboxGenSettlementTable": [
+        "Village",
+        "Village",
+        "City",
+        "Castle",
+        "Tower",
+        "Abbey"
+    ],
     "sandboxGenLandmarkStartingTable": [
         [
             "Natural",
@@ -1967,6 +1983,14 @@
         "Walkable water",
         "Wormhole"
     ],
+    "sandboxGenLandmarkContentTable": {
+        "1": "Hazard",
+        "2": "Empty",
+        "3": "Empty",
+        "4": "Special",
+        "5": "Monsters",
+        "6": "Monsters"
+    },
     "sandboxGenHazardTable": [
         "Acid pits",
         "Allergenic plants",
@@ -2031,5 +2055,129 @@
         "Murder investigation",
         "Territorial boundaries",
         "Trial"
-    ]
+    ],
+    "wildHexMatchingTable": {
+        "Plain": "forestWildHexTable",
+        "Scrub": "forestWildHexTable",
+        "Forest": "forestWildHexTable",
+        "ForestWithHills": "forestWildHexTable",
+        "Rough": "mountainWildHexTable",
+        "Desert": "desertWildHexTable",
+        "Hills": "mountainWildHexTable",
+        "Mountains": "mountainWildHexTable",
+        "MountainsWithPass": "mountainWildHexTable",
+        "Marsh": "swampWildHexTable",
+        "Lake": "oceanWildHexTable",
+        "Valley": "swampWildHexTable"
+    },
+    "forestWildHexTable": {
+        "1": "The Stone Seat",
+        "2": "The Creek’s Bed",
+        "3": "Predator Becomes Prey",
+        "4": "A Ruined Watchtower",
+        "5": "The Foundling Familiar",
+        "6": "A Cache Of Arms",
+        "7": "Clearing In Bloom",
+        "8": "The Clearfelling",
+        "9": "The Woodland Feast",
+        "10": "The Den of the Lich-Lion",
+        "11": "The Dimwood",
+        "12": "The Tumbledown Timber Mill",
+        "13": "The Tonsured Traveler",
+        "14": "The Knight’s Challenge",
+        "15": "The Neglected Bridge",
+        "16": "An Inn for the Wandering Weary",
+        "17": "A Forgotten Graveyard",
+        "18": "The Hive",
+        "19": "The White Hart",
+        "20": "The Ruins of Acorn Manor"
+    },
+    "mountainWildHexTable": {
+        "21": "The Prospector's Shack",
+        "22": "The Yawning Ravine",
+        "23": "An Enormous Nest",
+        "24": "The Groaning Glacier",
+        "25": "Deadfall",
+        "26": "An Alpine Resting Place",
+        "27": "A Peerless Place To Camp",
+        "28": "The Reluctant Route",
+        "29": "The Petrified Colossus",
+        "30": "Blood On The Snow",
+        "31": "The Barren Breach",
+        "32": "The Crystalline Crags",
+        "33": "A Tranquil Tarn",
+        "34": "The Bleakridge Bandits",
+        "35": "The Toppled Temple",
+        "36": "Cyclopean Skeleton in situ",
+        "37": "The Goatherd",
+        "38": "The Painted Petroglyphs",
+        "39": "Avalanche!",
+        "40": "The Petitioner"
+    },
+    "desertWildHexTable": {
+        "41": "A Pertinacious Pilgrimage",
+        "42": "The Camel Market",
+        "43": "The Neophytes",
+        "44": "The Banished",
+        "45": "A Dead Lake",
+        "46": "The Stoic Stones",
+        "47": "The Basalt Plain",
+        "48": "An Abandoned Wagon",
+        "49": "The Anchorite's Retreat",
+        "50": "The Lich Seat",
+        "51": "The Hungry Sands",
+        "52": "The Horned Titan",
+        "53": "An Oasis",
+        "54": "Sky Burial",
+        "55": "Sandships",
+        "56": "The Polyandrium",
+        "57": "Sudden Sandstorm",
+        "58": "Necropolis",
+        "59": "The Mirage",
+        "60": "She Who Rules Herself"
+    },
+    "swampWildHexTable": {
+        "61": "A Prentice Witch-a-Riding",
+        "62": "Mud Springs",
+        "63": "The Old Growth Strand",
+        "64": "The Coffin Tree",
+        "65": "Ignis Fatuus",
+        "66": "The Feathered Federation",
+        "67": "The Moss Gatherers",
+        "68": "Tarback Lizardfolk",
+        "69": "The Volachta",
+        "70": "Flash Flood",
+        "71": "The Rotting Strip",
+        "72": "The Tremendous Timber Jam",
+        "73": "The Cortege Of Kings",
+        "74": "The Sinking Shrine",
+        "75": "The Lost Drovers",
+        "76": "The Builders",
+        "77": "The Black Annis",
+        "78": "His Bebarbeled Majesty",
+        "79": "Maldraakis",
+        "80": "Bloodsuckers"
+    },
+    "oceanWildHexTable": {
+        "81": "When The Lighthouse Lies",
+        "82": "The Lifeboat",
+        "83": "A Sea Of Storms",
+        "84": "Pirates",
+        "85": "Krakenspawn",
+        "86": "The Drying",
+        "87": "The Whitecap Wizard",
+        "88": "The Rancor of the Drowned",
+        "89": "Waterspouts",
+        "90": "The Doldrums",
+        "91": "The Chase",
+        "92": "The Message",
+        "93": "The Tattooed Maiden",
+        "94": "Sea Serpents Spawn Here",
+        "95": "Rogue Wave",
+        "96": "Sargasso",
+        "97": "The Ghost Ship",
+        "98": "Should Sea-Madness Strike",
+        "99": "The Brine Queen",
+        "100": "The Sirens"
+    }
 }

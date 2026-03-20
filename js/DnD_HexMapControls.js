@@ -87,11 +87,11 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const setOut = dom?.settlementText ?? document.getElementById("settlementText");
   const regionNameOut = dom?.regionName ?? document.getElementById("regionNameText");
 
-  const hexObvOut1 = dom?.hexFeatureObvious1 ?? document.getElementById("hexFeatureObvious1");
-  const hexObvOut2 = dom?.hexFeatureObvious2 ?? document.getElementById("hexFeatureObvious2");
-  const hexObvOut3 = dom?.hexFeatureObvious3 ?? document.getElementById("hexFeatureObvious3");
-  const hexHidOut1 = dom?.hexFeatureHidden1 ?? document.getElementById("hexFeatureHidden1");
-  const hexHidOut2 = dom?.hexFeatureHidden2 ?? document.getElementById("hexFeatureHidden2");
+  const nFeatures = dom?.nFeatures ?? document.getElementById("nFeatures");
+  const hexObvOut1 = dom?.obviousFeature1 ?? document.getElementById("obviousFeature1");
+  const hexObvOut2 = dom?.obviousFeature2 ?? document.getElementById("obviousFeature2");
+  const hexObvOut3 = dom?.obviousFeature3 ?? document.getElementById("obviousFeature3");
+  const hexHidOut1 = dom?.hiddenFeature1 ?? document.getElementById("hiddenFeature1");
 
 
   svg.addEventListener("hexmap:select", (e) => {
@@ -112,11 +112,11 @@ export function initControls({ hexMap, dom, initialSeed }) {
       (c.wildFeaturesType + ": " + c.wildFeaturesDescription) : "—";
     if (setOut) setOut.textContent = c.settlementText ? c.settlementText : "—";
     if (regionNameOut) regionNameOut.textContent = c.regionNameText ? c.regionNameText : "—";
-    if (hexObvOut1) hexObvOut1.textContent = c.hexFeatureObvious1 ?? "—";
-    if (hexObvOut2) hexObvOut2.textContent = c.hexFeatureObvious2 ?? "—";
-    if (hexObvOut3) hexObvOut3.textContent = c.hexFeatureObvious3 ?? "—";
-    if (hexHidOut1) hexHidOut1.textContent = c.hexFeatureHidden1 ?? "—";
-    if (hexHidOut2) hexHidOut2.textContent = c.hexFeatureHidden2 ?? "—";
+    if (nFeatures) nFeatures.textContent = c.nFeatures ?? "—";
+    if (hexObvOut1) hexObvOut1.textContent = c.obviousFeature1 ?? "—";
+    if (hexObvOut2) hexObvOut2.textContent = c.obviousFeature2 ?? "—";
+    if (hexObvOut3) hexObvOut3.textContent = c.obviousFeature3 ?? "—";
+    if (hexHidOut1) hexHidOut1.textContent = c.hiddenFeature1 ?? "—";
 
     // Ruins details
     if (c.ruins && ruinsBlock) {
