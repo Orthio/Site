@@ -35,8 +35,8 @@
  * @property {[string,string]|null} encounterFeatures2  // O-Swimmer, Fish, swordfish
  * @property {[string,string]|null} encounterFeatures3  // O-Swimmer, Fish, swordfish
 *
-* @property {[number, number]} nFeatures  // 2, 1 
-* @property {[string,string,string]|null} obviousFeature1  //  bx procedure like wildFeatures
+* @property {[number, number]} nFeatures  // 2, 1
+* @property {string|null} obviousFeature1  //  bx procedure like wildFeatures
 // Landmark,A Vignette to assist with Portraying a sense of Place.,1-4
 * @property {string|null} obviousFeature2  //  sandbox gen procedure
 * @property {string|null} obviousFeature3  //  wilderness feat or filling feat
@@ -295,7 +295,7 @@ export class HexMapCore {
         // Check for encounters 1 to 3
         this.#maybeAddEncounterFeatures(cell);
 
-        // Check for obvious features
+        // Check for obvious and hidden features
         this.#maybeAddObviousFeatures(cell);
       }
     }
@@ -337,7 +337,7 @@ export class HexMapCore {
   // --- helpers for generation: features / inhabitation / ruins ---
 
   #maybeAddFeature(cell) {
-    if (!this.tables.terrainFeaturesTable) return;
+    if (!this.tables) return;
     const checkingTerrain = cell.terrain;
     const th = this.FEATURE_THRESH[checkingTerrain] ?? 0;
     if (th <= 0) return;
@@ -514,35 +514,47 @@ export class HexMapCore {
 
   #maybeAddObviousFeatures(cell) {
     const addWildernessFeature = (cell, cellPart) => {
-      const roll1 = String(this.#roll(36));
-      const feature = this.tables.wildernessFeaturesTable[roll1];
+      const feature = this.#lookupFromTable(this.tables.wildernessFeaturesTable);
 
-      cell[cellPart] = feature[0] + ": " + feature[1] + " " + feature[2];
+      if (!feature) {
+        cell[cellPart] = null;
+        return;
+      }
+
+      cell[cellPart] = `${feature[0] ?? ""}: ${feature[1] ?? ""} ${feature[2] ?? ""}`.trim();
     };
 
     const addSandboxGenFeature = (cell, cellPart) => {
-      const roll2 = String(this.#roll(6));
-      let sandboxFeaturePick = this.tables.sandboxGenFeatureTable[roll2];
+      const sFTable = this.tables.sandboxGenFeatureTable;
+      let sandboxFeaturePick = this.#lookupFromTable(sFTable);
 
       switch (sandboxFeaturePick) {
         case "Landmark":
-          let sandboxLandmarkStartTablePick = this.tables.sandboxGenLandmarkStartingTable[(this.#roll(6))-1][1];
-          let sandboxLandmarkPick = this.tables[sandboxLandmarkStartTablePick][this.#roll(10)];
+          const startEntry = this.#lookupFromTable(this.tables.sandboxGenLandmarkStartingTable);
+          const subTableName = startEntry[1];
+          const subTable = this.tables[subTableName];
+          const sandboxLandmarkPick = this.#lookupFromTable(subTable);
           cell[cellPart] = sandboxLandmarkPick;
 
           let sandboxContentPick = this.tables.sandboxGenLandmarkContentTable[this.#roll(6)];
           switch (sandboxContentPick) {
             case "Hazard":
-              cell[cellPart] += (", " + this.tables.sandboxGenHazardTable[this.#roll(20)] );
+              const hTable = this.tables.sandboxGenHazardTable;
+              let hazardPick = this.#lookupFromTable(hTable);
+              cell[cellPart] += (", " + hazardPick);
               break;
             case "Empty":
-              cell[cellPart] += (", " + this.tables.sandboxGenEmptyTable[this.#roll(20)] );
+              const eTable = this.tables.sandboxGenEmptyTable;
+              let emptyPick = this.#lookupFromTable(eTable);
+              cell[cellPart] += (", " + emptyPick);
               break;
             case "Special":
-              let specialPick = this.tables.sandboxGenSpecialStartTable[this.#roll(20)];
-              cell[cellPart] += (", " + specialPick );
+              const sTable = this.tables.sandboxGenSpecialStartTable;
+              let specialPick = this.#lookupFromTable(sTable);
+              cell[cellPart] += (", " + specialPick);
               if (specialPick == "Arbitrate a dispute") {
-                let dispute = this.tables.sandboxGenSpecialDisputeTable[this.#roll(6)];
+                const dTable = this.tables.sandboxGenSpecialDisputeTable;
+                let dispute = this.#lookupFromTable(dTable);
                 cell[cellPart] += (", " + dispute);
               }
               break;
@@ -554,7 +566,8 @@ export class HexMapCore {
           }
           break;
         case "Settlement":
-          let sandboxSettlementPick = this.tables.sandboxGenSettlementTable[this.#roll(6)];
+          const sTable = this.tables.sandboxGenSettlementTable;
+          let sandboxSettlementPick = this.#lookupFromTable(sTable);
           cell[cellPart] = sandboxSettlementPick;
           break;
         case "Lair":
@@ -569,8 +582,26 @@ export class HexMapCore {
       }
     }
 
+    const addCaltropFeature = (cell, cellPart) => {
+      const thisTerrain = cell.terrain;
+      const hexMatchingWhichTable = this.tables.wildHexMatchingTable[thisTerrain];
+      const hexMatchingWhichTable2 = this.tables[hexMatchingWhichTable];
+      const keys = Object.keys(hexMatchingWhichTable2);
+      // Grabs an array like [81, 82]
+      const featRoll = String(this.#roll(20 - 1));
+      const keyPick = keys[featRoll];
+      const hexMatchingPick = "Caltrop" + keyPick + ": " + hexMatchingWhichTable2[keyPick];
 
-    cell.nFeatures = [this.#roll(3), this.#roll(2)-1];
+      cell[cellPart] = hexMatchingPick;
+    }
+
+    const addFillingFeature = (cell, cellPart) => {
+      const fTable = this.tables.fillingFeatureTable;
+      const fillingF = this.#lookupFromTable(fTable);
+      cell[cellPart] = "Filling: " + fillingF;
+    };
+
+    cell.nFeatures = [this.#roll(3), this.#roll(2) - 1];
 
     if (cell.nFeatures[0] >= 1) {
       addWildernessFeature(cell, "obviousFeature1");
@@ -585,13 +616,23 @@ export class HexMapCore {
     }
 
     if (cell.nFeatures[0] >= 3) {
-      cell.obviousFeature3 = "c";
+      let O3roll = this.#roll(2);
+      if (O3roll == 2) {
+        addFillingFeature(cell, "obviousFeature3");
+      } else {
+        addCaltropFeature(cell, "obviousFeature3");
+      }
     } else {
       cell.obviousFeature3 = null;
     }
 
     if (cell.nFeatures[1] >= 1) {
-      cell.hiddenFeature1 = "d1";
+      let Hroll = this.#roll(2);
+      if (Hroll = 2) {
+        addWildernessFeature(cell, "hiddenFeature1");
+      } else {
+        addSandboxGenFeature(cell, "hiddenFeature1");
+      }
     } else {
       cell.hiddenFeature1 = null;
     }
@@ -880,7 +921,7 @@ export class HexMapCore {
         wildFeaturesIndex: c.wildFeatures?.[2] ?? null,
         wildFeaturesHighlight: this.wildFeaturesWithSuppArray?.includes(c.wildFeatures?.[2]) ?? false,
 
-        settlement: c.settlement ?? [null,null],
+        settlement: c.settlement ?? [null, null],
         settlementText: c.settlement?.[0] ? (c.settlement?.[1] ?
           (c.settlement?.[0] + ", pop." + c.settlement?.[1]) : c.settlement?.[0]) : null,
         // settlementSize: c.settlementSize ?? null,
@@ -959,14 +1000,31 @@ export class HexMapCore {
     return currentTerrainName;
   }
 
-  #lookupFromTable(tableObj, roll) {
-    if (!tableObj) return null;
-    if (tableObj[String(roll)]) return tableObj[String(roll)];
-    for (const [rng, res] of Object.entries(tableObj)) {
-      if (!rng.includes("-")) continue;
-      const [a, b] = rng.split("-").map(Number);
-      if (roll >= a && roll <= b) return res;
+  #lookupFromTable(table, roll = null) {
+    if (!table) return null;
+
+    if (Array.isArray(table)) {
+      const index = roll ?? this.#roll(table.length);
+      return table[index - 1] ?? null;
     }
+
+    if (typeof table === "object") {
+      const actualRoll = roll ?? this.#roll(Object.keys(table).length);
+
+      if (table[String(actualRoll)] !== undefined) {
+        return table[String(actualRoll)];
+      }
+
+      for (const [rng, res] of Object.entries(table)) {
+        if (!rng.includes("-")) continue;
+        const [a, b] = rng.split("-").map(Number);
+        if (actualRoll >= a && actualRoll <= b) return res;
+      }
+
+      return null;
+    }
+
+    console.log("Table is not an object or array");
     return null;
   }
 
