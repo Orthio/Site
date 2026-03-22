@@ -47,10 +47,10 @@
 
         var rollHistory = [];
 
-        function diceRoll(roll, no) {
+        function diceRoll(diceSize, diceQuantity) {
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
-            var diceNumber = !no ? no : document.getElementById("diceNumberInput").value;
+            var diceQty = diceQuantity ? diceQuantity : document.getElementById("diceNumberInput").value;
             let diceAddCheck = Number(document.getElementById("diceAddInput").value);
 
             if (diceAddCheck === '' || diceAddCheck == '0') {
@@ -59,12 +59,12 @@
                 var diceAddNumber = diceAddCheck;
             }
 
-            var rollResult = (diceNumber * (Math.floor(Math.random() * roll) + 1)) + diceAddNumber;
+            var rollResult = (diceQty * (Math.floor(Math.random() * diceSize) + 1)) + diceAddNumber;
             if (diceAddCheck === '' || diceAddCheck == '0') {
-                var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll
+                var rollOutput = '<div class="ResultsClass">' + diceQty + " x d" + diceSize
                     + " = " + rollResult + '</div>' + "<br>";
             } else {
-                var rollOutput = '<div class="ResultsClass">' + diceNumber + " x d" + roll
+                var rollOutput = '<div class="ResultsClass">' + diceQty + " x d" + diceSize
                     + " + " + diceAddNumber + " = " + rollResult + '</div>' + "<br>";
             }
 
