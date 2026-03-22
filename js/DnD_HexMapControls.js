@@ -76,7 +76,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
   const lChanceOut = dom?.lostChance ?? document.getElementById("lostChance");
 
-  const terrainFeatOut = dom?.terrainFeatures ?? document.getElementById("terrainFeatures");
+  const terrainFeatOut = dom?.terrainFeature ?? document.getElementById("terrainFeature");
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
   const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
   const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
@@ -104,9 +104,10 @@ export function initControls({ hexMap, dom, initialSeed }) {
 
     // Features (natural + special, combined)
     const lines = [];
-    if (c.feature) lines.push(c.feature);
-    if (c.special) lines.push(`Special: ${c.special}`);
-    if (terrainFeatOut) terrainFeatOut.textContent = lines.length ? lines.join(" | ") : "—";
+    // if (c.feature) lines.push(c.feature);
+    // if (c.special) lines.push(`Special: ${c.special}`);
+    // if (terrainFeatOut) terrainFeatOut.textContent = lines.length ? lines.join(" | ") : "—";
+    if (terrainFeatOut) terrainFeatOut.textContent = c.terrainFeature ? c.terrainFeature : "—";
     if (enc1Out) enc1Out.textContent = Array.isArray(c.encounterFeatures1) ? c.encounterFeatures1[1] : "—";
     if (enc2Out) enc2Out.textContent = Array.isArray(c.encounterFeatures2) ? c.encounterFeatures2[1] : "—";
     if (enc3Out) enc3Out.textContent = Array.isArray(c.encounterFeatures3) ? c.encounterFeatures3[1] : "—";

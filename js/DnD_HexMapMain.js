@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexTerrain: document.getElementById("hexTerrain"),
       lostChance: document.getElementById("lostChance"),
 
-      terrainFeatures: document.getElementById("terrainFeatures"),
+      terrainFeature: document.getElementById("terrainFeature"),
       encounterFeatures1: document.getElementById("encounterFeatures1"),
       encounterFeatures2: document.getElementById("encounterFeatures2"),
       encounterFeatures3: document.getElementById("encounterFeatures3"),

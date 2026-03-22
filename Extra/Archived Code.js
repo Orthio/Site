@@ -495,7 +495,7 @@ var encumberanceTable = {
     baseTerrainTable = null
 
       const terrainTable = data.hexWildernessTerrain ?? null;
-      const terrainFeaturesTable = data.terrainFeatures ?? null;
+      const terrainFeaturesTable = data.terrainFeature ?? null;
       const inhabitationTable = data.hexInhabitation ?? null;
       const wildernessRollsTable = data.wildernessRollsTable ?? null
       const wildernessFeatureChance = data.wildernessFeatureChance ?? null;

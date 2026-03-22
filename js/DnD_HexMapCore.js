@@ -98,7 +98,7 @@ export class HexMapCore {
 
     this.tables = {
       terrainTable: data.hexWildernessTerrain ?? null,
-      terrainFeaturesTable: data.terrainFeatures ?? null,
+      terrainFeaturesTable: data.terrainFeature ?? null,
       inhabitationTable: data.hexInhabitation ?? null,
       wildernessRollsTable: data.wildernessRollsTable ?? null,
       wildernessFeatureChance: data.wildernessFeatureChance ?? null,
@@ -234,11 +234,10 @@ export class HexMapCore {
   #maybeAddFeature(cell) {
     if (!this.tables) return;
     const checkingTerrain = cell.terrain;
-    const th = this.tables.featureThresholdTable[checkingTerrain] ?? 0;
-    if (th <= 0) return;
-
-    const d30 = this.#roll(30);
-    if (d30 > th) return;
+    // const th = this.tables.featureThresholdTable[checkingTerrain] ?? 0;
+    // if (th <= 0) return;
+    // const d30 = this.#roll(30);
+    // if (d30 > th) return;
 
     const key = this.tables.featureKeysTable[checkingTerrain];
 
@@ -551,6 +550,7 @@ export class HexMapCore {
       const roll = (sides) => 1 + Math.floor(rng() * sides);
 
       // Clear only the fields you want to reroll
+      cell.terrainFeature = null;
       cell.ruins = null;
       cell.encounterFeatures1 = null;
       cell.encounterFeatures2 = null;

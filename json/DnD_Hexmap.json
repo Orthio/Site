@@ -382,7 +382,7 @@
         "Reptiles/Reptilians",
         "Undead"
     ],
-    "terrainFeatures": {
+    "terrainFeature": {
         "hillsFeatures": [
             "Bluff",
             "Butte",

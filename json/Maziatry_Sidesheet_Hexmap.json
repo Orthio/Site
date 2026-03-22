@@ -12,7 +12,7 @@
       "r": 0,
       "id": "000.000",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Limestone pavement",
       "encounterFeatures1": [
         "2-Unusual",
         "Blink Dog"
@@ -42,7 +42,7 @@
       "r": 1,
       "id": "000.001",
       "terrain": "Lake",
-      "terrainFeature": "Crooked Trees",
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "O-Swimmer",
         "Dragon Turtle"
@@ -68,7 +68,7 @@
       "r": 2,
       "id": "000.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Copse",
       "encounterFeatures1": [
         "F-Monster",
         "Roper"
@@ -97,7 +97,7 @@
       "r": 3,
       "id": "000.003",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Crooked Trees",
       "encounterFeatures1": [
         "F-Humanoid",
         "Ogre"
@@ -126,7 +126,7 @@
       "r": 4,
       "id": "000.004",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Pond",
       "encounterFeatures1": [
         "F-Human",
         "Trader"
@@ -158,7 +158,7 @@
       "r": 5,
       "id": "000.005",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Dam, natural",
       "encounterFeatures1": [
         "O-Swimmer",
         "Fish, Swordfish"
@@ -184,7 +184,7 @@
       "r": 6,
       "id": "000.006",
       "terrain": "Plain",
-      "terrainFeature": "Natural Resource",
+      "terrainFeature": "Hillock/Knoll",
       "encounterFeatures1": [
         "1-Flyer",
         "Hippogriff"
@@ -217,7 +217,7 @@
       "r": 7,
       "id": "000.007",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, fracture",
       "encounterFeatures1": [
         "1-Insect",
         "Killer Bee"
@@ -243,7 +243,7 @@
       "r": 8,
       "id": "000.008",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Lake",
       "encounterFeatures1": [
         "F-Humanoid",
         "Orc Camp"
@@ -276,7 +276,7 @@
       "r": 9,
       "id": "000.009",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, talus",
       "encounterFeatures1": [
         "F-Monster",
         "Treant"
@@ -309,7 +309,7 @@
       "r": 0,
       "id": "001.000",
       "terrain": "Scrub",
-      "terrainFeature": "Lava dome",
+      "terrainFeature": "Esker",
       "encounterFeatures1": [
         "G-Animal",
         "Lizard, Flame"
@@ -339,7 +339,7 @@
       "r": 1,
       "id": "001.001",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy algae",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
@@ -365,7 +365,7 @@
       "r": 2,
       "id": "001.002",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Muck",
+      "terrainFeature": "Heavy Plants, floating",
       "encounterFeatures1": [
         "O-Human",
         "Ex. Adventurers"
@@ -391,7 +391,7 @@
       "r": 3,
       "id": "001.003",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Pathogens, surface",
+      "terrainFeature": "Mud flat",
       "encounterFeatures1": [
         "O-Human",
         "Buccaneer Lair"
@@ -417,7 +417,7 @@
       "r": 4,
       "id": "001.004",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Canopy",
+      "terrainFeature": "Island, medium",
       "encounterFeatures1": [
         "O-Swimmer",
         "Locathah"
@@ -443,7 +443,7 @@
       "r": 5,
       "id": "001.005",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Crooked Trees",
       "encounterFeatures1": [
         "O-Swimmer",
         "Hippocampus"
@@ -469,7 +469,7 @@
       "r": 6,
       "id": "001.006",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Canopy",
+      "terrainFeature": "Heavy Plants, floating",
       "encounterFeatures1": [
         "O-Swimmer",
         "Octopus, Giant"
@@ -495,7 +495,7 @@
       "r": 7,
       "id": "001.007",
       "terrain": "Hills",
-      "terrainFeature": "Esker",
+      "terrainFeature": "Glen",
       "encounterFeatures1": [
         "1-Dragon",
         "Lizard, Flame*"
@@ -524,7 +524,7 @@
       "r": 8,
       "id": "001.008",
       "terrain": "Forest",
-      "terrainFeature": "Gully",
+      "terrainFeature": "Forked Trees",
       "encounterFeatures1": [
         "F-Humanoid",
         "Mutoid Lair"
@@ -553,7 +553,7 @@
       "r": 9,
       "id": "001.009",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Sylvan forest",
       "encounterFeatures1": [
         "1-Insect",
         "Ankheg"
@@ -586,7 +586,7 @@
       "r": 0,
       "id": "002.000",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Plateau",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Copper"
@@ -619,7 +619,7 @@
       "r": 1,
       "id": "002.001",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Tor",
       "encounterFeatures1": [
         "B-Human",
         "Bandit Camp"
@@ -648,7 +648,7 @@
       "r": 2,
       "id": "002.002",
       "terrain": "Lake",
-      "terrainFeature": "Dam, natural",
+      "terrainFeature": "Cypress Dome",
       "encounterFeatures1": [
         "O-Swimmer",
         "Termite, Water"
@@ -674,7 +674,7 @@
       "r": 3,
       "id": "002.003",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Canopy",
+      "terrainFeature": "Heavy Pathogens, surface",
       "encounterFeatures1": [
         "1-Flyer",
         "Couatl"
@@ -700,7 +700,7 @@
       "r": 4,
       "id": "002.004",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Plants, floating",
+      "terrainFeature": "Heavy Pathogens, air",
       "encounterFeatures1": [
         "O-Swimmer",
         "Merman"
@@ -726,7 +726,7 @@
       "r": 5,
       "id": "002.005",
       "terrain": "Lake",
-      "terrainFeature": "Cypress Dome",
+      "terrainFeature": "Heavy Muck",
       "encounterFeatures1": [
         "O-Human",
         "Merchant"
@@ -752,7 +752,7 @@
       "r": 6,
       "id": "002.006",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Plateau",
       "encounterFeatures1": [
         "G-Human",
         "Trader"
@@ -782,7 +782,7 @@
       "r": 7,
       "id": "002.007",
       "terrain": "Valley",
-      "terrainFeature": "Rock Shelter",
+      "terrainFeature": "Mesa",
       "encounterFeatures1": [
         "D-Animal",
         "Snake, Rattler"
@@ -818,7 +818,7 @@
       "r": 8,
       "id": "002.008",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "F-Monster",
         "Roper"
@@ -850,7 +850,7 @@
       "r": 9,
       "id": "002.009",
       "terrain": "Forest",
-      "terrainFeature": "Pond",
+      "terrainFeature": "Cave, fracture",
       "encounterFeatures1": [
         "2-Unusual",
         "Catoblepas"
@@ -879,7 +879,7 @@
       "r": 0,
       "id": "003.000",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Forked Trees",
       "encounterFeatures1": [
         "F-Human",
         "Trader"
@@ -911,7 +911,7 @@
       "r": 1,
       "id": "003.001",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Lava Lake",
       "encounterFeatures1": [
         "B-Humanoid",
         "Giant, Cloud"
@@ -944,7 +944,7 @@
       "r": 2,
       "id": "003.002",
       "terrain": "Lake",
-      "terrainFeature": "Heavy algae",
+      "terrainFeature": "Marsh gas",
       "encounterFeatures1": [
         "1-Dragon",
         "Pseudo-Dragon"
@@ -970,7 +970,7 @@
       "r": 3,
       "id": "003.003",
       "terrain": "Forest",
-      "terrainFeature": "Pond",
+      "terrainFeature": "Sylvan forest",
       "encounterFeatures1": [
         "F-Human",
         "Expert Adventurers"
@@ -999,7 +999,7 @@
       "r": 4,
       "id": "003.004",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Natural gas vent",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Dragon"
@@ -1025,7 +1025,7 @@
       "r": 5,
       "id": "003.005",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Esker",
       "encounterFeatures1": [
         "G-Humanoid",
         "Mutoid Lair"
@@ -1055,7 +1055,7 @@
       "r": 6,
       "id": "003.006",
       "terrain": "Valley",
-      "terrainFeature": null,
+      "terrainFeature": "Butte",
       "encounterFeatures1": [
         "D-Human",
         "Nomad Camp"
@@ -1081,7 +1081,7 @@
       "r": 7,
       "id": "003.007",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Cuesta with cliff",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -1107,7 +1107,7 @@
       "r": 8,
       "id": "003.008",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Sinkhole",
       "encounterFeatures1": [
         "1-Insect",
         "Rot Grub"
@@ -1143,7 +1143,7 @@
       "r": 9,
       "id": "003.009",
       "terrain": "Forest",
-      "terrainFeature": "Copse",
+      "terrainFeature": "Cave, fracture",
       "encounterFeatures1": [
         "1-Flyer",
         "Pixie"
@@ -1175,7 +1175,7 @@
       "r": 0,
       "id": "004.000",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Gulch",
       "encounterFeatures1": [
         "G-Monster",
         "Blink Dog"
@@ -1205,7 +1205,7 @@
       "r": 1,
       "id": "004.001",
       "terrain": "Lake",
-      "terrainFeature": "Island, large",
+      "terrainFeature": "Heavy Pathogens, surface",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
@@ -1235,7 +1235,7 @@
       "r": 2,
       "id": "004.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Spring, artesian",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Poisonous"
@@ -1267,7 +1267,7 @@
       "r": 3,
       "id": "004.003",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Mossing",
+      "terrainFeature": "Heavy Pathogens, water",
       "encounterFeatures1": [
         "O-Human",
         "Pirate Crew"
@@ -1293,7 +1293,7 @@
       "r": 4,
       "id": "004.004",
       "terrain": "Lake",
-      "terrainFeature": "Quicksand",
+      "terrainFeature": "Heavy Pathogens, surface",
       "encounterFeatures1": [
         "O-Swimmer",
         "Octopus, Giant"
@@ -1319,7 +1319,7 @@
       "r": 5,
       "id": "004.005",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "1-Flyer",
         "Roc, Small"
@@ -1352,7 +1352,7 @@
       "r": 6,
       "id": "004.006",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Dead Forest",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Mutant"
@@ -1381,7 +1381,7 @@
       "r": 7,
       "id": "004.007",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Gully",
       "encounterFeatures1": [
         "1-Flyer",
         "Peryton"
@@ -1417,7 +1417,7 @@
       "r": 8,
       "id": "004.008",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Well",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wereboar"
@@ -1447,7 +1447,7 @@
       "r": 9,
       "id": "004.009",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Pond",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -1474,7 +1474,7 @@
       "r": 0,
       "id": "005.000",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Crooked Trees",
       "encounterFeatures1": [
         "F-Animal",
         "Boar"
@@ -1503,7 +1503,7 @@
       "r": 1,
       "id": "005.001",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Sylvan forest",
       "encounterFeatures1": [
         "2-Unusual",
         "Otyugh"
@@ -1536,7 +1536,7 @@
       "r": 2,
       "id": "005.002",
       "terrain": "Scrub",
-      "terrainFeature": "Rock Shelter",
+      "terrainFeature": "Heavy Shrubs",
       "encounterFeatures1": [
         "G-Humanoid",
         "Troll"
@@ -1591,7 +1591,7 @@
       "r": 4,
       "id": "005.004",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Spring, artesian",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -1617,7 +1617,7 @@
       "r": 5,
       "id": "005.005",
       "terrain": "Marsh",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Mossing",
       "encounterFeatures1": [
         "S-Swimmer",
         "Termite, Water"
@@ -1679,7 +1679,7 @@
       "r": 7,
       "id": "005.007",
       "terrain": "Forest",
-      "terrainFeature": "Grotto",
+      "terrainFeature": "Thicket",
       "encounterFeatures1": [
         "F-Monster",
         "Shambling Mound"
@@ -1712,7 +1712,7 @@
       "r": 8,
       "id": "005.008",
       "terrain": "Scrub",
-      "terrainFeature": "Heavy Shrubs",
+      "terrainFeature": "Mesa",
       "encounterFeatures1": [
         "G-Humanoid",
         "Goblin Lair"
@@ -1745,7 +1745,7 @@
       "r": 9,
       "id": "005.009",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
@@ -1771,7 +1771,7 @@
       "r": 0,
       "id": "006.000",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Glen",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -1797,7 +1797,7 @@
       "r": 1,
       "id": "006.001",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Pathogens, surface",
       "encounterFeatures1": [
         "O-Swimmer",
         "Locathah"
@@ -1823,7 +1823,7 @@
       "r": 2,
       "id": "006.002",
       "terrain": "Lake",
-      "terrainFeature": "Cypress Dome",
+      "terrainFeature": "Marsh gas",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
@@ -1849,7 +1849,7 @@
       "r": 3,
       "id": "006.003",
       "terrain": "Lake",
-      "terrainFeature": "Heavy Canopy",
+      "terrainFeature": "Heavy Muck",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
@@ -1875,7 +1875,7 @@
       "r": 4,
       "id": "006.004",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Lake",
       "encounterFeatures1": [
         "1-Flyer",
         "Cockatrice"
@@ -1901,7 +1901,7 @@
       "r": 5,
       "id": "006.005",
       "terrain": "Scrub",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Underbrush",
       "encounterFeatures1": [
         "G-Human",
         "Noble"
@@ -1931,7 +1931,7 @@
       "r": 6,
       "id": "006.006",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Heavy Underbrush",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wereboar"
@@ -1961,7 +1961,7 @@
       "r": 7,
       "id": "006.007",
       "terrain": "Forest",
-      "terrainFeature": "Cave, fracture",
+      "terrainFeature": "Stream",
       "encounterFeatures1": [
         "1-Flyer",
         "Pseudo-Dragon"
@@ -1990,7 +1990,7 @@
       "r": 8,
       "id": "006.008",
       "terrain": "Valley",
-      "terrainFeature": null,
+      "terrainFeature": "Hillock/Knoll",
       "encounterFeatures1": [
         "D-Human",
         "Nomad Camp"
@@ -2016,7 +2016,7 @@
       "r": 9,
       "id": "006.009",
       "terrain": "Marsh",
-      "terrainFeature": "Heavy Plants, floating",
+      "terrainFeature": "Heavy Pathogens, air",
       "encounterFeatures1": [
         "1-Insect",
         "Mantis, Giant"
@@ -2048,7 +2048,7 @@
       "r": 0,
       "id": "007.000",
       "terrain": "Scrub",
-      "terrainFeature": "Lake",
+      "terrainFeature": "Heavy Shrubs",
       "encounterFeatures1": [
         "1-Insect",
         "Beetle, Oil"
@@ -2078,7 +2078,7 @@
       "r": 1,
       "id": "007.001",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Mud Pits",
       "encounterFeatures1": [
         "1-Dragon",
         "Amphisbaena*"
@@ -2104,7 +2104,7 @@
       "r": 2,
       "id": "007.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Sylvan forest",
       "encounterFeatures1": [
         "1-Insect",
         "Flail Snail"
@@ -2133,7 +2133,7 @@
       "r": 3,
       "id": "007.003",
       "terrain": "Forest",
-      "terrainFeature": "Caves with Crystals",
+      "terrainFeature": "Rock Outcropping",
       "encounterFeatures1": [
         "1-Dragon",
         "Wyvern"
@@ -2169,7 +2169,7 @@
       "r": 4,
       "id": "007.004",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Natural gas vent",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Bronze"
@@ -2247,7 +2247,7 @@
       "r": 7,
       "id": "007.007",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, limestone",
       "encounterFeatures1": [
         "B-Humanoid",
         "Troll"
@@ -2280,7 +2280,7 @@
       "r": 8,
       "id": "007.008",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Limestone pavement",
       "encounterFeatures1": [
         "G-Monster",
         "Griffon"
@@ -2310,7 +2310,7 @@
       "r": 9,
       "id": "007.009",
       "terrain": "Marsh",
-      "terrainFeature": "Crooked Trees",
+      "terrainFeature": "Heavy Mossing",
       "encounterFeatures1": [
         "1-Insect",
         "Wasp, Giant"
@@ -2346,7 +2346,7 @@
       "r": 0,
       "id": "008.000",
       "terrain": "Scrub",
-      "terrainFeature": "Escarpment",
+      "terrainFeature": "Mesa",
       "encounterFeatures1": [
         "1-Insect",
         "Robber Fly"
@@ -2376,7 +2376,7 @@
       "r": 1,
       "id": "008.001",
       "terrain": "Scrub",
-      "terrainFeature": null,
+      "terrainFeature": "Mesa",
       "encounterFeatures1": [
         "G-Human",
         "Bandit"
@@ -2402,7 +2402,7 @@
       "r": 2,
       "id": "008.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Thicket",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
@@ -2434,7 +2434,7 @@
       "r": 3,
       "id": "008.003",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Sinkhole",
       "encounterFeatures1": [
         "1-Flyer",
         "Roc, Small"
@@ -2463,7 +2463,7 @@
       "r": 4,
       "id": "008.004",
       "terrain": "ForestWithHills",
-      "terrainFeature": "Crag",
+      "terrainFeature": "Bluff",
       "encounterFeatures1": [
         "F-Humanoid",
         "Troll"
@@ -2496,7 +2496,7 @@
       "r": 5,
       "id": "008.005",
       "terrain": "Lake",
-      "terrainFeature": "Island, small",
+      "terrainFeature": "Heavy Plants, floating",
       "encounterFeatures1": [
         "O-Human",
         "Merchant"
@@ -2522,7 +2522,7 @@
       "r": 6,
       "id": "008.006",
       "terrain": "Scrub",
-      "terrainFeature": null,
+      "terrainFeature": "Hillock/Knoll - rounded hill",
       "encounterFeatures1": [
         "G-Human",
         "Noble"
@@ -2555,7 +2555,7 @@
       "r": 7,
       "id": "008.007",
       "terrain": "Lake",
-      "terrainFeature": "Heavy plants, submerged",
+      "terrainFeature": "Island, small",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
@@ -2581,7 +2581,7 @@
       "r": 8,
       "id": "008.008",
       "terrain": "Lake",
-      "terrainFeature": null,
+      "terrainFeature": "Natural gas vent",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
@@ -2607,7 +2607,7 @@
       "r": 9,
       "id": "008.009",
       "terrain": "Marsh",
-      "terrainFeature": "Cypress Dome",
+      "terrainFeature": "Heavy Plants, emergent",
       "encounterFeatures1": [
         "S-Swimmer",
         "Gullygug"
@@ -2639,7 +2639,7 @@
       "r": 0,
       "id": "009.000",
       "terrain": "ForestWithHills",
-      "terrainFeature": "Lake",
+      "terrainFeature": "Pond",
       "encounterFeatures1": [
         "F-Human",
         "Bandit"
@@ -2668,7 +2668,7 @@
       "r": 1,
       "id": "009.001",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Mountain Pass",
       "encounterFeatures1": [
         "B-Human",
         "Bandit"
@@ -2700,7 +2700,7 @@
       "r": 2,
       "id": "009.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Rock Outcropping",
       "encounterFeatures1": [
         "F-Monster",
         "Spider, Aranea"
@@ -2729,7 +2729,7 @@
       "r": 3,
       "id": "009.003",
       "terrain": "Marsh",
-      "terrainFeature": "Mud flat",
+      "terrainFeature": "Cypress Dome",
       "encounterFeatures1": [
         "2-Undead",
         "Wight"
@@ -2761,7 +2761,7 @@
       "r": 4,
       "id": "009.004",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Ridge",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wererat"
@@ -2791,7 +2791,7 @@
       "r": 5,
       "id": "009.005",
       "terrain": "Scrub",
-      "terrainFeature": "Thicket",
+      "terrainFeature": "Cave, limestone",
       "encounterFeatures1": [
         "G-Human",
         "Expert Adventurers"
@@ -2817,7 +2817,7 @@
       "r": 6,
       "id": "009.006",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Gulch",
       "encounterFeatures1": [
         "1-Dragon",
         "Basilisk*"
@@ -2853,7 +2853,7 @@
       "r": 7,
       "id": "009.007",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Crag",
       "encounterFeatures1": [
         "B-Monster",
         "Griffon"
@@ -2886,7 +2886,7 @@
       "r": 8,
       "id": "009.008",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Riparian zone",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -2912,7 +2912,7 @@
       "r": 9,
       "id": "009.009",
       "terrain": "Lake",
-      "terrainFeature": "Mud flat",
+      "terrainFeature": "Heavy Pathogens, air",
       "encounterFeatures1": [
         "O-Swimmer",
         "Jellyfish, Giant"
@@ -2938,7 +2938,7 @@
       "r": 0,
       "id": "010.000",
       "terrain": "Forest",
-      "terrainFeature": "Spring, artesian",
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Poisonous"
@@ -2967,7 +2967,7 @@
       "r": 1,
       "id": "010.001",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Tent Rock",
       "encounterFeatures1": [
         "1-Dragon",
         "Salamander*"
@@ -3003,7 +3003,7 @@
       "r": 2,
       "id": "010.002",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Primeval Forest",
       "encounterFeatures1": [
         "F-Human",
         "Basic Adventurers"
@@ -3032,7 +3032,7 @@
       "r": 3,
       "id": "010.003",
       "terrain": "Marsh",
-      "terrainFeature": "Crooked Trees",
+      "terrainFeature": "Heavy Plants, emergent",
       "encounterFeatures1": [
         "S-Humanoid",
         "Orc Camp"
@@ -3071,7 +3071,7 @@
       "r": 4,
       "id": "010.004",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Escarpment",
       "encounterFeatures1": [
         "G-Human",
         "Expert Adventurers"
@@ -3101,7 +3101,7 @@
       "r": 5,
       "id": "010.005",
       "terrain": "Scrub",
-      "terrainFeature": null,
+      "terrainFeature": "Crater lake",
       "encounterFeatures1": [
         "1-Dragon",
         "Salamander*"
@@ -3131,7 +3131,7 @@
       "r": 6,
       "id": "010.006",
       "terrain": "Hills",
-      "terrainFeature": "Cave, lava tube",
+      "terrainFeature": "Bluff",
       "encounterFeatures1": [
         "B-Monster",
         "Hawk"
@@ -3163,7 +3163,7 @@
       "r": 7,
       "id": "010.007",
       "terrain": "Scrub",
-      "terrainFeature": "Heavy Underbrush",
+      "terrainFeature": "Mud Pits",
       "encounterFeatures1": [
         "1-Insect",
         "Beetle, Oil"
@@ -3192,7 +3192,7 @@
       "r": 8,
       "id": "010.008",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Tor",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragonne*"
@@ -3218,7 +3218,7 @@
       "r": 9,
       "id": "010.009",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Dry Lake",
       "encounterFeatures1": [
         "B-Human",
         "Neanderthal Village"
@@ -3250,7 +3250,7 @@
       "r": 0,
       "id": "011.000",
       "terrain": "Forest",
-      "terrainFeature": "Crooked Trees",
+      "terrainFeature": "Rock Outcropping",
       "encounterFeatures1": [
         "F-Human",
         "Merchant"
@@ -3279,7 +3279,7 @@
       "r": 1,
       "id": "011.001",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Forked Trees",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Phase"
@@ -3312,7 +3312,7 @@
       "r": 2,
       "id": "011.002",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Glen",
       "encounterFeatures1": [
         "B-Monster",
         "Nightmare"
@@ -3345,7 +3345,7 @@
       "r": 3,
       "id": "011.003",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Dry lake",
       "encounterFeatures1": [
         "G-Monster",
         "Manticore"
@@ -3371,7 +3371,7 @@
       "r": 4,
       "id": "011.004",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Esker",
       "encounterFeatures1": [
         "G-Monster",
         "Minotaur"
@@ -3404,7 +3404,7 @@
       "r": 5,
       "id": "011.005",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, lava tube",
       "encounterFeatures1": [
         "1-Dragon",
         "Chimera"
@@ -3440,7 +3440,7 @@
       "r": 6,
       "id": "011.006",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Rock Outcrops",
       "encounterFeatures1": [
         "B-Humanoid",
         "Mutoid Lair"
@@ -3473,7 +3473,7 @@
       "r": 7,
       "id": "011.007",
       "terrain": "Mountains",
-      "terrainFeature": "Geyser",
+      "terrainFeature": "Valley",
       "encounterFeatures1": [
         "2-Unusual",
         "Gorgon"
@@ -3505,7 +3505,7 @@
       "r": 8,
       "id": "011.008",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, limestone",
       "encounterFeatures1": [
         "1-Flyer",
         "Stirge"
@@ -3531,7 +3531,7 @@
       "r": 9,
       "id": "011.009",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Dead Forest",
       "encounterFeatures1": [
         "1-Flyer",
         "Gargoyle"
@@ -3564,7 +3564,7 @@
       "r": 0,
       "id": "012.000",
       "terrain": "Scrub",
-      "terrainFeature": "Lava dome",
+      "terrainFeature": "Mesa",
       "encounterFeatures1": [
         "G-Humanoid",
         "Snake Person"
@@ -3594,7 +3594,7 @@
       "r": 1,
       "id": "012.001",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Lava lake",
       "encounterFeatures1": [
         "B-Human",
         "High-Level MU"
@@ -3626,7 +3626,7 @@
       "r": 2,
       "id": "012.002",
       "terrain": "Scrub",
-      "terrainFeature": "Sinkhole",
+      "terrainFeature": "Vernal Pool",
       "encounterFeatures1": [
         "G-Animal",
         "Dog, Wild"
@@ -3659,7 +3659,7 @@
       "r": 3,
       "id": "012.003",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, limestone",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragonne*"
@@ -3692,7 +3692,7 @@
       "r": 4,
       "id": "012.004",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Tor",
       "encounterFeatures1": [
         "B-Animal",
         "Ape, White"
@@ -3725,7 +3725,7 @@
       "r": 5,
       "id": "012.005",
       "terrain": "Forest",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, talus",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Tarantella"
@@ -3761,7 +3761,7 @@
       "r": 6,
       "id": "012.006",
       "terrain": "Mountains",
-      "terrainFeature": "Geyser",
+      "terrainFeature": "Mountain Pass",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
@@ -3832,7 +3832,7 @@
       "r": 8,
       "id": "012.008",
       "terrain": "Desert",
-      "terrainFeature": "Cacti",
+      "terrainFeature": "Playa",
       "encounterFeatures1": [
         "2-Undead",
         "Ghost"
@@ -3858,7 +3858,7 @@
       "r": 9,
       "id": "012.009",
       "terrain": "Forest",
-      "terrainFeature": "Cave, limestone",
+      "terrainFeature": "Sylvan forest",
       "encounterFeatures1": [
         "F-Human",
         "Brigand Lair"
@@ -3891,7 +3891,7 @@
       "r": 0,
       "id": "013.000",
       "terrain": "Rough",
-      "terrainFeature": null,
+      "terrainFeature": "Lake",
       "encounterFeatures1": [
         "B-Human",
         "Neanderthal Village"
@@ -3920,7 +3920,7 @@
       "r": 1,
       "id": "013.001",
       "terrain": "Desert",
-      "terrainFeature": null,
+      "terrainFeature": "Pediment",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -3946,7 +3946,7 @@
       "r": 2,
       "id": "013.002",
       "terrain": "Desert",
-      "terrainFeature": null,
+      "terrainFeature": "Valley",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Copper"
@@ -3972,7 +3972,7 @@
       "r": 3,
       "id": "013.003",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Cave, limestone",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Green"
@@ -4008,7 +4008,7 @@
       "r": 4,
       "id": "013.004",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Ridge",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -4034,7 +4034,7 @@
       "r": 5,
       "id": "013.005",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Ridge",
       "encounterFeatures1": [
         "1-Flyer",
         "Mantis, Giant"
@@ -4064,7 +4064,7 @@
       "r": 6,
       "id": "013.006",
       "terrain": "MountainsWithPass",
-      "terrainFeature": null,
+      "terrainFeature": "Gorge",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -4087,7 +4087,7 @@
       "r": 7,
       "id": "013.007",
       "terrain": "Plain",
-      "terrainFeature": null,
+      "terrainFeature": "Crater lake",
       "encounterFeatures1": [
         "G-Human",
         "Bandit"
@@ -4120,7 +4120,7 @@
       "r": 8,
       "id": "013.008",
       "terrain": "Forest",
-      "terrainFeature": "Cave, fracture",
+      "terrainFeature": "Stream",
       "encounterFeatures1": [
         "1-Insect",
         "Driver Ant"
@@ -4153,7 +4153,7 @@
       "r": 9,
       "id": "013.009",
       "terrain": "Scrub",
-      "terrainFeature": null,
+      "terrainFeature": "Plateau",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wererat"
@@ -4183,7 +4183,7 @@
       "r": 0,
       "id": "014.000",
       "terrain": "Mountains",
-      "terrainFeature": null,
+      "terrainFeature": "Natural Arch",
       "encounterFeatures1": null,
       "encounterFeatures2": null,
       "encounterFeatures3": null,
@@ -4209,7 +4209,7 @@
       "r": 1,
       "id": "014.001",
       "terrain": "Desert",
-      "terrainFeature": null,
+      "terrainFeature": "Rock Shelter",
       "encounterFeatures1": [
         "D-Animal",
         "Cat, Lion"
@@ -4238,7 +4238,7 @@
       "r": 2,
       "id": "014.002",
       "terrain": "Desert",
-      "terrainFeature": "Rock Shelter",
+      "terrainFeature": "Butte",
       "encounterFeatures1": [
         "2-Undead",
         "Mummy"
@@ -4268,7 +4268,7 @@
       "r": 3,
       "id": "014.003",
       "terrain": "Marsh",
-      "terrainFeature": "Heavy Mossing",
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Crab"
@@ -4304,7 +4304,7 @@
       "r": 4,
       "id": "014.004",
       "terrain": "Lake",
-      "terrainFeature": "Island, small",
+      "terrainFeature": "Heavy Canopy",
       "encounterFeatures1": [
         "O-Human",
         "Buccaneer Lair"
@@ -4330,7 +4330,7 @@
       "r": 5,
       "id": "014.005",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Crag",
       "encounterFeatures1": [
         "B-Animal",
         "Rock Baboon"
@@ -4359,7 +4359,7 @@
       "r": 6,
       "id": "014.006",
       "terrain": "Hills",
-      "terrainFeature": null,
+      "terrainFeature": "Hot Spring",
       "encounterFeatures1": [
         "B-Human",
         "Berserker"
@@ -4392,7 +4392,7 @@
       "r": 7,
       "id": "014.007",
       "terrain": "Desert",
-      "terrainFeature": null,
+      "terrainFeature": "Butte",
       "encounterFeatures1": [
         "D-Animal",
         "Camel"
@@ -4418,7 +4418,7 @@
       "r": 8,
       "id": "014.008",
       "terrain": "Rough",
-      "terrainFeature": "Butte",
+      "terrainFeature": "Escarpment",
       "encounterFeatures1": [
         "1-Dragon",
         "Pseudo-Dragon"
@@ -4448,7 +4448,7 @@
       "r": 9,
       "id": "014.009",
       "terrain": "Hills",
-      "terrainFeature": "Strath",
+      "terrainFeature": "Cave, lava tube",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Green"
