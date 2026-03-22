@@ -418,3 +418,114 @@ var encumberanceTable = {
             </table>
         </div>
     </div>
+
+    {
+        terrainTable,
+        terrainFeaturesTable,
+        inhabitationTable,
+        wildernessRollsTable,
+        wildernessFeatureChance,
+        wildernessEncountersTable,
+        specificEncountersTable,
+        wildernessFeaturesTable,
+        wildFeaturesWithSuppArray,
+        specialInhabitationTable,
+        ruinsDecayTable,
+        ruinsTypeTable,
+        ruinsInhabitantsTable,
+        sandboxGenFeatureTable,
+        sandboxGenSettlementTable,
+        sandboxGenLandmarkStartingTable,
+        sandboxGenLandmarkNaturalTable,
+        sandboxGenLandmarkArtificialTable,
+        sandboxGenLandmarkMagicTable,
+        sandboxGenLandmarkContentTable,
+        sandboxGenHazardTable,
+        sandboxGenEmptyTable,
+        sandboxGenSpecialStartTable,
+        fillingFeatureTable,
+        sandboxGenSpecialDisputeTable,
+        wildHexMatchingTable,
+        forestWildHexTable,
+        mountainWildHexTable,
+        desertWildHexTable,
+        swampWildHexTable,
+        oceanWildHexTable,
+        lostChanceTable,
+        colourTable,
+        baseTerrainTable,
+        featureThresholdTable,
+        terrainAddThreshTable,
+        encounterFeatureKeysTable
+      }
+
+      terrainTable = null,
+    terrainFeaturesTable = null,
+    inhabitationTable = null,
+    wildernessRollsTable = null,
+    wildernessFeatureChance = null,
+    wildernessEncountersTable = null,
+    specificEncountersTable = null,
+    wildernessFeaturesTable = null,
+    wildFeaturesWithSuppArray = null,
+    specialInhabitationTable = null,
+    ruinsTypeTable = null,
+    ruinsDecayTable = null,
+    ruinsInhabitantsTable = null,
+    sandboxGenFeatureTable = null,
+    sandboxGenSettlementTable = null,
+    sandboxGenLandmarkStartingTable = null,
+    sandboxGenLandmarkNaturalTable = null,
+    sandboxGenLandmarkArtificialTable = null,
+    sandboxGenLandmarkMagicTable = null,
+    sandboxGenLandmarkContentTable = null,
+    sandboxGenHazardTable = null,
+    sandboxGenEmptyTable = null,
+    sandboxGenSpecialStartTable = null,
+    fillingFeatureTable = null,
+    sandboxGenSpecialDisputeTable = null,
+    wildHexMatchingTable = null,
+    forestWildHexTable = null,
+    mountainWildHexTable = null,
+    desertWildHexTable = null,
+    swampWildHexTable = null,
+    oceanWildHexTable = null,
+    lostChanceTable = null,
+    colourTable = null,
+    baseTerrainTable = null
+
+      const terrainTable = data.hexWildernessTerrain ?? null;
+      const terrainFeaturesTable = data.terrainFeatures ?? null;
+      const inhabitationTable = data.hexInhabitation ?? null;
+      const wildernessRollsTable = data.wildernessRollsTable ?? null
+      const wildernessFeatureChance = data.wildernessFeatureChance ?? null;
+      const wildernessEncountersTable = data.wildernessEncountersTable ?? null;
+      const specificEncountersTable = data.specificEncountersTable ?? null;
+      const wildernessFeaturesTable = data.wildernessFeaturesTable ?? null;
+      const wildFeaturesWithSuppArray = data.wildFeaturesWithSuppArray ?? null;
+      const specialInhabitationTable = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
+      const ruinsTypeTable = data.ruinsType ?? null;
+      const ruinsDecayTable = data.ruinsDecay ?? null;
+      const ruinsInhabitantsTable = data.ruinsInhabitants ?? null;
+      const sandboxGenFeatureTable = data.sandboxGenFeatureTable ?? null;
+      const sandboxGenSettlementTable = data.sandboxGenSettlementTable ?? null;
+      const sandboxGenLandmarkStartingTable = data.sandboxGenLandmarkStartingTable ?? null;
+      const sandboxGenLandmarkNaturalTable = data.sandboxGenLandmarkNaturalTable ?? null;
+      const sandboxGenLandmarkArtificialTable = data.sandboxGenLandmarkArtificialTable ?? null;
+      const sandboxGenLandmarkMagicTable = data.sandboxGenLandmarkMagicTable ?? null;
+      const sandboxGenLandmarkContentTable = data.sandboxGenLandmarkContentTable ?? null;
+      const sandboxGenHazardTable = data.sandboxGenHazardTable ?? null;
+      const sandboxGenEmptyTable = data.sandboxGenEmptyTable ?? null;
+      const sandboxGenSpecialStartTable = data.sandboxGenSpecialStartTable ?? null;
+      const fillingFeatureTable = data.fillingFeatureTable ?? null;
+      const sandboxGenSpecialDisputeTable = data.sandboxGenSpecialDisputeTable ?? null;
+      const wildHexMatchingTable = data.wildHexMatchingTable ?? null;
+      const forestWildHexTable = data.forestWildHexTable ?? null;
+      const mountainWildHexTable = data.mountainWildHexTable ?? null;
+      const desertWildHexTable = data.desertWildHexTable ?? null;
+      const swampWildHexTable = data.swampWildHexTable ?? null;
+      const oceanWildHexTable = data.oceanWildHexTable ?? null;
+      const lostChanceTable = data.lostChanceTable ?? null;
+      const colourTable = data.colourTable ?? null;
+      const baseTerrainTable = data.baseTerrainTable ?? null;
+    

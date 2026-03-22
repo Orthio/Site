@@ -21,72 +21,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
   const data = await res.json();
 
-  const terrainTable = data.hexWildernessTerrain ?? null;
-  const terrainFeaturesTable = data.terrainFeatures ?? null;
-  const inhabitationTable = data.hexInhabitation ?? null;
-  const wildernessRollsTable = data.wildernessRollsTable ?? null
-  const wildernessFeatureChance = data.wildernessFeatureChance ?? null;
-  const wildernessEncountersTable = data.wildernessEncountersTable ?? null;
-  const specificEncountersTable = data.specificEncountersTable ?? null;
-  const wildernessFeaturesTable = data.wildernessFeaturesTable ?? null;
-  const wildFeaturesWithSuppArray = data.wildFeaturesWithSuppArray ?? null;
-  const specialInhabitationTable = data.specialInhabitation ?? (inhabitation ? inhabitation.Special : null) ?? null;
-  const ruinsTypeTable = data.ruinsType ?? null;
-  const ruinsDecayTable = data.ruinsDecay ?? null;
-  const ruinsInhabitantsTable = data.ruinsInhabitants ?? null;
-  const sandboxGenFeatureTable = data.sandboxGenFeatureTable ?? null;
-  const sandboxGenSettlementTable = data.sandboxGenSettlementTable ?? null;
-  const sandboxGenLandmarkStartingTable = data.sandboxGenLandmarkStartingTable ?? null;
-  const sandboxGenLandmarkNaturalTable = data.sandboxGenLandmarkNaturalTable ?? null;
-  const sandboxGenLandmarkArtificialTable = data.sandboxGenLandmarkArtificialTable ?? null;
-  const sandboxGenLandmarkMagicTable = data.sandboxGenLandmarkMagicTable ?? null;
-  const sandboxGenLandmarkContentTable = data.sandboxGenLandmarkContentTable ?? null;
-  const sandboxGenHazardTable = data.sandboxGenHazardTable ?? null;
-  const sandboxGenEmptyTable = data.sandboxGenEmptyTable ?? null;
-  const sandboxGenSpecialStartTable = data.sandboxGenSpecialStartTable ?? null;
-  const fillingFeatureTable = data.fillingFeatureTable ?? null;
-  const sandboxGenSpecialDisputeTable = data.sandboxGenSpecialDisputeTable ?? null;
-  const wildHexMatchingTable = data.wildHexMatchingTable ?? null;
-  const forestWildHexTable = data.forestWildHexTable ?? null;
-  const mountainWildHexTable = data.mountainWildHexTable ?? null;
-  const desertWildHexTable = data.desertWildHexTable ?? null;
-  const swampWildHexTable = data.swampWildHexTable ?? null;
-  const oceanWildHexTable = data.oceanWildHexTable ?? null;
-
-
-  hexMap.setTables({
-    terrainTable,
-    terrainFeaturesTable,
-    inhabitationTable,
-    wildernessRollsTable,
-    wildernessFeatureChance,
-    wildernessEncountersTable,
-    specificEncountersTable,
-    wildernessFeaturesTable,
-    wildFeaturesWithSuppArray,
-    specialInhabitationTable,
-    ruinsDecayTable,
-    ruinsTypeTable,
-    ruinsInhabitantsTable,
-    sandboxGenFeatureTable,
-    sandboxGenSettlementTable,
-    sandboxGenLandmarkStartingTable,
-    sandboxGenLandmarkNaturalTable,
-    sandboxGenLandmarkArtificialTable,
-    sandboxGenLandmarkMagicTable,
-    sandboxGenLandmarkContentTable,
-    sandboxGenHazardTable,
-    sandboxGenEmptyTable,
-    sandboxGenSpecialStartTable,
-    fillingFeatureTable,
-    sandboxGenSpecialDisputeTable,
-    wildHexMatchingTable,
-    forestWildHexTable,
-    mountainWildHexTable,
-    desertWildHexTable,
-    swampWildHexTable,
-    oceanWildHexTable
-  });
+  hexMap.setTables(data);
 
   const initialSeed = getSeedFromURL() ?? randomUint32();
 
@@ -100,6 +35,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       hexId: document.getElementById("hexId"),
       hexCoords: document.getElementById("hexCoords"),
       hexTerrain: document.getElementById("hexTerrain"),
+      lostChance: document.getElementById("lostChance"),
 
       terrainFeatures: document.getElementById("terrainFeatures"),
       encounterFeatures1: document.getElementById("encounterFeatures1"),
@@ -126,7 +62,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     dom: {
       exportBtn: document.getElementById("exportGrid"),
       importInput: document.getElementById("importGrid"),
-      importMaz: document.getElementById("importMaz")
+      importMaz: document.getElementById("importMaz"),
+      exportRegion: document.getElementById("exportRegion"),
+      exportMarkButton: document.getElementById("exportMarkButton")
     }
   });
 });

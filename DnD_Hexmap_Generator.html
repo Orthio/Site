@@ -41,6 +41,10 @@
         <span class="v" id="terrainFeatures">—</span>
       </div>
       <div class="kv">
+        <span class="k">Lost/Encounter Chance</span>
+        <span class="v" id="lostChance">—</span>
+      </div>
+      <div class="kv">
         <span class="k">Encounter Features 1</span>
         <span class="v" id="encounterFeatures1">—</span>
       </div>
@@ -86,6 +90,12 @@
             ImportMaz
             <input class="buttonClass" id="importMaz" accept="application/json" />
           </label>
+        </div>
+        <div>
+          <button class="buttonClass" id="exportRegion">Export Regional JSON</button>
+        </div>
+        <div>
+          <button class="buttonClass" id="exportMarkButton">Export Markdown</button>
         </div>
       </div>
 
@@ -141,6 +151,7 @@
     <small>Appendix B transitions, hexInhabitation, terrainFeature, ruins & specials via json/DnD_Hexmap.json.</small>
   </footer>
 
+  <script src="js/jszip.min.js"></script>
   <script type="module" src="js/DnD_HexMapMain.js"></script>
 </body>
 

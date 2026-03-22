@@ -16,6 +16,7 @@
  * @property {number} code // 12
  * @property {string} terrain // Lake
  * @property {string} fill // #5ab3ff
+ * @property {string} lostChance // 1-in-6
  * 
  * @property {string|null} terrainFeature // Marsh gas
  * @property {string|null} wildFeaturesType  // Hazard/Resource
@@ -37,7 +38,6 @@
 *
 * @property {[number, number]} nFeatures  // 2, 1
 * @property {string|null} obviousFeature1  //  bx procedure like wildFeatures
-// Landmark,A Vignette to assist with Portraying a sense of Place.,1-4
 * @property {string|null} obviousFeature2  //  sandbox gen procedure
 * @property {string|null} obviousFeature3  //  wilderness feat or filling feat
 * @property {string|null} hiddenFeature1  // bx procedure or sandbox gen
@@ -74,6 +74,7 @@ export class HexMapCore {
 
     // Data/state
     this.terrainFeature = null;
+    this.lostChance = null;
     this.encFeatures1 = null;
     this.encFeatures2 = null;
     this.encFeatures3 = null;
@@ -88,165 +89,56 @@ export class HexMapCore {
     this.grid = new Map();          // key "q,r" -> cell
     this.selectedKey = null;
 
-    this.tables2 = {};
-
-    // Base terrains
-    this.tables2.T = {
-      Plain: 1,
-      Scrub: 2,
-      Forest: 3,
-      ForestWithHills: 4,
-      Rough: 5,
-      Desert: 6,
-      Hills: 7,
-      Mountains: 8,
-      MountainsWithPass: 9,
-      Marsh: 10,
-      Lake: 11,
-      Valley: 12,
-    };
-    this.COLOR = {
-      [this.tables2.T.Plain]: "#9bfe03",
-      [this.tables2.T.Scrub]: "#8bbf71",
-      [this.tables2.T.Forest]: "#14d000",
-      [this.tables2.T.ForestWithHills]: "#14d000",
-      [this.tables2.T.Rough]: "#977926",
-      [this.tables2.T.Desert]: "#f7d77d",
-      [this.tables2.T.Hills]: "#be9006",
-      [this.tables2.T.Mountains]: "#845704",
-      [this.tables2.T.MountainsWithPass]: "#845704",
-      [this.tables2.T.Marsh]: "#74a8a6",
-      [this.tables2.T.Lake]: "#5ab3ff",
-      [this.tables2.T.Valley]: "#b08bff"
-
-    };
-
-
-    // Thresholds for terrain having descriptive features such as gulch
-    this.FEATURE_THRESH = {
-      Plain: 4,
-      Scrub: 20,
-      Forest: 8,
-      ForestWithHills: 8,
-      Rough: 20,
-      Desert: 9,
-      Hills: 6,
-      Mountains: 10,
-      MountainsWithPass: 10,
-      Marsh: 17,   // uses swampFeatures in JSON
-      Lake: 20,
-      Valley: 20
-    };
-    // Thesholds for forests becoming forest with hills, mountains having a pass
-    this.tables2.TERRAIN_ADD_THRESH = {
-      Plain: 20,
-      Forest: 2,
-      Hills: 2,
-      Mountains: 1,
-      Marsh: 20,
-      Desert: 20
-    };
-    this.FEATURE_KEYS = {
-      Plain: "plainsFeatures",
-      Scrub: "plainsFeatures",
-      Forest: "forestFeatures",
-      ForestWithHills: "forestWithHillsFeatures",
-      Rough: "plainsFeatures",
-      Desert: "desertFeatures",
-      Hills: "hillsFeatures",
-      Mountains: "mountainsFeatures",
-      MountainsWithPass: "mountainsFeatures",
-      Marsh: "swampFeatures",
-      Lake: "swampFeatures",
-      Valley: "hillsFeatures"
-    };
-    this.ENCOUNTER_FEATURE_KEYS = {
-      // Points to the right part of encFeaturesTable on json
-      Plain: "Clear",
-      Scrub: "Clear",
-      Forest: "Forest",
-      ForestWithHills: "Forest",
-      Rough: "Hills",
-      Desert: "Desert",
-      Hills: "Hills",
-      Mountains: "Hills",
-      MountainsWithPass: "Hills",
-      Marsh: "Swamp",
-      Lake: "Ocean",
-      Valley: "Desert"
-    };
   }
 
-  setTables({
-    terrainTable = null,
-    terrainFeaturesTable = null,
-    inhabitationTable = null,
-    wildernessRollsTable = null,
-    wildernessFeatureChance = null,
-    wildernessEncountersTable = null,
-    specificEncountersTable = null,
-    wildernessFeaturesTable = null,
-    wildFeaturesWithSuppArray = null,
-    specialInhabitationTable = null,
-    ruinsTypeTable = null,
-    ruinsDecayTable = null,
-    ruinsInhabitantsTable = null,
-    sandboxGenFeatureTable = null,
-    sandboxGenSettlementTable = null,
-    sandboxGenLandmarkStartingTable = null,
-    sandboxGenLandmarkNaturalTable = null,
-    sandboxGenLandmarkArtificialTable = null,
-    sandboxGenLandmarkMagicTable = null,
-    sandboxGenLandmarkContentTable = null,
-    sandboxGenHazardTable = null,
-    sandboxGenEmptyTable = null,
-    sandboxGenSpecialStartTable = null,
-    fillingFeatureTable = null,
-    sandboxGenSpecialDisputeTable = null,
-    wildHexMatchingTable = null,
-    forestWildHexTable = null,
-    mountainWildHexTable = null,
-    desertWildHexTable = null,
-    swampWildHexTable = null,
-    oceanWildHexTable = null,
-
-  } = {}) {
-    if (!terrainTable || typeof terrainTable !== "object") {
+  setTables(data = {}) {
+    if (!data.hexWildernessTerrain || typeof data.hexWildernessTerrain !== "object") {
       throw new Error("HexMapCore.setTables: terrain missing or invalid");
     }
-    this.tables.terrainTable = terrainTable;
-    this.tables.terrainFeaturesTable = terrainFeaturesTable && typeof terrainFeaturesTable === "object" ? terrainFeaturesTable : null;
-    this.tables.inhabitationTable = inhabitationTable && typeof inhabitationTable === "object" ? inhabitationTable : null;
-    this.tables.wildernessRollsTable = wildernessRollsTable && typeof wildernessRollsTable === "object" ? wildernessRollsTable : null;
-    this.tables.wildernessFeatureChance = wildernessFeatureChance && typeof wildernessFeatureChance === "object" ? wildernessFeatureChance : null;
-    this.tables.wildernessEncountersTable = wildernessEncountersTable && typeof wildernessEncountersTable === "object" ? wildernessEncountersTable : null;
-    this.tables.specificEncountersTable = specificEncountersTable && typeof specificEncountersTable === "object" ? specificEncountersTable : null;
-    this.tables.wildernessFeaturesTable = wildernessFeaturesTable && typeof wildernessFeaturesTable === "object" ? wildernessFeaturesTable : null;
-    this.tables.wildFeaturesWithSuppArray = wildFeaturesWithSuppArray && typeof wildFeaturesWithSuppArray === "object" ? wildFeaturesWithSuppArray : null;
-    this.tables.specialInhabitationTable = specialInhabitationTable && typeof specialInhabitationTable === "object" ? specialInhabitationTable : null;
-    this.tables.ruinsTypeTable = ruinsTypeTable && typeof ruinsTypeTable === "object" ? ruinsTypeTable : null;
-    this.tables.ruinsDecayTable = ruinsDecayTable && typeof ruinsDecayTable === "object" ? ruinsDecayTable : null;
-    this.tables.ruinsInhabitantsTable =
-      ruinsInhabitantsTable && typeof ruinsInhabitantsTable === "object" ? ruinsInhabitantsTable : null;
-    this.tables.sandboxGenFeatureTable = sandboxGenFeatureTable;
-    this.tables.sandboxGenSettlementTable = sandboxGenSettlementTable;
-    this.tables.sandboxGenLandmarkStartingTable = sandboxGenLandmarkStartingTable;
-    this.tables.sandboxGenLandmarkNaturalTable = sandboxGenLandmarkNaturalTable;
-    this.tables.sandboxGenLandmarkArtificialTable = sandboxGenLandmarkArtificialTable;
-    this.tables.sandboxGenLandmarkMagicTable = sandboxGenLandmarkMagicTable;
-    this.tables.sandboxGenLandmarkContentTable = sandboxGenLandmarkContentTable;
-    this.tables.sandboxGenHazardTable = sandboxGenHazardTable;
-    this.tables.sandboxGenEmptyTable = sandboxGenEmptyTable;
-    this.tables.sandboxGenSpecialStartTable = sandboxGenSpecialStartTable;
-    this.tables.fillingFeatureTable = fillingFeatureTable;
-    this.tables.sandboxGenSpecialDisputeTable = sandboxGenSpecialDisputeTable;
-    this.tables.wildHexMatchingTable = wildHexMatchingTable;
-    this.tables.forestWildHexTable = forestWildHexTable;
-    this.tables.mountainWildHexTable = mountainWildHexTable;
-    this.tables.desertWildHexTable = desertWildHexTable;
-    this.tables.swampWildHexTable = swampWildHexTable;
-    this.tables.oceanWildHexTable = oceanWildHexTable;
 
+    this.tables = {
+      terrainTable: data.hexWildernessTerrain ?? null,
+      terrainFeaturesTable: data.terrainFeatures ?? null,
+      inhabitationTable: data.hexInhabitation ?? null,
+      wildernessRollsTable: data.wildernessRollsTable ?? null,
+      wildernessFeatureChance: data.wildernessFeatureChance ?? null,
+      wildernessEncountersTable: data.wildernessEncountersTable ?? null,
+      specificEncountersTable: data.specificEncountersTable ?? null,
+      wildernessFeaturesTable: data.wildernessFeaturesTable ?? null,
+      wildFeaturesWithSuppArray: data.wildFeaturesWithSuppArray ?? null,
+      specialInhabitationTable: data.specialInhabitation ?? null,
+      ruinsTypeTable: data.ruinsType ?? null,
+      ruinsDecayTable: data.ruinsDecay ?? null,
+      ruinsInhabitantsTable: data.ruinsInhabitants ?? null,
+      sandboxGenFeatureTable: data.sandboxGenFeatureTable ?? null,
+      sandboxGenSettlementTable: data.sandboxGenSettlementTable ?? null,
+      sandboxGenLandmarkStartingTable: data.sandboxGenLandmarkStartingTable ?? null,
+      sandboxGenLandmarkNaturalTable: data.sandboxGenLandmarkNaturalTable ?? null,
+      sandboxGenLandmarkArtificialTable: data.sandboxGenLandmarkArtificialTable ?? null,
+      sandboxGenLandmarkMagicTable: data.sandboxGenLandmarkMagicTable ?? null,
+      sandboxGenLandmarkContentTable: data.sandboxGenLandmarkContentTable ?? null,
+      sandboxGenHazardTable: data.sandboxGenHazardTable ?? null,
+      sandboxGenEmptyTable: data.sandboxGenEmptyTable ?? null,
+      sandboxGenSpecialStartTable: data.sandboxGenSpecialStartTable ?? null,
+      fillingFeatureTable: data.fillingFeatureTable ?? null,
+      sandboxGenSpecialDisputeTable: data.sandboxGenSpecialDisputeTable ?? null,
+      wildHexMatchingTable: data.wildHexMatchingTable ?? null,
+      forestWildHexTable: data.forestWildHexTable ?? null,
+      mountainWildHexTable: data.mountainWildHexTable ?? null,
+      desertWildHexTable: data.desertWildHexTable ?? null,
+      swampWildHexTable: data.swampWildHexTable ?? null,
+      oceanWildHexTable: data.oceanWildHexTable ?? null,
+      lostChanceTable: data.lostChanceTable ?? null,
+      colourTable: data.colourTable ?? null,
+      baseTerrainTable: data.baseTerrainTable ?? null,
+      featureThresholdTable: data.featureThresholdTable ?? null,
+      terrainAddThreshTable: data.terrainAddThreshTable ?? null,
+      // Thesholds for forests becoming forest with hills, mountains having a pass
+      featureKeysTable: data.featureKeysTable ?? null,
+      encounterFeatureKeysTable: data.encounterFeatureKeysTable ?? null,
+      // Points to the right part of encFeaturesTable on json
+
+    };
   }
 
   // --- generation (rectangular, row-major) ---
@@ -297,6 +189,9 @@ export class HexMapCore {
 
         // Check for obvious and hidden features
         this.#maybeAddObviousFeatures(cell);
+
+        // Check for lost chance
+        this.#checkLostChance(cell);
       }
     }
   }
@@ -339,14 +234,13 @@ export class HexMapCore {
   #maybeAddFeature(cell) {
     if (!this.tables) return;
     const checkingTerrain = cell.terrain;
-    const th = this.FEATURE_THRESH[checkingTerrain] ?? 0;
+    const th = this.tables.featureThresholdTable[checkingTerrain] ?? 0;
     if (th <= 0) return;
 
     const d30 = this.#roll(30);
     if (d30 > th) return;
 
-    const key = this.FEATURE_KEYS[checkingTerrain];
-
+    const key = this.tables.featureKeysTable[checkingTerrain];
 
     const list = key && Array.isArray(this.tables.terrainFeaturesTable[key]) ? this.tables.terrainFeaturesTable[key] : null;
     if (!list || list.length === 0) return;
@@ -369,14 +263,14 @@ export class HexMapCore {
       return;
     }
 
-    const th = this.tables2.TERRAIN_ADD_THRESH[checkingTerrain] ?? 0;
+    const th = this.tables.terrainAddThreshTable[checkingTerrain] ?? 0;
     if (th <= 0) return;
     if (this.#roll(20) > th) return;
 
     cell.terrain = upgraded;
 
     // NOTE: we *don't* touch colour here; #setCell already computed fill,
-    // and our color mapping ensures upgraded names map back to the right base.
+    // and our colour mapping ensures upgraded names map back to the right base.
   }
 
 
@@ -452,7 +346,7 @@ export class HexMapCore {
     if (rolls <= 0) return;
 
     // which column of encFeaturesTable to use for this terrain
-    const tableKey = this.ENCOUNTER_FEATURE_KEYS[terrainCheck];
+    const tableKey = this.tables.encounterFeatureKeysTable[terrainCheck];
     const col = tableKey && typeof this.tables.wildernessEncountersTable[tableKey] === "object"
       ? this.tables.wildernessEncountersTable[tableKey]
       : null;
@@ -638,6 +532,12 @@ export class HexMapCore {
     }
   }
 
+  #checkLostChance(cell) {
+    const lostTable = this.tables.lostChanceTable;
+    const lostTerrain = cell.terrain;
+    cell.lostChance = lostTable[lostTerrain] + "-in-6";
+  }
+
 
 
   // Reroll feature + encounter features for a single hex, keeping same terrain
@@ -694,8 +594,8 @@ export class HexMapCore {
     this.svg.setAttribute(
       "viewBox",
       `${Math.floor(minX - pad)} ${Math.floor(minY - pad)} ${Math.ceil(
-        maxX - minX + pad * 2
-      )} ${Math.ceil(maxY - minY + pad * 2)}`
+        maxX - minX + pad * 1.5
+      )} ${Math.ceil(maxY - minY + pad * 1.5)}`
     );
 
     const frag = document.createDocumentFragment();
@@ -859,32 +759,7 @@ export class HexMapCore {
         startTerrain: this.startTerrain,
         seed: this.seed
       },
-      cells: [...this.grid.values()].map((c) => ({
-        q: c.q,
-        r: c.r,
-        id: c.id,
-        terrain: c.terrain,
-        terrainFeature: c.terrainFeature ?? null,
-        encounterFeatures1: c.encounterFeatures1 ?? [null, null],
-        encounterFeatures2: c.encounterFeatures2 ?? [null, null],
-        encounterFeatures3: c.encounterFeatures3 ?? [null, null],
-        wildFeatures: [c.wildFeaturesType, c.wildFeaturesDescription, c.wildFeaturesIndex] ?? null,
-
-        ruins: c.ruins ?? null,
-        settlement: c.settlement ?? null,
-        // settlementSize: c.settlementSize ?? null,
-
-        regionName: c.regionName ?? null,
-
-        nFeatures: c.nFeatures ?? null,
-        obviousFeature1: c.obviousFeature1 ?? null,
-        obviousFeature2: c.obviousFeature2 ?? null,
-        obviousFeature3: c.obviousFeature3 ?? null,
-        hiddenFeature1: c.hiddenFeature1 ?? null,
-
-        rerollSeed: c.rerollSeed ?? null,
-
-      }))
+      cells: [...this.grid.values()].map(c => this.#serializeCell(c))
     };
   }
 
@@ -904,8 +779,9 @@ export class HexMapCore {
       const terrainStr = c.terrain ?? this.startTerrain;
 
       // Colour using terrain
-      const code = this.tables2.T[terrainStr] ?? this.tables2.T.Plain;
-      const fill = this.COLOR[code] || "#555";
+      const bTable = this.tables.baseTerrainTable
+      const code = Object.keys(bTable)[terrainStr];
+      const fill = this.tables.colourTable[terrainStr] || "#555";
 
       this.grid.set(this.#key(c.q, c.r), {
         q: c.q,
@@ -916,6 +792,9 @@ export class HexMapCore {
         fill,
 
         terrainFeature: c.terrainFeature ?? null,
+        lostChance: this.tables.lostChanceTable?.[c.terrain]
+          ? `${this.tables.lostChanceTable[c.terrain]}-in-6`
+          : null,
         wildFeaturesType: c.wildFeatures?.[0] ?? null,
         wildFeaturesDescription: c.wildFeatures?.[1] ?? null,
         wildFeaturesIndex: c.wildFeatures?.[2] ?? null,
@@ -933,6 +812,7 @@ export class HexMapCore {
         encounterFeatures2: c.encounterFeatures2 ?? null,
         encounterFeatures3: c.encounterFeatures3 ?? null,
 
+        nFeatures: c.nFeatures ? this.#extractnFeatures(c.obviousFeature1, c.obviousFeature2, c.obviousFeature3, c.hiddenFeature1) : null,
         obviousFeature1: c.obviousFeature1 ?? null,
         obviousFeature2: c.obviousFeature2 ?? null,
         obviousFeature3: c.obviousFeature3 ?? null,
@@ -940,13 +820,57 @@ export class HexMapCore {
 
         rerollSeed: c.rerollSeed ?? null,
       });
-
     }
-
 
   }
 
+  exportSelectedRegionJSON() {
+    if (!this.selectedKey) {
+      throw new Error("No hex selected.");
+    }
 
+    const selectedCell = this.grid.get(this.selectedKey);
+    if (!selectedCell) {
+      throw new Error("Selected hex not found.");
+    }
+
+    const regionName = selectedCell.regionName ?? null;
+    if (!regionName) {
+      throw new Error("Selected hex has no regionName.");
+    }
+
+    return {
+      meta: {
+        cols: this.cols,
+        rows: this.rows,
+        hexSize: this.hexSize,
+        startTerrain: this.startTerrain,
+        seed: this.seed,
+        exportedRegionName: regionName
+      },
+      cells: [...this.grid.values()]
+        .filter(c => c.regionName === regionName)
+        .map(c => this.#serializeCell(c))
+    };
+  }
+
+  getSelectedRegionName() {
+    if (!this.selectedKey) return null;
+    return this.grid.get(this.selectedKey)?.regionName ?? null;
+  }
+
+  getSelectedRegionFilename() {
+    const regionName = this.getSelectedRegionName();
+    if (!regionName) return "hexmap-region.json";
+
+    const safeName = String(regionName)
+      .trim()
+      .toLowerCase()
+      .replace(/[\\/:"*?<>|]+/g, "")
+      .replace(/\s+/g, " ");
+
+    return `hexmap-${safeName}.json`;
+  }
 
   // ---------- private helpers ----------
   #key(q, r) {
@@ -960,14 +884,16 @@ export class HexMapCore {
   }
 
   #setCell(q, r, { inputTerrain }) {
-    // Use special mapping for colour if this is a composite terrain
-    const code = this.tables2.T[inputTerrain] ?? this.tables2.T.Plain;
+    const terrain = inputTerrain;
+    const bTable = this.tables.baseTerrainTable;
+    const code = bTable[terrain];
 
     const id = this.#hexId(q, r);
-    const terrain = inputTerrain;
 
     // Base colour from main terrain
-    let fill = this.COLOR[code] || "#555";
+    const cTable = this.tables.colourTable;
+    // const cKey = cTable[Object.keys[terrain]];
+    let fill = cTable[terrain] || "#555";
 
     this.grid.set(this.#key(q, r), {
       q,
@@ -985,7 +911,33 @@ export class HexMapCore {
     });
   }
 
+  #serializeCell(c) {
+    return {
+      q: c.q,
+      r: c.r,
+      id: c.id,
+      terrain: c.terrain,
+      terrainFeature: c.terrainFeature ?? null,
+      lostChance: c.lostChance ?? null,
+      encounterFeatures1: c.encounterFeatures1 ?? [null, null],
+      encounterFeatures2: c.encounterFeatures2 ?? [null, null],
+      encounterFeatures3: c.encounterFeatures3 ?? [null, null],
+      wildFeatures: [c.wildFeaturesType, c.wildFeaturesDescription, c.wildFeaturesIndex] ?? null,
 
+      ruins: c.ruins ?? null,
+      settlement: c.settlement ?? null,
+
+      regionName: c.regionName ?? null,
+
+      nFeatures: c.nFeatures ?? null,
+      obviousFeature1: c.obviousFeature1 ?? null,
+      obviousFeature2: c.obviousFeature2 ?? null,
+      obviousFeature3: c.obviousFeature3 ?? null,
+      hiddenFeature1: c.hiddenFeature1 ?? null,
+
+      rerollSeed: c.rerollSeed ?? null,
+    };
+  }
 
   #nextFromJSON(currentTerrainName, d20) {
     const col = this.tables.terrainTable[currentTerrainName];
@@ -1129,8 +1081,43 @@ export class HexMapCore {
     return text;
   }
 
+  // get the number of obvious features
+  #extractnFeatures(obv1, obv2, obv3, hid1) {
+    let a = 0;
+    let b = 0
+    if (obv1 != null) a++;
+    if (obv2 != null) a++;
+    if (obv3 != null) a++;
+    if (hid1 != null) b++;
+    const nFeat = [a, b];
+    return nFeat
+  }
+
   // roll a sided dice
   #roll(sides) {
     return 1 + Math.floor(this.rng() * sides);
   }
+
+  // Put values to a cell ready for a markdown
+  #serializeMarkdownCell(c) {
+    return `---
+Title: 
+Terrain: ${c.terrain ?? ""}
+Lost/Encounter Chance: ${c.lostChance ?? ""}
+Region Name: ${c.regionName ?? ""}
+---`;
+  }
+
+  #getMarkdownFilename(c) {
+    const safeId = String(c.id ?? "unknown").trim();
+    return `${safeId}.md`;
+  }
+
+  exportMarkdown() {
+    return [...this.grid.values()].map(c => ({
+      filename: this.#getMarkdownFilename(c),
+      content: this.#serializeMarkdownCell(c)
+    }));
+  }
+
 }

@@ -74,6 +74,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const idOut = dom?.hexId ?? document.getElementById("hexId");
   const crdOut = dom?.hexCoords ?? document.getElementById("hexCoords");
   const terOut = dom?.hexTerrain ?? document.getElementById("hexTerrain");
+  const lChanceOut = dom?.lostChance ?? document.getElementById("lostChance");
 
   const terrainFeatOut = dom?.terrainFeatures ?? document.getElementById("terrainFeatures");
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
@@ -99,6 +100,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
     if (idOut) idOut.textContent = c.id;
     if (crdOut) crdOut.textContent = `q=${c.q}, r=${c.r}`;
     if (terOut) terOut.textContent = c.terrain;
+    if (lChanceOut) lChanceOut.textContent = c.lostChance;
 
     // Features (natural + special, combined)
     const lines = [];

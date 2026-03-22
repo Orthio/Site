@@ -47,6 +47,8 @@ function mulberry32(a) {
 
 // --- Globals set after JSON load ---
 let TABLE_ROOT = null;
+const colourTable = null;
+const baseTerrainTable = null;
 
 // Load JSON then init UI & first render
 window.addEventListener("DOMContentLoaded", async () => {
@@ -61,6 +63,10 @@ window.addEventListener("DOMContentLoaded", async () => {
             console.error("Loaded JSON:", data);
             throw new Error("hexWildernessTerrain not found or invalid in JSON.");
         }
+
+        // Load more tables
+        colourTable = data.ColourTable;
+        baseTerrainTable = data.baseTerrainTable;
 
         // Quick sanity log:
         console.log("Terrain keys in JSON:", Object.keys(TABLE_ROOT));
@@ -128,8 +134,9 @@ function regenerate(seed, TABLE_ROOT) {
 
     const grid = new Map();
     function setCell(q, r, { inputTerrain }) {
-        const code = T[inputTerrain] ?? T.Plain;
-        const fill = TERRAIN_COLOR[code] || "#555";
+        const code = baseTerrainTable[inputTerrain] ?? baseTerrainTable.Plain;
+        // const fill = TERRAIN_COLOR[code] || "#555";
+        const fill = colourTable[code] || "#555";
         grid.set(`${q},${r}`, {
             q, r, inputTerrain, code, fill,
             label: inputTerrain
@@ -169,7 +176,7 @@ function regenerate(seed, TABLE_ROOT) {
 
 
 // ---- Terrain setup (names used in your JSON) ----
-const T = {
+/* const T = {
     Plain: 1,
     Scrub: 2,
     Forest: 3,
@@ -196,7 +203,7 @@ const TERRAIN_COLOR = {
     [this.T.Marsh]: "#74a8a6",
     [this.T.Lake]: "#5ab3ff",
     [this.T.Valley]: "#b08bff"
-};
+}; */
 
 // ---- Hex math (axial, pointy top) ----
 function axialToPixel(q, r) {
