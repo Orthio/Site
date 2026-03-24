@@ -333,7 +333,7 @@ function updateOutput(inputText) {
         <span class="inputSpan"> ${inputText}  </span>
     </div><br>`);
 
-    if (resultOutput.length > 15) {
+    if (resultOutput.length > 14) {
         resultOutput.pop();
     }
 
