@@ -15,3 +15,13 @@
 #reaction-table td:nth-child(1) {
     width: 70px;
 }
+
+.spaceSpan {
+    /* display: flex; */
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.smallClass {
+    font-size: 12px;
+}

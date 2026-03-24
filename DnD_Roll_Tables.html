@@ -19,13 +19,17 @@
             -webkit-user-select: none;
             user-select: none;
         }
+
+        .boldHeadings {
+            margin: 0, 0;
+        }
     </style>
 </head>
 
 <body>
     <h1>Roll Tables</h1>
 
-    <p><b>Items</b></p>
+    <p class="boldHeadings"><b>Items</b></p>
     <div class="row-buttons">
         <button type="button" id="generate-treasures" class="button">Generate Treasures</button>
         <button type="button" id="generate-enemy-weapon-button" class="button">Generate Enemy Weapon</button>
@@ -37,29 +41,42 @@
         <button type="button" id="generate-equipment" class="button">Generate Equipment</button>
         <button type="button" id="generate-misc-items" class="button">Generate Misc Items</button>
     </div>
-    <p><b>Place</b></p>
+
+    <p class="boldHeadings"><b>Place</b></p>
     <div class="row-buttons">
         <button type="button" id="generate-place" class="button">Generate Place</button>
         <button type="button" id="generate-dungeon" class="button">Generate Dungeon</button>
         <button type="button" id="generate-trap" class="button">Generate Trap</button>
         <button type="button" id="generate-scenario" class="button">Generate Scenario</button>
     </div>
-    <p class="p-link" id="monster-reaction-link"><b>Monster</b></p>
 
+    <p class="p-link, boldHeadings" id="monster-reaction-link"><b>Monster</b></p>
     <div class="row-buttons">
         <button type="button" id="generate-reaction" class="button">Generate Reaction</button>
         <button type="button" id="add-reaction" class="button">More Aggressive</button>
         <button type="button" id="detract-reaction" class="button">More Friendly</button>
+        <button type="button" id="remove-reaction-text" class="button">Remove reaction text</button>
 
 
     </div>
     <div class="row-buttons">
-
         <button type="button" id="generate-indoor-distance" class="button">Generate Indoor Distance</button>
         <button type="button" id="generate-outdoor-open-distance" class="button">Generate Outdoor Open Distance</button>
         <button type="button" id="generate-outdoor-obs-distance" class="button">Generate Outdoor Obstructed
             Distance</button>
     </div>
+
+    <p class="boldHeadings"><b>Dice</b></p>
+    <button type="button" class="button buttond4" id="diceRolld4">Roll d4</button>
+    <button type="button" class="button buttond6" id="diceRolld6">Roll d6</button>
+    <button type="button" class="button buttond26" id="diceRoll2d6">Roll 2d6</button>
+    <button type="button" class="button buttond8" id="diceRolld8">Roll d8</button>
+    <button type="button" class="button buttond10" id="diceRolld10">Roll d10</button>
+    <button type="button" class="button buttond12" id="diceRolld12">Roll d12</button>
+    <button type="button" class="button buttond20" id="diceRolld20">Roll d20</button>
+    <button type="button" class="button buttond24" id="diceRolld24">Roll d24</button>
+    <button type="button" class="button buttond30" id="diceRolld30">Roll d30</button>
+    <button type="button" class="button buttond100" id="diceRolld100">Roll d100</button>
 
 
     <br>
