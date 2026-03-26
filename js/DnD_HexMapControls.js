@@ -80,7 +80,7 @@ export function initControls({ hexMap, dom, initialSeed }) {
   const enc1Out = dom?.encounterFeatures1 ?? document.getElementById("encounterFeatures1");
   const enc2Out = dom?.encounterFeatures2 ?? document.getElementById("encounterFeatures2");
   const enc3Out = dom?.encounterFeatures3 ?? document.getElementById("encounterFeatures3");
-  const wildFeatOut = dom?.wildFeaturesDescription ?? document.getElementById("wildFeaturesText");
+  const wildFeatOut = dom?.wildFeatures?.[1] ?? document.getElementById("wildFeaturesText");
   const ruinsBlock = dom?.ruinsBlock ?? document.getElementById("ruinsBlock");
   const ruDecay = dom?.ruinsDecay ?? document.getElementById("ruinsDecay");
   const ruType = dom?.ruinsType ?? document.getElementById("ruinsType");
@@ -111,8 +111,8 @@ export function initControls({ hexMap, dom, initialSeed }) {
     if (enc1Out) enc1Out.textContent = Array.isArray(c.encounterFeatures1) ? c.encounterFeatures1[1] : "—";
     if (enc2Out) enc2Out.textContent = Array.isArray(c.encounterFeatures2) ? c.encounterFeatures2[1] : "—";
     if (enc3Out) enc3Out.textContent = Array.isArray(c.encounterFeatures3) ? c.encounterFeatures3[1] : "—";
-    if (wildFeatOut) wildFeatOut.textContent = c.wildFeaturesDescription ?
-      (c.wildFeaturesType + ": " + c.wildFeaturesDescription) : "—";
+    if (wildFeatOut) wildFeatOut.textContent = c.wildFeatures?.[1] ?
+      (c.wildFeatures?.[0] + ": " + c.wildFeatures?.[1]) + " " + c.wildFeatures?.[3] : "—";
     if (setOut) setOut.textContent = c.settlementText ? c.settlementText : "—";
     if (regionNameOut) regionNameOut.textContent = c.regionNameText ? c.regionNameText : "—";
     if (nFeatures) nFeatures.textContent = c.nFeatures ?? "—";

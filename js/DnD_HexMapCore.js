@@ -19,10 +19,11 @@
  * @property {string} lostChance // 1-in-6
  * 
  * @property {string|null} terrainFeature // Marsh gas
- * @property {string|null} wildFeaturesType  // Hazard/Resource
- * @property {string|null} wildFeaturesDescription  // Consider a
- * @property {string|null} wildFeaturesIndex  // 6-6
- * @property {boolean} wildFeaturesHighlight // false
+ * @property {[string,string,string,boolean]|null} wildFeatures  // Hazard, Consider a, 6-6, False
+ * @property {string|null} wildFeatures[0]  // Hazard/Resource, Consider a, 6-6, false
+ * @property {string|null} wildFeatures[1]  // Consider a
+ * @property {string|null} wildFeatures[2]  // 6-6
+ * @property {boolean} wildFeatures[3] // false
  * 
  * @property {[string, number]|null} settlement, settlementSize  // Small town, 900
  * @property {number|null} settlementSize  // 900
@@ -37,10 +38,10 @@
  * @property {[string,string]|null} encounterFeatures3  // O-Swimmer, Fish, swordfish
 *
 * @property {[number, number]} nFeatures  // 2, 1
-* @property {string|null} obviousFeature1  //  bx procedure like wildFeatures
+* @property {[string,string,string,boolean]|null} obviousFeature1  //  bx procedure like wildFeatures: Hazard, Consider a, 6-6, False
 * @property {string|null} obviousFeature2  //  sandbox gen procedure
 * @property {string|null} obviousFeature3  //  wilderness feat or filling feat
-* @property {string|null} hiddenFeature1  // bx procedure or sandbox gen
+* @property {[string,string,string,boolean]|null} hiddenFeature1  // bx procedure or sandbox gen
 
 */
 
@@ -268,8 +269,6 @@ export class HexMapCore {
 
     cell.terrain = upgraded;
 
-    // NOTE: we *don't* touch colour here; #setCell already computed fill,
-    // and our colour mapping ensures upgraded names map back to the right base.
   }
 
 
@@ -355,10 +354,7 @@ export class HexMapCore {
     cell.encounterFeatures1 = null;
     cell.encounterFeatures2 = null;
     cell.encounterFeatures3 = null;
-    cell.wildFeaturesType = null;
-    cell.wildFeaturesDescription = null;
-    cell.wildFeaturesIndex = null;
-    cell.wildFeaturesHighlight = null;
+    cell.wildFeatures = null;
 
     for (let i = 1; i <= Math.min(3, rolls); i++) {
 
@@ -379,28 +375,20 @@ export class HexMapCore {
 
     if (this.#roll(2) > 1) {
       const wildFeaturesRoll = String(this.#roll(36));
-      cell.wildFeaturesType = this.tables.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
-      cell.wildFeaturesDescription = this.tables.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
-      cell.wildFeaturesIndex = this.tables.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
-      cell.wildFeaturesHighlight = this.tables.wildFeaturesWithSuppArray?.includes(cell.wildFeaturesIndex) ?? false;
+      cell.wildFeatures = [null, null, null, null];
+      cell.wildFeatures[0] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
+      cell.wildFeatures[1] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
+      cell.wildFeatures[2] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
+      cell.wildFeatures[3] = this.tables.wildFeaturesWithSuppArray?.includes(cell.wildFeatures[2]) ?? false;
     } else {
-      cell.wildFeaturesType = null;
-      cell.wildFeaturesDescription = null;
-      cell.wildFeaturesIndex = null;
-      cell.wildFeaturesHighlight = null;
+      cell.wildFeatures = null;
     }
 
     if (cell.terrain === "Lake") {
-      cell.wildFeaturesType = null;
-      cell.wildFeaturesDescription = null;
-      cell.wildFeaturesIndex = null;
-      cell.wildFeaturesHighlight = null;
+      cell.wildFeatures = null;
     }
     if (cell.settlement?.[0] != null) {
-      cell.wildFeaturesType = null;
-      cell.wildFeaturesDescription = null;
-      cell.wildFeaturesIndex = null;
-      cell.wildFeaturesHighlight = null;
+      cell.wildFeatures = null;
     }
 
   }
@@ -555,10 +543,10 @@ export class HexMapCore {
       cell.encounterFeatures1 = null;
       cell.encounterFeatures2 = null;
       cell.encounterFeatures3 = null;
-      cell.wildFeaturesType = null;
-      cell.wildFeaturesDescription = null;
-      cell.wildFeaturesIndex = null;
-      cell.wildFeaturesHighlight = null;
+      cell.wildFeatures[0] = null;
+      cell.wildFeatures[1] = null;
+      cell.wildFeatures[2] = null;
+      cell.wildFeatures[3] = null;
       cell.noFeatures = null;
       cell.obviousFeature1 = null;
       cell.obviousFeature2 = null;
@@ -619,8 +607,6 @@ export class HexMapCore {
 
     for (const cell of this.grid.values()) {
 
-      // console.log(cell.id, cell.wildFeaturesIndex, cell.wildFeaturesHighlight);
-
       const { x, y } = this.#offsetToPixel(cell.q, cell.r);
 
       const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
@@ -637,8 +623,9 @@ export class HexMapCore {
       labelGroup.setAttribute("text-anchor", "middle");
       labelGroup.setAttribute("dominant-baseline", "middle");
 
-      const labelColor = cell.wildFeaturesHighlight ? "#ff44f3" : "#000000";
-      labelGroup.style.fill = labelColor;
+      const labelColor = cell.wildFeatures?.[3] || cell.obviousFeatures1?.[3] || cell.hiddenFeatures1?.[3]
+        ? "#ff44f3"
+        : "#000000"; labelGroup.style.fill = labelColor;
 
       // base size you currently use (example: 12px)
       const baseSize = 12;
@@ -667,8 +654,8 @@ export class HexMapCore {
         lines.push(cell.id);
       } else if (this.labelMode === "wildStocking") {
         // The wilderness stocking, then settlement and id
-        if (cell.wildFeaturesType) lines.push(cell.wildFeaturesType);
-        if (cell.wildFeaturesIndex) lines.push(cell.wildFeaturesIndex);
+        if (cell.wildFeatures[0]) lines.push(cell.wildFeatures[0]);
+        if (cell.wildFeatures[2]) lines.push(cell.wildFeatures[2]);
 
         if (cell.settlement?.[0] != null) lines.push(cell.settlement[0]);
 
@@ -795,10 +782,7 @@ export class HexMapCore {
         lostChance: this.tables.lostChanceTable?.[c.terrain]
           ? `${this.tables.lostChanceTable[c.terrain]}-in-6`
           : null,
-        wildFeaturesType: c.wildFeatures?.[0] ?? null,
-        wildFeaturesDescription: c.wildFeatures?.[1] ?? null,
-        wildFeaturesIndex: c.wildFeatures?.[2] ?? null,
-        wildFeaturesHighlight: this.wildFeaturesWithSuppArray?.includes(c.wildFeatures?.[2]) ?? false,
+        wildFeatures: this.#checkWildFeatureBoolean(c.wildFeatures) ?? null,
 
         settlement: c.settlement ?? [null, null],
         settlementText: c.settlement?.[0] ? (c.settlement?.[1] ?
@@ -922,7 +906,7 @@ export class HexMapCore {
       encounterFeatures1: c.encounterFeatures1 ?? [null, null],
       encounterFeatures2: c.encounterFeatures2 ?? [null, null],
       encounterFeatures3: c.encounterFeatures3 ?? [null, null],
-      wildFeatures: [c.wildFeaturesType, c.wildFeaturesDescription, c.wildFeaturesIndex] ?? null,
+      wildFeatures: c.wildFeatures ?? null,
 
       ruins: c.ruins ?? null,
       settlement: c.settlement ?? null,
@@ -950,6 +934,14 @@ export class HexMapCore {
       if (d20 >= a && d20 <= b) return res;
     }
     return currentTerrainName;
+  }
+
+  #checkWildFeatureBoolean(wFeat) {
+    if (!Array.isArray(wFeat)) return null;
+
+    const out = [...wFeat];
+    out[3] = this.tables.wildFeaturesWithSuppArray?.includes(out[2]) ?? false;
+    return out;
   }
 
   #lookupFromTable(table, roll = null) {

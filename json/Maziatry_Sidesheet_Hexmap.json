@@ -13,25 +13,41 @@
       "id": "000.000",
       "terrain": "Plain",
       "terrainFeature": "Limestone pavement",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Blink Dog"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        1
+        0
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -43,21 +59,36 @@
       "id": "000.001",
       "terrain": "Lake",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Dragon Turtle"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard/Resource: Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi. 6-5",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -69,6 +100,7 @@
       "id": "000.002",
       "terrain": "Forest",
       "terrainFeature": "Copse",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Monster",
         "Roper"
@@ -77,16 +109,27 @@
         "F-Animal",
         "Cat, Tiger"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -98,6 +141,7 @@
       "id": "000.003",
       "terrain": "Forest",
       "terrainFeature": "Crooked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Humanoid",
         "Ogre"
@@ -106,16 +150,27 @@
         "F-Monster",
         "Otyugh"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier. 4-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "4-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -127,6 +182,7 @@
       "id": "000.004",
       "terrain": "Forest",
       "terrainFeature": "Pond",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Trader"
@@ -135,7 +191,10 @@
         "F-Humanoid",
         "Cyclops"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -147,10 +206,20 @@
         1,
         1
       ],
-      "obviousFeature1": "Landmark: A Hidden Feature that takes Time to Uncover or Investigate. 1-1",
+      "obviousFeature1": [
+        "Landmark",
+        "A Hidden Feature that takes Time to Uncover or Investigate",
+        "1-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "hiddenFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -159,24 +228,44 @@
       "id": "000.005",
       "terrain": "Lake",
       "terrainFeature": "Dam, natural",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Fish, Swordfish"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Caltrop86: The Drying",
-      "hiddenFeature1": "Landmark: Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions. 2-5",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
+        "2-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -185,16 +274,24 @@
       "id": "000.006",
       "terrain": "Plain",
       "terrainFeature": "Hillock/Knoll",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Hippogriff"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
-        "5-2"
+        "5-2",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -203,10 +300,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Lair: Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements. 4-1",
+      "obviousFeature1": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -218,24 +320,44 @@
       "id": "000.007",
       "terrain": "Plain",
       "terrainFeature": "Cave, fracture",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Killer Bee"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        2
+        1
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -244,6 +366,7 @@
       "id": "000.008",
       "terrain": "Forest",
       "terrainFeature": "Lake",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Humanoid",
         "Orc Camp"
@@ -252,23 +375,40 @@
         "2-Unusual",
         "Lycanthrope, Weretiger"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark/Resource",
         "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
-        "1-6"
+        "1-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "obviousFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "obviousFeature2": "Razed village, Monsters",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -277,6 +417,7 @@
       "id": "000.009",
       "terrain": "Forest",
       "terrainFeature": "Cave, talus",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Monster",
         "Treant"
@@ -285,23 +426,40 @@
         "1-Insect",
         "Killer Bee"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard",
         "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
-        "6-3"
+        "6-3",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        3,
         1
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop17: A Forgotten Graveyard",
-      "hiddenFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "hiddenFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -310,28 +468,49 @@
       "id": "001.000",
       "terrain": "Scrub",
       "terrainFeature": "Esker",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Animal",
         "Lizard, Flame"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
-        "4-5"
+        "4-5",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        3,
         1
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop2: The Creek’s Bed",
-      "hiddenFeature1": "Lair: Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements. 4-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -340,24 +519,44 @@
       "id": "001.001",
       "terrain": "Lake",
       "terrainFeature": "Heavy algae",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        1,
         1
       ],
-      "obviousFeature1": "Lair: Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements. 4-1",
+      "obviousFeature1": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -366,24 +565,44 @@
       "id": "001.002",
       "terrain": "Lake",
       "terrainFeature": "Heavy Plants, floating",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Ex. Adventurers"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        1,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way. 4-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "hiddenFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -392,24 +611,44 @@
       "id": "001.003",
       "terrain": "Lake",
       "terrainFeature": "Mud flat",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Buccaneer Lair"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        1,
         1
       ],
-      "obviousFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "obviousFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard: Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers. 6-3",
+      "hiddenFeature1": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -418,21 +657,36 @@
       "id": "001.004",
       "terrain": "Lake",
       "terrainFeature": "Island, medium",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Locathah"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -444,24 +698,44 @@
       "id": "001.005",
       "terrain": "Lake",
       "terrainFeature": "Crooked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Hippocampus"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        2
+        1
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions. 2-5",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
+        "2-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -470,24 +744,44 @@
       "id": "001.006",
       "terrain": "Lake",
       "terrainFeature": "Heavy Plants, floating",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Octopus, Giant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Caltrop98: Should Sea-Madness Strike",
-      "hiddenFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -496,6 +790,7 @@
       "id": "001.007",
       "terrain": "Hills",
       "terrainFeature": "Glen",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Lizard, Flame*"
@@ -504,16 +799,27 @@
         "B-Animal",
         "Mule"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions. 2-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
+        "2-5",
+        false
+      ],
       "obviousFeature2": "Water-filled plant, Local custom",
       "obviousFeature3": "Caltrop30: Blood On The Snow",
       "hiddenFeature1": null,
@@ -525,6 +831,7 @@
       "id": "001.008",
       "terrain": "Forest",
       "terrainFeature": "Forked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Humanoid",
         "Mutoid Lair"
@@ -533,16 +840,27 @@
         "1-Insect",
         "Spider, Black Widow"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark/Resource: Add a Resource that may not be immediately useful now, but might be important later. 2-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Add a Resource that may not be immediately useful now, but might be important later",
+        "2-6",
+        false
+      ],
       "obviousFeature2": "Mushroom spot, Uncover a mystery",
       "obviousFeature3": "Filling: Dungeon",
       "hiddenFeature1": null,
@@ -554,6 +872,7 @@
       "id": "001.009",
       "terrain": "Forest",
       "terrainFeature": "Sylvan forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Ankheg"
@@ -562,20 +881,32 @@
         "1-Flyer",
         "Pegasus"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
-        "4-1"
+        "4-1",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": "Caltrop18: The Hive",
       "hiddenFeature1": null,
@@ -587,16 +918,24 @@
       "id": "002.000",
       "terrain": "Plain",
       "terrainFeature": "Plateau",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Copper"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider adding a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
-        "4-5"
+        "4-5",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -605,10 +944,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -620,6 +964,7 @@
       "id": "002.001",
       "terrain": "Hills",
       "terrainFeature": "Tor",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Human",
         "Bandit Camp"
@@ -628,16 +973,27 @@
         "B-Monster",
         "Peryton"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -649,24 +1005,44 @@
       "id": "002.002",
       "terrain": "Lake",
       "terrainFeature": "Cypress Dome",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Termite, Water"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        1,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark/Resource: Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies. 1-6",
+      "hiddenFeature1": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -675,21 +1051,36 @@
       "id": "002.003",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, surface",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Couatl"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "obviousFeature2": "Burnt barn, Legend/Myth",
       "obviousFeature3": "Caltrop96: Sargasso",
       "hiddenFeature1": null,
@@ -701,24 +1092,44 @@
       "id": "002.004",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, air",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Merman"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way. 4-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "hiddenFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -727,24 +1138,44 @@
       "id": "002.005",
       "terrain": "Lake",
       "terrainFeature": "Heavy Muck",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Merchant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Hazard/Resource: Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi. 6-5",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5",
+        false
+      ],
       "obviousFeature2": "Reverse waterfall, Monsters",
       "obviousFeature3": "Caltrop97: The Ghost Ship",
-      "hiddenFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -753,28 +1184,49 @@
       "id": "002.006",
       "terrain": "Plain",
       "terrainFeature": "Plateau",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Trader"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        3,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -783,6 +1235,7 @@
       "id": "002.007",
       "terrain": "Valley",
       "terrainFeature": "Mesa",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "D-Animal",
         "Snake, Rattler"
@@ -791,11 +1244,15 @@
         "AA2",
         "Gloop - Toad Humanoid"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Iron has been covered in grease nearby some trails",
-        "4-4"
+        "4-4",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -807,10 +1264,20 @@
         2,
         1
       ],
-      "obviousFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "obviousFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "obviousFeature2": "Overgrown tower, Curative effects (water, plant)",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -819,6 +1286,7 @@
       "id": "002.008",
       "terrain": "Forest",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Monster",
         "Roper"
@@ -827,7 +1295,10 @@
         "F-Humanoid",
         "Gnoll"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -836,10 +1307,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Lair: Give them a Desire or Need that is in direct conflict with another Faction. 3-1",
+      "obviousFeature1": [
+        "Lair",
+        "Give them a Desire or Need that is in direct conflict with another Faction",
+        "3-1",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -851,6 +1327,7 @@
       "id": "002.009",
       "terrain": "Forest",
       "terrainFeature": "Cave, fracture",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Catoblepas"
@@ -859,16 +1336,27 @@
         "1-Insect",
         "Scorpion, Giant"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "obviousFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -880,6 +1368,7 @@
       "id": "003.000",
       "terrain": "Forest",
       "terrainFeature": "Forked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Trader"
@@ -888,7 +1377,10 @@
         "F-Animal",
         "Spider, Phase"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -897,10 +1389,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Filling: Terrain",
       "hiddenFeature1": null,
@@ -912,6 +1409,7 @@
       "id": "003.001",
       "terrain": "Hills",
       "terrainFeature": "Lava Lake",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Humanoid",
         "Giant, Cloud"
@@ -920,23 +1418,40 @@
         "2-Unusual",
         "Centaur Lair"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider giving them a Desire or Need that is in direct conflict with another Faction",
-        "3-1"
+        "3-1",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        2,
         1
       ],
-      "obviousFeature1": "Hazard/Resource: Consider a Hazard that renders the Resource invaluable or inaccessible in some way. 6-6",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider a Hazard that renders the Resource invaluable or inaccessible in some way",
+        "6-6",
+        false
+      ],
       "obviousFeature2": "Tower",
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -945,24 +1460,44 @@
       "id": "003.002",
       "terrain": "Lake",
       "terrainFeature": "Marsh gas",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Pseudo-Dragon"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers. 6-3",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier. 4-5",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "4-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -971,6 +1506,7 @@
       "id": "003.003",
       "terrain": "Forest",
       "terrainFeature": "Sylvan forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Expert Adventurers"
@@ -979,16 +1515,27 @@
         "2-Unusual",
         "Lycanthrope, Werewolf"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Magic",
       "hiddenFeature1": null,
@@ -1000,21 +1547,36 @@
       "id": "003.004",
       "terrain": "Lake",
       "terrainFeature": "Natural gas vent",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Dragon"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop99: The Brine Queen",
       "hiddenFeature1": null,
@@ -1026,25 +1588,41 @@
       "id": "003.005",
       "terrain": "Plain",
       "terrainFeature": "Esker",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Humanoid",
         "Mutoid Lair"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding some Distinctive Trees or other native Plants",
-        "2-2"
+        "2-2",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
         2,
-        1
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1056,21 +1634,36 @@
       "id": "003.006",
       "terrain": "Valley",
       "terrainFeature": "Butte",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "D-Human",
         "Nomad Camp"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Hazard/Resource: Consider a Hazard that renders the Resource invaluable or inaccessible in some way. 6-6",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider a Hazard that renders the Resource invaluable or inaccessible in some way",
+        "6-6",
+        false
+      ],
       "obviousFeature2": "Collapsed mine entrance, Monsters",
       "obviousFeature3": "Caltrop62: Mud Springs",
       "hiddenFeature1": null,
@@ -1082,9 +1675,19 @@
       "id": "003.007",
       "terrain": "Hills",
       "terrainFeature": "Cuesta with cliff",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "2-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1093,10 +1696,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1108,6 +1716,7 @@
       "id": "003.008",
       "terrain": "Forest",
       "terrainFeature": "Sinkhole",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Rot Grub"
@@ -1116,11 +1725,15 @@
         "1-Insect",
         "Beetle, Fire"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding something that speaks to the Season or recent Changes in the Weather",
-        "2-4"
+        "2-4",
+        true
       ],
       "ruins": null,
       "settlement": [
@@ -1129,13 +1742,23 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
+        3,
         1
       ],
-      "obviousFeature1": "Special: Consider an area where Magic might function in a fashion different from Expectations. 5-3",
+      "obviousFeature1": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Filling: Structure",
-      "hiddenFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1144,6 +1767,7 @@
       "id": "003.009",
       "terrain": "Forest",
       "terrainFeature": "Cave, fracture",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Pixie"
@@ -1152,7 +1776,10 @@
         "1-Dragon",
         "Dragon, Red"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1161,10 +1788,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers. 6-3",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3",
+        false
+      ],
       "obviousFeature2": "City",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1176,25 +1808,41 @@
       "id": "004.000",
       "terrain": "Plain",
       "terrainFeature": "Gulch",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Monster",
         "Blink Dog"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider applying a Mien to assist with Portrayal of the Encounter",
-        "3-3"
+        "3-3",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "obviousFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "obviousFeature2": "Animal shaped rock, Monsters",
       "obviousFeature3": "Filling: Terrain",
       "hiddenFeature1": null,
@@ -1206,28 +1854,49 @@
       "id": "004.001",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, surface",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard",
         "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
-        "6-4"
+        "6-4",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "obviousFeature2": "Abbey",
       "obviousFeature3": "Caltrop97: The Ghost Ship",
-      "hiddenFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "hiddenFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1236,6 +1905,7 @@
       "id": "004.002",
       "terrain": "Forest",
       "terrainFeature": "Spring, artesian",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Poisonous"
@@ -1244,7 +1914,10 @@
         "F-Humanoid",
         "Mutoid Lair"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1253,10 +1926,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": "Giant mushroom, Prevent a threat",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1268,24 +1946,44 @@
       "id": "004.003",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, water",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Pirate Crew"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": "Abbey",
       "obviousFeature3": "Caltrop94: Sea Serpents Spawn Here",
-      "hiddenFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1294,21 +1992,36 @@
       "id": "004.004",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, surface",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Octopus, Giant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        0
       ],
-      "obviousFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "obviousFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "obviousFeature2": "Swidden field, Uncover a mystery",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1320,6 +2033,7 @@
       "id": "004.005",
       "terrain": "Forest",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Roc, Small"
@@ -1328,20 +2042,32 @@
         "1-Dragon",
         "Amphisbaena*"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
-        "3-4"
+        "3-4",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
         2,
-        2
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": "Tower",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1353,6 +2079,7 @@
       "id": "004.006",
       "terrain": "Forest",
       "terrainFeature": "Dead Forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Mutant"
@@ -1361,19 +2088,35 @@
         "1-Flyer",
         "Griffon"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        3,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements. 4-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1382,6 +2125,7 @@
       "id": "004.007",
       "terrain": "Forest",
       "terrainFeature": "Gully",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Peryton"
@@ -1390,11 +2134,15 @@
         "F-Monster",
         "Skeleton Briggards"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "River spans the way where they were heading",
-        "5-5"
+        "5-5",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -1403,10 +2151,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1418,25 +2171,41 @@
       "id": "004.008",
       "terrain": "Plain",
       "terrainFeature": "Well",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wereboar"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
-        "3-5"
+        "3-5",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Add a few Discarded Items that may speak to the Denizens or fellow Travelers. 2-3",
+      "obviousFeature1": [
+        "Landmark",
+        "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+        "2-3",
+        false
+      ],
       "obviousFeature2": "Stone stairs, Fumes (smoke, toxic, etc.)",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -1448,22 +2217,41 @@
       "id": "004.009",
       "terrain": "Plain",
       "terrainFeature": "Pond",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "1-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
-        "5-4"
+        "5-4",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": "Caltrop9: The Woodland Feast",
       "hiddenFeature1": null,
@@ -1475,6 +2263,7 @@
       "id": "005.000",
       "terrain": "Forest",
       "terrainFeature": "Crooked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Animal",
         "Boar"
@@ -1483,16 +2272,27 @@
         "2-Unusual",
         "Lycanthrope, Wererat"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately. 6-4",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
+        "6-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1504,6 +2304,7 @@
       "id": "005.001",
       "terrain": "Forest",
       "terrainFeature": "Sylvan forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Otyugh"
@@ -1512,20 +2313,32 @@
         "2-Unusual",
         "Roper"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark/Resource",
         "Consider a Resource that may not be immediately useful now, but might be important later",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": "Impenetrable thicket, Monsters",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -1537,12 +2350,19 @@
       "id": "005.002",
       "terrain": "Scrub",
       "terrainFeature": "Heavy Shrubs",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Humanoid",
         "Troll"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1552,9 +2372,14 @@
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": "Collapsed mine entrance, Related to landmark",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1566,24 +2391,44 @@
       "id": "005.003",
       "terrain": "Lake",
       "terrainFeature": "Natural gas vent",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Triton Castles and Caverns"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": "Giant mushroom, Hunting traps",
       "obviousFeature3": "Caltrop91: The Chase",
-      "hiddenFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1592,9 +2437,19 @@
       "id": "005.004",
       "terrain": "Forest",
       "terrainFeature": "Spring, artesian",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "2-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1603,13 +2458,23 @@
       ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        3,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Special: Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes. 5-6",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Give them a Desire or Need that is in direct conflict with another Faction. 3-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Give them a Desire or Need that is in direct conflict with another Faction",
+        "3-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1618,6 +2483,7 @@
       "id": "005.005",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Mossing",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "S-Swimmer",
         "Termite, Water"
@@ -1633,16 +2499,25 @@
       "wildFeatures": [
         "Landmark",
         "Consider adding some Wilderness Fauna to breathe life into the place",
-        "2-1"
+        "2-1",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
         2,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1654,21 +2529,36 @@
       "id": "005.006",
       "terrain": "Lake",
       "terrainFeature": "Mud flat",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Locathah"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "obviousFeature2": "Glowing mushrooms trail, Monsters",
       "obviousFeature3": "Filling: Structure",
       "hiddenFeature1": null,
@@ -1680,6 +2570,7 @@
       "id": "005.007",
       "terrain": "Forest",
       "terrainFeature": "Thicket",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Monster",
         "Shambling Mound"
@@ -1688,20 +2579,32 @@
         "1-Flyer",
         "Sphinx"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        "G-Human",
+        "Halfling"
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
-        "2-5"
+        "2-5",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1713,16 +2616,24 @@
       "id": "005.008",
       "terrain": "Scrub",
       "terrainFeature": "Mesa",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Humanoid",
         "Goblin Lair"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider adding something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
-        "3-2"
+        "3-2",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -1731,10 +2642,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Landmark/Resource: Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies. 1-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1746,21 +2662,36 @@
       "id": "005.009",
       "terrain": "Lake",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Hollow tree, Dangerous footing",
       "obviousFeature3": "Filling: Resource",
       "hiddenFeature1": null,
@@ -1772,9 +2703,19 @@
       "id": "006.000",
       "terrain": "Hills",
       "terrainFeature": "Glen",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "2-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -1783,10 +2724,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark/Resource: Add a Resource that may not be immediately useful now, but might be important later. 2-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Add a Resource that may not be immediately useful now, but might be important later",
+        "2-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -1798,24 +2744,44 @@
       "id": "006.001",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, surface",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Locathah"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1824,24 +2790,44 @@
       "id": "006.002",
       "terrain": "Lake",
       "terrainFeature": "Marsh gas",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        2,
         1
       ],
-      "obviousFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "obviousFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "obviousFeature2": "Centennial tree, Info. about nearby monsters (ecology, lair, weakness, etc.)",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Give them a Desire or Need that is in direct conflict with another Faction. 3-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Give them a Desire or Need that is in direct conflict with another Faction",
+        "3-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1850,21 +2836,36 @@
       "id": "006.003",
       "terrain": "Lake",
       "terrainFeature": "Heavy Muck",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "obviousFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Caltrop88: The Rancor of the Drowned",
       "hiddenFeature1": null,
@@ -1876,24 +2877,44 @@
       "id": "006.004",
       "terrain": "Plain",
       "terrainFeature": "Lake",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Cockatrice"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        "Dragon",
+        "Hydra"
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        2,
+        3,
         1
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Flower circle, Arbitrate a dispute, Division of an inheritance",
       "obviousFeature3": "Filling: Hazard",
-      "hiddenFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "hiddenFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1902,25 +2923,41 @@
       "id": "006.005",
       "terrain": "Scrub",
       "terrainFeature": "Heavy Underbrush",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Noble"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider giving them a Desire or Need that is in direct conflict with another Faction",
-        "3-1"
+        "3-1",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -1932,28 +2969,49 @@
       "id": "006.006",
       "terrain": "Plain",
       "terrainFeature": "Heavy Underbrush",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wereboar"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider placing a Resource that is actively being exploited by the Monsters in some way",
-        "4-6"
+        "4-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        2,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "obviousFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Resource",
-      "hiddenFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "hiddenFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1962,6 +3020,7 @@
       "id": "006.007",
       "terrain": "Forest",
       "terrainFeature": "Stream",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Pseudo-Dragon"
@@ -1970,19 +3029,35 @@
         "2-Unusual",
         "Bulette"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": "Holy place, Monsters",
       "obviousFeature3": "Caltrop14: The Knight’s Challenge",
-      "hiddenFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -1991,24 +3066,44 @@
       "id": "006.008",
       "terrain": "Valley",
       "terrainFeature": "Hillock/Knoll",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "D-Human",
         "Nomad Camp"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        1,
         1
       ],
-      "obviousFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements. 4-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
+        "4-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2017,6 +3112,7 @@
       "id": "006.009",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Pathogens, air",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Mantis, Giant"
@@ -2031,16 +3127,29 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
+        2,
         1
       ],
-      "obviousFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "obviousFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "obviousFeature2": "Abbey",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way. 4-4",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2049,25 +3158,41 @@
       "id": "007.000",
       "terrain": "Scrub",
       "terrainFeature": "Heavy Shrubs",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Beetle, Oil"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard/Resource",
         "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
-        "6-5"
+        "6-5",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "obviousFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "obviousFeature2": "Ledge, Solve a puzzle/riddle",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2079,24 +3204,44 @@
       "id": "007.001",
       "terrain": "Plain",
       "terrainFeature": "Mud Pits",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Amphisbaena*"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        1,
         1
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately. 6-4",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
+        "6-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "hiddenFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2105,6 +3250,7 @@
       "id": "007.002",
       "terrain": "Forest",
       "terrainFeature": "Sylvan forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Flail Snail"
@@ -2113,16 +3259,27 @@
         "1-Insect",
         "Scorpion, Giant"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "obviousFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2134,6 +3291,7 @@
       "id": "007.003",
       "terrain": "Forest",
       "terrainFeature": "Rock Outcropping",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Wyvern"
@@ -2142,11 +3300,15 @@
         "2-Unusual",
         "Lycanthrope, Wereboar"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
-        "5-2"
+        "5-2",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -2156,9 +3318,14 @@
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "obviousFeature2": "Anthill, Monsters",
       "obviousFeature3": "Filling: Structure",
       "hiddenFeature1": null,
@@ -2170,21 +3337,36 @@
       "id": "007.004",
       "terrain": "Lake",
       "terrainFeature": "Natural gas vent",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Bronze"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Abbey",
       "obviousFeature3": "Filling: Resource",
       "hiddenFeature1": null,
@@ -2196,24 +3378,44 @@
       "id": "007.005",
       "terrain": "Valley",
       "terrainFeature": "Limestone Pavement",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "D-Human",
         "Nomad Camp"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        3,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "obviousFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "obviousFeature2": "Crystalline proliferation, Monsters",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "hiddenFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2222,21 +3424,36 @@
       "id": "007.006",
       "terrain": "Rough",
       "terrainFeature": "Plateau",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Otyugh"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        1,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately. 6-4",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
+        "6-4",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2248,6 +3465,7 @@
       "id": "007.007",
       "terrain": "Hills",
       "terrainFeature": "Cave, limestone",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Humanoid",
         "Troll"
@@ -2256,20 +3474,32 @@
         "1-Dragon",
         "Amphisbaena*"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider applying a Mien to assist with Portrayal of the Encounter",
-        null
+        null,
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "obviousFeature2": "Boardwalks, Related to landmark",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2281,28 +3511,49 @@
       "id": "007.008",
       "terrain": "Plain",
       "terrainFeature": "Limestone pavement",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Monster",
         "Griffon"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider rolling on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
-        "1-2"
+        "1-2",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "obviousFeature2": "Masks, Toxicity of something",
       "obviousFeature3": null,
-      "hiddenFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "hiddenFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2311,6 +3562,7 @@
       "id": "007.009",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Mossing",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Wasp, Giant"
@@ -2326,19 +3578,33 @@
       "wildFeatures": [
         "Special",
         "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
-        "5-6"
+        "5-6",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        1,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way. 4-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2347,25 +3613,41 @@
       "id": "008.000",
       "terrain": "Scrub",
       "terrainFeature": "Mesa",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Robber Fly"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
-        "4-4"
+        "4-4",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "obviousFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "obviousFeature2": "Stairs, Monsters",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -2377,21 +3659,36 @@
       "id": "008.001",
       "terrain": "Scrub",
       "terrainFeature": "Mesa",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Bandit"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2403,6 +3700,7 @@
       "id": "008.002",
       "terrain": "Forest",
       "terrainFeature": "Thicket",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
@@ -2411,7 +3709,10 @@
         "1-Insect",
         "Wasp, Giant"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -2420,13 +3721,23 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
+        2,
         1
       ],
-      "obviousFeature1": "Landmark: A Hidden Feature that takes Time to Uncover or Investigate. 1-1",
+      "obviousFeature1": [
+        "Landmark",
+        "A Hidden Feature that takes Time to Uncover or Investigate",
+        "1-1",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
-      "hiddenFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "hiddenFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2435,6 +3746,7 @@
       "id": "008.003",
       "terrain": "Forest",
       "terrainFeature": "Sinkhole",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Roc, Small"
@@ -2443,19 +3755,35 @@
         "F-Humanoid",
         "Satyr"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        3,
         1
       ],
-      "obviousFeature1": "Special: Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires. 5-5",
+      "obviousFeature1": [
+        "Special",
+        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires",
+        "5-5",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Caltrop5: The Foundling Familiar",
-      "hiddenFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "hiddenFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2464,6 +3792,7 @@
       "id": "008.004",
       "terrain": "ForestWithHills",
       "terrainFeature": "Bluff",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Humanoid",
         "Troll"
@@ -2472,20 +3801,32 @@
         "F-Monster",
         "Gas Spore"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider adding a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        2,
+        0
       ],
-      "obviousFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "obviousFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "obviousFeature2": "Tower",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2497,21 +3838,36 @@
       "id": "008.005",
       "terrain": "Lake",
       "terrainFeature": "Heavy Plants, floating",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Merchant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2523,16 +3879,24 @@
       "id": "008.006",
       "terrain": "Scrub",
       "terrainFeature": "Hillock/Knoll - rounded hill",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Noble"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
-        "3-6"
+        "3-6",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -2541,13 +3905,23 @@
       ],
       "regionName": "01 Field of Lank",
       "nFeatures": [
-        1,
+        2,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": "Calvary, Venomous animals (hornets, snakes, scorpions, etc.)",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add a few Discarded Items that may speak to the Denizens or fellow Travelers. 2-3",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+        "2-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2556,21 +3930,36 @@
       "id": "008.007",
       "terrain": "Lake",
       "terrainFeature": "Island, small",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Sea Serpent"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "obviousFeature2": "Fertility stone, Sabotage/Trap",
       "obviousFeature3": "Filling: Geologic",
       "hiddenFeature1": null,
@@ -2582,21 +3971,36 @@
       "id": "008.008",
       "terrain": "Lake",
       "terrainFeature": "Natural gas vent",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Whale"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark/Resource: Add a Resource that may not be immediately useful now, but might be important later. 2-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Add a Resource that may not be immediately useful now, but might be important later",
+        "2-6",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop84: Pirates",
       "hiddenFeature1": null,
@@ -2608,6 +4012,7 @@
       "id": "008.009",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Plants, emergent",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "S-Swimmer",
         "Gullygug"
@@ -2622,16 +4027,29 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2640,6 +4058,7 @@
       "id": "009.000",
       "terrain": "ForestWithHills",
       "terrainFeature": "Pond",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Bandit"
@@ -2648,19 +4067,35 @@
         "2-Unusual",
         "Blink Dog"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        2
+        1
       ],
-      "obviousFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "obviousFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Special: Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes. 5-6",
+      "hiddenFeature1": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2669,6 +4104,7 @@
       "id": "009.001",
       "terrain": "Mountains",
       "terrainFeature": "Mountain Pass",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "B-Human",
         "Bandit"
@@ -2683,16 +4119,29 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
         1
       ],
-      "obviousFeature1": "Hazard/Resource: Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi. 6-5",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Special: Consider an area where Magic might function in a fashion different from Expectations. 5-3",
+      "hiddenFeature1": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2701,6 +4150,7 @@
       "id": "009.002",
       "terrain": "Forest",
       "terrainFeature": "Rock Outcropping",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Monster",
         "Spider, Aranea"
@@ -2709,19 +4159,35 @@
         "F-Human",
         "Basic Adventurers"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        2
+        1
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2730,6 +4196,7 @@
       "id": "009.003",
       "terrain": "Marsh",
       "terrainFeature": "Cypress Dome",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "2-Undead",
         "Wight"
@@ -2744,16 +4211,29 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Special: Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool. 5-1",
+      "obviousFeature1": [
+        "Special",
+        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
+        "5-1",
+        false
+      ],
       "obviousFeature2": "Mutation pit, Related to landmark",
       "obviousFeature3": "Caltrop65: Ignis Fatuus",
-      "hiddenFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "hiddenFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2762,25 +4242,41 @@
       "id": "009.004",
       "terrain": "Plain",
       "terrainFeature": "Ridge",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wererat"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard",
         "Consider Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
-        "6-2"
+        "6-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers. 6-3",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
+        "6-3",
+        false
+      ],
       "obviousFeature2": "Everburning tree, Arbitrate a dispute, Division of an inheritance",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2792,21 +4288,36 @@
       "id": "009.005",
       "terrain": "Scrub",
       "terrainFeature": "Cave, limestone",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Expert Adventurers"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Structure",
       "hiddenFeature1": null,
@@ -2818,6 +4329,7 @@
       "id": "009.006",
       "terrain": "Mountains",
       "terrainFeature": "Gulch",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Basilisk*"
@@ -2833,19 +4345,33 @@
       "wildFeatures": [
         "Lair",
         "Consider giving them a Desire or Need that is in direct conflict with another Faction",
-        "3-1"
+        "3-1",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
         1
       ],
-      "obviousFeature1": "Landmark: Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions. 2-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions",
+        "2-5",
+        false
+      ],
       "obviousFeature2": "Predator’s hunting ground, Related to landmark",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Give them a Desire or Need that is in direct conflict with another Faction. 3-1",
+      "hiddenFeature1": [
+        "Lair",
+        "Give them a Desire or Need that is in direct conflict with another Faction",
+        "3-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2854,6 +4380,7 @@
       "id": "009.007",
       "terrain": "Hills",
       "terrainFeature": "Crag",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Monster",
         "Griffon"
@@ -2862,23 +4389,40 @@
         "B-Monster",
         "Roc, Giant"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard",
         "Consider Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
-        "6-2"
+        "6-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2887,9 +4431,19 @@
       "id": "009.008",
       "terrain": "Plain",
       "terrainFeature": "Riparian zone",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "1-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -2898,10 +4452,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Special: Consider an area where Magic might function in a fashion different from Expectations. 5-3",
+      "obviousFeature1": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2913,24 +4472,44 @@
       "id": "009.009",
       "terrain": "Lake",
       "terrainFeature": "Heavy Pathogens, air",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Swimmer",
         "Jellyfish, Giant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        1,
         1
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -2939,6 +4518,7 @@
       "id": "010.000",
       "terrain": "Forest",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Animal",
         "Frog, Poisonous"
@@ -2947,16 +4527,27 @@
         "F-Animal",
         "Wolf"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -2968,6 +4559,7 @@
       "id": "010.001",
       "terrain": "Mountains",
       "terrainFeature": "Tent Rock",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Salamander*"
@@ -2983,19 +4575,33 @@
       "wildFeatures": [
         "Landmark/Resource",
         "Consider a Resource that may not be immediately useful now, but might be important later",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Special: Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool. 5-1",
+      "obviousFeature1": [
+        "Special",
+        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
+        "5-1",
+        false
+      ],
       "obviousFeature2": "Straw man, Uncover a mystery",
       "obviousFeature3": "Caltrop27: A Peerless Place To Camp",
-      "hiddenFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "hiddenFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3004,6 +4610,7 @@
       "id": "010.002",
       "terrain": "Forest",
       "terrainFeature": "Primeval Forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Basic Adventurers"
@@ -3012,19 +4619,35 @@
         "F-Monster",
         "Wyvern"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "obviousFeature2": "Anthill, Radiations",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3033,6 +4656,7 @@
       "id": "010.003",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Plants, emergent",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "S-Humanoid",
         "Orc Camp"
@@ -3048,7 +4672,8 @@
       "wildFeatures": [
         "Landmark/Resource",
         "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
-        "1-6"
+        "1-6",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -3057,10 +4682,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Special: Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes. 5-6",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6",
+        false
+      ],
       "obviousFeature2": "Rapids, Uncover a mystery",
       "obviousFeature3": "Filling: Resource",
       "hiddenFeature1": null,
@@ -3072,28 +4702,49 @@
       "id": "010.004",
       "terrain": "Plain",
       "terrainFeature": "Escarpment",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Expert Adventurers"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
-        "3-4"
+        "3-4",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        1
       ],
-      "obviousFeature1": "Landmark/Resource: Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies. 1-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6",
+        false
+      ],
       "obviousFeature2": "Mushroom spot, Monsters",
       "obviousFeature3": "Filling: Settlement",
-      "hiddenFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3102,28 +4753,49 @@
       "id": "010.005",
       "terrain": "Scrub",
       "terrainFeature": "Crater lake",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Salamander*"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
-        "5-4"
+        "5-4",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
+        3,
         1
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Fallen tree, Monsters",
       "obviousFeature3": "Filling: Water",
-      "hiddenFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3132,6 +4804,7 @@
       "id": "010.006",
       "terrain": "Hills",
       "terrainFeature": "Bluff",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Monster",
         "Hawk"
@@ -3140,7 +4813,10 @@
         "B-Humanoid",
         "Mutoid Lair"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -3149,10 +4825,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately. 6-4",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
+        "6-4",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop37: The Goatherd",
       "hiddenFeature1": null,
@@ -3164,12 +4845,19 @@
       "id": "010.007",
       "terrain": "Scrub",
       "terrainFeature": "Mud Pits",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Beetle, Oil"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -3178,13 +4866,23 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
+        2,
         1
       ],
-      "obviousFeature1": "Lair: Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear. 4-2",
+      "obviousFeature1": [
+        "Lair",
+        "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
+        "4-2",
+        false
+      ],
       "obviousFeature2": "Hunting tower, Solve a puzzle/riddle",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "hiddenFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3193,21 +4891,36 @@
       "id": "010.008",
       "terrain": "Plain",
       "terrainFeature": "Tor",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragonne*"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        1
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3219,6 +4932,7 @@
       "id": "010.009",
       "terrain": "Mountains",
       "terrainFeature": "Dry Lake",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "B-Human",
         "Neanderthal Village"
@@ -3233,13 +4947,21 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3251,6 +4973,7 @@
       "id": "011.000",
       "terrain": "Forest",
       "terrainFeature": "Rock Outcropping",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Merchant"
@@ -3259,19 +4982,35 @@
         "F-Animal",
         "Spider, Crab"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": "Waterfall, Monsters",
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3280,6 +5019,7 @@
       "id": "011.001",
       "terrain": "Forest",
       "terrainFeature": "Forked Trees",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Phase"
@@ -3288,20 +5028,32 @@
         "1-Dragon",
         "Dragon, Green"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
-        "3-5"
+        "3-5",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "obviousFeature2": "Meadow, Info. about nearby monsters (ecology, lair, weakness, etc.)",
       "obviousFeature3": "Filling: Sign",
       "hiddenFeature1": null,
@@ -3313,6 +5065,7 @@
       "id": "011.002",
       "terrain": "Hills",
       "terrainFeature": "Glen",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Monster",
         "Nightmare"
@@ -3321,20 +5074,32 @@
         "B-Monster",
         "Will-o’-the-Wisp"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding a Vignette to assist with Portraying a sense of Place",
-        "1-4"
+        "1-4",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        1
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": "Meadow, Dangerous footing",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3346,24 +5111,44 @@
       "id": "011.003",
       "terrain": "Plain",
       "terrainFeature": "Dry lake",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Monster",
         "Manticore"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
         1
       ],
-      "obviousFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "obviousFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "hiddenFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3372,16 +5157,24 @@
       "id": "011.004",
       "terrain": "Plain",
       "terrainFeature": "Esker",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Monster",
         "Minotaur"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Consider an area where Magic might function in a fashion different from Expectations",
-        "5-3"
+        "5-3",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -3390,10 +5183,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "obviousFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3405,6 +5203,7 @@
       "id": "011.005",
       "terrain": "Hills",
       "terrainFeature": "Cave, lava tube",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Chimera"
@@ -3413,11 +5212,15 @@
         "B-Humanoid",
         "Giant, Hill"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Consider an area where Magic might function in a fashion different from Expectations",
-        "5-3"
+        "5-3",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -3427,12 +5230,22 @@
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        1
       ],
-      "obviousFeature1": "Special: Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool. 5-1",
+      "obviousFeature1": [
+        "Special",
+        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
+        "5-1",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3441,6 +5254,7 @@
       "id": "011.006",
       "terrain": "Hills",
       "terrainFeature": "Rock Outcrops",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Humanoid",
         "Mutoid Lair"
@@ -3449,23 +5263,40 @@
         "B-Animal",
         "Cat, Mntn. Lion"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard",
         "Consider a Hazard that is designed to intentionally Harm or Alter if unsuccessfully avoided by the Adventurers",
-        "6-3"
+        "6-3",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        3,
         1
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": "Giant flower, Info. about nearby monsters (ecology, lair, weakness, etc.)",
       "obviousFeature3": "Filling: Structure",
-      "hiddenFeature1": "Landmark/Resource: Add a Resource that may not be immediately useful now, but might be important later. 2-6",
+      "hiddenFeature1": [
+        "Landmark/Resource",
+        "Add a Resource that may not be immediately useful now, but might be important later",
+        "2-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3474,6 +5305,7 @@
       "id": "011.007",
       "terrain": "Mountains",
       "terrainFeature": "Valley",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Gorgon"
@@ -3488,13 +5320,21 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "obviousFeature2": "Destroyed golem, Toxicity of something",
       "obviousFeature3": "Filling: Magic",
       "hiddenFeature1": null,
@@ -3506,24 +5346,44 @@
       "id": "011.008",
       "terrain": "Plain",
       "terrainFeature": "Cave, limestone",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Stirge"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Hazard: Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately. 6-4",
+      "obviousFeature1": [
+        "Hazard",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
+        "6-4",
+        false
+      ],
       "obviousFeature2": "Water-filled cave, Allergenic plants",
       "obviousFeature3": "Caltrop4: A Ruined Watchtower",
-      "hiddenFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "hiddenFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3532,6 +5392,7 @@
       "id": "011.009",
       "terrain": "Forest",
       "terrainFeature": "Dead Forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Gargoyle"
@@ -3540,23 +5401,40 @@
         "F-Monster",
         "Will-o’-the-Wisp"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark/Resource",
         "Consider a Resource that may not be immediately useful now, but might be important later",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3565,28 +5443,49 @@
       "id": "012.000",
       "terrain": "Scrub",
       "terrainFeature": "Mesa",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Humanoid",
         "Snake Person"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding a Hidden Feature that takes Time to Uncover or Investigate",
-        "1-1"
+        "1-1",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        1
       ],
-      "obviousFeature1": "Lair/Resource: Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way. 4-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way",
+        "4-4",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3595,6 +5494,7 @@
       "id": "012.001",
       "terrain": "Mountains",
       "terrainFeature": "Lava lake",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "B-Human",
         "High-Level MU"
@@ -3609,13 +5509,21 @@
       ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark: Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens. 1-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Roll on Encounter Tables and add a 'Trace/Track/Spoor' for one of the local Denizens",
+        "1-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3627,16 +5535,24 @@
       "id": "012.002",
       "terrain": "Scrub",
       "terrainFeature": "Vernal Pool",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Animal",
         "Dog, Wild"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair/Resource",
         "Consider Placing Resource with a Past, enough to garner Rumors and Gossip in the outside world",
-        "3-4"
+        "3-4",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -3646,12 +5562,22 @@
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Special: Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource. 5-2",
+      "obviousFeature1": [
+        "Special",
+        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
+        "5-2",
+        false
+      ],
       "obviousFeature2": "Tower",
       "obviousFeature3": "Filling: Magic",
-      "hiddenFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3660,6 +5586,7 @@
       "id": "012.003",
       "terrain": "Hills",
       "terrainFeature": "Cave, limestone",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragonne*"
@@ -3668,20 +5595,32 @@
         "B-Human",
         "Bandit"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding some Wilderness Fauna to breathe life into the place",
-        "2-1"
+        "2-1",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        2
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3693,6 +5632,7 @@
       "id": "012.004",
       "terrain": "Hills",
       "terrainFeature": "Tor",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Animal",
         "Ape, White"
@@ -3701,20 +5641,32 @@
         "B-Monster",
         "Lamia"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3726,6 +5678,7 @@
       "id": "012.005",
       "terrain": "Forest",
       "terrainFeature": "Cave, talus",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Tarantella"
@@ -3734,11 +5687,15 @@
         "1-Flyer",
         "Griffon"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
-        "4-3"
+        "4-3",
+        true
       ],
       "ruins": null,
       "settlement": [
@@ -3750,10 +5707,20 @@
         3,
         1
       ],
-      "obviousFeature1": "Landmark: A change in Elevation that might create a vantage point to obtain the Lay of the Land. 1-3",
+      "obviousFeature1": [
+        "Landmark",
+        "A change in Elevation that might create a vantage point to obtain the Lay of the Land",
+        "1-3",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Caltrop4: A Ruined Watchtower",
-      "hiddenFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3762,6 +5729,7 @@
       "id": "012.006",
       "terrain": "Mountains",
       "terrainFeature": "Mountain Pass",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Hydra (or Sea Hydra)"
@@ -3777,19 +5745,33 @@
       "wildFeatures": [
         "Landmark/Resource",
         "Consider a Resource that may not be immediately useful now, but might be important later",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
+        2,
         1
       ],
-      "obviousFeature1": "Landmark: Add something that speaks to the Season or recent Changes in the Weather. 2-4",
+      "obviousFeature1": [
+        "Landmark",
+        "Add something that speaks to the Season or recent Changes in the Weather",
+        "2-4",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard: Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury. 6-1",
+      "hiddenFeature1": [
+        "Hazard",
+        "Placing a Hazard that creates the Risk of Supply/Equipment Depletion instead of outright Injury",
+        "6-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3798,6 +5780,7 @@
       "id": "012.007",
       "terrain": "Mountains",
       "terrainFeature": "Crag",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "B-Humanoid",
         "Giant, Hill"
@@ -3818,10 +5801,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: Add a few Discarded Items that may speak to the Denizens or fellow Travelers. 2-3",
+      "obviousFeature1": [
+        "Landmark",
+        "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+        "2-3",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": "Caltrop34: The Bleakridge Bandits",
       "hiddenFeature1": null,
@@ -3833,21 +5821,36 @@
       "id": "012.008",
       "terrain": "Desert",
       "terrainFeature": "Playa",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "2-Undead",
         "Ghost"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Landmark/Resource: Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies. 1-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies",
+        "1-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3859,6 +5862,7 @@
       "id": "012.009",
       "terrain": "Forest",
       "terrainFeature": "Sylvan forest",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "F-Human",
         "Brigand Lair"
@@ -3867,20 +5871,32 @@
         "F-Human",
         "Brigand Lair"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Special",
         "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource",
-        "5-2"
+        "5-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
-        1
+        0
       ],
-      "obviousFeature1": "Landmark: Something placed by Current/Former Denizens that speaks of other Inhabitants. 1-5",
+      "obviousFeature1": [
+        "Landmark",
+        "Something placed by Current/Former Denizens that speaks of other Inhabitants",
+        "1-5",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3892,12 +5908,19 @@
       "id": "013.000",
       "terrain": "Rough",
       "terrainFeature": "Lake",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Human",
         "Neanderthal Village"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -3907,9 +5930,14 @@
       "regionName": null,
       "nFeatures": [
         1,
-        1
+        0
       ],
-      "obviousFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "obviousFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -3921,9 +5949,19 @@
       "id": "013.001",
       "terrain": "Desert",
       "terrainFeature": "Pediment",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "3-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -3932,10 +5970,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "obviousFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "obviousFeature2": "Levitating staircase, Hidden pits",
       "obviousFeature3": "Caltrop49: The Anchorite's Retreat",
       "hiddenFeature1": null,
@@ -3947,24 +5990,44 @@
       "id": "013.002",
       "terrain": "Desert",
       "terrainFeature": "Valley",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Copper"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        1
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard/Resource: Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi. 6-5",
+      "hiddenFeature1": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -3973,6 +6036,7 @@
       "id": "013.003",
       "terrain": "Mountains",
       "terrainFeature": "Cave, limestone",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Green"
@@ -3988,19 +6052,33 @@
       "wildFeatures": [
         "Special",
         "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
-        "5-1"
+        "5-1",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        1
       ],
-      "obviousFeature1": "Landmark: Add a few Discarded Items that may speak to the Denizens or fellow Travelers. 2-3",
+      "obviousFeature1": [
+        "Landmark",
+        "Add a few Discarded Items that may speak to the Denizens or fellow Travelers",
+        "2-3",
+        false
+      ],
       "obviousFeature2": "Giant bird nest, Quicksands",
       "obviousFeature3": "Filling: Structure",
-      "hiddenFeature1": "Lair/Resource: Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize). 3-5",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize)",
+        "3-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4009,9 +6087,19 @@
       "id": "013.004",
       "terrain": "Mountains",
       "terrainFeature": "Ridge",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "3-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -4023,10 +6111,20 @@
         3,
         1
       ],
-      "obviousFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "obviousFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "obviousFeature2": "Bramble overgrown area, Monsters",
       "obviousFeature3": "Caltrop34: The Bleakridge Bandits",
-      "hiddenFeature1": "Lair/Resource: Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier. 4-5",
+      "hiddenFeature1": [
+        "Lair/Resource",
+        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier",
+        "4-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4035,25 +6133,41 @@
       "id": "013.005",
       "terrain": "Plain",
       "terrainFeature": "Ridge",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "1-Flyer",
         "Mantis, Giant"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider applying a Mien to assist with Portrayal of the Encounter",
-        "3-3"
+        "3-3",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        1,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider placing a Resource that is actively being exploited by the Monsters in some way. 4-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider placing a Resource that is actively being exploited by the Monsters in some way",
+        "4-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -4065,18 +6179,36 @@
       "id": "013.006",
       "terrain": "MountainsWithPass",
       "terrainFeature": "Gorge",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "2-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        1,
+        0
       ],
-      "obviousFeature1": "Special: Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool. 5-1",
+      "obviousFeature1": [
+        "Special",
+        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool",
+        "5-1",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -4088,16 +6220,24 @@
       "id": "013.007",
       "terrain": "Plain",
       "terrainFeature": "Crater lake",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "G-Human",
         "Bandit"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark/Resource",
         "Consider a Resource that may not be immediately useful now, but might be important later",
-        "2-6"
+        "2-6",
+        false
       ],
       "ruins": null,
       "settlement": [
@@ -4107,12 +6247,22 @@
       "regionName": null,
       "nFeatures": [
         2,
-        2
+        1
       ],
-      "obviousFeature1": "Landmark/Resource: Add a Resource that may not be immediately useful now, but might be important later. 2-6",
+      "obviousFeature1": [
+        "Landmark/Resource",
+        "Add a Resource that may not be immediately useful now, but might be important later",
+        "2-6",
+        false
+      ],
       "obviousFeature2": "Hotspring, Monsters",
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship. 3-2",
+      "hiddenFeature1": [
+        "Lair",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
+        "3-2",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4121,6 +6271,7 @@
       "id": "013.008",
       "terrain": "Forest",
       "terrainFeature": "Stream",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Driver Ant"
@@ -4129,23 +6280,40 @@
         "F-Animal",
         "Cat, Tiger"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Hazard/Resource",
         "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
-        "6-5"
+        "6-5",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         1,
         1
       ],
-      "obviousFeature1": "Landmark: Add some Distinctive Trees or other native Plants. 2-2",
+      "obviousFeature1": [
+        "Landmark",
+        "Add some Distinctive Trees or other native Plants",
+        "2-2",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "hiddenFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4154,25 +6322,41 @@
       "id": "013.009",
       "terrain": "Scrub",
       "terrainFeature": "Plateau",
+      "lostChance": "1-in-6",
       "encounterFeatures1": [
         "2-Unusual",
         "Lycanthrope, Wererat"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly. 3-6",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Consider how the Resource may be tied to a Relationship with another Faction, either directly or indirectly",
+        "3-6",
+        false
+      ],
       "obviousFeature2": "City",
       "obviousFeature3": "Filling: Resource",
       "hiddenFeature1": null,
@@ -4184,9 +6368,19 @@
       "id": "014.000",
       "terrain": "Mountains",
       "terrainFeature": "Natural Arch",
-      "encounterFeatures1": null,
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "lostChance": "3-in-6",
+      "encounterFeatures1": [
+        null,
+        null
+      ],
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -4195,10 +6389,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        3,
-        1
+        2,
+        0
       ],
-      "obviousFeature1": "Lair: Apply a Mien to assist with Portrayal of the Encounter. 3-3",
+      "obviousFeature1": [
+        "Lair",
+        "Apply a Mien to assist with Portrayal of the Encounter",
+        "3-3",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
       "hiddenFeature1": null,
@@ -4210,12 +6409,19 @@
       "id": "014.001",
       "terrain": "Desert",
       "terrainFeature": "Rock Shelter",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "D-Animal",
         "Cat, Lion"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -4224,13 +6430,23 @@
       ],
       "regionName": null,
       "nFeatures": [
-        1,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Special: Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both. 5-4",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
+        "5-4",
+        false
+      ],
       "obviousFeature2": "Lair",
       "obviousFeature3": null,
-      "hiddenFeature1": "Hazard/Resource: Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi. 6-5",
+      "hiddenFeature1": [
+        "Hazard/Resource",
+        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi",
+        "6-5",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4239,25 +6455,41 @@
       "id": "014.002",
       "terrain": "Desert",
       "terrainFeature": "Butte",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "2-Undead",
         "Mummy"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Landmark",
         "Consider adding a change in Elevation that might create a vantage point to obtain the Lay of the Land",
-        "1-3"
+        "1-3",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Hazard: Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice. 6-2",
+      "obviousFeature1": [
+        "Hazard",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "6-2",
+        false
+      ],
       "obviousFeature2": "Castle",
       "obviousFeature3": "Caltrop57: Sudden Sandstorm",
       "hiddenFeature1": null,
@@ -4269,6 +6501,7 @@
       "id": "014.003",
       "terrain": "Marsh",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "1-Insect",
         "Spider, Crab"
@@ -4284,19 +6517,33 @@
       "wildFeatures": [
         "Special",
         "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both",
-        "5-4"
+        "5-4",
+        true
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        3,
-        2
+        2,
+        1
       ],
-      "obviousFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "obviousFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "obviousFeature2": "Giant flower, Curse",
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: Add some Wilderness Fauna to breathe life into the place. 2-1",
+      "hiddenFeature1": [
+        "Landmark",
+        "Add some Wilderness Fauna to breathe life into the place",
+        "2-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4305,24 +6552,44 @@
       "id": "014.004",
       "terrain": "Lake",
       "terrainFeature": "Heavy Canopy",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "O-Human",
         "Buccaneer Lair"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
+        1,
         1
       ],
-      "obviousFeature1": "Hazard/Resource: Consider a Hazard that renders the Resource invaluable or inaccessible in some way. 6-6",
+      "obviousFeature1": [
+        "Hazard/Resource",
+        "Consider a Hazard that renders the Resource invaluable or inaccessible in some way",
+        "6-6",
+        false
+      ],
       "obviousFeature2": null,
       "obviousFeature3": null,
-      "hiddenFeature1": "Landmark: A Hidden Feature that takes Time to Uncover or Investigate. 1-1",
+      "hiddenFeature1": [
+        "Landmark",
+        "A Hidden Feature that takes Time to Uncover or Investigate",
+        "1-1",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4331,6 +6598,7 @@
       "id": "014.005",
       "terrain": "Hills",
       "terrainFeature": "Crag",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Animal",
         "Rock Baboon"
@@ -4339,16 +6607,27 @@
         "1-Dragon",
         "Chimera"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        2
+        3,
+        0
       ],
-      "obviousFeature1": "Lair: Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation. 4-3",
+      "obviousFeature1": [
+        "Lair",
+        "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation",
+        "4-3",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Water",
       "hiddenFeature1": null,
@@ -4360,6 +6639,7 @@
       "id": "014.006",
       "terrain": "Hills",
       "terrainFeature": "Hot Spring",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "B-Human",
         "Berserker"
@@ -4368,20 +6648,32 @@
         "B-Monster",
         "Hippogriff"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
-        2
+        0
       ],
-      "obviousFeature1": "Special: Consider an area where Magic might function in a fashion different from Expectations. 5-3",
+      "obviousFeature1": [
+        "Special",
+        "Consider an area where Magic might function in a fashion different from Expectations",
+        "5-3",
+        false
+      ],
       "obviousFeature2": "Village",
       "obviousFeature3": "Filling: Dungeon",
       "hiddenFeature1": null,
@@ -4393,24 +6685,44 @@
       "id": "014.007",
       "terrain": "Desert",
       "terrainFeature": "Butte",
+      "lostChance": "3-in-6",
       "encounterFeatures1": [
         "D-Animal",
         "Camel"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
         3,
         1
       ],
-      "obviousFeature1": "Special: Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes. 5-6",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6",
+        false
+      ],
       "obviousFeature2": "Tower",
       "obviousFeature3": "Filling: Terrain",
-      "hiddenFeature1": "Landmark: A Vignette to assist with Portraying a sense of Place. 1-4",
+      "hiddenFeature1": [
+        "Landmark",
+        "A Vignette to assist with Portraying a sense of Place",
+        "1-4",
+        false
+      ],
       "rerollSeed": null
     },
     {
@@ -4419,25 +6731,41 @@
       "id": "014.008",
       "terrain": "Rough",
       "terrainFeature": "Escarpment",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Pseudo-Dragon"
       ],
-      "encounterFeatures2": null,
-      "encounterFeatures3": null,
+      "encounterFeatures2": [
+        null,
+        null
+      ],
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": [
         "Lair",
         "Consider ways to make for a more Dangerous or Tactically Complicated Lair that requires Planning to Clear",
-        "4-2"
+        "4-2",
+        false
       ],
       "ruins": null,
-      "settlement": null,
+      "settlement": [
+        null,
+        null
+      ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Special: Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes. 5-6",
+      "obviousFeature1": [
+        "Special",
+        "Consider a Site-Based Element or Feature that may influence/alter the immediate area/surrounding Hexes",
+        "5-6",
+        false
+      ],
       "obviousFeature2": "Levitating staircase, Info. about nearby monsters (ecology, lair, weakness, etc.)",
       "obviousFeature3": "Caltrop38: The Painted Petroglyphs",
       "hiddenFeature1": null,
@@ -4449,6 +6777,7 @@
       "id": "014.009",
       "terrain": "Hills",
       "terrainFeature": "Cave, lava tube",
+      "lostChance": "2-in-6",
       "encounterFeatures1": [
         "1-Dragon",
         "Dragon, Green"
@@ -4457,7 +6786,10 @@
         "B-Monster",
         "Sphinx"
       ],
-      "encounterFeatures3": null,
+      "encounterFeatures3": [
+        null,
+        null
+      ],
       "wildFeatures": null,
       "ruins": null,
       "settlement": [
@@ -4466,10 +6798,15 @@
       ],
       "regionName": null,
       "nFeatures": [
-        2,
-        1
+        3,
+        0
       ],
-      "obviousFeature1": "Lair/Resource: Place Resource with a Past, enough to garner Rumors and Gossip in the outside world. 3-4",
+      "obviousFeature1": [
+        "Lair/Resource",
+        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world",
+        "3-4",
+        false
+      ],
       "obviousFeature2": "Dungeon",
       "obviousFeature3": "Filling: Hazard",
       "hiddenFeature1": null,
