@@ -6,6 +6,7 @@ export function initPersistence({ hexMap, dom }) {
   const importIn = dom?.importInput ?? document.getElementById("importGrid");
   const importMaz = dom?.importMaz ?? document.getElementById("importMaz");
   const exportRegion = dom?.exportRegion ?? document.getElementById("exportRegion");
+  const openMaziatryMap = dom?.openMaziatryMap ?? document.getElementById("openMaziatryMap");
   const exportMarkButton = dom?.exportMarkButton ?? document.getElementById("exportMarkButton");
 
   if (exportBtn) {
@@ -78,6 +79,12 @@ export function initPersistence({ hexMap, dom }) {
         alert(err.message);
         console.error(err);
       }
+    });
+  }
+
+  if (openMaziatryMap) {
+    openMaziatryMap.addEventListener("click", () => {
+      window.open("DnD_Maziatry_Map.html", "_blank");
     });
   }
 

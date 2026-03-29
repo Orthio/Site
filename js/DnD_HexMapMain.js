@@ -64,6 +64,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       importInput: document.getElementById("importGrid"),
       importMaz: document.getElementById("importMaz"),
       exportRegion: document.getElementById("exportRegion"),
+      openMaziatryMap: document.getElementById("openMaziatryMap"),
       exportMarkButton: document.getElementById("exportMarkButton")
     }
   });

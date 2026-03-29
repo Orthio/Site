@@ -233,6 +233,12 @@ body {
   align-items: center;
 }
 
+.exportRow2 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .fileBtn {
   display: inline-flex;
   gap: 8px;
