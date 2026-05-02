@@ -99,6 +99,7 @@
 
 #character-display {
   padding-top: 10px;
+  white-space: pre-line;
 }
 
 /* #character-display .character-result {

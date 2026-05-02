@@ -141,8 +141,8 @@ function createCharacter() {
     alignment: alignment,
     age: age,
     occupation: occupation,
-    appearance: appearance,
 
+    appearance: appearance,
     trait: trait,
     quirk: quirk,
     voice: voice,
@@ -152,8 +152,10 @@ function createCharacter() {
     goal1: '',
     goal2: '',
     advantage: '',
-    specialAdvantage: ' ',
     flaw: ' ',
+    relationship: ' ',
+    pettyAttitude: ' ',
+
     motivationTitle: '',
     motivation1: '',
     motivation2: '',
@@ -162,9 +164,11 @@ function createCharacter() {
     background1: '',
     background2: '',
     background3: '',
-    relationship: ' ',
+    specialAdvantage: ' ',
     group: '',
-    villainy: '',
+    villainTraits: '',
+    villainCrook: '',
+    villainGoal: '',
     hook: '',
 
     simplified: ''
@@ -207,9 +211,10 @@ function updateCharacterDisplay() {
       '<div>' + item.goal2 + '</div>' +
       '<div>' + item.advantage + '</div>' +
       '<div>' + item.flaw + '</div>' +
+      '<div>' + item.relationship + '</div>' +
+      '<div>' + item.pettyAttitude + '</div>' +
 
       '<br>' +
-      '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.motivationTitle + '</div>' +
       '<div>' + item.motivation1 + '</div>' +
       '<div>' + item.motivation2 + '</div>' +
@@ -217,10 +222,13 @@ function updateCharacterDisplay() {
       '<div>' + item.backgroundTitle + '</div>' +
       '<div>' + item.background1 + '</div>' +
       '<div>' + item.background2 + '</div>' +
-      '<div>' + item.relationship + '</div>' +
+      '<div>' + item.specialAdvantage + '</div>' +
       '<div>' + item.group + '</div>' +
-      '<div>' + item.villainy + '</div>' +
+      '<div>' + item.villainTraits + '</div>' +
+      '<div>' + item.villainCrook + '</div>' +
+      '<div>' + item.villainGoal + '</div>' +
       '<div>' + item.hook + '</div>' +
+
       '<div>' + item.simplified + '</div>' +
       '<hr>'
     '<div class="entry-border">' + '</div>'
@@ -277,20 +285,22 @@ function selectRaceSex(selectRace, selectSex) {
 // Function Add Detail
 function addDetail() {
 
-  addBackground();
-  addVillainy();
-
-  updateCharacterDisplay();
-  if (displayHistory.length > 6) {
-    displayHistory.pop();
-  }
-}
-
-// Function Add Background
-function addBackground() {
-
   let ideal = rollOnTable(ideals);
   let bond = rollOnTable(bonds);
+  let goal1 = rollOnTable(jsonData.goals);
+  let goal2 = rollOnTable(goals1);
+  let advantage = rollOnTable(jsonData.advantages);
+  let flawRoll = rollOnTable(flaws);
+
+  let relationship = rollOnTable(relationships);
+  let relationshipRoll;
+  if (generalDiceRoll(6) === 1) { relationshipRoll = "Yes" }
+  else { relationshipRoll = "No" };
+  let pickedPettyAttitude = rollOnTable(pettyAttitude);
+  let pickedPettyTension = rollOnTable(pettyTension);
+  let pickedPettyRoll;
+  if (generalDiceRoll(6) <= 2) { pickedPettyRoll = "Yes" }
+  else { pickedPettyRoll = "No" };
 
   // Roll 3 unique indices for motivation verbs
   let lastMotivationVerbsIndices = [];
@@ -314,8 +324,6 @@ function addBackground() {
 
   let waylaysolutionsIndex1 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
   let waylaysolutionsIndex2 = (Math.floor(Math.random() * 10)) + (Math.floor(Math.random() * 10));
-
-
   let motivationVerb1 = rollOnTable(motivationverbs);
   let motivationVerb2 = rollOnTable(motivationverbs);
   let motivationVerb3 = rollOnTable(motivationverbs);
@@ -334,18 +342,32 @@ function addBackground() {
   let waylayNoun2 = rollOnTable(waylaynouns);
   let waylaySolution2 = waylaysolutions[waylaysolutionsIndex2];
 
-  let relationship = rollOnTable(relationships);
+  let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
+  let group = rollOnTable(groups);
   let hook1 = rollOnTable(jsonData.hooks1);
   let hook2 = rollOnTable(jsonData.hooks2);
-  let goal1 = rollOnTable(jsonData.goals);
-  let goal2 = rollOnTable(goals1);
-  let group = rollOnTable(groups);
-  let advantage = rollOnTable(jsonData.advantages);
-  let specialAdvantage = rollOnTable(jsonData.specialAdvantage);
-  let flawRoll = rollOnTable(flaws);
+
+  let villainTraitIndex1 = Math.floor((Math.random() * 50) + 1);
+  let villainTraitIndex2 = Math.floor((Math.random() * 50) + 1);
+  let villainTrait1 = villainTraits[villainTraitIndex1];
+  let villainTrait2 = villainTraits[villainTraitIndex2];
+  let villainCrookIndex = Math.floor((Math.random() * 50) + 1);
+  let villainCrook = villainCrooks[villainCrookIndex];
+  let villainGoal = rollOnTable(jsonData.villainGoals);
+
 
   currentCharacter.ideal = '<div>' + "<i>Ideals: </i>" + ideal + '</div>';
   currentCharacter.bond = '<div>' + "<i>Bonds: </i>" + bond + '</div>';
+  currentCharacter.goal1 = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
+  currentCharacter.goal2 = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
+  currentCharacter.advantage = '<div>' + "<i>Advantage: </i>" + advantage;
+  currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
+  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship +
+    " (" + relationshipRoll + ")";
+  currentCharacter.pettyAttitude = '<div>' + "<i>Petty Attitude: </i>" +
+    pickedPettyAttitude + " " + pickedPettyTension + " (" +
+    pickedPettyRoll + ")" + '</div>';
+
   currentCharacter.motivationTitle = '<div>' + "<i>Motivation: </i>" + '</div>';
   currentCharacter.motivation1 = '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb1 + " " + motivationNouns[0] + '</div>';
   currentCharacter.motivation2 = '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb2 + " " + motivationNouns[1] + '</div>';
@@ -354,46 +376,26 @@ function addBackground() {
   currentCharacter.background1 = '<div>' + "&nbsp;&nbsp;&nbsp;" + waylayAdjective1 + " " + waylayNoun1 + " solved by " + waylaySolution1 + '</div>';
   currentCharacter.background2 = '<div>' + "&nbsp;&nbsp;&nbsp;" + waylayAdjective2 + " " + waylayNoun2 + " solved by " + waylaySolution2 + '</div>';
 
-  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship;
-  currentCharacter.advantage = '<div>' + "<i>Advantage: </i>" + advantage;
-  currentCharacter.specialAdvantage = '<div>' + "<i>Advantage Examples: </i>" + specialAdvantage;
-  currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
+  currentCharacter.specialAdvantage = '<div>' + "<i>Special Advantage: </i>" + specialAdvantage;
+  currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
   currentCharacter.hook =
     '<div>' + "<i>Hooks: </i>" + hook1 + '<br>' +
     hook2 + '</div>' + '<br>';
-  currentCharacter.goal1 = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
-  currentCharacter.goal2 = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
-  currentCharacter.group = '<div>' + "<i>Group: </i>" + group + '</div>';
+  currentCharacter.villainTraits = '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>';
+  currentCharacter.villainCrook = '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>';
+  currentCharacter.villainGoal = '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
 
-
+  updateCharacterDisplay();
+  if (displayHistory.length > 6) {
+    displayHistory.pop();
+  }
 }
-
-// Function add villainy
-function addVillainy() {
-  let villainTraitIndex1 = Math.floor((Math.random() * 50) + 1);
-  let villainTraitIndex2 = Math.floor((Math.random() * 50) + 1);
-  let villainTrait1 = villainTraits[villainTraitIndex1];
-  let villainTrait2 = villainTraits[villainTraitIndex2];
-  let villainCrookIndex = Math.floor((Math.random() * 50) + 1);
-  let villainCrook = villainCrooks[villainCrookIndex];
-  let villainGoal = rollOnTable(jsonData.villainGoals);
-  let pickedPettyAttitude = rollOnTable(pettyAttitude);
-  let pickedPettyTension = rollOnTable(pettyTension);
-
-  currentCharacter.villainy =
-    '<div>' + "<i>Villainous Traits: </i>" + villainTrait1 + ", " + villainTrait2 + '</div>' +
-    '<div>' + "<i>Villainous Crook: </i>" + villainCrook + '</div>' +
-    '<div>' + "<i>Petty Attitude: </i>" + pickedPettyAttitude + " " + pickedPettyTension + '</div>' +
-    '<div>' + "<i>Villainous Goal: </i>" + villainGoal + '</div>';
-}
-
 
 // Function Simplify Description
 function simpleCopy() {
 
   let simpleFlawCheck = '';
   let simpleVoiceCheck = '';
-  let simpleVillainyCheck = '';
 
   if (currentCharacter.flaw === "" || simpleFlawCheck === " " || simpleFlawCheck === '') {
     simpleFlawCheck = "";
@@ -407,12 +409,6 @@ function simpleCopy() {
     simpleVoiceCheck = currentCharacter.voice
   };
 
-  if (currentCharacter.villainy === "") {
-    simpleVillainyCheck = "";
-  } else {
-    simpleVillainyCheck = ". " + currentCharacter.villainy
-  };
-
   let simpleSex;
   if (currentCharacter.sex == "Male") {
     simpleSex = "M"
@@ -421,7 +417,7 @@ function simpleCopy() {
   }
 
   let simpleText =
-    currentCharacter.fullname + "<br>"
+    "**" + currentCharacter.fullname + "**" + "<br>"
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
     + "<br>"
