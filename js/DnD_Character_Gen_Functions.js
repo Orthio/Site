@@ -294,12 +294,12 @@ function addDetail() {
 
   let relationship = rollOnTable(relationships);
   let relationshipRoll;
-  if (generalDiceRoll(6) === 1) { relationshipRoll = "Yes" }
+  if (generalDiceRoll(6) === 2) { relationshipRoll = "Yes" }
   else { relationshipRoll = "No" };
   let pickedPettyAttitude = rollOnTable(pettyAttitude);
   let pickedPettyTension = rollOnTable(pettyTension);
   let pickedPettyRoll;
-  if (generalDiceRoll(6) <= 2) { pickedPettyRoll = "Yes" }
+  if (generalDiceRoll(6) <= 3) { pickedPettyRoll = "Yes" }
   else { pickedPettyRoll = "No" };
 
   // Roll 3 unique indices for motivation verbs
