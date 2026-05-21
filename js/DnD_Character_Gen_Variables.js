@@ -988,7 +988,47 @@ const traits = [
   "Cheerful", "Responsible", "Orderly", "Funny", "Brooding", "Unreliable", "Messy", "Serious", "Sensitive", "Shy",
   "Hardworking", "Charming", "Callous", "Impulsive", "Lazy", "Moody", "Easygoing", "Reckless", "Immature", "Independent",
   "Dependent", "Energetic", "Frugal", "Modest", "Determined", "Quiet", "Extravagant", "Vain", "Petty", "Patient",
-  "Mischevious", "Persistent", "Pious", "Rash", "Obedient", "Meek", "Paranoid", "Friendly", "Aloof", "Hostile", "Diplomatic", "Abrasive", "Forceful", "Blustering", "Retiring", "Taciturn", "Hostile", "Courteous", "Secretive", "Proud", "Scheming", "Aesthetic", "Dumb", "Lusty", "Miserly", "Pious" 
+  "Mischevious", "Persistent", "Pious", "Rash", "Obedient", "Meek", "Paranoid", "Friendly", "Aloof", "Hostile", "Diplomatic", "Abrasive", "Forceful", "Blustering", "Retiring", "Taciturn", "Hostile", "Courteous", "Secretive", "Proud", "Scheming", "Aesthetic", "Dumb", "Lusty", "Miserly", "Pious", "Insane"
+];
+
+const interests = [
+  "Religion",
+  "Legends",
+  "History",
+  "Nature",
+  "Horticulture",
+  "Husbandry",
+  "Exotic Animals",
+  "Hunting",
+  "Fishing",
+  "Handicrafts",
+  "Athletics",
+  "Politics",
+  "Wines & Spirits",
+  "Foods & Preparation",
+  "Gambling",
+  "Drugs",
+  "Collector",
+  "Collector",
+  "Collector",
+  "Collector",
+  "Community service",
+  "Altruism"
+];
+
+const collections = [
+  "Knives",
+  "Swords",
+  "Weapons",
+  "Shields & Weapons",
+  "Armour",
+  "Books & Scrolls",
+  "Minerals & Gems",
+  "Ornaments & Jewelry",
+  "Coins & Tokens",
+  "Trophies & Skins",
+  "Porcelain & Crystal",
+  "Artwork"
 ];
 
 const personalityAppearanceCues = {
@@ -3003,6 +3043,8 @@ export const Variables = {
   appearances,
   quirks,
   traits,
+  interests,
+  collections,
   occupations,
   flaws,
   voices,

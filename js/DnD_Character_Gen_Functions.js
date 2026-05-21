@@ -8,7 +8,7 @@ let {
 } = Variables;
 
 const { sexes, nameDictionary, alignments, appearances, quirks,
-  traits, occupations, flaws, voices, ideals, bonds,
+  traits, interests, collections, occupations, flaws, voices, ideals, bonds,
   motivationverbs, motivationnouns1, motivationnouns2, motivationnouns3, motivationnouns4,
   motivationnouns5, waylayadjectives, waylaynouns, waylaysolutions, villainTraits, villainCrooks,
   pettyAttitude, pettyTension, menuRaces, charAge, relationships, personalityAppearanceCues,
@@ -126,6 +126,26 @@ function createCharacter() {
     trait = traits[traitIndex];
   }
 
+  let interest;
+  let interestText;
+
+  if (generalDiceRoll(6) === 1) {
+    interest = rollOnTable(interests)
+  } else {
+    interest = "";;
+  }
+  let collection;
+  if (interest === "Collector") {
+    collection = rollOnTable(collections);
+    interest = collection;
+  }
+  if (interest == undefined) { interest = ""}
+  if (interest != "") {
+    interestText = ", into " + interest;
+  } else {
+    interestText = "";
+  }
+
   let nameArray = retrieveNames(race, sex);
   let clanArray = retrieveNames(race, "Clan");
 
@@ -145,6 +165,7 @@ function createCharacter() {
     appearance: appearance,
     trait: trait,
     quirk: quirk,
+    interestText: interestText,
     voice: voice,
 
     ideal: '',
@@ -202,7 +223,7 @@ function updateCharacterDisplay() {
       '<div>' + "<b>" + item.fullname + "</b>" + '<div>' +
       '<div>' + item.race + ' ' + item.sex + ', ' + item.alignment + " " + item.age + " " + item.occupation + '</div>' +
       '<div>' + "<i>Appearance: </i>" + item.appearance + '</div>' +
-      '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + '</div>' +
+      '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + item.interestText + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +
       '<div>' + '<br>' + '</div>' +
       '<div>' + item.ideal + '</div>' +
@@ -417,14 +438,14 @@ function simpleCopy() {
   }
 
   let simpleText =
-    "**" + currentCharacter.fullname + "**" + "<br>"
+    "**" + currentCharacter.fullname + "**" + " - "
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
     + "<br>"
     + currentCharacter.appearance
     + "<br>"
     + currentCharacter.trait
-    + ", " + currentCharacter.quirk
+    + ", " + currentCharacter.quirk + currentCharacter.interestText
     + simpleFlawCheck + "<br>"
     + simpleVoiceCheck;
 
