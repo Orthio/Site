@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Rolls</title>
+    <link rel="stylesheet" href="css/DnD_Map_Rolls.css" />
+</head>
+
+<body>
+    <h1>Map Rolls</h1>
+    <label for="terrain-select">Terrain:</label>
+
+    <select id="terrain-select">
+        <option value="Random">Random</option>
+        <option value="Plain">Plains, Scrub</option>
+        <option value="Forest">Forest, ForestWithHills</option>
+        <option value="Hills">Hills, Mountains, Rough</option>
+        <option value="Desert">Desert</option>
+        <option value="Marsh">Swamp</option>
+        <option value="Lake">Lake, Ocean</option>
+    </select>
+
+    <button type="button" class="button buttonGenerate" id="button-generate"> Generate </button>
+
+
+    <div id="result-output"></div>
+
+    <script type="module" src="js/DnD_Map_Rolls.js"></script>
+
+</body>
+
+</html>
