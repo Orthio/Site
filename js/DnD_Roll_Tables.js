@@ -112,12 +112,12 @@ function generatePartyWeapon() {
 function generateTreasures() {
     let treasures1 = rollOnTable(jsonData.treasures);
     let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
     let materials = rollOnTable(jsonData.materials);
 
     let treasuresResult = "<span class='no-select'><small>Treasures: </small></span><br>" +
         treasures1 + "<br>" +
-        materialTraits + ", " + itemTraits + ", " + materials + "<br>";
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
 
     updateOutput(treasuresResult);
 }
@@ -125,12 +125,12 @@ function generateTreasures() {
 function generateEquipment() {
     let equipment1 = rollOnTable(jsonData.equipment1);
     let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
     let materials = rollOnTable(jsonData.materials);
 
     let equipmentResult = "<span class='no-select'><small>Equipment: </small></span><br>" +
         equipment1 + "<br>" +
-        materialTraits + ", " + itemTraits + ", " + materials + "<br>";
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
 
     updateOutput(equipmentResult);
 }
@@ -138,7 +138,7 @@ function generateEquipment() {
 function generateMiscItems() {
     let miscItems1 = rollOnTable(jsonData.miscItems);
     let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraits = rollOnTable(jsonData.itemTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
     let materials = rollOnTable(jsonData.materials);
 
     switch (miscItems1) {
@@ -152,28 +152,28 @@ function generateMiscItems() {
 
     let miscResult = "<span class='no-select'><small>Misc Items: </small></span><br>" +
         miscItems1 + "<br>" +
-        materialTraits + ", " + itemTraits + ", " + materials + "<br>";
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
 
     updateOutput(miscResult);
 }
 
 function generatePlace() {
-    let place = rollOnTable(jsonData.places);
-    let placeDescriptions = rollOnTable(jsonData.placeDescriptions);
+    let place = rollOnTable(jsonData.structuresKnave);
+    let placeTraitsKnave = rollOnTable(jsonData.placeTraitsKnave);
     let placeBuildings = rollOnTable(jsonData.placeBuildings);
     let placeTheme = rollOnTable(jsonData.placeTheme);
     let placeEvents = rollOnTable(jsonData.placeEvents);
 
     let placeResult = "<span class='no-select'><small>Place: </small></span><br>" +
         place + "<br>" +
-        placeDescriptions + " " + placeBuildings + ", and " + placeTheme + "<br>" +
+        placeTraitsKnave + " " + placeBuildings + ", and " + placeTheme + "<br>" +
         "Busy with " + placeEvents + "<br>";
 
     updateOutput(placeResult);
 }
 
 function generateDungeon() {
-    let dungeonLocations = rollOnTable(jsonData.dungeonLocations);
+    let dungeonsKnave = rollOnTable(jsonData.dungeonsKnave);
     let dungeonRoomThemes = rollOnTable(jsonData.dungeonRoomThemes);
     let dungeonShifts = rollOnTable(jsonData.dungeonShifts);
     let dungeonRoomFeatures = rollOnTable(jsonData.dungeonRoomFeatures);
@@ -181,7 +181,7 @@ function generateDungeon() {
     let monumentDescription = rollOnTable(jsonData.monumentDescription);
 
     let dungeonResult = "<span class='no-select'><small>Dungeon: </small></span><br>" +
-        dungeonLocations + "<br>" +
+        dungeonsKnave + "<br>" +
         dungeonRoomThemes + ", " + dungeonShifts + " and " + dungeonRoomFeatures + "<br>" +
         "With a " + monumentDescription + " " + monument + "<br>";
 
@@ -189,13 +189,13 @@ function generateDungeon() {
 }
 
 function generateTrap() {
-    let environmentalSigns = rollOnTable(jsonData.environmentalSigns);
+    let environmentSignsKnave = rollOnTable(jsonData.environmentSignsKnave);
     let trapComponents = rollOnTable(jsonData.trapComponents);
     let trapHazards = rollOnTable(jsonData.trapHazards);
     let trapEffects = rollOnTable(jsonData.trapEffects);
 
     let trapResult = "<span class='no-select'><small>Trap: </small></span><br>" +
-        environmentalSigns + " gives away " + "<br>" +
+        environmentSignsKnave + " gives away " + "<br>" +
         trapEffects + " " + trapHazards + " with a " + trapComponents + "<br>" + "<br>";
 
     updateOutput(trapResult);

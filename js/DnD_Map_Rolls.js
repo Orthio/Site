@@ -8,11 +8,13 @@
  * @property {string|null} wildFeature[1]  // Consider a
  * @property {string|null} wildFeature[2]  // 6-6
  * @property {string|null} wildFeature2 // sandbox gen proc eg "Sword stuck in a rock, Legend/Myth"
- * @property {string} themeRoll // Fire (from knave tables)
+ * @property {string} theme1 // Fire (from knave tables)
+ * @property {string} theme2 // Salt flat (from knave tables)
  * @property {string} results // Plains, Hillock, Beetle, Fire...
 
 */
 import { generalDiceRoll, rollOnTable } from "./DnD_General.js";
+import { initKnaveRolls, rollKnaveTheme } from "./DnD_Knave_Rolls.js";
 
 const terrainSelect = document.getElementById("terrain-select");
 const generateButton = document.getElementById("button-generate");
@@ -77,6 +79,8 @@ class MapRollResult {
         this.encounter = null;
         this.feature = null;
         this.feature2 = null;
+        this.theme1 = null;
+        this.theme2 = null;
     }
 
     toText() {
@@ -84,7 +88,9 @@ class MapRollResult {
 <span class="small-text">Terrain Feature: </span>${this.terrainFeature ?? "—"}
 <span class="small-text">Encounter: </span>${this.encounter ?? "—"}
 <span class="small-text">Feature1: </span>${this.feature ?? "—"}
-<span class="small-text">Feature2: </span>${this.feature2 ?? "—"}`;
+<span class="small-text">Feature2: </span>${this.feature2 ?? "—"}
+<span class="small-text">Theme1: </span>${this.theme1 ?? "—"}
+<span class="small-text">Theme2: </span>${this.theme2 ?? "—"}`;
     }
 }
 
@@ -101,6 +107,8 @@ class MapRollsCore {
         this.#addEncounterFeature(result);
         this.#addWildFeature(result);
         this.#addWildFeature2(result);
+        this.#addTheme1(result);
+        this.#addTheme2(result);
 
         this.results.push(result);
 
@@ -141,7 +149,7 @@ class MapRollsCore {
         if (!column) return;
 
         const categoryPick = this.#lookupFromTable(column);
-         if (!categoryPick) return;
+        if (!categoryPick) return;
 
         const subTableColumn =
             this.tables.specificEncountersTable?.[categoryPick];
@@ -265,6 +273,14 @@ class MapRollsCore {
         return landmark;
     }
 
+    #addTheme1(result) {
+        result.theme1 = rollKnaveTheme();
+    }
+
+    #addTheme2(result) {
+        result.theme2 = rollKnaveTheme();
+    }
+
     #lookupFromTable(table, roll = null) {
         if (!table) return null;
 
@@ -299,12 +315,14 @@ class MapRollsCore {
 async function init() {
     const tables = await MapRollTables.load();
 
+    await initKnaveRolls();
+
     mapRolls = new MapRollsCore(tables);
 
     generateButton.addEventListener("click", generateResults);
 }
 
-function generateResults() {
+async function generateResults() {
     let terrain = terrainSelect.value;
 
     const terrainArray = [
@@ -320,7 +338,7 @@ function generateResults() {
         terrain = rollOnTable(terrainArray);
     }
 
-    mapRolls.generateTerrainResults(terrain);
+    await mapRolls.generateTerrainResults(terrain);
 
     resultOutput.innerHTML = mapRolls.getAllResultsText();
 
