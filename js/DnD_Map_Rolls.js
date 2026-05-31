@@ -110,7 +110,7 @@ class MapRollsCore {
         this.#addTheme1(result);
         this.#addTheme2(result);
 
-        this.results.push(result);
+        this.results.unshift(result);
 
         return result;
     }
