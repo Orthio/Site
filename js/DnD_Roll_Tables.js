@@ -100,7 +100,7 @@ function generateEnemyWeapon() {
 
 function generatePartyWeapon() {
     let partyWepIndex = generalDiceRoll(jsonData.partyWeapons.length, 1);
-    let partyWep = jsonData.partyWeapons[partyWepIndex-1];
+    let partyWep = jsonData.partyWeapons[partyWepIndex - 1];
     // console.log("partyWepIndex: ", partyWepIndex);
     // console.log(partyWep);
 
@@ -295,6 +295,13 @@ function removeExtraText() {
     extraText.innerHTML = "";
 }
 
+function generateActivity() {
+
+    let activity = rollOnTable(jsonData.generalActivityTable);
+    updateOutput(activity);
+
+}
+
 function generateIndoorDistance() {
     let roll = 10 * (generalDiceRoll(6, 2));
     // 2d6 * 10ft
@@ -395,6 +402,10 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 
 document.getElementById('generate-reaction').addEventListener('click', () => {
     generateMonsterReaction();
+});
+
+document.getElementById('generate-activity').addEventListener('click', () => {
+    generateActivity();
 });
 
 document.getElementById('generate-indoor-distance').addEventListener('click', () => {

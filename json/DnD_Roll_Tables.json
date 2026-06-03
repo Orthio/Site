@@ -4324,6 +4324,27 @@
         "Wine",
         "Winter",
         "Wolves"
+    ],
+    "generalActivityTable": [
+        "Celebrating, Playing",
+        "Chasing",
+        "Constructing",
+        "Doing everyday task: laundry, prepping food, melting coins, licking wounds",
+        "Dying, Wounded",
+        "Fleeing from",
+        "Drunk, Distracted",
+        "Hunting, Foraging",
+        "In Combat with",
+        "Journey, Prepping for Journey",
+        "Lost, Exploring",
+        "Marking Territory, Mapping",
+        "Mating, Courting",
+        "Negotiating",
+        "Patrolling, Guarding",
+        "Resting, Camping",
+        "Ritual, Magic",
+        "Sleeping",
+        "Trapped",
+        "Washing"
     ]
-
 }
