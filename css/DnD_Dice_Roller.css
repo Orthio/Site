@@ -26,11 +26,12 @@
     padding: 2px;
 }
 
-#diceAddInput {
+#diceAddInput, #diceNumber {
     -webkit-appearance: none;
     -moz-appearance: textfield;
     appearance: button;
     width: 70px;
+    margin-left: 15px;
     font-size: 40px;
 }
 
@@ -65,4 +66,8 @@ button.button:hover {
 
 .ResultsClass {
     padding: 1px;
+}
+
+.small-text {
+    font-size: 10px;
 }

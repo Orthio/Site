@@ -2,10 +2,6 @@
     margin: 5px;
 }
 
-/* #second-row-buttons {
-    margin: 5px;
-} */
-
 .p-link a {
     /* font-weight: bold; */
     text-decoration: none;
@@ -17,11 +13,15 @@
 }
 
 .spaceSpan {
-    /* display: flex; */
     margin-right: 5px;
     font-size: 14px;
 }
 
 .smallClass {
     font-size: 12px;
+}
+
+.boldHeadings {
+    margin-bottom: 2px;
+    margin-left: 5px;
 }

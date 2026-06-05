@@ -12,15 +12,15 @@
     <h1 id="diceRollerHeader">Dice Roller</h1>
 
     <div>
-        <label for="diceNumberInput"><i>Number of Dice: </i></label><br>
+        <label for="diceNumberInput"><i>No. of Dice: </i></label>
+        <label for="diceNumber"><i> &nbsp&nbsp&nbsp&nbsp Dice Size: </i></label>
+        <br>
         <div class="input-container">
             <input type="number" id="diceNumberInput" name="diceNumberInput" value="1" min="1" step="1">
+            <input type="number" id="diceNumber" name="diceNumber" value="" step="1">
 
-            <!--   <div class="button-container">
-                <button type="button" onclick="numberUp()" id="up">⬆</button>
-                <button type="button" onclick="numberDown()" id="down">⬇</button>
-            </div> -->
             <span id="plus-numeral"> + </span>
+
             <input type="number" id="diceAddInput" name="diceAddInput" value="" step="1">
         </div>
         <br>
@@ -46,12 +46,17 @@
     <script>
 
         var rollHistory = [];
+        let rollId = 1;
 
         function diceRoll(diceSize, diceQuantity) {
             // Roll to get (0-1)*20=0 or 20
             // Math floor rounds down
             var diceQty = diceQuantity ? diceQuantity : document.getElementById("diceNumberInput").value;
             let diceAddCheck = Number(document.getElementById("diceAddInput").value);
+            let diceNumber = Number(document.getElementById("diceNumber").value);
+            if (diceNumber != 0) {
+                diceSize = diceNumber;
+            }
 
             if (diceAddCheck === '' || diceAddCheck == '0') {
                 var diceAddNumber = 0;
@@ -61,12 +66,13 @@
 
             var rollResult = (diceQty * (Math.floor(Math.random() * diceSize) + 1)) + diceAddNumber;
             if (diceAddCheck === '' || diceAddCheck == '0') {
-                var rollOutput = '<div class="ResultsClass">' + diceQty + " x d" + diceSize
+                var rollOutput = '<div class="ResultsClass">' + '<span class="small-text">' + rollId + ". " + '</span>' + diceQty + " x d" + diceSize
                     + " = " + rollResult + '</div>' + "<br>";
             } else {
-                var rollOutput = '<div class="ResultsClass">' + diceQty + " x d" + diceSize
+                var rollOutput = '<div class="ResultsClass">' + '<span class="small-text">' + rollId + ". " + '</span>' + diceQty + " x d" + diceSize
                     + " + " + diceAddNumber + " = " + rollResult + '</div>' + "<br>";
             }
+            rollId++;
 
             rollHistory.unshift(rollOutput);
             // Unshift adds rollOutput to the array
@@ -83,6 +89,7 @@
         function diceReset() {
             document.getElementById("diceNumberInput").value = 1;
             var diceAddNumber = document.getElementById("diceAddInput").value = "";
+            var diceNumber = document.getElementById("diceNumber").value = "";
         }
 
 

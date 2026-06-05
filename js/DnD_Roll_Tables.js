@@ -302,6 +302,21 @@ function generateActivity() {
 
 }
 
+function generateOracle() {
+    const oracleTable = [
+        "No, And",
+        "No",
+        "No, But",
+        "Yes, But",
+        "Yes",
+        "Yes, And"
+    ];
+
+    let oracleResult = rollOnTable(oracleTable);
+    updateOutput(oracleResult);
+
+}
+
 function generateIndoorDistance() {
     let roll = 10 * (generalDiceRoll(6, 2));
     // 2d6 * 10ft
@@ -406,6 +421,10 @@ document.getElementById('generate-reaction').addEventListener('click', () => {
 
 document.getElementById('generate-activity').addEventListener('click', () => {
     generateActivity();
+});
+
+document.getElementById('generate-oracle').addEventListener('click', () => {
+    generateOracle();
 });
 
 document.getElementById('generate-indoor-distance').addEventListener('click', () => {

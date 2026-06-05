@@ -34,13 +34,23 @@ class MapRollTables {
 
         const data = await res.json();
 
+        const res2 = await fetch("json/DnD_Roll_Tables.json");
+
+        if (!res2.ok) {
+            throw new Error(
+                `Failed to load json/DnD_Roll_Tables.json: ${res2.status}`
+            );
+        }
+
+        const data2 = await res2.json();
+
         const tables = new MapRollTables();
-        tables.setTables(data);
+        tables.setTables(data, data2);
 
         return tables;
     }
 
-    setTables(data = {}) {
+    setTables(data = {}, data2 = {}) {
         this.tables = {
             terrainTable: data.hexWildernessTerrain ?? null,
             terrainFeaturesTable: data.terrainFeature ?? null,
@@ -63,7 +73,9 @@ class MapRollTables {
             sandboxGenSpecialDisputeTable: data.sandboxGenSpecialDisputeTable ?? null,
 
             featureKeysTable: data.featureKeysTable ?? null,
-            encounterFeatureKeysTable: data.encounterFeatureKeysTable ?? null
+            encounterFeatureKeysTable: data.encounterFeatureKeysTable ?? null,
+
+            generalActivityTable: data2.generalActivityTable ?? null
         };
     }
 }
@@ -87,6 +99,7 @@ class MapRollResult {
         return `${this.mapId}. <span class="small-text">Terrain: </span>${this.terrain}
 <span class="small-text">Terrain Feature: </span>${this.terrainFeature ?? "—"}
 <span class="small-text">Encounter: </span>${this.encounter ?? "—"}
+<span class="small-text">Monster Activity: </span>${this.activity ?? "—"}
 <span class="small-text">Feature1: </span>${this.feature ?? "—"}
 <span class="small-text">Feature2: </span>${this.feature2 ?? "—"}
 <span class="small-text">Theme1: </span>${this.theme1 ?? "—"}
@@ -105,6 +118,7 @@ class MapRollsCore {
 
         this.#addTerrainFeature(result);
         this.#addEncounterFeature(result);
+        this.#addActivity(result);
         this.#addWildFeature(result);
         this.#addWildFeature2(result);
         this.#addTheme1(result);
@@ -159,6 +173,11 @@ class MapRollsCore {
         const animalPick = this.#lookupFromTable(subTableColumn);
 
         result.encounter = `${animalPick}`;
+    }
+
+    #addActivity(result) {
+        result.activity = this.#lookupFromTable(this.tables.generalActivityTable);
+
     }
 
     #addWildFeature(result) {

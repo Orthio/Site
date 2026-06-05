@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Rolls</title>
+    <link rel="stylesheet" href="css/DnD_Terrain_Rolls.css" />
+</head>
+
+<body>
+    <h1>Monster Rolls</h1>
+
+    <button type="button" class="button buttonGenerate" id="button-halfHD">HD ½ (NH)</button>
+    <button type="button" class="button buttonGenerate" id="button-1HD">HD 1</button>
+    <button type="button" class="button buttonGenerate" id="button-2HD">HD 2</button>
+    <button type="button" class="button buttonGenerate" id="button-3HD">HD 3</button>
+    <button type="button" class="button buttonGenerate" id="button-4HD">HD 4</button>
+    <br>
+    <button type="button" class="button buttonGenerate" id="button-5HD">HD 5</button>
+    <button type="button" class="button buttonGenerate" id="button-6HD">HD 6</button>
+    <button type="button" class="button buttonGenerate" id="button-7HD">HD 7</button>
+    <button type="button" class="button buttonGenerate" id="button-8HD">HD 8</button>
+    <br>
+    <button type="button" class="button buttonGenerate" id="button-9HD">HD 9</button>
+    <button type="button" class="button buttonGenerate" id="button-10HD">HD 10</button>
+    <button type="button" class="button buttonGenerate" id="button-11HD">HD 11</button>
+    <button type="button" class="button buttonGenerate" id="button-12HD">HD 12</button>
+    <br>
+
+    <div>
+        <label for="button-hp-add">HP Add:</label>
+        <input type="number" id="button-hp-add" name="button-hp-add" value="0" min="-5" max="5">
+        <button type="button" class="button" id="button-hp-reset">HP Reset</button>
+    </div>
+    <br>
+    
+    <div id="result-output"></div>
+
+    <script type="module" src="js/DnD_Monster_Rolls.js"></script>
+
+</body>
+
+</html>
