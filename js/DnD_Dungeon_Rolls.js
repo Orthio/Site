@@ -13,8 +13,8 @@ const resultOutput = document.getElementById("result-output");
 
 let dungeonRolls;
 
-class DungeonRollResult {
-    static nextId = 0;
+export class DungeonRollResult {
+    static nextId = 1;
 
     constructor() {
         this.dungeonRoomId = DungeonRollResult.nextId++;
@@ -23,13 +23,19 @@ class DungeonRollResult {
 
     }
 
-    toText() {
+    toDungeonText() {
         return `${this.dungeonRoomId}. <span class="small-text">Feature: </span>${this.feature}
+        <span class="small-text">Treasure: </span>${this.treasure ?? "—"}`;
+    }
+
+    toDungeonText2() {
+        // No number
+        return `<span class="small-text">Feature: </span>${this.feature}
         <span class="small-text">Treasure: </span>${this.treasure ?? "—"}`;
     }
 }
 
-class DungeonRollsCore {
+export class DungeonRollsCore {
     constructor() { // (tables)
         // this.tables = tables.tables;
         this.results = [];
@@ -50,7 +56,7 @@ class DungeonRollsCore {
 
     getAllResultsText() {
         return this.results
-            .map(result => result.toText())
+            .map(result => result.toDungeonText())
             .join("\n\n");
     }
 
@@ -159,24 +165,3 @@ class DungeonRollsCore {
         return null;
     }
 }
-
-async function init() {
-    // const tables = await MapRollTables.load();
-
-    // await initKnaveRolls();
-
-    dungeonRolls = new DungeonRollsCore(); // (tables)
-
-    generateButton.addEventListener("click", generateResults);
-}
-
-async function generateResults() {
-    
-    await dungeonRolls.generateDungeonResults();
-
-    resultOutput.innerHTML = dungeonRolls.getAllResultsText();
-
-    // console.log(dungeonRolls.results);
-}
-
-init();

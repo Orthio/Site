@@ -25,3 +25,11 @@
     margin-bottom: 2px;
     margin-left: 5px;
 }
+
+#result-output {
+    width: 500px;
+} 
+
+.small-text {
+    font-size: 10px;
+}

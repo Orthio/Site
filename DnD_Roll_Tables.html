@@ -32,9 +32,70 @@
 
     <p class="boldHeadings"><b>General</b></p>
     <button type="button" id="generate-oracle" class="button">Generate Oracle</button>
+    <button id="button-caltrops-tables">Open Caltrops Page</button>
 
-    <p class="boldHeadings"><b>Items</b></p>
+    <p class="boldHeadings"><b>Town</b></p>
     <div class="row-buttons">
+        <button type="button" id="generate-place" class="button">Generate Place</button>
+        <button type="button" id="generate-scenario" class="button">Generate Scenario</button>
+
+    </div>
+    <div class="row-buttons">
+        <button id="button-open-character-gen">Open Character Gen Page</button>
+        <button id="button-open-retainer-gen">Open Retainer Gen Page</button>
+
+    </div>
+
+    <p class="boldHeadings"><b>Terrain</b></p>
+    <div class="row-buttons">
+        <!-- <label for="terrain-select">Terrain:</label> -->
+
+        <select id="terrain-select">
+            <option value="Random">Random</option>
+            <option value="Plain">Plains, Scrub</option>
+            <option value="Forest">Forest, ForestWithHills</option>
+            <option value="Hills">Hills, Mountains, Rough</option>
+            <option value="Desert">Desert</option>
+            <option value="Marsh">Swamp</option>
+            <option value="Lake">Lake, Ocean</option>
+        </select>
+
+        <button type="button" id="generate-terrain" class="button">Generate Terrain</button>
+    </div>
+
+    <p class="boldHeadings"><b>Dungeon</b></p>
+    <div class="row-buttons">
+        <button type="button" id="generate-dungeon-theme" class="button">Generate Dungeon Theme</button>
+        <button type="button" id="generate-trap" class="button">Generate Trap</button>
+        <button type="button" id="generate-dungeon-room" class="button">Generate Dungeon Room</button>
+    </div>
+
+
+    <p class="p-link, boldHeadings" id="monster-reaction-link"><b>Monster</b></p>
+    <div class="row-buttons">
+        <button type="button" id="generate-reaction" class="button">Generate Reaction</button>
+        <button type="button" id="generate-activity" class="button">Generate Activity</button>
+    </div>
+    <div class="row-buttons">
+        <button id="button-open-monster-hd">Open Monster HitDice Page</button>
+    </div>
+    <div class="row-buttons">
+        <button type="button" id="add-reaction" class="button">More Aggressive</button>
+        <button type="button" id="detract-reaction" class="button">More Friendly</button>
+        <button type="button" id="remove-reaction-text" class="button">Remove reaction text</button>
+    </div>
+    <!-- <div class="row-buttons">
+        <button type="button" id="generate-indoor-distance" class="button">Generate Indoor Distance</button>
+        <button type="button" id="generate-outdoor-open-distance" class="button">Generate Outdoor Open Distance</button>
+        <button type="button" id="generate-outdoor-obs-distance" class="button">Generate Outdoor Obstructed
+            Distance</button>
+    </div> -->
+
+    <p class="boldHeadings"><b>Treasure</b></p>
+    <div class="row-buttons">
+        <button id="button-open-treasure-gen">Open OSE Treasure Page</button>
+    </div>
+        <div class="row-buttons">
         <button type="button" id="generate-treasures" class="button">Generate Treasures</button>
         <button type="button" id="generate-enemy-weapon-button" class="button">Generate Enemy Weapon</button>
         <button type="button" id="generate-party-weapon-button" class="button">Generate Party Weapon</button>
@@ -44,37 +105,6 @@
         <button type="button" id="generate-art-button" class="button">Generate Art Objects</button>
         <button type="button" id="generate-equipment" class="button">Generate Equipment</button>
         <button type="button" id="generate-misc-items" class="button">Generate Misc Items</button>
-    </div>
-
-    <p class="boldHeadings"><b>Town</b></p>
-    <div class="row-buttons">
-        <button type="button" id="generate-place" class="button">Generate Place</button>
-        <button type="button" id="generate-scenario" class="button">Generate Scenario</button>
-    </div>
-
-    <p class="boldHeadings"><b>Dungeon</b></p>
-    <div class="row-buttons">
-        <button type="button" id="generate-dungeon" class="button">Generate Dungeon</button>
-        <button type="button" id="generate-trap" class="button">Generate Trap</button>
-
-    </div>
-
-
-    <p class="p-link, boldHeadings" id="monster-reaction-link"><b>Monster</b></p>
-    <div class="row-buttons">
-        <button type="button" id="generate-reaction" class="button">Generate Reaction</button>
-        <button type="button" id="add-reaction" class="button">More Aggressive</button>
-        <button type="button" id="detract-reaction" class="button">More Friendly</button>
-        <button type="button" id="remove-reaction-text" class="button">Remove reaction text</button>
-    </div>
-    <div class="row-buttons">
-        <button type="button" id="generate-activity" class="button">Generate Activity</button>
-    </div>
-    <div class="row-buttons">
-        <button type="button" id="generate-indoor-distance" class="button">Generate Indoor Distance</button>
-        <button type="button" id="generate-outdoor-open-distance" class="button">Generate Outdoor Open Distance</button>
-        <button type="button" id="generate-outdoor-obs-distance" class="button">Generate Outdoor Obstructed
-            Distance</button>
     </div>
 
     <p class="boldHeadings"><b>Dice</b></p>
@@ -89,7 +119,6 @@
     <button type="button" class="button buttond30" id="diceRolld30">Roll d30</button>
     <button type="button" class="button buttond100" id="diceRolld100">Roll d100</button>
 
-
     <br>
     <br>
 
@@ -98,6 +127,8 @@
     <div id="result-output"></div>
 
     <script type="module" src="js/DnD_Roll_Tables.js"></script>
+    <script type="module" src="js/DnD_Terrain_Rolls.js"></script>
+    <script type="module" src="js/DnD_Dungeon_Rolls.js"></script>
 
 </body>
 

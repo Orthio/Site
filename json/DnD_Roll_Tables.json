@@ -4346,5 +4346,205 @@
         "Sleeping",
         "Trapped",
         "Washing"
-    ]
+    ],
+    "hexConnectionTable": {
+        "01-18": {
+            "category": "People",
+            "question": "Who lives, visits, or has ties here?",
+            "examples": [
+                "Former resident",
+                "Family",
+                "Exile",
+                "Traveller",
+                "Spy",
+                "Prisoner",
+                "Guide",
+                "Apprentice"
+            ]
+        },
+        "19-29": {
+            "category": "Resources",
+            "question": "What does this place produce or consume?",
+            "examples": [
+                "Ore",
+                "Herbs",
+                "Flowers",
+                "Timber",
+                "Monster parts",
+                "Livestock",
+                "Magical energy"
+            ]
+        },
+        "30-38": {
+            "category": "Knowledge",
+            "question": "Who knows something about this place?",
+            "examples": [
+                "Secret entrance",
+                "Map",
+                "Rumours",
+                "History",
+                "Monster weakness",
+                "Forgotten lore"
+            ]
+        },
+        "39-45": {
+            "category": "Power",
+            "question": "Who controls or influences this place?",
+            "examples": [
+                "Tribute",
+                "Taxes",
+                "Military protection",
+                "Blackmail",
+                "Political alliance",
+                "Ownership"
+            ]
+        },
+        "46-52": {
+            "category": "Conflict",
+            "question": "Who is competing with or fighting over it?",
+            "examples": [
+                "Territorial dispute",
+                "Rival factions",
+                "Monster attacks",
+                "Feuds",
+                "Holy war"
+            ]
+        },
+        "53-60": {
+            "category": "Trade",
+            "question": "What regularly moves between places?",
+            "examples": [
+                "Caravans",
+                "Smugglers",
+                "Pilgrims",
+                "Ferries",
+                "Merchants",
+                "Messages"
+            ]
+        },
+        "61-64": {
+            "category": "Services",
+            "question": "What work is done for someone else here?",
+            "examples": [
+                "Assassinations",
+                "Healing",
+                "Guiding",
+                "Brewing",
+                "Repairs",
+                "Enchanting"
+            ]
+        },
+        "65-71": {
+            "category": "Needs / Dependency",
+            "question": "What does this place depend upon? Who relies on it?",
+            "examples": [
+                "Food",
+                "Water",
+                "Medicine",
+                "Guards",
+                "Labour",
+                "Magical components"
+            ]
+        },
+        "72-78": {
+            "category": "History / Legacy",
+            "question": "What past event links this place to others? What has been left behind?",
+            "examples": [
+                "Ancient empire",
+                "Battle",
+                "Migration",
+                "Inheritance",
+                "Abandoned road",
+                "Ruins",
+                "Curses",
+                "Heirlooms"
+            ]
+        },
+        "79-84": {
+            "category": "Secrets",
+            "question": "What hidden relationship exists?",
+            "examples": [
+                "Hidden tunnel",
+                "Secret funding",
+                "Double agent",
+                "Buried vault",
+                "Disguised owner"
+            ]
+        },
+        "85-87": {
+            "category": "Beliefs",
+            "question": "What religious or cultural ties exist?",
+            "examples": [
+                "Cults",
+                "Temples",
+                "Pilgrimage",
+                "Traditions",
+                "Prophecies"
+            ]
+        },
+        "88-91": {
+            "category": "Nature",
+            "question": "How does the environment connect places?",
+            "examples": [
+                "Rivers",
+                "Migration",
+                "Weather",
+                "Monster ecology",
+                "Magical corruption"
+            ]
+        },
+        "92-94": {
+            "category": "Objects",
+            "question": "What item links locations?",
+            "examples": [
+                "Key",
+                "Relic",
+                "Map",
+                "Heirloom",
+                "Crown",
+                "Magic item"
+            ]
+        },
+        "95": {
+            "category": "Events",
+            "question": "What recurring activity links them?",
+            "examples": [
+                "Market",
+                "Festival",
+                "Tournament",
+                "Pilgrimage",
+                "Tax collection",
+                "Migration"
+            ]
+        },
+        "96-98": {
+            "category": "Communication",
+            "question": "How do messages flow?",
+            "examples": [
+                "Courier",
+                "Beacon fires",
+                "Magical sending",
+                "Secret drops"
+            ]
+        },
+        "99": {
+            "category": "Movement",
+            "question": "Who or what regularly travels here?",
+            "examples": [
+                "Seasonal migration",
+                "Patrols",
+                "Caravans"
+            ]
+        },
+        "100": {
+            "category": "Influence",
+            "question": "What changes this place?",
+            "examples": [
+                "Bandits",
+                "Druidic magic",
+                "Mine pollution",
+                "Magical blight"
+            ]
+        }
+    }
 }

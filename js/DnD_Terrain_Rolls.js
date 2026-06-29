@@ -3,7 +3,12 @@
  * @property {string} terrain // plains
  * @property {num} mapId // 1
  * @property {string} terrainFeature // Hillock
- * @property {string} encFeature // Beetle, Fire
+ * @property {string} encounter1 // Beetle, Fire
+ * @property {string} encounter2 // Dragon, Fire
+ * @property {string} connectionCategory // People
+ * @property {string} connectionQuestion // Who lives, visits, or has ties here?
+ * @property {string} connectionExamples // Former resident, family
+ * @property {string} connectionText // People: Who lives.. Former resident
  * @property {string|null} wildFeature[0]  // Hazard/Resource, Consider a, 6-6, false
  * @property {string|null} wildFeature[1]  // Consider a
  * @property {string|null} wildFeature[2]  // 6-6
@@ -22,7 +27,7 @@ const resultOutput = document.getElementById("result-output");
 
 let mapRolls;
 
-class MapRollTables {
+export class MapRollTables {
     static async load() {
         const res = await fetch("json/DnD_Hexmap.json");
 
@@ -75,12 +80,14 @@ class MapRollTables {
             featureKeysTable: data.featureKeysTable ?? null,
             encounterFeatureKeysTable: data.encounterFeatureKeysTable ?? null,
 
-            generalActivityTable: data2.generalActivityTable ?? null
+            generalActivityTable: data2.generalActivityTable ?? null,
+            hexConnectionTable: data2.hexConnectionTable ?? null,
+
         };
     }
 }
 
-class MapRollResult {
+export class MapRollResult {
     static nextId = 1;
 
     constructor(terrain) {
@@ -88,7 +95,12 @@ class MapRollResult {
         this.terrain = terrain;
 
         this.terrainFeature = null;
-        this.encounter = null;
+        this.encounter1 = null;
+        this.encounter2 = null;
+        this.connectionCategory = null;
+        this.connectionQuestion = null;
+        this.connectionExamples = null;
+        this.connectionText = null;
         this.feature = null;
         this.feature2 = null;
         this.theme1 = null;
@@ -96,20 +108,35 @@ class MapRollResult {
     }
 
     toText() {
-        return `${this.mapId}. <span class="small-text">Terrain: </span>${this.terrain}
-<span class="small-text">Terrain Feature: </span>${this.terrainFeature ?? "—"}
-<span class="small-text">Encounter: </span>${this.encounter ?? "—"}
-<span class="small-text">Monster Activity: </span>${this.activity ?? "—"}
-<span class="small-text">Feature1: </span>${this.feature ?? "—"}
-<span class="small-text">Feature2: </span>${this.feature2 ?? "—"}
-<span class="small-text">Theme1: </span>${this.theme1 ?? "—"}
-<span class="small-text">Theme2: </span>${this.theme2 ?? "—"}`;
+        return `${this.mapId}. <span class="small-text">Terrain: </span>${this.terrain}<br>
+<span class="small-text">Terrain Feature: </span>${this.terrainFeature ?? "—"}<br>
+<span class="small-text">Encounter: </span>${this.encounter1 ?? "—"}<br>
+<span class="small-text">Encounter Extra: </span>${this.encounter2 ?? "—"}<br>
+<span class="small-text">Monster Activity: </span>${this.activity ?? "—"}<br>
+<span class="small-text">Hex Connection: </span>${this.connectionText ?? "—"}<br>
+<span class="small-text">Feature1: </span>${this.feature ?? "—"}<br>
+<span class="small-text">Feature2: </span>${this.feature2 ?? "—"}<br>
+<span class="small-text">Theme1: </span>${this.theme1 ?? "—"}<br>
+<span class="small-text">Theme2: </span>${this.theme2 ?? "—"}<br>`;
+    }
+
+    toTextNoNumber() {
+        return `<span class="small-text">Terrain: </span>${this.terrain}<br>
+<span class="small-text">Terrain Feature: </span>${this.terrainFeature ?? "—"}<br>
+<span class="small-text">Encounter: </span>${this.encounter1 ?? "—"}<br>
+<span class="small-text">Encounter Extra: </span>${this.encounter2 ?? "—"}<br>
+<span class="small-text">Monster Activity: </span>${this.activity ?? "—"}<br>
+<span class="small-text">Hex Connection: </span>${this.connectionText ?? "—"}<br>
+<span class="small-text">Feature1: </span>${this.feature ?? "—"}<br>
+<span class="small-text">Feature2: </span>${this.feature2 ?? "—"}<br>
+<span class="small-text">Theme1: </span>${this.theme1 ?? "—"}<br>
+<span class="small-text">Theme2: </span>${this.theme2 ?? "—"}<br>`;
     }
 }
 
-class MapRollsCore {
-    constructor(tables) {
-        this.tables = tables.tables;
+export class MapRollsCore {
+    constructor(tablesInput) {
+        this.tables = tablesInput.tables;
         this.results = [];
     }
 
@@ -117,8 +144,10 @@ class MapRollsCore {
         const result = new MapRollResult(terrain);
 
         this.#addTerrainFeature(result);
-        this.#addEncounterFeature(result);
+        this.#addEncounterFeature(result, 1);
+        this.#addEncounterFeature(result, 2);
         this.#addActivity(result);
+        this.#addConnection(result);
         this.#addWildFeature(result);
         this.#addWildFeature2(result);
         this.#addTheme1(result);
@@ -148,7 +177,7 @@ class MapRollsCore {
         result.terrainFeature = rollOnTable(list);
     }
 
-    #addEncounterFeature(result) {
+    #addEncounterFeature(result, number) {
         const terrainCheck = result.terrain;
 
         const tableKey =
@@ -167,16 +196,26 @@ class MapRollsCore {
 
         const subTableColumn =
             this.tables.specificEncountersTable?.[categoryPick];
-
         if (!subTableColumn) return;
 
         const animalPick = this.#lookupFromTable(subTableColumn);
-
-        result.encounter = `${animalPick}`;
+        let encounterNumber = `encounter${number}`;
+        result[encounterNumber] = animalPick;
     }
 
     #addActivity(result) {
         result.activity = this.#lookupFromTable(this.tables.generalActivityTable);
+
+    }
+
+    #addConnection(result) {
+        let connectionPick = this.#lookupFromTable(this.tables.hexConnectionTable, generalDiceRoll(100));
+        result.connectionCategory = connectionPick.category;
+        result.connectionQuestion = connectionPick.question;
+        result.connectionExamples = connectionPick.examples.join(", ");
+        result.connectionText = result.connectionCategory + ": " + "<br>" +
+            result.connectionQuestion + " " + "<br>" +
+            result.connectionExamples;
 
     }
 
@@ -330,7 +369,7 @@ class MapRollsCore {
         return null;
     }
 }
-
+/* 
 async function init() {
     const tables = await MapRollTables.load();
 
@@ -364,4 +403,4 @@ async function generateResults() {
     // console.log(mapRolls.results);
 }
 
-init();
+init(); */

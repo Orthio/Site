@@ -45,7 +45,7 @@ class RetainerRollResults {
         <span class="small-text">Cha: </span>${this.charisma ?? "—"},
         <span class="small-text">Level: </span>${this.level ?? "—"},<br>
         &nbsp&nbsp <span class="small-text">Class: </span>${this.class ?? "—"},<br>
-        &nbsp&nbsp <span class="small-text">Gear: </span>${this.generalGear ?? "—"}, ${this.adventuringGear1}, ${this.adventuringGear2 ?? ""}
+        &nbsp&nbsp <span class="small-text">Gear: </span>${this.generalGear ?? "—"}, ${this.adventuringGear1}, ${this.adventuringGear2 ?? ""}<br><br>
         `.replace(/\s+/g, " ");
     }
 }
@@ -77,6 +77,7 @@ class retainerRollsCore {
         this.#addEquipment(result);
 
         // this.results.push(result);
+        // this.results.unshift("<br>");
         this.results.unshift(result);
 
         return result;

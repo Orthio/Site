@@ -1,4 +1,19 @@
 import { generalDiceRoll, rollOnTable } from './DnD_General.js';
+import { DungeonRollsCore } from "./DnD_Dungeon_Rolls.js";
+import { MapRollsCore, MapRollTables } from "./DnD_Terrain_Rolls.js";
+import { initKnaveRolls, rollKnaveTheme } from "./DnD_Knave_Rolls.js";
+
+
+const dungeon = new DungeonRollsCore();
+
+await initKnaveRolls();
+const terrainTables = await MapRollTables.load();
+const terrain = new MapRollsCore(terrainTables);
+
+const room = dungeon.generateDungeonResults();
+const terrainHex = terrain.generateTerrainResults();
+
+const terrainSelect = document.getElementById("terrain-select");
 
 let jsonData;
 
@@ -9,9 +24,6 @@ fetch('json/DnD_Roll_Tables.json')
     .then(response => response.json())  // Parse the JSON
     .then(data => {
         jsonData = data;
-        //  console.log(data.artDecorativeTechniques["1"]); // Outputs "Platinum filigree"
-
-        // console.log(data.artNature["2"]); // Outputs "Worn or Carried Ornaments"
     })
     .catch(error => console.error('Error fetching JSON:', error));
 
@@ -21,140 +33,19 @@ let resultOutput = [];
 let monsterReactionMod = 0;
 const extraText = document.getElementById("monster-reaction-table-text");
 
+function generateOracle() {
+    const oracleTable = [
+        "No, And",
+        "No",
+        "No, But",
+        "Yes, But",
+        "Yes",
+        "Yes, And"
+    ];
 
-function generateArt() {
-    // console.log("Art Gen started");
-    let natureIndex = generalDiceRoll(5, 1);
-    // console.log("Nature Index ", natureIndex);
-    let nature = jsonData.artNature[natureIndex];
+    let oracleResult = rollOnTable(oracleTable);
+    updateOutput(oracleResult);
 
-    let jewelleryIndex = generalDiceRoll(50, 1);
-    let jewellery = jsonData.artJewelleryItems[jewelleryIndex];
-
-    let equipmentIndex = generalDiceRoll(50, 1);
-    let equipment = jsonData.artEquipment[equipmentIndex];
-
-    let artDiningIndex = generalDiceRoll(50, 1);
-    let artDining = jsonData.artDiningItems[artDiningIndex];
-
-    let artDecorativeIndex = generalDiceRoll(50, 1);
-    let artDecorative = jsonData.artDecorativeItems[artDecorativeIndex];
-
-    let artPersonalIndex = generalDiceRoll(50, 1);
-    let artPersonal = jsonData.artPersonalItems[artPersonalIndex];
-
-    let objectArray = [jewellery, equipment, artDining, artDecorative, artPersonal];
-    let objectChoice = "";
-    switch (natureIndex) {
-        case 1:
-            objectChoice = objectArray[0];
-            break;
-        case 2:
-            objectChoice = objectArray[1];
-            break;
-        case 3:
-            objectChoice = objectArray[2];
-            break;
-        case 4:
-            objectChoice = objectArray[3];
-            break;
-        case 5:
-            objectChoice = objectArray[4];
-            break;
-    }
-
-    let artMetalIndex = generalDiceRoll(50, 1);
-    let artMetal = jsonData.artMetalTypes[artMetalIndex];
-
-    let artMaterialIndex = generalDiceRoll(50, 1);
-    let artMaterial = jsonData.artMaterialTypes[artMaterialIndex];
-
-    let artGemstoneIndex = generalDiceRoll(50, 1);
-    let artGemstone = jsonData.artGemstoneTypes[artGemstoneIndex];
-
-    let artDecorativeIndex2 = generalDiceRoll(20, 1);
-    let artDecorative2 = jsonData.artDecorativeTechniques[artDecorativeIndex];
-
-    let artDesignIndex = generalDiceRoll(20, 1);
-    let artDesign = jsonData.artDesignThemes[artDesignIndex];
-
-
-    let artResult = "<span class='no-select'><small>Art Object: </small></span><br>" +
-        objectChoice + "<br>" +
-        artMetal + " and " + artMaterial + ", " + "<br>" +
-        "With " + artGemstone + " and " + artDecorative + "<br>";
-
-    updateOutput(artResult);
-
-};
-
-function generateEnemyWeapon() {
-    let enemyWepIndex = generalDiceRoll(jsonData.enemyWeapons.length, 1);
-    console.log(jsonData.enemyWeapons.length);
-    let enemyWep = jsonData.enemyWeapons[enemyWepIndex - 1];
-
-    let enemyWepResult = "<span class='no-select'><small>Enemy Weapon: </small></span><br>" + enemyWep + "<br>";
-
-    updateOutput(enemyWepResult);
-}
-
-function generatePartyWeapon() {
-    let partyWepIndex = generalDiceRoll(jsonData.partyWeapons.length, 1);
-    let partyWep = jsonData.partyWeapons[partyWepIndex - 1];
-    // console.log("partyWepIndex: ", partyWepIndex);
-    // console.log(partyWep);
-
-    let partyWepResult = "<span class='no-select'><small>Party Weapon: </small></span><br>" + partyWep + "<br>";
-
-    updateOutput(partyWepResult);
-}
-
-function generateTreasures() {
-    let treasures1 = rollOnTable(jsonData.treasures);
-    let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
-    let materials = rollOnTable(jsonData.materials);
-
-    let treasuresResult = "<span class='no-select'><small>Treasures: </small></span><br>" +
-        treasures1 + "<br>" +
-        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
-
-    updateOutput(treasuresResult);
-}
-
-function generateEquipment() {
-    let equipment1 = rollOnTable(jsonData.equipment1);
-    let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
-    let materials = rollOnTable(jsonData.materials);
-
-    let equipmentResult = "<span class='no-select'><small>Equipment: </small></span><br>" +
-        equipment1 + "<br>" +
-        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
-
-    updateOutput(equipmentResult);
-}
-
-function generateMiscItems() {
-    let miscItems1 = rollOnTable(jsonData.miscItems);
-    let materialTraits = rollOnTable(jsonData.materialTraits);
-    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
-    let materials = rollOnTable(jsonData.materials);
-
-    switch (miscItems1) {
-        case "Weapons":
-            miscItems1 = rollOnTable(jsonData.partyWeapons);
-        case "Treasure":
-            miscItems1 = rollOnTable(jsonData.treasures);
-        default:
-            break;
-    }
-
-    let miscResult = "<span class='no-select'><small>Misc Items: </small></span><br>" +
-        miscItems1 + "<br>" +
-        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
-
-    updateOutput(miscResult);
 }
 
 function generatePlace() {
@@ -172,6 +63,19 @@ function generatePlace() {
     updateOutput(placeResult);
 }
 
+function generateTerrain() {
+    let terrainSelection = terrainSelect.value;
+
+    if (terrainSelection === "Random") {
+        const terrainArray = ["Plain", "Forest", "Hills", "Desert", "Marsh", "Lake"];
+        terrainSelection = rollOnTable(terrainArray);
+    }
+
+    const terrainHex = terrain.generateTerrainResults(terrainSelection);
+    updateOutput(terrainHex.toTextNoNumber());
+
+}
+
 function generateDungeon() {
     let dungeonsKnave = rollOnTable(jsonData.dungeonsKnave);
     let dungeonRoomThemes = rollOnTable(jsonData.dungeonRoomThemes);
@@ -180,7 +84,7 @@ function generateDungeon() {
     let monument = rollOnTable(jsonData.monument);
     let monumentDescription = rollOnTable(jsonData.monumentDescription);
 
-    let dungeonResult = "<span class='no-select'><small>Dungeon: </small></span><br>" +
+    let dungeonResult = "<span class='no-select'><small>Dungeon Theme: </small></span><br>" +
         dungeonsKnave + "<br>" +
         dungeonRoomThemes + ", " + dungeonShifts + " and " + dungeonRoomFeatures + "<br>" +
         "With a " + monumentDescription + " " + monument + "<br>";
@@ -196,9 +100,14 @@ function generateTrap() {
 
     let trapResult = "<span class='no-select'><small>Trap: </small></span><br>" +
         environmentSignsKnave + " gives away " + "<br>" +
-        trapEffects + " " + trapHazards + " with a " + trapComponents + "<br>" + "<br>";
+        trapEffects + " " + trapHazards + " with a " + trapComponents + "<br>";
 
     updateOutput(trapResult);
+}
+
+function generateDungeonRoom() {
+    const dungeonRoom = dungeon.generateDungeonResults();
+    updateOutput(dungeonRoom.toDungeonText2());
 }
 
 function generateScenario() {
@@ -302,21 +211,6 @@ function generateActivity() {
 
 }
 
-function generateOracle() {
-    const oracleTable = [
-        "No, And",
-        "No",
-        "No, But",
-        "Yes, But",
-        "Yes",
-        "Yes, And"
-    ];
-
-    let oracleResult = rollOnTable(oracleTable);
-    updateOutput(oracleResult);
-
-}
-
 function generateIndoorDistance() {
     let roll = 10 * (generalDiceRoll(6, 2));
     // 2d6 * 10ft
@@ -347,6 +241,137 @@ function generateOutdoorObsDistance() {
     updateOutput(outdoorObsDistText);
 }
 
+
+function generateArt() {
+    let natureIndex = generalDiceRoll(5, 1);
+    let nature = jsonData.artNature[natureIndex];
+
+    let jewelleryIndex = generalDiceRoll(50, 1);
+    let jewellery = jsonData.artJewelleryItems[jewelleryIndex];
+
+    let equipmentIndex = generalDiceRoll(50, 1);
+    let equipment = jsonData.artEquipment[equipmentIndex];
+
+    let artDiningIndex = generalDiceRoll(50, 1);
+    let artDining = jsonData.artDiningItems[artDiningIndex];
+
+    let artDecorativeIndex = generalDiceRoll(50, 1);
+    let artDecorative = jsonData.artDecorativeItems[artDecorativeIndex];
+
+    let artPersonalIndex = generalDiceRoll(50, 1);
+    let artPersonal = jsonData.artPersonalItems[artPersonalIndex];
+
+    let objectArray = [jewellery, equipment, artDining, artDecorative, artPersonal];
+    let objectChoice = "";
+    switch (natureIndex) {
+        case 1:
+            objectChoice = objectArray[0];
+            break;
+        case 2:
+            objectChoice = objectArray[1];
+            break;
+        case 3:
+            objectChoice = objectArray[2];
+            break;
+        case 4:
+            objectChoice = objectArray[3];
+            break;
+        case 5:
+            objectChoice = objectArray[4];
+            break;
+    }
+
+    let artMetalIndex = generalDiceRoll(50, 1);
+    let artMetal = jsonData.artMetalTypes[artMetalIndex];
+
+    let artMaterialIndex = generalDiceRoll(50, 1);
+    let artMaterial = jsonData.artMaterialTypes[artMaterialIndex];
+
+    let artGemstoneIndex = generalDiceRoll(50, 1);
+    let artGemstone = jsonData.artGemstoneTypes[artGemstoneIndex];
+
+    let artDecorativeIndex2 = generalDiceRoll(20, 1);
+    let artDecorative2 = jsonData.artDecorativeTechniques[artDecorativeIndex];
+
+    let artDesignIndex = generalDiceRoll(20, 1);
+    let artDesign = jsonData.artDesignThemes[artDesignIndex];
+
+
+    let artResult = "<span class='no-select'><small>Art Object: </small></span><br>" +
+        objectChoice + "<br>" +
+        artMetal + " and " + artMaterial + ", " + "<br>" +
+        "With " + artGemstone + " and " + artDecorative + "<br>";
+
+    updateOutput(artResult);
+
+};
+
+function generateEnemyWeapon() {
+    let enemyWepIndex = generalDiceRoll(jsonData.enemyWeapons.length, 1);
+    let enemyWep = jsonData.enemyWeapons[enemyWepIndex - 1];
+
+    let enemyWepResult = "<span class='no-select'><small>Enemy Weapon: </small></span><br>" + enemyWep + "<br>";
+
+    updateOutput(enemyWepResult);
+}
+
+function generatePartyWeapon() {
+    let partyWepIndex = generalDiceRoll(jsonData.partyWeapons.length, 1);
+    let partyWep = jsonData.partyWeapons[partyWepIndex - 1];
+
+    let partyWepResult = "<span class='no-select'><small>Party Weapon: </small></span><br>" + partyWep + "<br>";
+
+    updateOutput(partyWepResult);
+}
+
+function generateTreasures() {
+    let treasures1 = rollOnTable(jsonData.treasures);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
+    let materials = rollOnTable(jsonData.materials);
+
+    let treasuresResult = "<span class='no-select'><small>Treasures: </small></span><br>" +
+        treasures1 + "<br>" +
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
+
+    updateOutput(treasuresResult);
+}
+
+function generateEquipment() {
+    let equipment1 = rollOnTable(jsonData.equipment1);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
+    let materials = rollOnTable(jsonData.materials);
+
+    let equipmentResult = "<span class='no-select'><small>Equipment: </small></span><br>" +
+        equipment1 + "<br>" +
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
+
+    updateOutput(equipmentResult);
+}
+
+function generateMiscItems() {
+    let miscItems1 = rollOnTable(jsonData.miscItems);
+    let materialTraits = rollOnTable(jsonData.materialTraits);
+    let itemTraitsKnave = rollOnTable(jsonData.itemTraitsKnave);
+    let materials = rollOnTable(jsonData.materials);
+
+    switch (miscItems1) {
+        case "Weapons":
+            miscItems1 = rollOnTable(jsonData.partyWeapons);
+        case "Treasure":
+            miscItems1 = rollOnTable(jsonData.treasures);
+        default:
+            break;
+    }
+
+    let miscResult = "<span class='no-select'><small>Misc Items: </small></span><br>" +
+        miscItems1 + "<br>" +
+        materialTraits + ", " + itemTraitsKnave + ", " + materials + "<br>";
+
+    updateOutput(miscResult);
+}
+
 function updateOutput(inputText) {
 
     rollsCount++;
@@ -375,6 +400,83 @@ function diceRoll(diceSize, diceQuantity) {
     updateOutput(rollResult);
 }
 
+document.getElementById('generate-oracle').addEventListener('click', () => {
+    generateOracle();
+});
+
+document.getElementById("button-caltrops-tables").addEventListener("click", () => {
+    window.open("https://blog.d4caltrops.com/p/random-tables.html", "_blank");
+});
+
+document.getElementById('generate-place').addEventListener('click', () => {
+    generatePlace();
+});
+
+document.getElementById('generate-scenario').addEventListener('click', () => {
+    generateScenario();
+});
+
+document.getElementById("button-open-character-gen").addEventListener("click", () => {
+    window.open("/DnD_Character_Generator.html", "_blank");
+});
+
+document.getElementById("button-open-retainer-gen").addEventListener("click", () => {
+    window.open("/DnD_Retainer_Rolls.html", "_blank");
+});
+
+document.getElementById('generate-terrain').addEventListener('click', () => {
+    generateTerrain();
+});
+
+document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
+    generateDungeon();
+});
+
+document.getElementById('generate-trap').addEventListener('click', () => {
+    generateTrap();
+});
+
+document.getElementById('generate-dungeon-room').addEventListener('click', () => {
+    generateDungeonRoom();
+});
+
+document.getElementById('generate-reaction').addEventListener('click', () => {
+    generateMonsterReaction();
+});
+
+document.getElementById('generate-activity').addEventListener('click', () => {
+    generateActivity();
+});
+
+document.getElementById("button-open-monster-hd").addEventListener("click", () => {
+    window.open("/DnD_Monster_Rolls.html", "_blank");
+});
+
+// document.getElementById('generate-indoor-distance').addEventListener('click', () => {
+//     generateIndoorDistance();
+// });
+
+// document.getElementById('generate-outdoor-open-distance').addEventListener('click', () => {
+//     generateOutdoorOpenDistance();
+// });
+
+// document.getElementById('generate-outdoor-obs-distance').addEventListener('click', () => {
+//     generateOutdoorObsDistance();
+// });
+
+
+document.getElementById('add-reaction').addEventListener('click', () => {
+    addReaction();
+});
+
+document.getElementById('detract-reaction').addEventListener('click', () => {
+    detractReaction();
+});
+
+document.getElementById("button-open-treasure-gen").addEventListener("click", () => {
+    window.open("https://oldschoolessentials.necroticgnome.com/generators/treasure-by-type-generator", "_blank");
+});
+
 document.getElementById('generate-treasures').addEventListener('click', () => {
     generateTreasures();
 });
@@ -397,54 +499,6 @@ document.getElementById('generate-equipment').addEventListener('click', () => {
 
 document.getElementById('generate-misc-items').addEventListener('click', () => {
     generateMiscItems();
-});
-
-document.getElementById('generate-place').addEventListener('click', () => {
-    generatePlace();
-});
-
-document.getElementById('generate-dungeon').addEventListener('click', () => {
-    generateDungeon();
-});
-
-document.getElementById('generate-trap').addEventListener('click', () => {
-    generateTrap();
-});
-
-document.getElementById('generate-scenario').addEventListener('click', () => {
-    generateScenario();
-});
-
-document.getElementById('generate-reaction').addEventListener('click', () => {
-    generateMonsterReaction();
-});
-
-document.getElementById('generate-activity').addEventListener('click', () => {
-    generateActivity();
-});
-
-document.getElementById('generate-oracle').addEventListener('click', () => {
-    generateOracle();
-});
-
-document.getElementById('generate-indoor-distance').addEventListener('click', () => {
-    generateIndoorDistance();
-});
-
-document.getElementById('generate-outdoor-open-distance').addEventListener('click', () => {
-    generateOutdoorOpenDistance();
-});
-
-document.getElementById('generate-outdoor-obs-distance').addEventListener('click', () => {
-    generateOutdoorObsDistance();
-});
-
-document.getElementById('add-reaction').addEventListener('click', () => {
-    addReaction();
-});
-
-document.getElementById('detract-reaction').addEventListener('click', () => {
-    detractReaction();
 });
 
 document.getElementById('diceRolld4').addEventListener('click', () => {

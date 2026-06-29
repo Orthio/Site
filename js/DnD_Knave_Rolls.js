@@ -1,9 +1,8 @@
-
-import { generalDiceRoll, rollOnTable } from "./DnD_General.js";
+import { rollOnTable } from "./DnD_General.js";
 
 let rollsKnave = null;
 
-class KnaveRollTables {
+export class KnaveRollTables {
     static async load() {
         const res = await fetch("json/DnD_Roll_Tables.json");
 
@@ -42,9 +41,9 @@ class KnaveRollTables {
     }
 }
 
-class KnaveRolls {
-    constructor(tables) {
-        this.tables = tables.tables;
+export class KnaveRolls {
+    constructor(tablesInput) {
+        this.tables = tablesInput?.tables ?? tablesInput;
         this.knaveThemePick = null;
         this.knaveTheme = null;
     }
@@ -66,16 +65,13 @@ class KnaveRolls {
 
         this.knaveThemePick = rollOnTable(knaveThemeTables);
 
-        let result = rollOnTable(
-            this.tables[this.knaveThemePick]
-        );
+        let result = rollOnTable(this.tables[this.knaveThemePick]);
 
         result = this.#resolveKnaveReroll(this.knaveThemePick, result);
 
         this.knaveTheme = result;
 
         return this.knaveTheme;
-
     }
 
     #resolveKnaveReroll(tableName, result) {
@@ -83,7 +79,6 @@ class KnaveRolls {
             if (result === "Element Field") {
                 return `${rollOnTable(this.tables.elementsKnaveTable)} field`;
             }
-
         }
 
         if (tableName === "roomThemesKnaveTable") {
@@ -108,9 +103,8 @@ export async function initKnaveRolls() {
     const tables = await KnaveRollTables.load();
 
     rollsKnave = new KnaveRolls(tables);
-    rollsKnave.knaveThemeRoll();
 
-    return rollsKnave.knaveTheme;
+    return rollsKnave;
 }
 
 export function rollKnaveTheme() {

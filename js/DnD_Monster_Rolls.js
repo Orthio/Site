@@ -57,7 +57,7 @@ class MonsterRollResult {
     }
 
     toText() {
-        return `${this.monsterId}. <span class="small-text">HD: </span>${this.HD}, &nbsp&nbsp <span class="small-text">HP: </span>${this.HPString ?? "—"}`;
+        return `${this.monsterId}. <span class="small-text">HD: </span>${this.HD}, &nbsp&nbsp <span class="small-text">HP: </span>${this.HPString ?? "—"}<br><br>`;
     }
 }
 
