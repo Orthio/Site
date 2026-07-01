@@ -428,6 +428,10 @@ document.getElementById('generate-terrain').addEventListener('click', () => {
     generateTerrain();
 });
 
+document.getElementById("button-open-hex-connections").addEventListener("click", () => {
+    window.open("/DnD_Hex_Connections.html", "_blank");
+});
+
 document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
     generateDungeon();
 });

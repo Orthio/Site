@@ -28,8 +28,26 @@
 
 #result-output {
     width: 500px;
-} 
+}
 
 .small-text {
     font-size: 10px;
+}
+
+#connections-table {
+    font-size: 14px;
+}
+
+#connections-table th:first-child,
+#connections-table td:first-child {
+    width: 60px;
+    text-align: left;
+}
+
+#connections-table th {
+    text-align: left;
+}
+
+.question-text {
+    font-size: 12px;
 }
