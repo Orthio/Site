@@ -417,11 +417,11 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-character-gen").addEventListener("click", () => {
-    window.open("/DnD_Character_Generator.html", "_blank");
+    window.open("DnD_Character_Generator.html", "_blank");
 });
 
 document.getElementById("button-open-retainer-gen").addEventListener("click", () => {
-    window.open("/DnD_Retainer_Rolls.html", "_blank");
+    window.open("DnD_Retainer_Rolls.html", "_blank");
 });
 
 document.getElementById('generate-terrain').addEventListener('click', () => {
@@ -429,7 +429,7 @@ document.getElementById('generate-terrain').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-hex-connections").addEventListener("click", () => {
-    window.open("/DnD_Hex_Connections.html", "_blank");
+    window.open("DnD_Hex_Connections.html", "_blank");
 });
 
 document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
@@ -453,7 +453,7 @@ document.getElementById('generate-activity').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-monster-hd").addEventListener("click", () => {
-    window.open("/DnD_Monster_Rolls.html", "_blank");
+    window.open("DnD_Monster_Rolls.html", "_blank");
 });
 
 // document.getElementById('generate-indoor-distance').addEventListener('click', () => {
