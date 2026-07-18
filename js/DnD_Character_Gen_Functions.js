@@ -38,11 +38,11 @@ function createCharacter() {
 
   let age = rollOnTable(charAge);
 
-  if (raceType === "Random") {
+  if (raceType === "Random" | raceType === "-") {
     race = rollOnTable(races);
   }
 
-  if (sexType === "Random") {
+  if (sexType === "Random" | sexType === "-") {
     sex = rollOnTable(sexes);
   }
 
@@ -139,7 +139,7 @@ function createCharacter() {
     collection = rollOnTable(collections);
     interest = collection;
   }
-  if (interest == undefined) { interest = ""}
+  if (interest == undefined) { interest = "" }
   if (interest != "") {
     interestText = ", into " + interest;
   } else {
@@ -169,13 +169,21 @@ function createCharacter() {
     voice: voice,
 
     ideal: '',
+    idealText: '',
     bond: '',
+    bondText: '',
     goal1: '',
+    goal1Text: '',
     goal2: '',
+    goal2Text: '',
     advantage: '',
+    advantageText: '',
     flaw: ' ',
+    flawText: ' ',
     relationship: ' ',
+    relationshipText: ' ',
     pettyAttitude: ' ',
+    pettyAttitudeText: ' ',
 
     motivationTitle: '',
     motivation1: '',
@@ -192,7 +200,8 @@ function createCharacter() {
     villainGoal: '',
     hook: '',
 
-    simplified: ''
+    simplified: '',
+    detailed: ''
   };
 
   displayHistory.unshift(currentCharacter);
@@ -226,14 +235,14 @@ function updateCharacterDisplay() {
       '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + item.interestText + '</div>' +
       '<div>' + "<i>Voice: </i>" + item.voice + '</div>' +
       '<div>' + '<br>' + '</div>' +
-      '<div>' + item.ideal + '</div>' +
-      '<div>' + item.bond + '</div>' +
-      '<div>' + item.goal1 + '</div>' +
-      '<div>' + item.goal2 + '</div>' +
-      '<div>' + item.advantage + '</div>' +
-      '<div>' + item.flaw + '</div>' +
-      '<div>' + item.relationship + '</div>' +
-      '<div>' + item.pettyAttitude + '</div>' +
+      '<div>' + item.idealText + '</div>' +
+      '<div>' + item.bondText + '</div>' +
+      '<div>' + item.goal1Text + '</div>' +
+      '<div>' + item.goal2Text + '</div>' +
+      '<div>' + item.advantageText + '</div>' +
+      '<div>' + item.flawText + '</div>' +
+      '<div>' + item.relationshipText + '</div>' +
+      '<div>' + item.pettyAttitudeText + '</div>' +
 
       '<br>' +
       '<div>' + item.motivationTitle + '</div>' +
@@ -250,7 +259,7 @@ function updateCharacterDisplay() {
       '<div>' + item.villainGoal + '</div>' +
       '<div>' + item.hook + '</div>' +
 
-      '<div>' + item.simplified + '</div>' +
+      // '<div>' + item.simplified + '</div>' +
       '<hr>'
     '<div class="entry-border">' + '</div>'
     '</div>';
@@ -290,9 +299,18 @@ function renameCharacter() {
 
 // Function for choosing race and sex from dropdown
 function selectRaceSex(selectRace, selectSex) {
+  // eg "Human - "
+  // if Human F, definite , then menu keeps this, otherwise, menu shows - and does random
   race = selectRace;
   raceType = selectRace;
-  sex = selectSex;
+  if (selectSex === '-') {
+    let sexPick = generalDiceRoll(2);
+    let sexArray = ['Male', 'Female'];
+    sex = sexArray[sexPick];
+    // = M or F
+  } else {
+    sex = selectSex;
+  }
   sexType = selectSex;
 
   currentCharacter = {
@@ -300,7 +318,7 @@ function selectRaceSex(selectRace, selectSex) {
     sex: sex,
   };
 
-  document.getElementById('button-race').textContent = race + " " + sex;
+  document.getElementById('button-race').textContent = race + " " + sexType;
 }
 
 // Function Add Detail
@@ -377,17 +395,26 @@ function addDetail() {
   let villainGoal = rollOnTable(jsonData.villainGoals);
 
 
-  currentCharacter.ideal = '<div>' + "<i>Ideals: </i>" + ideal + '</div>';
-  currentCharacter.bond = '<div>' + "<i>Bonds: </i>" + bond + '</div>';
-  currentCharacter.goal1 = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
-  currentCharacter.goal2 = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
-  currentCharacter.advantage = '<div>' + "<i>Advantage: </i>" + advantage;
-  currentCharacter.flaw = "<i>Flaw: </i>" + flawRoll;
-  currentCharacter.relationship = '<div>' + "<i>Relationship: </i>" + relationship +
+  currentCharacter.idealText = '<div>' + "<i>Ideals: </i>" + ideal + '</div>';
+  currentCharacter.ideal = ideal;
+  currentCharacter.bondText = '<div>' + "<i>Bonds: </i>" + bond + '</div>';
+  currentCharacter.bond = bond;
+  currentCharacter.goal1Text = '<div>' + "<i>Goal1: </i>" + goal1 + '</div>';
+  currentCharacter.goal1 = goal1;
+  currentCharacter.goal2Text = '<div>' + "<i>Goal2: </i>" + goal2 + '</div>';
+  currentCharacter.goal2 = goal2;
+  currentCharacter.advantageText = '<div>' + "<i>Advantage: </i>" + advantage;
+  currentCharacter.advantage = advantage;
+  currentCharacter.flawText = "<i>Flaw: </i>" + flawRoll;
+  currentCharacter.flaw = flawRoll;
+  currentCharacter.relationshipText = '<div>' + "<i>Relationship: </i>" + relationship +
     " (" + relationshipRoll + ")";
-  currentCharacter.pettyAttitude = '<div>' + "<i>Petty Attitude: </i>" +
+  currentCharacter.relationship =  relationship + " (" + relationshipRoll + ")";
+  currentCharacter.pettyAttitudeText = '<div>' + "<i>Petty Attitude: </i>" +
     pickedPettyAttitude + " " + pickedPettyTension + " (" +
     pickedPettyRoll + ")" + '</div>';
+  currentCharacter.pettyAttitude = pickedPettyAttitude + " " + pickedPettyTension + " (" +
+    pickedPettyRoll + ")";
 
   currentCharacter.motivationTitle = '<div>' + "<i>Motivation: </i>" + '</div>';
   currentCharacter.motivation1 = '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb1 + " " + motivationNouns[0] + '</div>';
@@ -415,14 +442,12 @@ function addDetail() {
 // Function Simplify Description
 function simpleCopy() {
 
-  let simpleFlawCheck = '';
-  let simpleVoiceCheck = '';
+  if (currentCharacter.fullName === undefined
+    | currentCharacter.fullName === null) {
+    createCharacter();
+  }
 
-  if (currentCharacter.flaw === "" || simpleFlawCheck === " " || simpleFlawCheck === '') {
-    simpleFlawCheck = "";
-  } else {
-    simpleFlawCheck = ". " + currentCharacter.flaw
-  };
+  let simpleVoiceCheck = '';
 
   if (currentCharacter.voice === "") {
     simpleVoiceCheck = "";
@@ -445,15 +470,70 @@ function simpleCopy() {
     + currentCharacter.appearance
     + "<br>"
     + currentCharacter.trait
-    + ", " + currentCharacter.quirk + currentCharacter.interestText
-    + simpleFlawCheck + "<br>"
-    + simpleVoiceCheck;
+    + ", " + currentCharacter.quirk
+    + "<br>" + simpleVoiceCheck;
 
   currentCharacter.simplified = simpleText;
   updateCharacterDisplay();
 
   navigator.clipboard.writeText(simpleText);
 }
+
+// Function Copy detailed 
+function detailCopy() {
+
+/*   if (currentCharacter.fullName === undefined
+    | currentCharacter.fullName === null) {
+    break;
+  }
+  if (currentCharacter.ideal === null
+    | currentCharacter.ideal === '') {
+    break;
+  } */
+  let simpleVoiceCheck = '';
+
+  if (currentCharacter.voice === "") {
+    simpleVoiceCheck = "";
+  } else {
+    simpleVoiceCheck = currentCharacter.voice
+  };
+
+  let simpleSex;
+  if (currentCharacter.sex == "Male") {
+    simpleSex = "M"
+  } else {
+    simpleSex = "F"
+  }
+
+  let detailText =
+    "**" + currentCharacter.fullname + "**" + " - "
+    + currentCharacter.race + " " + simpleSex
+    + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
+    + "<br>"
+    + currentCharacter.appearance
+    + "<br>"
+    + currentCharacter.trait
+    + ", " + currentCharacter.quirk
+    + "<br>" + simpleVoiceCheck
+    + "<br>" + "<br>" +
+    "%%" + "<br>" +
+    currentCharacter.ideal + "<br>" +
+    currentCharacter.bond + "<br>" +
+    currentCharacter.goal1 + "<br>" +
+    currentCharacter.goal2 + "<br>" +
+    currentCharacter.advantage + "<br>" +
+    currentCharacter.flaw + "<br>" +
+    currentCharacter.relationship + "<br>" +
+    currentCharacter.pettyAttitude + "<br>" +
+    "%%"
+    ;
+
+  currentCharacter.detailed = detailText;
+  updateCharacterDisplay();
+
+  navigator.clipboard.writeText(detailText);
+}
+
 
 // Adding extra traits
 function cueForTrait(trait) {
@@ -514,10 +594,16 @@ addCreateCharacterButton.addEventListener("click", () => {
   createCharacter();
 });
 
-const addSimpleButton = document.querySelector("#button-simple");
+const addSimpleButton = document.querySelector("#button-simple-copy");
 
 addSimpleButton.addEventListener("click", () => {
   simpleCopy();
+});
+
+const addDetailCopyButton = document.querySelector("#button-detail-copy");
+
+addDetailCopyButton.addEventListener("click", () => {
+  detailCopy();
 });
 
 const addRenameButton = document.querySelector("#button-rename");
@@ -543,7 +629,7 @@ dropdown.appendChild(randomOption);
 
 // Add race/sex options
 menuRaces.forEach(race => {
-  ['Male', 'Female'].forEach(sex => {
+  ['Male', 'Female', '-'].forEach(sex => {
     const option = document.createElement('a');
     option.textContent = `${race} ${sex}`;
     option.href = '#';
