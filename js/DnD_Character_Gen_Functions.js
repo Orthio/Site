@@ -129,19 +129,23 @@ function createCharacter() {
   let interest;
   let interestText;
 
-  if (generalDiceRoll(6) === 1) {
+  if (generalDiceRoll(4) === 1) {
     interest = rollOnTable(interests)
   } else {
     interest = "";;
   }
-  let collection;
+  let collection = "";
   if (interest === "Collector") {
     collection = rollOnTable(collections);
     interest = collection;
   }
   if (interest == undefined) { interest = "" }
   if (interest != "") {
-    interestText = ", into " + interest;
+    if (collection != "") {
+      interestText = ", collects " + interest;
+    } else {
+      interestText = ", into " + interest;
+    }
   } else {
     interestText = "";
   }
@@ -409,7 +413,7 @@ function addDetail() {
   currentCharacter.flaw = flawRoll;
   currentCharacter.relationshipText = '<div>' + "<i>Relationship: </i>" + relationship +
     " (" + relationshipRoll + ")";
-  currentCharacter.relationship =  relationship + " (" + relationshipRoll + ")";
+  currentCharacter.relationship = relationship + " (" + relationshipRoll + ")";
   currentCharacter.pettyAttitudeText = '<div>' + "<i>Petty Attitude: </i>" +
     pickedPettyAttitude + " " + pickedPettyTension + " (" +
     pickedPettyRoll + ")" + '</div>';
@@ -482,14 +486,14 @@ function simpleCopy() {
 // Function Copy detailed 
 function detailCopy() {
 
-/*   if (currentCharacter.fullName === undefined
-    | currentCharacter.fullName === null) {
-    break;
-  }
-  if (currentCharacter.ideal === null
-    | currentCharacter.ideal === '') {
-    break;
-  } */
+  /*   if (currentCharacter.fullName === undefined
+      | currentCharacter.fullName === null) {
+      break;
+    }
+    if (currentCharacter.ideal === null
+      | currentCharacter.ideal === '') {
+      break;
+    } */
   let simpleVoiceCheck = '';
 
   if (currentCharacter.voice === "") {
