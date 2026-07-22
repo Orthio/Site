@@ -497,12 +497,13 @@ function simpleCopy() {
     "**" + currentCharacter.fullname + "**" + " - "
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
-    + "<br>"
+    + "\n\t"
     + currentCharacter.appearance
-    + "<br>"
+    + "\n\t"
     + currentCharacter.trait
     + ", " + currentCharacter.quirk
-    + "<br>" + simpleVoiceCheck;
+    + "\n\t" +
+    simpleVoiceCheck;
 
   currentCharacter.simplified = simpleText;
   updateCharacterDisplay();
@@ -540,22 +541,22 @@ function detailCopy() {
     "**" + currentCharacter.fullname + "**" + " - "
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
-    + "<br>"
+    + "\n\t"
     + currentCharacter.appearance
-    + "<br>"
+    + "\n\t"
     + currentCharacter.trait
     + ", " + currentCharacter.quirk
-    + "<br>" + simpleVoiceCheck
-    + "<br>" + "<br>" +
-    "%%" + "<br>" +
-    currentCharacter.ideal + "<br>" +
-    currentCharacter.bond + "<br>" +
-    currentCharacter.goal1 + "<br>" +
-    currentCharacter.goal2 + "<br>" +
-    currentCharacter.advantage + "<br>" +
-    currentCharacter.flaw + "<br>" +
-    currentCharacter.relationship + "<br>" +
-    currentCharacter.pettyAttitude + "<br>" +
+    + "\n\t" + simpleVoiceCheck
+    + "\n" + "\n" +
+    "%% Motivations:" + "\n\t" +
+    currentCharacter.ideal + "\n\t" +
+    currentCharacter.bond + "\n\t" +
+    currentCharacter.goal1 + "\n\t" +
+    currentCharacter.goal2 + "\n\t" +
+    currentCharacter.advantage + "\n\t" +
+    currentCharacter.flaw + "\n\t" +
+    currentCharacter.relationship + "\n\t" +
+    currentCharacter.pettyAttitude + "\n\t" +
     "%%"
     ;
 
