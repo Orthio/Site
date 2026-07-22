@@ -189,6 +189,15 @@ function createCharacter() {
     pettyAttitude: ' ',
     pettyAttitudeText: ' ',
 
+    retainerFullname: ' ',
+    retainerFullnameText: ' ',
+    retainerSurname: ' ',
+    retainerSurnameText: ' ',
+    retainerReason: ' ',
+    retainerReasonText: ' ',
+    retainerQuirks: ' ',
+    retainerQuirksText: ' ',
+
     motivationTitle: '',
     motivation1: '',
     motivation2: '',
@@ -247,7 +256,10 @@ function updateCharacterDisplay() {
       '<div>' + item.flawText + '</div>' +
       '<div>' + item.relationshipText + '</div>' +
       '<div>' + item.pettyAttitudeText + '</div>' +
-
+      '<br>' +
+      '<div>' + item.retainerFullnameText + '</div>' +
+      '<div>' + item.retainerReasonText + '</div>' +
+      '<div>' + item.retainerQuirksText + '</div>' +
       '<br>' +
       '<div>' + item.motivationTitle + '</div>' +
       '<div>' + item.motivation1 + '</div>' +
@@ -345,6 +357,13 @@ function addDetail() {
   if (generalDiceRoll(6) <= 3) { pickedPettyRoll = "Yes" }
   else { pickedPettyRoll = "No" };
 
+  // Retainer details
+
+  let retainerByname = rollOnTable(jsonData.retainerByname);
+  let retainerSurname = rollOnTable(jsonData.retainerSurname);
+  let retainerReason = rollOnTable(jsonData.retainerReason);
+  let retainerQuirks = rollOnTable(jsonData.retainerQuirks);
+
   // Roll 3 unique indices for motivation verbs
   let lastMotivationVerbsIndices = [];
   for (let i = 0; i < 3; i++) {
@@ -419,6 +438,14 @@ function addDetail() {
     pickedPettyRoll + ")" + '</div>';
   currentCharacter.pettyAttitude = pickedPettyAttitude + " " + pickedPettyTension + " (" +
     pickedPettyRoll + ")";
+
+  currentCharacter.retainerFullnameText = '<div>' + "<i>Retainer Fullname: </i>" + retainerByname + " " + retainerSurname;
+  currentCharacter.retainerFullname = retainerByname + " " + retainerSurname;
+  currentCharacter.retainerReasonText = '<div>' + "<i>Retainer Reason: </i>" + retainerReason;
+  currentCharacter.retainerReason = retainerReason;
+  currentCharacter.retainerQuirksText = '<div>' + "<i>Retainer Quirks: </i>" + retainerQuirks;
+  currentCharacter.retainerQuirks = retainerQuirks;
+
 
   currentCharacter.motivationTitle = '<div>' + "<i>Motivation: </i>" + '</div>';
   currentCharacter.motivation1 = '<div>' + "&nbsp;&nbsp;&nbsp;" + motivationVerb1 + " " + motivationNouns[0] + '</div>';
