@@ -354,7 +354,8 @@ export class HexMapCore {
     cell.encounterFeatures1 = null;
     cell.encounterFeatures2 = null;
     cell.encounterFeatures3 = null;
-    cell.wildFeatures = null;
+    cell.wildFeatures = [null, null, null, null];
+
 
     for (let i = 1; i <= Math.min(3, rolls); i++) {
 
@@ -373,22 +374,20 @@ export class HexMapCore {
       }
     }
 
-    if (this.#roll(2) > 1) {
-      const wildFeaturesRoll = String(this.#roll(36));
-      cell.wildFeatures = [null, null, null, null];
-      cell.wildFeatures[0] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
-      cell.wildFeatures[1] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
-      cell.wildFeatures[2] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
-      cell.wildFeatures[3] = this.tables.wildFeaturesWithSuppArray?.includes(cell.wildFeatures[2]) ?? false;
-    } else {
-      cell.wildFeatures = null;
-    }
+    const wildFeaturesRoll = String(this.#roll(36));
+    cell.wildFeatures = [null, null, null, null];
+    cell.wildFeatures[0] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][0] ?? null;
+    cell.wildFeatures[1] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][1] ?? null;
+    cell.wildFeatures[2] = this.tables.wildernessFeaturesTable[wildFeaturesRoll][2] ?? null;
+    cell.wildFeatures[3] = this.tables.wildFeaturesWithSuppArray?.includes(cell.wildFeatures[2]) ?? false;
 
     if (cell.terrain === "Lake") {
-      cell.wildFeatures = null;
+      cell.wildFeatures = [null, null, null, null];
+
     }
     if (cell.settlement?.[0] != null) {
-      cell.wildFeatures = null;
+      cell.wildFeatures = [null, null, null, null];
+
     }
 
   }
@@ -543,10 +542,8 @@ export class HexMapCore {
       cell.encounterFeatures1 = null;
       cell.encounterFeatures2 = null;
       cell.encounterFeatures3 = null;
-      cell.wildFeatures[0] = null;
-      cell.wildFeatures[1] = null;
-      cell.wildFeatures[2] = null;
-      cell.wildFeatures[3] = null;
+      cell.wildFeatures = [null, null, null, null];
+
       cell.noFeatures = null;
       cell.obviousFeature1 = null;
       cell.obviousFeature2 = null;

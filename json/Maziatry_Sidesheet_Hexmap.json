@@ -37,7 +37,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         1,
         0
@@ -78,7 +78,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         2,
         0
@@ -119,7 +119,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "08 Man's Foothold",
       "nFeatures": [
         2,
         0
@@ -160,7 +160,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "08 Man's Foothold",
       "nFeatures": [
         1,
         0
@@ -201,7 +201,7 @@
         "Castle Stone Foot",
         null
       ],
-      "regionName": null,
+      "regionName": "08 Man's Foothold",
       "nFeatures": [
         1,
         1
@@ -247,7 +247,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         1
@@ -298,7 +298,7 @@
         "Natural Resource",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         0
@@ -339,7 +339,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         1,
         1
@@ -390,7 +390,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         1
@@ -441,7 +441,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         1
@@ -492,7 +492,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         3,
         1
@@ -538,7 +538,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -584,7 +584,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -630,7 +630,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -676,7 +676,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         2,
         0
@@ -717,7 +717,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -763,7 +763,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         1
@@ -809,7 +809,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -850,7 +850,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -896,7 +896,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -942,7 +942,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         2,
         0
@@ -983,7 +983,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         1,
         0
@@ -1024,7 +1024,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -1070,7 +1070,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -1111,7 +1111,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -1157,7 +1157,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         1
@@ -1208,7 +1208,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         1,
         1
@@ -1259,7 +1259,7 @@
         "Shrine of the Oozing Serpent",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         1
@@ -1305,7 +1305,7 @@
         "Tomb",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -1346,7 +1346,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         0
@@ -1387,7 +1387,7 @@
         "Tomb",
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         3,
         0
@@ -1433,7 +1433,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         2,
         1
@@ -1479,7 +1479,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -1525,7 +1525,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -1566,7 +1566,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -1612,7 +1612,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         0
@@ -1653,7 +1653,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -1694,7 +1694,7 @@
         "Village, Gith",
         50
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         1,
         0
@@ -1740,7 +1740,7 @@
         "Caves",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         1
@@ -1786,7 +1786,7 @@
         "Castle",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         0
@@ -1832,7 +1832,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         3,
         0
@@ -1878,7 +1878,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "07 Rama Caelora",
       "nFeatures": [
         3,
         1
@@ -1924,7 +1924,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         2,
         0
@@ -1965,7 +1965,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         1
@@ -2011,7 +2011,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         2,
         0
@@ -2057,7 +2057,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         0
@@ -2098,7 +2098,7 @@
         "Barrow of Bone Blaggards",
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         1,
         1
@@ -2149,7 +2149,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         0
@@ -2195,7 +2195,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -2241,7 +2241,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         3,
         0
@@ -2282,7 +2282,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         1,
         0
@@ -2328,7 +2328,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         3,
         0
@@ -2369,7 +2369,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         2,
         0
@@ -2410,7 +2410,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         1
@@ -2456,7 +2456,7 @@
         "Small Town, Lankhill",
         1649
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         1,
         1
@@ -2507,7 +2507,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         0
@@ -2548,7 +2548,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -2594,7 +2594,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         1,
         0
@@ -2640,7 +2640,7 @@
         "Caves",
         null
       ],
-      "regionName": null,
+      "regionName": "02 Lands of Humid Heath",
       "nFeatures": [
         2,
         0
@@ -2681,7 +2681,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -2722,7 +2722,7 @@
         "Small Town, Dwarf",
         2200
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         1,
         0
@@ -2763,7 +2763,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         1,
         1
@@ -2809,7 +2809,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         2,
         1
@@ -2855,7 +2855,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "12 Sea of Sanguine",
       "nFeatures": [
         3,
         0
@@ -2896,7 +2896,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         3,
         1
@@ -2947,7 +2947,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         3,
         0
@@ -2993,7 +2993,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         3,
         1
@@ -3039,7 +3039,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         3,
         1
@@ -3085,7 +3085,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         1,
         1
@@ -3131,7 +3131,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         2,
         1
@@ -3182,7 +3182,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         2,
         0
@@ -3223,7 +3223,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         1,
         1
@@ -3269,7 +3269,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         0
@@ -3315,7 +3315,7 @@
         "Caves, Grotto",
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         0
@@ -3356,7 +3356,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         0
@@ -3397,7 +3397,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         1
@@ -3443,7 +3443,7 @@
         null,
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         0
@@ -3489,7 +3489,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         2,
         0
@@ -3535,7 +3535,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         2,
         1
@@ -3586,7 +3586,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         1,
         1
@@ -3637,7 +3637,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         3,
         0
@@ -3678,7 +3678,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "06 Ironcrag Mountains",
       "nFeatures": [
         1,
         0
@@ -3719,7 +3719,7 @@
         "Caves",
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         2,
         1
@@ -3765,7 +3765,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         1
@@ -3816,7 +3816,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         2,
         0
@@ -3857,7 +3857,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         0
@@ -3903,7 +3903,7 @@
         "Mine",
         null
       ],
-      "regionName": "01 Field of Lank",
+      "regionName": "01 Fields of Lank",
       "nFeatures": [
         2,
         1
@@ -3949,7 +3949,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         3,
         0
@@ -3990,7 +3990,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         3,
         0
@@ -4031,7 +4031,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "03 Zehene's Old Wets",
       "nFeatures": [
         2,
         1
@@ -4077,7 +4077,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         1
@@ -4123,7 +4123,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         1
@@ -4169,7 +4169,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         1
@@ -4215,7 +4215,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         1
@@ -4266,7 +4266,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         2,
         0
@@ -4307,7 +4307,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -4353,7 +4353,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         2,
         1
@@ -4404,7 +4404,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         2,
         1
@@ -4450,7 +4450,7 @@
         "Large Town, Human",
         7500
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         1,
         0
@@ -4491,7 +4491,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         1,
         1
@@ -4537,7 +4537,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         0
@@ -4583,7 +4583,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         1
@@ -4629,7 +4629,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         2,
         1
@@ -4680,7 +4680,7 @@
         "Natural Resource",
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         0
@@ -4726,7 +4726,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         1
@@ -4777,7 +4777,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         1
@@ -4823,7 +4823,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -4864,7 +4864,7 @@
         "Temple",
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         2,
         1
@@ -4910,7 +4910,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         1,
         0
@@ -4951,7 +4951,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         1,
         0
@@ -4992,7 +4992,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         2,
         1
@@ -5043,7 +5043,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         3,
         0
@@ -5089,7 +5089,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         2,
         0
@@ -5130,7 +5130,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         2,
         1
@@ -5181,7 +5181,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -5227,7 +5227,7 @@
         "Mines",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         2,
         1
@@ -5278,7 +5278,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         1
@@ -5324,7 +5324,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         3,
         0
@@ -5365,7 +5365,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         3,
         1
@@ -5416,7 +5416,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "04 The Blessed Prairie",
       "nFeatures": [
         1,
         1
@@ -5467,7 +5467,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         2,
         1
@@ -5513,7 +5513,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "05 Atitara Grove",
       "nFeatures": [
         1,
         0
@@ -5559,7 +5559,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         3,
         1
@@ -5610,7 +5610,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -5656,7 +5656,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -5702,7 +5702,7 @@
         "Tomb",
         null
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         3,
         1
@@ -5753,7 +5753,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         2,
         1
@@ -5799,7 +5799,7 @@
         "Tomb",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -5840,7 +5840,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -5886,7 +5886,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -5927,7 +5927,7 @@
         "Cave",
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         1,
         0
@@ -5968,7 +5968,7 @@
         "Village, Elf",
         982
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         3,
         0
@@ -6009,7 +6009,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         1,
         1
@@ -6060,7 +6060,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         3,
         1
@@ -6106,7 +6106,7 @@
         "Village, Human",
         250
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         3,
         1
@@ -6157,7 +6157,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         1,
         0
@@ -6198,7 +6198,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         0
@@ -6244,7 +6244,7 @@
         "Ruins",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         2,
         1
@@ -6295,7 +6295,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         1,
         1
@@ -6346,7 +6346,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -6387,7 +6387,7 @@
         "Village, Elf",
         650
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         2,
         0
@@ -6428,7 +6428,7 @@
         "Castle",
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         2,
         1
@@ -6479,7 +6479,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         3,
         0
@@ -6525,7 +6525,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "09 The White Dunes of Saslenor",
       "nFeatures": [
         2,
         1
@@ -6571,7 +6571,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         1,
         1
@@ -6617,7 +6617,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "10 West West Banks",
       "nFeatures": [
         3,
         0
@@ -6663,7 +6663,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -6704,7 +6704,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         1
@@ -6755,7 +6755,7 @@
         null,
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
@@ -6796,7 +6796,7 @@
         "Temple",
         null
       ],
-      "regionName": null,
+      "regionName": "11 Outer Expanses of No Wolf",
       "nFeatures": [
         3,
         0
