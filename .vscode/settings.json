@@ -1,3 +1,4 @@
 {
-    "editor.autoClosingBrackets": "never"
+    "editor.autoClosingBrackets": "never",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }

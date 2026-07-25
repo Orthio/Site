@@ -113,12 +113,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way.",
-        "4-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -159,12 +154,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world.",
-        "3-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -343,12 +333,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier.",
-        "4-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -463,7 +448,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -519,7 +504,7 @@
         false
       ],
       "obviousFeature2": "Lair",
-      "obviousFeature3": "Caltrop2: The Creek\u2019s Bed",
+      "obviousFeature3": "Caltrop2: The Creek’s Bed",
       "hiddenFeature1": [
         "Lair",
         "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements",
@@ -568,7 +553,7 @@
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -818,12 +803,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark/Resource",
-        "Add a Resource that may not be immediately useful now, but might be important later.",
-        "2-6",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -864,12 +844,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world.",
-        "3-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -1002,12 +977,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Consider an area where Magic might function in a fashion different from Expectations.",
-        "5-3",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -1202,7 +1172,7 @@
       "obviousFeature3": "Caltrop97: The Ghost Ship",
       "hiddenFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -1370,12 +1340,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way.",
-        "4-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -1554,12 +1519,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires.",
-        "5-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -1687,12 +1647,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Hazard/Resource",
-        "Consider a Hazard that renders the Resource invaluable or inaccessible in some way.",
-        "6-6",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -1914,7 +1869,7 @@
       ],
       "wildFeatures": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -2063,7 +2018,7 @@
       ],
       "obviousFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -2321,12 +2276,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark",
-        "A Hidden Feature that takes Time to Uncover or Investigate.",
-        "1-1",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -2339,7 +2289,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -2681,7 +2631,7 @@
       ],
       "wildFeatures": [
         "Lair",
-        "Consider adding something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Consider adding something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -2828,7 +2778,7 @@
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -2940,12 +2890,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier.",
-        "4-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3088,12 +3033,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark",
-        "A change in Elevation that might create a vantage point to obtain the Lay of the Land.",
-        "1-3",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3111,7 +3051,7 @@
         false
       ],
       "obviousFeature2": "Holy place, Monsters",
-      "obviousFeature3": "Caltrop14: The Knight\u2019s Challenge",
+      "obviousFeature3": "Caltrop14: The Knight’s Challenge",
       "hiddenFeature1": [
         "Landmark",
         "Add some Distinctive Trees or other native Plants",
@@ -3139,12 +3079,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource.",
-        "5-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3190,12 +3125,7 @@
         "S-Humanoid",
         "Merrow"
       ],
-      "wildFeatures": [
-        "Hazard/Resource",
-        "Consider associating the Hazard with Flora such as Fruit/Berries or Mushrooms/Fungi.",
-        "6-5",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3287,12 +3217,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource.",
-        "5-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3305,7 +3230,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -3338,12 +3263,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider a Resource that speaks to later Tiers: Lumber, Stone, Assets for the Domain Tier.",
-        "4-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3471,12 +3391,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world.",
-        "3-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3522,12 +3437,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice.",
-        "6-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3540,7 +3450,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -3586,7 +3496,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -3762,12 +3672,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship.",
-        "3-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -3854,12 +3759,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark",
-        "Add other Sensory Inputs: Smells, Sounds, or even Intuitive Impressions.",
-        "2-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4125,12 +4025,7 @@
         "1-Flyer",
         "Stirge"
       ],
-      "wildFeatures": [
-        "Special",
-        "Perhaps an Unusual Statue or Sculptural Element or Fountain, Spring or Pool.",
-        "5-1",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4143,7 +4038,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -4176,12 +4071,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately.",
-        "6-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4227,12 +4117,7 @@
         "B-Humanoid",
         "Orc Camp"
       ],
-      "wildFeatures": [
-        "Landmark",
-        "A Vignette to assist with Portraying a sense of Place.",
-        "1-4",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4278,12 +4163,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize).",
-        "3-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4329,12 +4209,7 @@
         "S-Swimmer",
         "Insect Swarm"
       ],
-      "wildFeatures": [
-        "Landmark",
-        "Add something that speaks to the Season or recent Changes in the Weather.",
-        "2-4",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4382,7 +4257,7 @@
       ],
       "wildFeatures": [
         "Hazard",
-        "Consider Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Consider Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -4426,12 +4301,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark",
-        "Add a few Discarded Items that may speak to the Denizens or fellow Travelers.",
-        "2-3",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4494,7 +4364,7 @@
         "2-5",
         false
       ],
-      "obviousFeature2": "Predator\u2019s hunting ground, Related to landmark",
+      "obviousFeature2": "Predator’s hunting ground, Related to landmark",
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Lair",
@@ -4525,7 +4395,7 @@
       ],
       "wildFeatures": [
         "Hazard",
-        "Consider Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Consider Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -4661,12 +4531,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider ways of Concealing, Hiding, or Camouflaging the Resource in some way.",
-        "4-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4758,12 +4623,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair",
-        "Apply a Mien to assist with Portrayal of the Encounter.",
-        "3-3",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -4970,7 +4830,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -5044,12 +4904,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark",
-        "Add something that speaks to the Season or recent Changes in the Weather.",
-        "2-4",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5090,12 +4945,7 @@
         "1-Dragon",
         "Dragon, Red"
       ],
-      "wildFeatures": [
-        "Lair",
-        "Apply a Mien to assist with Portrayal of the Encounter.",
-        "3-3",
-        true
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5136,12 +4986,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource.",
-        "5-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5162,7 +5007,7 @@
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -5227,7 +5072,7 @@
       ],
       "encounterFeatures2": [
         "B-Monster",
-        "Will-o\u2019-the-Wisp"
+        "Will-o’-the-Wisp"
       ],
       "encounterFeatures3": [
         null,
@@ -5279,12 +5124,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Landmark/Resource",
-        "Include an ephemeral Resource, or one that the Party can utilize to Replenish Supplies.",
-        "1-6",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5478,12 +5318,7 @@
         "B-Animal",
         "Wolf, Winter"
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Add a Resource that is not immediately useable (will require Labor, Study, or Refinement to fully utilize).",
-        "3-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5524,12 +5359,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Potentially include signs of Predation, Exploitation, or traces of a completely Exhausted Resource.",
-        "5-2",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5542,7 +5372,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn\u2019t impact the Party immediately",
+        "Consider a Hazard that Rumors would speak to: Perhaps one that doesn’t impact the Party immediately",
         "6-4",
         false
       ],
@@ -5569,7 +5399,7 @@
       ],
       "encounterFeatures2": [
         "F-Monster",
-        "Will-o\u2019-the-Wisp"
+        "Will-o’-the-Wisp"
       ],
       "encounterFeatures3": [
         null,
@@ -5601,7 +5431,7 @@
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -5677,12 +5507,7 @@
         "1-Dragon",
         "Dragonne*"
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Consider placing a Resource that is actively being exploited by the Monsters in some way.",
-        "4-6",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -5749,7 +5574,7 @@
       "obviousFeature3": "Filling: Magic",
       "hiddenFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -5892,7 +5717,7 @@
       "obviousFeature3": "Caltrop4: A Ruined Watchtower",
       "hiddenFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -6009,12 +5834,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Consider an obstacle that is not traversable by Current Means: Lakes, Rivers, Cliffs, Canyons, Peaks, Mires.",
-        "5-5",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -6114,7 +5934,7 @@
       ],
       "obviousFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -6183,12 +6003,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Special",
-        "Consider an area where Magic might function in a fashion different from Expectations.",
-        "5-3",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -6298,7 +6113,7 @@
       ],
       "obviousFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -6444,7 +6259,7 @@
       "obviousFeature3": null,
       "hiddenFeature1": [
         "Lair",
-        "Add something that speaks to the Creature\u2019s basic Needs for Food/Water/Shelter or Companionship",
+        "Add something that speaks to the Creature’s basic Needs for Food/Water/Shelter or Companionship",
         "3-2",
         false
       ],
@@ -6671,7 +6486,7 @@
       ],
       "obviousFeature1": [
         "Hazard",
-        "Placing a Hazard that doesn\u2019t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
+        "Placing a Hazard that doesn’t Harm, but instead Alerts, Separates, Captures, or forces a Tough Choice",
         "6-2",
         false
       ],
@@ -6796,12 +6611,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Hazard/Resource",
-        "Consider a Hazard that renders the Resource invaluable or inaccessible in some way.",
-        "6-6",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
@@ -6888,12 +6698,7 @@
         null,
         null
       ],
-      "wildFeatures": [
-        "Lair/Resource",
-        "Place Resource with a Past, enough to garner Rumors and Gossip in the outside world.",
-        "3-4",
-        false
-      ],
+      "wildFeatures": null,
       "ruins": null,
       "settlement": [
         null,
