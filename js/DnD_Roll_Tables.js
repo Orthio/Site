@@ -116,10 +116,32 @@ function generateScenario() {
     let hooks1 = rollOnTable(jsonData.hooks1);
     let hooks2 = rollOnTable(jsonData.hooks2);
 
+    let legends1 = rollOnTable(jsonData.legends);
+    let legends2 = rollOnTable(jsonData.legends);
+    if (legends2 === legends1) {
+        legends2 = rollOnTable(jsonData.legends);
+    }
+    let plotTwist1 = rollOnTable(jsonData.plotTwist);
+    let plotTwist2 = rollOnTable(jsonData.plotTwist);
+    if (plotTwist2 === plotTwist1) {
+        plotTwist2 = rollOnTable(jsonData.plotTwist);
+    }
+    let actionTable = [
+        "action1", "action1", "action2", "action2", "activitiesKnave", "terrainDescriptors", "plotTwist", "legends"
+    ];
+    let actionRoll1 = rollOnTable(actionTable);
+    let actionRoll2 = rollOnTable(actionTable);
+
+    let history1 = rollOnTable(jsonData[actionRoll1]);
+    let history2 = rollOnTable(jsonData[actionRoll2]);
+
     let scenarioResults = "<span class='no-select'><small>Scenario: </small></span><br>" +
         "Enemies " + activity + "<br>" +
         "A " + occupations2 + " works to " + hooks1 + "<br>" +
-        hooks2 + "<br>";
+        hooks2 + "<br>" +
+        "Legends:   &nbsp" + legends1 + ", " + legends2 + "<br>" +
+        "Plot Twists:   &nbsp" + plotTwist1 + ", " + plotTwist2 + "<br>" +
+        "History:   &nbsp" + history1 + ", " + history2 ;
 
     updateOutput(scenarioResults);
 }
