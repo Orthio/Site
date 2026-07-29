@@ -349,7 +349,7 @@ function addDetail() {
 
   let relationship = rollOnTable(relationships);
   let relationshipRoll;
-  if (generalDiceRoll(6) === 2) { relationshipRoll = "Yes" }
+  if (generalDiceRoll(6) === 4) { relationshipRoll = "Yes" }
   else { relationshipRoll = "No" };
   let pickedPettyAttitude = rollOnTable(pettyAttitude);
   let pickedPettyTension = rollOnTable(pettyTension);
