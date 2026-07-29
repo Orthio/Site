@@ -38,11 +38,11 @@ function createCharacter() {
 
   let age = rollOnTable(charAge);
 
-  if (raceType === "Random" | raceType === "-") {
+  if (raceType === "Random" || raceType === "-") {
     race = rollOnTable(races);
   }
 
-  if (sexType === "Random" | sexType === "-") {
+  if (sexType === "Random" || sexType === "-") {
     sex = rollOnTable(sexes);
   }
 
@@ -159,7 +159,7 @@ function createCharacter() {
   currentCharacter = {
     name: name,
     clanName: clanName,
-    fullname: name + " " + clanName,
+    fullName: name + " " + clanName,
     race: race,
     sex: sex,
     alignment: alignment,
@@ -242,7 +242,7 @@ function updateCharacterDisplay() {
   displayHistory.forEach(function (item) {
     charhistory +=
       '<div class="character-result">' +
-      '<div>' + "<b>" + item.fullname + "</b>" + '<div>' +
+      '<div>' + "<b>" + item.fullName + "</b>" + '<div>' +
       '<div>' + item.race + ' ' + item.sex + ', ' + item.alignment + " " + item.age + " " + item.occupation + '</div>' +
       '<div>' + "<i>Appearance: </i>" + item.appearance + '</div>' +
       '<div>' + "<i>Mannerisms: </i>" + item.trait + ", " + item.quirk + item.interestText + '</div>' +
@@ -305,7 +305,7 @@ function renameCharacter() {
 
   currentCharacter.name = name;
   currentCharacter.clanName = clanName;
-  currentCharacter.fullname = name + " " + clanName;
+  currentCharacter.fullName = name + " " + clanName;
 
   updateCharacterDisplay();
   if (displayHistory.length > 6) {
@@ -322,7 +322,7 @@ function selectRaceSex(selectRace, selectSex) {
   if (selectSex === '-') {
     let sexPick = generalDiceRoll(2);
     let sexArray = ['Male', 'Female'];
-    sex = sexArray[sexPick];
+    sex = sexArray[sexPick-1];
     // = M or F
   } else {
     sex = selectSex;
@@ -474,7 +474,7 @@ function addDetail() {
 function simpleCopy() {
 
   if (currentCharacter.fullName === undefined
-    | currentCharacter.fullName === null) {
+    || currentCharacter.fullName === null) {
     createCharacter();
   }
 
@@ -494,7 +494,7 @@ function simpleCopy() {
   }
 
   let simpleText =
-    "**" + currentCharacter.fullname + "**" + " - "
+    "**" + currentCharacter.fullName + "**" + " - "
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
     + "\n\t"
@@ -514,14 +514,10 @@ function simpleCopy() {
 // Function Copy detailed 
 function detailCopy() {
 
-  /*   if (currentCharacter.fullName === undefined
-      | currentCharacter.fullName === null) {
-      break;
-    }
-    if (currentCharacter.ideal === null
-      | currentCharacter.ideal === '') {
-      break;
-    } */
+  if (currentCharacter.goal1 === '') {
+    addDetail();
+  }
+
   let simpleVoiceCheck = '';
 
   if (currentCharacter.voice === "") {
@@ -538,7 +534,7 @@ function detailCopy() {
   }
 
   let detailText =
-    "**" + currentCharacter.fullname + "**" + " - "
+    "**" + currentCharacter.fullName + "**" + " - "
     + currentCharacter.race + " " + simpleSex
     + ", " + currentCharacter.alignment + " " + currentCharacter.age + " " + currentCharacter.occupation
     + "\n\t"
