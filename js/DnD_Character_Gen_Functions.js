@@ -188,6 +188,8 @@ function createCharacter() {
     relationshipText: ' ',
     pettyAttitude: ' ',
     pettyAttitudeText: ' ',
+    connectionPlace1: ' ',
+    connectionPlace2: ' ',
 
     retainerFullname: ' ',
     retainerFullnameText: ' ',
@@ -322,7 +324,7 @@ function selectRaceSex(selectRace, selectSex) {
   if (selectSex === '-') {
     let sexPick = generalDiceRoll(2);
     let sexArray = ['Male', 'Female'];
-    sex = sexArray[sexPick-1];
+    sex = sexArray[sexPick - 1];
     // = M or F
   } else {
     sex = selectSex;
@@ -356,6 +358,17 @@ function addDetail() {
   let pickedPettyRoll;
   if (generalDiceRoll(6) <= 3) { pickedPettyRoll = "Yes" }
   else { pickedPettyRoll = "No" };
+  const connectionPlaceTable = [
+    "Same town",
+    "Same town",
+    "Same town",
+    "Same town",
+    "Same town",
+    "Different town",
+    "Out of town"
+  ];
+  let connectionPlace1 = rollOnTable(connectionPlaceTable);
+  let connectionPlace2 = rollOnTable(connectionPlaceTable);
 
   // Retainer details
 
@@ -364,7 +377,6 @@ function addDetail() {
   let retainerReason = rollOnTable(jsonData.retainerReason);
   let retainerQuirks = rollOnTable(jsonData.retainerQuirks);
 
-  // Roll 3 unique indices for motivation verbs
   let lastMotivationVerbsIndices = [];
   for (let i = 0; i < 3; i++) {
     let uniqueIndex = getUniqueIndex(motivationverbs.length, lastMotivationVerbsIndices);
@@ -373,8 +385,6 @@ function addDetail() {
       lastMotivationVerbsIndices.shift();
     }
   }
-
-  // Roll 3 unique indices for motivation nouns columns
   let lastMotivationNounsColumnsIndices = [];
   for (let i = 0; i < 3; i++) {
     let uniqueNounsIndex = getUniqueIndex(5, lastMotivationNounsColumnsIndices);
@@ -431,13 +441,13 @@ function addDetail() {
   currentCharacter.flawText = "<i>Flaw: </i>" + flawRoll;
   currentCharacter.flaw = flawRoll;
   currentCharacter.relationshipText = '<div>' + "<i>Relationship: </i>" + relationship +
-    " (" + relationshipRoll + ")";
-  currentCharacter.relationship = relationship + " (" + relationshipRoll + ")";
+    " (" + relationshipRoll + "), " + connectionPlace1;
+  currentCharacter.relationship = relationship + " (" + relationshipRoll + "), " + connectionPlace1;
   currentCharacter.pettyAttitudeText = '<div>' + "<i>Petty Attitude: </i>" +
     pickedPettyAttitude + " " + pickedPettyTension + " (" +
-    pickedPettyRoll + ")" + '</div>';
+    pickedPettyRoll + "), " + connectionPlace2 + '</div>';
   currentCharacter.pettyAttitude = pickedPettyAttitude + " " + pickedPettyTension + " (" +
-    pickedPettyRoll + ")";
+    pickedPettyRoll + "), " + connectionPlace2;
 
   currentCharacter.retainerFullnameText = '<div>' + "<i>Retainer Fullname: </i>" + retainerByname + " " + retainerSurname;
   currentCharacter.retainerFullname = retainerByname + " " + retainerSurname;
