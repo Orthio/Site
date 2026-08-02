@@ -427,7 +427,7 @@ document.getElementById('generate-oracle').addEventListener('click', () => {
 });
 
 document.getElementById("button-caltrops-tables").addEventListener("click", () => {
-    window.open = ("https://blog.d4caltrops.com/p/random-tables.html",
+    window.open("https://blog.d4caltrops.com/p/random-tables.html",
         "_blank"),
         "noopener,noreferrer";
 });
@@ -441,13 +441,13 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-character-gen").addEventListener("click", () => {
-    window.open = ("DnD_Character_Generator.html",
+    window.open("DnD_Character_Generator.html",
         "_blank"),
         "noopener,noreferrer";
 });
 
 document.getElementById("button-open-retainer-gen").addEventListener("click", () => {
-    window.open = ("DnD_Retainer_Rolls.html");
+    window.open("DnD_Retainer_Rolls.html");
 });
 
 document.getElementById('generate-terrain').addEventListener('click', () => {
@@ -455,7 +455,7 @@ document.getElementById('generate-terrain').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-hex-connections").addEventListener("click", () => {
-    window.open = ("DnD_Hex_Connections.html",
+    window.open("DnD_Hex_Connections.html",
         "_blank"),
         "noopener,noreferrer";
 });
@@ -482,7 +482,7 @@ document.getElementById('generate-activity').addEventListener('click', () => {
 
 
 document.getElementById("button-open-monster-hd").addEventListener("click", () => {
-    window.open = ("DnD_Monster_Rolls.html",
+    window.open("DnD_Monster_Rolls.html",
         "_blank"),
         "noopener,noreferrer";
 });
@@ -509,7 +509,7 @@ document.getElementById('detract-reaction').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-treasure-gen").addEventListener("click", () => {
-    window.open = ("https://oldschoolessentials.necroticgnome.com/generators/treasure-by-type-generator",
+    window.open("https://oldschoolessentials.necroticgnome.com/generators/treasure-by-type-generator",
         "_blank"),
         "noopener,noreferrer";
 });
