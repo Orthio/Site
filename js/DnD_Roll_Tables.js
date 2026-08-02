@@ -141,7 +141,7 @@ function generateScenario() {
         hooks2 + "<br>" +
         "Legends:   &nbsp" + legends1 + ", " + legends2 + "<br>" +
         "Plot Twists:   &nbsp" + plotTwist1 + ", " + plotTwist2 + "<br>" +
-        "History:   &nbsp" + history1 + ", " + history2 ;
+        "History:   &nbsp" + history1 + ", " + history2;
 
     updateOutput(scenarioResults);
 }
@@ -427,7 +427,9 @@ document.getElementById('generate-oracle').addEventListener('click', () => {
 });
 
 document.getElementById("button-caltrops-tables").addEventListener("click", () => {
-    window.location.href = ("https://blog.d4caltrops.com/p/random-tables.html");
+    window.location.href = ("https://blog.d4caltrops.com/p/random-tables.html",
+         "_blank",
+        "noopener,noreferrer");
 });
 
 document.getElementById('generate-place').addEventListener('click', () => {
@@ -439,7 +441,9 @@ document.getElementById('generate-scenario').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-character-gen").addEventListener("click", () => {
-    window.location.href = ("DnD_Character_Generator.html");
+    window.location.href = ("DnD_Character_Generator.html",
+         "_blank",
+        "noopener,noreferrer");
 });
 
 document.getElementById("button-open-retainer-gen").addEventListener("click", () => {
@@ -451,7 +455,9 @@ document.getElementById('generate-terrain').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-hex-connections").addEventListener("click", () => {
-    window.location.href = ("DnD_Hex_Connections.html");
+    window.location.href = ("DnD_Hex_Connections.html",
+         "_blank",
+        "noopener,noreferrer");
 });
 
 document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
@@ -476,7 +482,9 @@ document.getElementById('generate-activity').addEventListener('click', () => {
 
 
 document.getElementById("button-open-monster-hd").addEventListener("click", () => {
-    window.location.href = "DnD_Monster_Rolls.html";
+    window.location.href = ("DnD_Monster_Rolls.html",
+        "_blank",
+        "noopener,noreferrer");
 });
 
 // document.getElementById('generate-indoor-distance').addEventListener('click', () => {
@@ -501,7 +509,9 @@ document.getElementById('detract-reaction').addEventListener('click', () => {
 });
 
 document.getElementById("button-open-treasure-gen").addEventListener("click", () => {
-    window.location.href = ("https://oldschoolessentials.necroticgnome.com/generators/treasure-by-type-generator");
+    window.location.href = ("https://oldschoolessentials.necroticgnome.com/generators/treasure-by-type-generator",
+        "_blank",
+        "noopener,noreferrer");
 });
 
 document.getElementById('generate-treasures').addEventListener('click', () => {
