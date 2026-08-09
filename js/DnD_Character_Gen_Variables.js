@@ -11,23 +11,26 @@ let flawText = "";
 let voiceText = "";
 
 let races = new
-  Array(200).fill("Human")
+// 15% of frontier towns are non-human
+// -> 150 total
+// about 170 here
+  Array(1000).fill("Human")
   .concat(new Array(40).fill("Dwarf"))
-  .concat(new Array(40).fill("Elf"))
-  .concat(new Array(40).fill("Half-Orc"))
+  .concat(new Array(30).fill("Elf"))
+  .concat(new Array(10).fill("Half-Orc"))
   .concat(new Array(40).fill("Gnome"))
-  .concat(new Array(40).fill("Tiefling"))
+  // .concat(new Array(40).fill("Tiefling"))
   .concat(new Array(10).fill("Halfling"))
-  .concat(new Array(6).fill("Half-Elf"))
-  .concat(new Array(4).fill("Kobold"))
-  .concat(new Array(9).fill("Tabaxi"))
-  .concat(new Array(7).fill("Harengon"))
-  .concat(new Array(9).fill("Aarakocra"))
-  .concat(new Array(10).fill("Kenku"))
-  .concat(new Array(8).fill("Mousefolk"))
+  .concat(new Array(5).fill("Half-Elf"))
+  // .concat(new Array(4).fill("Kobold"))
+  .concat(new Array(5).fill("Tabaxi"))
+  .concat(new Array(5).fill("Harengon"))
+  .concat(new Array(5).fill("Aarakocra"))
+  .concat(new Array(5).fill("Kenku"))
+  .concat(new Array(10).fill("Mousefolk"))
   .concat(new Array(2).fill("Firbolg"))
-  .concat(new Array(2).fill("Githyanki"))
-  .concat(new Array(2).fill("Githzerai"))
+  // .concat(new Array(2).fill("Githyanki"))
+  // .concat(new Array(2).fill("Githzerai"))
   .concat(["Genasi", "Lizardfolk",
     "Yuan-Ti", "Tortle", "Centaur", "Minotaur", "Shifter", "Changeling", "Aasimar"]);
 

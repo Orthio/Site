@@ -166,12 +166,21 @@ class retainerRollsCore {
             if (result.constitution < 9 | result.dexterity < 9) {
                 classRoll = classTable[extraClassRoll];
             }
+            if (generalDiceRoll(4) <= 1) {
+                classRoll = classTable[extraClassRoll];
+            }
         }
         if (classRoll === "Dwarf" & result.constitution < 9) {
             classRoll = classTable[extraClassRoll];
+            if (generalDiceRoll(4) <= 1) {
+                classRoll = classTable[extraClassRoll];
+            }
         }
         if (classRoll === "Elf" & result.intelligence < 9) {
             classRoll = classTable[extraClassRoll];
+            if (generalDiceRoll(4) <= 2) {
+                classRoll = classTable[extraClassRoll];
+            }
         }
 
         result.class = classRoll;
