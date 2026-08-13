@@ -2,11 +2,25 @@
 /**
  * @property {num} dungeonRoomId // 1
  * @property {string} feature // Special
+ * @property {string} feature2 // Perhaps an unusual statue?
  * @property {string} treasure // Yes
 
 */
 import { generalDiceRoll, rollOnTable } from "./DnD_General.js";
 import { initKnaveRolls, rollKnaveTheme } from "./DnD_Knave_Rolls.js";
+
+let jsonData;
+fetch('json/DnD_Roll_Tables.json')
+
+    .then(response => response.json())  // Parse the JSON
+    .then(data => {
+        jsonData = data;
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+
+let tableOutput = [];
+
+
 
 const generateButton = document.getElementById("button-generate");
 const resultOutput = document.getElementById("result-output");
@@ -19,6 +33,7 @@ export class DungeonRollResult {
     constructor() {
         this.dungeonRoomId = DungeonRollResult.nextId++;
         this.feature = null;
+        this.feature2 = null;
         this.treasure = null;
 
     }
@@ -31,7 +46,10 @@ export class DungeonRollResult {
     toDungeonText2() {
         // No number
         return `<span class="small-text">Feature: </span>${this.feature}
-        <span class="small-text">Treasure: </span>${this.treasure ?? "—"}`;
+        <span class="small-text">Treasure: </span>${this.treasure ?? "—"}
+        <br>
+        ${this.feature2 ?? "—"}
+        `;
     }
 }
 
@@ -71,11 +89,26 @@ export class DungeonRollsCore {
             6: ["Trap", 2]
         };
 
-        let roll = this.#rollFromObjectTable(featuresTable);
-        result.feature = roll[0];
+        let caltropsDungeonRollsTable = jsonData.caltropsDungeonRolls;
+
+        let featuresRoll1 = generalDiceRoll(6);
+        let featuresRoll2 = generalDiceRoll(6);
+
+        let featuresRoll1Result = featuresTable[featuresRoll1][0];
+        result.feature = featuresRoll1Result;
+
+        let caltropsRoll1 = caltropsDungeonRollsTable.find(
+            entry =>
+                entry.roll[0] === featuresRoll1 &&
+                entry.roll[1] === featuresRoll2
+        );
+        let caltropsRoll2 = caltropsRoll1.prompt;
+        result.feature2 = caltropsRoll2;
+
+        let treasurePart = featuresTable[featuresRoll1][1];
         let treasureRoll = generalDiceRoll(6);
-        if (treasureRoll <= roll[1]) {  
-        result.treasure = "True";
+        if (treasureRoll <= treasurePart) {
+            result.treasure = "True";
         } else {
             result.treasure = "False";
         }

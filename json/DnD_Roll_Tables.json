@@ -9654,5 +9654,295 @@
         "Wild",
         "Windy",
         "Wonders"
+    ],
+    "caltropsDungeonRolls": [
+        {
+            "roll": [
+                1,
+                1
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding a Hidden Feature that takes Time to Uncover or Investigate."
+        },
+        {
+            "roll": [
+                1,
+                2
+            ],
+            "type": "Empty",
+            "prompt": "Consider rolling on Encounter Tables and add a Trace/Track/Spoor for one of the local Denizens."
+        },
+        {
+            "roll": [
+                1,
+                3
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding a Smell. This can also be drawn from or inform Surrounding Areas."
+        },
+        {
+            "roll": [
+                1,
+                4
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding a Sound. This can also be drawn from or inform Surrounding Areas."
+        },
+        {
+            "roll": [
+                1,
+                5
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding some additional Decoration. This may or may not have bearing elsewhere on the Dungeon."
+        },
+        {
+            "roll": [
+                1,
+                6
+            ],
+            "type": "Empty",
+            "prompt": "Include Unguarded Treasure based on Dungeon Level. This Treasure needn't be hidden or disguised."
+        },
+        {
+            "roll": [
+                2,
+                1
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding some Harmless Dungeon Fauna."
+        },
+        {
+            "roll": [
+                2,
+                2
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding some Harmless Dungeon Flora."
+        },
+        {
+            "roll": [
+                2,
+                3
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding a few Discarded Items."
+        },
+        {
+            "roll": [
+                2,
+                4
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding something that speaks to the History of the Place or Setting."
+        },
+        {
+            "roll": [
+                2,
+                5
+            ],
+            "type": "Empty",
+            "prompt": "Consider adding a change in Temperature/Moisture. This can also be drawn from or inform Surrounding Areas."
+        },
+        {
+            "roll": [
+                2,
+                6
+            ],
+            "type": "Empty",
+            "prompt": "Include Unguarded Treasure based on Dungeon Level. Consider ways to hide or disguise this Treasure in some way."
+        },
+        {
+            "roll": [
+                3,
+                1
+            ],
+            "type": "Monster",
+            "prompt": "Consider giving them a Desire or Need that is in direct conflict with another Faction."
+        },
+        {
+            "roll": [
+                3,
+                2
+            ],
+            "type": "Monster",
+            "prompt": "Consider adding some Interactive Scenery."
+        },
+        {
+            "roll": [
+                3,
+                3
+            ],
+            "type": "Monster",
+            "prompt": "Consider applying a Mien to assist with Portrayal of the Encounter."
+        },
+        {
+            "roll": [
+                3,
+                4
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider Placing Treasure with a Past, enough to garner Rumors and Gossip in the outside world."
+        },
+        {
+            "roll": [
+                3,
+                5
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider Treasure that is not immediately accessible, such as under Lock and Key or inconveniently Stored."
+        },
+        {
+            "roll": [
+                3,
+                6
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider how the Treasure may be tied to a Relationship with another Faction, either directly or indirectly."
+        },
+        {
+            "roll": [
+                4,
+                1
+            ],
+            "type": "Monster",
+            "prompt": "Consider how these Monsters might Ambush Intruders or Escape to potentially retrieve Reinforcements."
+        },
+        {
+            "roll": [
+                4,
+                2
+            ],
+            "type": "Monster",
+            "prompt": "Consider ways to make for a more Dangerous or Tactically Complicated Battlefield."
+        },
+        {
+            "roll": [
+                4,
+                3
+            ],
+            "type": "Monster",
+            "prompt": "Consider opportunities to telegraph or illustrate existing Faction Relationships, or give them a Reputation."
+        },
+        {
+            "roll": [
+                4,
+                4
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider ways of Concealing, Hiding, or Camouflaging the Treasure in some way."
+        },
+        {
+            "roll": [
+                4,
+                5
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider adding a way for the Party to Replenish Crucial Resources such as Light, Food, or Water."
+        },
+        {
+            "roll": [
+                4,
+                6
+            ],
+            "type": "Monster/Treasure",
+            "prompt": "Consider placing a few pieces of Treasure that speak to the History of the Place or Setting."
+        },
+        {
+            "roll": [
+                5,
+                1
+            ],
+            "type": "Special",
+            "prompt": "Perhaps an Unusual Statue?"
+        },
+        {
+            "roll": [
+                5,
+                2
+            ],
+            "type": "Special",
+            "prompt": "Potentially include a Fountain, Spring or Pool."
+        },
+        {
+            "roll": [
+                5,
+                3
+            ],
+            "type": "Special",
+            "prompt": "Consider a Puzzle, such as a Secret or Concealed Door, or perhaps an Unusual Door."
+        },
+        {
+            "roll": [
+                5,
+                4
+            ],
+            "type": "Special",
+            "prompt": "Consider a Strange Altar or Shrine of some sort, potentially capable of providing a Boon, Bane, or Both."
+        },
+        {
+            "roll": [
+                5,
+                5
+            ],
+            "type": "Special",
+            "prompt": "Consider placing a route to another Level or even a Potential Exit."
+        },
+        {
+            "roll": [
+                5,
+                6
+            ],
+            "type": "Special",
+            "prompt": "Consider an Interactive Element that can potentially Alter or Change other areas in the Dungeon."
+        },
+        {
+            "roll": [
+                6,
+                1
+            ],
+            "type": "Trap",
+            "prompt": "Consider Placing the Trap on a Door or other means of Ingress/Egress."
+        },
+        {
+            "roll": [
+                6,
+                2
+            ],
+            "type": "Trap",
+            "prompt": "Consider Placing a Trap that doesn't Harm, but instead Alerts, Separates, Captures, or Consumes Resources/Time."
+        },
+        {
+            "roll": [
+                6,
+                3
+            ],
+            "type": "Trap",
+            "prompt": "Consider a Trap that is designed to intentionally Harm if activated by the Adventurers."
+        },
+        {
+            "roll": [
+                6,
+                4
+            ],
+            "type": "Trap",
+            "prompt": "Consider a Pit. If you wish, make sure to put something At The Bottom."
+        },
+        {
+            "roll": [
+                6,
+                5
+            ],
+            "type": "Trap/Treasure",
+            "prompt": "Consider associating the Trap with the Unguarded Treasure in some way."
+        },
+        {
+            "roll": [
+                6,
+                6
+            ],
+            "type": "Trap/Treasure",
+            "prompt": "Consider a Trap that renders the Treasure invaluable or inaccessible in some way if Sprung."
+        }
     ]
 }

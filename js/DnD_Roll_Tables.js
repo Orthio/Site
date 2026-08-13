@@ -27,7 +27,6 @@ fetch('json/DnD_Roll_Tables.json')
     })
     .catch(error => console.error('Error fetching JSON:', error));
 
-
 let resultOutput = [];
 
 let monsterReactionMod = 0;
@@ -76,7 +75,12 @@ function generateTerrain() {
 
 }
 
-function generateDungeon() {
+function generateDungeonRoom() {
+    const dungeonRoom = dungeon.generateDungeonResults();
+    updateOutput(dungeonRoom.toDungeonText2());
+}
+
+function generateDungeonTheme() {
     let dungeonsKnave = rollOnTable(jsonData.dungeonsKnave);
     let dungeonRoomThemes = rollOnTable(jsonData.dungeonRoomThemes);
     let dungeonShifts = rollOnTable(jsonData.dungeonShifts);
@@ -105,10 +109,7 @@ function generateTrap() {
     updateOutput(trapResult);
 }
 
-function generateDungeonRoom() {
-    const dungeonRoom = dungeon.generateDungeonResults();
-    updateOutput(dungeonRoom.toDungeonText2());
-}
+
 
 function generateScenario() {
     let activity = rollOnTable(jsonData.activities);
@@ -395,18 +396,39 @@ function generateMiscItems() {
 }
 
 function updateOutput(inputText) {
-
     rollsCount++;
-    resultOutput.unshift(`<div>
-        <span class="spaceSpan"> ${rollsCount}: </span>
-        <span class="inputSpan"> ${inputText}  </span>
-    </div><br>`);
 
-    if (resultOutput.length > 14) {
-        resultOutput.pop();
+    const output = document.getElementById("result-output");
+
+    let table = output.querySelector("#resultTable");
+
+    if (!table) {
+        table = document.createElement("table");
+        table.id = "resultTable";
+
+        const tableBody = document.createElement("tbody");
+        table.appendChild(tableBody);
+        output.appendChild(table);
     }
 
-    document.getElementById("result-output").innerHTML = resultOutput.join('');
+    const tableBody = table.querySelector("tbody");
+    const row = tableBody.insertRow(0);
+
+    const countCell = row.insertCell(0);
+    const resultCell = row.insertCell(1);
+
+    countCell.className = "spaceCell";
+    resultCell.className = "inputCell";
+
+    countCell.textContent = `${rollsCount}:`;
+
+    // Your generated results contain HTML spans and <br> elements.
+    resultCell.innerHTML = inputText;
+
+    // Retain only the 15 newest results.
+    if (tableBody.rows.length > 15) {
+        tableBody.deleteRow(tableBody.rows.length - 1);
+    }
 }
 
 
@@ -461,7 +483,7 @@ document.getElementById("button-open-hex-connections").addEventListener("click",
 });
 
 document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
-    generateDungeon();
+    generateDungeonTheme();
 });
 
 document.getElementById('generate-trap').addEventListener('click', () => {

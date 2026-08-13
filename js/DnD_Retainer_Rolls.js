@@ -155,9 +155,9 @@ class retainerRollsCore {
             7: "Thief",
             8: "Thief",
             9: "Halfling",
-            10: "Halfling",
+            10: "Magic-User",
             11: "Dwarf",
-            12: "Elf"
+            12: "Elf",
         };
 
         let classRoll = this.#rollFromObjectTable(classTable);
