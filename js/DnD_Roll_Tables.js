@@ -395,6 +395,15 @@ function generateMiscItems() {
     updateOutput(miscResult);
 }
 
+function generateAnimal() {
+
+    let animalRoll = rollOnTable(jsonData.animals);
+    let result = "<span class='no-select'><small>Animal: </small></span><br>" + animalRoll;
+
+    updateOutput(result);
+
+}
+
 function updateOutput(inputText) {
     rollsCount++;
 
@@ -559,6 +568,10 @@ document.getElementById('generate-equipment').addEventListener('click', () => {
 
 document.getElementById('generate-misc-items').addEventListener('click', () => {
     generateMiscItems();
+});
+
+document.getElementById('generate-animal').addEventListener('click', () => {
+    generateAnimal();
 });
 
 document.getElementById('diceRolld4').addEventListener('click', () => {
