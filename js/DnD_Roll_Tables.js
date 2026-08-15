@@ -491,6 +491,12 @@ document.getElementById("button-open-hex-connections").addEventListener("click",
         "noopener,noreferrer");
 });
 
+document.getElementById("button-place-name").addEventListener("click", () => {
+    window.open("https://picastudio.com/random/",
+        "_blank",
+        "noopener,noreferrer");
+});
+
 document.getElementById('generate-dungeon-theme').addEventListener('click', () => {
     generateDungeonTheme();
 });

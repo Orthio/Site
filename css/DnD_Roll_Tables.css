@@ -1,3 +1,8 @@
+h1 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
 .row-buttons {
     margin: 5px;
 }
@@ -72,4 +77,50 @@
 
 .inputCell {
     text-align: left;
+}
+
+.roll-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+#result-output {
+  position: sticky;
+  top: 1rem;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .roll-layout {
+    grid-template-columns: 1fr;
+  }
+
+  #result-output {
+    position: static;
+  }
+}
+
+/* Desktop */
+@media (min-width: 701px) {
+  #result-output {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    width: 700px;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+    z-index: 100;
+  }
+}
+
+/* Mobile: return to its normal document position */
+@media (max-width: 700px) {
+  #result-output {
+    position: static;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+  }
 }
