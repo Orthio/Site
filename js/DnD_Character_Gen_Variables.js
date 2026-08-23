@@ -45,7 +45,8 @@ const alignments = [
   "CN",
   "LE",
   "NE",
-  "CE"
+  "CE",
+  "TN"
 ];
 
 // #region Character Description Region
