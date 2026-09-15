@@ -24,13 +24,13 @@ function formatDate(year, month, day) {
     return `${dayWithSuffix} ${monthName} ${year}`;
 }
 
+// const currentYear = 2026;
 const currentYear = todaysDate.getFullYear();
+// const currentMonth = 9; // getMonth() is zero-based
 const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
+// const currentDay = 30;
 const currentDay = todaysDate.getDate();
 
-/* const currentYear = 2025;
-const currentMonth = 10;
-const currentDay = 7; */
 
 // console.log(`${currentYear}-${currentMonth}-${currentDay}`); // Example output: "2025-03-17"
 
@@ -53,22 +53,59 @@ const differenceInMilliseconds = todaysCurrentDate - conceptionDate;
 const diffBirthMilliseconds = todaysCurrentDate - birthDate;
 const birthDiff = todaysCurrentDate - birthDate;
 
-const weeksSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+
 const daysSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+const weeksSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+const yearsSinceConception = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7 * 52));
 
-var daysInWeekText; //eg Week 1, or Week 0 Day 5
+var weeksSinceBirthText; //eg Week 1, or Week 0 Day 5
+var yearsSinceBirthText; //eg Year 1
 
-const weeksSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24 * 7));
 const daysSinceBirth = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24));
-const daysInWeekSinceBirth = daysSinceBirth - (weeksSinceBirth * 7);
-const monthsSinceBirth = Math.floor(daysSinceBirth/28);
+const weeksSinceBirthClinical = Math.floor(diffBirthMilliseconds / (1000 * 60 * 60 * 24 * 7));
+const monthsSinceBirthClinical = Math.floor(daysSinceBirth / 28);
+
+let yearsSinceBirth = currentYear - birthYear;
+if (currentMonth < birthMonth ||
+    (currentMonth === birthMonth && currentDay < birthDay)
+) {
+    yearsSinceBirth--;
+}
+
+// Most recent birthday
+const lastBirthdayYear = birthYear + yearsSinceBirth;
+
+// UTC avoids daylight-saving changes affecting the day count
+const daysSinceLastBirthday = Math.floor(
+    (
+        Date.UTC(currentYear, currentMonth - 1, currentDay) -
+        Date.UTC(lastBirthdayYear, birthMonth - 1, birthDay)
+    ) / (1000 * 60 * 60 * 24)
+);
+
+const weeksSinceBirth = Math.floor(daysSinceLastBirthday / 7);
+const daysInWeekSinceBirth = daysSinceLastBirthday % 7;
+
+
+// Birthday Check
+let birthdayCheck;
+if (daysSinceLastBirthday === 0) {
+    birthdayCheck = true;
+} else {
+    birthdayCheck = false;
+}
 
 
 if (daysInWeekSinceBirth === 0) {
-    daysInWeekText = "Week " + weeksSinceBirth;
-} 
-else {
-    daysInWeekText = "Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
+    weeksSinceBirthText = "Week " + weeksSinceBirth;
+} else {
+    weeksSinceBirthText = "Week " + weeksSinceBirth + " Day " + daysInWeekSinceBirth;
+}
+
+if (yearsSinceBirth <= 0) {
+    yearsSinceBirthText = "";
+} else {
+    yearsSinceBirthText = "Year " + yearsSinceBirth + " ";
 }
 
 
@@ -85,11 +122,18 @@ if (birthDiff <= 0) {
     document.getElementById("weeksAfterText").style.display = "none";
 }
 else {
-    document.getElementById("weeks-after-birth").innerText = daysInWeekText;
-    document.getElementById("months-after-birth").innerText = monthsSinceBirth;
+    document.getElementById("time-after-birth").innerText = yearsSinceBirthText + weeksSinceBirthText;
+    document.getElementById("months-after-birth").innerText = monthsSinceBirthClinical;
     document.getElementById("days-after-birth").innerText = daysSinceBirth;
 
 }
+
+if (birthdayCheck === false) {
+    document.getElementById("happy-birthday").style.display = "none";
+} else {
+    document.getElementById("happy-birthday").innerText = "Happy Birthday!!!";
+}
+
 
 function getImage(weeksSince) {
 
