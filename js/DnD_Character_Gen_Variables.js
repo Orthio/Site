@@ -238,7 +238,7 @@ const bodyDescription = [
   "Sleepy eyes",
   "Sparkling eyes",
   "High forehead",
-  "Wrinkled foreead",
+  "Wrinkled forehead",
   "Receding forehead",
   "Strong jaw",
   "Hooked nose",

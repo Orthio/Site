@@ -47,6 +47,7 @@ class RetainerRollResults {
         this.level = 1;
         this.class = null;
         this.toHit = null;
+        this.dexToHit = null;
         this.acBonus = null;
         this.conMod = null;
         this.hp = null;
@@ -74,7 +75,7 @@ class RetainerRollResults {
         <span class="small-text">Dex: </span>${this.dexterity ?? "—"},
         <span class="small-text">Con: </span>${this.constitution ?? "—"},
         <span class="small-text">Cha: </span>${this.charisma ?? "—"}, <br>
-        &nbsp&nbsp <span class="small-text">ToHit: </span>${this.toHit}, <span class="small-text">AC </span>${this.ac}, <span class="small-text">HP: </span>${this.hp}<br>
+        &nbsp&nbsp <span class="small-text">AC </span>${this.ac}, <span class="small-text">HP: </span>${this.hp}, <span class="small-text">ToHit: </span>${this.toHit},  <span class="small-text">DexToHit: </span>${this.dexToHit}<br>
 
         &nbsp&nbsp <span class="small-text">Weapons: </span>${this.weapon1} ${this.w1Att}, ${this.weapon2} ${this.w2Att}, 
         <span class="small-text">Armour: </span>${this.armour}<br>
@@ -103,6 +104,7 @@ class retainerRollsCore {
         result.hp = null;
         result.class = null;
         result.toHit = null;
+        result.dexToHit = null;
         result.acBonus = null;
         result.conMod = null;
         result.hp = null;
@@ -207,6 +209,7 @@ class retainerRollsCore {
             18: "+3"
         }
         result.toHit = strMod[result.strength];
+        result.dexToHit = strMod[result.dexterity];
 
         const dexACMod = {
             3: -3,
@@ -469,9 +472,11 @@ async function copyResults() {
         "Con " + currentRetainer.constitution + " " +
         "Cha " + currentRetainer.charisma + "\n" +
 
-        "ToHit " + currentRetainer.toHit + "  " +
-        "AC " + currentRetainer.ac + "  " +
-        "HP " + currentRetainer.hp + "\n" +
+        "AC " + currentRetainer.ac + ",  " +
+        "HP " + currentRetainer.hp + ",  " +
+        "ToHit " + currentRetainer.toHit + ",  " +
+        "ToDexHit " + currentRetainer.dexToHit + "\n  " +
+
 
         "Weapons: " + currentRetainer.weapon1 + " " +
         currentRetainer.w1Att + ", " +
