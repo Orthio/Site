@@ -24,13 +24,13 @@ function formatDate(year, month, day) {
     return `${dayWithSuffix} ${monthName} ${year}`;
 }
 
-const currentYear = 2026;
-const currentMonth = 9; // getMonth() is zero-based
-const currentDay = 29;
+// const currentYear = 2026;
+// const currentMonth = 9; // getMonth() is zero-based
+// const currentDay = 29;
 
-// const currentYear = todaysDate.getFullYear();
-// const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
-// const currentDay = todaysDate.getDate();
+const currentYear = todaysDate.getFullYear();
+const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
+const currentDay = todaysDate.getDate();
 
 
 // console.log(`${currentYear}-${currentMonth}-${currentDay}`); // Example output: "2025-03-17"
