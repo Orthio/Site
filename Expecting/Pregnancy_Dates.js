@@ -24,12 +24,13 @@ function formatDate(year, month, day) {
     return `${dayWithSuffix} ${monthName} ${year}`;
 }
 
-// const currentYear = 2026;
-const currentYear = todaysDate.getFullYear();
-// const currentMonth = 9; // getMonth() is zero-based
-const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
-// const currentDay = 30;
-const currentDay = todaysDate.getDate();
+const currentYear = 2026;
+const currentMonth = 9; // getMonth() is zero-based
+const currentDay = 29;
+
+// const currentYear = todaysDate.getFullYear();
+// const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
+// const currentDay = todaysDate.getDate();
 
 
 // console.log(`${currentYear}-${currentMonth}-${currentDay}`); // Example output: "2025-03-17"
@@ -142,8 +143,13 @@ function getImage(weeksSince) {
         document.getElementById("fruit-pic").alt = "Error: weeks out of range";
     }
     if (birthDiff >= 0) {
-        return ['99 - Una Bambina', ""];
+        if (birthdayCheck === true) {
+            return ['100 - A Birthday Girl', ""];
+        } else {
+            return ['99 - Una Bambina', ""];
+        }
     }
+
     switch (weeksSince) {
         case 8: return ['8 - Raspberry', "a"];
         case 9: return ['9 - Olive', "an"];
