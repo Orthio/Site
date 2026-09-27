@@ -24,6 +24,7 @@ function formatDate(year, month, day) {
     return `${dayWithSuffix} ${monthName} ${year}`;
 }
 
+// test
 // const currentYear = 2026;
 // const currentMonth = 9; // getMonth() is zero-based
 // const currentDay = 29;
