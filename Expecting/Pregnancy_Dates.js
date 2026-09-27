@@ -27,7 +27,7 @@ function formatDate(year, month, day) {
 // test
 // const currentYear = 2026;
 // const currentMonth = 9; // getMonth() is zero-based
-// const currentDay = 29;
+// const currentDay = 28;
 
 const currentYear = todaysDate.getFullYear();
 const currentMonth = todaysDate.getMonth() + 1; // getMonth() is zero-based
